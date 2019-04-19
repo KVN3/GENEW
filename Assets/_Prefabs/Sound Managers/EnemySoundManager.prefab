@@ -141,20 +141,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shutDownClips:
-  - {fileID: 8300000, guid: a458072521a254ac285ef46317bdb62b, type: 3}
+  - {fileID: 8300000, guid: 82b2aaf672835c94b91335dfb51a4902, type: 3}
+  - {fileID: 8300000, guid: c8f8bc5732302b245b178531922761f4, type: 3}
   restartClips:
   - {fileID: 8300000, guid: a352e314a3f1daa4da97b5d08520b018, type: 3}
   alarmClips: []
   speedBoostClips: []
   pickUpClips: []
   shootingClips:
-  - {fileID: 8300000, guid: 56c2ee139e8c844ba9a3a17370e3b763, type: 3}
-  - {fileID: 8300000, guid: f0f9c11c7257f48feb7f87746b03e573, type: 3}
-  - {fileID: 8300000, guid: 654d1ed270c714ddb8c934ac5fef5edc, type: 3}
-  - {fileID: 8300000, guid: efc8a171e707c43fcb789f5980dafb79, type: 3}
-  - {fileID: 8300000, guid: 406abe6e803b244eca380af5865dc5cb, type: 3}
-  - {fileID: 8300000, guid: 0fa10ee5b269443d89d963b31afb33b7, type: 3}
-  - {fileID: 8300000, guid: bd11b89f2155a4c14ad39e9572d36a68, type: 3}
-  - {fileID: 8300000, guid: 2b0937f4e75504da8a8aef2cf114aaee, type: 3}
-  - {fileID: 8300000, guid: 476c9e909434541d9a0e665e934cd626, type: 3}
-  - {fileID: 8300000, guid: f1364d48e48ea4fdab44868cc9b2a10e, type: 3}
+  - {fileID: 8300000, guid: a421c88e31c06c24791fbcc9cd18a8db, type: 3}
+  - {fileID: 8300000, guid: f137c96122ff42e41a14058c4d6cbf58, type: 3}
+  - {fileID: 8300000, guid: 01167a1df79e7a44383bc61473be1d13, type: 3}
+  - {fileID: 8300000, guid: 4944cbf2abad81743988cad9fdef0b41, type: 3}

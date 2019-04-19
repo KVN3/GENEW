@@ -13,6 +13,20 @@ public class EnemySoundManager : SoundManager
 
     public AudioClip[] shootingClips;
 
+    public void FixedUpdate()
+    {
+        if (transform.parent == null)
+        {
+            StartCoroutine(DestroyAfter(3));
+        }
+    }
+
+    private IEnumerator DestroyAfter(float seconds)
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
+    }
+
     public override void PlaySound(SoundType soundType)
     {
         switch (soundType)

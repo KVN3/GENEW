@@ -34,6 +34,7 @@ public class EnergyBall : MonoBehaviour
     public virtual void Die()
     {
         enemySoundManager.PlaySound(SoundType.SHUTDOWN);
+        transform.DetachChildren();
         Destroy(gameObject);
     }
 }
