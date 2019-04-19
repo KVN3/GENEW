@@ -14,7 +14,12 @@ public class UIPanel : UIBehaviour
     public TextMeshProUGUI raceTimeText;
     public TextMeshProUGUI bestRaceTimeText;
 
-    public TextMeshProUGUI raceLapText;
+    [Header("Lap text")]
+    public TextMeshProUGUI currentLapText;
+    public TextMeshProUGUI lapText;
+    public TextMeshProUGUI lastLapText;
+    public TextMeshProUGUI lapSeperatorText;
+
     public TextMeshProUGUI speedText;
 
     public Slider speedMeter;
@@ -41,7 +46,7 @@ public class UIPanel : UIBehaviour
         base.Start();
 
         // Default text
-        raceLapText.text = $"Lap: 0/3";
+        lapSeperatorText.text = $"Lap: 0/3";
     }
 
     void Update()
@@ -51,7 +56,7 @@ public class UIPanel : UIBehaviour
         #region In-GameUI
 
         // Laps
-        raceLapText.text = $"{ls.GetTextByKey("LAP")}: {pd.currentLap}/{pd.maxLaps}";
+        lapSeperatorText.text = $"{ls.GetTextByKey("LAP")}: {pd.currentLap}/{pd.maxLaps}";
 
         // Race Time
         raceTimeText.text = ls.GetTextByKey("CURRENT_TIME") + " - " + pd.raceTime.ToString(@"mm\:ss\.ff");
