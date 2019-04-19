@@ -81,12 +81,12 @@ public class UIPanel : UIBehaviour
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < pd.raceTimes.Count; i++)
             {
-                string lapTime = playerShip.runData.raceTimes[i].ToString(@"mm\:ss\.ff");
+                string lapTime = pd.raceTimes[i].ToString(@"mm\:ss\.ff");
                 string lapCount = (i + 1).ToString(); // Arrays start at 0 but laps start at 1
 
                 builder.Append(ls.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
             }
-            builder.Append(ls.GetTextByKey("BEST_LAPTIME")).Append(":").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
+            builder.Append(ls.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
 
             raceTimesText.text = builder.ToString();
         }

@@ -38,7 +38,7 @@ public class PlayerShip : Ship
 
         // Set currentlap, maxlaps, timer
         runData.currentLap = 0;
-        runData.maxLaps = 3; // Should be configurable by variable
+        runData.maxLaps = 1; // Should be configurable by variable
         runData.raceTime = TimeSpan.Parse("00:00:00.000");
         //runData.bestRaceTime = TimeSpan.Parse("00:01:47.222");
         runData.raceTimes = new List<TimeSpan>();
