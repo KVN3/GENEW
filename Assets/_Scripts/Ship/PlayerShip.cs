@@ -14,7 +14,9 @@ public struct PlayerRunData
     public TimeSpan totalTime;
 
     public List<TimeSpan> raceTimes;
-    public List<GameObject> waypoints;
+    public int currentWaypoint;
+    public bool isOverHalfway;
+    public bool isWrongWay;
 
     public bool raceFinished;
 
@@ -36,12 +38,17 @@ public class PlayerShip : Ship
 
         // Set currentlap, maxlaps, timer
         runData.currentLap = 0;
-        runData.maxLaps = 3;
+        runData.maxLaps = 3; // Should be configurable by variable
         runData.raceTime = TimeSpan.Parse("00:00:00.000");
         //runData.bestRaceTime = TimeSpan.Parse("00:01:47.222");
         runData.raceTimes = new List<TimeSpan>();
+
+        // Prevents cheating times
         runData.raceFinished = false;
-        runData.waypoints = new List<GameObject>();
+        runData.isOverHalfway = false;
+        // Guidance
+        runData.isWrongWay = false;
+
     }
     #endregion
 
@@ -55,23 +62,31 @@ public class PlayerShip : Ship
     //    }
     //}
 
+
     private void OnTriggerEnter(Collider other)
     {
         #region FinishLine
         if (other.gameObject.CompareTag("FinishLine"))
         {
+            // Reset waypoint count 
+            runData.currentWaypoint = -1;
+
             // Fixes an error when racetimes = null after restarting on Gianni's level
             if (runData.raceTimes == null)
                 runData.raceTimes = new List<TimeSpan>();
 
-            // Save lap if race has started (lap > 0)
-            if (runData.currentLap > 0)
+            // Save lap if race has started (lap > 0) and qualified (isOverHalfWay) lap 
+            if (runData.currentLap > 0 && runData.isOverHalfway)
             {
                 // Add laptime to racetimes if not finished
                 if (!runData.raceFinished)
                     runData.raceTimes.Add(runData.raceTime);
+
+                // Update best time if not set (00:00:00)
                 if (runData.bestRaceTime == TimeSpan.Parse("00:00:00"))
                     runData.bestRaceTime = runData.raceTime;
+
+                // Else update best time if current time is faster
                 else if (runData.raceTime < runData.bestRaceTime)
                     runData.bestRaceTime = runData.raceTime;
             }
@@ -84,20 +99,21 @@ public class PlayerShip : Ship
             }
             else // If not finished
             {
-                Debug.Log($"playerShip Crossed Finish Line");
-
-                // Reset Time. Only reset when lap > 0 
-                if (runData.currentLap > 0 && runData.waypoints.Count > 0)
+                // Reset Time. Only reset when lap > 0 && over half way
+                if (runData.currentLap > 0 && runData.isOverHalfway)
                 {
+                    Debug.Log($"PlayerShip Crossed Finish Line");
+
+
                     runData.raceTime = TimeSpan.Parse("00:00:00.000");
 
                     runData.currentLap++;
 
-                    // Reset waypoints
-                    runData.waypoints.Clear();
+                    // Reset halfwaypoint
+                    runData.isOverHalfway = false;
                 }
 
-                // Add a lap
+                // Add a lap at start
                 if (runData.currentLap == 0)
                     runData.currentLap++;
             }
@@ -108,11 +124,22 @@ public class PlayerShip : Ship
 
         if (other.gameObject.CompareTag("Waypoint"))
         {
-            Debug.Log("Waypoint passed!");
-            //other.GetComponent<Waypoint>().activated = true;
-            runData.waypoints.Add(other.gameObject);
-        }
+            // If passed previous waypoint
+            if (other.GetComponent<Waypoint>().number < runData.currentWaypoint)
+            {
+                Debug.Log("Wrong Way!");
+                runData.isWrongWay = true;
+            }
+            else // update with new waypoint
+            {
+                Debug.Log($"Waypoint updated! ({other.GetComponent<Waypoint>().number})");
+                runData.currentWaypoint = other.GetComponent<Waypoint>().number;
+                runData.isWrongWay = false;
+                if (other.GetComponent<Waypoint>().isHalfwayPoint)
+                    runData.isOverHalfway = true;
+            }
 
+        }
         #endregion
     }
     #endregion
