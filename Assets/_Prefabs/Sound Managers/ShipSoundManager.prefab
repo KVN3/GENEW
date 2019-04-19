@@ -154,5 +154,7 @@ MonoBehaviour:
   shootingClips:
   - {fileID: 8300000, guid: 48caa5490ca4992479a1e5ebff0c2cc4, type: 3}
   - {fileID: 8300000, guid: ed501ef690c14224e9550cc24084a5cc, type: 3}
+  dropMineClips:
+  - {fileID: 8300000, guid: 699a21ca60012784c9805c6473120785, type: 3}
   protectedClips:
   - {fileID: 8300000, guid: abeb1cf7802204f6886531c3ecb780e0, type: 3}

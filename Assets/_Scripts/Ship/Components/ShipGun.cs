@@ -23,6 +23,15 @@ public class ShipGun : ShipComponent
 
     }
 
+    public void DropMine(JammerMine mineClass)
+    {
+        JammerMine mine = (JammerMine)Instantiate(mineClass, projectileSpawnPoint.transform.position, Quaternion.identity);
+        mine.owner = parentShip;
+
+        shipSoundManager.PlaySound(SoundType.DROPMINE);
+        StartCoroutine(ShootingCooldown(.5f));
+    }
+
     private IEnumerator ShootingCooldown(float seconds)
     {
         coolDown = true;

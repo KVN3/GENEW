@@ -12,6 +12,7 @@ public class ShipSoundManager : SoundManager
     public AudioClip[] pickUpClips;
 
     public AudioClip[] shootingClips;
+    public AudioClip[] dropMineClips;
     public AudioClip[] protectedClips;
 
     public override void PlaySound(SoundType soundType)
@@ -37,6 +38,9 @@ public class ShipSoundManager : SoundManager
 
             case SoundType.SHOOTING:
                 audioSource.clip = shootingClips[Random.Range(0, shootingClips.Length)];
+                break;
+            case SoundType.DROPMINE:
+                audioSource.clip = dropMineClips[Random.Range(0, dropMineClips.Length)];
                 break;
             case SoundType.PROTECTED:
                 audioSource.clip = protectedClips[Random.Range(0, protectedClips.Length)];

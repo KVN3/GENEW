@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68e2136be05dd84a89108992cf4182c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionClass: {fileID: 546322901, guid: 9b4ce4466dee9154ba367ab757e19f32, type: 3}
+  explosionClass: {fileID: 546322901, guid: b89c865d46c908d458045bc29573de8a, type: 3}
   projectileSpeed: 100000
   maxDrag: 10
   owner: {fileID: 0}

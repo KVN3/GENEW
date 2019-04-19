@@ -65,6 +65,14 @@ public class Ship : MonoBehaviour
                     itemAmount--;
                 }
             }
+            else if (collectableItemClass is JammerMine)
+            {
+                if (!components.gun.OnCooldown())
+                {
+                    components.gun.DropMine((JammerMine)collectableItemClass);
+                    itemAmount--;
+                }
+            }
             else if (collectableItemClass is SpeedBurst)
             {
                 SpeedBurst speedBurstItem = (SpeedBurst)collectableItemClass;
