@@ -91,7 +91,7 @@ public class PlayerShip : Ship
                     runData.bestRaceTime = runData.raceTime;
             }
             // If finished
-            if (runData.currentLap == runData.maxLaps) // 3/3 laps + finish
+            if (runData.currentLap == runData.maxLaps && runData.isOverHalfway) // 3/3 laps + finish
             {
                 Debug.Log("playerShip Finished");
 
@@ -103,7 +103,6 @@ public class PlayerShip : Ship
                 if (runData.currentLap > 0 && runData.isOverHalfway)
                 {
                     Debug.Log($"PlayerShip Crossed Finish Line");
-
 
                     runData.raceTime = TimeSpan.Parse("00:00:00.000");
 

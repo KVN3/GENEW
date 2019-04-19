@@ -46,53 +46,47 @@ public class UIPanel : UIBehaviour
 
     void Update()
     {
+        LocalizationService ls = LocalizationService.Instance;
+        PlayerRunData pd = playerShip.runData;
         #region In-GameUI
 
         // Laps
-        raceLapText.text = $"{LocalizationService.Instance.GetTextByKey("LAP")}: {playerShip.runData.currentLap}/{playerShip.runData.maxLaps}";
+        raceLapText.text = $"{ls.GetTextByKey("LAP")}: {pd.currentLap}/{pd.maxLaps}";
 
         // Race Time
-        raceTimeText.text = LocalizationService.Instance.GetTextByKey("CURRENT_TIME") + " - " + playerShip.runData.raceTime.ToString(@"mm\:ss\.ff");
+        raceTimeText.text = ls.GetTextByKey("CURRENT_TIME") + " - " + pd.raceTime.ToString(@"mm\:ss\.ff");
 
         // Best race time
-        if (playerShip.runData.bestRaceTime == TimeSpan.Parse("00:00:00.000"))
+        if (pd.bestRaceTime == TimeSpan.Parse("00:00:00.000"))
             bestRaceTimeText.text = "--.---";
         else
-            bestRaceTimeText.text = playerShip.runData.bestRaceTime.ToString(@"mm\:ss\.ff");
-
-
-        // Speed (Get and convert speed from rb)
-
-        //Rigidbody rb = target.GetComponent<Rigidbody>();
-        //var localVelocity = transform.InverseTransformVector(rb.velocity);
-        //var forwardSpeed = Mathf.Abs(localVelocity.z);
-        //playerSpeedText.text = forwardSpeed.ToString("0") + " KM/H";
-        float currSpeed = playerShip.components.movement.GetCurrentSpeed();
-        //playerSpeedText.text = currSpeed.ToString("0") + " KM/H";
-
+            bestRaceTimeText.text = pd.bestRaceTime.ToString(@"mm\:ss\.ff");
+        
+        
+        
         // Speed
+        float currSpeed = playerShip.components.movement.GetCurrentSpeed() * 2;
         speedText.text = currSpeed.ToString("0");
-        speedMeter.value = (currSpeed / playerShip.components.movement.GetCurrentMaxSpeed()) * 1;
+        speedMeter.value = (currSpeed / playerShip.components.movement.GetCurrentMaxSpeed()) * 0.6f; // Compensate with * 2 and make slightly higher so it sticks to 100% when a bit less than maxspeed is reached
 
         // Charges
-        chargeBar.value =
-            (playerShip.components.forcefield.GetCharges() / playerShip.components.forcefield.maxCharges) * 1;
+        chargeBar.value = (playerShip.components.forcefield.GetCharges() / playerShip.components.forcefield.maxCharges) * 1;
 
         #endregion
 
         #region Race Finished Screen
         // Only show racetimes when finished and display them using a stringbuilder (for lines)
-        if (playerShip.runData.raceFinished)
+        if (pd.raceFinished)
         {
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < playerShip.runData.raceTimes.Count; i++)
+            for (int i = 0; i < pd.raceTimes.Count; i++)
             {
                 string lapTime = playerShip.runData.raceTimes[i].ToString(@"mm\:ss\.ff");
                 string lapCount = (i + 1).ToString(); // Arrays start at 0 but laps start at 1
 
-                builder.Append("Lap ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
+                builder.Append(ls.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
             }
-            builder.Append("Best Lap: ").Append(playerShip.runData.bestRaceTime.ToString(@"mm\:ss\.ff"));
+            builder.Append(ls.GetTextByKey("BEST_LAPTIME")).Append(":").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
 
             raceTimesText.text = builder.ToString();
         }

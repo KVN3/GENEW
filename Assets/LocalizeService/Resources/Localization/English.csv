@@ -7,5 +7,6 @@ R_TO_RESTART,Press R to restart
 SPEEDUNIT,KM/H
 CURRENT_TIME,CURR
 BEST,BEST
-BEST_TIME,Best time:
+BEST_LAPTIME,Best laptime
 LAP,Lap
+TOTAL_TIME,Total time
