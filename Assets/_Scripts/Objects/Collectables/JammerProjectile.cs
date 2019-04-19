@@ -26,7 +26,7 @@ public class JammerProjectile : Collectable
         rb.AddForce(forward);
 
         if (rb.drag < maxDrag)
-            rb.drag = rb.drag + 0.2f;
+            rb.drag = rb.drag + 0.05f;
     }
 
     void OnCollisionEnter(Collision other)

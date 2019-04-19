@@ -23,8 +23,8 @@ public class Ship : MonoBehaviour
     private LevelSoundManager levelSoundManager;
 
     // Collectables
-    private Collectable collectableItemClass;
-    private int itemAmount;
+    public Collectable collectableItemClass;
+    public int itemAmount;
 
     private bool recentlyHit;
 
@@ -51,7 +51,6 @@ public class Ship : MonoBehaviour
 
     public virtual void Start()
     {
-
     }
 
     public void UseItem()
