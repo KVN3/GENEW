@@ -11,6 +11,8 @@ using Localization;
 
 public class UIPanel : UIBehaviour
 {
+    public float standardAlpha;
+
     #region Fields
     [Header("Lap text")]
     public TextMeshProUGUI lapText;
@@ -48,12 +50,17 @@ public class UIPanel : UIBehaviour
     public Slider chargeBar;
     public Image chargeBarFilling;
 
+    [Header("Popups")]
+    public Image wrongWayPanel;
+
     [Header("RaceEndScreen")]
     public TextMeshProUGUI raceTimesText;
 
-    #region properties
-    // Non-UI
-    public int playerCount { get; set; }
+    #endregion
+
+    #region Properties
+    // Properties
+    public int PlayerCount { get; set; }
 
     public PlayerShip playerShip
     {
@@ -68,19 +75,19 @@ public class UIPanel : UIBehaviour
         }
     }
     #endregion
-    #endregion
 
     protected override void Start()
     {
         base.Start();
 
         // Turn on/off position UI
-        if (playerCount > 1)
+        if (PlayerCount > 1)
             posBg.GetComponent<CanvasGroup>().alpha = 1f;
         else
             posBg.GetComponent<CanvasGroup>().alpha = 0f;
 
         boostMeter.value = 0;
+        standardAlpha = 0.9f;
     }
 
     void Update()
@@ -100,7 +107,7 @@ public class UIPanel : UIBehaviour
         posText.text = ls.GetTextByKey("POS");
         currentPosText.text = pd.currentPos.ToString();
         posSeperatorText.text = "/";
-        lastPosText.text = playerCount.ToString();
+        lastPosText.text = PlayerCount.ToString();
 
         // Race Time
         raceTimeText.text = ls.GetTextByKey("CURRENT_TIME") + " - " + pd.raceTime.ToString(@"mm\:ss\.ff");
@@ -122,7 +129,6 @@ public class UIPanel : UIBehaviour
         speedMeter.value = (currSpeed / playerShip.components.movement.GetCurrentMaxSpeed()) * 0.6f; // Compensate with * 2 and make slightly higher so it sticks to 100% when a bit less than maxspeed is reached
         if (playerShip.components.movement.IsBoosted())
         {
-            
             if (boostMeter.value <= 1)
                 boostMeter.value += Time.deltaTime;
             //speedMeterFilling.color = speedMeterBoostedColor;
@@ -141,18 +147,17 @@ public class UIPanel : UIBehaviour
 
         // Item
         if (playerShip.GetItemAmount() > 0)
-        {
-            // Change Alpha
-            Color tempColor = itemBox.color;
-            tempColor.a = 1f;
-            itemBox.color = tempColor;
-        }
+            itemBox.GetComponent<CanvasGroup>().alpha = standardAlpha;
         else
-        {
-            Color tempColor = itemBox.color;
-            tempColor.a = 0f;
-            itemBox.color = tempColor;
-        }
+            itemBox.GetComponent<CanvasGroup>().alpha = 0f;
+        
+        // Pop ups
+        // Wrong Way
+        if (pd.isWrongWay)
+            wrongWayPanel.GetComponent<CanvasGroup>().alpha = standardAlpha;
+        else
+            wrongWayPanel.GetComponent<CanvasGroup>().alpha = 0f;
+
 
         #endregion
 
@@ -175,3 +180,5 @@ public class UIPanel : UIBehaviour
         #endregion
     }
 }
+
+// TODO: FLEXIBLE PANEL CREATING WITH TIMER/AUTODESTROY
