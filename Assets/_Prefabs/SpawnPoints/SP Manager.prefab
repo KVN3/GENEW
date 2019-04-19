@@ -53,3 +53,4 @@ MonoBehaviour:
   - {fileID: 5387912034754458580, guid: 9f00134ace7cff64e8c955ee1ec475db, type: 3}
   movingSpawnPoints:
   - {fileID: 5457014549359127232, guid: 25d0a6b5664595a4988f768a14999584, type: 3}
+  - {fileID: 65795049657247573, guid: deae98bd9b1e9954ba33c5b42a19c156, type: 3}

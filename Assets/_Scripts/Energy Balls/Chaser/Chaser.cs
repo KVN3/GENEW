@@ -80,8 +80,7 @@ public class Chaser : EnergyBall
 
         if (other.gameObject.CompareTag("Ship"))
         {
-            enemySoundManager.PlaySound(SoundType.SHUTDOWN);
-            Destroy(gameObject);
+            Die();
             manager.RemoveFromAliveEnemies(this);
         }
     }
