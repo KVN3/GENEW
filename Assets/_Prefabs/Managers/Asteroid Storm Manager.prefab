@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2057598995073942971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2057598995073942972}
+  - component: {fileID: 2057598995073942973}
+  m_Layer: 0
+  m_Name: Asteroid Storm Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2057598995073942972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057598995073942971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 100, y: -3, z: 510}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2057598995073942973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057598995073942971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f011a9a0697084a9889b40d581b278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredAsteroidCount: 20
+  direction: 0
+  spawnPointManager: {fileID: 8686801296812006522, guid: 0fe4e31928be7f34a9a9b3a33f4b11f0,
+    type: 3}
+  redLavaAsteroidClasses:
+  - {fileID: 4026717051568735716, guid: 9debadb908ec7ac47af9a5b18b97e17a, type: 3}
+  - {fileID: 7547517499143431372, guid: 3f452d4bba718084d935f8b0613a24c5, type: 3}
+  - {fileID: 793612313394765715, guid: 6ffadafe95d243a418a6302a312cd2a9, type: 3}
+  - {fileID: 1528385290186421697, guid: bc57f012b1b60fc48a10f6adedcca83f, type: 3}
+  - {fileID: 1999465338785439114, guid: a011404ca025ab2429896e673be1bf96, type: 3}

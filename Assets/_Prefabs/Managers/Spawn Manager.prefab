@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6596309268676362807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8429500444103619298}
+  - component: {fileID: 1814585901066178219}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8429500444103619298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596309268676362807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1814585901066178219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596309268676362807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7d1e1c6959b694d8da72721854b290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectClasses:
+    blueElectricAsteroidClasses:
+    - {fileID: 4844134539421239902, guid: e8c4efb3a6c253541817a1919fbea090, type: 3}
+    - {fileID: 9054104281475609770, guid: 69500d0f6d89be84aa2f8e57ea66f887, type: 3}
+    - {fileID: 3195693908996153439, guid: 5e3b0fd833085724d80699deb39b0144, type: 3}
+    - {fileID: 3175463604772709026, guid: c5a500661fcc74f47b2bfcc04ad58b80, type: 3}
+    - {fileID: 2053587163765457129, guid: 0b76953da6a64754a8240f542260513d, type: 3}
+    redLavaAsteroidClasses:
+    - {fileID: 9030004004376735954, guid: 9debadb908ec7ac47af9a5b18b97e17a, type: 3}
+    - {fileID: 4253004782205853240, guid: 3f452d4bba718084d935f8b0613a24c5, type: 3}
+    - {fileID: 3019380843019233774, guid: 6ffadafe95d243a418a6302a312cd2a9, type: 3}
+    - {fileID: 1498130099774290158, guid: bc57f012b1b60fc48a10f6adedcca83f, type: 3}
+    - {fileID: 5785220317267575831, guid: a011404ca025ab2429896e673be1bf96, type: 3}
+    batteryClasses:
+    - {fileID: 184257700881414547, guid: 878b93cf6e79c9241a0dc26400a8bea3, type: 3}
+  settings:
+    difficulty: 1
+    desiredAsteroidCount: 30
+  scripts:
+    floaterScript: {fileID: 0}
+    rotatorScript: {fileID: 0}
+  player: {fileID: 883579945, guid: fb4a4f0aa9122e740bb9ce1edda37797, type: 3}
