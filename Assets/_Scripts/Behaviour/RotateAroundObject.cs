@@ -11,7 +11,7 @@ public class RotateAroundObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        transform.position = new Vector3(transform.position.x, 5, transform.position.z);
     }
 
     void Orbit()
@@ -21,6 +21,8 @@ public class RotateAroundObject : MonoBehaviour
             // Keep us at orbitDistance from target
             transform.position = target.position + (transform.position - target.position).normalized * orbitDistance;
             transform.RotateAround(target.position, Vector3.up, orbitDegreesPerSec * Time.deltaTime);
+
+            transform.position = new Vector3(transform.position.x, 5, transform.position.z);
         }
     }
 
