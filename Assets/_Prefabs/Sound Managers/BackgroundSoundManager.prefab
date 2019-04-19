@@ -44,13 +44,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 32
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 1000
@@ -144,6 +144,26 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 833c93233e3dab84798b660a6f0c6aa9, type: 3}
   - {fileID: 8300000, guid: 4fd7e249251ae0c4d96f72018bd8967f, type: 3}
   - {fileID: 8300000, guid: 97a743067d47cc44691ba328061f6662, type: 3}
-  - {fileID: 8300000, guid: a352e314a3f1daa4da97b5d08520b018, type: 3}
   - {fileID: 8300000, guid: d7864c9f2c554e14b99ddc28760c8c40, type: 3}
-  - {fileID: 8300000, guid: a458072521a254ac285ef46317bdb62b, type: 3}
+  - {fileID: 8300000, guid: 70b449d7ffe828a4f9acb900b6fa4d82, type: 3}
+  - {fileID: 8300000, guid: 64b847cb253f6004ea9fee086f57f247, type: 3}
+  - {fileID: 8300000, guid: ca3e84c9ffcf6cc428ba5983129a6d50, type: 3}
+  - {fileID: 8300000, guid: f0fdf459dd30f8747bce4e186c7b3f82, type: 3}
+  - {fileID: 8300000, guid: c0d80fed711ee544a9c7f02ee6110c02, type: 3}
+  - {fileID: 8300000, guid: 014f8c264205c714c991e71ee9e1bc84, type: 3}
+  - {fileID: 8300000, guid: 99fcfbbc64b96e342ab3d54d08f88740, type: 3}
+  - {fileID: 8300000, guid: 974af54ee7f5bab4a912a8a722f981de, type: 3}
+  - {fileID: 8300000, guid: f5b26109b5f23f6489e2b3589567c53f, type: 3}
+  - {fileID: 8300000, guid: e5a2539d93330b74eb8c4e054431e1ee, type: 3}
+  - {fileID: 8300000, guid: a34df71561f110a4e92eaaceb06ee32d, type: 3}
+  - {fileID: 8300000, guid: a34df71561f110a4e92eaaceb06ee32d, type: 3}
+  - {fileID: 8300000, guid: 5d1a8dd0aa3e7394d89e72a3653d5bb3, type: 3}
+  - {fileID: 8300000, guid: d1eb3be8685112c4c84bf9954a8a508d, type: 3}
+  - {fileID: 8300000, guid: 8d595b199e6207541a116176e55e0887, type: 3}
+  - {fileID: 8300000, guid: d572a844dae494c4ca5968108c928db7, type: 3}
+  - {fileID: 8300000, guid: 3114cb54b89a81a499424c9247ed0702, type: 3}
+  - {fileID: 8300000, guid: 0177cbeba4ef24c43a5aec75b8b0a53e, type: 3}
+  - {fileID: 8300000, guid: 8a25cf7e10bec384d8f0bcddc3408ae5, type: 3}
+  - {fileID: 8300000, guid: e2aa284653d119840a72bf7972aebbbd, type: 3}
+  - {fileID: 8300000, guid: 833c93233e3dab84798b660a6f0c6aa9, type: 3}
+  - {fileID: 8300000, guid: 4fd7e249251ae0c4d96f72018bd8967f, type: 3}

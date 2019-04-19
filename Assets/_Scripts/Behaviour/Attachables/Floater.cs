@@ -18,7 +18,7 @@ public class Floater : MonoBehaviour
                 rb.AddForce(new Vector3(floatSpeed, 0f, 0f));
                 break;
             case Direction.Y:
-                rb.AddForce(new Vector3(0f, floatSpeed, 0f));
+                rb.AddForce(new Vector3(0f, floatSpeed, -(floatSpeed / 2)));
                 break;
             case Direction.Z:
                 rb.AddForce(new Vector3(0f, 0f, floatSpeed));

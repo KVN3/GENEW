@@ -12,6 +12,8 @@ public struct GameManagers
     public UIManager UIManagerClass;
     public ChaserManager chaserManagerClass;
     public MoverManager MoverManagerClass;
+
+    public BackgroundSoundManager backgroundSoundManagerClass;
 }
 
 [System.Serializable]
@@ -33,6 +35,7 @@ public class GameState : MonoBehaviour
 
     void Start()
     {
+        Assert.IsNotNull(gameManagers.backgroundSoundManagerClass);
         Assert.IsNotNull(gameManagers.chaserManagerClass);
         Assert.IsNotNull(gameManagers.UIManagerClass);
         Assert.IsNotNull(gameManagers.spawnPointManagerClass);
@@ -61,6 +64,8 @@ public class GameState : MonoBehaviour
         MoverManager moverManager = Instantiate(gameManagers.MoverManagerClass);
         moverManager.SetPlayers(players);
         moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+
+        BackgroundSoundManager backgroundSoundManager = Instantiate(gameManagers.backgroundSoundManagerClass);
     }
 
     private void Update()
