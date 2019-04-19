@@ -6,6 +6,8 @@ public class ShipGun : ShipComponent
 {
     public LocalSpawnPoint projectileSpawnPoint;
 
+    private bool coolDown;
+
     public void Shoot(JammerProjectile projectileClass)
     {
         // This object's rotation + 180y
@@ -17,9 +19,23 @@ public class ShipGun : ShipComponent
         projectile.owner = parentShip;
 
         shipSoundManager.PlaySound(SoundType.SHOOTING);
+        StartCoroutine(ShootingCooldown(.5f));
+
     }
 
-    #region GetSet
+    private IEnumerator ShootingCooldown(float seconds)
+    {
+        coolDown = true;
+        yield return new WaitForSeconds(seconds);
+        coolDown = false;
+    }
 
+    
+
+    #region GetSet
+    public bool OnCooldown()
+    {
+        return coolDown;
+    }
     #endregion
 }

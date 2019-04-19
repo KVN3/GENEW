@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3419864539903404619}
   - component: {fileID: 2941590561006498602}
   m_Layer: 0
-  m_Name: Jammer Projectile
+  m_Name: Jammer Projectile Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,8 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68e2136be05dd84a89108992cf4182c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionClass: {fileID: 1212366020380530632, guid: 517d717291864ae42b7427e9a4283f31,
-    type: 3}
+  explosionClass: {fileID: 546322901, guid: 9b4ce4466dee9154ba367ab757e19f32, type: 3}
   projectileSpeed: 100000
   maxDrag: 10
   owner: {fileID: 0}

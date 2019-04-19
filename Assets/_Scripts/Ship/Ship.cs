@@ -23,8 +23,8 @@ public class Ship : MonoBehaviour
     private LevelSoundManager levelSoundManager;
 
     // Collectables
-    public Collectable collectableItemClass;
-    public int itemAmount;
+    private Collectable collectableItemClass;
+    private int itemAmount;
 
     private bool recentlyHit;
 
@@ -59,8 +59,11 @@ public class Ship : MonoBehaviour
         {
             if (collectableItemClass is JammerProjectile)
             {
-                components.gun.Shoot((JammerProjectile)collectableItemClass);
-                itemAmount--;
+                if (!components.gun.OnCooldown())
+                {
+                    components.gun.Shoot((JammerProjectile)collectableItemClass);
+                    itemAmount--;
+                }
             }
             else if (collectableItemClass is SpeedBurst)
             {
