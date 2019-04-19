@@ -9,6 +9,10 @@ public class HUD : MyMonoBehaviour, IObserver
 {
     public PlayerShip PlayerShip { get; set; }
 
+    public GameObject InGamePanel;
+    public GameObject RaceStartPanel;
+    public GameObject RaceEndPanel;
+
     Animator anim;
     CanvasGroup canvasGroup;
 
@@ -16,10 +20,13 @@ public class HUD : MyMonoBehaviour, IObserver
     // Start is called before the first frame update
     void Awake() {
 		Assert.IsNotNull(PlayerShip);
+        Assert.IsNotNull(InGamePanel);
+        Assert.IsNotNull(RaceEndPanel);
 
-        anim = GetComponent<Animator>();
+        //InGamePanel.GetComponent<UIPanel>().totalPlayers = gameState.players.Count;
+        anim = GetComponent<Animator>(); 
     }
-
+   
     // Update is called once per frame
     void Update()
     {

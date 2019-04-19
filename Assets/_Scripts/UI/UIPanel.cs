@@ -11,23 +11,38 @@ using Localization;
 
 public class UIPanel : UIBehaviour
 {
+    #region Fields
+    [Header("Lap text")]
+    public TextMeshProUGUI lapText;
+    public TextMeshProUGUI currentLapText;
+    public TextMeshProUGUI lapSeperatorText;
+    public TextMeshProUGUI lastLapText;
+
+    [Header("Time text")]
     public TextMeshProUGUI raceTimeText;
     public TextMeshProUGUI bestRaceTimeText;
 
-    [Header("Lap text")]
-    public TextMeshProUGUI currentLapText;
-    public TextMeshProUGUI lapText;
-    public TextMeshProUGUI lastLapText;
-    public TextMeshProUGUI lapSeperatorText;
+    [Header("Pos text")]
+    public TextMeshProUGUI posText;
+    public TextMeshProUGUI currentPosText;
+    public TextMeshProUGUI posSeperatorText;
+    public TextMeshProUGUI lastPosText;
 
+    [Header("Speed")]
     public TextMeshProUGUI speedText;
-
     public Slider speedMeter;
 
-    public Slider chargeBar;
+    [Header("Extra")]
+    public Image itemBox;
+    public Slider chargeBar;    
 
+    [Header("RaceEndScreen")]
     public TextMeshProUGUI raceTimesText;
 
+    // Non-UI
+    public int totalPlayers { get; set;  }
+
+    #endregion
     public PlayerShip playerShip
     {
         get
@@ -44,19 +59,27 @@ public class UIPanel : UIBehaviour
     protected override void Start()
     {
         base.Start();
-
-        // Default text
-        lapSeperatorText.text = $"Lap: 0/3";
     }
 
     void Update()
     {
         LocalizationService ls = LocalizationService.Instance;
         PlayerRunData pd = playerShip.runData;
+
         #region In-GameUI
 
         // Laps
-        lapSeperatorText.text = $"{ls.GetTextByKey("LAP")}: {pd.currentLap}/{pd.maxLaps}";
+        lapText.text = ls.GetTextByKey("LAP");
+        currentLapText.text = pd.currentLap.ToString();
+        lapSeperatorText.text = "/";
+        lastLapText.text = pd.maxLaps.ToString();
+
+        // Position (rank)
+        posText.text = ls.GetTextByKey("POS");
+        currentPosText.text = pd.currentPos.ToString();
+        posSeperatorText.text = "/";
+        lastPosText.text = 1.ToString();
+
 
         // Race Time
         raceTimeText.text = ls.GetTextByKey("CURRENT_TIME") + " - " + pd.raceTime.ToString(@"mm\:ss\.ff");
@@ -91,7 +114,7 @@ public class UIPanel : UIBehaviour
 
                 builder.Append(ls.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
             }
-            builder.Append(ls.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
+            builder.AppendLine().Append(ls.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
 
             raceTimesText.text = builder.ToString();
         }

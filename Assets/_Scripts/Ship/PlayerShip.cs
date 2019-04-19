@@ -13,6 +13,8 @@ public struct PlayerRunData
     public TimeSpan bestRaceTime;
     public TimeSpan totalTime;
 
+    public int currentPos;
+
     public List<TimeSpan> raceTimes;
     public int currentWaypoint;
     public bool isOverHalfway;
@@ -38,10 +40,11 @@ public class PlayerShip : Ship
 
         // Set currentlap, maxlaps, timer
         runData.currentLap = 0;
-        runData.maxLaps = 1; // Should be configurable by variable
+        runData.maxLaps = 2; // Should be configurable by variable
         runData.raceTime = TimeSpan.Parse("00:00:00.000");
         //runData.bestRaceTime = TimeSpan.Parse("00:01:47.222");
         runData.raceTimes = new List<TimeSpan>();
+        runData.currentPos = 1;
 
         // Prevents cheating times
         runData.raceFinished = false;
