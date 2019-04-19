@@ -19,6 +19,7 @@ public struct PlayerRunData
     public int currentWaypoint;
     public bool isOverHalfway;
     public bool isWrongWay;
+    public bool isLastLap;
 
     public bool raceFinished;
 
@@ -38,7 +39,7 @@ public class PlayerShip : Ship
     {
         base.Start();
 
-        // Set currentlap, maxlaps, timer
+        // Set currentlap, maxlaps, timer, pos
         runData.currentLap = 0;
         runData.maxLaps = 2; // Should be configurable by variable
         runData.raceTime = TimeSpan.Parse("00:00:00.000");
@@ -51,6 +52,7 @@ public class PlayerShip : Ship
         runData.isOverHalfway = false;
         // Guidance
         runData.isWrongWay = false;
+        runData.isLastLap = false;
 
     }
     #endregion
