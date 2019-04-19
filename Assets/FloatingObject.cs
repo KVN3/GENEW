@@ -16,7 +16,7 @@ public class FloatingObject : MonoBehaviour
         floatBottomBound = transform.position.y - floatConfig.floatDiff;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
         Vector3 force = new Vector3();
@@ -34,7 +34,7 @@ public class FloatingObject : MonoBehaviour
         else if (ShouldFloatDown())
             floatSpeed = -floatConfig.floatSpeed;
 
-        ApplyFloatingBounds();
+        //ApplyFloatingBounds();
 
         return floatSpeed;
     }
