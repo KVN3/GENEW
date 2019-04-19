@@ -28155,7 +28155,7 @@ PrefabInstance:
     - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -510
+      value: -423
       objectReference: {fileID: 0}
     - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
         type: 3}
@@ -28165,7 +28165,7 @@ PrefabInstance:
     - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -509
+      value: -84
       objectReference: {fileID: 0}
     - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
         type: 3}
@@ -28209,6 +28209,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
         type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
       propertyPath: direction
       value: 1
       objectReference: {fileID: 0}
@@ -28247,6 +28252,126 @@ PrefabInstance:
       propertyPath: spawnPointManager
       value: 
       objectReference: {fileID: 3691676981607013694, guid: b5a13139d8308f7448625f09ca7be3d2,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[0]
+      value: 
+      objectReference: {fileID: 6886724347770900914, guid: 927fda0309a7c98439206f44fe276310,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[1]
+      value: 
+      objectReference: {fileID: 809903063894841358, guid: fca2b059e01a9894d83828ee1e50e41b,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[2]
+      value: 
+      objectReference: {fileID: 109956226302798893, guid: 58148b9b491889c47b92898c87f5ce7c,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[3]
+      value: 
+      objectReference: {fileID: 974813458832678327, guid: 979237e2b0fa10943b938474ebf9ea07,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[4]
+      value: 
+      objectReference: {fileID: 1089230700068131433, guid: 36fd9539a19e2f243a7fb5977c10ff90,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[5]
+      value: 
+      objectReference: {fileID: 3670406445792527590, guid: 5ec0c594381498b449954f4f93f7870f,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[6]
+      value: 
+      objectReference: {fileID: 992302862363043804, guid: ec67d30b22a1afa4a87730e7ce7c44f3,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[7]
+      value: 
+      objectReference: {fileID: 8576369676815126197, guid: 128d6a324ca09b948abaa6490e2d4ce8,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[8]
+      value: 
+      objectReference: {fileID: 4558563047950382653, guid: dbb8c20589c0a214085316f44d5f0611,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[9]
+      value: 
+      objectReference: {fileID: 6690338729826212749, guid: e7d970c6d0a70d44082046dcab3a9cec,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[10]
+      value: 
+      objectReference: {fileID: 1941454804917651119, guid: 016476196e4abbe4d894e90b350f1ced,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[11]
+      value: 
+      objectReference: {fileID: 1780566295816976532, guid: bf11415c524ef6346a63cbd101dfff63,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[12]
+      value: 
+      objectReference: {fileID: 3747169820545813102, guid: 363bc3ae906773c4d86b1d61419bdafa,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[13]
+      value: 
+      objectReference: {fileID: 3410603373779587636, guid: 3a9d0ca99c1790c498296fbc0bc8c570,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[14]
+      value: 
+      objectReference: {fileID: 5056916849653588840, guid: 78e2d99368c908d45acae2771d1542e8,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[15]
+      value: 
+      objectReference: {fileID: 2031766216280287893, guid: 77eb0bd95d5a4d545a272d29f2fb9ef6,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[16]
+      value: 
+      objectReference: {fileID: 978612998232236164, guid: 03167d1defb3af544bf0976d5b8ef476,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[17]
+      value: 
+      objectReference: {fileID: 252136308684124896, guid: 139a7a08b799c6f4a84de00cb53226b6,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[18]
+      value: 
+      objectReference: {fileID: 7193114030881363506, guid: b86ebbb49c1e64640aa86b24b0885ceb,
+        type: 3}
+    - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: redLavaAsteroidClasses.Array.data[19]
+      value: 
+      objectReference: {fileID: 3665405834241219174, guid: e501d80b6cacf544e9c0befa2f337146,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 413e5dc371a4925408826a8aabf3c924, type: 3}
@@ -33298,80 +33423,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2126093354}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2132249235
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 611122379039722982, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_Name
-      value: Jammer Projectile Item
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039722982, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 611122379039691206, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd, type: 3}
 --- !u!1 &2133150022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d,

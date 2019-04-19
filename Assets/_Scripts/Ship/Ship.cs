@@ -82,6 +82,11 @@ public class Ship : MonoBehaviour
         }
     }
 
+    public void GetHitByRegular()
+    {
+        shipSoundManager.PlaySound(SoundType.ALARM);
+    }
+
     public void GetHitByEmp(int duration)
     {
         if (!components.system.IsSystemDown())

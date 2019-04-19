@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
+    public SmokeScreen smokeScreenClass;
     public Explosion explosionClass;
-    private Explosion explosion;
     public AsteroidStormManager manager;
 
     public int lifeTimeInSeconds;
@@ -18,12 +18,12 @@ public class Asteroid : MonoBehaviour
             StartCoroutine(WaitAndDestroy());
     }
 
-    IEnumerator Explode(Vector3 position)
-    {
-        explosion = Instantiate(explosionClass, position, Quaternion.identity);
-        yield return new WaitForSeconds(1);
-        DestroyThisAsteroid();
-    }
+    //IEnumerator Explode(Vector3 position)
+    //{
+    //    smokeScreen = Instantiate(smokeScreenClass, position, Quaternion.identity);
+    //    yield return new WaitForSeconds(1);
+    //    DestroyThisAsteroid();
+    //}
 
     IEnumerator WaitAndDestroy()
     {
@@ -33,15 +33,13 @@ public class Asteroid : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        StartCoroutine(Explode(transform.position));
+        Instantiate(explosionClass, this.transform.position, Quaternion.identity);
+        Instantiate(smokeScreenClass, this.transform.position, Quaternion.identity);
+        DestroyThisAsteroid();
+
         if (other.gameObject.CompareTag("Ship"))
         {
-            Rigidbody rb = this.GetComponent<Rigidbody>();
-            Rigidbody shipRb = other.gameObject.GetComponent<Rigidbody>();
-
-            StartCoroutine(SpawnBackShip(other));
-
-            shipRb.velocity = Vector3.left * 100;
+            Ship ship = other.gameObject.GetComponent<Ship>();
         }
     }
 
