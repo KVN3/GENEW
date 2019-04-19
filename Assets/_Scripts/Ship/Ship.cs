@@ -110,6 +110,11 @@ public class Ship : MonoBehaviour
         itemAmount = amount;
     }
 
+    public int GetItemAmount()
+    {
+        return itemAmount;
+    }
+
     public bool WasRecentlyHit()
     {
         if (recentlyHit)

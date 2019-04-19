@@ -45,6 +45,7 @@ public class GameState : MonoBehaviour
         //UIManager
         UIManager UIManager = Instantiate(gameManagers.UIManagerClass);
         UIManager.playerShip = players[0];
+        UIManager.playerCount = players.Length;
 
         // Spawn Point Manager
         SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);

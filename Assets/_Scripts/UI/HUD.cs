@@ -23,7 +23,6 @@ public class HUD : MyMonoBehaviour, IObserver
         Assert.IsNotNull(InGamePanel);
         Assert.IsNotNull(RaceEndPanel);
 
-        //InGamePanel.GetComponent<UIPanel>().totalPlayers = gameState.players.Count;
         anim = GetComponent<Animator>(); 
     }
    

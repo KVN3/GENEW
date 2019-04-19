@@ -23,6 +23,7 @@ public class UIPanel : UIBehaviour
     public TextMeshProUGUI bestRaceTimeText;
 
     [Header("Pos text")]
+    public Image posBg;
     public TextMeshProUGUI posText;
     public TextMeshProUGUI currentPosText;
     public TextMeshProUGUI posSeperatorText;
@@ -30,19 +31,30 @@ public class UIPanel : UIBehaviour
 
     [Header("Speed")]
     public TextMeshProUGUI speedText;
+    public Image speedBg;
+    public Sprite speedBgSprite;
+    public Sprite speedBgSpriteActivated;
     public Slider speedMeter;
+    public Image speedMeterFilling;
+    public Color speedMeterBoostedColor;
+    public Color speedMeterColor;
+
+    public Slider boostMeter;
 
     [Header("Extra")]
     public Image itemBox;
-    public Slider chargeBar;    
+
+    [Header("ChargeBar")]
+    public Slider chargeBar;
+    public Image chargeBarFilling;
 
     [Header("RaceEndScreen")]
     public TextMeshProUGUI raceTimesText;
 
+    #region properties
     // Non-UI
-    public int totalPlayers { get; set;  }
+    public int playerCount { get; set; }
 
-    #endregion
     public PlayerShip playerShip
     {
         get
@@ -55,10 +67,20 @@ public class UIPanel : UIBehaviour
             return Hud.PlayerShip;
         }
     }
+    #endregion
+    #endregion
 
     protected override void Start()
     {
         base.Start();
+
+        // Turn on/off position UI
+        if (playerCount > 1)
+            posBg.GetComponent<CanvasGroup>().alpha = 1f;
+        else
+            posBg.GetComponent<CanvasGroup>().alpha = 0f;
+
+        boostMeter.value = 0;
     }
 
     void Update()
@@ -74,12 +96,11 @@ public class UIPanel : UIBehaviour
         lapSeperatorText.text = "/";
         lastLapText.text = pd.maxLaps.ToString();
 
-        // Position (rank)
+        // Position(rank)
         posText.text = ls.GetTextByKey("POS");
         currentPosText.text = pd.currentPos.ToString();
         posSeperatorText.text = "/";
-        lastPosText.text = 1.ToString();
-
+        lastPosText.text = playerCount.ToString();
 
         // Race Time
         raceTimeText.text = ls.GetTextByKey("CURRENT_TIME") + " - " + pd.raceTime.ToString(@"mm\:ss\.ff");
@@ -89,16 +110,49 @@ public class UIPanel : UIBehaviour
             bestRaceTimeText.text = "--.---";
         else
             bestRaceTimeText.text = pd.bestRaceTime.ToString(@"mm\:ss\.ff");
-        
-        
-        
+
         // Speed
+        if (playerShip.components.movement.GetCurrentSpeed() > 1f)
+            speedBg.sprite = speedBgSpriteActivated;
+        else
+            speedBg.sprite = speedBgSprite;
+
         float currSpeed = playerShip.components.movement.GetCurrentSpeed() * 2;
         speedText.text = currSpeed.ToString("0");
         speedMeter.value = (currSpeed / playerShip.components.movement.GetCurrentMaxSpeed()) * 0.6f; // Compensate with * 2 and make slightly higher so it sticks to 100% when a bit less than maxspeed is reached
+        if (playerShip.components.movement.IsBoosted())
+        {
+            
+            if (boostMeter.value <= 1)
+                boostMeter.value += Time.deltaTime;
+            //speedMeterFilling.color = speedMeterBoostedColor;
+            speedBg.color = speedMeterBoostedColor;
+        }
+        else
+        {
+            if (boostMeter.value >= 0)
+                boostMeter.value -= Time.deltaTime;
+            //speedMeterFilling.color = speedMeterColor;
+            speedBg.color = speedMeterColor;
+        }
 
         // Charges
         chargeBar.value = (playerShip.components.forcefield.GetCharges() / playerShip.components.forcefield.maxCharges) * 1;
+
+        // Item
+        if (playerShip.GetItemAmount() > 0)
+        {
+            // Change Alpha
+            Color tempColor = itemBox.color;
+            tempColor.a = 1f;
+            itemBox.color = tempColor;
+        }
+        else
+        {
+            Color tempColor = itemBox.color;
+            tempColor.a = 0f;
+            itemBox.color = tempColor;
+        }
 
         #endregion
 
