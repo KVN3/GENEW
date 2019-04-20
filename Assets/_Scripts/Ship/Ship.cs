@@ -73,6 +73,12 @@ public class Ship : MonoBehaviour
                     itemAmount--;
                 }
             }
+            else if (collectableItemClass is ForcefieldItem)
+            {
+                ForcefieldItem forcefieldItem = (ForcefieldItem)collectableItemClass;
+                components.forcefield.ActivateBoostedForcefield(forcefieldItem.duration);
+                itemAmount--;
+            }
             else if (collectableItemClass is SpeedBurst)
             {
                 SpeedBurst speedBurstItem = (SpeedBurst)collectableItemClass;

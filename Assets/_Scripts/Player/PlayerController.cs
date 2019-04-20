@@ -38,15 +38,18 @@ public class PlayerController : MonoBehaviour
             playerShip.UseItem();
 
         // Forcefield
-        //StartCoroutine(HandleForcefield());
-        if (Input.GetKey(KeyCode.C) && playerShip.components.forcefield.HasEnoughCharges() && !playerShip.components.forcefield.IsOnCooldown())
+        // If forcefield item not active, key down, enough charges and no cooldown then activate.
+        if (!playerShip.components.forcefield.IsItemActive())
         {
-            playerShip.components.forcefield.Activated(true);
-        }
-        else
-        {
-            if(!playerShip.WasRecentlyHit())
-                playerShip.components.forcefield.Deactivated();
+            if (Input.GetKey(KeyCode.C) && playerShip.components.forcefield.HasEnoughCharges() && !playerShip.components.forcefield.IsOnCooldown())
+            {
+                playerShip.components.forcefield.Activated(true);
+            }
+            else
+            {
+                if (!playerShip.WasRecentlyHit())
+                    playerShip.components.forcefield.Deactivated();
+            }
         }
     }
 

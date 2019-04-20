@@ -11,6 +11,7 @@ public class Forcefield : ShipComponent
 
     private float charges;
     private bool hasRegenerationCooldown;
+    private bool itemActive;
 
     public void Awake()
     {
@@ -70,10 +71,33 @@ public class Forcefield : ShipComponent
         hasRegenerationCooldown = false;
     }
 
+    #region ForcefieldItem
+    public void ActivateBoostedForcefield(int duration)
+    {
+        StartCoroutine(BoostedForcefield(duration));
+    }
+
+    private IEnumerator BoostedForcefield(int duration)
+    {
+        itemActive = true;
+        gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(duration);
+
+        itemActive = false;
+    }
+
+    public bool IsItemActive()
+    {
+        return itemActive;
+    }
+    #endregion
+
+
     public float GetCharges()
     {
         return charges;
-    }
+    }   
 
     public bool HasEnoughCharges()
     {

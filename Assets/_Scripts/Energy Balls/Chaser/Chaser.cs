@@ -64,11 +64,6 @@ public class Chaser : EnergyBall
         this.moveDirection = moveDirection;
     }
 
-    public void SetManager(EnemyManager manager)
-    {
-        this.manager = manager;
-    }
-
     public void SetTargets(PlayerShip[] targets)
     {
         this.targets = targets;
