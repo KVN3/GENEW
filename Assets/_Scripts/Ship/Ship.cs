@@ -74,6 +74,12 @@ public class Ship : MonoBehaviour
                     itemAmount--;
                 }
             }
+            else if (collectableItemClass is SmokeScreenItem)
+            {
+                SmokeScreenItem smokeScreenItem = (SmokeScreenItem)collectableItemClass;
+                Instantiate(smokeScreenItem, transform.position, Quaternion.identity);
+                itemAmount--;
+            }
             else if (collectableItemClass is ForcefieldItem)
             {
                 ForcefieldItem forcefieldItem = (ForcefieldItem)collectableItemClass;

@@ -29,6 +29,8 @@ public class ItemPad : MonoBehaviour
 
         else if (item is JammerMine)
             amount = 3;
+        else if (item is SmokeScreenItem)
+            amount = 2;
 
         return amount;
     }
