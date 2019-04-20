@@ -34,3 +34,13 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+Assets/MultiEditTools\.meta
+
+Assets/MultiEditTools\.meta~master
+
+Assets/MultiEditTools\.meta~recovery
+
+Assets/MultiEditTools/Documentation\.meta~master
+
+Assets/MultiEditTools/Documentation\.meta~recovery
