@@ -74,13 +74,13 @@ public class Forcefield : ShipComponent
     #region ForcefieldItem
     public void ActivateBoostedForcefield(int duration)
     {
+        gameObject.SetActive(true);
         StartCoroutine(BoostedForcefield(duration));
     }
 
     private IEnumerator BoostedForcefield(int duration)
     {
         itemActive = true;
-        gameObject.SetActive(true);
 
         yield return new WaitForSeconds(duration);
 

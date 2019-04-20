@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &928628537664067368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3101485480284014175}
+    m_Modifications:
+    - target: {fileID: 1209033374770636, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_Name
+      value: Chaser Trail (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
 --- !u!1001 &3861366795069939414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 2205888850700376200, guid: 5b8d72fdb77cf1b418a73103680439cf,
         type: 3}
       propertyPath: m_Name
-      value: Energy Ball Chaser Variant
+      value: Chaser Enemy Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2205888850700376200, guid: 5b8d72fdb77cf1b418a73103680439cf,
         type: 3}
@@ -74,3 +131,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b8d72fdb77cf1b418a73103680439cf, type: 3}
+--- !u!4 &3101485480284014175 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2205888850700376201, guid: 5b8d72fdb77cf1b418a73103680439cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 3861366795069939414}
+  m_PrefabAsset: {fileID: 0}
