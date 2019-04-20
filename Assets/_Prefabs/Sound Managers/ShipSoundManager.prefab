@@ -144,7 +144,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7822fea94ca70c64e8cac8f1a79a77e6, type: 3}
   restartClips:
   - {fileID: 8300000, guid: cc70462321f947d438b3dbd12073f724, type: 3}
-  alarmClips: []
+  alarmClips:
+  - {fileID: 8300000, guid: 372d37e280d9c4f8498b18d629990ba0, type: 3}
   speedBoostClips:
   - {fileID: 8300000, guid: 7e3cd59061ebb364c97cd13970e02467, type: 3}
   - {fileID: 8300000, guid: cc70462321f947d438b3dbd12073f724, type: 3}

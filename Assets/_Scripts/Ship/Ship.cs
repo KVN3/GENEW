@@ -17,6 +17,7 @@ public class Ship : MonoBehaviour
     public ShipComponents components;
     public ShipSoundManager shipSoundManagerClass;
     public LevelSoundManager levelSoundManagerClass;
+    public DamageSpark spark;
 
     private List<ShipComponent> componentsList;
     private ShipSoundManager shipSoundManager;
@@ -88,9 +89,24 @@ public class Ship : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision other)
+    {
+        if (!components.forcefield.IsActivate())
+        {
+            if (!other.gameObject.CompareTag("EnergyBall"))
+            {
+                if (!other.gameObject.CompareTag("ShipComponent"))
+                {
+                    GetHitByRegular();
+                }
+            }
+        }        
+    }
+
     public void GetHitByRegular()
     {
         shipSoundManager.PlaySound(SoundType.ALARM);
+        spark.Activate();
     }
 
     public void GetHitByEmp(int duration)
