@@ -56,6 +56,12 @@ public class UIPanel : UIBehaviour
     [Header("RaceEndScreen")]
     public TextMeshProUGUI raceTimesText;
 
+    [Header("RaceStartScreen")]
+    public TextMeshProUGUI countDownText;
+
+    [Header("CountDown")]
+    public CountDownController countDownController;
+
     #endregion
 
     #region Properties
@@ -88,6 +94,7 @@ public class UIPanel : UIBehaviour
 
         boostMeter.value = 0;
         standardAlpha = 0.9f;
+        countDownController = FindObjectOfType<CountDownController>();
     }
 
     void Update()
@@ -158,10 +165,9 @@ public class UIPanel : UIBehaviour
         else
             wrongWayPanel.GetComponent<CanvasGroup>().alpha = 0f;
 
-
         #endregion
 
-        #region Race Finished Screen
+        #region Race End Screen
         // Only show racetimes when finished and display them using a stringbuilder (for lines)
         if (pd.raceFinished)
         {
@@ -177,6 +183,12 @@ public class UIPanel : UIBehaviour
 
             raceTimesText.text = builder.ToString();
         }
+        #endregion
+
+        #region Race Start Screen
+
+        countDownText.text = countDownController.CountDownText;
+
         #endregion
     }
 }
