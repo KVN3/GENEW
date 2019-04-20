@@ -15,6 +15,7 @@ TagManager:
   - Waypoint
   - FxTemporaire
   - ShipComponent
+  - SteppingStone
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - BoosterPad
   - Energy Ball
   - Waypoint
-  - 
+  - SteppingStones
   - 
   - 
   - 

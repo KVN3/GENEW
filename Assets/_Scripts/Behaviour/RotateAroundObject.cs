@@ -7,11 +7,12 @@ public class RotateAroundObject : MonoBehaviour
     public Transform target;
     public float orbitDistance = 10.0f;
     public float orbitDegreesPerSec = 180.0f;
+    public float heightY = 5f;
 
     // Use this for initialization
     void Start()
     {
-        transform.position = new Vector3(transform.position.x, 5, transform.position.z);
+        transform.position = new Vector3(transform.position.x, heightY, transform.position.z);
     }
 
     void Orbit()
@@ -22,7 +23,7 @@ public class RotateAroundObject : MonoBehaviour
             transform.position = target.position + (transform.position - target.position).normalized * orbitDistance;
             transform.RotateAround(target.position, Vector3.up, orbitDegreesPerSec * Time.deltaTime);
 
-            transform.position = new Vector3(transform.position.x, 5, transform.position.z);
+            transform.position = new Vector3(transform.position.x, heightY, transform.position.z);
         }
     }
 
