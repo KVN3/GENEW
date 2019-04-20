@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                //if (!playerShip.WasRecentlyHit())
+                if (!playerShip.WasRecentlyHit())
                     playerShip.components.forcefield.Deactivated();
             }
         }
