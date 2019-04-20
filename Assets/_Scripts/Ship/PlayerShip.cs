@@ -19,6 +19,7 @@ public struct PlayerRunData
     public int currentWaypoint;
     public bool isOverHalfway;
     public bool isWrongWay;
+    public bool raceStarted;
     public bool isLastLap;
 
     public bool raceFinished;

@@ -11,7 +11,8 @@ public struct GameManagers
     public SpawnPointManager spawnPointManagerClass;
     public UIManager UIManagerClass;
     public ChaserManager chaserManagerClass;
-    public MoverManager MoverManagerClass;
+    public MoverManager moverManagerClass;
+    public RaceManager raceManagerClass;
 
     public BackgroundSoundManager backgroundSoundManagerClass;
 }
@@ -29,6 +30,9 @@ public class GameState : MonoBehaviour
 
     public GameManagers gameManagers;
     public int difficulty = 0;
+    
+    // Global variables
+    public static bool gamePaused = false;
 
     // Listeners
     private GameObject[] listeners;
@@ -40,6 +44,7 @@ public class GameState : MonoBehaviour
         Assert.IsNotNull(gameManagers.UIManagerClass);
         Assert.IsNotNull(gameManagers.spawnPointManagerClass);
         Assert.IsNotNull(gameManagers.asteroidStormManagerClass);
+        Assert.IsNotNull(gameManagers.raceManagerClass);
         Assert.IsNotNull(players, "playerShips niet geassigned");
 
         //UIManager
@@ -62,9 +67,11 @@ public class GameState : MonoBehaviour
         chaserManager.SetPlayers(players);
         chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
 
-        MoverManager moverManager = Instantiate(gameManagers.MoverManagerClass);
+        MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
         moverManager.SetPlayers(players);
         moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+
+        RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
 
         BackgroundSoundManager backgroundSoundManager = Instantiate(gameManagers.backgroundSoundManagerClass);
     }
@@ -72,7 +79,7 @@ public class GameState : MonoBehaviour
     private void Update()
     {
         // Adds to the laptime based on Time.DeltaTime (A second / fps)
-        if (!players[0].runData.raceFinished)
+        if (!players[0].runData.raceFinished && RaceManager.raceStarted)
             players[0].runData.raceTime = players[0].runData.raceTime.Add(System.TimeSpan.FromSeconds(1 * Time.deltaTime));
 
         // Restart, gets particle error tho
