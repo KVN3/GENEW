@@ -28990,7 +28990,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.452
@@ -40622,7 +40622,7 @@ PrefabInstance:
     - target: {fileID: 4914402921183901305, guid: a6684e26575d73b48894baeea27e5b09,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 104
+      value: 134.2
       objectReference: {fileID: 0}
     - target: {fileID: 4914402921183901305, guid: a6684e26575d73b48894baeea27e5b09,
         type: 3}
@@ -41011,7 +41011,8 @@ MonoBehaviour:
       type: 3}
     moverManagerClass: {fileID: 613480307917899301, guid: 4f1b72c72d3747141b5618481776c090,
       type: 3}
-    raceManagerClass: {fileID: 0}
+    raceManagerClass: {fileID: 5850534155415031341, guid: 10c803b6aeb348642b0e5cd41d566b11,
+      type: 3}
     backgroundSoundManagerClass: {fileID: 4341203350372289051, guid: 0b342a3a3422cd34e9d93ba8e9a21825,
       type: 3}
   difficulty: 0

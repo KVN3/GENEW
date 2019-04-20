@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    public void GoToVSLevel()
+    {
+        SceneManager.LoadScene("LP");
+    }
+
+
     public void GoToLevel1()
     {
         SceneManager.LoadScene("Level1");
