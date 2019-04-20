@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338174e0da1b8ec47af8322a9a8e49fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 783bbe4ddd357134da0684b92aa5f8c6, type: 3}
   explosionClass: {fileID: 546322901, guid: 9b4ce4466dee9154ba367ab757e19f32, type: 3}
   owner: {fileID: 0}
 --- !u!65 &63322342283923759

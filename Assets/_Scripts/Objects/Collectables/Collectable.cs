@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
+    public Sprite sprite;
+    
     // Start is called before the first frame update
     void Start()
     {

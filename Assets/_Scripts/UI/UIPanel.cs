@@ -43,8 +43,10 @@ public class UIPanel : UIBehaviour
 
     public Slider boostMeter;
 
-    [Header("Extra")]
+    [Header("Item")]
     public Image itemBox;
+    public Image item;
+    public TextMeshProUGUI itemAmount;
 
     [Header("ChargeBar")]
     public Slider chargeBar;
@@ -99,6 +101,8 @@ public class UIPanel : UIBehaviour
 
     void Update()
     {
+        // Can also use .SetActive instead of Alpha
+
         LocalizationService ls = LocalizationService.Instance;
         PlayerRunData pd = playerShip.runData;
 
@@ -154,9 +158,15 @@ public class UIPanel : UIBehaviour
 
         // Item
         if (playerShip.GetItemAmount() > 0)
+        {
             itemBox.GetComponent<CanvasGroup>().alpha = standardAlpha;
+            item.sprite = playerShip.GetItem().sprite;
+            itemAmount.text = playerShip.GetItemAmount().ToString();
+        }
         else
+        {
             itemBox.GetComponent<CanvasGroup>().alpha = 0f;
+        }
         
         // Pop ups
         // Wrong Way

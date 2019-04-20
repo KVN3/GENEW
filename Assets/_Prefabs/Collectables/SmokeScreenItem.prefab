@@ -3956,7 +3956,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   CustomDataModule:
-    enabled: 0
+    enabled: 1
     mode0: 0
     vectorComponentCount0: 4
     color0:
@@ -4524,7 +4524,7 @@ ParticleSystem:
 --- !u!199 &199162334429091400
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4608,3 +4608,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b36b9b65fc786c4d92348e12bc8a906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: d8016e73875f37f40a191de56c1c36fc, type: 3}
