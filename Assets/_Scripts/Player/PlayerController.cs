@@ -55,7 +55,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        HandleMovement();
+        if (RaceManager.raceStarted)
+            HandleMovement();
     }
 
     private void HandleMovement()
