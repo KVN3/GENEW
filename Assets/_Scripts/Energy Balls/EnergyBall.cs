@@ -29,6 +29,12 @@ public class EnergyBall : MonoBehaviour
             Rigidbody rb = other.GetComponent<Rigidbody>();
 
             playerShip.GetHitByEmp(shutDownDuration);
+            Die();
+        }
+
+        if (other.gameObject.CompareTag("SteppingStone"))
+        {
+            Die();
         }
     }
 

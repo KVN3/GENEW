@@ -7,8 +7,6 @@ public class Chaser : EnergyBall
 {
     public float maxForce;
     public float minDistance = 400000;
-
-    private EnemyManager manager;
     public PlayerShip[] targets;
 
     private Vector3 moveDirection;

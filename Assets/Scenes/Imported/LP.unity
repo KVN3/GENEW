@@ -178,6 +178,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circling Energy Ball (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -186,7 +191,7 @@ PrefabInstance:
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
@@ -242,6 +247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: orbitDistance
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: heightY
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -3049,7 +3059,6 @@ GameObject:
   - component: {fileID: 163576630}
   - component: {fileID: 163576633}
   - component: {fileID: 163576632}
-  - component: {fileID: 163576631}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -3071,20 +3080,6 @@ Transform:
   m_Father: {fileID: 39285963}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &163576631
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163576629}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &163576632
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3225,6 +3220,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_Name
       value: Ground_Dirt_Square (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4329,6 +4332,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground_Dirt_Square (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 199.13
@@ -4742,6 +4753,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hilly_Prop_Stepping_Stones_6
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 1be75d96af2a23e4696da0c454bf2fe9, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 1be75d96af2a23e4696da0c454bf2fe9, type: 3}
+      propertyPath: m_TagString
+      value: SteppingStone
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1be75d96af2a23e4696da0c454bf2fe9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.8
@@ -4969,6 +4988,25 @@ PrefabInstance:
       objectReference: {fileID: 340798354}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
+--- !u!1 &266359359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 761f1c1bdb52fa54694bd92590f5310d,
+    type: 3}
+  m_PrefabInstance: {fileID: 513002156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &266359363
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266359359}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.54187506, y: 0.23749998, z: 0.3375001}
+  m_Center: {x: 0.015937509, y: 0.11874999, z: -0.01875}
 --- !u!4 &267636985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d,
@@ -5412,6 +5450,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground_Dirt_Square (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.558
@@ -5639,6 +5685,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2085292256}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &297203709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 73e561b56a0493746944e83a0dfd6273,
+    type: 3}
+  m_PrefabInstance: {fileID: 1030323753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &297203713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297203709}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.42499998, y: 0.23749998, z: 0.42500007}
+  m_Center: {x: 0.012499995, y: 0.11874999, z: 0.012499997}
 --- !u!1001 &297709490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7407,6 +7472,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 372173388}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &372501921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 567e8eb4082195c4a9b4b52d1137a667,
+    type: 3}
+  m_PrefabInstance: {fileID: 1612149387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &372501925
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372501921}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.13196239, y: 0.2375, z: 0.16319843}
+  m_Center: {x: 0.1951363, y: 0.11875, z: -0.08159921}
 --- !u!1 &376020022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: bc9b5c83fd7c43045afa55a64ab23854,
@@ -7921,6 +8005,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circling Energy Ball (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7929,7 +8018,7 @@ PrefabInstance:
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
@@ -7985,6 +8074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: orbitDistance
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: heightY
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -8380,6 +8474,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_Name
       value: Ground_Dirt_Square (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9835,6 +9937,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hilly_Prop_Stepping_Stones_8
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 761f1c1bdb52fa54694bd92590f5310d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 761f1c1bdb52fa54694bd92590f5310d, type: 3}
+      propertyPath: m_TagString
+      value: SteppingStone
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 761f1c1bdb52fa54694bd92590f5310d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 177
@@ -9907,6 +10017,14 @@ PrefabInstance:
     - target: {fileID: 100002, guid: efc1473b1923e78488a690b5f0bfd3e9, type: 3}
       propertyPath: m_Name
       value: Terrain_Hill_Side_1x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: efc1473b1923e78488a690b5f0bfd3e9, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: efc1473b1923e78488a690b5f0bfd3e9, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: efc1473b1923e78488a690b5f0bfd3e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10265,6 +10383,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground_Dirt_Square (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.411
@@ -10589,6 +10715,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_Name
       value: Ground_Dirt_Square (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13712,6 +13846,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground_Dirt_Square (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.532
@@ -14088,6 +14230,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 722170245}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &723269285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 6c6860627baf184478e6ae1462b9db91,
+    type: 3}
+  m_PrefabInstance: {fileID: 1494114548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &723269289
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723269285}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.21, y: 0.2375, z: 0.3}
+  m_Center: {x: -0.105, y: 0.11875, z: -0.04}
 --- !u!4 &723593153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 5de9a9643a636a64bb5d5aad3257f5d6,
@@ -15434,6 +15595,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground_Dirt_Square (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 241.4
@@ -15510,6 +15679,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_Name
       value: Ground_Dirt_Square (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16762,6 +16939,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circling Energy Ball (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16770,7 +16952,7 @@ PrefabInstance:
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
@@ -16826,6 +17008,11 @@ PrefabInstance:
         type: 3}
       propertyPath: orbitDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: heightY
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -17481,6 +17668,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground_Dirt_Square (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.99
@@ -17686,6 +17881,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &980073516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: ef68a28255b8fb143a1e8435049ee42f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1420832294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &980073520
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980073516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39999998, y: 0.2375, z: 0.4}
+  m_Center: {x: 0.024999999, y: 0.11875, z: 0}
 --- !u!1001 &983731733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17782,6 +17996,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &984527856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: bf57c4871a6bf9b428320e88735a27ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 1401749696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &984527860
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984527856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.38999993, y: 0.2375, z: 0.35999998}
+  m_Center: {x: 0.014999991, y: 0.11875, z: 0.009999997}
 --- !u!1001 &985903324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18207,6 +18440,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground_Dirt_Square (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.64
@@ -18499,6 +18740,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1018467054}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1021739156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: efc1473b1923e78488a690b5f0bfd3e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 515157943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1021739160
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021739156}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: efc1473b1923e78488a690b5f0bfd3e9, type: 3}
 --- !u!1001 &1024639326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18578,6 +18839,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 73e561b56a0493746944e83a0dfd6273, type: 3}
       propertyPath: m_Name
       value: Hilly_Prop_Stepping_Stones_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 73e561b56a0493746944e83a0dfd6273, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 73e561b56a0493746944e83a0dfd6273, type: 3}
+      propertyPath: m_TagString
+      value: SteppingStone
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 73e561b56a0493746944e83a0dfd6273, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21024,6 +21293,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground_Dirt_Square (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 65
@@ -23368,6 +23645,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circling Energy Ball (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23376,7 +23658,7 @@ PrefabInstance:
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
@@ -23432,6 +23714,11 @@ PrefabInstance:
         type: 3}
       propertyPath: orbitDistance
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: heightY
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -23501,6 +23788,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 4e995d7fc9d48634daa74f35a2902028, type: 3}
+--- !u!1 &1352316932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 6c6860627baf184478e6ae1462b9db91,
+    type: 3}
+  m_PrefabInstance: {fileID: 1494114548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1352316936
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352316932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.28875, y: 0.2375, z: 0.36}
+  m_Center: {x: 0.065625, y: 0.11875, z: 0.050000004}
 --- !u!1001 &1360427030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23588,6 +23894,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1360427030}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1362647944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 1be75d96af2a23e4696da0c454bf2fe9,
+    type: 3}
+  m_PrefabInstance: {fileID: 257522440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1362647948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362647944}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47999996, y: 0.23749998, z: 0.35999998}
+  m_Center: {x: 0, y: 0.11874999, z: -0.020000001}
 --- !u!1001 &1363716109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24226,6 +24551,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hilly_Prop_Stepping_Stones_5
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: bf57c4871a6bf9b428320e88735a27ff, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: bf57c4871a6bf9b428320e88735a27ff, type: 3}
+      propertyPath: m_TagString
+      value: SteppingStone
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bf57c4871a6bf9b428320e88735a27ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 89.9
@@ -24747,6 +25080,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ef68a28255b8fb143a1e8435049ee42f, type: 3}
       propertyPath: m_Name
       value: Hilly_Prop_Stepping_Stones_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ef68a28255b8fb143a1e8435049ee42f, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ef68a28255b8fb143a1e8435049ee42f, type: 3}
+      propertyPath: m_TagString
+      value: SteppingStone
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ef68a28255b8fb143a1e8435049ee42f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25636,6 +25977,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circling Energy Ball (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25644,7 +25990,7 @@ PrefabInstance:
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
@@ -25700,6 +26046,11 @@ PrefabInstance:
         type: 3}
       propertyPath: orbitDistance
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: heightY
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -25903,6 +26254,22 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 6c6860627baf184478e6ae1462b9db91, type: 3}
       propertyPath: m_Name
       value: Hilly_Prop_Stepping_Stones_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 6c6860627baf184478e6ae1462b9db91, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 6c6860627baf184478e6ae1462b9db91, type: 3}
+      propertyPath: m_TagString
+      value: SteppingStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 6c6860627baf184478e6ae1462b9db91, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 6c6860627baf184478e6ae1462b9db91, type: 3}
+      propertyPath: m_TagString
+      value: SteppingStone
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6c6860627baf184478e6ae1462b9db91, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27148,6 +27515,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground_Dirt_Square (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52.5
@@ -27723,6 +28098,22 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 567e8eb4082195c4a9b4b52d1137a667, type: 3}
       propertyPath: m_Name
       value: Hilly_Prop_Stepping_Stones_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 567e8eb4082195c4a9b4b52d1137a667, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 567e8eb4082195c4a9b4b52d1137a667, type: 3}
+      propertyPath: m_TagString
+      value: SteppingStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 567e8eb4082195c4a9b4b52d1137a667, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 567e8eb4082195c4a9b4b52d1137a667, type: 3}
+      propertyPath: m_TagString
+      value: SteppingStone
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 567e8eb4082195c4a9b4b52d1137a667, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31417,6 +31808,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1822620245}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1832704664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 567e8eb4082195c4a9b4b52d1137a667,
+    type: 3}
+  m_PrefabInstance: {fileID: 1612149387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1832704668
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832704664}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39167622, y: 0.2375, z: 0.4243159}
+  m_Center: {x: 0, y: 0.11875, z: 0.016319841}
 --- !u!1001 &1835778004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32840,7 +33250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948249660}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 114.301285, y: 7, z: 700.39294}
+  m_LocalPosition: {x: 114.301285, y: 0, z: 700.39294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1289595138}
@@ -34762,6 +35172,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_Name
       value: Ground_Dirt_Square (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -40429,9 +40847,10 @@ GameObject:
   - component: {fileID: 2888173864231205856}
   - component: {fileID: 2888173864233461028}
   - component: {fileID: 2888173864233461027}
-  m_Layer: 0
+  - component: {fileID: 2888173864233461029}
+  m_Layer: 15
   m_Name: object1
-  m_TagString: Untagged
+  m_TagString: SteppingStone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40467,6 +40886,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2888173864233461029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2888173864233461026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.541875, y: 0.2375, z: 0.3375}
+  m_Center: {x: 0.015937507, y: 0.11875, z: -0.018749997}
 --- !u!4 &2888173864233498882
 Transform:
   m_ObjectHideFlags: 0
@@ -40494,9 +40926,10 @@ GameObject:
   - component: {fileID: 3687896955104103665}
   - component: {fileID: 3687896955102106165}
   - component: {fileID: 3687896955102106164}
-  m_Layer: 0
+  - component: {fileID: 3687896955102106166}
+  m_Layer: 15
   m_Name: Steppin Stone
-  m_TagString: Untagged
+  m_TagString: SteppingStone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40532,6 +40965,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3687896955102106166
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3687896955102106163}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.2375, z: 0.375}
+  m_Center: {x: 3.7252912e-10, y: 0.11875, z: 0.012500003}
 --- !u!4 &3687896955102203411
 Transform:
   m_ObjectHideFlags: 0
@@ -41197,6 +41643,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circling Energy Ball (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -41205,7 +41656,7 @@ PrefabInstance:
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
@@ -41261,6 +41712,11 @@ PrefabInstance:
         type: 3}
       propertyPath: orbitDistance
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: heightY
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}

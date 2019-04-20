@@ -43,6 +43,8 @@ public class FloatingObject : MonoBehaviour
     {
         float diff = Mathf.Round((floatTopBound - floatBottomBound) * 10) / 10;
 
+        diff *= 2;
+
         if (transform.position.y < (floatBottomBound - diff))
         {
             transform.position = new Vector3(transform.position.x, floatBottomBound, transform.position.z);

@@ -90,11 +90,6 @@ public class RandomMover : EnergyBall
     {
         base.OnTriggerEnter(other);
 
-        if (other.gameObject.CompareTag("Ship"))
-        {
-            enemySoundManager.PlaySound(SoundType.SHUTDOWN);
-            Destroy(gameObject);
-            manager.RemoveFromAliveEnemies(this);
-        }
+        Die();
     }
 }

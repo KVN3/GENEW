@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SmokeScreen : MonoBehaviour
 {
+    public float duration = 5f;
+
     void Start()
     {
         StartCoroutine(WaitAndDestroy());
@@ -11,7 +13,7 @@ public class SmokeScreen : MonoBehaviour
 
     IEnumerator WaitAndDestroy()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(duration);
         Destroy(gameObject);
     }
 }

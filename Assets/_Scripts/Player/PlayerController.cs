@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             useAccelerometerControls = !useAccelerometerControls;
 
         // Shooting
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.E))
             playerShip.UseItem();
 
         // Forcefield
