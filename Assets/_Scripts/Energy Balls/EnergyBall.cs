@@ -9,6 +9,7 @@ public class EnergyBall : MonoBehaviour
     public int shutDownDuration = 4;
     public EnemySoundManager enemySoundManagerClass;
     protected EnemySoundManager enemySoundManager;
+    protected EnemyManager manager;
 
     public virtual void Awake()
     {
@@ -35,6 +36,17 @@ public class EnergyBall : MonoBehaviour
     {
         enemySoundManager.PlaySound(SoundType.SHUTDOWN);
         transform.DetachChildren();
+
+        if (manager != null)
+        {
+            manager.RemoveFromAliveEnemies(this);
+        }
+
         Destroy(gameObject);
+    }
+
+    public void SetManager(EnemyManager manager)
+    {
+        this.manager = manager;
     }
 }

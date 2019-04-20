@@ -14,6 +14,7 @@ public class Shooter : MonoBehaviour
 
     public void Fire(Vector3 target)
     {
+        DestroyIfNoParent();
         if (isCloseEnough)
         {
             sm.PlaySound(SoundType.SHOOTING);
@@ -21,6 +22,14 @@ public class Shooter : MonoBehaviour
             projectile.target = target;
 
             Instantiate(projectile, this.transform.position, this.transform.rotation);
+        }
+    }
+
+    private void DestroyIfNoParent()
+    {
+        if (transform.parent == null)
+        {
+            Destroy(gameObject);
         }
     }
 

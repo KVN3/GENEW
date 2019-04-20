@@ -20,7 +20,6 @@ public class RandomMover : EnergyBall
     private float tiempo;
     private float angulo;
     private Rigidbody rb;
-    private EnemyManager manager;
 
     // Use this for initialization
     public override void Start()
@@ -85,11 +84,6 @@ public class RandomMover : EnergyBall
         }
 
         rb.AddForce(x, 0f, z);
-    }
-
-    public void SetManager(EnemyManager manager)
-    {
-        this.manager = manager;
     }
 
     public override void OnTriggerEnter(Collider other)
