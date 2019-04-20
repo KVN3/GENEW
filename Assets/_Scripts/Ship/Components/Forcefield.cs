@@ -28,7 +28,7 @@ public class Forcefield : ShipComponent
     {
         gameObject.SetActive(true);
 
-        if(manualActivate)
+        if (manualActivate)
             DrainCharges(drainRate);
         else
             DrainCharges(100);
@@ -50,13 +50,9 @@ public class Forcefield : ShipComponent
 
     private void DrainCharges(float drain)
     {
-        if (charges > 0)
-            charges -= drain;
-        else if (charges < 1)
-        {
-            charges = 0;
-            StartCoroutine(RegenCooldown());
-        }
+        charges -= drain;
+        if (charges < 5)
+            charges = -10;
     }
 
     public void GetHit(float dmg)
@@ -66,6 +62,7 @@ public class Forcefield : ShipComponent
 
     private IEnumerator RegenCooldown()
     {
+        gameObject.SetActive(false);
         hasRegenerationCooldown = true;
         yield return new WaitForSeconds(3);
         hasRegenerationCooldown = false;
@@ -97,11 +94,11 @@ public class Forcefield : ShipComponent
     public float GetCharges()
     {
         return charges;
-    }   
+    }
 
     public bool HasEnoughCharges()
     {
-        if (charges > 10)
+        if (charges > 0)
             return true;
 
         return false;

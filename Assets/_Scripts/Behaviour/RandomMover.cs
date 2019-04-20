@@ -89,7 +89,5 @@ public class RandomMover : EnergyBall
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-
-        Die();
     }
 }
