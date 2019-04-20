@@ -156,6 +156,11 @@ public class Ship : MonoBehaviour
         return itemAmount;
     }
 
+    public Collectable GetItem()
+    {
+        return collectableItemClass;
+    }
+
     public bool WasRecentlyHit()
     {
         if (recentlyHit)

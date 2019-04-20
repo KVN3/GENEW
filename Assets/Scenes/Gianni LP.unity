@@ -41009,8 +41009,9 @@ MonoBehaviour:
       type: 3}
     chaserManagerClass: {fileID: 2373372039052405470, guid: 482f3c2ae0672864880d66c940e93585,
       type: 3}
-    MoverManagerClass: {fileID: 613480307917899301, guid: 4f1b72c72d3747141b5618481776c090,
+    moverManagerClass: {fileID: 613480307917899301, guid: 4f1b72c72d3747141b5618481776c090,
       type: 3}
+    raceManagerClass: {fileID: 0}
     backgroundSoundManagerClass: {fileID: 4341203350372289051, guid: 0b342a3a3422cd34e9d93ba8e9a21825,
       type: 3}
   difficulty: 0
