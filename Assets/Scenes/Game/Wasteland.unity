@@ -32836,7 +32836,7 @@ PrefabInstance:
     - target: {fileID: 2057598995073942971, guid: 413e5dc371a4925408826a8aabf3c924,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
         type: 3}
@@ -39976,7 +39976,8 @@ MonoBehaviour:
     backgroundSoundManagerClass: {fileID: 4341203350372289051, guid: 0b342a3a3422cd34e9d93ba8e9a21825,
       type: 3}
   cameraClass: {fileID: 1293, guid: 37ee11e1319f5a1458eb0f7d9f6ff452, type: 3}
-  playerClass: {fileID: 1297, guid: 7b6d9f1411a79114b94277a552f0298e, type: 3}
+  playerClass: {fileID: 170378318584685706, guid: 34cb90d5356aa4f4b872aa9d11880c47,
+    type: 3}
   playerStarts:
   - {fileID: 9003994758565348090, guid: 04ba8145b38164d40adaf5d166e7f570, type: 3}
   - {fileID: 5238381896985623582, guid: 993ecf66dc5c09a46ab73ec5cf9fee98, type: 3}

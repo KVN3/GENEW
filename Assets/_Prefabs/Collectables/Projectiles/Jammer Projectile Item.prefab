@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1494292494007426880}
   - component: {fileID: 3419864539903404619}
   - component: {fileID: 2941590561006498602}
+  - component: {fileID: 8292824262886878396}
+  - component: {fileID: 5959977475486711096}
   m_Layer: 0
   m_Name: Jammer Projectile Item
   m_TagString: Untagged
@@ -92,10 +94,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68e2136be05dd84a89108992cf4182c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: e1319eb01c31f814fb3989215ef08405, type: 3}
   explosionClass: {fileID: 546322901, guid: b89c865d46c908d458045bc29573de8a, type: 3}
   projectileSpeed: 100000
   maxDrag: 10
-  sprite: {fileID: 21300000, guid: e1319eb01c31f814fb3989215ef08405, type: 3}
   owner: {fileID: 0}
 --- !u!54 &3419864539903404619
 Rigidbody:
@@ -126,3 +128,40 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.46, y: 1.38, z: 8.193234}
   m_Center: {x: -0.0122766495, y: 0.0032894611, z: 1.0373305}
+--- !u!114 &8292824262886878396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611122379039722982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 5959977475486711096}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &5959977475486711096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611122379039722982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0

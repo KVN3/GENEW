@@ -83,18 +83,6 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(gameManagers.asteroidStormManagerClass);
         Assert.IsNotNull(gameManagers.raceManagerClass);
 
-        // Spawn Point Manager
-        SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
-
-        // Enemy Managers
-        //ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
-        //chaserManager.SetPlayers(players);
-        //chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
-
-        //MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
-        //moverManager.SetPlayers(players);
-        //moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
-
         RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
 
         BackgroundSoundManager backgroundSoundManager = Instantiate(gameManagers.backgroundSoundManagerClass);
@@ -113,12 +101,28 @@ public class GameState : LevelSingleton<GameState>
         UIManager.playerShip = player;
         UIManager.playerCount = players.Count;
 
-        Spawn(cameraClass, (PlayerCamera camera) =>
-        {
-            camera.target = player;
-        });
+        //Spawn(cameraClass, (PlayerCamera camera) =>
+        //{
+        //    camera.target = player;
+        //});
 
         players.Add(PhotonNetwork.LocalPlayer, player);
+
+        PlayerShip[] playersLocal = new PlayerShip[1];
+
+        playersLocal[0] = player;
+
+        // Spawn Point Manager
+        SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
+
+        // Enemy Managers
+        ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
+        chaserManager.SetPlayers(playersLocal);
+        chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
+
+        MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
+        moverManager.SetPlayers(playersLocal);
+        moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
 
         return player;
     }
