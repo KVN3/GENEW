@@ -39,16 +39,16 @@ public class PlayerShip : Ship
     public PlayerRunData runData;
 
     public Player remoteData;
-    public PlayerController playerControllerClass;
+    //public PlayerController playerControllerClass;
 
-    private PlayerController pc;
+    //private PlayerController pc;
 
     public override void Awake()
     {
         base.Awake();
 
-        pc = Instantiate(playerControllerClass, transform.position, Quaternion.identity, transform);
-        pc.playerShip = this;
+        //pc = Instantiate(playerControllerClass, transform.position, Quaternion.identity, transform);
+        //pc.playerShip = this;
     }
 
     public override void Start()
