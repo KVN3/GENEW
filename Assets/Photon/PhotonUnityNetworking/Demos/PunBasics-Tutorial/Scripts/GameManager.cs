@@ -12,34 +12,37 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using Photon.Realtime;
+using UnityEngine.UI;
 
 namespace Photon.Pun.Demo.PunBasics
 {
-	#pragma warning disable 649
+#pragma warning disable 649
 
-	/// <summary>
-	/// Game manager.
-	/// Connects and watch Photon Status, Instantiate Player
-	/// Deals with quiting the room and the game
-	/// Deals with level loading (outside the in room synchronization)
-	/// </summary>
-	public class GameManager : MonoBehaviourPunCallbacks
+    /// <summary>
+    /// Game manager.
+    /// Connects and watch Photon Status, Instantiate Player
+    /// Deals with quiting the room and the game
+    /// Deals with level loading (outside the in room synchronization)
+    /// </summary>
+    public class GameManager : MonoBehaviourPunCallbacks
     {
 
-		#region Public Fields
+        #region Public Fields
 
-		static public GameManager Instance;
+        static public GameManager Instance;
 
-		#endregion
+        #endregion
 
-		#region Private Fields
-
-		private GameObject instance;
+        #region Private Fields
+        private GameObject instance;
 
         [Tooltip("The prefab to use for representing the player")]
         [SerializeField]
-        private GameObject playerPrefab;
+        private PlayerShip playerPrefab;
 
+        [Tooltip("Player lobby labels")]
+        [SerializeField]
+        private PlayerLabel[] playerLabels;
         #endregion
 
         #region MonoBehaviour CallBacks
@@ -48,50 +51,55 @@ namespace Photon.Pun.Demo.PunBasics
         /// MonoBehaviour method called on GameObject by Unity during initialization phase.
         /// </summary>
         void Start()
-		{
-			Instance = this;
+        {
+            Instance = this;
 
-			// in case we started this demo with the wrong scene being active, simply load the menu scene
-			if (!PhotonNetwork.IsConnected)
-			{
-				SceneManager.LoadScene("PunBasics-Launcher");
+            // in case we started this demo with the wrong scene being active, simply load the menu scene
+            if (!PhotonNetwork.IsConnected)
+            {
+                SceneManager.LoadScene("Launcher");
 
-				return;
-			}
+                return;
+            }
 
-			if (playerPrefab == null) { // #Tip Never assume public properties of Components are filled up properly, always check and inform the developer of it.
+            if (playerPrefab == null)
+            { // #Tip Never assume public properties of Components are filled up properly, always check and inform the developer of it.
 
-				Debug.LogError("<Color=Red><b>Missing</b></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
-			} else {
-
-
-				if (PlayerManager.LocalPlayerInstance==null)
-				{
-				    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-
-					// we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-					PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f,5f,0f), Quaternion.identity, 0);
-				}else{
-
-					Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
-				}
+                Debug.LogError("<Color=Red><b>Missing</b></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
+            }
+            else
+            {
 
 
-			}
+                if (PlayerManager.LocalPlayerInstance == null)
+                {
+                    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
 
-		}
+                    // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+                    //PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+                }
+                else
+                {
 
-		/// <summary>
-		/// MonoBehaviour method called on GameObject by Unity on every frame.
-		/// </summary>
-		void Update()
-		{
-			// "back" button of phone equals "Escape". quit app if that's pressed
-			if (Input.GetKeyDown(KeyCode.Escape))
-			{
-				QuitApplication();
-			}
-		}
+                    Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
+                }
+
+
+            }
+
+        }
+
+        /// <summary>
+        /// MonoBehaviour method called on GameObject by Unity on every frame.
+        /// </summary>
+        void Update()
+        {
+            // "back" button of phone equals "Escape". quit app if that's pressed
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                QuitApplication();
+            }
+        }
 
         #endregion
 
@@ -101,74 +109,83 @@ namespace Photon.Pun.Demo.PunBasics
         /// Called when a Photon Player got connected. We need to then load a bigger scene.
         /// </summary>
         /// <param name="other">Other.</param>
-        public override void OnPlayerEnteredRoom( Player other  )
-		{
-			Debug.Log( "OnPlayerEnteredRoom() " + other.NickName); // not seen if you're the player connecting
+        public override void OnPlayerEnteredRoom(Player other)
+        {
+            foreach (PlayerLabel label in playerLabels)
+            {
+                Text textComponent = label.GetComponent<Text>();
 
-			if ( PhotonNetwork.IsMasterClient )
-			{
-				Debug.LogFormat( "OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient ); // called before OnPlayerLeftRoom
+                if (!textComponent.text.Equals(""))
+                {
+                    textComponent.text = other.NickName;
+                    return;
+                }
+            }
 
-				LoadArena();
-			}
-		}
+            //Debug.Log("OnPlayerEnteredRoom() " + other.NickName); // not seen if you're the player connecting
 
-		/// <summary>
-		/// Called when a Photon Player got disconnected. We need to load a smaller scene.
-		/// </summary>
-		/// <param name="other">Other.</param>
-		public override void OnPlayerLeftRoom( Player other  )
-		{
-			Debug.Log( "OnPlayerLeftRoom() " + other.NickName ); // seen when other disconnects
+            //if (PhotonNetwork.IsMasterClient)
+            //{
+            //    Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
 
-			if ( PhotonNetwork.IsMasterClient )
-			{
-				Debug.LogFormat( "OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient ); // called before OnPlayerLeftRoom
+            //    LoadLevel();
+            //}
+        }
 
-				LoadArena(); 
-			}
-		}
+        /// <summary>
+        /// Called when a Photon Player got disconnected. We need to load a smaller scene.
+        /// </summary>
+        /// <param name="other">Other.</param>
+        public override void OnPlayerLeftRoom(Player other)
+        {
+            Debug.Log("OnPlayerLeftRoom() " + other.NickName); // seen when other disconnects
 
-		/// <summary>
-		/// Called when the local player left the room. We need to load the launcher scene.
-		/// </summary>
-		public override void OnLeftRoom()
-		{
-			SceneManager.LoadScene("PunBasics-Launcher");
-		}
+            if (PhotonNetwork.IsMasterClient)
+            {
+                Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
 
-		#endregion
+                LoadLevel();
+            }
+        }
 
-		#region Public Methods
+        /// <summary>
+        /// Called when the local player left the room. We need to load the launcher scene.
+        /// </summary>
+        public override void OnLeftRoom()
+        {
+            SceneManager.LoadScene("Launcher");
+        }
 
-		public void LeaveRoom()
-		{
-			PhotonNetwork.LeaveRoom();
-		}
+        #endregion
 
-		public void QuitApplication()
-		{
-			Application.Quit();
-		}
+        #region Public Methods
+        public void LeaveRoom()
+        {
+            PhotonNetwork.LeaveRoom();
+        }
 
-		#endregion
+        public void QuitApplication()
+        {
+            Application.Quit();
+        }
+        #endregion
 
-		#region Private Methods
+        #region Private Methods
 
-		void LoadArena()
-		{
-			if ( ! PhotonNetwork.IsMasterClient )
-			{
-				Debug.LogError( "PhotonNetwork : Trying to Load a level but we are not the master Client" );
-			}
+        void LoadLevel()
+        {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                Debug.LogError("PhotonNetwork : Trying to Load a level but we are not the master Client");
+            }
 
-			Debug.LogFormat( "PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount );
+            Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
 
-			PhotonNetwork.LoadLevel("PunBasics-Room for "+PhotonNetwork.CurrentRoom.PlayerCount);
-		}
+            PhotonNetwork.LoadLevel("Wasteland");
+        }
 
-		#endregion
+        #endregion
 
-	}
+    }
 
 }

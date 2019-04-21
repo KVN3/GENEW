@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Experimental.UIElements;
 using UnityEngine.SceneManagement;
 
 public class EnergyBall : MonoBehaviour
 {
     public int shutDownDuration = 4;
     public EnemySoundManager enemySoundManagerClass;
+    public bool playSoundOnStart = true;
+
     protected EnemySoundManager enemySoundManager;
     protected EnemyManager manager;
 
@@ -18,7 +21,17 @@ public class EnergyBall : MonoBehaviour
 
     public virtual void Start()
     {
-        enemySoundManager.PlaySound(SoundType.RESTART);
+        if(playSoundOnStart)
+            enemySoundManager.PlaySound(SoundType.RESTART);
+    }
+
+    public void Update()
+    {
+        // TO DO REMOVE DEBUGGING SOUND RANGE
+        if (Input.GetKey(KeyCode.Z))
+        {
+            enemySoundManager.PlaySound(SoundType.RESTART);
+        }
     }
 
     public virtual void OnTriggerEnter(Collider other)
