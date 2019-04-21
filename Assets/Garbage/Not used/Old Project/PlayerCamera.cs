@@ -1,33 +1,42 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCamera : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class PlayerCamera : MyMonoBehaviour
 {
-    public PlayerShip target;
-
-    public Vector3 targetMovementOffset;
-    public Vector3 targetLookAtOffset;
-
-    public float springForce;
-    public float springDamper;
-
-    void Start()
+    [Serializable]
+    public struct CameraTargetData
     {
-        //
+        public Vector3 MovementOffset;
+        public Vector3 LookAtOffset;
     }
+
+    [Serializable]
+    public struct CameraSpringData
+    {
+        public float Force;
+        public float Damper;
+    }
+
+    public PlayerShip Target { get; set; }
+
+    public CameraTargetData TargetData;
+    public CameraSpringData SpringData;
 
     void FixedUpdate()
     {
-        Rigidbody body = this.GetComponent<Rigidbody>();
+        Rigidbody Body = this.GetComponent<Rigidbody>();
 
-        Vector3 diff = transform.position - (target.transform.position + targetMovementOffset);
-        Vector3 vel = body.velocity;
+        Vector3 Diff = transform.position - (Target.transform.position + TargetData.MovementOffset);
+        Vector3 Vel = Body.velocity;
 
-        Vector3 force = (diff * -springForce) - (vel * springDamper);
+        Vector3 force = (Diff * -SpringData.Force) - (Vel * SpringData.Damper);
 
-        body.AddForce(force);
+        Body.AddForce(force);
 
-        transform.LookAt(target.transform.position + targetLookAtOffset);
+        transform.LookAt(Target.transform.position + TargetData.LookAtOffset);
     }
 }
+

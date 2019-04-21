@@ -9772,11 +9772,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 601985195}
-    - target: {fileID: 7903553556143086115, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: playSoundOnStart
@@ -9786,6 +9781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086115, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -32837,6 +32837,61 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -423
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 295.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
         type: 3}
       propertyPath: redLavaAsteroidClasses.Array.size
@@ -33003,61 +33058,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3665405834241219174, guid: e501d80b6cacf544e9c0befa2f337146,
         type: 3}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -423
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 295.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -84
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057598995073942972, guid: 413e5dc371a4925408826a8aabf3c924,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 413e5dc371a4925408826a8aabf3c924, type: 3}
 --- !u!1 &1748493947 stripped
@@ -39974,7 +39974,10 @@ MonoBehaviour:
       type: 3}
     backgroundSoundManagerClass: {fileID: 4341203350372289051, guid: 0b342a3a3422cd34e9d93ba8e9a21825,
       type: 3}
-  playerClass: {fileID: 1129, guid: fbdd2283a38b7cc40b55dd17d1e2c287, type: 3}
+  cameraClass: {fileID: 186280094857814690, guid: b3d47f0094d69db4a87d952da1da6c83,
+    type: 3}
+  playerClass: {fileID: 627470085702536724, guid: 4604d03a6cc02ed48b419072ddf78def,
+    type: 3}
   playerStarts:
   - {fileID: 9003994758565348090, guid: 04ba8145b38164d40adaf5d166e7f570, type: 3}
   - {fileID: 5238381896985623582, guid: 993ecf66dc5c09a46ab73ec5cf9fee98, type: 3}

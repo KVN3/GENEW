@@ -30,6 +30,7 @@ public class GameState : LevelSingleton<GameState>
     public GameManagers gameManagers;
 
     // Classes
+    public PlayerCamera cameraClass;
     public PlayerShip playerClass;
     public LocalSpawnPoint[] playerStarts;
 
@@ -108,6 +109,10 @@ public class GameState : LevelSingleton<GameState>
         UIManager UIManager = Instantiate(gameManagers.UIManagerClass);
         UIManager.playerShip = player;
         UIManager.playerCount = players.Count;
+
+        Spawn(cameraClass, (PlayerCamera Camera) => {
+            Camera.Target = player;
+        });
 
         players.Add(PhotonNetwork.LocalPlayer, player);
 
