@@ -19,24 +19,34 @@ public class PlayerController : MonoBehaviour
 
     public bool useAccelerometerControls = true;
 
+    private PhotonView photonView;
+
+    void Awake()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
+
     private void Start()
     {
-        // Rotate
-        float x = 0;
-        float y = 0;
-        float z = 0;
-        transform.localEulerAngles = new Vector3(x, y, z);
+        if (photonView.IsMine)
+        {
+            // Rotate
+            float x = 0;
+            float y = 90f;
+            float z = 0;
+            transform.localEulerAngles = new Vector3(x, y, z);
+        }
     }
 
     private void Update()
     {
         // Prevent control if connected to Photon and represent the localPlayer
-        if (playerShip.GetComponent<PhotonView>().IsMine == false && PhotonNetwork.IsConnected == true)
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
         {
             return;
         }
 
-        if (playerShip.GetComponent<PhotonView>().IsMine)
+        if (photonView.IsMine)
         {
             HandleCameraControls();
             HandlePreferedControls();

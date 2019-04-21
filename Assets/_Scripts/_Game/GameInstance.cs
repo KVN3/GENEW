@@ -45,6 +45,10 @@ public class GameInstance : MonoBehaviourPunCallbacks
         {
             Debug.Log($"Failed connecting to Photon");
         }
+        else
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+        }
     }
 
     public void CreateRoom(string Name, UnityAction Success, UnityAction<short, string> Failed)
@@ -120,9 +124,6 @@ public class GameInstance : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.Log($"Disconnected for reason {cause}");
-
-        progressLabel.SetActive(false);
-        controlPanel.SetActive(true);
     }
 
     public override void OnJoinedLobby()

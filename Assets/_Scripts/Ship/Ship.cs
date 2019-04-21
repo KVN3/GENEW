@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +30,8 @@ public class Ship : MyMonoBehaviour
 
     private bool recentlyHit;
 
+    private PhotonView photonView;
+
     public virtual void Awake()
     {
         shipSoundManager = Instantiate(shipSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
@@ -46,8 +49,7 @@ public class Ship : MyMonoBehaviour
             component.SetShipSoundManager(shipSoundManager);
         }
 
-        //components.shipSoundManager.InitializeComponent();
-        //components.levelSoundManager.InitializeComponent();
+        photonView = GetComponent<PhotonView>();
     }
 
     public virtual void Start()
@@ -62,6 +64,8 @@ public class Ship : MyMonoBehaviour
             {
                 if (!components.gun.OnCooldown())
                 {
+                    //photonView.RPC("Fire", RpcTarget.AllViaServer);
+
                     components.gun.Shoot((JammerProjectile)collectableItemClass);
                     itemAmount--;
                 }
@@ -95,7 +99,7 @@ public class Ship : MyMonoBehaviour
         }
     }
 
-    void  OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision other)
     {
         if (!components.forcefield.IsActivate())
         {
@@ -106,7 +110,7 @@ public class Ship : MyMonoBehaviour
                     GetHitByRegular();
                 }
             }
-        }        
+        }
     }
 
     public void GetHitByRegular()

@@ -18,17 +18,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Gianni's level.unity
     guid: e124d73d7cdb3704eb965e62bb913ea8
   - enabled: 0
-    path: Assets/Scenes/Game/Wasteland.unity
-    guid: 3e447a9b13e278f44b7342990e7c7a57
-  - enabled: 1
     path: Assets/Scenes/Game/Launcher.unity
     guid: 78769640fdecf014fa3005a1bbf6045d
-  - enabled: 1
-    path: Assets/Scenes/Game/Lobby.unity
-    guid: 6a9d6344e3fa49b4d9691aebcdaebb9c
   - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/68f0c8f49270ef542b9df529e688fea9
-    guid: 68f0c8f49270ef542b9df529e688fea9
+    path: Assets/Scenes/Game/WaitingRoom.unity
+    guid: 6a9d6344e3fa49b4d9691aebcdaebb9c
+  - enabled: 1
+    path: Assets/Scenes/Game/Wasteland.unity
+    guid: 3e447a9b13e278f44b7342990e7c7a57
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity
     guid: bff77b01b50254edbb6edeeaba5ae8b3
