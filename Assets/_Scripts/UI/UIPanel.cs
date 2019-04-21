@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Localization;
 
 public class UIPanel : UIBehaviour
 {
@@ -103,25 +102,24 @@ public class UIPanel : UIBehaviour
     {
         // Can also use .SetActive instead of Alpha
 
-        LocalizationService ls = LocalizationService.Instance;
         PlayerRunData pd = playerShip.runData;
 
         #region In-GameUI
 
         // Laps
-        lapText.text = ls.GetTextByKey("LAP");
+        lapText.text = LocalizationManager.GetTextByKey("LAP");
         currentLapText.text = pd.currentLap.ToString();
         lapSeperatorText.text = "/";
         lastLapText.text = pd.maxLaps.ToString();
 
         // Position(rank)
-        posText.text = ls.GetTextByKey("POS");
+        posText.text = LocalizationManager.GetTextByKey("POS");
         currentPosText.text = pd.currentPos.ToString();
         posSeperatorText.text = "/";
         lastPosText.text = PlayerCount.ToString();
 
         // Race Time
-        raceTimeText.text = ls.GetTextByKey("CURRENT_TIME") + " - " + pd.raceTime.ToString(@"mm\:ss\.ff");
+        raceTimeText.text = LocalizationManager.GetTextByKey("CURRENT_TIME") + " - " + pd.raceTime.ToString(@"mm\:ss\.ff");
 
         // Best race time
         if (pd.bestRaceTime == TimeSpan.Parse("00:00:00.000"))
@@ -187,9 +185,9 @@ public class UIPanel : UIBehaviour
                 string lapTime = pd.raceTimes[i].ToString(@"mm\:ss\.ff");
                 string lapCount = (i + 1).ToString(); // Arrays start at 0 but laps start at 1
 
-                builder.Append(ls.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
+                builder.Append(LocalizationManager.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
             }
-            builder.AppendLine().Append(ls.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
+            builder.AppendLine().Append(LocalizationManager.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
 
             raceTimesText.text = builder.ToString();
         }

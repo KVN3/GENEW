@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuController : MonoBehaviour
+public class MainMenuController : LevelSingleton<MainMenuController>
 {
     public void GoToVSLevel()
     {
-        SceneManager.LoadScene("LP");
+        SceneManager.LoadScene("Gianni LP");
     }
 
 
