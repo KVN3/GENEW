@@ -39974,8 +39974,7 @@ MonoBehaviour:
       type: 3}
     backgroundSoundManagerClass: {fileID: 4341203350372289051, guid: 0b342a3a3422cd34e9d93ba8e9a21825,
       type: 3}
-  playerClass: {fileID: 5605891810271971614, guid: fbdd2283a38b7cc40b55dd17d1e2c287,
-    type: 3}
+  playerClass: {fileID: 1129, guid: fbdd2283a38b7cc40b55dd17d1e2c287, type: 3}
   playerStarts:
   - {fileID: 9003994758565348090, guid: 04ba8145b38164d40adaf5d166e7f570, type: 3}
   - {fileID: 5238381896985623582, guid: 993ecf66dc5c09a46ab73ec5cf9fee98, type: 3}

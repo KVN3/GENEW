@@ -28,8 +28,11 @@ public class RoomManager : MonoBehaviour
         {
             UpdateShownPlayerList(PhotonNetwork.PlayerList);
         };
+    }
 
-
+    public void LoadScene(string mapName)
+    {
+        PhotonNetwork.LoadLevel(mapName);
     }
 
     private void UpdateShownPlayerList(Player[] players)

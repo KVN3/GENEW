@@ -3,6 +3,7 @@ using Photon.Pun.Demo.PunBasics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameLauncher : MonoBehaviour
@@ -38,7 +39,9 @@ public class GameLauncher : MonoBehaviour
             LogFeedback("<Color=Green>OnJoinedRoom</Color> with " + PhotonNetwork.CurrentRoom.PlayerCount + " Player(s)");
 
             Debug.Log("We load the 'Lobby'");
-            PhotonNetwork.LoadLevel("Lobby");
+            PhotonNetwork.LoadLevel("WaitingRoom");
+            //PhotonNetwork.LoadLevel("Wasteland");
+            //ceneManager.LoadScene("Wasteland");
         };
     }
 

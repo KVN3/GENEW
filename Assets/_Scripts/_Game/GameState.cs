@@ -49,12 +49,25 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(playerClass);
         Assert.IsFalse(playerStarts.Length == 0);
 
-        //GameInstance.Instance.OnJoinedRoomDelegate = () =>
-        //{
-        //    int PlayerStartIndex = Random.Range(0, playerStarts.Length);
+        GameInstance.Connect();
 
-        //    SpawnLocalPlayer(PlayerStartIndex);
-        //};
+        GameInstance.Instance.OnJoinedRoomDelegate = () =>
+        {
+            int index = Random.Range(0, playerStarts.Length);
+            SpawnLocalPlayer(index);
+        };
+
+        GameInstance.Instance.OnPlayerJoinedDelegate = (Player player) =>
+        {
+            int index = Random.Range(0, playerStarts.Length);
+            SpawnRemotePlayer(player, index);
+        };
+
+        GameInstance.Instance.OnPlayerLeftDelegate = (Player player) =>
+        {
+            int index = Random.Range(0, playerStarts.Length);
+            KillPlayer(player);
+        };
     }
 
     void Start()
