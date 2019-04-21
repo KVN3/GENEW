@@ -12,7 +12,7 @@ public struct ShipComponents
     public Forcefield forcefield;
 }
 
-public class Ship : MonoBehaviour
+public class Ship : MyMonoBehaviour
 {
     public ShipComponents components;
     public ShipSoundManager shipSoundManagerClass;
@@ -95,7 +95,7 @@ public class Ship : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void  OnCollisionEnter(Collision other)
     {
         if (!components.forcefield.IsActivate())
         {

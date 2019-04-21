@@ -13,6 +13,11 @@ public class EnemySoundManager : SoundManager
 
     public AudioClip[] shootingClips;
 
+    public void Start()
+    {
+        transform.position = new Vector3(0, 0, 0);
+    }
+
     public void FixedUpdate()
     {
         if (transform.parent == null)

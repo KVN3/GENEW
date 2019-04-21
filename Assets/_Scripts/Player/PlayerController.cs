@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 [System.Serializable]
 public struct Cameras
@@ -17,21 +19,45 @@ public class PlayerController : MonoBehaviour
 
     public bool useAccelerometerControls = true;
 
+    private void Start()
+    {
+        // Rotate
+        float x = 0;
+        float y = 0;
+        float z = 0;
+        transform.localEulerAngles = new Vector3(x, y, z);
+    }
+
     private void Update()
+    {
+        // Prevent control if connected to Photon and represent the localPlayer
+        if (playerShip.GetComponent<PhotonView>().IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
+
+        if (playerShip.GetComponent<PhotonView>().IsMine)
+        {
+            HandleCameraControls();
+            HandlePreferedControls();
+            HandlePlayerActionControls();
+        }
+    }
+
+    private void HandleCameraControls()
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
             cameras.firstPersonCamera.SetActive(!cameras.firstPersonCamera.activeSelf);
             cameras.thirdPersonCamera.SetActive(!cameras.thirdPersonCamera.activeSelf);
         }
+    }
 
+    private void HandlePlayerActionControls()
+    {
         // Breaking
         if (Input.GetKey(KeyCode.Space))
             playerShip.components.movement.Break();
-
-        // Controls
-        if (Input.GetKeyDown(KeyCode.G))
-            useAccelerometerControls = !useAccelerometerControls;
 
         // Shooting
         if (Input.GetKeyDown(KeyCode.E))
@@ -39,7 +65,6 @@ public class PlayerController : MonoBehaviour
 
         // Forcefield
         // If forcefield item not active, key down, enough charges and no cooldown then activate.
-
         if (!playerShip.components.forcefield.IsItemActive())
         {
             if (Input.GetKey(KeyCode.C) && playerShip.components.forcefield.HasEnoughCharges())
@@ -54,10 +79,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandlePreferedControls()
+    {
+        // Controls
+        if (Input.GetKeyDown(KeyCode.G))
+            useAccelerometerControls = !useAccelerometerControls;
+    }
+
     void FixedUpdate()
     {
-        if (RaceManager.raceStarted)
-            HandleMovement();
+        if (playerShip.GetComponent<PhotonView>().IsMine)
+        {
+            if (RaceManager.raceStarted)
+                HandleMovement();
+        }
     }
 
     private void HandleMovement()
