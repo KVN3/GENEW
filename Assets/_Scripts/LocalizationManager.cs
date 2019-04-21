@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LocalizationManager : LevelSingleton<LocalizationManager>
 {
@@ -12,7 +14,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
     {
         DontDestroyOnLoad(this); // Persistent
 
-        preferredLanguage = Language.Dutch;
+        preferredLanguage = Language.English;
         NLDict = new Dictionary<string, string>();
         ENDict = new Dictionary<string, string>();
 
@@ -46,13 +48,19 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("SPEEDUNIT", "KM/U");
         NLDict.Add("LAP", "Ronde");
         NLDict.Add("POS", "Pos");
-        NLDict.Add("CURRENT", "HUIDIG");
+        NLDict.Add("CURRENT_TIME", "HUIDIG");
         NLDict.Add("BEST", "BEST");
 
         // Popups
         NLDict.Add("GO", "START");
         NLDict.Add("WRONG_WAY", "VERKEERDE RICHTING");
         NLDict.Add("FINAL_LAP", "LAATSTE RONDE");
+        NLDict.Add("E_TO_USE_ITEM", "Druk 'E' om voorwerp te gebruiken");
+        NLDict.Add("USE_ITEM_MINE", "Druk 'E' om een verlammende mine te gooien");
+        NLDict.Add("USE_ITEM_MISSILE", "Druk 'E' om een verlammend projectiel te schieten");
+        NLDict.Add("USE_ITEM_SMOKE", "Druk 'E' om een rookbom te laten vallen");
+        NLDict.Add("USE_ITEM_BOOST", "Druk 'E' om booster item te gebruiken");
+        NLDict.Add("USE_ITEM_BARRIER", "Druk 'E' om barrier item te gebruiken");
 
         NLDict.Add("RACE_RESULTS", "RACE RESULTATEN");
         
@@ -91,7 +99,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("SPEEDUNIT", "KM/H");
         ENDict.Add("LAP", "Lap");
         ENDict.Add("POS", "Pos");
-        ENDict.Add("CURRENT", "CURR");
+        ENDict.Add("CURRENT_TIME", "CURR");
         ENDict.Add("BEST", "BEST");
 
         // Popups
@@ -99,6 +107,16 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("WRONG_WAY", "WRONG WAY");
         ENDict.Add("FINAL_LAP", "FINAL LAP");
 
+        // Items
+        ENDict.Add("E_TO_USE_ITEM", "Press 'E' to use item");
+        ENDict.Add("USE_ITEM_MINE", "Press 'E' to throw a jammer mine");
+        ENDict.Add("USE_ITEM_MISSILE", "Press 'E' to shoot jammer projectile");
+        ENDict.Add("USE_ITEM_SMOKE", "Press 'E' to drop a smoke bomb");
+        ENDict.Add("USE_ITEM_BOOST", "Press 'E' to use boost item");
+        ENDict.Add("USE_ITEM_BARRIER", "Press 'E' to use barrier item");
+
+
+        // End screen
         ENDict.Add("RACE_RESULTS", "RACE RESULTS");
         ENDict.Add("BEST_LAPTIME", "Best laptime");
         ENDict.Add("BEST_TIME", "Best time");
@@ -123,5 +141,11 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
                 else
                     return "ERROR";
         }
+    }
+
+    public void SetLanguage(int languageIndex)
+    {
+        preferredLanguage = (Language)languageIndex;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

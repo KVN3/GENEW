@@ -13,7 +13,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     public TextMeshProUGUI VersionText;
 
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
         TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
         PlayText.text = LocalizationManager.GetTextByKey("PLAY");
