@@ -10,7 +10,6 @@ public class MainMenuController : LevelSingleton<MainMenuController>
         SceneManager.LoadScene("Gianni LP");
     }
 
-
     public void GoToLevel1()
     {
         SceneManager.LoadScene("Level1");
