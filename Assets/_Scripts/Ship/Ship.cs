@@ -108,6 +108,14 @@ public class Ship : MyMonoBehaviour
     {
         if (!other.gameObject.CompareTag("ShipComponent") && !other.gameObject.CompareTag("Mine") && !other.gameObject.CompareTag("EnergyBall"))
         {
+            if (other.gameObject.CompareTag("Projectile"))
+            {
+                if (other.gameObject.GetComponent<JammerProjectile>().owner = this)
+                {
+                    GetHitByRegular();
+                }
+            }
+
             GetHitByRegular();
         }
     }
