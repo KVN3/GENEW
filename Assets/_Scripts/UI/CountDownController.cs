@@ -22,6 +22,7 @@ public class CountDownController : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             CountDown--;
+            Debug.Log(CountDown);
             CountDownText = CountDown.ToString();
         }
         CountDownText = LocalizationManager.GetTextByKey("GO");

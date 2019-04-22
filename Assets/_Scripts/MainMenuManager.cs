@@ -17,7 +17,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     {
         TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
         PlayText.text = LocalizationManager.GetTextByKey("PLAY");
-        OptionsText.text = LocalizationManager.GetTextByKey("OPTIONS");
+        //OptionsText.text = LocalizationManager.GetTextByKey("OPTIONS");
         VersionText.text = LocalizationManager.GetTextByKey("VERSION")+": "+ "Vertical Slice";
     }
 }
