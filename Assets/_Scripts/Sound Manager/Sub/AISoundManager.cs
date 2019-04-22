@@ -10,6 +10,10 @@ public class AISoundManager : SoundManager
     public AudioClip[] smokescreenAvailableClips;
     public AudioClip[] speedboostAvailableClips;
 
+    public AudioClip[] hostilesDetectedAudioClips;
+
+    private bool hasAlreadyAlerted;
+
     public override void PlaySound(SoundType soundType)
     {
         switch (soundType)
@@ -29,8 +33,48 @@ public class AISoundManager : SoundManager
             case SoundType.AISPEED:
                 audioSource.clip = speedboostAvailableClips[Random.Range(0, speedboostAvailableClips.Length)];
                 break;
+
+            case SoundType.AIHOSTILESDETECTED:
+                audioSource.clip = hostilesDetectedAudioClips[Random.Range(0, hostilesDetectedAudioClips.Length)];
+                break;
         }
 
-        audioSource.Play();
+        if (!audioSource.isPlaying)
+            audioSource.Play();
+    }
+
+    public void PlayVoiceOnDelay(float seconds, Collectable item)
+    {
+        StartCoroutine(PlayAIVoice(item));
+    }
+
+    private IEnumerator PlayAIVoice(Collectable collectableItemClass)
+    {
+        yield return new WaitForSeconds(.5f);
+
+        if (collectableItemClass is JammerProjectile)
+            PlaySound(SoundType.AIPROJECTILES);
+
+        else if (collectableItemClass is JammerMine)
+            PlaySound(SoundType.AIMINES);
+
+        else if (collectableItemClass is SmokeScreenItem)
+            PlaySound(SoundType.AISMOKESCREEN);
+
+        else if (collectableItemClass is ForcefieldItem)
+            PlaySound(SoundType.AIFORCEFIELD);
+
+        else if (collectableItemClass is SpeedBurst)
+            PlaySound(SoundType.AISPEED);
+    }
+
+    public bool HasAlreadyAlerted()
+    {
+        return hasAlreadyAlerted;
+    }
+
+    public void SetAlerted()
+    {
+        hasAlreadyAlerted = true;
     }
 }

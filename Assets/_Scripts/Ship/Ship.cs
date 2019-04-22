@@ -153,27 +153,16 @@ public class Ship : MyMonoBehaviour
         this.collectableItemClass = item;
         itemAmount = amount;
 
-        StartCoroutine(PlayAIVoice(item));
+        aiSoundManager.PlayVoiceOnDelay(0.5f, item);
     }
 
-    private IEnumerator PlayAIVoice(Collectable collectableItemClass)
+    public void Alert()
     {
-        yield return new WaitForSeconds(.5f);
-
-        if (collectableItemClass is JammerProjectile)
-            aiSoundManager.PlaySound(SoundType.AIPROJECTILES);
-
-        else if (collectableItemClass is JammerMine)
-            aiSoundManager.PlaySound(SoundType.AIMINES);
-
-        else if (collectableItemClass is SmokeScreenItem)
-            aiSoundManager.PlaySound(SoundType.AISMOKESCREEN);
-
-        else if (collectableItemClass is ForcefieldItem)
-            aiSoundManager.PlaySound(SoundType.AIFORCEFIELD);
-
-        else if (collectableItemClass is SpeedBurst)
-            aiSoundManager.PlaySound(SoundType.AISPEED);
+        if (!aiSoundManager.HasAlreadyAlerted())
+        {
+            aiSoundManager.PlaySound(SoundType.AIHOSTILESDETECTED);
+            aiSoundManager.SetAlerted();
+        }
     }
 
     public int GetItemAmount()
