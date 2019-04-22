@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePlayerActionControls()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+            PhotonNetwork.LoadLevel("Wasteland");
+
         // Breaking
         if (Input.GetKey(KeyCode.Space))
             playerShip.components.movement.Break();
