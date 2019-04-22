@@ -16,16 +16,24 @@ public struct ShipComponents
 public class Ship : MyMonoBehaviour
 {
     public ShipComponents components;
-    public ShipSoundManager shipSoundManagerClass;
-    public LevelSoundManager levelSoundManagerClass;
-    public AISoundManager aiSoundManagerClass;
-    public DamageSpark spark;
+
+    [SerializeField]
+    private ShipSoundManager shipSoundManagerClass;
+
+    [SerializeField]
+    private LevelSoundManager levelSoundManagerClass;
+
+    [SerializeField]
+    private AISoundManager aiSoundManagerClass;
+
+    [SerializeField]
+    private DamageSpark spark;
 
     private List<ShipComponent> componentsList;
 
 
-    private ShipSoundManager shipSoundManager;
-    private LevelSoundManager levelSoundManager;
+    protected ShipSoundManager shipSoundManager;
+    protected LevelSoundManager levelSoundManager;
     protected AISoundManager aiSoundManager;
 
     // Collectables
@@ -40,6 +48,7 @@ public class Ship : MyMonoBehaviour
     {
         shipSoundManager = Instantiate(shipSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
         aiSoundManager = Instantiate(aiSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
+        levelSoundManager = Instantiate(levelSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
 
         componentsList = new List<ShipComponent>();
 

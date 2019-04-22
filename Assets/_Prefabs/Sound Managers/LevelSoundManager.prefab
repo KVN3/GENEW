@@ -52,8 +52,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 50
+  MaxDistance: 60
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -145,6 +145,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9e615a6ec1e774c0a8bfb003bbfe14ee, type: 3}
   lossClips:
   - {fileID: 8300000, guid: 70fe92b578c764a68b540870f64f4ef9, type: 3}
-  lapPassedClips: []
+  lapPassedClips:
+  - {fileID: 8300000, guid: 54baec16e92834b569d448f515e1e4e5, type: 3}
   achievementClips:
   - {fileID: 8300000, guid: 3800d9607389c45b0a8673d3db98aded, type: 3}

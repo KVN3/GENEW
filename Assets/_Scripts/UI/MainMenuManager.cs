@@ -28,6 +28,6 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
         SingleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
         //OptionsText.text = LocalizationManager.GetTextByKey("OPTIONS");
-        VersionText.text = LocalizationManager.GetTextByKey("VERSION")+": "+ "Vertical Slice";
+        VersionText.text = LocalizationManager.GetTextByKey("VERSION")+": "+ "Alpha 1";
     }
 }
