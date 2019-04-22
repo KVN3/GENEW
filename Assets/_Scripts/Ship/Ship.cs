@@ -26,7 +26,7 @@ public class Ship : MyMonoBehaviour
 
     private ShipSoundManager shipSoundManager;
     private LevelSoundManager levelSoundManager;
-    private AISoundManager aiSoundManager;
+    protected AISoundManager aiSoundManager;
 
     // Collectables
     public Collectable collectableItemClass;
@@ -86,7 +86,10 @@ public class Ship : MyMonoBehaviour
             else if (collectableItemClass is SmokeScreenItem)
             {
                 SmokeScreenItem smokeScreenItem = (SmokeScreenItem)collectableItemClass;
+
+                aiSoundManager.PlaySound(SoundType.AISMOKEDEPLOYED);
                 components.gun.DropSmokeScreen((SmokeScreenItem)collectableItemClass);
+
                 itemAmount--;
             }
             else if (collectableItemClass is ForcefieldItem)
@@ -106,18 +109,15 @@ public class Ship : MyMonoBehaviour
 
     new void OnCollisionEnter(Collision other)
     {
-        if (!other.gameObject.CompareTag("ShipComponent") && !other.gameObject.CompareTag("Mine") && !other.gameObject.CompareTag("EnergyBall"))
+        if (other.gameObject.CompareTag("Projectile"))
         {
-            if (other.gameObject.CompareTag("Projectile"))
-            {
-                if (other.gameObject.GetComponent<JammerProjectile>().owner = this)
-                {
-                    GetHitByRegular();
-                }
-            }
-
-            GetHitByRegular();
+            Ship ownerShip = other.gameObject.GetComponent<JammerProjectile>().owner;
+            if (!ownerShip == this)
+                GetHitByRegular();
         }
+        else if (!other.gameObject.CompareTag("ShipComponent") && !other.gameObject.CompareTag("Mine") && !other.gameObject.CompareTag("EnergyBall"))
+            GetHitByRegular();
+
     }
 
     public void GetHitByRegular()
@@ -132,6 +132,7 @@ public class Ship : MyMonoBehaviour
         {
             if (!components.forcefield.IsActivate())
             {
+                aiSoundManager.ReportSystemError(SoundType.AISYSTEMERROR);
                 components.system.ShutDown();
                 components.engines.RestoreSystem();
 
@@ -194,6 +195,11 @@ public class Ship : MyMonoBehaviour
     public ShipSoundManager GetShipSoundManager()
     {
         return shipSoundManager;
+    }
+
+    public AISoundManager GetAiSoundManager()
+    {
+        return aiSoundManager;
     }
 }
 

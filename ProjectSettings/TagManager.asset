@@ -18,6 +18,7 @@ TagManager:
   - SteppingStone
   - Mine
   - Projectile
+  - DangerTrigger
   layers:
   - Default
   - TransparentFX

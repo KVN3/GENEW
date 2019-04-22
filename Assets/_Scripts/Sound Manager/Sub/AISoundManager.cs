@@ -10,14 +10,24 @@ public class AISoundManager : SoundManager
     public AudioClip[] smokescreenAvailableClips;
     public AudioClip[] speedboostAvailableClips;
 
-    public AudioClip[] hostilesDetectedAudioClips;
+    public AudioClip[] hostilesDetectedClips;
+    public AudioClip[] dangerDetectedClips;
+
+    public AudioClip[] chargesDrainedClips;
+    public AudioClip[] chargesRestoredClips;
+
+    public AudioClip[] systemErrorClips;
+    public AudioClip[] smokeDeployedClips;
 
     private bool hasAlreadyAlerted;
+    private bool recentlyReportedOnCharges;
+    private bool hasAlertedDanger;
 
     public override void PlaySound(SoundType soundType)
     {
         switch (soundType)
         {
+            // Item pickups
             case SoundType.AIFORCEFIELD:
                 audioSource.clip = forcefieldAvailableClips[Random.Range(0, forcefieldAvailableClips.Length)];
                 break;
@@ -34,8 +44,30 @@ public class AISoundManager : SoundManager
                 audioSource.clip = speedboostAvailableClips[Random.Range(0, speedboostAvailableClips.Length)];
                 break;
 
+            // Item used
+            case SoundType.AISMOKEDEPLOYED:
+                audioSource.clip = smokeDeployedClips[Random.Range(0, smokeDeployedClips.Length)];
+                break;
+
+            // Scans
             case SoundType.AIHOSTILESDETECTED:
-                audioSource.clip = hostilesDetectedAudioClips[Random.Range(0, hostilesDetectedAudioClips.Length)];
+                audioSource.clip = hostilesDetectedClips[Random.Range(0, hostilesDetectedClips.Length)];
+                break;
+            case SoundType.AIDANGER:
+                audioSource.clip = dangerDetectedClips[Random.Range(0, dangerDetectedClips.Length)];
+                break;
+
+            // Charges
+            case SoundType.AICHARGESDRAINED:
+                audioSource.clip = chargesDrainedClips[Random.Range(0, chargesDrainedClips.Length)];
+                break;
+            case SoundType.AICHARGESRESTORED:
+                audioSource.clip = chargesRestoredClips[Random.Range(0, chargesRestoredClips.Length)];
+                break;
+
+            // System
+            case SoundType.AISYSTEMERROR:
+                audioSource.clip = systemErrorClips[Random.Range(0, systemErrorClips.Length)];
                 break;
         }
 
@@ -43,6 +75,7 @@ public class AISoundManager : SoundManager
             audioSource.Play();
     }
 
+    #region Item
     public void PlayVoiceOnDelay(float seconds, Collectable item)
     {
         StartCoroutine(PlayAIVoice(item));
@@ -67,6 +100,45 @@ public class AISoundManager : SoundManager
         else if (collectableItemClass is SpeedBurst)
             PlaySound(SoundType.AISPEED);
     }
+    #endregion
+
+    public void PlayDangerSound(SoundType soundType)
+    {
+        if (Random.Range(0f, 1f) > .20f)
+        {
+            if (!hasAlertedDanger)
+            {
+                PlaySound(soundType);
+                hasAlertedDanger = true;
+            }
+        }
+    }
+
+    #region Charges & System
+    public void ReportSystemError(SoundType soundType)
+    {
+        PlaySound(soundType);
+        StartCoroutine(SetChargesReportCooldown(5f));
+    }
+
+    public void TryToReportCharges(float charges, SoundType soundType)
+    {
+        if (!recentlyReportedOnCharges)
+        {
+            PlaySound(soundType);
+            StartCoroutine(SetChargesReportCooldown(10f));
+        }
+
+    }
+
+    private IEnumerator SetChargesReportCooldown(float seconds)
+    {
+        recentlyReportedOnCharges = true;
+        yield return new WaitForSeconds(seconds);
+        recentlyReportedOnCharges = false;
+    }
+    #endregion
+
 
     public bool HasAlreadyAlerted()
     {
