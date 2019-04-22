@@ -8,7 +8,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
 {
     [Header("Text")]
     public TextMeshProUGUI TitleText;
-    public TextMeshProUGUI PlayText;
+    public TextMeshProUGUI SingleplayerText;
     public TextMeshProUGUI OptionsText;
     public TextMeshProUGUI VersionText;
 
@@ -16,7 +16,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     void Update()
     {
         TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
-        PlayText.text = LocalizationManager.GetTextByKey("PLAY");
+        SingleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
         //OptionsText.text = LocalizationManager.GetTextByKey("OPTIONS");
         VersionText.text = LocalizationManager.GetTextByKey("VERSION")+": "+ "Vertical Slice";
     }

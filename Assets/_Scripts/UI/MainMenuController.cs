@@ -10,12 +10,16 @@ public class MainMenuController : LevelSingleton<MainMenuController>
         SceneManager.LoadScene("Gianni LP");
     }
 
-    public void GoToLevel1()
+    public void SetColorBlue()
     {
-        SceneManager.LoadScene("Level1");
+        PlayerPrefs.SetString("Ship Color", "Blue");
     }
-    public void GoToLevel2()
+    public void SetColorRed()
     {
-        SceneManager.LoadScene("Gianni's level");
+        PlayerPrefs.SetString("Ship Color", "Red");
+    }
+    public void SetColorGreen()
+    {
+        PlayerPrefs.SetString("Ship Color", "Green");
     }
 }

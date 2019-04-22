@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countDownController: {fileID: 6332648951526286633, guid: af6067f58962eea498378e0c7065569f,
     type: 3}
+  ship: {fileID: 4914402920152763365, guid: a6684e26575d73b48894baeea27e5b09, type: 3}

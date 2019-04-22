@@ -13,5 +13,6 @@ public class RaceManager : MonoBehaviour
     void Start()
     {
         Instantiate(countDownController, transform);
+
     }
 }
