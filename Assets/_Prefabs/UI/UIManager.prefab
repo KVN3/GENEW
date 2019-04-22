@@ -46,4 +46,5 @@ MonoBehaviour:
   playerCount: 0
   playerShip: {fileID: 6382393841290347416, guid: a6684e26575d73b48894baeea27e5b09,
     type: 3}
-  HUDClass: {fileID: 1259, guid: bdd37964a841c4c4dbd008698a9ca89b, type: 3}
+  HUDClass: {fileID: 4596222588877823720, guid: bdd37964a841c4c4dbd008698a9ca89b,
+    type: 3}

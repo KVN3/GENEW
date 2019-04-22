@@ -88,7 +88,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -140,3 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05a7e7ee86d7e445a9f19c4f815db82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickButtonClips:
+  - {fileID: 8300000, guid: 00231189b5a514d7aa1315f030a17b22, type: 3}
+  - {fileID: 8300000, guid: f32a37d07743f4995ab35589cd46c4e3, type: 3}
+  - {fileID: 8300000, guid: 69236666e32ff4984b5ec3ff64e62339, type: 3}
+  - {fileID: 8300000, guid: 2b7950b75ace546e4bfdbfa1c3f9aa4a, type: 3}
+  - {fileID: 8300000, guid: 214e80c077d3d42f2bfea58e0dff915b, type: 3}
+  - {fileID: 8300000, guid: 669376a583786470d994772a576cecb1, type: 3}
