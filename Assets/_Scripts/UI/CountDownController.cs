@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Localization;
 
 public class CountDownController : MonoBehaviour
 {
@@ -23,9 +22,10 @@ public class CountDownController : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             CountDown--;
+            Debug.Log(CountDown);
             CountDownText = CountDown.ToString();
         }
-        CountDownText = LocalizationService.Instance.GetTextByKey("GO");
+        CountDownText = LocalizationManager.GetTextByKey("GO");
         RaceManager.raceStarted = true;
         yield return new WaitForSeconds(0.5f);
         CountDownText = "";

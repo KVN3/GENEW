@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Localization;
 
 public class UIPanel : UIBehaviour
 {
@@ -22,10 +21,11 @@ public class UIPanel : UIBehaviour
 
     [Header("Time text")]
     public TextMeshProUGUI raceTimeText;
+    public TextMeshProUGUI bestTimeText;
     public TextMeshProUGUI bestRaceTimeText;
 
     [Header("Pos text")]
-    public Image posBg;
+    public GameObject posBg;
     public TextMeshProUGUI posText;
     public TextMeshProUGUI currentPosText;
     public TextMeshProUGUI posSeperatorText;
@@ -33,6 +33,7 @@ public class UIPanel : UIBehaviour
 
     [Header("Speed")]
     public TextMeshProUGUI speedText;
+    public TextMeshProUGUI speedUnitText;
     public Image speedBg;
     public Sprite speedBgSprite;
     public Sprite speedBgSpriteActivated;
@@ -44,22 +45,27 @@ public class UIPanel : UIBehaviour
     public Slider boostMeter;
 
     [Header("Item")]
-    public Image itemBox;
+    public GameObject itemBox;
     public Image item;
     public TextMeshProUGUI itemAmount;
+    public TextMeshProUGUI itemText;
 
     [Header("ChargeBar")]
     public Slider chargeBar;
     public Image chargeBarFilling;
-
-    [Header("Popups")]
-    public Image wrongWayPanel;
+    public GameObject wrongWayPanel;
+    public TextMeshProUGUI wrongWayText;
 
     [Header("RaceEndScreen")]
+    public TextMeshProUGUI raceEndScreenText;
     public TextMeshProUGUI raceTimesText;
 
     [Header("RaceStartScreen")]
     public TextMeshProUGUI countDownText;
+
+    [Header("Explanation")]
+    public TextMeshProUGUI retryText;
+    public TextMeshProUGUI escText;
 
     [Header("CountDown")]
     public CountDownController countDownController;
@@ -90,9 +96,9 @@ public class UIPanel : UIBehaviour
 
         // Turn on/off position UI
         if (PlayerCount > 1)
-            posBg.GetComponent<CanvasGroup>().alpha = 1f;
+            posBg.SetActive(true); 
         else
-            posBg.GetComponent<CanvasGroup>().alpha = 0f;
+            posBg.SetActive(false);
 
         boostMeter.value = 0;
         standardAlpha = 0.9f;
@@ -103,27 +109,27 @@ public class UIPanel : UIBehaviour
     {
         // Can also use .SetActive instead of Alpha
 
-        LocalizationService ls = LocalizationService.Instance;
         PlayerRunData pd = playerShip.runData;
 
         #region In-GameUI
 
         // Laps
-        lapText.text = ls.GetTextByKey("LAP");
+        lapText.text = LocalizationManager.GetTextByKey("LAP");
         currentLapText.text = pd.currentLap.ToString();
         lapSeperatorText.text = "/";
         lastLapText.text = pd.maxLaps.ToString();
 
         // Position(rank)
-        posText.text = ls.GetTextByKey("POS");
+        posText.text = LocalizationManager.GetTextByKey("POS");
         currentPosText.text = pd.currentPos.ToString();
         posSeperatorText.text = "/";
         lastPosText.text = PlayerCount.ToString();
 
         // Race Time
-        raceTimeText.text = ls.GetTextByKey("CURRENT_TIME") + " - " + pd.raceTime.ToString(@"mm\:ss\.ff");
+        raceTimeText.text = LocalizationManager.GetTextByKey("CURRENT_TIME") + " - " + pd.raceTime.ToString(@"mm\:ss\.ff");
 
         // Best race time
+        bestTimeText.text = LocalizationManager.GetTextByKey("BEST") + " - ";
         if (pd.bestRaceTime == TimeSpan.Parse("00:00:00.000"))
             bestRaceTimeText.text = "--.---";
         else
@@ -138,18 +144,18 @@ public class UIPanel : UIBehaviour
         float currSpeed = playerShip.components.movement.GetCurrentSpeed() * 2;
         speedText.text = currSpeed.ToString("0");
         speedMeter.value = (currSpeed / playerShip.components.movement.GetCurrentMaxSpeed()) * 0.6f; // Compensate with * 2 and make slightly higher so it sticks to 100% when a bit less than maxspeed is reached
+        speedUnitText.text = LocalizationManager.GetTextByKey("SPEEDUNIT");
+        // Boosted
         if (playerShip.components.movement.IsBoosted())
         {
             if (boostMeter.value <= 1)
                 boostMeter.value += Time.deltaTime;
-            //speedMeterFilling.color = speedMeterBoostedColor;
             speedBg.color = speedMeterBoostedColor;
         }
         else
         {
             if (boostMeter.value >= 0)
                 boostMeter.value -= Time.deltaTime;
-            //speedMeterFilling.color = speedMeterColor;
             speedBg.color = speedMeterColor;
         }
 
@@ -159,21 +165,32 @@ public class UIPanel : UIBehaviour
         // Item
         if (playerShip.GetItemAmount() > 0)
         {
-            itemBox.GetComponent<CanvasGroup>().alpha = standardAlpha;
+            itemBox.SetActive(true);
             item.sprite = playerShip.GetItem().sprite;
             itemAmount.text = playerShip.GetItemAmount().ToString();
+
+            if (playerShip.GetItem().GetType() == typeof(JammerMine))
+                itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_MINE");
+            else if (playerShip.GetItem().GetType() == typeof(JammerProjectile))
+                itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_MISSILE");
+            else if (playerShip.GetItem().GetType() == typeof(SmokeScreenItem))
+                itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_SMOKE");
+            else if (playerShip.GetItem().GetType() == typeof(ForcefieldItem))
+                itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_BARRIER");
+            else if (playerShip.GetItem().GetType() == typeof(SpeedBurst))
+                itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_BOOST");
         }
         else
         {
-            itemBox.GetComponent<CanvasGroup>().alpha = 0f;
+            itemBox.SetActive(false);
         }
-        
+
         // Pop ups
         // Wrong Way
         if (pd.isWrongWay)
-            wrongWayPanel.GetComponent<CanvasGroup>().alpha = standardAlpha;
+            wrongWayPanel.SetActive(true);
         else
-            wrongWayPanel.GetComponent<CanvasGroup>().alpha = 0f;
+            wrongWayPanel.SetActive(false);
 
         #endregion
 
@@ -181,17 +198,21 @@ public class UIPanel : UIBehaviour
         // Only show racetimes when finished and display them using a stringbuilder (for lines)
         if (pd.raceFinished)
         {
+            raceEndScreenText.text = LocalizationManager.GetTextByKey("RACE_RESULTS");
+
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < pd.raceTimes.Count; i++)
             {
                 string lapTime = pd.raceTimes[i].ToString(@"mm\:ss\.ff");
                 string lapCount = (i + 1).ToString(); // Arrays start at 0 but laps start at 1
 
-                builder.Append(ls.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
+                builder.Append(LocalizationManager.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
             }
-            builder.AppendLine().Append(ls.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
+            builder.AppendLine().Append(LocalizationManager.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
 
             raceTimesText.text = builder.ToString();
+            escText.text = LocalizationManager.GetTextByKey("ESC_TO_QUIT");
+            retryText.text = LocalizationManager.GetTextByKey("R_TO_RESTART");
         }
         #endregion
 

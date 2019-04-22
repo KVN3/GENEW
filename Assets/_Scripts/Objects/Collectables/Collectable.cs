@@ -5,6 +5,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     public Sprite sprite;
+    public string useItemDescription { get; set; } 
     
     // Start is called before the first frame update
     void Start()

@@ -22,6 +22,32 @@ public class SkinManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerPrefs.HasKey("Ship Color"))
+        {
+            string color = PlayerPrefs.GetString("Ship Color");
+            switch (color)
+            {
+                case "Red":
+                    skin.baseColor = new Color32(255, 0, 0, 0);
+                    skin.darkColor = new Color32(0, 0, 0, 255);
+                    skin.lightColor = new Color32(30, 0, 0, 255);
+                    skin.forcefieldColor = new Color32(255, 0, 0, 255);
+                    break;
+                case "Green":
+                    skin.baseColor = new Color32(0, 255, 0, 0);
+                    skin.darkColor = new Color32(0, 0, 0, 255);
+                    skin.lightColor = new Color32(0, 30, 0, 255);
+                    skin.forcefieldColor = new Color32(0, 255, 0, 255);
+                    break;
+                case "Blue":
+                    skin.baseColor = new Color32(0, 0, 255, 0);
+                    skin.darkColor = new Color32(0, 0, 0, 255);
+                    skin.lightColor = new Color32(0, 0, 30, 255);
+                    skin.forcefieldColor = new Color32(0, 0, 255, 255);
+                    break;
+            }
+        }
+
         if (applySkin)
         {
             foreach (Transform shipKid in transform)
@@ -87,5 +113,4 @@ public class SkinManager : MonoBehaviour
             }
         }
     }
-
 }

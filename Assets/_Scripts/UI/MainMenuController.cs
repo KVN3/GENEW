@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuController : MonoBehaviour
+public class MainMenuController : LevelSingleton<MainMenuController>
 {
-    public void GoToLevel1()
+    public void GoToVSLevel()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Gianni LP");
     }
-    public void GoToLevel2()
+
+    
+
+    public void SetColorBlue()
     {
-        SceneManager.LoadScene("Gianni's level");
+        PlayerPrefs.SetString("Ship Color", "Blue");
+    }
+    public void SetColorRed()
+    {
+        PlayerPrefs.SetString("Ship Color", "Red");
+    }
+    public void SetColorGreen()
+    {
+        PlayerPrefs.SetString("Ship Color", "Green");
     }
 }

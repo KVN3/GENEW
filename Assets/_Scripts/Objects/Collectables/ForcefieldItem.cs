@@ -5,5 +5,4 @@ using UnityEngine;
 public class ForcefieldItem : Collectable
 {
     public int duration = 10;
-    //public Sprite sprite;
 }

@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338ada1757709aa4ea68fa66e9483237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: cc0a9db490b04dd4eb9ad08298ffaaa6, type: 3}
   boostFactor: 3
   maxSpeedIncrease: 20
   boostDuration: 3
-  sprite: {fileID: 21300000, guid: cc0a9db490b04dd4eb9ad08298ffaaa6, type: 3}
