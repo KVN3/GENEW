@@ -13,10 +13,17 @@ public class Forcefield : ShipComponent
     private bool hasRegenerationCooldown;
     private bool itemActive;
 
+    public PlayerShip owner;
+
     public void Awake()
     {
         charges = initialCharges;
         gameObject.SetActive(false);
+    }
+
+    public void Start()
+    {
+
     }
 
     public bool IsActivate()
@@ -45,14 +52,22 @@ public class Forcefield : ShipComponent
         if (charges < maxCharges)
             charges += regainRate;
         else if (charges > maxCharges)
+        {
             charges = maxCharges;
+            owner.GetAiSoundManager().TryToReportCharges(charges, SoundType.AICHARGESRESTORED);
+        }
+
     }
 
     private void DrainCharges(float drain)
     {
         charges -= drain;
         if (charges < 5)
+        {
+            owner.GetAiSoundManager().TryToReportCharges(charges, SoundType.AICHARGESDRAINED);
             charges = -10;
+        }
+
     }
 
     public void GetHit(float dmg)

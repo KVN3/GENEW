@@ -183,7 +183,7 @@ MonoBehaviour:
   aiSoundManagerClass: {fileID: 764324233374814798, guid: de1886c4edc50df408b54c9f429f34a5,
     type: 3}
   spark: {fileID: 170378318584685716}
-  collectableItemClass: {fileID: 4297213205010208726, guid: cb568ea53dd219e4bbcb19d6867d5809,
+  collectableItemClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
     type: 3}
   itemAmount: 100
   runData:
@@ -5483,6 +5483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 170378318584685394}
+  - component: {fileID: 2598252678772087675}
   m_Layer: 0
   m_Name: Components
   m_TagString: Untagged
@@ -5509,6 +5510,18 @@ Transform:
   m_Father: {fileID: 170378318584685545}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2598252678772087675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170378318584684628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04ec7a9d6488194ca635fcad8290472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &170378318584684631
 GameObject:
   m_ObjectHideFlags: 0
@@ -16088,6 +16101,7 @@ MonoBehaviour:
   drainRate: 1
   regainRate: 0.1
   initialCharges: 100
+  owner: {fileID: 170378318584685706}
 --- !u!82 &170378318584686044
 AudioSource:
   m_ObjectHideFlags: 0

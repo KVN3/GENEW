@@ -15,8 +15,11 @@ public class Shooter : MonoBehaviour
     public void Fire(Vector3 target)
     {
         DestroyIfNoParent();
+        Debug.Log("Fire called.");
+
         if (isCloseEnough)
         {
+            Debug.Log("Close enough and firing.");
             sm.PlaySound(SoundType.SHOOTING);
             EnergyBallProjectile projectile = energyBallProjectileClasses[Random.Range(0, energyBallProjectileClasses.Length)];
             projectile.target = target;
@@ -35,7 +38,7 @@ public class Shooter : MonoBehaviour
 
     public Vector3 GetClosestTarget()
     {
-        bool isCloseEnough = false;
+        bool withinRange = false;
 
         Vector3 closestTarget = Vector3.zero;
         PlayerShip closestShip = new PlayerShip();
@@ -57,19 +60,22 @@ public class Shooter : MonoBehaviour
 
                 if (closestDistanceSqr < minDistance)
                 {
-                    isCloseEnough = true;
+                    withinRange = true;
                     closestTarget = potentialTargetPosition;
                     closestShip = target;
                 }
             }
         }
 
-        if (isCloseEnough)
+        if (withinRange)
         {
+            this.isCloseEnough = true;
             closestShip.Alert();
         }
         else
             this.isCloseEnough = false;
+
+        Debug.Log("Returning target for shooter... close enough = " + withinRange);
 
         return closestTarget;
     }
