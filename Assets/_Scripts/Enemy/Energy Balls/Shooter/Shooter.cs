@@ -38,6 +38,8 @@ public class Shooter : MonoBehaviour
         bool isCloseEnough = false;
 
         Vector3 closestTarget = Vector3.zero;
+        PlayerShip closestShip = new PlayerShip();
+
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
@@ -57,12 +59,15 @@ public class Shooter : MonoBehaviour
                 {
                     isCloseEnough = true;
                     closestTarget = potentialTargetPosition;
+                    closestShip = target;
                 }
             }
         }
 
         if (isCloseEnough)
-            this.isCloseEnough = true;
+        {
+            closestShip.Alert();
+        }
         else
             this.isCloseEnough = false;
 

@@ -150,3 +150,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 23497cfa3f8d17344b8d0a4bc986c9f5, type: 3}
   speedboostAvailableClips:
   - {fileID: 8300000, guid: dcfdcda49a32c8a45aeaea8f51f83c40, type: 3}
+  hostilesDetectedAudioClips:
+  - {fileID: 8300000, guid: d6eee0087eca7fa47b67fdcf99a870b3, type: 3}
+  - {fileID: 8300000, guid: baf8ce61eb6db84439690aa910b6c529, type: 3}
