@@ -17,8 +17,14 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Gianni's level.unity
     guid: e124d73d7cdb3704eb965e62bb913ea8
+  - enabled: 0
+    path: Assets/Scenes/Game/Launcher.unity
+    guid: 78769640fdecf014fa3005a1bbf6045d
+  - enabled: 0
+    path: Assets/Scenes/Game/WaitingRoom.unity
+    guid: 6a9d6344e3fa49b4d9691aebcdaebb9c
   - enabled: 1
-    path: Assets/Scenes/Imported/LP.unity
+    path: Assets/Scenes/Game/Wasteland.unity
     guid: 3e447a9b13e278f44b7342990e7c7a57
   - enabled: 1
     path: Assets/Scenes/Gianni LP.unity

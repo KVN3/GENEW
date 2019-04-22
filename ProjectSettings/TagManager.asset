@@ -16,6 +16,9 @@ TagManager:
   - FxTemporaire
   - ShipComponent
   - SteppingStone
+  - Mine
+  - Projectile
+  - DangerTrigger
   layers:
   - Default
   - TransparentFX

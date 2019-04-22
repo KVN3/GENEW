@@ -15,7 +15,7 @@ public class JammerMine : Collectable
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Ship"))
+        if (other.gameObject.CompareTag("Ship") || other.gameObject.CompareTag("EnergyBall"))
         {
             if (!other.gameObject.GetComponent<Ship>() == owner)
             {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Photon.Pun;
+using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,11 +37,48 @@ public class PlayerShip : Ship
 {
     #region Initialize and Assign Variables
     public PlayerRunData runData;
-  
+
+    public Player remoteData;
+    //public PlayerController playerControllerClass;
+
+    //private PlayerController pc;
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        //pc = Instantiate(playerControllerClass, transform.position, Quaternion.identity, transform);
+        //pc.playerShip = this;
+    }
+
     public override void Start()
     {
         base.Start();
 
+        InitRaceData();
+    }
+    #endregion
+
+    private void Update()
+    {
+        if (GetComponent<PhotonView>().IsMine)
+        {
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    Ammo--;
+
+            //    OnAmmoChanged(Ammo);
+            //}
+
+            //if (Input.GetButtonDown("Fire1"))
+            //{
+            //    Debug.Log("Button");
+            //}
+        }
+    }
+
+    private void InitRaceData()
+    {
         // Set currentlap, maxlaps, timer, pos
         runData.currentLap = 0;
         runData.maxLaps = 2; // Should be configurable by variable
@@ -54,23 +93,17 @@ public class PlayerShip : Ship
         // Guidance
         runData.isWrongWay = false;
         runData.isLastLap = false;
-
     }
-    #endregion
 
     #region Collisions and Triggers
-    //private void OnCollisionEnter(Collision other)
-    //{
-    //    if (!other.gameObject.CompareTag("OuterWall"))
-    //    {
-    //        audioSource.clip = alarmClip;
-    //        audioSource.Play();
-    //    }
-    //}
 
-
-    private void OnTriggerEnter(Collider other)
+    new protected void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("DangerTrigger"))
+        {
+            aiSoundManager.PlayDangerSound(SoundType.AIDANGER);
+        }
+
         #region FinishLine
         if (other.gameObject.CompareTag("FinishLine"))
         {

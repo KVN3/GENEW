@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,26 +13,33 @@ public struct ShipComponents
     public Forcefield forcefield;
 }
 
-public class Ship : MonoBehaviour
+public class Ship : MyMonoBehaviour
 {
     public ShipComponents components;
     public ShipSoundManager shipSoundManagerClass;
     public LevelSoundManager levelSoundManagerClass;
+    public AISoundManager aiSoundManagerClass;
     public DamageSpark spark;
 
     private List<ShipComponent> componentsList;
+
+
     private ShipSoundManager shipSoundManager;
     private LevelSoundManager levelSoundManager;
+    protected AISoundManager aiSoundManager;
 
     // Collectables
-    private Collectable collectableItemClass;
-    private int itemAmount;
+    public Collectable collectableItemClass;
+    public int itemAmount;
 
     private bool recentlyHit;
+
+    private PhotonView photonView;
 
     public virtual void Awake()
     {
         shipSoundManager = Instantiate(shipSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
+        aiSoundManager = Instantiate(aiSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
 
         componentsList = new List<ShipComponent>();
 
@@ -46,8 +54,7 @@ public class Ship : MonoBehaviour
             component.SetShipSoundManager(shipSoundManager);
         }
 
-        //components.shipSoundManager.InitializeComponent();
-        //components.levelSoundManager.InitializeComponent();
+        photonView = GetComponent<PhotonView>();
     }
 
     public virtual void Start()
@@ -62,6 +69,8 @@ public class Ship : MonoBehaviour
             {
                 if (!components.gun.OnCooldown())
                 {
+                    //photonView.RPC("Fire", RpcTarget.AllViaServer);
+
                     components.gun.Shoot((JammerProjectile)collectableItemClass);
                     itemAmount--;
                 }
@@ -77,7 +86,10 @@ public class Ship : MonoBehaviour
             else if (collectableItemClass is SmokeScreenItem)
             {
                 SmokeScreenItem smokeScreenItem = (SmokeScreenItem)collectableItemClass;
-                Instantiate(smokeScreenItem, transform.position, Quaternion.identity);
+
+                aiSoundManager.PlaySound(SoundType.AISMOKEDEPLOYED);
+                components.gun.DropSmokeScreen((SmokeScreenItem)collectableItemClass);
+
                 itemAmount--;
             }
             else if (collectableItemClass is ForcefieldItem)
@@ -95,18 +107,17 @@ public class Ship : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    new void OnCollisionEnter(Collision other)
     {
-        if (!components.forcefield.IsActivate())
+        if (other.gameObject.CompareTag("Projectile"))
         {
-            if (!other.gameObject.CompareTag("EnergyBall"))
-            {
-                if (!other.gameObject.CompareTag("ShipComponent"))
-                {
-                    GetHitByRegular();
-                }
-            }
-        }        
+            Ship ownerShip = other.gameObject.GetComponent<JammerProjectile>().owner;
+            if (!ownerShip == this)
+                GetHitByRegular();
+        }
+        else if (!other.gameObject.CompareTag("ShipComponent") && !other.gameObject.CompareTag("Mine") && !other.gameObject.CompareTag("EnergyBall"))
+            GetHitByRegular();
+
     }
 
     public void GetHitByRegular()
@@ -121,6 +132,7 @@ public class Ship : MonoBehaviour
         {
             if (!components.forcefield.IsActivate())
             {
+                aiSoundManager.ReportSystemError(SoundType.AISYSTEMERROR);
                 components.system.ShutDown();
                 components.engines.RestoreSystem();
 
@@ -149,6 +161,17 @@ public class Ship : MonoBehaviour
     {
         this.collectableItemClass = item;
         itemAmount = amount;
+
+        aiSoundManager.PlayVoiceOnDelay(0.5f, item);
+    }
+
+    public void Alert()
+    {
+        if (!aiSoundManager.HasAlreadyAlerted())
+        {
+            aiSoundManager.PlaySound(SoundType.AIHOSTILESDETECTED);
+            aiSoundManager.SetAlerted();
+        }
     }
 
     public int GetItemAmount()
@@ -172,6 +195,11 @@ public class Ship : MonoBehaviour
     public ShipSoundManager GetShipSoundManager()
     {
         return shipSoundManager;
+    }
+
+    public AISoundManager GetAiSoundManager()
+    {
+        return aiSoundManager;
     }
 }
 
