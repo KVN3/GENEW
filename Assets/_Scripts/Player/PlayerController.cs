@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
             horizontalInput = accelerometer.ParseAccelerationToInput(acceleration.x, Direction.X);
             verticalInput = -accelerometer.ParseAccelerationToInput(acceleration.y, Direction.Y);
             forwardFactor = 2f;
-            rotationalFactor = 1f;
+            rotationalFactor = 2f;
         }
         else
         {

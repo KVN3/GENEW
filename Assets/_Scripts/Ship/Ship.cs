@@ -25,8 +25,8 @@ public class Ship : MyMonoBehaviour
     private LevelSoundManager levelSoundManager;
 
     // Collectables
-    private Collectable collectableItemClass;
-    private int itemAmount;
+    public Collectable collectableItemClass;
+    public int itemAmount;
 
     private bool recentlyHit;
 
@@ -81,7 +81,7 @@ public class Ship : MyMonoBehaviour
             else if (collectableItemClass is SmokeScreenItem)
             {
                 SmokeScreenItem smokeScreenItem = (SmokeScreenItem)collectableItemClass;
-                Instantiate(smokeScreenItem, transform.position, Quaternion.identity);
+                components.gun.DropSmokeScreen((SmokeScreenItem)collectableItemClass);
                 itemAmount--;
             }
             else if (collectableItemClass is ForcefieldItem)
@@ -99,17 +99,11 @@ public class Ship : MyMonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    new void OnCollisionEnter(Collision other)
     {
-        if (!components.forcefield.IsActivate())
+        if (!other.gameObject.CompareTag("ShipComponent") && !other.gameObject.CompareTag("Mine") && !other.gameObject.CompareTag("EnergyBall"))
         {
-            if (!other.gameObject.CompareTag("EnergyBall"))
-            {
-                if (!other.gameObject.CompareTag("ShipComponent"))
-                {
-                    GetHitByRegular();
-                }
-            }
+            GetHitByRegular();
         }
     }
 

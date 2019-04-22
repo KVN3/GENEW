@@ -61,7 +61,7 @@ public class GameState : LevelSingleton<GameState>
             Debug.Log("I jkoined the game");
 
             // Spawn the local player - BAD SOLUTION
-            int index = PhotonNetwork.PlayerList.Length - 1;
+            int index = PhotonNetwork.PlayerList.Length; // - 1 to fix for mp
             SpawnLocalPlayer(index);
 
             // Update player list

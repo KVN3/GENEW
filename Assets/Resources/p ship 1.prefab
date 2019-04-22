@@ -197,7 +197,7 @@ MonoBehaviour:
   cameras:
     firstPersonCamera: {fileID: 0}
     thirdPersonCamera: {fileID: 0}
-  useAccelerometerControls: 0
+  useAccelerometerControls: 1
 --- !u!1 &442
 GameObject:
   m_ObjectHideFlags: 0

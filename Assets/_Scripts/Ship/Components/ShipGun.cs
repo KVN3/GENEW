@@ -6,6 +6,8 @@ using UnityEngine;
 public class ShipGun : ShipComponent
 {
     public LocalSpawnPoint projectileSpawnPoint;
+    public LocalSpawnPoint mineSP;
+    public LocalSpawnPoint smokeSP;
 
     //public JammerProjectile jammerProjectileClass;
 
@@ -44,11 +46,20 @@ public class ShipGun : ShipComponent
 
     public void DropMine(JammerMine mineClass)
     {
-        JammerMine mine = (JammerMine)Instantiate(mineClass, projectileSpawnPoint.transform.position, Quaternion.identity);
+        JammerMine mine = Instantiate(mineClass, mineSP.transform.position, Quaternion.identity);
         mine.owner = parentShip;
 
         shipSoundManager.PlaySound(SoundType.DROPMINE);
         StartCoroutine(ShootingCooldown(.5f));
+    }
+
+    public void DropSmokeScreen(SmokeScreenItem smokeScreenClass)
+    {
+        Vector3 rot = transform.rotation.eulerAngles;
+        rot = new Vector3(rot.x, rot.y, rot.z);
+        Quaternion rotation = Quaternion.Euler(rot);
+
+        Instantiate(smokeScreenClass, smokeSP.transform.position, rotation);
     }
 
     private IEnumerator ShootingCooldown(float seconds)
@@ -58,7 +69,7 @@ public class ShipGun : ShipComponent
         coolDown = false;
     }
 
-    
+
 
     #region GetSet
     public bool OnCooldown()
