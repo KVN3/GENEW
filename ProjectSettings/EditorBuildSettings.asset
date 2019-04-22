@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Menus/Main Menu.unity
-    guid: 31eb398fd7fa2b7439932b2ea2cd199e
   - enabled: 0
     path: Assets/Scenes/Level1.unity
     guid: 723a1fe32ac01b940bf813bb24f9ff1b
@@ -24,12 +21,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/WaitingRoom.unity
     guid: 6a9d6344e3fa49b4d9691aebcdaebb9c
   - enabled: 1
+    path: Assets/Scenes/Menus/Main Menu.unity
+    guid: 31eb398fd7fa2b7439932b2ea2cd199e
+  - enabled: 1
     path: Assets/Scenes/Game/Wasteland.unity
     guid: 3e447a9b13e278f44b7342990e7c7a57
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gianni LP.unity
     guid: a4436c79f791431499236d40b102df28
-  - enabled: 1
-    path: Assets/Scenes/Menus/SP Menu.unity
-    guid: b4fac953c92d4db4e92bdf6d91b1165c
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

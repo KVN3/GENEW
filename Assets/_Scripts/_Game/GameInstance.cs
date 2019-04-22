@@ -69,7 +69,8 @@ public class GameInstance : MonoBehaviourPunCallbacks
             Failed(Error, Message);
         };
 
-        bool Result = PhotonNetwork.CreateRoom(Name);
+
+        bool Result = PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 1 });
 
         if (!Result)
         {

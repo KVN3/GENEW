@@ -5,12 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : LevelSingleton<MainMenuController>
 {
-    public void GoToVSLevel()
+    [SerializeField]
+    private MenuSoundManager menuSoundManagerClass;
+
+    private MenuSoundManager menuSoundManager;
+
+    new void Awake()
     {
-        SceneManager.LoadScene("Gianni LP");
+        menuSoundManager = Instantiate(menuSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
     }
 
-    
+    public void PlayButtonSound()
+    {
+        menuSoundManager.PlaySound(SoundType.CLICKBUTTON);
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene("Wasteland");
+    }
 
     public void SetColorBlue()
     {

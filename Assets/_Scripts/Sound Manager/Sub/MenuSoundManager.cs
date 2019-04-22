@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuSoundManager : MonoBehaviour
+public class MenuSoundManager : SoundManager
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public AudioClip[] clickButtonClips;
 
-    // Update is called once per frame
-    void Update()
+    public override void PlaySound(SoundType soundType)
     {
-        
+        switch (soundType)
+        {
+            case SoundType.CLICKBUTTON:
+                audioSource.clip = clickButtonClips[Random.Range(0, clickButtonClips.Length)];
+                break;
+        }
+
+        if (!audioSource.isPlaying)
+            audioSource.Play();
     }
 }
