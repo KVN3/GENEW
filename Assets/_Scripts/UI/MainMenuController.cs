@@ -10,6 +10,8 @@ public class MainMenuController : LevelSingleton<MainMenuController>
         SceneManager.LoadScene("Gianni LP");
     }
 
+    
+
     public void SetColorBlue()
     {
         PlayerPrefs.SetString("Ship Color", "Blue");

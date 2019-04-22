@@ -522,8 +522,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5048548122622077600, guid: 073e5e9ca57623b498c9382ce12271e3,
-          type: 3}
+      - m_Target: {fileID: 0}
         m_MethodName: SetLanguage
         m_Mode: 3
         m_Arguments:
@@ -1476,8 +1475,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8631873225630643792, guid: 581fd72e368ea8d4d990f78f059fd7cd,
-          type: 3}
+      - m_Target: {fileID: 0}
         m_MethodName: GoToVSLevel
         m_Mode: 1
         m_Arguments:
@@ -3917,8 +3915,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5048548122622077600, guid: 073e5e9ca57623b498c9382ce12271e3,
-          type: 3}
+      - m_Target: {fileID: 0}
         m_MethodName: SetLanguage
         m_Mode: 3
         m_Arguments:
