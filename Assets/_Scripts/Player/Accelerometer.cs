@@ -142,7 +142,7 @@ public class Accelerometer : MonoBehaviour
 
 
         if (axis == Direction.X)
-            Debug.Log("INPUT " + Direction.X + ": "+ input);
+            Debug.Log("INPUT " + Direction.X + ": " + input);
         return input;
     }
 }

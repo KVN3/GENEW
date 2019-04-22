@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 63322342283923759}
   m_Layer: 0
   m_Name: Jammer Mine Item
-  m_TagString: Untagged
+  m_TagString: Mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 6287835878999003302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 5718960682235901110}
   - {fileID: 408458190480009825}

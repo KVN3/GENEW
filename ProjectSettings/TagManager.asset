@@ -16,6 +16,7 @@ TagManager:
   - FxTemporaire
   - ShipComponent
   - SteppingStone
+  - Mine
   layers:
   - Default
   - TransparentFX
