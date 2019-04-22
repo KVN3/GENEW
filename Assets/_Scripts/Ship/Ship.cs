@@ -18,11 +18,15 @@ public class Ship : MyMonoBehaviour
     public ShipComponents components;
     public ShipSoundManager shipSoundManagerClass;
     public LevelSoundManager levelSoundManagerClass;
+    public AISoundManager aiSoundManagerClass;
     public DamageSpark spark;
 
     private List<ShipComponent> componentsList;
+
+
     private ShipSoundManager shipSoundManager;
     private LevelSoundManager levelSoundManager;
+    private AISoundManager aiSoundManager;
 
     // Collectables
     public Collectable collectableItemClass;
@@ -35,6 +39,7 @@ public class Ship : MyMonoBehaviour
     public virtual void Awake()
     {
         shipSoundManager = Instantiate(shipSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
+        aiSoundManager = Instantiate(aiSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
 
         componentsList = new List<ShipComponent>();
 
@@ -147,6 +152,28 @@ public class Ship : MyMonoBehaviour
     {
         this.collectableItemClass = item;
         itemAmount = amount;
+
+        StartCoroutine(PlayAIVoice(item));
+    }
+
+    private IEnumerator PlayAIVoice(Collectable collectableItemClass)
+    {
+        yield return new WaitForSeconds(.5f);
+
+        if (collectableItemClass is JammerProjectile)
+            aiSoundManager.PlaySound(SoundType.AIPROJECTILES);
+
+        else if (collectableItemClass is JammerMine)
+            aiSoundManager.PlaySound(SoundType.AIMINES);
+
+        else if (collectableItemClass is SmokeScreenItem)
+            aiSoundManager.PlaySound(SoundType.AISMOKESCREEN);
+
+        else if (collectableItemClass is ForcefieldItem)
+            aiSoundManager.PlaySound(SoundType.AIFORCEFIELD);
+
+        else if (collectableItemClass is SpeedBurst)
+            aiSoundManager.PlaySound(SoundType.AISPEED);
     }
 
     public int GetItemAmount()

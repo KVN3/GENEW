@@ -180,6 +180,8 @@ MonoBehaviour:
     type: 3}
   levelSoundManagerClass: {fileID: 1435859808029204296, guid: 38fe5d326f37ab54ea88d4444f8f213f,
     type: 3}
+  aiSoundManagerClass: {fileID: 764324233374814798, guid: de1886c4edc50df408b54c9f429f34a5,
+    type: 3}
   spark: {fileID: 170378318584685716}
   collectableItemClass: {fileID: 4297213205010208726, guid: cb568ea53dd219e4bbcb19d6867d5809,
     type: 3}
