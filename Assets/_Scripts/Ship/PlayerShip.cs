@@ -63,6 +63,9 @@ public class PlayerShip : Ship
     {
         if (GetComponent<PhotonView>().IsMine)
         {
+            if (!runData.raceFinished && RaceManager.raceStarted)
+                runData.raceTime = runData.raceTime.Add(System.TimeSpan.FromSeconds(1 * Time.deltaTime));
+
             //if (Input.GetKeyDown(KeyCode.Space))
             //{
             //    Ammo--;
@@ -133,6 +136,7 @@ public class PlayerShip : Ship
             if (runData.currentLap == runData.maxLaps && runData.isOverHalfway) // 3/3 laps + finish
             {
                 Debug.Log("playerShip Finished");
+                levelSoundManager.PlaySound(SoundType.VICTORY);
 
                 runData.raceFinished = true;
             }
@@ -142,6 +146,7 @@ public class PlayerShip : Ship
                 if (runData.currentLap > 0 && runData.isOverHalfway)
                 {
                     Debug.Log($"PlayerShip Crossed Finish Line");
+                    levelSoundManager.PlaySound(SoundType.LAPPASSED);
 
                     runData.raceTime = TimeSpan.Parse("00:00:00.000");
 

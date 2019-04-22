@@ -178,12 +178,6 @@ public class GameState : LevelSingleton<GameState>
 
     private void Update()
     {
-        //Debug.Log(PhotonNetwork.AutomaticallySyncScene);
-        // Code should be in UI manager / HUD
-        // Adds to the laptime based on Time.DeltaTime (A second / fps)
-        //if (!players[0].runData.raceFinished && RaceManager.raceStarted)
-        //    players[0].runData.raceTime = players[0].runData.raceTime.Add(System.TimeSpan.FromSeconds(1 * Time.deltaTime));
-
         // Restart, gets particle error tho
         if (Input.GetKeyDown(KeyCode.R))
             RestartScene();
