@@ -28,7 +28,7 @@ public struct PlayerRunData
 
     // Extra
     public float charges;
-    public float score;
+    //public float score;
 }
 #endregion
 
@@ -56,6 +56,7 @@ public class PlayerShip : Ship
         base.Start();
 
         InitRaceData();
+        StartCoroutine(SubstractScore());
     }
     #endregion
 
@@ -64,7 +65,7 @@ public class PlayerShip : Ship
         if (GetComponent<PhotonView>().IsMine)
         {
             if (!runData.raceFinished && RaceManager.raceStarted)
-                runData.raceTime = runData.raceTime.Add(System.TimeSpan.FromSeconds(1 * Time.deltaTime));
+                runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
 
             //if (Input.GetKeyDown(KeyCode.Space))
             //{
@@ -77,6 +78,15 @@ public class PlayerShip : Ship
             //{
             //    Debug.Log("Button");
             //}
+        }
+    }
+
+    IEnumerator SubstractScore()
+    {
+        while (true && !runData.raceFinished)
+        {
+            yield return new WaitForSeconds(1);
+            score -= 10;
         }
     }
 
@@ -137,6 +147,10 @@ public class PlayerShip : Ship
             {
                 Debug.Log("playerShip Finished");
                 levelSoundManager.PlaySound(SoundType.VICTORY);
+                score += 5000;
+
+                foreach (TimeSpan time in runData.raceTimes)
+                    runData.totalTime += time;
 
                 runData.raceFinished = true;
             }
@@ -147,6 +161,7 @@ public class PlayerShip : Ship
                 {
                     Debug.Log($"PlayerShip Crossed Finish Line");
                     levelSoundManager.PlaySound(SoundType.LAPPASSED);
+                    score += 2000;
 
                     runData.raceTime = TimeSpan.Parse("00:00:00.000");
 

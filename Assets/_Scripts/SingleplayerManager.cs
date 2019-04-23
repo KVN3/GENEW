@@ -8,9 +8,7 @@ public class SingleplayerManager : MonoBehaviour
     [Header("Text")]
     public TextMeshProUGUI TitleText;
     public TextMeshProUGUI PlayText;
-    public TextMeshProUGUI RedText;
-    public TextMeshProUGUI BlueText;
-    public TextMeshProUGUI GreenText;
+    public TextMeshProUGUI BackText;
     public TextMeshProUGUI VersionText;
 
     // Update is called once per frame
@@ -18,9 +16,7 @@ public class SingleplayerManager : MonoBehaviour
     {
         TitleText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
         PlayText.text = LocalizationManager.GetTextByKey("PLAY");
-        //RedText.text = LocalizationManager.GetTextByKey("RED");
-        //BlueText.text = LocalizationManager.GetTextByKey("BLUE");
-        //GreenText.text = LocalizationManager.GetTextByKey("GREEN");
+        BackText.text = LocalizationManager.GetTextByKey("RETURN");
         VersionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 1";
     }
 }

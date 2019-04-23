@@ -64,17 +64,18 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("WRONG_WAY", "VERKEERDE RICHTING");
         NLDict.Add("FINAL_LAP", "LAATSTE RONDE");
         NLDict.Add("E_TO_USE_ITEM", "Druk 'E' om voorwerp te gebruiken");
-        NLDict.Add("USE_ITEM_MINE", "Druk 'E' om een verlammende mine te gooien");
+        NLDict.Add("USE_ITEM_MINE", "Druk 'E' om een verlammende mine te plaatsen");
         NLDict.Add("USE_ITEM_MISSILE", "Druk 'E' om een verlammend projectiel te schieten");
         NLDict.Add("USE_ITEM_SMOKE", "Druk 'E' om een rookbom te laten vallen");
-        NLDict.Add("USE_ITEM_BOOST", "Druk 'E' om booster item te gebruiken");
-        NLDict.Add("USE_ITEM_BARRIER", "Druk 'E' om barrier item te gebruiken");
+        NLDict.Add("USE_ITEM_BOOST", "Druk 'E' om speed burst item te gebruiken");
+        NLDict.Add("USE_ITEM_BARRIER", "Druk 'E' om forcefield item te gebruiken");
 
         NLDict.Add("RACE_RESULTS", "RACE RESULTATEN");
         
         NLDict.Add("BEST_LAPTIME", "Beste rondetijd");
         NLDict.Add("BEST_TIME", "Beste tijd");
         NLDict.Add("TOTAL_TIME", "Totale tijd");
+        NLDict.Add("SCORE", "Score");
         #endregion
 
         #region English
@@ -126,11 +127,11 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
 
         // Items
         ENDict.Add("E_TO_USE_ITEM", "Press 'E' to use item");
-        ENDict.Add("USE_ITEM_MINE", "Press 'E' to throw a jammer mine");
+        ENDict.Add("USE_ITEM_MINE", "Press 'E' to place a jammer mine");
         ENDict.Add("USE_ITEM_MISSILE", "Press 'E' to shoot jammer projectile");
         ENDict.Add("USE_ITEM_SMOKE", "Press 'E' to drop a smoke bomb");
-        ENDict.Add("USE_ITEM_BOOST", "Press 'E' to use boost item");
-        ENDict.Add("USE_ITEM_BARRIER", "Press 'E' to use barrier item");
+        ENDict.Add("USE_ITEM_BOOST", "Press 'E' to use speedburst item");
+        ENDict.Add("USE_ITEM_BARRIER", "Press 'E' to use forcefield item");
 
 
         // End screen
@@ -138,6 +139,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("BEST_LAPTIME", "Best laptime");
         ENDict.Add("BEST_TIME", "Best time");
         ENDict.Add("TOTAL_TIME", "Total time");
+        ENDict.Add("SCORE", "Score");
 
         #endregion
     }

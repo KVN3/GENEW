@@ -40,6 +40,8 @@ public class Ship : MyMonoBehaviour
     public Collectable collectableItemClass;
     public int itemAmount;
 
+    public int score;
+
     private bool recentlyHit;
 
     private PhotonView photonView;
@@ -68,6 +70,7 @@ public class Ship : MyMonoBehaviour
 
     public virtual void Start()
     {
+        score = 10000;
     }
 
     public void UseItem()
@@ -133,6 +136,7 @@ public class Ship : MyMonoBehaviour
 
     public void GetHitByRegular()
     {
+        score -= 200;
         shipSoundManager.PlaySound(SoundType.ALARM);
         spark.Activate();
     }
@@ -160,6 +164,7 @@ public class Ship : MyMonoBehaviour
     private IEnumerator GotHit()
     {
         recentlyHit = true;
+        score -= 500;
         yield return new WaitForSeconds(1);
 
         // Temp free forcefield
@@ -170,6 +175,7 @@ public class Ship : MyMonoBehaviour
 
     public void SetItem(Collectable item, int amount)
     {
+        score += 500;
         this.collectableItemClass = item;
         itemAmount = amount;
 

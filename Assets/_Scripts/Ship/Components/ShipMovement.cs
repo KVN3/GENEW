@@ -289,6 +289,7 @@ public class ShipMovement : ShipComponent
     #region ItemActions
     public void ActivateSpeedBoost(float maxSpeedIncrease, float boostFactor, float boostDuration)
     {
+        parentShip.score += 300;
         shipSoundManager.PlaySound(SoundType.SPEEDBOOST);
         StartCoroutine(ApplySpeedBoost(maxSpeedIncrease, boostFactor, boostDuration));
     }
