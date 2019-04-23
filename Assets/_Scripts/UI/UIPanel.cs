@@ -215,18 +215,20 @@ public class UIPanel : UIBehaviour
                 builder.Append(LocalizationManager.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
             }
             builder.AppendLine().Append(LocalizationManager.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
-            lapTimesTitle.text = LocalizationManager.GetTextByKey("LAP_TIMES");
             raceTimesText.text = builder.ToString();
+
+            lapTimesTitle.text = LocalizationManager.GetTextByKey("LAP_TIMES");
             endTimeText.text = LocalizationManager.GetTextByKey("TOTAL_TIME") + ": " + pd.totalTime.ToString(@"mm\:ss\.ff");
+
             leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
 
-            builder = new StringBuilder();
+            StringBuilder builder2 = new StringBuilder();
             for (int i = 0; i < pd.leaderboardTimes.Count; i++)
             {
-                builder.Append(LocalizationManager.GetTextByKey("USER")).Append(": ").Append(pd.leaderboardTimes[i].ToString(@"mm\:ss\.ff")).AppendLine();
+                builder2.Append(LocalizationManager.GetTextByKey("USER")).Append(": ").Append(pd.leaderboardTimes[i].ToString(@"mm\:ss\.ff")).AppendLine();
                 
             }
-            leaderboardTimeText.text = builder.ToString();
+            leaderboardTimeText.text = builder2.ToString();
             escText.text = LocalizationManager.GetTextByKey("ESC_TO_QUIT");
             retryText.text = LocalizationManager.GetTextByKey("R_TO_RESTART");
         }
