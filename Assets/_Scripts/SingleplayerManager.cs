@@ -18,9 +18,9 @@ public class SingleplayerManager : MonoBehaviour
     {
         TitleText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
         PlayText.text = LocalizationManager.GetTextByKey("PLAY");
-        RedText.text = LocalizationManager.GetTextByKey("RED");
-        BlueText.text = LocalizationManager.GetTextByKey("BLUE");
-        GreenText.text = LocalizationManager.GetTextByKey("GREEN");
-        VersionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Vertical Slice";
+        //RedText.text = LocalizationManager.GetTextByKey("RED");
+        //BlueText.text = LocalizationManager.GetTextByKey("BLUE");
+        //GreenText.text = LocalizationManager.GetTextByKey("GREEN");
+        VersionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 1";
     }
 }

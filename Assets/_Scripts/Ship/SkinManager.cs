@@ -99,13 +99,13 @@ public class SkinManager : MonoBehaviour
                         switch (mat.name)
                         {
                             case "Metal_Blue (Instance)":
-                                mat.color = skin.baseColor;
+                                mat.color = PlayerPrefsX.GetColor("REGULAR_COLOR");
                                 break;
                             case "Metal_Blue_Light (Instance)":
-                                mat.color = skin.lightColor;
+                                mat.color = PlayerPrefsX.GetColor("LIGHT_COLOR");
                                 break;
                             case "Metal_Blue_Dark (Instance)":
-                                mat.color = skin.darkColor;
+                                mat.color = PlayerPrefsX.GetColor("DARK_COLOR");
                                 break;
                         }
                     }

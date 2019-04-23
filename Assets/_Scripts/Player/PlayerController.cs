@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct Cameras
@@ -65,8 +66,11 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePlayerActionControls()
     {
-        if(Input.GetKeyDown(KeyCode.R))
-            PhotonNetwork.LoadLevel("Wasteland");
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.UnloadSceneAsync("Wasteland");
+            SceneManager.LoadScene("Main Menu");
+        }
 
         // Breaking
         if (Input.GetKey(KeyCode.Space))

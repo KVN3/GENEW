@@ -1,8 +1,14 @@
 ﻿using Assets.HSVPicker;
 using UnityEngine;
 
+public enum ColorPart
+{
+    LIGHT, REGULAR, DARK
+}
+
 public class ColorPicker : MonoBehaviour
 {
+    public ColorPart colorPart;
 
     private float _hue = 0;
     private float _saturation = 0;
@@ -21,11 +27,36 @@ public class ColorPicker : MonoBehaviour
     public ColorChangedEvent onValueChanged = new ColorChangedEvent();
     public HSVChangedEvent onHSVChanged = new HSVChangedEvent();
 
+    public void Awake()
+    {
+        Debug.Log("ON AWAKE::" + PlayerPrefsX.GetColor("LIGHT_COLOR"));
+    }
+
+    public void Update()
+    {
+        Debug.Log(PlayerPrefsX.GetColor("LIGHT_COLOR"));
+    }
+
     public Color CurrentColor
     {
         get
         {
-            return new Color(_red, _green, _blue, _alpha);
+            Color color = new Color(_red, _green, _blue, _alpha);
+
+            switch (colorPart)
+            {
+                case ColorPart.LIGHT:
+                    PlayerPrefsX.SetColor("LIGHT_COLOR", color);
+                    break;
+                case ColorPart.REGULAR:
+                    PlayerPrefsX.SetColor("REGULAR_COLOR", color);
+                    break;
+                case ColorPart.DARK:
+                    PlayerPrefsX.SetColor("DARK_COLOR", color);
+                    break;
+            }
+
+            return color;  //PlayerPrefsX.GetColor("LIGHT_COLOR"); 
         }
         set
         {
@@ -37,14 +68,41 @@ public class ColorPicker : MonoBehaviour
             _blue = value.b;
             _alpha = value.a;
 
+            //Color color = PlayerPrefsX.GetColor("LIGHT_COLOR");
+
+            //switch (colorPart)
+            //{
+            //    case ColorPart.LIGHT:
+            //        color = PlayerPrefsX.GetColor("LIGHT_COLOR");
+            //        break;
+            //    case ColorPart.REGULAR:
+            //        color = PlayerPrefsX.GetColor("LIGHT_COLOR");
+            //        break;
+            //    case ColorPart.DARK:
+            //        color = PlayerPrefsX.GetColor("LIGHT_COLOR");
+            //        break;
+            //}
+
+
+
+            //if (color != null)
+            //{
+            //_red = color.r;
+            //_green = color.g;
+            //_blue = color.b;
+            //_alpha = color.a;
+            //}
+
+
             RGBChanged();
-            
+
             SendChangedEvent();
         }
     }
 
     private void Start()
     {
+        Debug.Log("ON START1::" + PlayerPrefsX.GetColor("LIGHT_COLOR"));
         Setup.AlphaSlidiers.Toggle(Setup.ShowAlpha);
         Setup.ColorToggleElement.Toggle(Setup.ShowColorSliderToggle);
         Setup.RgbSliders.Toggle(Setup.ShowRgb);
@@ -56,6 +114,8 @@ public class ColorPicker : MonoBehaviour
 
         RGBChanged();
         SendChangedEvent();
+
+        Debug.Log("ON START2::" + PlayerPrefsX.GetColor("LIGHT_COLOR"));
     }
 
     public float H

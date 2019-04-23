@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Menus/Ship Customization.unity
+    guid: b351fb2d776cda2419b5491c44a29760
   m_configObjects: {}
