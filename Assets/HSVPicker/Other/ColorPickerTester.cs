@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ColorPickerTester : MonoBehaviour 
+public class ColorPickerTester : MonoBehaviour
 {
 
     public new Renderer renderer;
@@ -8,22 +8,46 @@ public class ColorPickerTester : MonoBehaviour
 
     public Color Color = Color.red;
 
-	// Use this for initialization
-	void Start () 
+    void Awake()
+    {
+        Renderer renderer = GetComponent<Renderer>();
+
+        Material[] mats = renderer.materials;
+
+        foreach (Material mat in mats)
+        {
+            switch (mat.name)
+            {
+                case "Metal_Blue (Instance)":
+                    picker.CurrentColor = PlayerPrefsX.GetColor("REGULAR_COLOR");
+                    break;
+                case "Metal_Blue_Light (Instance)":
+                    picker.CurrentColor = PlayerPrefsX.GetColor("LIGHT_COLOR");
+                    break;
+                case "Metal_Blue_Dark (Instance)":
+                    picker.CurrentColor = PlayerPrefsX.GetColor("DARK_COLOR");
+                    break;
+            }
+        }
+    }
+
+    // Use this for initialization
+    void Start()
     {
         picker.onValueChanged.AddListener(color =>
         {
             renderer.material.color = color;
-            Color = color;
+            Color = PlayerPrefsX.GetColor("LIGHT_COLOR");
         });
 
-		renderer.material.color = picker.CurrentColor;
+        renderer.material.color = PlayerPrefsX.GetColor("LIGHT_COLOR");
 
-        picker.CurrentColor = Color;
+
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

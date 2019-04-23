@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuManager : LevelSingleton<MainMenuManager>
 {
-   // [SerializeField]
+    // [SerializeField]
     //private MenuSoundManager menuSoundManagerClass;
 
     [Header("Text")]
@@ -19,15 +20,18 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
 
     new void Awake()
     {
-       // menuSoundManager = Instantiate(menuSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
+        // menuSoundManager = Instantiate(menuSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
     }
 
     // Start is called before the first frame update
     void Update()
     {
-        TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
-        SingleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
-        //OptionsText.text = LocalizationManager.GetTextByKey("OPTIONS");
-        VersionText.text = LocalizationManager.GetTextByKey("VERSION")+": "+ "Alpha 1";
+        if (SceneManager.GetActiveScene().name.Equals("Main Menu"))
+        {
+            TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
+            SingleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
+            //OptionsText.text = LocalizationManager.GetTextByKey("OPTIONS");
+            VersionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 1";
+        }
     }
 }

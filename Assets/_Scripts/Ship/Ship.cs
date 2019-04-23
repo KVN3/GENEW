@@ -118,15 +118,17 @@ public class Ship : MyMonoBehaviour
 
     new void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Projectile"))
+        if (!components.forcefield.IsActivate())
         {
-            Ship ownerShip = other.gameObject.GetComponent<JammerProjectile>().owner;
-            if (!ownerShip == this)
+            if (other.gameObject.CompareTag("Projectile"))
+            {
+                Ship ownerShip = other.gameObject.GetComponent<JammerProjectile>().owner;
+                if (!ownerShip == this)
+                    GetHitByRegular();
+            }
+            else if (!other.gameObject.CompareTag("ShipComponent") && !other.gameObject.CompareTag("Mine") && !other.gameObject.CompareTag("EnergyBall"))
                 GetHitByRegular();
         }
-        else if (!other.gameObject.CompareTag("ShipComponent") && !other.gameObject.CompareTag("Mine") && !other.gameObject.CompareTag("EnergyBall"))
-            GetHitByRegular();
-
     }
 
     public void GetHitByRegular()

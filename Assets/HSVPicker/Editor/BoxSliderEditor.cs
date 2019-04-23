@@ -25,8 +25,9 @@ namespace UnityEditor.UI
 			m_MinValue = serializedObject.FindProperty("m_MinValue");
 			m_MaxValue = serializedObject.FindProperty("m_MaxValue");
 			m_WholeNumbers = serializedObject.FindProperty("m_WholeNumbers");
-			m_Value = serializedObject.FindProperty("m_Value");
-			m_ValueY = serializedObject.FindProperty("m_ValueY");
+            m_Value = serializedObject.FindProperty("m_Value");
+
+            m_ValueY = serializedObject.FindProperty("m_ValueY");
 			m_OnValueChanged = serializedObject.FindProperty("m_OnValueChanged");
 		}
 		

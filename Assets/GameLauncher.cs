@@ -27,7 +27,7 @@ public class GameLauncher : MonoBehaviour
         GameInstance.Instance.OnJoinedRoomDelegate = () =>
         {
             feedbackText.text = "";
-
+            
             // hide the Play button for visual consistency
             controlPanel.SetActive(false);
 

@@ -159,4 +159,31 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         preferredLanguage = (Language)languageIndex;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    // Abstract
+
+    protected static LocalizationManager _Instance;
+
+    public static bool Initialized => _Instance != null;
+
+    public static LocalizationManager Instance
+    {
+        get
+        {
+            if (!Initialized)
+            {
+                GameObject GameObject = new GameObject("Localization Manager");
+
+                _Instance = GameObject.AddComponent<LocalizationManager>();
+            }
+
+            return _Instance;
+        }
+    }
+
+    [RuntimeInitializeOnLoadMethod]
+    static void ForceInit()
+    {
+        LocalizationManager GI = Instance;
+    }
 }
