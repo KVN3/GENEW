@@ -691,7 +691,7 @@ RectTransform:
   m_GameObject: {fileID: 1781977491}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4770757, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1.4770757, y: 1, z: 1}
   m_Children:
   - {fileID: 70023623}
   m_Father: {fileID: 8135590540262077959}
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleText: {fileID: 4012942070922065205}
   SingleplayerText: {fileID: 3580565088966556824}
-  OptionsText: {fileID: 0}
+  EditShipText: {fileID: 70023624}
   VersionText: {fileID: 4012942069786850813}
 --- !u!114 &874264669347109769
 MonoBehaviour:

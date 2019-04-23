@@ -21,14 +21,17 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         #region Dutch
         // Menutext
         NLDict.Add("MAIN_MENU", "HOOFDMENU");
+        NLDict.Add("SHIPYARD", "Scheepswerf");
         NLDict.Add("PLAY","Start");
-        NLDict.Add("SINGLEPLAYER", "Solospel");
-        NLDict.Add("MULTIPLAYER", "Meerdere spelers");
+        NLDict.Add("SINGLEPLAYER", "Singleplayer");
+        NLDict.Add("MULTIPLAYER", "Multiplayer");
         NLDict.Add("LEVEL", "Level");
         NLDict.Add("OPTIONS", "Opties");
         NLDict.Add("MUSIC", "Muziek");
         NLDict.Add("SOUND", "Geluid");
         NLDict.Add("SHIPCOLOR", "Schipkleur");
+        NLDict.Add("EDIT_SHIP", "Bewerk schip");
+        NLDict.Add("RETURN", "Terug");
         NLDict.Add("ON", "AAN");
         NLDict.Add("OFF", "UIT");
         NLDict.Add("CREATE_LOBBY", "Creëer lobby");
@@ -78,6 +81,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
 
         // Menutext
         ENDict.Add("MAIN_MENU", "MAIN MENU");
+        ENDict.Add("SHIPYARD", "Shipyard");
         ENDict.Add("PLAY", "Play");
         ENDict.Add("SINGLEPLAYER", "Singleplayer");
         ENDict.Add("MULTIPLAYER", "Multiplayer");
@@ -88,6 +92,8 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("ON", "ON");
         ENDict.Add("OFF", "OFF");
         ENDict.Add("SHIPCOLOR", "Shipcolor");
+        ENDict.Add("EDIT_SHIP", "Edit ship");
+        ENDict.Add("RETURN", "Return");
         ENDict.Add("JOIN_LOBBY", "Join lobby");
         ENDict.Add("CREATE_LOBBY", "Create lobby");
         ENDict.Add("EXIT_LOBBY", "Leave lobby");
