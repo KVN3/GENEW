@@ -24,9 +24,6 @@ public class UIPanel : UIBehaviour
     public TextMeshProUGUI bestTimeText;
     public TextMeshProUGUI bestRaceTimeText;
 
-    [Header("Score")]
-    public TextMeshProUGUI ScoreText;
-
     [Header("Pos text")]
     public GameObject posBg;
     public TextMeshProUGUI posText;
@@ -61,10 +58,12 @@ public class UIPanel : UIBehaviour
 
     [Header("RaceEndScreen")]
     public TextMeshProUGUI raceEndScreenText;
+    public TextMeshProUGUI lapTimesTitle;
     public TextMeshProUGUI raceTimesText;
     public TextMeshProUGUI endTimeText;
-    public TextMeshProUGUI endScoreText;
-    
+    public TextMeshProUGUI leaderboardText;
+    public TextMeshProUGUI leaderboardTimeText;
+
 
     [Header("RaceStartScreen")]
     public TextMeshProUGUI countDownText;
@@ -141,9 +140,6 @@ public class UIPanel : UIBehaviour
         else
             bestRaceTimeText.text = pd.bestRaceTime.ToString(@"mm\:ss\.ff");
 
-        // Score
-        ScoreText.text = playerShip.score.ToString("0000000");
-
         // Speed
         if (playerShip.components.movement.GetCurrentSpeed() > 1f)
             speedBg.sprite = speedBgSpriteActivated;
@@ -219,10 +215,18 @@ public class UIPanel : UIBehaviour
                 builder.Append(LocalizationManager.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
             }
             builder.AppendLine().Append(LocalizationManager.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
-
+            lapTimesTitle.text = LocalizationManager.GetTextByKey("LAP_TIMES");
             raceTimesText.text = builder.ToString();
             endTimeText.text = LocalizationManager.GetTextByKey("TOTAL_TIME") + ": " + pd.totalTime.ToString(@"mm\:ss\.ff");
-            endScoreText.text = LocalizationManager.GetTextByKey("SCORE") + ": " + playerShip.score;
+            leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
+
+            builder = new StringBuilder();
+            for (int i = 0; i < pd.leaderboardTimes.Count; i++)
+            {
+                builder.Append(LocalizationManager.GetTextByKey("USER")).Append(": ").Append(pd.leaderboardTimes[i].ToString(@"mm\:ss\.ff")).AppendLine();
+                
+            }
+            leaderboardTimeText.text = builder.ToString();
             escText.text = LocalizationManager.GetTextByKey("ESC_TO_QUIT");
             retryText.text = LocalizationManager.GetTextByKey("R_TO_RESTART");
         }

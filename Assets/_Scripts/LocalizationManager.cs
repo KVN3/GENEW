@@ -70,12 +70,15 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("USE_ITEM_BOOST", "Druk 'E' om speed burst item te gebruiken");
         NLDict.Add("USE_ITEM_BARRIER", "Druk 'E' om forcefield item te gebruiken");
 
+        // End screen
         NLDict.Add("RACE_RESULTS", "RACE RESULTATEN");
-        
+        NLDict.Add("LAP_TIMES", "Rondetijden");
         NLDict.Add("BEST_LAPTIME", "Beste rondetijd");
         NLDict.Add("BEST_TIME", "Beste tijd");
         NLDict.Add("TOTAL_TIME", "Totale tijd");
-        NLDict.Add("SCORE", "Score");
+        NLDict.Add("LEADERBOARD", "Leaderboard");
+        NLDict.Add("TIME", "Tijd");
+        NLDict.Add("USER", "Gebruiker");
         #endregion
 
         #region English
@@ -136,10 +139,13 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
 
         // End screen
         ENDict.Add("RACE_RESULTS", "RACE RESULTS");
+        ENDict.Add("LAP_TIMES", "Lap times");
         ENDict.Add("BEST_LAPTIME", "Best laptime");
         ENDict.Add("BEST_TIME", "Best time");
         ENDict.Add("TOTAL_TIME", "Total time");
-        ENDict.Add("SCORE", "Score");
+        ENDict.Add("LEADERBOARD", "Leaderboard");
+        ENDict.Add("TIME", "Time");
+        ENDict.Add("USER", "User");
 
         #endregion
     }

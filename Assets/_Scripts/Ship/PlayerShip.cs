@@ -14,6 +14,7 @@ public struct PlayerRunData
     public TimeSpan raceTime;
     public TimeSpan bestRaceTime;
     public TimeSpan totalTime;
+    public List<TimeSpan> leaderboardTimes;
 
     public int currentPos;
 
@@ -86,7 +87,6 @@ public class PlayerShip : Ship
         while (true && !runData.raceFinished)
         {
             yield return new WaitForSeconds(1);
-            score -= 10;
         }
     }
 
@@ -147,10 +147,11 @@ public class PlayerShip : Ship
             {
                 Debug.Log("playerShip Finished");
                 levelSoundManager.PlaySound(SoundType.VICTORY);
-                score += 5000;
 
                 foreach (TimeSpan time in runData.raceTimes)
                     runData.totalTime += time;
+
+                runData.leaderboardTimes.Add(runData.bestRaceTime);
 
                 runData.raceFinished = true;
             }
@@ -161,7 +162,6 @@ public class PlayerShip : Ship
                 {
                     Debug.Log($"PlayerShip Crossed Finish Line");
                     levelSoundManager.PlaySound(SoundType.LAPPASSED);
-                    score += 2000;
 
                     runData.raceTime = TimeSpan.Parse("00:00:00.000");
 
