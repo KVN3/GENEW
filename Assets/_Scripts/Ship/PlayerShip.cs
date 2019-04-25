@@ -27,6 +27,14 @@ public struct PlayerRunData
 
     public bool raceFinished;
 
+    // Replay data
+    public List<float> positionsX;
+    public List<float> positionsY;
+    public List<float> positionsZ;
+    public List<Quaternion> replayQuaternions;
+    public List<Vector3> replayPosition;
+
+
     // Extra
     public float charges;
     //public float score;
@@ -80,7 +88,12 @@ public class PlayerShip : Ship
             //    Debug.Log("Button");
             //}
         }
-    }
+
+        runData.positionsX.Add(transform.position.x);
+        runData.positionsY.Add(transform.position.y);
+        runData.positionsZ.Add(transform.position.z);
+        runData.replayQuaternions.Add(transform.rotation);
+}
 
     IEnumerator SubstractScore()
     {
@@ -108,6 +121,12 @@ public class PlayerShip : Ship
         // Guidance
         runData.isWrongWay = false;
         runData.isLastLap = false;
+
+        // Replay data
+        runData.positionsX = new List<float>();
+        runData.positionsY = new List<float>();
+        runData.positionsZ = new List<float>();
+        runData.replayQuaternions = new List<Quaternion>();
     }
 
     #region Collisions and Triggers
@@ -154,6 +173,16 @@ public class PlayerShip : Ship
                     runData.totalTime += time;
 
                 runData.leaderboardTimes.Add(runData.bestRaceTime);
+
+                // Save replay
+                float[] arrayX = runData.positionsX.ToArray();
+                float[] arrayY = runData.positionsY.ToArray();
+                float[] arrayZ = runData.positionsZ.ToArray();
+                Quaternion[] arrayQ = runData.replayQuaternions.ToArray();
+                PlayerPrefsX.SetFloatArray("ReplayX", arrayX);
+                PlayerPrefsX.SetFloatArray("ReplayY", arrayY);
+                PlayerPrefsX.SetFloatArray("ReplayZ", arrayZ);
+                PlayerPrefsX.SetQuaternionArray("ReplayQ", arrayQ);
 
                 runData.raceFinished = true;
             }

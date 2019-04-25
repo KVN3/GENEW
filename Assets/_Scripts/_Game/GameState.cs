@@ -41,6 +41,9 @@ public class GameState : LevelSingleton<GameState>
     // Players
     public Dictionary<Player, PlayerShip> players { get; set; } = new Dictionary<Player, PlayerShip>();
 
+    // Ghosts (replay)
+    public PlayerShipGhost[] ghosts;
+
     // Global variables
     public static bool gamePaused = false;
 
@@ -84,6 +87,8 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(gameManagers.raceManagerClass);
 
         RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
+        foreach (PlayerShipGhost ghost in ghosts)
+            Instantiate(ghost);
 
         BackgroundSoundManager backgroundSoundManager = Instantiate(gameManagers.backgroundSoundManagerClass);
     }
