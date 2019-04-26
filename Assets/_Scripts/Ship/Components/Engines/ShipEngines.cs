@@ -109,6 +109,24 @@ public class ShipEngines : ShipComponent
         StartCoroutine(FlickerEngines(3));
     }
 
+    // Turns the boosted color on or off for all engines
+    public void SetBoosted(bool boosted)
+    {
+        if (boosted)
+        {
+            middleEngine.SetBoostColor();
+            leftEngine.SetBoostColor();
+            rightEngine.SetBoostColor();
+        }
+        else
+        {
+            middleEngine.RestoreColor();
+            leftEngine.RestoreColor();
+            rightEngine.RestoreColor();
+        }
+    }
+
+
     #region GetSet
     public void SetParentShip(Ship ship)
     {

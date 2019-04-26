@@ -17,6 +17,7 @@ public class Ship : MyMonoBehaviour
 {
     public ShipComponents components;
 
+    #region ObjectClasses
     [SerializeField]
     private ShipSoundManager shipSoundManagerClass;
 
@@ -28,13 +29,16 @@ public class Ship : MyMonoBehaviour
 
     [SerializeField]
     private DamageSpark spark;
+    #endregion
 
     private List<ShipComponent> componentsList;
 
-
+    // Instantiated
     protected ShipSoundManager shipSoundManager;
     protected LevelSoundManager levelSoundManager;
     protected AISoundManager aiSoundManager;
+
+
 
     // Collectables
     public Collectable collectableItemClass;

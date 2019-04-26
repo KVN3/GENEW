@@ -73,8 +73,8 @@ public class PlayerShip : Ship
     {
         if (GetComponent<PhotonView>().IsMine)
         {
-            //if (!runData.raceFinished && RaceManager.raceStarted)
-            //    runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
+            if (!runData.raceFinished && RaceManager.raceStarted)
+                runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
 
             //if (Input.GetKeyDown(KeyCode.Space))
             //{

@@ -44,25 +44,80 @@ public class PlayerCamera : MyMonoBehaviour
 
     public PlayerShip target;
     public float damping = 1;
-    Vector3 offset;
+
+    public float minOffsetX = 8f;
+    public float maxOffsetX = 14f;
+
+    private Vector3 offset;
+    private float angleZ;
 
     void Start()
     {
-        offset = new Vector3(10f, -17f, 0f);
+        //basePos = this.transform;
+        offset = new Vector3(8f, -17f, 0f);
+        angleZ = 45f;
     }
 
     void LateUpdate()
     {
+        //float currentSpeed = target.components.movement.GetCurrentSpeed();
+
+        //if (currentSpeed > 10)
+        //{
+        //    if (offset.x < 14f)
+        //    {
+        //        offset.x += .05f;
+        //        angleZ -= 0.1f;
+        //    }
+
+        //}
+        //else
+        //{
+        //    if (offset.x > 8f)
+        //    {
+        //        offset.x -= .05f;
+        //        angleZ += 0.1f;
+        //    }
+
+        //}
+
         float currentAngle = transform.eulerAngles.y;
         float desiredAngle = target.transform.eulerAngles.y;
+
         float angle = Mathf.LerpAngle(currentAngle, desiredAngle, Time.deltaTime * damping);
 
-        Quaternion rotation = Quaternion.Euler(0, angle + 90f, 45);
+        Quaternion rotation = Quaternion.Euler(0, angle + 90f, angleZ);
+        Debug.Log(angleZ);
+
+
         Vector3 thisPos = target.transform.position - (rotation * offset);
 
         transform.position = thisPos;
 
         transform.LookAt(target.transform);
     }
+
+    public void IncreaseDistance(float factorOffsetX, float factorAngleZ)
+    {
+        if (offset.x < 14f)
+        {
+            offset.x += .05f;
+            angleZ -= 0.1f;
+        }
+    }
+
+    public void DecreaseDistance(float factorOffsetX, float factorAngleZ)
+    {
+        if (offset.x > 8f)
+        {
+            offset.x -= .05f;
+            angleZ += 0.1f;
+        }
+    }
 }
 
+//// if(target.components.movement.GetCurrentSpeed() > 150)
+//        {
+//            thisPos.z += 10;
+//        }
+// TO DO FINISH CAMERA

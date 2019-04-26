@@ -80,7 +80,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Glow: 12.1
-    - _InvFade: 2
+    - _InvFade: 3
     - _LightingEnabled: 0
     - _Metallic: 0
     - _Mode: 0
