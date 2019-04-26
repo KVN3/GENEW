@@ -50,7 +50,7 @@ public class PlayerShip : Ship
     public Player remoteData;
     //public PlayerController playerControllerClass;
 
-    //private PlayerController pc;
+    protected PlayerCamera playerCamera;
 
     public override void Awake()
     {
@@ -230,6 +230,18 @@ public class PlayerShip : Ship
 
         }
         #endregion
+    }
+    #endregion
+
+    #region GetSet
+    public void SetPlayerCamera(PlayerCamera playerCamera)
+    {
+        this.playerCamera = playerCamera;
+    }
+
+    public PlayerCamera GetPlayerCamera()
+    {
+        return playerCamera;
     }
     #endregion
 }

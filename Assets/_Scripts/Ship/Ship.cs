@@ -38,8 +38,6 @@ public class Ship : MyMonoBehaviour
     protected LevelSoundManager levelSoundManager;
     protected AISoundManager aiSoundManager;
 
-
-
     // Collectables
     public Collectable collectableItemClass;
     public int itemAmount;

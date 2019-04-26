@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
             ManageThrust(horizontalInput, verticalInput, forwardFactor);
 
             // Camera distance
-            ManageCamera(verticalInput);
+            //ManageCamera(verticalInput);
         }
         else
         {

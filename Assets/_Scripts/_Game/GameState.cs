@@ -113,6 +113,7 @@ public class GameState : LevelSingleton<GameState>
         // Camera reference for the PC
         PlayerController playerController = playerShip.gameObject.GetComponent<PlayerController>();
         playerController.SetPlayerCamera(camera);
+        playerShip.SetPlayerCamera(camera);
 
         // Add to list
         players.Add(PhotonNetwork.LocalPlayer, playerShip);

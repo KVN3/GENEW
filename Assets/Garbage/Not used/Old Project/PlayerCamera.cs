@@ -3,84 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerCamera : MyMonoBehaviour
 {
-    //public PlayerShip player;
-    //private Vector3 offset;
-
-    //float distance;
-    //Vector3 playerPrevPos, playerMoveDir;
-
-    //// Use this for initialization
-    //void Start()
-    //{
-    //    offset = transform.position - new Vector3(player.transform.position.x, 10f, player.transform.position.z);
-
-    //    distance = offset.magnitude;
-    //    playerPrevPos = new Vector3(player.transform.position.x, 5f, player.transform.position.z);
-    //}
-
-    //void LateUpdate()
-    //{
-    //    Vector3 playerPos = new Vector3(player.transform.position.x, 5f, player.transform.position.z);
-
-    //    playerMoveDir = playerPos - playerPrevPos;
-
-    //    if (playerMoveDir != Vector3.zero)
-    //    {
-    //        playerMoveDir.Normalize();
-    //        transform.position = playerPos - playerMoveDir * distance;
-
-    //        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
-    //        transform.LookAt(playerPos);
-
-    //        playerPrevPos = playerPos;
-    //    }
-    //}
-
-
-
     public PlayerShip target;
     public float damping = 1;
 
-    public float minOffsetX = 8f;
+    public float minOffsetX = 3f;
     public float maxOffsetX = 14f;
 
     private Vector3 offset;
-    private float angleZ;
+    private float angleZ = 60f;
 
     void Start()
     {
         //basePos = this.transform;
-        offset = new Vector3(8f, -17f, 0f);
-        angleZ = 45f;
+        offset = new Vector3(minOffsetX, -17f, 0f);
     }
 
     void LateUpdate()
     {
-        //float currentSpeed = target.components.movement.GetCurrentSpeed();
-
-        //if (currentSpeed > 10)
-        //{
-        //    if (offset.x < 14f)
-        //    {
-        //        offset.x += .05f;
-        //        angleZ -= 0.1f;
-        //    }
-
-        //}
-        //else
-        //{
-        //    if (offset.x > 8f)
-        //    {
-        //        offset.x -= .05f;
-        //        angleZ += 0.1f;
-        //    }
-
-        //}
-
         float currentAngle = transform.eulerAngles.y;
         float desiredAngle = target.transform.eulerAngles.y;
 
@@ -101,8 +42,8 @@ public class PlayerCamera : MyMonoBehaviour
     {
         if (offset.x < 14f)
         {
-            offset.x += .05f;
-            angleZ -= 0.1f;
+            offset.x += factorOffsetX;
+            angleZ -= factorAngleZ;
         }
     }
 
@@ -110,8 +51,32 @@ public class PlayerCamera : MyMonoBehaviour
     {
         if (offset.x > 8f)
         {
-            offset.x -= .05f;
-            angleZ += 0.1f;
+            offset.x -= factorOffsetX;
+            angleZ += factorAngleZ;
+        }
+    }
+
+    public void ActivateBoostedCamera()
+    {
+        StartCoroutine(BoostedCamera());
+    }
+
+    private IEnumerator BoostedCamera()
+    {
+        int totalIterations = 20;
+        float factorOffsetX = 5f / totalIterations;
+        float factorAngleZ = 10f / totalIterations;
+
+        for (int i = 0; i < totalIterations; i++)
+        {
+            IncreaseDistance(factorOffsetX, factorAngleZ);
+            yield return new WaitForSeconds(1f / totalIterations);
+        }
+
+        for (int i = 0; i < totalIterations; i++)
+        {
+            DecreaseDistance(factorOffsetX, factorAngleZ);
+            yield return new WaitForSeconds(1f / totalIterations);
         }
     }
 }

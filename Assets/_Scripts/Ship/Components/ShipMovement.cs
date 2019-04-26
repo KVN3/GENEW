@@ -30,7 +30,9 @@ public class ShipMovement : ShipComponent
     public ShipMovementConfig config;
 
     [SerializeField]
-    protected GameObject windTrailsObject;
+    private GameObject windTrailsObject;
+
+    private PlayerCamera playerCamera;
 
     // Run data
     private float currentSpeed;
@@ -48,6 +50,12 @@ public class ShipMovement : ShipComponent
     {
         currentMaxSpeed = config.baseMaxSpeed;
         InitFloatSettings();
+
+        if (parentShip is PlayerShip)
+        {
+            PlayerShip playerShip = (PlayerShip)parentShip;
+            playerCamera = playerShip.GetPlayerCamera();
+        }
     }
 
     public void Update()
@@ -311,6 +319,11 @@ public class ShipMovement : ShipComponent
     // Activates speed boost based on passed along values
     public void ActivateSpeedBoost(float maxSpeedIncrease, float boostFactor, float boostDuration)
     {
+        if(playerCamera != null)
+        {
+            playerCamera.ActivateBoostedCamera();
+        }
+
         shipSoundManager.PlaySound(SoundType.SPEEDBOOST);
         StartCoroutine(ApplySpeedBoost(maxSpeedIncrease, boostFactor, boostDuration));
     }

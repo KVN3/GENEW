@@ -26004,11 +26004,11 @@ GameObject:
   - component: {fileID: 1992108869}
   - component: {fileID: 1992108868}
   - component: {fileID: 1992108867}
-  - component: {fileID: 1992108866}
   - component: {fileID: 1992108865}
   - component: {fileID: 1992108864}
   - component: {fileID: 1992108863}
   - component: {fileID: 1992108862}
+  - component: {fileID: 3078730305802076094}
   m_Layer: 0
   m_Name: Player Ship Singleplayer With Trails
   m_TagString: Ship
@@ -26108,19 +26108,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.5, y: 1.6, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &1992108866
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992108861}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 4.5}
-  m_Center: {x: 0, y: 0, z: -4.3}
 --- !u!114 &1992108865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26200,6 +26187,14 @@ MonoBehaviour:
     firstPersonCamera: {fileID: 0}
     thirdPersonCamera: {fileID: 0}
   useAccelerometerControls: 0
+--- !u!81 &3078730305802076094
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992108861}
+  m_Enabled: 1
 --- !u!1 &1996998182
 GameObject:
   m_ObjectHideFlags: 0
@@ -26637,7 +26632,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1992108868}
   damping: 1
-  basePos: {fileID: 0}
+  minOffsetX: 8
+  maxOffsetX: 14
 --- !u!1 &2079555787
 GameObject:
   m_ObjectHideFlags: 0
