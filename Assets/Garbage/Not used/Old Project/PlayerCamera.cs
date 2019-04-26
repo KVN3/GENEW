@@ -59,9 +59,6 @@ public class PlayerCamera : MyMonoBehaviour
 
         Quaternion rotation = Quaternion.Euler(0, angle + 90f, 45);
         Vector3 thisPos = target.transform.position - (rotation * offset);
-        //thisPos.y = thisPos.y + 20;
-        //thisPos.z = thisPos.z + 20;
-        //thisPos.x += 10;
 
         transform.position = thisPos;
 
