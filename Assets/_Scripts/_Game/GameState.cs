@@ -99,23 +99,27 @@ public class GameState : LevelSingleton<GameState>
         Debug.Log("Spawning local player...");
         LocalSpawnPoint playerStart = playerStarts[index];
 
-        PlayerShip player = PhotonNetwork.Instantiate(playerClass.name, playerStart.transform.position, playerStart.transform.rotation).GetComponent<PlayerShip>();
+        PlayerShip playerShip = PhotonNetwork.Instantiate(playerClass.name, playerStart.transform.position, playerStart.transform.rotation).GetComponent<PlayerShip>();
 
-        //UIManager
+        // UIManager
         UIManager UIManager = Instantiate(gameManagers.UIManagerClass);
-        UIManager.playerShip = player;
+        UIManager.playerShip = playerShip;
         UIManager.playerCount = players.Count;
 
-        //Spawn(cameraClass, (PlayerCamera camera) =>
-        //{
-        //    camera.target = player;
-        //});
+        // Spawn camera
+        PlayerCamera camera = Spawn(cameraClass);
+        camera.target = playerShip;
 
-        players.Add(PhotonNetwork.LocalPlayer, player);
+        // Camera reference for the PC
+        PlayerController playerController = playerShip.gameObject.GetComponent<PlayerController>();
+        playerController.SetPlayerCamera(camera);
 
+        // Add to list
+        players.Add(PhotonNetwork.LocalPlayer, playerShip);
+
+        // Temp SP
         PlayerShip[] playersLocal = new PlayerShip[1];
-
-        playersLocal[0] = player;
+        playersLocal[0] = playerShip;
 
         // Spawn Point Manager
         SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
@@ -129,7 +133,7 @@ public class GameState : LevelSingleton<GameState>
         moverManager.SetPlayers(playersLocal);
         moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
 
-        return player;
+        return playerShip;
     }
 
     private IEnumerator UpdatePlayerList()
