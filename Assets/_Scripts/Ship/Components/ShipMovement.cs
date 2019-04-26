@@ -20,12 +20,17 @@ public struct ShipMovementConfig
     public float maxDrag;
 
     public float initialSlowDownFactor;
+
+    public float trailActivationSpeed;
 }
 
 public class ShipMovement : ShipComponent
 {
     public ShipFloatConfig floatConfig;
     public ShipMovementConfig config;
+
+    [SerializeField]
+    protected GameObject windTrailsObject;
 
     // Run data
     private float currentSpeed;
@@ -44,6 +49,21 @@ public class ShipMovement : ShipComponent
         currentMaxSpeed = config.baseMaxSpeed;
         InitFloatSettings();
     }
+
+    public void Update()
+    {
+        //Debug.Log("Currentspeed: " + currentSpeed);
+
+        if (currentSpeed > config.trailActivationSpeed)
+        {
+            windTrailsObject.SetActive(true);
+        }
+        else
+        {
+            windTrailsObject.SetActive(false);
+        }
+    }
+
 
     #region Movement
     public void Move(Vector3 force, float verticalInput, float horizontalInput)
@@ -287,34 +307,35 @@ public class ShipMovement : ShipComponent
     #endregion
 
     #region ItemActions
+
+    // Activates speed boost based on passed along values
     public void ActivateSpeedBoost(float maxSpeedIncrease, float boostFactor, float boostDuration)
     {
         shipSoundManager.PlaySound(SoundType.SPEEDBOOST);
         StartCoroutine(ApplySpeedBoost(maxSpeedIncrease, boostFactor, boostDuration));
     }
 
+    // Temporarily applies speed boost to ship
     private IEnumerator ApplySpeedBoost(float maxSpeedIncrease, float boostFactor, float boostDuration)
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
 
         // Increase max speed & set boost color
         currentMaxSpeed += maxSpeedIncrease;
-        parentShip.components.engines.middleEngine.SetBoostColor();
-        parentShip.components.engines.leftEngine.SetBoostColor();
-        parentShip.components.engines.rightEngine.SetBoostColor();
-        
+        parentShip.components.engines.SetBoosted(true);
+
+        // Speed boost
         Vector3 newVelocity = new Vector3(rb.velocity.x * boostFactor, rb.velocity.y, rb.velocity.z * boostFactor);
         rb.velocity = newVelocity;
 
+        // Wait boostDuration seconds
         yield return new WaitForSeconds(boostDuration);
 
         // Restore max speed & restore color
         currentMaxSpeed -= maxSpeedIncrease;
-        parentShip.components.engines.middleEngine.RestoreColor();
-        parentShip.components.engines.leftEngine.RestoreColor();
-        parentShip.components.engines.rightEngine.RestoreColor();
+        parentShip.components.engines.SetBoosted(false);
     }
 
-
+    //TO DO: OFF AFTER ON SETBOOSTED ENGINES
     #endregion
 }

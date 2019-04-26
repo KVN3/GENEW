@@ -65,7 +65,7 @@ public class GameState : LevelSingleton<GameState>
 
             // Spawn the local player - BAD SOLUTION
             int index = PhotonNetwork.PlayerList.Length; // - 1 to fix for mp
-            //SpawnLocalPlayer(index);
+            SpawnLocalPlayer(index);
 
             // Update player list
             StartCoroutine(UpdatePlayerList());
