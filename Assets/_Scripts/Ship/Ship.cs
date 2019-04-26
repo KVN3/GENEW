@@ -68,6 +68,7 @@ public class Ship : MyMonoBehaviour
 
     public virtual void Start()
     {
+
     }
 
     public void UseItem()

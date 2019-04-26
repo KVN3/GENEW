@@ -514,7 +514,7 @@ GameObject:
   - component: {fileID: 1672387821}
   - component: {fileID: 1672387820}
   m_Layer: 5
-  m_Name: SingleplayerText
+  m_Name: ReturnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,7 +529,7 @@ RectTransform:
   m_GameObject: {fileID: 1672387818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6770139, y: 1, z: 1}
+  m_LocalScale: {x: 1.002938, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1846844050}
   m_RootOrder: 0
@@ -691,7 +691,7 @@ RectTransform:
   m_GameObject: {fileID: 1781977491}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4770757, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1.4770757, y: 1, z: 1}
   m_Children:
   - {fileID: 70023623}
   m_Father: {fileID: 8135590540262077959}
@@ -853,7 +853,7 @@ RectTransform:
   m_GameObject: {fileID: 1846844049}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4770759, y: 1, z: 1}
+  m_LocalScale: {x: 0.99707055, y: 1, z: 1}
   m_Children:
   - {fileID: 1672387819}
   m_Father: {fileID: 3412610603145279418}
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleText: {fileID: 4012942070922065205}
   SingleplayerText: {fileID: 3580565088966556824}
-  OptionsText: {fileID: 0}
+  EditShipText: {fileID: 70023624}
   VersionText: {fileID: 4012942069786850813}
 --- !u!114 &874264669347109769
 MonoBehaviour:
@@ -3150,7 +3150,7 @@ RectTransform:
   m_GameObject: {fileID: 2684598108128207364}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3866, y: 1.3866, z: 1.3866}
   m_Children:
   - {fileID: 6553925271795433345}
   m_Father: {fileID: 3412610603145279418}
@@ -3158,7 +3158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: -211}
+  m_AnchoredPosition: {x: -0.000061035156, y: -192}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4942779299242772858
@@ -3825,9 +3825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TitleText: {fileID: 1784389662738090090}
   PlayText: {fileID: 874264669347109769}
-  RedText: {fileID: 0}
-  BlueText: {fileID: 0}
-  GreenText: {fileID: 0}
+  BackText: {fileID: 1672387820}
   VersionText: {fileID: 1501042526441603404}
 --- !u!224 &8305299193760243402
 RectTransform:

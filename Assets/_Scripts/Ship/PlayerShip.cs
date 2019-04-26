@@ -14,6 +14,7 @@ public struct PlayerRunData
     public TimeSpan raceTime;
     public TimeSpan bestRaceTime;
     public TimeSpan totalTime;
+    public List<TimeSpan> leaderboardTimes;
 
     public int currentPos;
 
@@ -26,9 +27,17 @@ public struct PlayerRunData
 
     public bool raceFinished;
 
+    // Replay data
+    public List<float> positionsX;
+    public List<float> positionsY;
+    public List<float> positionsZ;
+    public List<Quaternion> replayQuaternions;
+    public List<Vector3> replayPosition;
+
+
     // Extra
     public float charges;
-    public float score;
+    //public float score;
 }
 #endregion
 
@@ -56,6 +65,7 @@ public class PlayerShip : Ship
         base.Start();
 
         InitRaceData();
+        StartCoroutine(SubstractScore());
     }
     #endregion
 
@@ -64,7 +74,7 @@ public class PlayerShip : Ship
         if (GetComponent<PhotonView>().IsMine)
         {
             if (!runData.raceFinished && RaceManager.raceStarted)
-                runData.raceTime = runData.raceTime.Add(System.TimeSpan.FromSeconds(1 * Time.deltaTime));
+                runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
 
             //if (Input.GetKeyDown(KeyCode.Space))
             //{
@@ -78,16 +88,31 @@ public class PlayerShip : Ship
             //    Debug.Log("Button");
             //}
         }
+
+        runData.positionsX.Add(transform.position.x);
+        runData.positionsY.Add(transform.position.y);
+        runData.positionsZ.Add(transform.position.z);
+        runData.replayQuaternions.Add(transform.rotation);
+}
+
+    IEnumerator SubstractScore()
+    {
+        while (true && !runData.raceFinished)
+        {
+            yield return new WaitForSeconds(1);
+        }
     }
 
     private void InitRaceData()
     {
         // Set currentlap, maxlaps, timer, pos
         runData.currentLap = 0;
-        runData.maxLaps = 2; // Should be configurable by variable
+        runData.maxLaps = 1; // Should be configurable by variable
         runData.raceTime = TimeSpan.Parse("00:00:00.000");
         //runData.bestRaceTime = TimeSpan.Parse("00:01:47.222");
         runData.raceTimes = new List<TimeSpan>();
+        // if PlayerPrefs.HasKey(leaderboard) { }
+        runData.leaderboardTimes = new List<TimeSpan>();
         runData.currentPos = 1;
 
         // Prevents cheating times
@@ -96,6 +121,12 @@ public class PlayerShip : Ship
         // Guidance
         runData.isWrongWay = false;
         runData.isLastLap = false;
+
+        // Replay data
+        runData.positionsX = new List<float>();
+        runData.positionsY = new List<float>();
+        runData.positionsZ = new List<float>();
+        runData.replayQuaternions = new List<Quaternion>();
     }
 
     #region Collisions and Triggers
@@ -137,6 +168,21 @@ public class PlayerShip : Ship
             {
                 Debug.Log("playerShip Finished");
                 levelSoundManager.PlaySound(SoundType.VICTORY);
+
+                foreach (TimeSpan time in runData.raceTimes)
+                    runData.totalTime += time;
+
+                runData.leaderboardTimes.Add(runData.bestRaceTime);
+
+                // Save replay
+                float[] arrayX = runData.positionsX.ToArray();
+                float[] arrayY = runData.positionsY.ToArray();
+                float[] arrayZ = runData.positionsZ.ToArray();
+                Quaternion[] arrayQ = runData.replayQuaternions.ToArray();
+                PlayerPrefsX.SetFloatArray("ReplayX", arrayX);
+                PlayerPrefsX.SetFloatArray("ReplayY", arrayY);
+                PlayerPrefsX.SetFloatArray("ReplayZ", arrayZ);
+                PlayerPrefsX.SetQuaternionArray("ReplayQ", arrayQ);
 
                 runData.raceFinished = true;
             }

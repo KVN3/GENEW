@@ -58,7 +58,12 @@ public class UIPanel : UIBehaviour
 
     [Header("RaceEndScreen")]
     public TextMeshProUGUI raceEndScreenText;
+    public TextMeshProUGUI lapTimesTitle;
     public TextMeshProUGUI raceTimesText;
+    public TextMeshProUGUI endTimeText;
+    public TextMeshProUGUI leaderboardText;
+    public TextMeshProUGUI leaderboardTimeText;
+
 
     [Header("RaceStartScreen")]
     public TextMeshProUGUI countDownText;
@@ -169,6 +174,7 @@ public class UIPanel : UIBehaviour
             item.sprite = playerShip.GetItem().sprite;
             itemAmount.text = playerShip.GetItemAmount().ToString();
 
+            // Determine item for explanation
             if (playerShip.GetItem().GetType() == typeof(JammerMine))
                 itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_MINE");
             else if (playerShip.GetItem().GetType() == typeof(JammerProjectile))
@@ -209,8 +215,20 @@ public class UIPanel : UIBehaviour
                 builder.Append(LocalizationManager.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
             }
             builder.AppendLine().Append(LocalizationManager.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
-
             raceTimesText.text = builder.ToString();
+
+            lapTimesTitle.text = LocalizationManager.GetTextByKey("LAP_TIMES");
+            endTimeText.text = LocalizationManager.GetTextByKey("TOTAL_TIME") + ": " + pd.totalTime.ToString(@"mm\:ss\.ff");
+
+            leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
+
+            StringBuilder builder2 = new StringBuilder();
+            for (int i = 0; i < pd.leaderboardTimes.Count; i++)
+            {
+                builder2.Append(LocalizationManager.GetTextByKey("USER")).Append(": ").Append(pd.leaderboardTimes[i].ToString(@"mm\:ss\.ff")).AppendLine();
+                
+            }
+            leaderboardTimeText.text = builder2.ToString();
             escText.text = LocalizationManager.GetTextByKey("ESC_TO_QUIT");
             retryText.text = LocalizationManager.GetTextByKey("R_TO_RESTART");
         }
@@ -224,4 +242,4 @@ public class UIPanel : UIBehaviour
     }
 }
 
-// TODO: FLEXIBLE PANEL CREATING WITH TIMER/AUTODESTROY
+// TODO: FLEXIBLE PANEL CREATING WITH Coroutine/AUTODESTROY

@@ -183,9 +183,8 @@ MonoBehaviour:
   aiSoundManagerClass: {fileID: 764324233374814798, guid: de1886c4edc50df408b54c9f429f34a5,
     type: 3}
   spark: {fileID: 170378318584685716}
-  collectableItemClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-    type: 3}
-  itemAmount: 100
+  collectableItemClass: {fileID: 0}
+  itemAmount: 0
   runData:
     currentLap: 0
     maxLaps: 3
@@ -196,8 +195,11 @@ MonoBehaviour:
     raceStarted: 0
     isLastLap: 0
     raceFinished: 0
+    positionsX: []
+    positionsY: []
+    positionsZ: []
+    replayPosition: []
     charges: 0
-    score: 0
 --- !u!65 &170378318584686008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -702,7 +704,7 @@ Transform:
 --- !u!199 &170378318584686066
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5940,7 +5942,7 @@ Transform:
 --- !u!199 &170378318584686067
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -11158,7 +11160,7 @@ Transform:
 --- !u!199 &170378318584686065
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -20818,7 +20820,7 @@ ParticleSystem:
 --- !u!199 &170378318584686064
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

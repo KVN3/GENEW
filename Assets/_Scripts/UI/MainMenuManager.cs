@@ -13,12 +13,12 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     [Header("Text")]
     public TextMeshProUGUI TitleText;
     public TextMeshProUGUI SingleplayerText;
-    public TextMeshProUGUI OptionsText;
+    public TextMeshProUGUI EditShipText;
     public TextMeshProUGUI VersionText;
 
     //private MenuSoundManager menuSoundManager;
 
-    new void Awake()
+    protected override void Awake()
     {
         // menuSoundManager = Instantiate(menuSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
     }
@@ -26,12 +26,9 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     // Start is called before the first frame update
     void Update()
     {
-        if (SceneManager.GetActiveScene().name.Equals("Main Menu"))
-        {
-            TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
-            SingleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
-            //OptionsText.text = LocalizationManager.GetTextByKey("OPTIONS");
-            VersionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 1";
-        }
+        TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
+        SingleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
+        EditShipText.text = LocalizationManager.GetTextByKey("EDIT_SHIP");
+        VersionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 1";
     }
 }

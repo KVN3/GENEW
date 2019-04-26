@@ -21,14 +21,17 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         #region Dutch
         // Menutext
         NLDict.Add("MAIN_MENU", "HOOFDMENU");
+        NLDict.Add("SHIPYARD", "Scheepswerf");
         NLDict.Add("PLAY","Start");
-        NLDict.Add("SINGLEPLAYER", "Solospel");
-        NLDict.Add("MULTIPLAYER", "Meerdere spelers");
+        NLDict.Add("SINGLEPLAYER", "Singleplayer");
+        NLDict.Add("MULTIPLAYER", "Multiplayer");
         NLDict.Add("LEVEL", "Level");
         NLDict.Add("OPTIONS", "Opties");
         NLDict.Add("MUSIC", "Muziek");
         NLDict.Add("SOUND", "Geluid");
         NLDict.Add("SHIPCOLOR", "Schipkleur");
+        NLDict.Add("EDIT_SHIP", "Bewerk schip");
+        NLDict.Add("RETURN", "Terug");
         NLDict.Add("ON", "AAN");
         NLDict.Add("OFF", "UIT");
         NLDict.Add("CREATE_LOBBY", "Creëer lobby");
@@ -61,23 +64,28 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("WRONG_WAY", "VERKEERDE RICHTING");
         NLDict.Add("FINAL_LAP", "LAATSTE RONDE");
         NLDict.Add("E_TO_USE_ITEM", "Druk 'E' om voorwerp te gebruiken");
-        NLDict.Add("USE_ITEM_MINE", "Druk 'E' om een verlammende mine te gooien");
+        NLDict.Add("USE_ITEM_MINE", "Druk 'E' om een verlammende mine te plaatsen");
         NLDict.Add("USE_ITEM_MISSILE", "Druk 'E' om een verlammend projectiel te schieten");
         NLDict.Add("USE_ITEM_SMOKE", "Druk 'E' om een rookbom te laten vallen");
-        NLDict.Add("USE_ITEM_BOOST", "Druk 'E' om booster item te gebruiken");
-        NLDict.Add("USE_ITEM_BARRIER", "Druk 'E' om barrier item te gebruiken");
+        NLDict.Add("USE_ITEM_BOOST", "Druk 'E' om speed burst item te gebruiken");
+        NLDict.Add("USE_ITEM_BARRIER", "Druk 'E' om forcefield item te gebruiken");
 
+        // End screen
         NLDict.Add("RACE_RESULTS", "RACE RESULTATEN");
-        
+        NLDict.Add("LAP_TIMES", "Rondetijden");
         NLDict.Add("BEST_LAPTIME", "Beste rondetijd");
         NLDict.Add("BEST_TIME", "Beste tijd");
         NLDict.Add("TOTAL_TIME", "Totale tijd");
+        NLDict.Add("LEADERBOARD", "Leaderboard");
+        NLDict.Add("TIME", "Tijd");
+        NLDict.Add("USER", "Gebruiker");
         #endregion
 
         #region English
 
         // Menutext
         ENDict.Add("MAIN_MENU", "MAIN MENU");
+        ENDict.Add("SHIPYARD", "Shipyard");
         ENDict.Add("PLAY", "Play");
         ENDict.Add("SINGLEPLAYER", "Singleplayer");
         ENDict.Add("MULTIPLAYER", "Multiplayer");
@@ -88,6 +96,8 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("ON", "ON");
         ENDict.Add("OFF", "OFF");
         ENDict.Add("SHIPCOLOR", "Shipcolor");
+        ENDict.Add("EDIT_SHIP", "Edit ship");
+        ENDict.Add("RETURN", "Return");
         ENDict.Add("JOIN_LOBBY", "Join lobby");
         ENDict.Add("CREATE_LOBBY", "Create lobby");
         ENDict.Add("EXIT_LOBBY", "Leave lobby");
@@ -120,18 +130,22 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
 
         // Items
         ENDict.Add("E_TO_USE_ITEM", "Press 'E' to use item");
-        ENDict.Add("USE_ITEM_MINE", "Press 'E' to throw a jammer mine");
+        ENDict.Add("USE_ITEM_MINE", "Press 'E' to place a jammer mine");
         ENDict.Add("USE_ITEM_MISSILE", "Press 'E' to shoot jammer projectile");
         ENDict.Add("USE_ITEM_SMOKE", "Press 'E' to drop a smoke bomb");
-        ENDict.Add("USE_ITEM_BOOST", "Press 'E' to use boost item");
-        ENDict.Add("USE_ITEM_BARRIER", "Press 'E' to use barrier item");
+        ENDict.Add("USE_ITEM_BOOST", "Press 'E' to use speedburst item");
+        ENDict.Add("USE_ITEM_BARRIER", "Press 'E' to use forcefield item");
 
 
         // End screen
         ENDict.Add("RACE_RESULTS", "RACE RESULTS");
+        ENDict.Add("LAP_TIMES", "Lap times");
         ENDict.Add("BEST_LAPTIME", "Best laptime");
         ENDict.Add("BEST_TIME", "Best time");
         ENDict.Add("TOTAL_TIME", "Total time");
+        ENDict.Add("LEADERBOARD", "Leaderboard");
+        ENDict.Add("TIME", "Time");
+        ENDict.Add("USER", "User");
 
         #endregion
     }
