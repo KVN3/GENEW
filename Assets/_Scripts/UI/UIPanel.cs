@@ -112,8 +112,6 @@ public class UIPanel : UIBehaviour
 
     void Update()
     {
-        // Can also use .SetActive instead of Alpha
-
         PlayerRunData pd = playerShip.runData;
 
         #region In-GameUI
