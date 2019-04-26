@@ -198,6 +198,7 @@ MonoBehaviour:
     positionsX: []
     positionsY: []
     positionsZ: []
+    replayQuaternions: []
     replayPosition: []
     charges: 0
 --- !u!65 &170378318584686008
@@ -704,7 +705,7 @@ Transform:
 --- !u!199 &170378318584686066
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5942,7 +5943,7 @@ Transform:
 --- !u!199 &170378318584686067
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -11160,7 +11161,7 @@ Transform:
 --- !u!199 &170378318584686065
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -20820,7 +20821,7 @@ ParticleSystem:
 --- !u!199 &170378318584686064
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -21142,9 +21143,9 @@ MonoBehaviour:
   config:
     movementSpeedFactor: 40000
     rotationSpeedFactor: 2
-    baseMaxSpeed: 120
+    baseMaxSpeed: 250
     minDrag: 0.3
-    maxDrag: 3
+    maxDrag: 1.5
     initialSlowDownFactor: 0.01
 --- !u!1 &170378318584685503
 GameObject:
