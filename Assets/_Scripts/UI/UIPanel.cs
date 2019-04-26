@@ -117,7 +117,7 @@ public class UIPanel : UIBehaviour
         #region In-GameUI
 
         // Laps
-        lapText.text = LocalizationManager.GetTextByKey("LAP");
+        lapText.text = LocalizationManager.GetTextByKey("LAP")+": ";
         currentLapText.text = pd.currentLap.ToString();
         lapSeperatorText.text = "/";
         lastLapText.text = pd.maxLaps.ToString();
@@ -129,14 +129,20 @@ public class UIPanel : UIBehaviour
         lastPosText.text = PlayerCount.ToString();
 
         // Race Time
-        raceTimeText.text = LocalizationManager.GetTextByKey("CURRENT_TIME") + " - " + pd.raceTime.ToString(@"mm\:ss\.ff");
+        raceTimeText.text = pd.raceTime.ToString(@"mm\:ss\.ff");
 
         // Best race time
-        bestTimeText.text = LocalizationManager.GetTextByKey("BEST") + " - ";
+        bestTimeText.text = LocalizationManager.GetTextByKey("BEST") + ": ";
         if (pd.bestRaceTime == TimeSpan.Parse("00:00:00.000"))
             bestRaceTimeText.text = "--.---";
         else
             bestRaceTimeText.text = pd.bestRaceTime.ToString(@"mm\:ss\.ff");
+
+        //if (pd.hasNewBestTime)
+        //{
+        //    StartCoroutine(ChangeColorAndBlink(bestRaceTimeText));
+        //    pd.hasNewBestTime = false;
+        //}
 
         // Speed
         if (playerShip.components.movement.GetCurrentSpeed() > 1f)
@@ -237,6 +243,16 @@ public class UIPanel : UIBehaviour
         countDownText.text = countDownController.CountDownText;
 
         #endregion
+
+        //IEnumerator ChangeColorAndBlink(TextMeshProUGUI Text)
+        //{
+        //    Color originalColor = Text.color;
+
+        //        Text.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+        //        yield return new WaitForSeconds(0.8f);
+        //        Text.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1);
+        //        yield return new WaitForSeconds(0.8f);
+        //}
     }
 }
 

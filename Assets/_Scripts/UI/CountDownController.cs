@@ -6,7 +6,6 @@ public class CountDownController : MonoBehaviour
 {
     public int CountDown { get; set; }
     public string CountDownText { get; set; }
-    PlayerShip playerShip;
 
     // Start is called before the first frame update
     void Start()
