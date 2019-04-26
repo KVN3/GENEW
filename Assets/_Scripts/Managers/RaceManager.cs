@@ -12,7 +12,9 @@ public class RaceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(countDownController, transform);
+        // TO DO: boolean use count down or not for testing
+        //Instantiate(countDownController, transform);
 
+        raceStarted = true;
     }
 }
