@@ -23,6 +23,7 @@ public struct PlayerRunData
     public bool isOverHalfway;
     public bool isWrongWay;
     public bool raceStarted;
+    public bool hasNewBestTime;
     public bool isLastLap;
 
     public bool raceFinished;
@@ -111,7 +112,6 @@ public class PlayerShip : Ship
         runData.raceTime = TimeSpan.Parse("00:00:00.000");
         //runData.bestRaceTime = TimeSpan.Parse("00:01:47.222");
         runData.raceTimes = new List<TimeSpan>();
-        // if PlayerPrefs.HasKey(leaderboard) { }
         runData.leaderboardTimes = new List<TimeSpan>();
         runData.currentPos = 1;
 
@@ -121,6 +121,7 @@ public class PlayerShip : Ship
         // Guidance
         runData.isWrongWay = false;
         runData.isLastLap = false;
+        runData.hasNewBestTime = false;
 
         // Replay data
         runData.positionsX = new List<float>();
@@ -157,11 +158,17 @@ public class PlayerShip : Ship
 
                 // Update best time if not set (00:00:00)
                 if (runData.bestRaceTime == TimeSpan.Parse("00:00:00"))
+                {
                     runData.bestRaceTime = runData.raceTime;
+                    runData.hasNewBestTime = true;
+                }
 
                 // Else update best time if current time is faster
                 else if (runData.raceTime < runData.bestRaceTime)
+                {
                     runData.bestRaceTime = runData.raceTime;
+                    runData.hasNewBestTime = true;
+                }
             }
             // If finished
             if (runData.currentLap == runData.maxLaps && runData.isOverHalfway) // 3/3 laps + finish
