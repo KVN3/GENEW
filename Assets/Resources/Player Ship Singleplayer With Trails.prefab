@@ -26044,7 +26044,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992108861}
   serializedVersion: 2
-  m_Mass: 20
+  m_Mass: 500
   m_Drag: 5
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -26077,8 +26077,9 @@ MonoBehaviour:
   aiSoundManagerClass: {fileID: 764324233374814798, guid: de1886c4edc50df408b54c9f429f34a5,
     type: 3}
   spark: {fileID: 573697276}
-  collectableItemClass: {fileID: 0}
-  itemAmount: 0
+  collectableItemClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
+    type: 3}
+  itemAmount: 100
   runData:
     currentLap: 0
     maxLaps: 3
@@ -26087,6 +26088,7 @@ MonoBehaviour:
     isOverHalfway: 0
     isWrongWay: 0
     raceStarted: 0
+    hasNewBestTime: 0
     isLastLap: 0
     raceFinished: 0
     positionsX: []
@@ -26336,7 +26338,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7896335399254197966}
   m_Father: {fileID: 1133624035}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26354,9 +26357,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.2
-    floatSpeed: 20
+    floatSpeed: 300
+    baseHeightFromGround: 5
   config:
-    movementSpeedFactor: 80000
+    movementSpeedFactor: 2700000
     rotationSpeedFactor: 2
     baseMaxSpeed: 250
     minDrag: 0.3
@@ -26364,6 +26368,7 @@ MonoBehaviour:
     initialSlowDownFactor: 0.01
     trailActivationSpeed: 150
   windTrailsObject: {fileID: 1476923308}
+  groundSensor: {fileID: 7006620231744678423}
 --- !u!1 &2003185622
 GameObject:
   m_ObjectHideFlags: 0
@@ -26743,6 +26748,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &7006620231744678423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7896335399254197966}
+  m_Layer: 0
+  m_Name: Ground Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7896335399254197966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7006620231744678423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: -4.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2002469200}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &360013205
 PrefabInstance:
   m_ObjectHideFlags: 0

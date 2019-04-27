@@ -16,28 +16,27 @@ public class PlayerCamera : MyMonoBehaviour
 
     void Start()
     {
-        //basePos = this.transform;
         offset = new Vector3(minOffsetX, -17f, 0f);
     }
 
     void LateUpdate()
     {
+        // Get the angle from current and desired
         float currentAngle = transform.eulerAngles.y;
         float desiredAngle = target.transform.eulerAngles.y;
-
         float angle = Mathf.LerpAngle(currentAngle, desiredAngle, Time.deltaTime * damping);
 
+        // Rotation difference
         Quaternion rotation = Quaternion.Euler(0, angle + 90f, angleZ);
-        Debug.Log(angleZ);
 
+        // Sets the new position based on player movement and rotation
+        transform.position = target.transform.position - (rotation * offset);
 
-        Vector3 thisPos = target.transform.position - (rotation * offset);
-
-        transform.position = thisPos;
-
+        // Rotate the camera to keep looking at the player
         transform.LookAt(target.transform);
     }
 
+    // Moves the camera further away from the player
     public void IncreaseDistance(float factorOffsetX, float factorAngleZ)
     {
         if (offset.x < 14f)
@@ -47,6 +46,7 @@ public class PlayerCamera : MyMonoBehaviour
         }
     }
 
+    // Brings the camera closer to the player
     public void DecreaseDistance(float factorOffsetX, float factorAngleZ)
     {
         if (offset.x > 8f)
@@ -56,11 +56,13 @@ public class PlayerCamera : MyMonoBehaviour
         }
     }
 
+    // Starts the boost camera effect coroutine
     public void ActivateBoostedCamera()
     {
         StartCoroutine(BoostedCamera());
     }
 
+    // Gradually moves the camera away from the player, before returning to its average original position
     private IEnumerator BoostedCamera()
     {
         int totalIterations = 20;
