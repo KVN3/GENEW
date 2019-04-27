@@ -172,16 +172,19 @@ public class PlayerShip : Ship
                 foreach (TimeSpan time in runData.raceTimes)
                     runData.totalTime += time;
 
-                // Leaderboard
-                runData.leaderboardTimes.Add(runData.bestRaceTime);
+                HighscoreManager highscoreManager = new HighscoreManager();
+                highscoreManager.AddHighscoreEntry(Environment.UserName, runData.bestRaceTime.ToString());
 
-                if (!PlayerPrefs.HasKey("Highscore"))
-                    PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
-                else
-                {
-                    if (TimeSpan.Parse(PlayerPrefs.GetString("Highscore")) > runData.bestRaceTime)
-                        PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
-                }
+                // Leaderboard
+                //runData.leaderboardTimes.Add(runData.bestRaceTime);
+
+                //if (!PlayerPrefs.HasKey("Highscore"))
+                //    PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
+                //else
+                //{
+                //    if (TimeSpan.Parse(PlayerPrefs.GetString("Highscore")) > runData.bestRaceTime)
+                //        PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
+                //}
 
                 // Save replay
                 SaveReplay();
