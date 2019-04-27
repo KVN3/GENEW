@@ -20,6 +20,7 @@ public class UIPanel : UIBehaviour
     public TextMeshProUGUI lastLapText;
 
     [Header("Time text")]
+    public TextMeshProUGUI currentText;
     public TextMeshProUGUI raceTimeText;
     public TextMeshProUGUI bestTimeText;
     public TextMeshProUGUI bestRaceTimeText;
@@ -129,14 +130,15 @@ public class UIPanel : UIBehaviour
         lastPosText.text = PlayerCount.ToString();
 
         // Race Time
+        currentText.text = LocalizationManager.GetTextByKey("CURRENT_TIME");
         raceTimeText.text = pd.raceTime.ToString(@"mm\:ss\.ff");
 
         // Best race time
         bestTimeText.text = LocalizationManager.GetTextByKey("BEST") + ": ";
-        if (pd.bestRaceTime == TimeSpan.Parse("00:00:00.000"))
-            bestRaceTimeText.text = "--.---";
+        if (PlayerPrefs.HasKey("Highscore"))
+            bestRaceTimeText.text = TimeSpan.Parse(PlayerPrefs.GetString("Highscore")).ToString(@"mm\:ss\.ff");
         else
-            bestRaceTimeText.text = pd.bestRaceTime.ToString(@"mm\:ss\.ff");
+            bestRaceTimeText.text = "--.---";
 
         //if (pd.hasNewBestTime)
         //{
@@ -229,18 +231,18 @@ public class UIPanel : UIBehaviour
             StringBuilder builder2 = new StringBuilder();
             for (int i = 0; i < pd.leaderboardTimes.Count; i++)
             {
-                builder2.Append(LocalizationManager.GetTextByKey("USER")).Append(": ").Append(pd.leaderboardTimes[i].ToString(@"mm\:ss\.ff")).AppendLine();
-                
+                //builder2.Append(LocalizationManager.GetTextByKey("USER")).Append(": ").Append(pd.leaderboardTimes[i].ToString(@"mm\:ss\.ff")).AppendLine();
+                builder2.Append(LocalizationManager.GetTextByKey("USER")).Append(": ").Append(TimeSpan.Parse(PlayerPrefs.GetString("Highscore")).ToString(@"mm\:ss\.ff")).AppendLine();
             }
             leaderboardTimeText.text = builder2.ToString();
-            escText.text = LocalizationManager.GetTextByKey("ESC_TO_QUIT");
+            //escText.text = LocalizationManager.GetTextByKey("ESC_TO_QUIT");
             retryText.text = LocalizationManager.GetTextByKey("R_TO_RESTART");
         }
         #endregion
 
         #region Race Start Screen
 
-        countDownText.text = countDownController.CountDownText;
+        //countDownText.text = countDownController.CountDownText;
 
         #endregion
 

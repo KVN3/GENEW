@@ -53,6 +53,8 @@ public class PlayerShip : Ship
 
     protected PlayerCamera playerCamera;
 
+    Dictionary<string, Dictionary<string, TimeSpan>> playerTimes;
+
     public override void Awake()
     {
         base.Awake();
@@ -66,7 +68,6 @@ public class PlayerShip : Ship
         base.Start();
 
         InitRaceData();
-        StartCoroutine(SubstractScore());
     }
     #endregion
 
@@ -95,14 +96,6 @@ public class PlayerShip : Ship
         runData.positionsZ.Add(transform.position.z);
         runData.replayQuaternions.Add(transform.rotation);
 }
-
-    IEnumerator SubstractScore()
-    {
-        while (true && !runData.raceFinished)
-        {
-            yield return new WaitForSeconds(1);
-        }
-    }
 
     private void InitRaceData()
     {
@@ -179,17 +172,19 @@ public class PlayerShip : Ship
                 foreach (TimeSpan time in runData.raceTimes)
                     runData.totalTime += time;
 
+                // Leaderboard
                 runData.leaderboardTimes.Add(runData.bestRaceTime);
 
+                if (!PlayerPrefs.HasKey("Highscore"))
+                    PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
+                else
+                {
+                    if (TimeSpan.Parse(PlayerPrefs.GetString("Highscore")) > runData.bestRaceTime)
+                        PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
+                }
+
                 // Save replay
-                float[] arrayX = runData.positionsX.ToArray();
-                float[] arrayY = runData.positionsY.ToArray();
-                float[] arrayZ = runData.positionsZ.ToArray();
-                Quaternion[] arrayQ = runData.replayQuaternions.ToArray();
-                PlayerPrefsX.SetFloatArray("ReplayX", arrayX);
-                PlayerPrefsX.SetFloatArray("ReplayY", arrayY);
-                PlayerPrefsX.SetFloatArray("ReplayZ", arrayZ);
-                PlayerPrefsX.SetQuaternionArray("ReplayQ", arrayQ);
+                SaveReplay();
 
                 runData.raceFinished = true;
             }
@@ -251,7 +246,20 @@ public class PlayerShip : Ship
         return playerCamera;
     }
     #endregion
+
+    public void SaveReplay()
+    {
+        float[] arrayX = runData.positionsX.ToArray();
+        float[] arrayY = runData.positionsY.ToArray();
+        float[] arrayZ = runData.positionsZ.ToArray();
+        Quaternion[] arrayQ = runData.replayQuaternions.ToArray();
+        PlayerPrefsX.SetFloatArray("ReplayX", arrayX);
+        PlayerPrefsX.SetFloatArray("ReplayY", arrayY);
+        PlayerPrefsX.SetFloatArray("ReplayZ", arrayZ);
+        PlayerPrefsX.SetQuaternionArray("ReplayQ", arrayQ);
+    }
 }
+
 
 // Apply boundaries
 //if (transform.position.x > ShipComponents.rightBound && force.x > 0)
