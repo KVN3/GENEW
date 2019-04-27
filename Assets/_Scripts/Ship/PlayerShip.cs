@@ -218,12 +218,12 @@ public class PlayerShip : Ship
             // If passed previous waypoint
             if (other.GetComponent<Waypoint>().number < runData.currentWaypoint)
             {
-                Debug.Log("Wrong Way!");
+               // Debug.Log("Wrong Way!");
                 runData.isWrongWay = true;
             }
             else // update with new waypoint
             {
-                Debug.Log($"Waypoint updated! ({other.GetComponent<Waypoint>().number})");
+               // Debug.Log($"Waypoint updated! ({other.GetComponent<Waypoint>().number})");
                 runData.currentWaypoint = other.GetComponent<Waypoint>().number;
                 runData.isWrongWay = false;
                 if (other.GetComponent<Waypoint>().isHalfwayPoint)

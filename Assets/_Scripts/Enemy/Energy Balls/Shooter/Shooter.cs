@@ -15,11 +15,9 @@ public class Shooter : MonoBehaviour
     public void Fire(Vector3 target)
     {
         DestroyIfNoParent();
-        Debug.Log("Fire called.");
 
         if (isCloseEnough)
         {
-            Debug.Log("Close enough and firing.");
             sm.PlaySound(SoundType.SHOOTING);
             EnergyBallProjectile projectile = energyBallProjectileClasses[Random.Range(0, energyBallProjectileClasses.Length)];
             projectile.target = target;
@@ -75,7 +73,6 @@ public class Shooter : MonoBehaviour
         else
             this.isCloseEnough = false;
 
-        Debug.Log("Returning target for shooter... close enough = " + withinRange);
 
         return closestTarget;
     }

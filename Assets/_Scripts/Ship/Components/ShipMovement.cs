@@ -7,6 +7,7 @@ public struct ShipFloatConfig
 {
     public float floatDiff;
     public float floatSpeed;
+    public float baseHeightFromGround;
 }
 
 [System.Serializable]
@@ -31,6 +32,8 @@ public class ShipMovement : ShipComponent
 
     [SerializeField]
     private GameObject windTrailsObject;
+    [SerializeField]
+    private GameObject groundSensor;
 
     private PlayerCamera playerCamera;
 
@@ -40,10 +43,12 @@ public class ShipMovement : ShipComponent
     private float floatTopBound, floatBottomBound;
     private bool upperBoundReached;
 
+    private float currentBaseHeight;
+
     public void Awake()
     {
         currentSpeed = 0f;
-
+        currentBaseHeight = floatConfig.baseHeightFromGround;
     }
 
     public void Start()
@@ -60,7 +65,31 @@ public class ShipMovement : ShipComponent
 
     public void Update()
     {
-        //Debug.Log("Currentspeed: " + currentSpeed);
+        //RaycastHit hit = new RaycastHit();
+        //if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+        //{
+        //    var distanceToGround = hit.distance;
+
+        //    if (hit.transform.tag.Equals("Floor"))
+        //    {
+        //        if (hit.distance < (floatBottomBound - 1.5f))
+        //        {
+        //            float diff = currentBaseHeight - hit.distance;
+
+        //            currentBaseHeight += .1f;
+        //            floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
+        //            floatTopBound = currentBaseHeight + floatConfig.floatDiff;
+        //            Debug.Log("New base height = " + currentBaseHeight);
+        //        }
+        //        //if (hit.distance < (floatBottomBound - 1.5f) || hit.distance > (floatTopBound + 1.5f))
+        //        //{
+
+        //        //}
+        //    }
+
+        //    //Debug.Log(hit.distance);
+        //}
+
 
         if (currentSpeed > config.trailActivationSpeed)
         {
@@ -84,6 +113,7 @@ public class ShipMovement : ShipComponent
         currentSpeed = GetCurrentSpeed(vel);
 
         // Apply floating
+        //if(rb.velocity.y >)
         force.y = ApplyFloating();
 
         if (currentSpeed < currentMaxSpeed)
@@ -221,29 +251,120 @@ public class ShipMovement : ShipComponent
     {
         float floatSpeed = 0;
 
-        if (ShouldFloatUp())
-            floatSpeed = floatConfig.floatSpeed;
-        else if (ShouldFloatDown())
-            floatSpeed = -floatConfig.floatSpeed;
+        ApplyFloatBounds();
 
-        ApplyFloatingBounds();
+        // Possible cause of lag ...
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(groundSensor.transform.position, -Vector3.up, out hit))
+        {
+            float distanceToGround = hit.distance;
+
+            if (hit.transform.tag.Equals("Floor"))
+            {
+
+                if (distanceToGround < 4.5f)
+                {
+                    Debug.Log("DISTANCE LOWER THAN 5");
+
+                    // Some smoothing
+                    float floatFactor = 50 / distanceToGround;
+
+                    // The speed to return to be used by .AddForce later on
+                    //floatSpeed = floatConfig.floatSpeed * floatFactor;
+
+                    Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
+
+                    shipRb.velocity = new Vector3(shipRb.velocity.x, floatFactor, shipRb.velocity.z);
+
+                    floatSpeed = 0;
+
+
+                    currentBaseHeight += .3f;
+                    floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
+                    floatTopBound = currentBaseHeight + floatConfig.floatDiff;
+                }
+
+                else if (hit.distance > 5.5f)
+                {
+                    Debug.Log("DISTANCE HIGHER THAN 5");
+                    float diff = currentBaseHeight - distanceToGround;
+
+                    // Some smoothing
+                    float floatFactor = 7 * distanceToGround;
+
+                    // The speed to return to be used by .AddForce later on
+                    floatSpeed = -floatConfig.floatSpeed * floatFactor;
+
+                    //parentShip.transform.position = new Vector3(parentShip.transform.position.x, parentShip.transform.position.y - .8f, parentShip.transform.position.z);
+
+                    if (hit.distance > 5.3f)
+                    {
+                        currentBaseHeight -= .3f;
+                        floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
+                        floatTopBound = currentBaseHeight + floatConfig.floatDiff;
+                    }
+                    //Debug.Log("New base height = " + currentBaseHeight);
+                }
+
+                else
+                {
+                    if (ShouldFloatUp())
+                        floatSpeed = floatConfig.floatSpeed;
+                    else if (ShouldFloatDown())
+                        floatSpeed = -floatConfig.floatSpeed;
+                }
+            }
+
+            //Debug.Log(hit.distance);
+        }
+
+        //Rigidbody shipRigidbody = parentShip.GetComponent<Rigidbody>();
+
+        //shipRigidbody.velocity = new Vector3(shipRigidbody.velocity.x, 0f, shipRigidbody.velocity.z);
+        ////}
+
+
+
+
 
         return floatSpeed;
     }
 
-    private void ApplyFloatingBounds()
+    private void ApplyFloatBounds()
     {
         float diff = Mathf.Round((floatTopBound - floatBottomBound) * 10) / 10;
 
-        if (parentShip.transform.position.y < (floatBottomBound - diff))
+        float absoluteBottomBound = floatBottomBound - diff;
+        Debug.Log("BOTT" + absoluteBottomBound);
+        float absoluteTopBound = floatTopBound + diff;
+        Debug.Log("TOP" + absoluteTopBound);
+
+        if (parentShip.transform.position.y < absoluteBottomBound)
         {
-            parentShip.transform.position = new Vector3(parentShip.transform.position.x, floatBottomBound, parentShip.transform.position.z);
+            //parentShip.transform.position = new Vector3(parentShip.transform.position.x, floatBottomBound, parentShip.transform.position.z);
+
+            Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
+
+            if (shipRb.velocity.y < 0)
+                shipRb.velocity = new Vector3(shipRb.velocity.x, 0f, shipRb.velocity.z);
         }
-        else if (parentShip.transform.position.y > (floatTopBound + diff))
+
+
+        else if (parentShip.transform.position.y > absoluteTopBound)
         {
-            parentShip.transform.position = new Vector3(parentShip.transform.position.x, floatTopBound, parentShip.transform.position.z);
+            //parentShip.transform.position = new Vector3(parentShip.transform.position.x, floatTopBound, parentShip.transform.position.z);
+
+            Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
+
+            if (shipRb.velocity.y > 0)
+                shipRb.velocity = new Vector3(shipRb.velocity.x, 0f, shipRb.velocity.z);
         }
+
     }
+
+    // If trigger hit, then keep y at 5 above raycast hit floor ...
+    // Else float, with bounds apply
+    // Glitch fix = invisible walls 
 
     private float GetHeightMiddle()
     {
@@ -319,7 +440,7 @@ public class ShipMovement : ShipComponent
     // Activates speed boost based on passed along values
     public void ActivateSpeedBoost(float maxSpeedIncrease, float boostFactor, float boostDuration)
     {
-        if(playerCamera != null)
+        if (playerCamera != null)
         {
             playerCamera.ActivateBoostedCamera();
         }

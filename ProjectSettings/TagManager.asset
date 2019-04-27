@@ -19,6 +19,7 @@ TagManager:
   - Mine
   - Projectile
   - DangerTrigger
+  - Floor
   layers:
   - Default
   - TransparentFX
