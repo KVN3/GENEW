@@ -10,8 +10,6 @@ using UnityEngine.UI;
 
 public class UIPanel : UIBehaviour
 {
-    public float standardAlpha;
-
     #region Fields
     [Header("Lap text")]
     public TextMeshProUGUI lapText;
@@ -69,12 +67,11 @@ public class UIPanel : UIBehaviour
     [Header("RaceStartScreen")]
     public TextMeshProUGUI countDownText;
 
-    [Header("Explanation")]
-    public TextMeshProUGUI retryText;
-    public TextMeshProUGUI escText;
-
     [Header("CountDown")]
     public CountDownController countDownController;
+
+    [Header("HighscoreManager")]
+    public HighscoreManager highscoreManager;
 
     #endregion
 
@@ -107,7 +104,6 @@ public class UIPanel : UIBehaviour
             posBg.SetActive(false);
 
         boostMeter.value = 0;
-        standardAlpha = 0.9f;
         countDownController = FindObjectOfType<CountDownController>();
     }
 
@@ -210,8 +206,10 @@ public class UIPanel : UIBehaviour
         // Only show racetimes when finished and display them using a stringbuilder (for lines)
         if (pd.raceFinished)
         {
+            // Title
             raceEndScreenText.text = LocalizationManager.GetTextByKey("RACE_RESULTS");
 
+            // Race times
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < pd.raceTimes.Count; i++)
             {
@@ -226,17 +224,25 @@ public class UIPanel : UIBehaviour
             lapTimesTitle.text = LocalizationManager.GetTextByKey("LAP_TIMES");
             endTimeText.text = LocalizationManager.GetTextByKey("TOTAL_TIME") + ": " + pd.totalTime.ToString(@"mm\:ss\.ff");
 
+            // Leaderboard
             leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
 
+            // Get highscores (and sorts them beforehand)
+            List<HighscoreEntry> highscoreEntries = highscoreManager.GetHighscores();
+
+            // Only show max of 10 or below
+            int entries;
+            if (highscoreEntries.Count > 10)
+                entries = 10;
+            else
+                entries = highscoreEntries.Count;
+
             StringBuilder builder2 = new StringBuilder();
-            for (int i = 0; i < pd.leaderboardTimes.Count; i++)
+            for (int i = 0; i < highscoreEntries.Count; i++)
             {
-                //builder2.Append(LocalizationManager.GetTextByKey("USER")).Append(": ").Append(pd.leaderboardTimes[i].ToString(@"mm\:ss\.ff")).AppendLine();
-                builder2.Append(LocalizationManager.GetTextByKey("USER")).Append(": ").Append(TimeSpan.Parse(PlayerPrefs.GetString("Highscore")).ToString(@"mm\:ss\.ff")).AppendLine();
+                builder2.Append($"{i+1}. ").Append(highscoreEntries[i].name).Append(": ").Append(TimeSpan.Parse(highscoreEntries[i].lapTime).ToString(@"mm\:ss\.ff")).AppendLine();
             }
             leaderboardTimeText.text = builder2.ToString();
-            //escText.text = LocalizationManager.GetTextByKey("ESC_TO_QUIT");
-            retryText.text = LocalizationManager.GetTextByKey("R_TO_RESTART");
         }
         #endregion
 
