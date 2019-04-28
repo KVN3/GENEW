@@ -97,7 +97,7 @@ public class GameState : LevelSingleton<GameState>
     protected PlayerShip SpawnLocalPlayer(int index)
     {
         Debug.Log("Spawning local player...");
-        LocalSpawnPoint playerStart = playerStarts[index];
+        LocalSpawnPoint playerStart = playerStarts[index - 1];
 
         PlayerShip playerShip = PhotonNetwork.Instantiate(playerClass.name, playerStart.transform.position, playerStart.transform.rotation).GetComponent<PlayerShip>();
 

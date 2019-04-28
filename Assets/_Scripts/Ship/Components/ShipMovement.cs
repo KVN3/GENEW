@@ -251,7 +251,7 @@ public class ShipMovement : ShipComponent
     {
         float floatSpeed = 0;
 
-        ApplyFloatBounds();
+        
 
         // Possible cause of lag ...
         RaycastHit hit = new RaycastHit();
@@ -262,7 +262,7 @@ public class ShipMovement : ShipComponent
             if (hit.transform.tag.Equals("Floor"))
             {
 
-                if (distanceToGround < 4.5f)
+                if (distanceToGround < 4f)
                 {
                     Debug.Log("DISTANCE LOWER THAN 5");
 
@@ -273,18 +273,16 @@ public class ShipMovement : ShipComponent
                     //floatSpeed = floatConfig.floatSpeed * floatFactor;
 
                     Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
-
                     shipRb.velocity = new Vector3(shipRb.velocity.x, floatFactor, shipRb.velocity.z);
-
                     floatSpeed = 0;
 
 
-                    currentBaseHeight += .3f;
+                    currentBaseHeight = hit.point.y + 5f;
                     floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
                     floatTopBound = currentBaseHeight + floatConfig.floatDiff;
                 }
 
-                else if (hit.distance > 5.5f)
+                else if (hit.distance > 6f)
                 {
                     Debug.Log("DISTANCE HIGHER THAN 5");
                     float diff = currentBaseHeight - distanceToGround;
@@ -295,11 +293,15 @@ public class ShipMovement : ShipComponent
                     // The speed to return to be used by .AddForce later on
                     floatSpeed = -floatConfig.floatSpeed * floatFactor;
 
+                    Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
+                    shipRb.velocity = new Vector3(shipRb.velocity.x, -floatFactor, shipRb.velocity.z);
+                    floatSpeed = 0;
+
                     //parentShip.transform.position = new Vector3(parentShip.transform.position.x, parentShip.transform.position.y - .8f, parentShip.transform.position.z);
 
                     if (hit.distance > 5.3f)
                     {
-                        currentBaseHeight -= .3f;
+                        currentBaseHeight = hit.point.y + 5f;
                         floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
                         floatTopBound = currentBaseHeight + floatConfig.floatDiff;
                     }
@@ -314,18 +316,9 @@ public class ShipMovement : ShipComponent
                         floatSpeed = -floatConfig.floatSpeed;
                 }
             }
-
-            //Debug.Log(hit.distance);
         }
 
-        //Rigidbody shipRigidbody = parentShip.GetComponent<Rigidbody>();
-
-        //shipRigidbody.velocity = new Vector3(shipRigidbody.velocity.x, 0f, shipRigidbody.velocity.z);
-        ////}
-
-
-
-
+        ApplyFloatBounds();
 
         return floatSpeed;
     }
