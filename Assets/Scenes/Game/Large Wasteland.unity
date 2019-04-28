@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 18773419}
   - component: {fileID: 18773418}
   - component: {fileID: 18773417}
+  - component: {fileID: 18773420}
   m_Layer: 0
   m_Name: Cave spike (12)
   m_TagString: Untagged
@@ -347,7 +348,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18773415}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -398,6 +399,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18773415}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &18773420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18773415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &24355022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -678,6 +691,7 @@ GameObject:
   - component: {fileID: 49732665}
   - component: {fileID: 49732664}
   - component: {fileID: 49732663}
+  - component: {fileID: 49732666}
   m_Layer: 0
   m_Name: Cave spike (8)
   m_TagString: Untagged
@@ -707,7 +721,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49732661}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -758,6 +772,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49732661}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &49732666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49732661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &50398920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1073,6 +1099,7 @@ GameObject:
   - component: {fileID: 61261326}
   - component: {fileID: 61261325}
   - component: {fileID: 61261324}
+  - component: {fileID: 61261327}
   m_Layer: 0
   m_Name: Cave spike (20)
   m_TagString: Untagged
@@ -1102,7 +1129,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61261322}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -1153,6 +1180,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61261322}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &61261327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61261322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &62563420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 6ed715373f226d142b68a9bb0c1cf1d7,
@@ -1624,6 +1663,7 @@ GameObject:
   - component: {fileID: 86376630}
   - component: {fileID: 86376629}
   - component: {fileID: 86376628}
+  - component: {fileID: 86376631}
   m_Layer: 0
   m_Name: Cave spike (3)
   m_TagString: Untagged
@@ -1653,7 +1693,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86376626}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -1704,6 +1744,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86376626}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &86376631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86376626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &93882478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: dabd9c1ccc63ee3428b32acb2c6df267,
@@ -3542,6 +3594,7 @@ GameObject:
   - component: {fileID: 161768732}
   - component: {fileID: 161768731}
   - component: {fileID: 161768730}
+  - component: {fileID: 161768733}
   m_Layer: 0
   m_Name: Cave spike (10)
   m_TagString: Untagged
@@ -3571,7 +3624,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161768728}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -3622,6 +3675,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161768728}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &161768733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161768728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &163167537 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: a2df11608d6485e43968d916cd6d3019,
@@ -3903,6 +3968,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3614617}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &173168433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 173168434}
+  - component: {fileID: 173168438}
+  - component: {fileID: 173168437}
+  - component: {fileID: 173168436}
+  - component: {fileID: 173168435}
+  m_Layer: 0
+  m_Name: Cave spike (38)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &173168434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173168433}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1276.4, y: 85.72, z: 1511.2}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 46
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &173168435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173168433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &173168436
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173168433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &173168437
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173168433}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &173168438
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173168433}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1001 &174272457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4198,6 +4368,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 177947235}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &178819110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 178819111}
+  - component: {fileID: 178819115}
+  - component: {fileID: 178819114}
+  - component: {fileID: 178819113}
+  - component: {fileID: 178819112}
+  m_Layer: 0
+  m_Name: Cave spike (29)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &178819111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178819110}
+  m_LocalRotation: {x: -0.050157074, y: -0, z: -0, w: 0.9987413}
+  m_LocalPosition: {x: -536.2, y: 86.9, z: 1134.9}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 37
+  m_LocalEulerAnglesHint: {x: -5.75, y: 0, z: 0}
+--- !u!114 &178819112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178819110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &178819113
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178819110}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &178819114
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178819110}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &178819115
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178819110}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1 &182734741
 GameObject:
   m_ObjectHideFlags: 0
@@ -4210,6 +4485,7 @@ GameObject:
   - component: {fileID: 182734745}
   - component: {fileID: 182734744}
   - component: {fileID: 182734743}
+  - component: {fileID: 182734746}
   m_Layer: 0
   m_Name: Cave spike (24)
   m_TagString: Untagged
@@ -4239,7 +4515,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182734741}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -4290,6 +4566,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182734741}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &182734746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182734741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &184891322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4624,6 +4912,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_Name
       value: Prop_Ground_Bump_Round (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5257,6 +5549,7 @@ GameObject:
   - component: {fileID: 225372799}
   - component: {fileID: 225372798}
   - component: {fileID: 225372797}
+  - component: {fileID: 225372800}
   m_Layer: 0
   m_Name: Cave spike (14)
   m_TagString: Untagged
@@ -5286,7 +5579,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225372795}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -5337,6 +5630,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225372795}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &225372800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225372795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &226770619
 GameObject:
   m_ObjectHideFlags: 0
@@ -6969,6 +7274,7 @@ GameObject:
   - component: {fileID: 282420545}
   - component: {fileID: 282420544}
   - component: {fileID: 282420543}
+  - component: {fileID: 282420546}
   m_Layer: 0
   m_Name: Cave spike (2)
   m_TagString: Untagged
@@ -6998,7 +7304,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282420541}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -7049,6 +7355,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282420541}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &282420546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282420541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &290714177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8412,6 +8730,7 @@ GameObject:
   - component: {fileID: 340798357}
   - component: {fileID: 340798356}
   - component: {fileID: 340798355}
+  - component: {fileID: 340798358}
   m_Layer: 0
   m_Name: Cave spike (26)
   m_TagString: Untagged
@@ -8441,7 +8760,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340798353}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -8492,6 +8811,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340798353}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &340798358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340798353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &341950367 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 44c7fa680a0520540a8bc52364dae2e8,
@@ -8627,6 +8958,7 @@ GameObject:
   - component: {fileID: 349944266}
   - component: {fileID: 349944265}
   - component: {fileID: 349944264}
+  - component: {fileID: 349944267}
   m_Layer: 0
   m_Name: Cave spike (17)
   m_TagString: Untagged
@@ -8656,7 +8988,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349944262}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -8707,6 +9039,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349944262}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &349944267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349944262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &350352948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9679,6 +10023,7 @@ GameObject:
   - component: {fileID: 403908671}
   - component: {fileID: 403908670}
   - component: {fileID: 403908669}
+  - component: {fileID: 403908672}
   m_Layer: 0
   m_Name: Cave spike (25)
   m_TagString: Untagged
@@ -9708,7 +10053,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403908667}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -9759,6 +10104,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403908667}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &403908672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403908667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &404549166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11952,7 +12309,7 @@ GameObject:
   - component: {fileID: 477933483}
   m_Layer: 0
   m_Name: object1 (4)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13355,6 +13712,7 @@ GameObject:
   - component: {fileID: 537912514}
   - component: {fileID: 537912513}
   - component: {fileID: 537912512}
+  - component: {fileID: 537912515}
   m_Layer: 0
   m_Name: Cave spike (13)
   m_TagString: Untagged
@@ -13384,7 +13742,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537912510}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -13435,6 +13793,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537912510}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &537912515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537912510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &538373455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14122,6 +14492,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 571226707}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &572946675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 572946676}
+  - component: {fileID: 572946680}
+  - component: {fileID: 572946679}
+  - component: {fileID: 572946678}
+  - component: {fileID: 572946677}
+  m_Layer: 0
+  m_Name: Cave spike (30)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &572946676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572946675}
+  m_LocalRotation: {x: -0.050157074, y: -0, z: -0, w: 0.9987413}
+  m_LocalPosition: {x: -715.4, y: 109, z: 1218.8}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 38
+  m_LocalEulerAnglesHint: {x: -5.75, y: 0, z: 0}
+--- !u!114 &572946677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572946675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &572946678
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572946675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &572946679
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572946675}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &572946680
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572946675}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1 &575750397
 GameObject:
   m_ObjectHideFlags: 0
@@ -14573,6 +15048,7 @@ GameObject:
   - component: {fileID: 601985198}
   - component: {fileID: 601985197}
   - component: {fileID: 601985196}
+  - component: {fileID: 601985199}
   m_Layer: 0
   m_Name: Cave spike (19)
   m_TagString: Untagged
@@ -14602,7 +15078,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601985194}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -14653,6 +15129,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601985194}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &601985199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601985194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &604617932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14665,6 +15153,10 @@ PrefabInstance:
       value: Prop_Ground_Bump_Round (23)
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_TagString
       value: Floor
       objectReference: {fileID: 0}
@@ -16479,6 +16971,7 @@ GameObject:
   - component: {fileID: 685416175}
   - component: {fileID: 685416174}
   - component: {fileID: 685416173}
+  - component: {fileID: 685416176}
   m_Layer: 0
   m_Name: Cave spike (21)
   m_TagString: Untagged
@@ -16508,7 +17001,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685416171}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -16559,6 +17052,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685416171}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &685416176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685416171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &686148417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18177,6 +18682,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1969891596}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &750002071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 750002072}
+  - component: {fileID: 750002076}
+  - component: {fileID: 750002075}
+  - component: {fileID: 750002074}
+  - component: {fileID: 750002073}
+  m_Layer: 0
+  m_Name: Cave spike (27)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &750002072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750002071}
+  m_LocalRotation: {x: -0.050157074, y: 0, z: 0, w: 0.9987413}
+  m_LocalPosition: {x: -100, y: 30, z: 1042.3}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: -5.75, y: 0, z: 0}
+--- !u!114 &750002073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750002071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &750002074
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750002071}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &750002075
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750002071}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &750002076
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750002071}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1 &755295627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d,
@@ -18826,6 +19436,23 @@ Transform:
   - {fileID: 111587323}
   - {fileID: 340798354}
   - {fileID: 1483507886}
+  - {fileID: 750002072}
+  - {fileID: 905160578}
+  - {fileID: 178819111}
+  - {fileID: 572946676}
+  - {fileID: 1994868282}
+  - {fileID: 1804597724}
+  - {fileID: 2044516010}
+  - {fileID: 825416553}
+  - {fileID: 806829964}
+  - {fileID: 1760520081}
+  - {fileID: 1853649192}
+  - {fileID: 173168434}
+  - {fileID: 1985177882}
+  - {fileID: 1235987879}
+  - {fileID: 1847700547}
+  - {fileID: 1724770650}
+  - {fileID: 2122210967}
   m_Father: {fileID: 344541767}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19169,6 +19796,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 806436707}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &806829963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 806829964}
+  - component: {fileID: 806829968}
+  - component: {fileID: 806829967}
+  - component: {fileID: 806829966}
+  - component: {fileID: 806829965}
+  m_Layer: 0
+  m_Name: Cave spike (35)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &806829964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806829963}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1060, y: 85.72, z: 1693.6}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 43
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &806829965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806829963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &806829966
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806829963}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &806829967
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806829963}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &806829968
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806829963}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1001 &808057135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19794,6 +20526,111 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 241c96eba1a228549b4695b707e38a5a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2df11608d6485e43968d916cd6d3019, type: 3}
+--- !u!1 &825416552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 825416553}
+  - component: {fileID: 825416557}
+  - component: {fileID: 825416556}
+  - component: {fileID: 825416555}
+  - component: {fileID: 825416554}
+  m_Layer: 0
+  m_Name: Cave spike (34)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &825416553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825416552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -942.7, y: 183.7, z: 1693.6}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 42
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &825416554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825416552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &825416555
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825416552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &825416556
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825416552}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &825416557
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825416552}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1001 &829922699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20678,6 +21515,7 @@ GameObject:
   - component: {fileID: 886075651}
   - component: {fileID: 886075650}
   - component: {fileID: 886075649}
+  - component: {fileID: 886075652}
   m_Layer: 0
   m_Name: Cave spike (22)
   m_TagString: Untagged
@@ -20707,7 +21545,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886075647}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -20758,6 +21596,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886075647}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &886075652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886075647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &886410149 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 50419652e28d59b4493491671a9031a4,
@@ -21181,6 +22031,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 705114563}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &905160577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 905160578}
+  - component: {fileID: 905160582}
+  - component: {fileID: 905160581}
+  - component: {fileID: 905160580}
+  - component: {fileID: 905160579}
+  m_Layer: 0
+  m_Name: Cave spike (28)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &905160578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905160577}
+  m_LocalRotation: {x: -0.050157074, y: -0, z: -0, w: 0.9987413}
+  m_LocalPosition: {x: -204.2, y: 47.4, z: 1138.9}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 36
+  m_LocalEulerAnglesHint: {x: -5.75, y: 0, z: 0}
+--- !u!114 &905160579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905160577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &905160580
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905160577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &905160581
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905160577}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &905160582
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905160577}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1 &907009215 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d,
@@ -23134,6 +24089,7 @@ GameObject:
   - component: {fileID: 997874421}
   - component: {fileID: 997874420}
   - component: {fileID: 997874419}
+  - component: {fileID: 997874422}
   m_Layer: 0
   m_Name: Cave spike (15)
   m_TagString: Untagged
@@ -23163,7 +24119,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997874417}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -23214,6 +24170,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997874417}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &997874422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997874417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1004194956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26549,7 +27517,7 @@ GameObject:
   - component: {fileID: 1144188993}
   m_Layer: 0
   m_Name: object1 (5)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28107,6 +29075,7 @@ GameObject:
   - component: {fileID: 1230732793}
   - component: {fileID: 1230732792}
   - component: {fileID: 1230732791}
+  - component: {fileID: 1230732794}
   m_Layer: 0
   m_Name: Cave spike (16)
   m_TagString: Untagged
@@ -28136,7 +29105,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230732789}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -28187,6 +29156,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230732789}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1230732794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230732789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1231109146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28353,6 +29334,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1235586340}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1235987878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1235987879}
+  - component: {fileID: 1235987883}
+  - component: {fileID: 1235987882}
+  - component: {fileID: 1235987881}
+  - component: {fileID: 1235987880}
+  m_Layer: 0
+  m_Name: Cave spike (40)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1235987879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235987878}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1438.2, y: 85.72, z: 1120.3}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 48
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1235987880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235987878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1235987881
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235987878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &1235987882
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235987878}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1235987883
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235987878}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1001 &1236456619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28368,7 +29454,7 @@ PrefabInstance:
     - target: {fileID: 8315800264085753135, guid: 36bb28068918ed54fa0572267ba1bfb3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1529
+      value: 1335
       objectReference: {fileID: 0}
     - target: {fileID: 8315800264085753135, guid: 36bb28068918ed54fa0572267ba1bfb3,
         type: 3}
@@ -28378,7 +29464,7 @@ PrefabInstance:
     - target: {fileID: 8315800264085753135, guid: 36bb28068918ed54fa0572267ba1bfb3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1661
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8315800264085753135, guid: 36bb28068918ed54fa0572267ba1bfb3,
         type: 3}
@@ -29334,6 +30420,7 @@ GameObject:
   - component: {fileID: 1268786598}
   - component: {fileID: 1268786597}
   - component: {fileID: 1268786596}
+  - component: {fileID: 1268786599}
   m_Layer: 0
   m_Name: Cave spike (11)
   m_TagString: Untagged
@@ -29363,7 +30450,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268786594}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -29414,6 +30501,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268786594}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1268786599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268786594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1269328773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29965,6 +31064,7 @@ GameObject:
   - component: {fileID: 1289325054}
   - component: {fileID: 1289325053}
   - component: {fileID: 1289325052}
+  - component: {fileID: 1289325055}
   m_Layer: 0
   m_Name: Cave spike (18)
   m_TagString: Untagged
@@ -29994,7 +31094,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289325050}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -30045,6 +31145,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289325050}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1289325055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289325050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1289595138 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
@@ -31283,6 +32395,7 @@ GameObject:
   - component: {fileID: 1389469584}
   - component: {fileID: 1389469583}
   - component: {fileID: 1389469582}
+  - component: {fileID: 1389469585}
   m_Layer: 0
   m_Name: Cave spike (23)
   m_TagString: Untagged
@@ -31312,7 +32425,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389469580}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -31363,6 +32476,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389469580}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1389469585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389469580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1394152457 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: a8cb96496c50dd84cbd607438a614f1d,
@@ -32732,6 +33857,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_Name
       value: Prop_Ground_Bump_Round (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34413,6 +35542,7 @@ GameObject:
   - component: {fileID: 1508416843}
   - component: {fileID: 1508416842}
   - component: {fileID: 1508416841}
+  - component: {fileID: 1508416844}
   m_Layer: 0
   m_Name: Cave spike (1)
   m_TagString: Untagged
@@ -34442,7 +35572,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508416839}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -34493,6 +35623,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508416839}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1508416844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508416839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1508616327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34612,6 +35754,7 @@ GameObject:
   - component: {fileID: 1509519377}
   - component: {fileID: 1509519376}
   - component: {fileID: 1509519375}
+  - component: {fileID: 1509519378}
   m_Layer: 0
   m_Name: Cave spike (5)
   m_TagString: Untagged
@@ -34641,7 +35784,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509519373}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -34692,6 +35835,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509519373}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1509519378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509519373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1511120819 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9f03da40cd012c54ba801a28881cb1a6,
@@ -36192,6 +37347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Ground_Bump_Round (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.952
@@ -37585,6 +38744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Ground_Bump_Round (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.683
@@ -38182,6 +39345,14 @@ PrefabInstance:
     - target: {fileID: 100002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_Name
       value: Prop_Ground_Bump_Round (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39716,6 +40887,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 223326688}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1724770649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1724770650}
+  - component: {fileID: 1724770654}
+  - component: {fileID: 1724770653}
+  - component: {fileID: 1724770652}
+  - component: {fileID: 1724770651}
+  m_Layer: 0
+  m_Name: Cave spike (42)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1724770650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724770649}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 740, y: 85.72, z: 1659}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 50
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1724770651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724770649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1724770652
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724770649}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &1724770653
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724770649}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1724770654
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724770649}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1001 &1743451665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40183,6 +41459,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1578977054}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1760520080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1760520081}
+  - component: {fileID: 1760520085}
+  - component: {fileID: 1760520084}
+  - component: {fileID: 1760520083}
+  - component: {fileID: 1760520082}
+  m_Layer: 0
+  m_Name: Cave spike (36)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1760520081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760520080}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1060, y: 85.72, z: 1616}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 44
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1760520082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760520080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1760520083
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760520080}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &1760520084
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760520080}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1760520085
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760520080}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1 &1762169798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d,
@@ -41705,6 +43086,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Ground_Bump_Round (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.527
@@ -41930,6 +43315,111 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1804597723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1804597724}
+  - component: {fileID: 1804597728}
+  - component: {fileID: 1804597727}
+  - component: {fileID: 1804597726}
+  - component: {fileID: 1804597725}
+  m_Layer: 0
+  m_Name: Cave spike (32)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1804597724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804597723}
+  m_LocalRotation: {x: -0.050157074, y: -0, z: -0, w: 0.9987413}
+  m_LocalPosition: {x: -1249.2, y: 183.1, z: 1730.8}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 40
+  m_LocalEulerAnglesHint: {x: -5.75, y: 0, z: 0}
+--- !u!114 &1804597725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804597723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1804597726
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804597723}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &1804597727
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804597723}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1804597728
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804597723}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!4 &1807214693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 4e995d7fc9d48634daa74f35a2902028,
@@ -42616,6 +44106,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1092972481}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1847700546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847700547}
+  - component: {fileID: 1847700551}
+  - component: {fileID: 1847700550}
+  - component: {fileID: 1847700549}
+  - component: {fileID: 1847700548}
+  m_Layer: 0
+  m_Name: Cave spike (41)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847700547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847700546}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1506.1, y: 85.72, z: 1058.2}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 49
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847700548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847700546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1847700549
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847700546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &1847700550
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847700546}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1847700551
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847700546}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1 &1848684646
 GameObject:
   m_ObjectHideFlags: 0
@@ -42695,6 +44290,111 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848684646}
   m_Mesh: {fileID: 4300002, guid: 9d75855aaadfd404eadfdd2e37540827, type: 3}
+--- !u!1 &1853649191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853649192}
+  - component: {fileID: 1853649196}
+  - component: {fileID: 1853649195}
+  - component: {fileID: 1853649194}
+  - component: {fileID: 1853649193}
+  m_Layer: 0
+  m_Name: Cave spike (37)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1853649192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853649191}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1274.5, y: 85.72, z: 1656.5}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 45
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1853649193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853649191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1853649194
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853649191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &1853649195
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853649191}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1853649196
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853649191}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1001 &1855076744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42993,6 +44693,7 @@ GameObject:
   - component: {fileID: 1861167391}
   - component: {fileID: 1861167390}
   - component: {fileID: 1861167389}
+  - component: {fileID: 1861167392}
   m_Layer: 0
   m_Name: Cave spike (6)
   m_TagString: Untagged
@@ -43022,7 +44723,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861167387}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -43073,6 +44774,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861167387}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1861167392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861167387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1862564734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44189,7 +45902,7 @@ GameObject:
   - component: {fileID: 1931302509}
   m_Layer: 0
   m_Name: Prop_Ground_Bump_Round (6)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44207,7 +45920,7 @@ GameObject:
   - component: {fileID: 1933071503}
   m_Layer: 0
   m_Name: object1
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44679,6 +46392,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.43
@@ -44829,6 +46550,7 @@ GameObject:
   - component: {fileID: 1966566363}
   - component: {fileID: 1966566362}
   - component: {fileID: 1966566361}
+  - component: {fileID: 1966566364}
   m_Layer: 0
   m_Name: Cave spike (7)
   m_TagString: Untagged
@@ -44858,7 +46580,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966566359}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -44909,6 +46631,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966566359}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1966566364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966566359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1969891596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45220,6 +46954,111 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: ed1f34e1527ec6742a0a6e4b0145252d, type: 3}
+--- !u!1 &1985177881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1985177882}
+  - component: {fileID: 1985177886}
+  - component: {fileID: 1985177885}
+  - component: {fileID: 1985177884}
+  - component: {fileID: 1985177883}
+  m_Layer: 0
+  m_Name: Cave spike (39)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1985177882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985177881}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1467.9, y: 85.72, z: 1511.2}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 47
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1985177883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985177881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1985177884
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985177881}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &1985177885
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985177881}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1985177886
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985177881}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1001 &1987533029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45325,6 +47164,7 @@ GameObject:
   - component: {fileID: 1991621670}
   - component: {fileID: 1991621669}
   - component: {fileID: 1991621668}
+  - component: {fileID: 1991621671}
   m_Layer: 0
   m_Name: Cave spike (4)
   m_TagString: Untagged
@@ -45354,7 +47194,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991621666}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -45405,6 +47245,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991621666}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1991621671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991621666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1994832349
 GameObject:
   m_ObjectHideFlags: 0
@@ -45436,6 +47288,111 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1994868281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1994868282}
+  - component: {fileID: 1994868286}
+  - component: {fileID: 1994868285}
+  - component: {fileID: 1994868284}
+  - component: {fileID: 1994868283}
+  m_Layer: 0
+  m_Name: Cave spike (31)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1994868282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994868281}
+  m_LocalRotation: {x: -0.050157074, y: -0, z: -0, w: 0.9987413}
+  m_LocalPosition: {x: -1249.2, y: 166, z: 1213.1}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 39
+  m_LocalEulerAnglesHint: {x: -5.75, y: 0, z: 0}
+--- !u!114 &1994868283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994868281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1994868284
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994868281}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &1994868285
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994868281}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1994868286
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994868281}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!4 &1996896536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459375924194097850, guid: 4b09ac535f0447a40aeeeac037a63a41,
@@ -45757,8 +47714,8 @@ Transform:
   - {fileID: 636858994}
   - {fileID: 931270651}
   - {fileID: 1838600871}
-  - {fileID: 1774264762}
   - {fileID: 474299918}
+  - {fileID: 1774264762}
   - {fileID: 446889956}
   - {fileID: 1107119076}
   - {fileID: 1371477426}
@@ -46006,6 +47963,111 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f03da40cd012c54ba801a28881cb1a6, type: 3}
+--- !u!1 &2044516009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2044516010}
+  - component: {fileID: 2044516014}
+  - component: {fileID: 2044516013}
+  - component: {fileID: 2044516012}
+  - component: {fileID: 2044516011}
+  m_Layer: 0
+  m_Name: Cave spike (33)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2044516010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044516009}
+  m_LocalRotation: {x: 0.12559299, y: 0, z: 0, w: 0.9920818}
+  m_LocalPosition: {x: -942.7, y: 184.3, z: 1753.7}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 41
+  m_LocalEulerAnglesHint: {x: 14.43, y: 0, z: 0}
+--- !u!114 &2044516011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044516009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &2044516012
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044516009}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &2044516013
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044516009}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &2044516014
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044516009}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!1001 &2047679419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47382,6 +49444,111 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 346743958}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2122210966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2122210967}
+  - component: {fileID: 2122210971}
+  - component: {fileID: 2122210970}
+  - component: {fileID: 2122210969}
+  - component: {fileID: 2122210968}
+  m_Layer: 0
+  m_Name: Cave spike (43)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2122210967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122210966}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 848, y: 85.72, z: 1589}
+  m_LocalScale: {x: 10, y: 20, z: 10}
+  m_Children: []
+  m_Father: {fileID: 786112102}
+  m_RootOrder: 51
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2122210968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122210966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &2122210969
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122210966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!23 &2122210970
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122210966}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &2122210971
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122210966}
+  m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
 --- !u!4 &2125754246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459375924194097850, guid: 4b09ac535f0447a40aeeeac037a63a41,
@@ -48060,6 +50227,7 @@ GameObject:
   - component: {fileID: 2143705732}
   - component: {fileID: 2143705731}
   - component: {fileID: 2143705730}
+  - component: {fileID: 2143705733}
   m_Layer: 0
   m_Name: Cave spike (9)
   m_TagString: Untagged
@@ -48089,7 +50257,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143705728}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -48140,6 +50308,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143705728}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &2143705733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143705728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2144629939 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d,
@@ -48699,6 +50879,8 @@ GameObject:
   - component: {fileID: 6685257753175812436}
   - component: {fileID: 6685257753174813588}
   - component: {fileID: 6685257753172882775}
+  - component: {fileID: 6685257753172882776}
+  - component: {fileID: 6685257753172882777}
   m_Layer: 0
   m_Name: Cave spike
   m_TagString: Untagged
@@ -48714,12 +50896,36 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6685257753172882774}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &6685257753172882776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685257753172882774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6685257753172882777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685257753172882774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6685257753172912502
 Transform:
   m_ObjectHideFlags: 0
