@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 [System.Serializable]
 public struct ShipComponents
@@ -45,6 +46,8 @@ public class Ship : MyMonoBehaviour
     private bool recentlyHit;
 
     private PhotonView photonView;
+
+    public AnalyticsEventTracker analyticsTracker;
 
     public virtual void Awake()
     {
@@ -116,6 +119,10 @@ public class Ship : MyMonoBehaviour
                 components.movement.ActivateSpeedBoost(speedBurstItem.maxSpeedIncrease, speedBurstItem.boostFactor, speedBurstItem.boostDuration);
                 itemAmount--;
             }
+
+            analyticsTracker.CustomEvent("thisEvent");
+
+            analyticsTracker.CustomEvent("UseItem");
         }
     }
 
