@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HighscoreManager : MonoBehaviour
+public class HighscoreManager : LevelSingleton<HighscoreManager>
 {
     private List<HighscoreEntry> highscoreEntryList;
 
     private readonly string key = "HighscoreTable";
 
-    private void Awake()
-    {           
+    protected override void Awake()
+    {
+        base.Awake();
         // Load highscores
         if (PlayerPrefs.HasKey(key))
         {
@@ -27,12 +28,12 @@ public class HighscoreManager : MonoBehaviour
     {
         // Create
         highscoreEntryList = new List<HighscoreEntry>()
-            {
-                new HighscoreEntry { name = "Bronze", lapTime = "00:00:50.000"},
-                new HighscoreEntry { name = "Silver", lapTime = "00:00:45.000"},
-                new HighscoreEntry { name = "Gold", lapTime = "00:00:35.000"},
-                new HighscoreEntry { name = "Platinum", lapTime = "00:00:30.000"}
-            };
+        {
+            new HighscoreEntry { name = "Bronze", lapTime = "00:00:50.000"},
+            new HighscoreEntry { name = "Silver", lapTime = "00:00:45.000"},
+            new HighscoreEntry { name = "Gold", lapTime = "00:00:35.000"},
+            new HighscoreEntry { name = "Platinum", lapTime = "00:00:30.000"}
+        };
 
         // Sort
         SortHighscores(highscoreEntryList);
@@ -96,6 +97,7 @@ public class HighscoreManager : MonoBehaviour
     }
 }
 
+//  You can't save a list by itself, has to be in a class so you can convert to json
 public class Highscores
 {
     public List<HighscoreEntry> highscoreEntryList;

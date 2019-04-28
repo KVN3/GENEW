@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 #region Data Structs
 [System.Serializable]
@@ -32,8 +33,8 @@ public struct PlayerRunData
     public List<float> positionsX;
     public List<float> positionsY;
     public List<float> positionsZ;
-    public List<Quaternion> replayQuaternions;
-    public List<Vector3> replayPosition;
+    public List<Quaternion> replayRotations;
+    public List<Vector3> replayPositions;
 
 
     // Extra
@@ -94,7 +95,7 @@ public class PlayerShip : Ship
         runData.positionsX.Add(transform.position.x);
         runData.positionsY.Add(transform.position.y);
         runData.positionsZ.Add(transform.position.z);
-        runData.replayQuaternions.Add(transform.rotation);
+        runData.replayRotations.Add(transform.rotation);
 }
 
     private void InitRaceData()
@@ -120,7 +121,7 @@ public class PlayerShip : Ship
         runData.positionsX = new List<float>();
         runData.positionsY = new List<float>();
         runData.positionsZ = new List<float>();
-        runData.replayQuaternions = new List<Quaternion>();
+        runData.replayRotations = new List<Quaternion>();
     }
 
     #region Collisions and Triggers
@@ -172,19 +173,19 @@ public class PlayerShip : Ship
                 foreach (TimeSpan time in runData.raceTimes)
                     runData.totalTime += time;
 
+                // Leaderboard
                 HighscoreManager highscoreManager = new HighscoreManager();
                 highscoreManager.AddHighscoreEntry(Environment.UserName, runData.bestRaceTime.ToString());
 
-                // Leaderboard
-                //runData.leaderboardTimes.Add(runData.bestRaceTime);
 
-                //if (!PlayerPrefs.HasKey("Highscore"))
-                //    PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
-                //else
-                //{
-                //    if (TimeSpan.Parse(PlayerPrefs.GetString("Highscore")) > runData.bestRaceTime)
-                //        PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
-                //}
+                // Update bestTime for UI
+                if (!PlayerPrefs.HasKey("Highscore"))
+                    PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
+                else
+                {
+                    if (TimeSpan.Parse(PlayerPrefs.GetString("Highscore")) > runData.bestRaceTime)
+                        PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
+                }
 
                 // Save replay
                 SaveReplay();
@@ -198,6 +199,9 @@ public class PlayerShip : Ship
                 {
                     Debug.Log($"PlayerShip Crossed Finish Line");
                     levelSoundManager.PlaySound(SoundType.LAPPASSED);
+
+                    // Save replay
+                    SaveReplay();
 
                     runData.raceTime = TimeSpan.Parse("00:00:00.000");
 
@@ -255,11 +259,16 @@ public class PlayerShip : Ship
         float[] arrayX = runData.positionsX.ToArray();
         float[] arrayY = runData.positionsY.ToArray();
         float[] arrayZ = runData.positionsZ.ToArray();
-        Quaternion[] arrayQ = runData.replayQuaternions.ToArray();
-        PlayerPrefsX.SetFloatArray("ReplayX", arrayX);
-        PlayerPrefsX.SetFloatArray("ReplayY", arrayY);
-        PlayerPrefsX.SetFloatArray("ReplayZ", arrayZ);
-        PlayerPrefsX.SetQuaternionArray("ReplayQ", arrayQ);
+        Quaternion[] arrayQ = runData.replayRotations.ToArray();
+
+        ReplayManager replayManager = new ReplayManager();
+        replayManager.SaveReplay(Environment.UserName, SceneManager.GetActiveScene().name, runData.positionsX, runData.positionsY, runData.positionsZ, runData.replayRotations, runData.raceTime.ToString());
+
+        //Destroy(replayManager);
+        //PlayerPrefsX.SetFloatArray("ReplayX", arrayX);
+        //PlayerPrefsX.SetFloatArray("ReplayY", arrayY);
+        //PlayerPrefsX.SetFloatArray("ReplayZ", arrayZ);
+        //PlayerPrefsX.SetQuaternionArray("ReplayQ", arrayQ);
     }
 }
 
