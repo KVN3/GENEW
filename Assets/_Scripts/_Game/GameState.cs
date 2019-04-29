@@ -10,13 +10,20 @@ using UnityEngine.Assertions;
 [System.Serializable]
 public struct GameManagers
 {
-    public AsteroidStormManager asteroidStormManagerClass;
+    // Analytics
+    public AnalyticsManager analyticsManagerClass;
+
+    // Enemies
     public SpawnPointManager spawnPointManagerClass;
-    public UIManager UIManagerClass;
     public ChaserManager chaserManagerClass;
     public MoverManager moverManagerClass;
-    public RaceManager raceManagerClass;
+    public AsteroidStormManager asteroidStormManagerClass;
 
+    // Game
+    public RaceManager raceManagerClass;
+    public UIManager UIManagerClass;
+
+    // Sounds
     public BackgroundSoundManager backgroundSoundManagerClass;
 }
 
@@ -85,6 +92,8 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(gameManagers.spawnPointManagerClass);
         Assert.IsNotNull(gameManagers.asteroidStormManagerClass);
         Assert.IsNotNull(gameManagers.raceManagerClass);
+        Assert.IsNotNull(gameManagers.analyticsManagerClass);
+
 
         RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
         foreach (PlayerShipGhost ghost in ghosts)
@@ -121,6 +130,10 @@ public class GameState : LevelSingleton<GameState>
         // Temp SP
         PlayerShip[] playersLocal = new PlayerShip[1];
         playersLocal[0] = playerShip;
+
+        // Analytics
+        AnalyticsManager analyticsManager = Instantiate(gameManagers.analyticsManagerClass);
+        analyticsManager.playerShip = playerShip;
 
         // Spawn Point Manager
         SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
