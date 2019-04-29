@@ -26,7 +26,7 @@ public class Forcefield : ShipComponent
 
     }
 
-    public bool IsActivate()
+    public bool IsActive()
     {
         return gameObject.activeInHierarchy;
     }

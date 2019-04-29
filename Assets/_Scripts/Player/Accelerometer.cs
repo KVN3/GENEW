@@ -26,7 +26,7 @@ public class Accelerometer : MonoBehaviour
         }
         catch
         {
-            Debug.Log("Couldn't find COM3, use regular controls...");
+            //Debug.Log("Couldn't find COM3, use regular controls...");
         }
     }
 

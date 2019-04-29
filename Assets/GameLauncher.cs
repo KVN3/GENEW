@@ -24,30 +24,30 @@ public class GameLauncher : MonoBehaviour
 
     public void Awake()
     {
-        GameInstance.Instance.OnJoinedRoomDelegate = () =>
-        {
-            feedbackText.text = "";
+        //GameInstance.Instance.OnJoinedRoomDelegate = () =>
+        //{
+        //    feedbackText.text = "";
             
-            // hide the Play button for visual consistency
-            controlPanel.SetActive(false);
+        //     hide the Play button for visual consistency
+        //    controlPanel.SetActive(false);
 
-            if (loaderAnime != null)
-            {
-                loaderAnime.StartLoaderAnimation();
-            }
+        //    if (loaderAnime != null)
+        //    {
+        //        loaderAnime.StartLoaderAnimation();
+        //    }
 
-            LogFeedback("<Color=Green>OnJoinedRoom</Color> with " + PhotonNetwork.CurrentRoom.PlayerCount + " Player(s)");
+        //    LogFeedback("<Color=Green>OnJoinedRoom</Color> with " + PhotonNetwork.CurrentRoom.PlayerCount + " Player(s)");
 
-            Debug.Log("We load the 'Lobby'");
-            PhotonNetwork.LoadLevel("WaitingRoom");
-            //PhotonNetwork.LoadLevel("Wasteland");
-            //ceneManager.LoadScene("Wasteland");
-        };
+        //    Debug.Log("We load the 'Lobby'");
+        //    PhotonNetwork.LoadLevel("WaitingRoom");
+        //    PhotonNetwork.LoadLevel("Wasteland");
+        //    ceneManager.LoadScene("Wasteland");
+        //};
     }
 
     public void Connect()
     {
-        GameInstance.Connect();
+       // GameInstance.Connect();
     }
 
     void LogFeedback(string message)

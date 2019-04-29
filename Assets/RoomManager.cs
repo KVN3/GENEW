@@ -19,15 +19,15 @@ public class RoomManager : MonoBehaviour
     {
         UpdateShownPlayerList(PhotonNetwork.PlayerList);
 
-        GameInstance.Instance.OnPlayerLeftDelegate = (Player player) =>
-        {
-            UpdateShownPlayerList(PhotonNetwork.PlayerList);
-        };
+        //GameInstance.Instance.OnPlayerLeftDelegate = (Player player) =>
+        //{
+        //    UpdateShownPlayerList(PhotonNetwork.PlayerList);
+        //};
 
-        GameInstance.Instance.OnPlayerJoinedDelegate = (Player player) =>
-        {
-            UpdateShownPlayerList(PhotonNetwork.PlayerList);
-        };
+        //GameInstance.Instance.OnPlayerJoinedDelegate = (Player player) =>
+        //{
+        //    UpdateShownPlayerList(PhotonNetwork.PlayerList);
+        //};
     }
 
     public void LoadScene(string mapName)

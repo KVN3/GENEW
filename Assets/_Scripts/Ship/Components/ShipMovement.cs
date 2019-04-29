@@ -251,7 +251,7 @@ public class ShipMovement : ShipComponent
     {
         float floatSpeed = 0;
 
-        
+
 
         // Possible cause of lag ...
         RaycastHit hit = new RaycastHit();
@@ -264,8 +264,6 @@ public class ShipMovement : ShipComponent
 
                 if (distanceToGround < 4f)
                 {
-                    Debug.Log("DISTANCE LOWER THAN 5");
-
                     // Some smoothing
                     float floatFactor = 50 / distanceToGround;
 
@@ -284,7 +282,6 @@ public class ShipMovement : ShipComponent
 
                 else if (hit.distance > 6f)
                 {
-                    Debug.Log("DISTANCE HIGHER THAN 5");
                     float diff = currentBaseHeight - distanceToGround;
 
                     // Some smoothing
@@ -323,30 +320,26 @@ public class ShipMovement : ShipComponent
         return floatSpeed;
     }
 
+    // Set ShipY velocity to 0 if y-pos exceeds absolute bound, and is trying to move past it
     private void ApplyFloatBounds()
     {
+        // Difference between top and bottom bound; e.a. top (5.6) - bottom (4.4) = diff (1.2)
         float diff = Mathf.Round((floatTopBound - floatBottomBound) * 10) / 10;
 
+        // Set the absolute bounds, where rigidbody force is halted if trying to move over
         float absoluteBottomBound = floatBottomBound - diff;
-        Debug.Log("BOTT" + absoluteBottomBound);
         float absoluteTopBound = floatTopBound + diff;
-        Debug.Log("TOP" + absoluteTopBound);
 
         if (parentShip.transform.position.y < absoluteBottomBound)
         {
-            //parentShip.transform.position = new Vector3(parentShip.transform.position.x, floatBottomBound, parentShip.transform.position.z);
-
             Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
 
             if (shipRb.velocity.y < 0)
                 shipRb.velocity = new Vector3(shipRb.velocity.x, 0f, shipRb.velocity.z);
         }
 
-
         else if (parentShip.transform.position.y > absoluteTopBound)
         {
-            //parentShip.transform.position = new Vector3(parentShip.transform.position.x, floatTopBound, parentShip.transform.position.z);
-
             Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
 
             if (shipRb.velocity.y > 0)
@@ -354,10 +347,6 @@ public class ShipMovement : ShipComponent
         }
 
     }
-
-    // If trigger hit, then keep y at 5 above raycast hit floor ...
-    // Else float, with bounds apply
-    // Glitch fix = invisible walls 
 
     private float GetHeightMiddle()
     {
