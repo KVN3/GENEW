@@ -66,24 +66,24 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(playerClass);
         Assert.IsFalse(playerStarts.Length == 0);
 
-        GameInstance.Connect();
+        //GameInstance.Connect();
 
-        GameInstance.Instance.OnJoinedRoomDelegate = () =>
-        {
-            if (logging)
-                Debug.Log("I jkoined the game");
+        //GameInstance.Instance.OnJoinedRoomDelegate = () =>
+        //{
+        //    if (logging)
+        //        Debug.Log("I jkoined the game");
 
-            // Spawn the local player - BAD SOLUTION
-            int index = PhotonNetwork.PlayerList.Length - 1; // - 1 to fix for mp
-            SpawnLocalPlayer(index);
+        //    // Spawn the local player - BAD SOLUTION
+        //    int index = PhotonNetwork.PlayerList.Length - 1; // - 1 to fix for mp
+        //    SpawnLocalPlayer(index);
 
-            // Update player list
-            StartCoroutine(UpdatePlayerList());
-        };
+        //    // Update player list
+        //    StartCoroutine(UpdatePlayerList());
+        //};
 
-        GameInstance.Instance.OnPlayerJoinedDelegate = (Player player) => { StartCoroutine(UpdatePlayerList()); };
+        //GameInstance.Instance.OnPlayerJoinedDelegate = (Player player) => { StartCoroutine(UpdatePlayerList()); };
 
-        GameInstance.Instance.OnPlayerLeftDelegate = (Player player) => { StartCoroutine(UpdatePlayerList()); };
+        //GameInstance.Instance.OnPlayerLeftDelegate = (Player player) => { StartCoroutine(UpdatePlayerList()); };
     }
 
     void Start()
