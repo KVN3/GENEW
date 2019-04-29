@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +9,10 @@ public class MainCanvasManager : MonoBehaviour
 
     [SerializeField]
     private LobbyCanvas _lobbyCanvas;
-    private LobbyCanvas LobbyCanbas
+    public LobbyCanvas LobbyCanvas
     {
         get { return _lobbyCanvas; }
     }
-
-
 
     private void Awake()
     {

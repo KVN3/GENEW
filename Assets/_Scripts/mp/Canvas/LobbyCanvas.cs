@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class LobbyCanvas : MonoBehaviour
+public class LobbyCanvas : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private RoomLayoutGroup _roomLayoutGroup;
@@ -11,17 +12,9 @@ public class LobbyCanvas : MonoBehaviour
         get { return _roomLayoutGroup; }
     }
 
-
-    public void 
-    // Start is called before the first frame update
-    void Start()
+    public void OnClickJoinRoom(string roomName)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

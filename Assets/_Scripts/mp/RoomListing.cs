@@ -9,15 +9,36 @@ public class RoomListing : MonoBehaviour
 {
     [SerializeField]
     private Text _roomNameText;
-    private Text RoomNameText
+    public Text RoomNameText
     {
         get { return _roomNameText; }
     }
 
-    public bool Updated { get; set; }
+    public string RoomName { get; private set; }
+        public bool Updated { get; set; }
 
     private void Start()
     {
+        GameObject lobbyCanvasObject = MainCanvasManager.instance.LobbyCanvas.gameObject;
 
+        if (lobbyCanvasObject == null)
+            return;
+
+        LobbyCanvas lobbyCanvas = lobbyCanvasObject.GetComponent<LobbyCanvas>();
+
+        Button button = GetComponent<Button>();
+        button.onClick.AddListener(() => lobbyCanvas.OnClickJoinRoom(RoomNameText.text));
+    }
+
+    private void OnDestroy()
+    {
+        Button button = GetComponent<Button>();
+        button.onClick.RemoveAllListeners();
+    }
+
+    public void SetRoomNameText(string text)
+    {
+        RoomName= text;
+        RoomNameText.text = RoomName;
     }
 }

@@ -14,9 +14,14 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
         get { return _roomName; }
     }
 
+    // Create Room
     public void OnClick_CreateRoom()
     {
-        if (PhotonNetwork.CreateRoom(RoomName.text))
+        // Set the room options
+        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 3 };
+
+        // Creates room
+        if (PhotonNetwork.CreateRoom(RoomName.text, roomOptions, TypedLobby.Default))
         {
             print("Create room successfully sent.");
         }
