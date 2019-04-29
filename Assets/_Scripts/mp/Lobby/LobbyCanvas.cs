@@ -14,7 +14,14 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
 
     public void OnClickJoinRoom(string roomName)
     {
+       if(PhotonNetwork.JoinRoom(roomName))
+        {
 
+        }
+        else
+        {
+            print("Join room failed.");
+        }
     }
 
 }

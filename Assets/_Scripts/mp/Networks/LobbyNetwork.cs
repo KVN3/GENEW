@@ -26,6 +26,17 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         print("Joined lobby.");
+
+        if (!PhotonNetwork.InRoom)
+        {
+            MainCanvasManager.instance.LobbyCanvas.transform.SetAsLastSibling();
+            MainCanvasManager.instance.CurrentRoomCanvas.transform.SetAsFirstSibling();
+            //MainCanvasManager.instance.LobbyCanvas.gameObject.SetActive(true);
+            //MainCanvasManager.instance.CurrentRoomCanvas.gameObject.SetActive(false);
+        }
+            
     }
+
+
 
 }
