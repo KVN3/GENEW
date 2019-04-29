@@ -16,10 +16,13 @@ public class AnalyticsManager : MyMonoBehaviour
 
     public void Start()
     {
-        playerShip.OnItemUsedDelegate = (Collectable item, int itemAmount) =>
+        if (playerShip != null)
         {
-            ItemUsedEvent(item, itemAmount);
-        };
+            playerShip.OnItemUsedDelegate = (Collectable item, int itemAmount) =>
+            {
+                ItemUsedEvent(item, itemAmount);
+            };
+        }
     }
 
     private void ItemUsedEvent(Collectable item, int itemAmount)

@@ -20,10 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Game/WaitingRoom.unity
     guid: 6a9d6344e3fa49b4d9691aebcdaebb9c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menus/Main Menu.unity
     guid: 31eb398fd7fa2b7439932b2ea2cd199e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game/Wasteland.unity
     guid: 3e447a9b13e278f44b7342990e7c7a57
   - enabled: 0
@@ -32,7 +32,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menus/Ship Customization.unity
     guid: b351fb2d776cda2419b5491c44a29760
+  - enabled: 0
+    path: Assets/Scenes/Game/Large Wasteland.unity
+    guid: 3d6ec2ca9117f3f4eab15594eb942d51
   m_configObjects: {}

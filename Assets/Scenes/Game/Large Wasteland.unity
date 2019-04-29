@@ -3445,7 +3445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &156725474
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7250,18 +7250,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &280279346 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5238381896985623582, guid: 36bb28068918ed54fa0572267ba1bfb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1236456619}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5644971a6785a034da509abaaabec69a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &282420541
 GameObject:
   m_ObjectHideFlags: 0
@@ -51083,11 +51071,12 @@ MonoBehaviour:
       type: 3}
     backgroundSoundManagerClass: {fileID: 4341203350372289051, guid: 0b342a3a3422cd34e9d93ba8e9a21825,
       type: 3}
-  cameraClass: {fileID: 1293, guid: 37ee11e1319f5a1458eb0f7d9f6ff452, type: 3}
-  playerClass: {fileID: 1992108868, guid: fc8bf98e8a8f8b444a468a11e13518e2, type: 3}
+  cameraClass: {fileID: 1323, guid: 37ee11e1319f5a1458eb0f7d9f6ff452, type: 3}
+  playerClass: {fileID: 1403, guid: fc8bf98e8a8f8b444a468a11e13518e2, type: 3}
   playerStarts:
   - {fileID: 9003994758565348090, guid: 04ba8145b38164d40adaf5d166e7f570, type: 3}
-  - {fileID: 280279346}
+  - {fileID: 5238381896985623582, guid: 993ecf66dc5c09a46ab73ec5cf9fee98, type: 3}
+  - {fileID: 5066669943746828320, guid: bfdeb86deb468104592c9a68be4e46d8, type: 3}
   ghosts: []
 --- !u!4 &7058210511400869060
 Transform:

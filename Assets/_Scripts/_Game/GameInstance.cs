@@ -9,16 +9,6 @@ using UnityEngine.Events;
 
 public class GameInstance : MonoBehaviourPunCallbacks
 {
-    #region Public Fields
-    [Tooltip("The Ui Panel to let the user enter name, connect and play")]
-    [SerializeField]
-    private GameObject controlPanel;
-
-    [Tooltip("The UI Label to inform the user that the connection is in progress")]
-    [SerializeField]
-    private GameObject progressLabel;
-    #endregion
-
     public UnityAction OnJoinedLobbyDelegate;
     public UnityAction OnJoinedRoomDelegate;
 
@@ -28,9 +18,14 @@ public class GameInstance : MonoBehaviourPunCallbacks
     private UnityAction OnCreatedRoomDelegate;
     private UnityAction<short, string> OnCreateRoomFailedDelegate;
 
+    private byte maxPlayers;
+    private bool logging;
+
     void Awake()
     {
+        logging = false;
         DontDestroyOnLoad(this);
+        maxPlayers = 3;
     }
 
     void Start()
@@ -39,15 +34,17 @@ public class GameInstance : MonoBehaviourPunCallbacks
 
     public static void Connect()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
         bool Success = PhotonNetwork.ConnectUsingSettings();
 
         if (!Success)
         {
-            Debug.Log($"Failed connecting to Photon");
+            if (GameInstance.Instance.logging)
+                Debug.Log($"Failed connecting to Photon");
         }
         else
         {
-            PhotonNetwork.AutomaticallySyncScene = true;
+            
         }
     }
 
@@ -70,7 +67,7 @@ public class GameInstance : MonoBehaviourPunCallbacks
         };
 
 
-        bool Result = PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 1 });
+        bool Result = PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayers });
 
         if (!Result)
         {
@@ -83,6 +80,7 @@ public class GameInstance : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
+        if(logging)
         Debug.Log($"Connected to master");
 
         PhotonNetwork.JoinLobby();
@@ -95,13 +93,15 @@ public class GameInstance : MonoBehaviourPunCallbacks
             return;
         }
 
-        Debug.Log($"Room list updated");
+        if (logging)
+            Debug.Log($"Room list updated");
 
         foreach (RoomInfo Room in RoomList)
         {
             if (Room.IsOpen)
             {
-                Debug.Log($"Joining room {Room.Name}");
+                if (logging)
+                    Debug.Log($"Joining room {Room.Name}");
 
                 if (PhotonNetwork.JoinRoom(Room.Name))
                 {
@@ -110,31 +110,37 @@ public class GameInstance : MonoBehaviourPunCallbacks
             }
         }
 
-        Debug.Log($"Creating room");
+        if (logging)
+            Debug.Log($"Creating room");
 
         CreateRoom("MyRoom", () =>
         {
-            Debug.Log($"Room created");
+            if (logging)
+                Debug.Log($"Room created");
 
         }, (short Error, string Message) =>
         {
-            Debug.Log($"Room create failed for reason {Message}");
+            if (logging)
+                Debug.Log($"Room create failed for reason {Message}");
         });
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        Debug.Log($"Disconnected for reason {cause}");
+        if (logging)
+            Debug.Log($"Disconnected for reason {cause}");
     }
 
     public override void OnJoinedLobby()
     {
-        Debug.Log($"Joined lobby");
+        if (logging)
+            Debug.Log($"Joined lobby");
     }
 
     public override void OnLeftLobby()
     {
-        Debug.Log($"Left lobby");
+        if (logging)
+            Debug.Log($"Left lobby");
     }
 
     public override void OnCreatedRoom()
@@ -149,26 +155,30 @@ public class GameInstance : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.Log($"Joined room");
+        if (logging)
+            Debug.Log($"Joined room");
 
         OnJoinedRoomDelegate();
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log($"Room join failed for reason {message}");
+        if (logging)
+            Debug.Log($"Room join failed for reason {message}");
     }
 
     public override void OnPlayerEnteredRoom(Player Player)
     {
-        Debug.Log($"Player {Player.NickName} joined the room");
+        if (logging)
+            Debug.Log($"Player {Player.NickName} joined the room");
 
         OnPlayerJoinedDelegate(Player);
     }
 
     public override void OnPlayerLeftRoom(Player Player)
     {
-        Debug.Log($"Player {Player.NickName} left the room");
+        if (logging)
+            Debug.Log($"Player {Player.NickName} left the room");
 
         OnPlayerLeftDelegate(Player);
     }
