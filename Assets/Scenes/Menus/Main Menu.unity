@@ -408,6 +408,111 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &956050667
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7070041025322730959, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_Name
+      value: Analytics Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070041025322730954, guid: c19ad36042a1486489c8896d4c89371b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c19ad36042a1486489c8896d4c89371b, type: 3}
+--- !u!1 &956050668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7070041025322730959, guid: c19ad36042a1486489c8896d4c89371b,
+    type: 3}
+  m_PrefabInstance: {fileID: 956050667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &956050669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956050668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Trigger:
+    m_IsTriggerExpanded: 1
+    m_Type: 1
+    m_LifecycleEvent: 0
+    m_ApplyRules: 0
+    m_Rules:
+      m_Rules: []
+    m_TriggerBool: 0
+    m_InitTime: 5
+    m_RepeatTime: 5
+    m_Repetitions: 0
+    repetitionCount: 0
+  m_EventPayload:
+    m_IsEventExpanded: 1
+    m_StandardEventType: GameStart
+    m_Parameters:
+      m_Parameters: []
+    m_Name: game_start
 --- !u!114 &1125269262 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8631873225630643792, guid: 581fd72e368ea8d4d990f78f059fd7cd,
@@ -1059,6 +1164,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1125269262}
         m_MethodName: PlayButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6961880403336097836}
+        m_MethodName: TriggerEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3574,6 +3690,7 @@ GameObject:
   - component: {fileID: 1827061375013172352}
   - component: {fileID: 2378227216574726931}
   - component: {fileID: 447129711127881955}
+  - component: {fileID: 6961880403336097836}
   m_Layer: 5
   m_Name: SinglePlayerBtn
   m_TagString: Untagged
@@ -3581,6 +3698,100 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6961880403336097836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6961880403336097835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Trigger:
+    m_IsTriggerExpanded: 1
+    m_Type: 1
+    m_LifecycleEvent: 0
+    m_ApplyRules: 1
+    m_Rules:
+      m_Rules:
+      - m_Target:
+          m_Target: {fileID: 447129711127881955}
+          m_Path: enabled
+          m_ValidTypeNames: []
+          m_Type: System.Boolean
+          m_EnumType: 
+        m_Operator: 0
+        m_Value:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 1
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 0
+          m_PropertyType: 1
+          m_ValueType: System.Boolean
+          m_Value: True
+          m_Target:
+            m_Target: {fileID: 0}
+            m_Path: 
+            m_ValidTypeNames:
+            - System.Boolean
+            m_Type: System.Boolean
+            m_EnumType: 
+        m_Value2:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 0
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 0
+          m_PropertyType: 0
+          m_ValueType: 
+          m_Value: 
+          m_Target:
+            m_Target: {fileID: 0}
+            m_Path: 
+            m_ValidTypeNames: []
+            m_Type: 
+            m_EnumType: 
+    m_TriggerBool: 1
+    m_InitTime: 5
+    m_RepeatTime: 5
+    m_Repetitions: 1
+    repetitionCount: 0
+  m_EventPayload:
+    m_IsEventExpanded: 1
+    m_StandardEventType: AchievementUnlocked
+    m_Parameters:
+      m_Parameters:
+      - m_RequirementType: 1
+        m_GroupID: 
+        m_Tooltip: A unique id for this achievement.
+        m_Name: achievement_id
+        m_Value:
+          m_EditingCustomValue: 0
+          m_PopupIndex: 0
+          m_CustomValue: 
+          m_FixedType: 1
+          m_EnumType: 
+          m_EnumTypeIsCustomizable: 0
+          m_CanDisable: 0
+          m_PropertyType: 1
+          m_ValueType: System.String
+          m_Value: 1
+          m_Target:
+            m_Target: {fileID: 0}
+            m_Path: 
+            m_ValidTypeNames:
+            - System.String
+            m_Type: System.String
+            m_EnumType: 
+    m_Name: achievement_unlocked
 --- !u!222 &7010200710143884872
 CanvasRenderer:
   m_ObjectHideFlags: 0

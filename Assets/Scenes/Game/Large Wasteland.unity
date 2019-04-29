@@ -51067,17 +51067,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManagers:
-    asteroidStormManagerClass: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+    analyticsManagerClass: {fileID: 7070041025322730957, guid: c19ad36042a1486489c8896d4c89371b,
       type: 3}
     spawnPointManagerClass: {fileID: 3691676981607013694, guid: b5a13139d8308f7448625f09ca7be3d2,
-      type: 3}
-    UIManagerClass: {fileID: 9128402878984158466, guid: 6846d0cf1696d144aaf4dd6e60976d31,
       type: 3}
     chaserManagerClass: {fileID: 2373372039052405470, guid: 482f3c2ae0672864880d66c940e93585,
       type: 3}
     moverManagerClass: {fileID: 613480307917899301, guid: 4f1b72c72d3747141b5618481776c090,
       type: 3}
+    asteroidStormManagerClass: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+      type: 3}
     raceManagerClass: {fileID: 5850534155415031341, guid: 10c803b6aeb348642b0e5cd41d566b11,
+      type: 3}
+    UIManagerClass: {fileID: 9128402878984158466, guid: 6846d0cf1696d144aaf4dd6e60976d31,
       type: 3}
     backgroundSoundManagerClass: {fileID: 4341203350372289051, guid: 0b342a3a3422cd34e9d93ba8e9a21825,
       type: 3}

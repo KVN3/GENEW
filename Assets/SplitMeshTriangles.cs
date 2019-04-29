@@ -86,9 +86,9 @@ public class SplitMeshTriangles : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ship"))
         {
-            // Half speed from impact
+            // Less speed due to impact
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(rb.velocity.x / 2, rb.velocity.y, rb.velocity.z / 2);
+            rb.velocity = new Vector3(rb.velocity.x / 1.5f, rb.velocity.y, rb.velocity.z / 1.5f);
 
             StartCoroutine(SplitMesh());
         }
