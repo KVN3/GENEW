@@ -8,7 +8,6 @@ using UnityEngine.Events;
 [System.Serializable]
 public struct ShipComponents
 {
-    public ShipMovement movement;
     public ShipEngines engines;
     public ShipGun gun;
     public ShipSystem system;
@@ -39,25 +38,31 @@ public class Ship : MyMonoBehaviour
     protected ShipSoundManager shipSoundManager;
     protected LevelSoundManager levelSoundManager;
     protected AISoundManager aiSoundManager;
+    public ShipMovement movement;
 
     // Collectables
     public Collectable collectableItemClass;
     public int itemAmount;
 
+    // Run time
     private bool recentlyHit;
 
+    // Delegates
     public UnityAction<Collectable, int> OnItemUsedDelegate;
     public UnityAction<int, string, bool> OnPlayerStunnedDelegate;
 
     public virtual void Awake()
     {
+        // Instantiate Sound Managers
         shipSoundManager = Instantiate(shipSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
         aiSoundManager = Instantiate(aiSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
         levelSoundManager = Instantiate(levelSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
 
-        componentsList = new List<ShipComponent>();
+        // Movement handler
+        movement = GetComponent<ShipMovement>();
 
-        componentsList.Add(components.movement);
+        componentsList = new List<ShipComponent>();
+        componentsList.Add(movement);
         componentsList.Add(components.engines);
         componentsList.Add(components.gun);
         componentsList.Add(components.system);
@@ -113,7 +118,7 @@ public class Ship : MyMonoBehaviour
             else if (collectableItemClass is SpeedBurst)
             {
                 SpeedBurst speedBurstItem = (SpeedBurst)collectableItemClass;
-                components.movement.ActivateSpeedBoost(speedBurstItem.maxSpeedIncrease, speedBurstItem.boostFactor, speedBurstItem.boostDuration);
+                movement.ActivateSpeedBoost(speedBurstItem.maxSpeedIncrease, speedBurstItem.boostFactor, speedBurstItem.boostDuration);
                 itemAmount--;
             }
 

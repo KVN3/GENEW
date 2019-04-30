@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ public struct ShipMovementConfig
     public float trailActivationSpeed;
 }
 
-public class ShipMovement : ShipComponent
+public class ShipMovement : ShipComponent, IPunObservable
 {
     public ShipFloatConfig floatConfig;
     public ShipMovementConfig config;
@@ -101,6 +102,33 @@ public class ShipMovement : ShipComponent
         }
     }
 
+    #region Photon
+    private Vector3 targetPos;
+    private Quaternion targetRot;
+
+    // Send data if this is our ship, receive data if it is not
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(parentShip.transform.position);
+            stream.SendNext(parentShip.transform.rotation);
+        }
+        else
+        {
+            targetPos = (Vector3)stream.ReceiveNext();
+            targetRot = (Quaternion)stream.ReceiveNext();
+        }
+    }
+
+    // Smooth moves other player ships to their correct position and rotation
+    public void SmoothMove()
+    {
+        parentShip.transform.position = Vector3.Lerp(parentShip.transform.position, targetPos, 0.25f);
+        parentShip.transform.rotation = Quaternion.RotateTowards(parentShip.transform.rotation, targetRot, 500 * Time.deltaTime);
+    }
+
+    #endregion
 
     #region Movement
     public void Move(Vector3 force, float verticalInput, float horizontalInput)

@@ -70,7 +70,7 @@ public class PlayerShip : Ship
         // Destroy stuff only needed for main player
         if (!photonView.IsMine)
         {
-            Destroy(GetComponent<PlayerController>());
+            //Destroy(GetComponent<PlayerController>());
             Destroy(GetComponent<AudioListener>());
         }
     }

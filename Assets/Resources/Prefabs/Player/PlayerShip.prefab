@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 743}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1383
 MonoBehaviour:
@@ -13971,9 +13971,9 @@ Transform:
   m_Children:
   - {fileID: 691}
   - {fileID: 713}
-  - {fileID: 787}
   - {fileID: 672}
   - {fileID: 747}
+  - {fileID: 852}
   m_Father: {fileID: 784}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14215,7 +14215,7 @@ Transform:
   m_LocalScale: {x: 8, y: 5, z: 12}
   m_Children: []
   m_Father: {fileID: 743}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1029
 MeshFilter:
@@ -26051,7 +26051,7 @@ GameObject:
   - component: {fileID: 1399}
   - component: {fileID: 1156}
   - component: {fileID: 3347787647740111107}
-  - component: {fileID: 6255824617727234250}
+  - component: {fileID: 8892973978212189798}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Ship
@@ -26108,7 +26108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   components:
-    movement: {fileID: 1404}
     engines: {fileID: 1386}
     gun: {fileID: 1392}
     system: {fileID: 1383}
@@ -26120,6 +26119,7 @@ MonoBehaviour:
   aiSoundManagerClass: {fileID: 764324233374814798, guid: de1886c4edc50df408b54c9f429f34a5,
     type: 3}
   spark: {fileID: 1390}
+  movement: {fileID: 0}
   collectableItemClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
     type: 3}
   itemAmount: 100
@@ -26221,11 +26221,11 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 6255824617727234250}
+  - {fileID: 8892973978212189798}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &6255824617727234250
+--- !u!114 &8892973978212189798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26234,12 +26234,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: a8b041027ef15824383bc78262b0aea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  floatConfig:
+    floatDiff: 0.2
+    floatSpeed: 300
+    baseHeightFromGround: 5
+  config:
+    movementSpeedFactor: 2700000
+    rotationSpeedFactor: 2
+    baseMaxSpeed: 250
+    minDrag: 0.3
+    maxDrag: 1.5
+    initialSlowDownFactor: 0.01
+    trailActivationSpeed: 150
+  windTrailsObject: {fileID: 556}
+  groundSensor: {fileID: 656}
 --- !u!1 &587
 GameObject:
   m_ObjectHideFlags: 0
@@ -26354,64 +26365,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &589
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 787}
-  - component: {fileID: 1404}
-  m_Layer: 0
-  m_Name: Ship Movement
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &787
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 852}
-  m_Father: {fileID: 743}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8b041027ef15824383bc78262b0aea7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.2
-    floatSpeed: 300
-    baseHeightFromGround: 5
-  config:
-    movementSpeedFactor: 2700000
-    rotationSpeedFactor: 2
-    baseMaxSpeed: 250
-    minDrag: 0.3
-    maxDrag: 1.5
-    initialSlowDownFactor: 0.01
-    trailActivationSpeed: 150
-  windTrailsObject: {fileID: 556}
-  groundSensor: {fileID: 656}
 --- !u!1 &590
 GameObject:
   m_ObjectHideFlags: 0
@@ -26814,12 +26767,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -4.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.499999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 787}
-  m_RootOrder: 0
+  m_Father: {fileID: 743}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &360013205
 PrefabInstance:

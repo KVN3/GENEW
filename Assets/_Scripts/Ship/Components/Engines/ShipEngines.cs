@@ -19,7 +19,7 @@ public class ShipEngines : ShipComponent
 
     public void FixedUpdate()
     {
-        if (parentShip.components.movement.IsBoosted())
+        if (parentShip.movement.IsBoosted())
         {
             middleEngine.SetBoostColor();
         }

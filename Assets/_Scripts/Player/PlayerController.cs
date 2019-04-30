@@ -43,26 +43,32 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Prevent control if connected to Photon and represent the localPlayer
-      //  if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        //  if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
         //{
         //    return;
         //}
 
-        //if (photonView.IsMine)
-        //{
+        if (photonView.IsMine)
+        {
             HandleCameraControls();
             HandlePreferedControls();
             HandlePlayerActionControls();
-       // }
+        }
     }
 
     private void FixedUpdate()
     {
-        //if (playerShip.GetComponent<PhotonView>().IsMine)
-       // {
+        if (photonView.IsMine)
+        {
             if (RaceManager.raceStarted)
                 HandleMovement();
-     //   }
+        }
+        else
+        {
+            playerShip.movement.SmoothMove();
+        }
+            
+
     }
 
     #region Control Handlers
@@ -85,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
         // Breaking
         if (Input.GetKey(KeyCode.Space))
-            playerShip.components.movement.Break();
+            playerShip.movement.Break();
 
         // Shooting
         if (Input.GetKeyDown(KeyCode.E))
@@ -160,7 +166,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            playerShip.components.movement.NotGivingGas();
+            playerShip.movement.NotGivingGas();
         }
     }
 
@@ -173,10 +179,10 @@ public class PlayerController : MonoBehaviour
 
         // Handle drag & front engine
         if (GivingGas(verticalInput) && !Input.GetKey(KeyCode.Space))
-            playerShip.components.movement.GivingGas();
+            playerShip.movement.GivingGas();
 
         else if (!Input.GetKey(KeyCode.Space))
-            playerShip.components.movement.NotGivingGas();
+            playerShip.movement.NotGivingGas();
     }
 
     // Rotate if needed, else restore rotation
@@ -188,25 +194,25 @@ public class PlayerController : MonoBehaviour
         if (Movement.IsNotIdle(sideMovementState))
         {
             // Set the rotation
-            float angleY = horizontalInput * playerShip.components.movement.config.rotationSpeedFactor * rotationalFactor;
-            float angleZ = horizontalInput * playerShip.components.movement.config.rotationSpeedFactor * rotationalFactor;
+            float angleY = horizontalInput * playerShip.movement.config.rotationSpeedFactor * rotationalFactor;
+            float angleZ = horizontalInput * playerShip.movement.config.rotationSpeedFactor * rotationalFactor;
             Vector3 rotation = new Vector3(0f, angleY, angleZ);
 
             // Rotate the ship along its two axis
-            playerShip.components.movement.Rotate(rotation, horizontalInput, sideMovementState);
+            playerShip.movement.Rotate(rotation, horizontalInput, sideMovementState);
         }
 
         // Restore rotation
         else
         {
-            playerShip.components.movement.ResetAngleZ(1);
+            playerShip.movement.ResetAngleZ(1);
         }
     }
 
     private void ManageThrust(float horizontalInput, float verticalInput, float forwardFactor)
     {
-        Vector3 forward = -1 * verticalInput * transform.forward * Time.deltaTime * playerShip.components.movement.config.movementSpeedFactor * forwardFactor;
-        playerShip.components.movement.Move(forward, verticalInput, horizontalInput);
+        Vector3 forward = -1 * verticalInput * transform.forward * Time.deltaTime * playerShip.movement.config.movementSpeedFactor * forwardFactor;
+        playerShip.movement.Move(forward, verticalInput, horizontalInput);
     }
     
     private void ManageCamera(float verticalInput)

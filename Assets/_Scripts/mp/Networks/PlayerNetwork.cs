@@ -26,6 +26,10 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
         PlayerName = "Kevin#" + Random.Range(1000, 9999);
 
+        // Higher bandwidth cost, smoother movement
+        PhotonNetwork.SendRate = 60;
+        PhotonNetwork.SerializationRate = 30;
+
         // Delegate, when scene loaded method called
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
     }
