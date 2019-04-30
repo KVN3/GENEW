@@ -49,6 +49,7 @@ public class Ship : MyMonoBehaviour
     private PhotonView photonView;
 
     public UnityAction<Collectable, int> OnItemUsedDelegate;
+    public UnityAction<int, string, bool> OnPlayerStunnedDelegate;
 
     public virtual void Awake()
     {
@@ -149,11 +150,12 @@ public class Ship : MyMonoBehaviour
     }
 
     // Ship got hit by a stun
-    public void GetHitByEmp(int duration)
+    public void GetHitByEmp(int duration, string cause)
     {
         // System not down
         if (!components.system.IsSystemDown())
         {
+            bool playerWasProtected = false;
 
             // Forcefield not active, shutdown
             if (!components.forcefield.IsActive())
@@ -166,12 +168,17 @@ public class Ship : MyMonoBehaviour
                 StartCoroutine(GotHit());
             }
 
-            // Forcefield activate, take damage
+            // Forcefield active, take damage
             else
             {
                 components.forcefield.GetHit(30);
                 shipSoundManager.PlaySound(SoundType.PROTECTED);
+
+                playerWasProtected = true;
             }
+
+            // Delegate event
+            OnPlayerStunnedDelegate(duration, cause, playerWasProtected);
         }
     }
 

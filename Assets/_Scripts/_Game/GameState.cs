@@ -66,6 +66,8 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(playerClass);
         Assert.IsFalse(playerStarts.Length == 0);
 
+
+        SpawnLocalPlayer(1);
         //GameInstance.Connect();
 
         //GameInstance.Instance.OnJoinedRoomDelegate = () =>

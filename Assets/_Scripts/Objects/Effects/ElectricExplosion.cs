@@ -31,7 +31,7 @@ public class ElectricExplosion : MonoBehaviour
             PlayerShip playerShip = other.GetComponent<PlayerShip>();
             Rigidbody rb = other.GetComponent<Rigidbody>();
 
-            playerShip.GetHitByEmp(shutDownDuration);
+            playerShip.GetHitByEmp(shutDownDuration, "Player weapon");
         }
         else if (other.gameObject.CompareTag("EnergyBall"))
         {

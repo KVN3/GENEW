@@ -41,7 +41,7 @@ public class EnergyBall : MonoBehaviour
             PlayerShip playerShip = other.GetComponent<PlayerShip>();
             Rigidbody rb = other.GetComponent<Rigidbody>();
 
-            playerShip.GetHitByEmp(shutDownDuration);
+            playerShip.GetHitByEmp(shutDownDuration, "Energy ball");
             Die();
         }
 

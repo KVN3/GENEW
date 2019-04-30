@@ -73,8 +73,8 @@ public class PlayerShip : Ship
 
     private void Update()
     {
-        if (GetComponent<PhotonView>().IsMine)
-        {
+        //if (GetComponent<PhotonView>().IsMine)
+        //{
             if (!runData.raceFinished && RaceManager.raceStarted)
                 runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
 
@@ -89,7 +89,7 @@ public class PlayerShip : Ship
             //{
             //    Debug.Log("Button");
             //}
-        }
+        //}
 
         runData.positionsX.Add(transform.position.x);
         runData.positionsY.Add(transform.position.y);

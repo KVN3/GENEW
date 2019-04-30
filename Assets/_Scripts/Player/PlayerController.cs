@@ -30,39 +30,39 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        if (photonView.IsMine)
-        {
+       // if (photonView.IsMine)
+      //  {
             // Rotate
             float x = 0;
             float y = 90f;
             float z = 0;
             transform.localEulerAngles = new Vector3(x, y, z);
-        }
+       // }
     }
 
     private void Update()
     {
         // Prevent control if connected to Photon and represent the localPlayer
-        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
-        {
-            return;
-        }
+      //  if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        //{
+        //    return;
+        //}
 
-        if (photonView.IsMine)
-        {
+        //if (photonView.IsMine)
+        //{
             HandleCameraControls();
             HandlePreferedControls();
             HandlePlayerActionControls();
-        }
+       // }
     }
 
     private void FixedUpdate()
     {
-        if (playerShip.GetComponent<PhotonView>().IsMine)
-        {
+        //if (playerShip.GetComponent<PhotonView>().IsMine)
+       // {
             if (RaceManager.raceStarted)
                 HandleMovement();
-        }
+     //   }
     }
 
     #region Control Handlers
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
             playerShip.UseItem();
 
         if (Input.GetKeyDown(KeyCode.K))
-            playerShip.GetHitByEmp(2);
+            playerShip.GetHitByEmp(2, "Debug activated");
 
         // Forcefield
         // If forcefield item not active, key down, enough charges and no cooldown then activate.
