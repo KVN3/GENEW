@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,7 +26,9 @@ public class BackgroundPlayer : MonoBehaviour
 
         DontDestroyOnLoad(this);
 
-        StartCoroutine(PlayBackgroundTrack());
+        audioSource.Stop();
+        // TO DO UNCOMMENT
+        //StartCoroutine(PlayBackgroundTrack());
     }
 
     private void ReadyClipsForUse()

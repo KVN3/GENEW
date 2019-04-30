@@ -9,194 +9,204 @@ using UnityEngine.Events;
 
 public class GameInstance : MonoBehaviourPunCallbacks
 {
-    #region Public Fields
-    [Tooltip("The Ui Panel to let the user enter name, connect and play")]
-    [SerializeField]
-    private GameObject controlPanel;
+    //public UnityAction OnJoinedLobbyDelegate;
+    //public UnityAction OnJoinedRoomDelegate;
 
-    [Tooltip("The UI Label to inform the user that the connection is in progress")]
-    [SerializeField]
-    private GameObject progressLabel;
-    #endregion
+    //public UnityAction<Player> OnPlayerJoinedDelegate;
+    //public UnityAction<Player> OnPlayerLeftDelegate;
 
-    public UnityAction OnJoinedLobbyDelegate;
-    public UnityAction OnJoinedRoomDelegate;
+    //private UnityAction OnCreatedRoomDelegate;
+    //private UnityAction<short, string> OnCreateRoomFailedDelegate;
 
-    public UnityAction<Player> OnPlayerJoinedDelegate;
-    public UnityAction<Player> OnPlayerLeftDelegate;
+    //private byte maxPlayers;
+    //private bool logging;
 
-    private UnityAction OnCreatedRoomDelegate;
-    private UnityAction<short, string> OnCreateRoomFailedDelegate;
+    //void Awake()
+    //{
+    //    logging = false;
+    //    DontDestroyOnLoad(this);
+    //    maxPlayers = 3;
+    //}
 
-    void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
+    //void Start()
+    //{
+    //}
 
-    void Start()
-    {
-    }
+    //public static void Connect()
+    //{
+    //    PhotonNetwork.AutomaticallySyncScene = true;
+    //    bool Success = PhotonNetwork.ConnectUsingSettings();
 
-    public static void Connect()
-    {
-        bool Success = PhotonNetwork.ConnectUsingSettings();
+    //    if (!Success)
+    //    {
+    //        if (GameInstance.Instance.logging)
+    //            Debug.Log($"Failed connecting to Photon");
+    //    }
+    //    else
+    //    {
+            
+    //    }
+    //}
 
-        if (!Success)
-        {
-            Debug.Log($"Failed connecting to Photon");
-        }
-        else
-        {
-            PhotonNetwork.AutomaticallySyncScene = true;
-        }
-    }
+    //public void CreateRoom(string Name, UnityAction Success, UnityAction<short, string> Failed)
+    //{
+    //    OnCreatedRoomDelegate = () =>
+    //    {
+    //        OnCreatedRoomDelegate = null;
+    //        OnCreateRoomFailedDelegate = null;
 
-    public void CreateRoom(string Name, UnityAction Success, UnityAction<short, string> Failed)
-    {
-        OnCreatedRoomDelegate = () =>
-        {
-            OnCreatedRoomDelegate = null;
-            OnCreateRoomFailedDelegate = null;
+    //        Success();
+    //    };
 
-            Success();
-        };
+    //    OnCreateRoomFailedDelegate = (short Error, string Message) =>
+    //    {
+    //        OnCreatedRoomDelegate = null;
+    //        OnCreateRoomFailedDelegate = null;
 
-        OnCreateRoomFailedDelegate = (short Error, string Message) =>
-        {
-            OnCreatedRoomDelegate = null;
-            OnCreateRoomFailedDelegate = null;
-
-            Failed(Error, Message);
-        };
+    //        Failed(Error, Message);
+    //    };
 
 
-        bool Result = PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 1 });
+    //    bool Result = PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayers });
 
-        if (!Result)
-        {
-            OnCreatedRoomDelegate = null;
-            OnCreateRoomFailedDelegate = null;
+    //    if (!Result)
+    //    {
+    //        OnCreatedRoomDelegate = null;
+    //        OnCreateRoomFailedDelegate = null;
 
-            Failed(0x6666, "Create room failed");
-        }
-    }
+    //        Failed(0x6666, "Create room failed");
+    //    }
+    //}
 
-    public override void OnConnectedToMaster()
-    {
-        Debug.Log($"Connected to master");
+    //public override void OnConnectedToMaster()
+    //{
+    //    if(logging)
+    //    Debug.Log($"Connected to master");
 
-        PhotonNetwork.JoinLobby();
-    }
+    //    PhotonNetwork.JoinLobby();
+    //}
 
-    public override void OnRoomListUpdate(List<RoomInfo> RoomList)
-    {
-        if (PhotonNetwork.InRoom)
-        {
-            return;
-        }
+    //public override void OnRoomListUpdate(List<RoomInfo> RoomList)
+    //{
+    //    if (PhotonNetwork.InRoom)
+    //    {
+    //        return;
+    //    }
 
-        Debug.Log($"Room list updated");
+    //    if (logging)
+    //        Debug.Log($"Room list updated");
 
-        foreach (RoomInfo Room in RoomList)
-        {
-            if (Room.IsOpen)
-            {
-                Debug.Log($"Joining room {Room.Name}");
+    //    foreach (RoomInfo Room in RoomList)
+    //    {
+    //        if (Room.IsOpen)
+    //        {
+    //            if (logging)
+    //                Debug.Log($"Joining room {Room.Name}");
 
-                if (PhotonNetwork.JoinRoom(Room.Name))
-                {
-                    return;
-                }
-            }
-        }
+    //            if (PhotonNetwork.JoinRoom(Room.Name))
+    //            {
+    //                return;
+    //            }
+    //        }
+    //    }
 
-        Debug.Log($"Creating room");
+    //    if (logging)
+    //        Debug.Log($"Creating room");
 
-        CreateRoom("MyRoom", () =>
-        {
-            Debug.Log($"Room created");
+    //    CreateRoom("MyRoom", () =>
+    //    {
+    //        if (logging)
+    //            Debug.Log($"Room created");
 
-        }, (short Error, string Message) =>
-        {
-            Debug.Log($"Room create failed for reason {Message}");
-        });
-    }
+    //    }, (short Error, string Message) =>
+    //    {
+    //        if (logging)
+    //            Debug.Log($"Room create failed for reason {Message}");
+    //    });
+    //}
 
-    public override void OnDisconnected(DisconnectCause cause)
-    {
-        Debug.Log($"Disconnected for reason {cause}");
-    }
+    //public override void OnDisconnected(DisconnectCause cause)
+    //{
+    //    if (logging)
+    //        Debug.Log($"Disconnected for reason {cause}");
+    //}
 
-    public override void OnJoinedLobby()
-    {
-        Debug.Log($"Joined lobby");
-    }
+    //public override void OnJoinedLobby()
+    //{
+    //    if (logging)
+    //        Debug.Log($"Joined lobby");
+    //}
 
-    public override void OnLeftLobby()
-    {
-        Debug.Log($"Left lobby");
-    }
+    //public override void OnLeftLobby()
+    //{
+    //    if (logging)
+    //        Debug.Log($"Left lobby");
+    //}
 
-    public override void OnCreatedRoom()
-    {
-        OnCreatedRoomDelegate();
-    }
+    //public override void OnCreatedRoom()
+    //{
+    //    OnCreatedRoomDelegate();
+    //}
 
-    public override void OnCreateRoomFailed(short ReturnCode, string Message)
-    {
-        OnCreateRoomFailedDelegate(ReturnCode, Message);
-    }
+    //public override void OnCreateRoomFailed(short ReturnCode, string Message)
+    //{
+    //    OnCreateRoomFailedDelegate(ReturnCode, Message);
+    //}
 
-    public override void OnJoinedRoom()
-    {
-        Debug.Log($"Joined room");
+    //public override void OnJoinedRoom()
+    //{
+    //    if (logging)
+    //        Debug.Log($"Joined room");
 
-        OnJoinedRoomDelegate();
-    }
+    //    OnJoinedRoomDelegate();
+    //}
 
-    public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        Debug.Log($"Room join failed for reason {message}");
-    }
+    //public override void OnJoinRandomFailed(short returnCode, string message)
+    //{
+    //    if (logging)
+    //        Debug.Log($"Room join failed for reason {message}");
+    //}
 
-    public override void OnPlayerEnteredRoom(Player Player)
-    {
-        Debug.Log($"Player {Player.NickName} joined the room");
+    //public override void OnPlayerEnteredRoom(Player Player)
+    //{
+    //    if (logging)
+    //        Debug.Log($"Player {Player.NickName} joined the room");
 
-        OnPlayerJoinedDelegate(Player);
-    }
+    //    OnPlayerJoinedDelegate(Player);
+    //}
 
-    public override void OnPlayerLeftRoom(Player Player)
-    {
-        Debug.Log($"Player {Player.NickName} left the room");
+    //public override void OnPlayerLeftRoom(Player Player)
+    //{
+    //    if (logging)
+    //        Debug.Log($"Player {Player.NickName} left the room");
 
-        OnPlayerLeftDelegate(Player);
-    }
+    //    OnPlayerLeftDelegate(Player);
+    //}
 
     // Abstract
 
-    protected static GameInstance _Instance;
+    //protected static GameInstance _Instance;
 
-    public static bool Initialized => _Instance != null;
+    //public static bool Initialized => _Instance != null;
 
-    public static GameInstance Instance
-    {
-        get
-        {
-            if (!Initialized)
-            {
-                GameObject GameObject = new GameObject("GameInstance");
+    //public static GameInstance Instance
+    //{
+    //    get
+    //    {
+    //        if (!Initialized)
+    //        {
+    //            GameObject GameObject = new GameObject("GameInstance");
 
-                _Instance = GameObject.AddComponent<GameInstance>();
-            }
+    //            _Instance = GameObject.AddComponent<GameInstance>();
+    //        }
 
-            return _Instance;
-        }
-    }
+    //        return _Instance;
+    //    }
+    //}
 
-    [RuntimeInitializeOnLoadMethod]
-    static void ForceInit()
-    {
-        GameInstance GI = Instance;
-    }
+    //[RuntimeInitializeOnLoadMethod]
+    //static void ForceInit()
+    //{
+    //    GameInstance GI = Instance;
+    //}
 }

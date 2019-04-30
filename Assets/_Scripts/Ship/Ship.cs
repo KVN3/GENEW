@@ -85,9 +85,8 @@ public class Ship : MyMonoBehaviour
             {
                 if (!components.gun.OnCooldown())
                 {
-                    //photonView.RPC("Fire", RpcTarget.AllViaServer);
-
                     components.gun.Shoot((JammerProjectile)collectableItemClass);
+                    //photonView.RPC("Fire", RpcTarget.AllViaServer);
                     itemAmount--;
                 }
             }
@@ -126,9 +125,10 @@ public class Ship : MyMonoBehaviour
         }
     }
 
+
     new void OnCollisionEnter(Collision other)
     {
-        if (!components.forcefield.IsActivate())
+        if (!components.forcefield.IsActive())
         {
             if (other.gameObject.CompareTag("Projectile"))
             {
@@ -141,24 +141,32 @@ public class Ship : MyMonoBehaviour
         }
     }
 
+    // Ship got hit by regular, e.a. a wall
     public void GetHitByRegular()
     {
         shipSoundManager.PlaySound(SoundType.ALARM);
         spark.Activate();
     }
 
+    // Ship got hit by a stun
     public void GetHitByEmp(int duration)
     {
+        // System not down
         if (!components.system.IsSystemDown())
         {
-            if (!components.forcefield.IsActivate())
+
+            // Forcefield not active, shutdown
+            if (!components.forcefield.IsActive())
             {
                 aiSoundManager.ReportSystemError(SoundType.AISYSTEMERROR);
+
                 components.system.ShutDown();
                 components.engines.RestoreSystem();
 
                 StartCoroutine(GotHit());
             }
+
+            // Forcefield activate, take damage
             else
             {
                 components.forcefield.GetHit(30);
@@ -178,13 +186,7 @@ public class Ship : MyMonoBehaviour
         recentlyHit = false;
     }
 
-    public void SetItem(Collectable item, int amount)
-    {
-        this.collectableItemClass = item;
-        itemAmount = amount;
 
-        aiSoundManager.PlayVoiceOnDelay(0.5f, item);
-    }
 
     public void Alert()
     {
@@ -195,9 +197,14 @@ public class Ship : MyMonoBehaviour
         }
     }
 
-    public int GetItemAmount()
+    #region GetSet
+    // Collectable Items
+    public void SetItem(Collectable item, int amount)
     {
-        return itemAmount;
+        this.collectableItemClass = item;
+        itemAmount = amount;
+
+        aiSoundManager.PlayVoiceOnDelay(0.5f, item);
     }
 
     public Collectable GetItem()
@@ -205,6 +212,12 @@ public class Ship : MyMonoBehaviour
         return collectableItemClass;
     }
 
+    public int GetItemAmount()
+    {
+        return itemAmount;
+    }
+
+    // Hit
     public bool WasRecentlyHit()
     {
         if (recentlyHit)
@@ -212,7 +225,7 @@ public class Ship : MyMonoBehaviour
         return false;
     }
 
-
+    // Sound managers
     public ShipSoundManager GetShipSoundManager()
     {
         return shipSoundManager;
@@ -222,6 +235,13 @@ public class Ship : MyMonoBehaviour
     {
         return aiSoundManager;
     }
+
+    // Photon
+    public PhotonView GetPhotonView()
+    {
+        return photonView;
+    }
+    #endregion
 }
 
 // TO DO: camera straight while turning

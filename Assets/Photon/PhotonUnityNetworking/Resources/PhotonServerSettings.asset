@@ -32,5 +32,10 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - PhotonDropMine
+  - PhotonShoot
+  - Shoot
+  - RPC_LoadedGameScene
+  - RPC_LoadGameOthers
   DisableAutoOpenWizard: 1
   ShowSettings: 1
