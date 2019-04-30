@@ -27,17 +27,17 @@ public class ShipGun : ShipComponent
     public void Shoot(JammerProjectile projectileClass)
     {
         //This object's rotation + 180y
-        Vector3 rot = transform.rotation.eulerAngles;
-        rot = new Vector3(rot.x, rot.y + 180, rot.z);
-        Quaternion rotation = Quaternion.Euler(rot);
+        //Vector3 rot = transform.rotation.eulerAngles;
+        //rot = new Vector3(rot.x, rot.y + 180, rot.z);
+        //Quaternion rotation = Quaternion.Euler(rot);
 
-        JammerProjectile projectile = Instantiate(projectileClass, projectileSpawnPoint.transform.position, rotation);
-        projectile.owner = parentShip;
+        //JammerProjectile projectile = Instantiate(projectileClass, projectileSpawnPoint.transform.position, rotation);
+        //projectile.owner = parentShip;
 
-        shipSoundManager.PlaySound(SoundType.SHOOTING);
-        StartCoroutine(ShootingCooldown(.5f));
+        //shipSoundManager.PlaySound(SoundType.SHOOTING);
+        //StartCoroutine(ShootingCooldown(.5f));
 
-        //photonView.RPC("Shoot", RpcTarget.AllViaServer);
+        photonView.RPC("Shoot", RpcTarget.AllViaServer);
     }
 
     [PunRPC]

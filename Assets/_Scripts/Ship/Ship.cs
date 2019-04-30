@@ -46,8 +46,6 @@ public class Ship : MyMonoBehaviour
 
     private bool recentlyHit;
 
-    private PhotonView photonView;
-
     public UnityAction<Collectable, int> OnItemUsedDelegate;
     public UnityAction<int, string, bool> OnPlayerStunnedDelegate;
 
@@ -69,8 +67,6 @@ public class Ship : MyMonoBehaviour
             component.SetParentShip(this);
             component.SetShipSoundManager(shipSoundManager);
         }
-
-        photonView = GetComponent<PhotonView>();
     }
 
     public virtual void Start()
@@ -241,12 +237,6 @@ public class Ship : MyMonoBehaviour
     public AISoundManager GetAiSoundManager()
     {
         return aiSoundManager;
-    }
-
-    // Photon
-    public PhotonView GetPhotonView()
-    {
-        return photonView;
     }
     #endregion
 }

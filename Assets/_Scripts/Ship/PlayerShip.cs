@@ -55,12 +55,24 @@ public class PlayerShip : Ship
 
     Dictionary<string, Dictionary<string, TimeSpan>> playerTimes;
 
+    private PhotonView photonView;
+    public PhotonView GetPhotonView()
+    {
+        return photonView;
+    }
+
     public override void Awake()
     {
         base.Awake();
 
-        //pc = Instantiate(playerControllerClass, transform.position, Quaternion.identity, transform);
-        //pc.playerShip = this;
+        photonView = GetComponent<PhotonView>();
+
+        // Destroy stuff only needed for main player
+        if (!photonView.IsMine)
+        {
+            Destroy(GetComponent<PlayerController>());
+            Destroy(GetComponent<AudioListener>());
+        }
     }
 
     public override void Start()
