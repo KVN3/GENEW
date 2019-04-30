@@ -18,8 +18,11 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         print("Connected to master.");
-        PhotonNetwork.NickName = PlayerNetwork.instance.PlayerName;
 
+        // Automatically join host's scene
+        PhotonNetwork.AutomaticallySyncScene = false;
+
+        PhotonNetwork.NickName = PlayerNetwork.Instance.PlayerName;
         PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
 

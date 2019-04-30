@@ -24,11 +24,15 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     // I joined room
     public override void OnJoinedRoom()
     {
+        // Destroy all in players in list from previous lobby's
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         // Toggles the current room window
         MainCanvasManager.instance.CurrentRoomCanvas.transform.SetAsLastSibling();
         MainCanvasManager.instance.LobbyCanvas.transform.SetAsFirstSibling();
-        //MainCanvasManager.instance.LobbyCanvas.gameObject.SetActive(false);
-        //MainCanvasManager.instance.CurrentRoomCanvas.gameObject.SetActive(true);
 
         Player[] players = PhotonNetwork.PlayerList;
 
