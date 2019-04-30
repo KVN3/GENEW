@@ -2,6 +2,7 @@
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using System.IO;
+using Photon.Realtime;
 
 public class PlayerNetwork : MonoBehaviourPunCallbacks
 {
@@ -14,8 +15,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     // How many players fully loaded the game scene
     private int playersInGame = 0;
 
-    // Which spawnpoint this player will occupy
-    private int spawnIndex;
+    private PlayerShip playerShip;
 
     private string activeScene;
 
@@ -30,6 +30,11 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
 
+
+    }
+
+    private void Start()
+    {
         // Delegate, when scene loaded method called
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
     }
@@ -37,7 +42,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if (!scene.name.Equals("Main Menu"))
+        if (!scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.Main]) && !scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.Shipyard]))
         {
             string wasteland = ScenesInformation.sceneNames[SceneTitle.Wasteland];
 
@@ -51,20 +56,25 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         }
     }
 
-
     // Host loaded game
     private void MasterLoadedGame()
     {
+        // Bug fix on scene load
+        photonView = GetComponent<PhotonView>();
+
         activeScene = ScenesInformation.sceneNames[SceneTitle.Wasteland];
 
-        photonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient);
+        photonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
         photonView.RPC("RPC_LoadGameOthers", RpcTarget.Others, activeScene);
     }
 
     // Client loaded game
     private void NonMasterLoadedGame()
     {
-        photonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient);
+        // Bug fix on scene load
+        photonView = GetComponent<PhotonView>();
+
+        photonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
     }
 
     // Tell all clients to load the same game as the host
@@ -79,10 +89,12 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
     // Executed whenever a player loaded the scene
     [PunRPC]
-    private void RPC_LoadedGameScene()
+    private void RPC_LoadedGameScene(Player player)
     {
+        // Add to player list
+        PlayerManager.Instance.AddPlayerStats(player);
+
         playersInGame++;
-        spawnIndex = playersInGame - 1;
 
         // When all players in the game, spawn their ships in
         if (playersInGame == PhotonNetwork.PlayerList.Length)
@@ -90,75 +102,47 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
             print("All players loaded game scene.");
             photonView.RPC("RPC_CreatePlayer", RpcTarget.All);
         }
+    }
 
+    public void NewHealth(Player player, int health)
+    {
+        photonView.RPC("RPC_NewHealth", player, health);
+    }
+
+    [PunRPC]
+    private void RPC_NewHealth(int health)
+    {
+        if (playerShip == null)
+            return;
+
+        print("Current player health: " + health);
+
+        if (health < 1)
+        {
+            PhotonNetwork.Destroy(playerShip.gameObject);
+            //Destroy(playerCamera.gameObject);
+
+            // TO DO: Respawning
+        }
+        
     }
 
     // Creates the player's ship
     [PunRPC]
     private void RPC_CreatePlayer()
     {
-        PlayerShip playerShipClass = LoadPlayerShip();
-        PlayerCamera playerCameraClass = LoadPlayerCamera();
-        LocalSpawnPoint[] spawnPoints = LoadSpawnPoints();
+        playerShip = PlayerManager.Instance.CreatePlayer(PhotonNetwork.LocalPlayer, activeScene);
 
-        string playerPath = Path.Combine("Prefabs", "Player", "PlayerShip");
+        SkinManager skinManager = playerShip.GetComponent<SkinManager>();
+        ShipSkin skin = new ShipSkin();
+        skin.baseColor = PlayerPrefsX.GetColor("REGULAR_COLOR");
+        skin.lightColor = PlayerPrefsX.GetColor("LIGHT_COLOR");
+        skin.darkColor = PlayerPrefsX.GetColor("DARK_COLOR");
 
-        // Spawn the local player - BAD SOLUTION
-        int index = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        skinManager.ApplySkin(skin);
 
-        if (index == -1)
-            print("Index - 1, actornumber not found");
-
-        LocalSpawnPoint playerStart = spawnPoints[index];
-
-        PlayerShip playerShip = PhotonNetwork.Instantiate(playerPath, playerStart.transform.position, playerStart.transform.rotation).GetComponent<PlayerShip>();
-
-        // Spawn camera
-        PlayerCamera camera = Instantiate(playerCameraClass);
-        camera.target = playerShip;
-
-        // Camera reference for the PC
-        PlayerController playerController = playerShip.gameObject.GetComponent<PlayerController>();
-        playerController.SetPlayerCamera(camera);
-        playerShip.SetPlayerCamera(camera);
     }
 
-
-
-
-    private PlayerShip LoadPlayerShip()
-    {
-        string playerPath = Path.Combine("Prefabs", "Player", "PlayerShip");
-        GameObject playerShipObj = Resources.Load(playerPath) as GameObject;
-
-        return playerShipObj.GetComponent<PlayerShip>();
-    }
-
-    private PlayerCamera LoadPlayerCamera()
-    {
-        string cameraPath = Path.Combine("Prefabs", "Player", "PlayerCamera");
-        GameObject playerCameraObj = Resources.Load(cameraPath) as GameObject;
-
-        return playerCameraObj.GetComponent<PlayerCamera>();
-    }
-
-    private LocalSpawnPoint[] LoadSpawnPoints()
-    {
-        string spawnpointsPath = Path.Combine("Prefabs", "Spawnpoints", activeScene);
-
-        Object[] objects = Resources.LoadAll(spawnpointsPath);
-        LocalSpawnPoint[] spawnPoints = new LocalSpawnPoint[objects.Length];
-
-        int i = 0;
-        foreach (Object obj in objects)
-        {
-            GameObject gameObject = obj as GameObject;
-            spawnPoints[i] = gameObject.GetComponent<LocalSpawnPoint>();
-            i++;
-        }
-
-        return spawnPoints;
-    }
 
     //protected PlayerShip SpawnLocalPlayer(int index)
     //{

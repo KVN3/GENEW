@@ -75,10 +75,8 @@ public class PlayerShip : Ship
         }
     }
 
-    public override void Start()
+    public void Start()
     {
-        base.Start();
-
         InitRaceData();
     }
     #endregion

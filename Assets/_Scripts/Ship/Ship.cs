@@ -21,13 +21,10 @@ public class Ship : MyMonoBehaviour
     #region ObjectClasses
     [SerializeField]
     private ShipSoundManager shipSoundManagerClass;
-
     [SerializeField]
     private LevelSoundManager levelSoundManagerClass;
-
     [SerializeField]
     private AISoundManager aiSoundManagerClass;
-
     [SerializeField]
     private DamageSpark spark;
     #endregion
@@ -46,6 +43,7 @@ public class Ship : MyMonoBehaviour
 
     // Run time
     private bool recentlyHit;
+    private PhotonView photonView;
 
     // Delegates
     public UnityAction<Collectable, int> OnItemUsedDelegate;
@@ -58,8 +56,9 @@ public class Ship : MyMonoBehaviour
         aiSoundManager = Instantiate(aiSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
         levelSoundManager = Instantiate(levelSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
 
-        // Movement handler
+        // Get Components
         movement = GetComponent<ShipMovement>();
+        photonView = GetComponent<PhotonView>();
 
         componentsList = new List<ShipComponent>();
         componentsList.Add(movement);
@@ -72,11 +71,6 @@ public class Ship : MyMonoBehaviour
             component.SetParentShip(this);
             component.SetShipSoundManager(shipSoundManager);
         }
-    }
-
-    public virtual void Start()
-    {
-
     }
 
     public void UseItem()
@@ -136,18 +130,23 @@ public class Ship : MyMonoBehaviour
             {
                 Ship ownerShip = other.gameObject.GetComponent<JammerProjectile>().owner;
                 if (!ownerShip == this)
-                    GetHitByRegular();
+                    GetHitByRegular(other);
             }
             else if (!other.gameObject.CompareTag("ShipComponent") && !other.gameObject.CompareTag("Mine") && !other.gameObject.CompareTag("EnergyBall"))
-                GetHitByRegular();
+                GetHitByRegular(other);
         }
     }
 
     // Ship got hit by regular, e.a. a wall
-    public void GetHitByRegular()
+    public void GetHitByRegular(Collision other)
     {
         shipSoundManager.PlaySound(SoundType.ALARM);
         spark.Activate();
+
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
+        PlayerManager.Instance.ModifyHealth(photonView.Owner, -5);
     }
 
     // Ship got hit by a stun

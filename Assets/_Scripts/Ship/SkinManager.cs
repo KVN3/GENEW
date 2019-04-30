@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -6,9 +7,9 @@ using UnityEngine;
 [System.Serializable]
 public struct ShipSkin
 {
-    public Color32 baseColor;
-    public Color32 darkColor;
-    public Color32 lightColor;
+    public Color baseColor;
+    public Color darkColor;
+    public Color lightColor;
 
     public Color forcefieldColor;
 }
@@ -19,34 +20,23 @@ public class SkinManager : MonoBehaviour
     public ShipSkin skin;
     public bool applySkin;
 
+    private PhotonView photonView;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.HasKey("Ship Color"))
-        {
-            string color = PlayerPrefs.GetString("Ship Color");
-            switch (color)
-            {
-                case "Red":
-                    skin.baseColor = new Color32(255, 0, 0, 0);
-                    skin.darkColor = new Color32(0, 0, 0, 255);
-                    skin.lightColor = new Color32(30, 0, 0, 255);
-                    skin.forcefieldColor = new Color32(255, 0, 0, 255);
-                    break;
-                case "Green":
-                    skin.baseColor = new Color32(0, 255, 0, 0);
-                    skin.darkColor = new Color32(0, 0, 0, 255);
-                    skin.lightColor = new Color32(0, 30, 0, 255);
-                    skin.forcefieldColor = new Color32(0, 255, 0, 255);
-                    break;
-                case "Blue":
-                    skin.baseColor = new Color32(0, 0, 255, 0);
-                    skin.darkColor = new Color32(0, 0, 0, 255);
-                    skin.lightColor = new Color32(0, 0, 30, 255);
-                    skin.forcefieldColor = new Color32(0, 0, 255, 255);
-                    break;
-            }
-        }
+        //photonView = GetComponent<PhotonView>();
+
+        // Get the owner of this ship's skin
+        //skin = PlayerManager.Instance.GetShipSkin(photonView.Owner);
+
+        //ApplySkin();
+    }
+
+    // Apply skin on ship
+    public void ApplySkin(ShipSkin skin)
+    {
+        this.skin = skin;
 
         if (applySkin)
         {
@@ -64,6 +54,7 @@ public class SkinManager : MonoBehaviour
         }
     }
 
+    // Apply skin to forcefield
     private void ApplyForceFieldSkin(Transform componentsTransform)
     {
         foreach (Transform componentTransform in componentsTransform)
@@ -82,6 +73,7 @@ public class SkinManager : MonoBehaviour
         }
     }
 
+    // Apply skin to base
     private void ApplyShipSkin(Transform meshTransform)
     {
         foreach (Transform childTransform in meshTransform)
@@ -99,13 +91,13 @@ public class SkinManager : MonoBehaviour
                         switch (mat.name)
                         {
                             case "Metal_Blue (Instance)":
-                                mat.color = PlayerPrefsX.GetColor("REGULAR_COLOR");
+                                mat.color = skin.baseColor;
                                 break;
                             case "Metal_Blue_Light (Instance)":
-                                mat.color = PlayerPrefsX.GetColor("LIGHT_COLOR");
+                                mat.color = skin.lightColor;
                                 break;
                             case "Metal_Blue_Dark (Instance)":
-                                mat.color = PlayerPrefsX.GetColor("DARK_COLOR");
+                                mat.color = skin.darkColor;
                                 break;
                         }
                     }
@@ -114,3 +106,41 @@ public class SkinManager : MonoBehaviour
         }
     }
 }
+
+
+//if (PlayerPrefs.HasKey("Ship Color"))
+//{
+//    string color = PlayerPrefs.GetString("Ship Color");
+//    switch (color)
+//    {
+//        case "Red":
+//            skin.baseColor = new Color32(255, 0, 0, 0);
+//            skin.darkColor = new Color32(0, 0, 0, 255);
+//            skin.lightColor = new Color32(30, 0, 0, 255);
+//            skin.forcefieldColor = new Color32(255, 0, 0, 255);
+//            break;
+//        case "Green":
+//            skin.baseColor = new Color32(0, 255, 0, 0);
+//            skin.darkColor = new Color32(0, 0, 0, 255);
+//            skin.lightColor = new Color32(0, 30, 0, 255);
+//            skin.forcefieldColor = new Color32(0, 255, 0, 255);
+//            break;
+//        case "Blue":
+//            skin.baseColor = new Color32(0, 0, 255, 0);
+//            skin.darkColor = new Color32(0, 0, 0, 255);
+//            skin.lightColor = new Color32(0, 0, 30, 255);
+//            skin.forcefieldColor = new Color32(0, 0, 255, 255);
+//            break;
+//    }
+//}
+
+
+//case "Metal_Blue (Instance)":
+//    mat.color = PlayerPrefsX.GetColor("REGULAR_COLOR");
+//    break;
+//case "Metal_Blue_Light (Instance)":
+//    mat.color = PlayerPrefsX.GetColor("LIGHT_COLOR");
+//    break;
+//case "Metal_Blue_Dark (Instance)":
+//    mat.color = PlayerPrefsX.GetColor("DARK_COLOR");
+//    break;
