@@ -10,7 +10,12 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     public string PlayerName { get; private set; }
 
     private PhotonView photonView;
+
+    // How many players fully loaded the game scene
     private int playersInGame = 0;
+
+    // Which spawnpoint this player will occupy
+    private int spawnIndex;
 
     private string activeScene;
 
@@ -73,6 +78,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     private void RPC_LoadedGameScene()
     {
         playersInGame++;
+        spawnIndex = playersInGame - 1;
 
         // When all players in the game, spawn their ships in
         if (playersInGame == PhotonNetwork.PlayerList.Length)
@@ -94,7 +100,11 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         string playerPath = Path.Combine("Prefabs", "Player", "PlayerShip");
 
         // Spawn the local player - BAD SOLUTION
-        int index = PhotonNetwork.PlayerList.Length - 1;
+        int index = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+
+        if (index == -1)
+            print("Index - 1, actornumber not found");
+
         LocalSpawnPoint playerStart = spawnPoints[index];
 
         PlayerShip playerShip = PhotonNetwork.Instantiate(playerPath, playerStart.transform.position, playerStart.transform.rotation).GetComponent<PlayerShip>();

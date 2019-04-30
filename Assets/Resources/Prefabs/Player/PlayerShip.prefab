@@ -26051,7 +26051,7 @@ GameObject:
   - component: {fileID: 1399}
   - component: {fileID: 1156}
   - component: {fileID: 3347787647740111107}
-  - component: {fileID: 4011998970482050079}
+  - component: {fileID: 6255824617727234250}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Ship
@@ -26221,11 +26221,11 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 4011998970482050079}
+  - {fileID: 6255824617727234250}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &4011998970482050079
+--- !u!114 &6255824617727234250
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
