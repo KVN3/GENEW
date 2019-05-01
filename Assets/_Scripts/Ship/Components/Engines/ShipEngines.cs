@@ -20,7 +20,7 @@ public class ShipEngines : ShipComponent, IPunObservable
 
     public void FixedUpdate()
     {
-        if (parentShip.movement.IsBoosted())
+        if (parentShip.components.movement.IsBoosted())
         {
             middleEngine.SetBoostColor();
         }

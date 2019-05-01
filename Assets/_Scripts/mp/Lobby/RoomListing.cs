@@ -14,8 +14,15 @@ public class RoomListing : MonoBehaviour
         get { return _roomNameText; }
     }
 
+    [SerializeField]
+    private Text _playerCountText;
+    public Text PlayerCountText
+    {
+        get { return _playerCountText; }
+    }
+
     public string RoomName { get; private set; }
-        public bool Updated { get; set; }
+    public bool Updated { get; set; }
 
     private void Start()
     {
@@ -38,7 +45,13 @@ public class RoomListing : MonoBehaviour
 
     public void SetRoomNameText(string text)
     {
-        RoomName= text;
+        RoomName = text;
         RoomNameText.text = RoomName;
+    }
+
+    public void SetPlayerCountText(int playerCount, int maxPlayerCount)
+    {
+        string text = playerCount + "/" + maxPlayerCount;
+        PlayerCountText.text = text;
     }
 }

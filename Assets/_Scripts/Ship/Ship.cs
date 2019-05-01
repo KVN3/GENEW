@@ -8,6 +8,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public struct ShipComponents
 {
+    public ShipMovement movement;
     public ShipEngines engines;
     public ShipGun gun;
     public ShipSystem system;
@@ -16,9 +17,9 @@ public struct ShipComponents
 
 public class Ship : MyMonoBehaviour
 {
+    #region Assigned variables
     public ShipComponents components;
 
-    #region ObjectClasses
     [SerializeField]
     private ShipSoundManager shipSoundManagerClass;
     [SerializeField]
@@ -35,7 +36,7 @@ public class Ship : MyMonoBehaviour
     protected ShipSoundManager shipSoundManager;
     protected LevelSoundManager levelSoundManager;
     protected AISoundManager aiSoundManager;
-    public ShipMovement movement;
+    
 
     // Collectables
     public Collectable collectableItemClass;
@@ -57,11 +58,10 @@ public class Ship : MyMonoBehaviour
         levelSoundManager = Instantiate(levelSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
 
         // Get Components
-        movement = GetComponent<ShipMovement>();
         photonView = GetComponent<PhotonView>();
 
         componentsList = new List<ShipComponent>();
-        componentsList.Add(movement);
+        componentsList.Add(components.movement);
         componentsList.Add(components.engines);
         componentsList.Add(components.gun);
         componentsList.Add(components.system);
@@ -73,6 +73,7 @@ public class Ship : MyMonoBehaviour
         }
     }
 
+    // Use a collectable item
     public void UseItem()
     {
         if (itemAmount > 0)
@@ -112,7 +113,7 @@ public class Ship : MyMonoBehaviour
             else if (collectableItemClass is SpeedBurst)
             {
                 SpeedBurst speedBurstItem = (SpeedBurst)collectableItemClass;
-                movement.ActivateSpeedBoost(speedBurstItem.maxSpeedIncrease, speedBurstItem.boostFactor, speedBurstItem.boostDuration);
+                components.movement.ActivateSpeedBoost(speedBurstItem.maxSpeedIncrease, speedBurstItem.boostFactor, speedBurstItem.boostDuration);
                 itemAmount--;
             }
 

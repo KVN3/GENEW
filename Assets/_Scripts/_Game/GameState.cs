@@ -117,11 +117,6 @@ public class GameState : LevelSingleton<GameState>
 
         PlayerShip playerShip = PhotonNetwork.Instantiate(playerClass.name, playerStart.transform.position, playerStart.transform.rotation).GetComponent<PlayerShip>();
 
-        // UIManager
-        UIManager UIManager = Instantiate(gameManagers.UIManagerClass);
-        UIManager.playerShip = playerShip;
-        UIManager.playerCount = players.Count;
-
         // Spawn camera
         PlayerCamera camera = Spawn(cameraClass);
         camera.target = playerShip;

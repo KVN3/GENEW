@@ -143,17 +143,17 @@ public class UIPanel : UIBehaviour
         //}
 
         // Speed
-        if (playerShip.movement.GetCurrentSpeed() > 1f)
+        if (playerShip.components.movement.GetCurrentSpeed() > 1f)
             speedBg.sprite = speedBgSpriteActivated;
         else
             speedBg.sprite = speedBgSprite;
 
-        float currSpeed = playerShip.movement.GetCurrentSpeed() * 2;
+        float currSpeed = playerShip.components.movement.GetCurrentSpeed() * 2;
         speedText.text = currSpeed.ToString("0");
-        speedMeter.value = (currSpeed / playerShip.movement.GetCurrentMaxSpeed()) * 0.6f; // Compensate with * 2 and make slightly higher so it sticks to 100% when a bit less than maxspeed is reached
+        speedMeter.value = (currSpeed / playerShip.components.movement.GetCurrentMaxSpeed()) * 0.6f; // Compensate with * 2 and make slightly higher so it sticks to 100% when a bit less than maxspeed is reached
         speedUnitText.text = LocalizationManager.GetTextByKey("SPEEDUNIT");
         // Boosted
-        if (playerShip.movement.IsBoosted())
+        if (playerShip.components.movement.IsBoosted())
         {
             if (boostMeter.value <= 1)
                 boostMeter.value += Time.deltaTime;

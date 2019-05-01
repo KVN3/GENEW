@@ -19,7 +19,7 @@ public class Booster : MonoBehaviour
         if (other.gameObject.CompareTag("Ship"))
         {
             PlayerShip playerShip = other.GetComponent<PlayerShip>();
-            playerShip.movement.ActivateSpeedBoost(maxSpeedIncrease, boostFactor, boostDuration);
+            playerShip.components.movement.ActivateSpeedBoost(maxSpeedIncrease, boostFactor, boostDuration);
         }
     }
 }

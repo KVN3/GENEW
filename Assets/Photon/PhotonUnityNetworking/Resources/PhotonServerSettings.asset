@@ -40,5 +40,6 @@ MonoBehaviour:
   - RPC_CreatePlayer
   - RPC_NewHealth
   - RPC_ApplySkin
+  - PhotonDropSmokeScreen
   DisableAutoOpenWizard: 1
   ShowSettings: 1

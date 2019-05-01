@@ -11953,7 +11953,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1066}
   - component: {fileID: 2443}
-  - component: {fileID: 2444}
   m_Layer: 0
   m_Name: Ship Weapon
   m_TagString: Untagged
@@ -11995,25 +11994,6 @@ MonoBehaviour:
   xMin: 0
   zMin: 0
   maxSpeed: 0
---- !u!114 &2444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d4a62ec98e568649805b1b9964b2b12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpawnPoint: {fileID: 2443}
-  mineSP: {fileID: 2448}
-  smokeSP: {fileID: 2438}
-  jammerProjectileClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-    type: 3}
-  jammerMineClass: {fileID: 3327580341691270771, guid: 82255b909af5f654fa3020825945976e,
-    type: 3}
 --- !u!1 &434
 GameObject:
   m_ObjectHideFlags: 0
@@ -25981,6 +25961,7 @@ GameObject:
   - component: {fileID: 2537}
   - component: {fileID: 6987268490720304500}
   - component: {fileID: 4473378837321126152}
+  - component: {fileID: 8869554232137204516}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Ship
@@ -26037,8 +26018,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   components:
+    movement: {fileID: 2537}
     engines: {fileID: 6987268490720304500}
-    gun: {fileID: 2444}
+    gun: {fileID: 8869554232137204516}
     system: {fileID: 2437}
     forcefield: {fileID: 4473378837321126152}
   shipSoundManagerClass: {fileID: 833736413695209226, guid: 395deba2e831a444baffd18255cef95e,
@@ -26048,7 +26030,6 @@ MonoBehaviour:
   aiSoundManagerClass: {fileID: 764324233374814798, guid: de1886c4edc50df408b54c9f429f34a5,
     type: 3}
   spark: {fileID: 2442}
-  movement: {fileID: 0}
   collectableItemClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
     type: 3}
   itemAmount: 100
@@ -26210,6 +26191,27 @@ MonoBehaviour:
   initialCharges: 100
   owner: {fileID: 2453}
   forcefieldObject: {fileID: 499}
+--- !u!114 &8869554232137204516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d4a62ec98e568649805b1b9964b2b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawnPoint: {fileID: 2443}
+  mineSP: {fileID: 2448}
+  smokeSP: {fileID: 2438}
+  jammerProjectileClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
+    type: 3}
+  jammerMineClass: {fileID: 3327580341691270771, guid: 82255b909af5f654fa3020825945976e,
+    type: 3}
+  smokeScreenClass: {fileID: 4297213205010208726, guid: cb568ea53dd219e4bbcb19d6867d5809,
+    type: 3}
 --- !u!1 &537
 GameObject:
   m_ObjectHideFlags: 0

@@ -119,7 +119,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
         if (health < 1)
         {
-            PhotonNetwork.Destroy(playerShip.gameObject);
+            //PhotonNetwork.Destroy(playerShip.gameObject);
             //Destroy(playerCamera.gameObject);
 
             // TO DO: Respawning
@@ -133,41 +133,4 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     {
         playerShip = PlayerManager.Instance.CreatePlayer(PhotonNetwork.LocalPlayer, activeScene);
     }
-
-
-    //protected PlayerShip SpawnLocalPlayer(int index)
-    //{
-    //    Debug.Log("Spawning local player...");
-
-    //    LocalSpawnPoint playerStart = playerStarts[index];
-
-    //    PlayerShip playerShip = PhotonNetwork.Instantiate(playerClass.name, playerStart.transform.position, playerStart.transform.rotation).GetComponent<PlayerShip>();
-
-    //     UIManager
-    //    UIManager UIManager = Instantiate(gameManagers.UIManagerClass);
-    //    UIManager.playerShip = playerShip;
-    //    UIManager.playerCount = players.Count;
-
-    //     Spawn camera
-    //    PlayerCamera camera = Spawn(cameraClass);
-    //    camera.target = playerShip;
-
-    //     Camera reference for the PC
-    //    PlayerController playerController = playerShip.gameObject.GetComponent<PlayerController>();
-    //    playerController.SetPlayerCamera(camera);
-    //    playerShip.SetPlayerCamera(camera);
-
-    //     Add to list
-    //    players.Add(PhotonNetwork.LocalPlayer, playerShip);
-
-    //     Temp SP
-    //    PlayerShip[] playersLocal = new PlayerShip[1];
-    //    playersLocal[0] = playerShip;
-
-    //     Analytics
-    //    AnalyticsManager analyticsManager = Instantiate(gameManagers.analyticsManagerClass);
-    //    analyticsManager.playerShip = playerShip;
-
-    //    return playerShip;
-    //}
 }

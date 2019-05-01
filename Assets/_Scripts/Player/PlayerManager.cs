@@ -53,11 +53,10 @@ public class PlayerManager : MonoBehaviour
     // Instantiates the player's ship
     public PlayerShip CreatePlayer(Player player, string activeScene)
     {
-        //SetShipSkin(player);
-
-        //PlayerShip playerShipClass = LoadPlayerShip();
         string playerPath = Path.Combine("Prefabs", "Player", "PlayerShip");
         PlayerCamera playerCameraClass = LoadPlayerCamera();
+        UIManager playerUIClass = LoadUI();
+        AnalyticsManager analyticsManagerClass = LoadAnalyticsManager();
         LocalSpawnPoint[] spawnPoints = LoadSpawnPoints(activeScene);
 
         // This player's assigned spawnpoint
@@ -68,19 +67,19 @@ public class PlayerManager : MonoBehaviour
 
         LocalSpawnPoint playerStart = spawnPoints[spawnIndex];
 
-        // Instantiate player's ship
+        // Player Ship
         PlayerShip playerShip = PhotonNetwork.Instantiate(playerPath, playerStart.transform.position, playerStart.transform.rotation).GetComponent<PlayerShip>();
 
-        // Set player skin
-        //SkinManager skinManager = playerShip.GetComponent<SkinManager>();
-        //ShipSkin skin = new ShipSkin();
-        //skin.baseColor = PlayerPrefsX.GetColor("REGULAR_COLOR");
-        //skin.lightColor = PlayerPrefsX.GetColor("LIGHT_COLOR");
-        //skin.darkColor = PlayerPrefsX.GetColor("DARK_COLOR");
+        // User Interface
+        UIManager playerUI = Instantiate(playerUIClass);
+        playerUI.playerShip = playerShip;
+        playerUI.playerCount = playerStatsList.Count;
 
-        //skinManager.ApplySkin(skin);
+        // Analytics
+        AnalyticsManager analyticsManager = Instantiate(analyticsManagerClass);
+        analyticsManager.playerShip = playerShip;
 
-        // Instantiate the player's camera
+        // Player Camera
         PlayerCamera playerCamera = Instantiate(playerCameraClass);
         playerCamera.target = playerShip;
 
@@ -88,6 +87,8 @@ public class PlayerManager : MonoBehaviour
         PlayerController playerController = playerShip.gameObject.GetComponent<PlayerController>();
         playerController.SetPlayerCamera(playerCamera);
         playerShip.SetPlayerCamera(playerCamera);
+
+
 
         SetPlayerShip(player, playerShip);
         SetPlayerCamera(player, playerCamera);
@@ -162,6 +163,22 @@ public class PlayerManager : MonoBehaviour
 
     // These methods load files from the Resources folder
     #region Resources
+    private AnalyticsManager LoadAnalyticsManager()
+    {
+        string analyticsManagerPath = Path.Combine("Prefabs", "Player", "AnalyticsManager");
+        GameObject analyticsManagerObj = Resources.Load(analyticsManagerPath) as GameObject;
+
+        return analyticsManagerObj.GetComponent<AnalyticsManager>();
+    }
+
+    private UIManager LoadUI()
+    {
+        string userInterfacePath = Path.Combine("Prefabs", "Player", "PlayerUI");
+        GameObject UIObj = Resources.Load(userInterfacePath) as GameObject;
+
+        return UIObj.GetComponent<UIManager>();
+    }
+
     private PlayerShip LoadPlayerShip()
     {
         string playerPath = Path.Combine("Prefabs", "Player", "PlayerShip");

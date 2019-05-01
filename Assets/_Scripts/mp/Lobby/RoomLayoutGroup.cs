@@ -71,6 +71,7 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
             // Update room name
             RoomListing roomListing = RoomListingButtons[index];
             roomListing.SetRoomNameText(room.Name);
+            roomListing.SetPlayerCountText(room.PlayerCount, room.MaxPlayers);
             roomListing.Updated = true;
         }
     }
