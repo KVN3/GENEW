@@ -11,10 +11,11 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     //private MenuSoundManager menuSoundManagerClass;
 
     [Header("Text")]
-    public TextMeshProUGUI TitleText;
-    public TextMeshProUGUI SingleplayerText;
-    public TextMeshProUGUI EditShipText;
-    public TextMeshProUGUI VersionText;
+    public TextMeshProUGUI titleText;
+    public TextMeshProUGUI singleplayerText;
+    public TextMeshProUGUI editShipText;
+    public TextMeshProUGUI versionText;
+    public TextMeshProUGUI usernameText;
 
     //private MenuSoundManager menuSoundManager;
 
@@ -26,9 +27,13 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     // Start is called before the first frame update
     void Update()
     {
-        TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
-        SingleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
-        EditShipText.text = LocalizationManager.GetTextByKey("EDIT_SHIP");
-        VersionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 1";
+        titleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
+        singleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
+        editShipText.text = LocalizationManager.GetTextByKey("EDIT_SHIP");
+        versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 2";
+        if (PlayerPrefs.HasKey("currentAccount"))
+            usernameText.text = LocalizationManager.GetTextByKey("LOGGED_IN_AS") + ": " + PlayerPrefs.GetString("currentAccount");
+        else
+            usernameText.text = LocalizationManager.GetTextByKey("NOT_LOGGED_IN");
     }
 }

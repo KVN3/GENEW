@@ -41,6 +41,12 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("QUIT_GAME", "Verlaat spel");
         NLDict.Add("VERSION", "Versie");
 
+
+        NLDict.Add("LOGGED_IN_AS", "Ingelogd als");
+        NLDict.Add("NOT_LOGGED_IN", "Niet ingelogd");
+        NLDict.Add("USERNAME", "Gebruikersnaam");
+        NLDict.Add("PASSWORD", "Wachtwoord");
+
         // Ship customisation
         NLDict.Add("RED", "Rood");
         NLDict.Add("BLUE", "Blauw");
@@ -104,6 +110,12 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("LOADING", "Loading");
         ENDict.Add("QUIT_GAME", "Quit game");
         ENDict.Add("VERSION", "Version");
+
+
+        ENDict.Add("LOGGED_IN_AS", "Logged in as");
+        ENDict.Add("NOT_LOGGED_IN", "Not logged in");
+        ENDict.Add("USERNAME", "Username");
+        ENDict.Add("PASSWORD", "Password");
 
         // Ship customisation
         ENDict.Add("RED", "Red");
