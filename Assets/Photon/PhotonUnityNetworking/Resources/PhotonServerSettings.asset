@@ -39,5 +39,6 @@ MonoBehaviour:
   - RPC_LoadGameOthers
   - RPC_CreatePlayer
   - RPC_NewHealth
+  - RPC_ApplySkin
   DisableAutoOpenWizard: 1
   ShowSettings: 1

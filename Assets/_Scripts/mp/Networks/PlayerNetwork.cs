@@ -132,15 +132,6 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     private void RPC_CreatePlayer()
     {
         playerShip = PlayerManager.Instance.CreatePlayer(PhotonNetwork.LocalPlayer, activeScene);
-
-        SkinManager skinManager = playerShip.GetComponent<SkinManager>();
-        ShipSkin skin = new ShipSkin();
-        skin.baseColor = PlayerPrefsX.GetColor("REGULAR_COLOR");
-        skin.lightColor = PlayerPrefsX.GetColor("LIGHT_COLOR");
-        skin.darkColor = PlayerPrefsX.GetColor("DARK_COLOR");
-
-        skinManager.ApplySkin(skin);
-
     }
 
 

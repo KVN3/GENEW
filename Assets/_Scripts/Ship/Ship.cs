@@ -43,7 +43,7 @@ public class Ship : MyMonoBehaviour
 
     // Run time
     private bool recentlyHit;
-    private PhotonView photonView;
+    protected PhotonView photonView;
 
     // Delegates
     public UnityAction<Collectable, int> OnItemUsedDelegate;

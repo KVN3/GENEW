@@ -54,8 +54,6 @@ public class PlayerShip : Ship
     protected PlayerCamera playerCamera;
 
     Dictionary<string, Dictionary<string, TimeSpan>> playerTimes;
-
-    private PhotonView photonView;
     public PhotonView GetPhotonView()
     {
         return photonView;

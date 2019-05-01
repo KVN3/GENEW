@@ -53,7 +53,7 @@ public class PlayerManager : MonoBehaviour
     // Instantiates the player's ship
     public PlayerShip CreatePlayer(Player player, string activeScene)
     {
-        SetShipSkin(player);
+        //SetShipSkin(player);
 
         //PlayerShip playerShipClass = LoadPlayerShip();
         string playerPath = Path.Combine("Prefabs", "Player", "PlayerShip");
