@@ -14175,11 +14175,8 @@ GameObject:
   - component: {fileID: 1120}
   - component: {fileID: 2047}
   - component: {fileID: 1684}
-  - component: {fileID: 2446}
   - component: {fileID: 2323}
   - component: {fileID: 2447}
-  - component: {fileID: 2526}
-  - component: {fileID: 2535}
   m_Layer: 0
   m_Name: Forcefield
   m_TagString: ShipComponent
@@ -14246,23 +14243,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &2446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68182a35b791d294599cab422d085b3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxCharges: 100
-  drainRate: 1
-  regainRate: 0.1
-  initialCharges: 100
-  owner: {fileID: 2453}
 --- !u!82 &2323
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14371,43 +14351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8f2b24c0ec3134e9da78fdfc14643d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 2535}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &2535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
 --- !u!1 &501
 GameObject:
   m_ObjectHideFlags: 0
@@ -26037,6 +25980,7 @@ GameObject:
   - component: {fileID: 2528}
   - component: {fileID: 2537}
   - component: {fileID: 6987268490720304500}
+  - component: {fileID: 4473378837321126152}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Ship
@@ -26096,7 +26040,7 @@ MonoBehaviour:
     engines: {fileID: 6987268490720304500}
     gun: {fileID: 2444}
     system: {fileID: 2437}
-    forcefield: {fileID: 2446}
+    forcefield: {fileID: 4473378837321126152}
   shipSoundManagerClass: {fileID: 833736413695209226, guid: 395deba2e831a444baffd18255cef95e,
     type: 3}
   levelSoundManagerClass: {fileID: 1435859808029204296, guid: 38fe5d326f37ab54ea88d4444f8f213f,
@@ -26203,6 +26147,7 @@ MonoBehaviour:
   - {fileID: 2537}
   - {fileID: 2452}
   - {fileID: 6987268490720304500}
+  - {fileID: 4473378837321126152}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -26247,6 +26192,24 @@ MonoBehaviour:
   middleEngine: {fileID: 2450}
   leftEngine: {fileID: 2441}
   rightEngine: {fileID: 2449}
+--- !u!114 &4473378837321126152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68182a35b791d294599cab422d085b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCharges: 100
+  drainRate: 1
+  regainRate: 0.1
+  initialCharges: 100
+  owner: {fileID: 2453}
+  forcefieldObject: {fileID: 499}
 --- !u!1 &537
 GameObject:
   m_ObjectHideFlags: 0

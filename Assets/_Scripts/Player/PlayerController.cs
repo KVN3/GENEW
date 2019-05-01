@@ -42,12 +42,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Prevent control if connected to Photon and represent the localPlayer
-        //  if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
-        //{
-        //    return;
-        //}
-
         if (photonView.IsMine)
         {
             HandleCameraControls();

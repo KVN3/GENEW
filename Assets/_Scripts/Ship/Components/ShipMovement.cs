@@ -91,20 +91,26 @@ public class ShipMovement : ShipComponent, IPunObservable
         //    //Debug.Log(hit.distance);
         //}
 
+        if (GetComponent<PhotonView>().IsMine)
+        {
+            if (currentSpeed > config.trailActivationSpeed)
+            {
+                windTrailsObject.SetActive(true);
+                windTrailsActive = true;
+            }
+            else
+            {
+                windTrailsObject.SetActive(false);
+                windTrailsActive = false;
+            }
+        }
 
-        if (currentSpeed > config.trailActivationSpeed)
-        {
-            windTrailsObject.SetActive(true);
-        }
-        else
-        {
-            windTrailsObject.SetActive(false);
-        }
     }
 
     #region Photon
     private Vector3 targetPos;
     private Quaternion targetRot;
+    private bool windTrailsActive = false;
 
     // Send data if this is our ship, receive data if it is not
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -113,11 +119,19 @@ public class ShipMovement : ShipComponent, IPunObservable
         {
             stream.SendNext(parentShip.transform.position);
             stream.SendNext(parentShip.transform.rotation);
+            stream.SendNext(windTrailsActive);
         }
         else
         {
             targetPos = (Vector3)stream.ReceiveNext();
             targetRot = (Quaternion)stream.ReceiveNext();
+
+            windTrailsActive = (bool)stream.ReceiveNext();
+
+            if (windTrailsActive)
+                windTrailsObject.SetActive(true);
+            else
+                windTrailsObject.SetActive(false);
         }
     }
 
