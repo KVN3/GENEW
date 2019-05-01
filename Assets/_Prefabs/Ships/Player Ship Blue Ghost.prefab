@@ -6061,6 +6061,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8fd1a1efbbe484ca5a653afa59f8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  replayManager: {fileID: 803465848510607159, guid: 6035f025c48868345bfd33a3945f62c3,
+    type: 3}
 --- !u!1 &9054774212889916039
 GameObject:
   m_ObjectHideFlags: 0

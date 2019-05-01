@@ -238,7 +238,7 @@ public class UIPanel : UIBehaviour
                 entries = highscoreEntries.Count;
 
             StringBuilder builder2 = new StringBuilder();
-            for (int i = 0; i < highscoreEntries.Count; i++)
+            for (int i = 0; i < entries; i++)
             {
                 builder2.Append($"{i+1}. ").Append(highscoreEntries[i].name).Append(": ").Append(TimeSpan.Parse(highscoreEntries[i].lapTime).ToString(@"mm\:ss\.ff")).AppendLine();
             }

@@ -1,36 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerShipGhost : MonoBehaviour
 {
-    float[] posx;
-    float[] posy;
-    float[] posz;
-    Quaternion[] rotations;
+    List<float> posx;
+    List<float> posy;
+    List<float> posz;
+    List<Quaternion> rotations;
+
+    public ReplayManager replayManager;
 
     int i = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        posx = PlayerPrefsX.GetFloatArray("ReplayX");
-        posy = PlayerPrefsX.GetFloatArray("ReplayY");
-        posz = PlayerPrefsX.GetFloatArray("ReplayZ");
-        rotations = PlayerPrefsX.GetQuaternionArray("ReplayQ");
-        StartCoroutine(startReplay());
-    }
+        //ReplayManager replayManager = new ReplayManager();
+        List<Replay> replays = replayManager.GetReplaysByStage(SceneManager.GetActiveScene().name);
+        // Select random replay if there is a replay
+        if (replays.Count > 0)
+        {
+            int i = Random.Range(0, replays.Count);
+            Replay replay = replays[i];
 
-    // Update is called once per frame
-    void Update()
-    {
-
+            posx = replay.posx;
+            posy = replay.posy; 
+            posz = replay.posz; 
+            rotations = replay.rotations; 
+            StartCoroutine(startReplay());
+        }
     }
 
     IEnumerator startReplay()
     {
         yield return new WaitForSeconds(1.5f);
-        while(i < posx.Length)
+        while(i < posx.Count)
         {
             transform.rotation = rotations[i];
             transform.position = new Vector3(posx[i], posy[i], posz[i]);
