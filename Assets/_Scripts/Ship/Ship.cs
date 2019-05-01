@@ -17,18 +17,15 @@ public struct ShipComponents
 
 public class Ship : MyMonoBehaviour
 {
+    #region Assigned variables
     public ShipComponents components;
 
-    #region ObjectClasses
     [SerializeField]
     private ShipSoundManager shipSoundManagerClass;
-
     [SerializeField]
     private LevelSoundManager levelSoundManagerClass;
-
     [SerializeField]
     private AISoundManager aiSoundManagerClass;
-
     [SerializeField]
     private DamageSpark spark;
     #endregion
@@ -39,25 +36,31 @@ public class Ship : MyMonoBehaviour
     protected ShipSoundManager shipSoundManager;
     protected LevelSoundManager levelSoundManager;
     protected AISoundManager aiSoundManager;
+    
 
     // Collectables
     public Collectable collectableItemClass;
     public int itemAmount;
 
+    // Run time
     private bool recentlyHit;
+    protected PhotonView photonView;
 
-    private PhotonView photonView;
-
+    // Delegates
     public UnityAction<Collectable, int> OnItemUsedDelegate;
+    public UnityAction<int, string, bool> OnPlayerStunnedDelegate;
 
     public virtual void Awake()
     {
+        // Instantiate Sound Managers
         shipSoundManager = Instantiate(shipSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
         aiSoundManager = Instantiate(aiSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
         levelSoundManager = Instantiate(levelSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
 
-        componentsList = new List<ShipComponent>();
+        // Get Components
+        photonView = GetComponent<PhotonView>();
 
+        componentsList = new List<ShipComponent>();
         componentsList.Add(components.movement);
         componentsList.Add(components.engines);
         componentsList.Add(components.gun);
@@ -68,15 +71,9 @@ public class Ship : MyMonoBehaviour
             component.SetParentShip(this);
             component.SetShipSoundManager(shipSoundManager);
         }
-
-        photonView = GetComponent<PhotonView>();
     }
 
-    public virtual void Start()
-    {
-
-    }
-
+    // Use a collectable item
     public void UseItem()
     {
         if (itemAmount > 0)
@@ -134,26 +131,32 @@ public class Ship : MyMonoBehaviour
             {
                 Ship ownerShip = other.gameObject.GetComponent<JammerProjectile>().owner;
                 if (!ownerShip == this)
-                    GetHitByRegular();
+                    GetHitByRegular(other);
             }
             else if (!other.gameObject.CompareTag("ShipComponent") && !other.gameObject.CompareTag("Mine") && !other.gameObject.CompareTag("EnergyBall"))
-                GetHitByRegular();
+                GetHitByRegular(other);
         }
     }
 
     // Ship got hit by regular, e.a. a wall
-    public void GetHitByRegular()
+    public void GetHitByRegular(Collision other)
     {
         shipSoundManager.PlaySound(SoundType.ALARM);
         spark.Activate();
+
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
+        PlayerManager.Instance.ModifyHealth(photonView.Owner, -5);
     }
 
     // Ship got hit by a stun
-    public void GetHitByEmp(int duration)
+    public void GetHitByEmp(int duration, string cause)
     {
         // System not down
         if (!components.system.IsSystemDown())
         {
+            bool playerWasProtected = false;
 
             // Forcefield not active, shutdown
             if (!components.forcefield.IsActive())
@@ -166,12 +169,17 @@ public class Ship : MyMonoBehaviour
                 StartCoroutine(GotHit());
             }
 
-            // Forcefield activate, take damage
+            // Forcefield active, take damage
             else
             {
                 components.forcefield.GetHit(30);
                 shipSoundManager.PlaySound(SoundType.PROTECTED);
+
+                playerWasProtected = true;
             }
+
+            // Delegate event
+            OnPlayerStunnedDelegate(duration, cause, playerWasProtected);
         }
     }
 
@@ -234,12 +242,6 @@ public class Ship : MyMonoBehaviour
     public AISoundManager GetAiSoundManager()
     {
         return aiSoundManager;
-    }
-
-    // Photon
-    public PhotonView GetPhotonView()
-    {
-        return photonView;
     }
     #endregion
 }

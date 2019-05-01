@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Forcefield : ShipComponent
+public class Forcefield : ShipComponent, IPunObservable
 {
     public float maxCharges;
     public float drainRate;
@@ -15,25 +16,53 @@ public class Forcefield : ShipComponent
 
     public PlayerShip owner;
 
+    [SerializeField]
+    private GameObject forcefieldObject;
+
+    private PhotonView photonView;
+
     public void Awake()
     {
         charges = initialCharges;
-        gameObject.SetActive(false);
+        forcefieldObject.SetActive(false);
+
+        photonView = GetComponent<PhotonView>();
     }
 
-    public void Start()
+    #region Photon
+    private bool forcefieldActive = false;
+
+    // Send data if this is our ship, receive data if it is not
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(forcefieldActive);
+        }
+        else
+        {
+            forcefieldActive = (bool)stream.ReceiveNext();
 
+            if (forcefieldActive)
+                forcefieldObject.SetActive(true);
+            else
+                forcefieldObject.SetActive(false);
+        }
     }
+    #endregion
 
     public bool IsActive()
     {
-        return gameObject.activeInHierarchy;
+        return forcefieldObject.activeInHierarchy;
     }
 
     public void Activated(bool manualActivate)
     {
-        gameObject.SetActive(true);
+        if (!photonView.IsMine)
+            return;
+
+        forcefieldObject.SetActive(true);
+        forcefieldActive = true;
 
         if (manualActivate)
             DrainCharges(drainRate);
@@ -43,7 +72,12 @@ public class Forcefield : ShipComponent
 
     public void Deactivated()
     {
-        gameObject.SetActive(false);
+        if (!photonView.IsMine)
+            return;
+
+        forcefieldObject.SetActive(false);
+        forcefieldActive = false;
+
         RegainCharges();
     }
 
@@ -77,16 +111,26 @@ public class Forcefield : ShipComponent
 
     private IEnumerator RegenCooldown()
     {
-        gameObject.SetActive(false);
-        hasRegenerationCooldown = true;
-        yield return new WaitForSeconds(3);
-        hasRegenerationCooldown = false;
+        if (photonView.IsMine)
+        {
+            forcefieldObject.SetActive(false);
+            forcefieldActive = false;
+
+            hasRegenerationCooldown = true;
+            yield return new WaitForSeconds(3);
+            hasRegenerationCooldown = false;
+        }
     }
 
     #region ForcefieldItem
     public void ActivateBoostedForcefield(int duration)
     {
-        gameObject.SetActive(true);
+        if (!photonView.IsMine)
+            return;
+
+        forcefieldObject.SetActive(true);
+        forcefieldActive = true;
+
         StartCoroutine(BoostedForcefield(duration));
     }
 

@@ -18,25 +18,24 @@ public class MainMenuController : LevelSingleton<MainMenuController>
     public void PlayButtonSound()
     {
         menuSoundManager.PlaySound(SoundType.CLICKBUTTON);
-
     }
 
     public void LoadLevel()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        SceneManager.LoadScene("Wasteland");
+        SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Wasteland]);
     }
 
-    public void LoadCustomizationMenu()
+    public void LoadShipyard()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        SceneManager.LoadScene("Ship Customization");
+        SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Shipyard]);
     }
 
     public void LoadMainMenu()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Main]);
     }
 
     public void SetColorBlue()

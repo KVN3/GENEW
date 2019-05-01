@@ -55,27 +55,35 @@ public class PlayerShip : Ship
     protected PlayerCamera playerCamera;
 
     Dictionary<string, Dictionary<string, TimeSpan>> playerTimes;
+    public PhotonView GetPhotonView()
+    {
+        return photonView;
+    }
 
     public override void Awake()
     {
         base.Awake();
 
-        //pc = Instantiate(playerControllerClass, transform.position, Quaternion.identity, transform);
-        //pc.playerShip = this;
+        photonView = GetComponent<PhotonView>();
+
+        // Destroy stuff only needed for main player
+        if (!photonView.IsMine)
+        {
+            //Destroy(GetComponent<PlayerController>());
+            Destroy(GetComponent<AudioListener>());
+        }
     }
 
-    public override void Start()
+    public void Start()
     {
-        base.Start();
-
         InitRaceData();
     }
     #endregion
 
     private void Update()
     {
-        if (GetComponent<PhotonView>().IsMine)
-        {
+        //if (GetComponent<PhotonView>().IsMine)
+        //{
             if (!runData.raceFinished && RaceManager.raceStarted)
                 runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
 
@@ -90,7 +98,7 @@ public class PlayerShip : Ship
             //{
             //    Debug.Log("Button");
             //}
-        }
+        //}
 
         runData.positionsX.Add(transform.position.x);
         runData.positionsY.Add(transform.position.y);

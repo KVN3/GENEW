@@ -42,7 +42,9 @@ public class Engine : MonoBehaviour
         {
             particleSystem.Play();
             engineOn = true;
-            audioSource.enabled = true;
+
+            if (audioSource != null)
+                audioSource.enabled = true;
         }
 
     }
@@ -53,7 +55,9 @@ public class Engine : MonoBehaviour
         {
             particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             engineOn = false;
-            audioSource.enabled = false;
+
+            if (audioSource != null)
+                audioSource.enabled = false;
         }
     }
 

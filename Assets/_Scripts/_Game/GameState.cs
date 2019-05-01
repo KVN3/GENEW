@@ -43,7 +43,7 @@ public class GameState : LevelSingleton<GameState>
     public PlayerShip playerClass;
 
     // Spawnpoints
-    public LocalSpawnPoint[] playerStarts;
+    public static LocalSpawnPoint[] playerStarts;
 
     // Players
     public Dictionary<Player, PlayerShip> players { get; set; } = new Dictionary<Player, PlayerShip>();
@@ -63,9 +63,11 @@ public class GameState : LevelSingleton<GameState>
     {
         base.Awake();
 
-        Assert.IsNotNull(playerClass);
-        Assert.IsFalse(playerStarts.Length == 0);
+        //Assert.IsNotNull(playerClass);
+        //Assert.IsFalse(playerStarts.Length == 0);
 
+
+        //SpawnLocalPlayer(1);
         //GameInstance.Connect();
 
         //GameInstance.Instance.OnJoinedRoomDelegate = () =>
@@ -115,11 +117,6 @@ public class GameState : LevelSingleton<GameState>
 
         PlayerShip playerShip = PhotonNetwork.Instantiate(playerClass.name, playerStart.transform.position, playerStart.transform.rotation).GetComponent<PlayerShip>();
 
-        // UIManager
-        UIManager UIManager = Instantiate(gameManagers.UIManagerClass);
-        UIManager.playerShip = playerShip;
-        UIManager.playerCount = players.Count;
-
         // Spawn camera
         PlayerCamera camera = Spawn(cameraClass);
         camera.target = playerShip;
@@ -141,16 +138,16 @@ public class GameState : LevelSingleton<GameState>
         analyticsManager.playerShip = playerShip;
 
         // Spawn Point Manager
-        SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
+        //SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
 
         // Enemy Managers
-        ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
-        chaserManager.SetPlayers(playersLocal);
-        chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
+        //ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
+        //chaserManager.SetPlayers(playersLocal);
+        //chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
 
-        MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
-        moverManager.SetPlayers(playersLocal);
-        moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+        //MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
+        //moverManager.SetPlayers(playersLocal);
+        //moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
 
         return playerShip;
     }

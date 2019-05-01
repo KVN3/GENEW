@@ -7,7 +7,7 @@ public class DamageSpark : MonoBehaviour
     private ParticleSystem ps;
     private ParticleSystem.MainModule main;
 
-    public void Start()
+    public void Awake()
     {
         ps = GetComponent<ParticleSystem>();
         main = ps.main;

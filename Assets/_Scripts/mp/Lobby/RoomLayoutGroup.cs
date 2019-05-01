@@ -49,7 +49,7 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
         int index = RoomListingButtons.FindIndex(i => i.RoomName == room.Name);
 
         // If index not found, make listing
-        if (!IndexFound(index))
+        if (!Method.IndexFound(index))
         {
             if (room.IsVisible && room.PlayerCount < room.MaxPlayers)
             {
@@ -66,11 +66,12 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
         }
 
         // If index found, set updated
-        if (IndexFound(index))
+        if (Method.IndexFound(index))
         {
             // Update room name
             RoomListing roomListing = RoomListingButtons[index];
             roomListing.SetRoomNameText(room.Name);
+            roomListing.SetPlayerCountText(room.PlayerCount, room.MaxPlayers);
             roomListing.Updated = true;
         }
     }
@@ -96,14 +97,5 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
             RoomListingButtons.Remove(roomListing);
             Destroy(roomListingObj);
         }
-    }
-
-    // If index == -1, index hasn't been found
-    private bool IndexFound(int index)
-    {
-        if (index == -1)
-            return false;
-        else
-            return true;
     }
 }

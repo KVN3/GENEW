@@ -7,11 +7,17 @@ public class CurrentRoomCanvas : MonoBehaviour
 { 
     public void OnClickStartSync()
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
         PhotonNetwork.LoadLevel("Large Wasteland");
     }
 
-    public void OnClickDelayedSync()
+    public void OnClickStartDelayed()
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
 

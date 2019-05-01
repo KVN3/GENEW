@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ public struct ShipMovementConfig
     public float trailActivationSpeed;
 }
 
-public class ShipMovement : ShipComponent
+public class ShipMovement : ShipComponent, IPunObservable
 {
     public ShipFloatConfig floatConfig;
     public ShipMovementConfig config;
@@ -90,17 +91,58 @@ public class ShipMovement : ShipComponent
         //    //Debug.Log(hit.distance);
         //}
 
-
-        if (currentSpeed > config.trailActivationSpeed)
+        if (GetComponent<PhotonView>().IsMine)
         {
-            windTrailsObject.SetActive(true);
+            if (currentSpeed > config.trailActivationSpeed)
+            {
+                windTrailsObject.SetActive(true);
+                windTrailsActive = true;
+            }
+            else
+            {
+                windTrailsObject.SetActive(false);
+                windTrailsActive = false;
+            }
+        }
+
+    }
+
+    #region Photon
+    private Vector3 targetPos;
+    private Quaternion targetRot;
+    private bool windTrailsActive = false;
+
+    // Send data if this is our ship, receive data if it is not
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(parentShip.transform.position);
+            stream.SendNext(parentShip.transform.rotation);
+            stream.SendNext(windTrailsActive);
         }
         else
         {
-            windTrailsObject.SetActive(false);
+            targetPos = (Vector3)stream.ReceiveNext();
+            targetRot = (Quaternion)stream.ReceiveNext();
+
+            windTrailsActive = (bool)stream.ReceiveNext();
+
+            if (windTrailsActive)
+                windTrailsObject.SetActive(true);
+            else
+                windTrailsObject.SetActive(false);
         }
     }
 
+    // Smooth moves other player ships to their correct position and rotation
+    public void SmoothMove()
+    {
+        parentShip.transform.position = Vector3.Lerp(parentShip.transform.position, targetPos, 0.25f);
+        parentShip.transform.rotation = Quaternion.RotateTowards(parentShip.transform.rotation, targetRot, 500 * Time.deltaTime);
+    }
+
+    #endregion
 
     #region Movement
     public void Move(Vector3 force, float verticalInput, float horizontalInput)
@@ -152,8 +194,6 @@ public class ShipMovement : ShipComponent
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
 
-        parentShip.components.engines.middleEngine.Activate();
-
         if (rb.drag > config.minDrag)
             rb.drag -= 0.3f;
 
@@ -167,8 +207,6 @@ public class ShipMovement : ShipComponent
     public void NotGivingGas()
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
-
-        parentShip.components.engines.middleEngine.Deactivate();
 
         if (rb.drag < config.maxDrag)
         {

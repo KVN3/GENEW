@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -6,48 +7,88 @@ using UnityEngine;
 [System.Serializable]
 public struct ShipSkin
 {
-    public Color32 baseColor;
-    public Color32 darkColor;
-    public Color32 lightColor;
+    public Color baseColor;
+    public Color darkColor;
+    public Color lightColor;
 
     public Color forcefieldColor;
 }
 
 
-public class SkinManager : MonoBehaviour
+public class SkinManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     public ShipSkin skin;
     public bool applySkin;
 
+    private PhotonView photonView;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.HasKey("Ship Color"))
+        photonView = GetComponent<PhotonView>();
+
+        if (photonView.IsMine)
         {
-            string color = PlayerPrefs.GetString("Ship Color");
-            switch (color)
-            {
-                case "Red":
-                    skin.baseColor = new Color32(255, 0, 0, 0);
-                    skin.darkColor = new Color32(0, 0, 0, 255);
-                    skin.lightColor = new Color32(30, 0, 0, 255);
-                    skin.forcefieldColor = new Color32(255, 0, 0, 255);
-                    break;
-                case "Green":
-                    skin.baseColor = new Color32(0, 255, 0, 0);
-                    skin.darkColor = new Color32(0, 0, 0, 255);
-                    skin.lightColor = new Color32(0, 30, 0, 255);
-                    skin.forcefieldColor = new Color32(0, 255, 0, 255);
-                    break;
-                case "Blue":
-                    skin.baseColor = new Color32(0, 0, 255, 0);
-                    skin.darkColor = new Color32(0, 0, 0, 255);
-                    skin.lightColor = new Color32(0, 0, 30, 255);
-                    skin.forcefieldColor = new Color32(0, 0, 255, 255);
-                    break;
-            }
+            skin.baseColor = PlayerPrefsX.GetColor("REGULAR_COLOR");
+            skin.lightColor = PlayerPrefsX.GetColor("LIGHT_COLOR");
+            skin.darkColor = PlayerPrefsX.GetColor("DARK_COLOR");
         }
 
+    }
+
+    [PunRPC]
+    private void RPC_ApplySkin()
+    {
+        ApplySkin();
+    }
+
+    private void Update()
+    {
+        photonView.RPC("RPC_ApplySkin", RpcTarget.AllBuffered);
+    }
+
+    // Send data if this is our ship, receive data if it is not
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            float[] baseColorArray = new float[4];
+            baseColorArray[0] = skin.baseColor.r;
+            baseColorArray[1] = skin.baseColor.g;
+            baseColorArray[2] = skin.baseColor.b;
+            baseColorArray[3] = skin.baseColor.a;
+            stream.SendNext(baseColorArray);
+
+            float[] lightColorArray = new float[4];
+            lightColorArray[0] = skin.lightColor.r;
+            lightColorArray[1] = skin.lightColor.g;
+            lightColorArray[2] = skin.lightColor.b;
+            lightColorArray[3] = skin.lightColor.a;
+            stream.SendNext(lightColorArray);
+
+            float[] darkColorArray = new float[4];
+            darkColorArray[0] = skin.darkColor.r;
+            darkColorArray[1] = skin.darkColor.g;
+            darkColorArray[2] = skin.darkColor.b;
+            darkColorArray[3] = skin.darkColor.a;
+            stream.SendNext(darkColorArray);
+        }
+        else
+        {
+            float[] baseColorArray = (float[])stream.ReceiveNext();
+            skin.baseColor = new Color(baseColorArray[0], baseColorArray[1], baseColorArray[2], baseColorArray[3]);
+
+            float[] lightColorArray = (float[])stream.ReceiveNext();
+            skin.baseColor = new Color(lightColorArray[0], lightColorArray[1], lightColorArray[2], lightColorArray[3]);
+
+            float[] darkColorArray = (float[])stream.ReceiveNext();
+            skin.baseColor = new Color(darkColorArray[0], darkColorArray[1], darkColorArray[2], darkColorArray[3]);
+        }
+    }
+
+    // Apply skin on ship
+    public void ApplySkin()
+    {
         if (applySkin)
         {
             foreach (Transform shipKid in transform)
@@ -64,6 +105,7 @@ public class SkinManager : MonoBehaviour
         }
     }
 
+    // Apply skin to forcefield
     private void ApplyForceFieldSkin(Transform componentsTransform)
     {
         foreach (Transform componentTransform in componentsTransform)
@@ -82,6 +124,7 @@ public class SkinManager : MonoBehaviour
         }
     }
 
+    // Apply skin to base
     private void ApplyShipSkin(Transform meshTransform)
     {
         foreach (Transform childTransform in meshTransform)
@@ -99,13 +142,13 @@ public class SkinManager : MonoBehaviour
                         switch (mat.name)
                         {
                             case "Metal_Blue (Instance)":
-                                mat.color = PlayerPrefsX.GetColor("REGULAR_COLOR");
+                                mat.color = skin.baseColor;
                                 break;
                             case "Metal_Blue_Light (Instance)":
-                                mat.color = PlayerPrefsX.GetColor("LIGHT_COLOR");
+                                mat.color = skin.lightColor;
                                 break;
                             case "Metal_Blue_Dark (Instance)":
-                                mat.color = PlayerPrefsX.GetColor("DARK_COLOR");
+                                mat.color = skin.darkColor;
                                 break;
                         }
                     }
@@ -114,3 +157,41 @@ public class SkinManager : MonoBehaviour
         }
     }
 }
+
+
+//if (PlayerPrefs.HasKey("Ship Color"))
+//{
+//    string color = PlayerPrefs.GetString("Ship Color");
+//    switch (color)
+//    {
+//        case "Red":
+//            skin.baseColor = new Color32(255, 0, 0, 0);
+//            skin.darkColor = new Color32(0, 0, 0, 255);
+//            skin.lightColor = new Color32(30, 0, 0, 255);
+//            skin.forcefieldColor = new Color32(255, 0, 0, 255);
+//            break;
+//        case "Green":
+//            skin.baseColor = new Color32(0, 255, 0, 0);
+//            skin.darkColor = new Color32(0, 0, 0, 255);
+//            skin.lightColor = new Color32(0, 30, 0, 255);
+//            skin.forcefieldColor = new Color32(0, 255, 0, 255);
+//            break;
+//        case "Blue":
+//            skin.baseColor = new Color32(0, 0, 255, 0);
+//            skin.darkColor = new Color32(0, 0, 0, 255);
+//            skin.lightColor = new Color32(0, 0, 30, 255);
+//            skin.forcefieldColor = new Color32(0, 0, 255, 255);
+//            break;
+//    }
+//}
+
+
+//case "Metal_Blue (Instance)":
+//    mat.color = PlayerPrefsX.GetColor("REGULAR_COLOR");
+//    break;
+//case "Metal_Blue_Light (Instance)":
+//    mat.color = PlayerPrefsX.GetColor("LIGHT_COLOR");
+//    break;
+//case "Metal_Blue_Dark (Instance)":
+//    mat.color = PlayerPrefsX.GetColor("DARK_COLOR");
+//    break;

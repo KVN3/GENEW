@@ -30,24 +30,18 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        if (photonView.IsMine)
-        {
+       // if (photonView.IsMine)
+      //  {
             // Rotate
             float x = 0;
             float y = 90f;
             float z = 0;
             transform.localEulerAngles = new Vector3(x, y, z);
-        }
+       // }
     }
 
     private void Update()
     {
-        // Prevent control if connected to Photon and represent the localPlayer
-        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
-        {
-            return;
-        }
-
         if (photonView.IsMine)
         {
             HandleCameraControls();
@@ -58,10 +52,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerShip.GetComponent<PhotonView>().IsMine)
+        if (photonView.IsMine)
         {
             if (RaceManager.raceStarted)
                 HandleMovement();
+        }
+        else
+        {
+            playerShip.components.movement.SmoothMove();
         }
     }
 
@@ -92,7 +90,7 @@ public class PlayerController : MonoBehaviour
             playerShip.UseItem();
 
         if (Input.GetKeyDown(KeyCode.K))
-            playerShip.GetHitByEmp(2);
+            playerShip.GetHitByEmp(2, "Debug activated");
 
         // Forcefield
         // If forcefield item not active, key down, enough charges and no cooldown then activate.
@@ -168,10 +166,10 @@ public class PlayerController : MonoBehaviour
     // Manage engines on/off and drag increase/decrease
     private void ManageEnginesAndDrag(float horizontalInput, float verticalInput)
     {
-        // Handle left & right engine
-        playerShip.components.engines.ManageEngines(horizontalInput);
+        // Handle engines
+        playerShip.components.engines.ManageEngines(horizontalInput, verticalInput);
 
-        // Handle drag & front engine
+        // Handle drag
         if (GivingGas(verticalInput) && !Input.GetKey(KeyCode.Space))
             playerShip.components.movement.GivingGas();
 
