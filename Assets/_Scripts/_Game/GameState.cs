@@ -174,23 +174,23 @@ public class GameState : LevelSingleton<GameState>
             Debug.Log("PLAYER COUNT: " + players.Count);
     }
 
-    protected PlayerShip SpawnRemotePlayer(Player remotePlayer, int index)
-    {
-        Debug.Log("Spawning remote player...");
-        LocalSpawnPoint playerStart = playerStarts[index];
+    //protected PlayerShip SpawnRemotePlayer(Player remotePlayer, int index)
+    //{
+    //    Debug.Log("Spawning remote player...");
+    //    LocalSpawnPoint playerStart = playerStarts[index];
 
-        PlayerShip Player = Spawn(playerClass, (PlayerShip newPlayer) =>
-        {
-            newPlayer.transform.position = playerStart.transform.position;
-            newPlayer.transform.rotation = playerStart.transform.rotation;
+    //    PlayerShip Player = Spawn(playerClass, (PlayerShip newPlayer) =>
+    //    {
+    //        newPlayer.transform.position = playerStart.transform.position;
+    //        newPlayer.transform.rotation = playerStart.transform.rotation;
 
-            newPlayer.remoteData = remotePlayer;
-        });
+    //        newPlayer.remoteData = remotePlayer;
+    //    });
 
-        players.Add(remotePlayer, Player);
+    //    players.Add(remotePlayer, Player);
 
-        return Player;
-    }
+    //    return Player;
+    //}
 
     protected void KillPlayer(Player remotePlayer)
     {

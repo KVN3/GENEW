@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 #region Data Structs
@@ -36,10 +37,8 @@ public struct PlayerRunData
     public List<Quaternion> replayRotations;
     public List<Vector3> replayPositions;
 
-
     // Extra
     public float charges;
-    //public float score;
 }
 #endregion
 
@@ -49,12 +48,11 @@ public class PlayerShip : Ship
     #region Initialize and Assign Variables
     public PlayerRunData runData;
 
-    public Player remoteData;
-    //public PlayerController playerControllerClass;
-
     protected PlayerCamera playerCamera;
+    public UnityAction<int, TimeSpan, double, string> OnPlayerFinishedRaceDelegate;
 
     Dictionary<string, Dictionary<string, TimeSpan>> playerTimes;
+
     public PhotonView GetPhotonView()
     {
         return photonView;
@@ -69,7 +67,6 @@ public class PlayerShip : Ship
         // Destroy stuff only needed for main player
         if (!photonView.IsMine)
         {
-            //Destroy(GetComponent<PlayerController>());
             Destroy(GetComponent<AudioListener>());
         }
     }
@@ -82,29 +79,14 @@ public class PlayerShip : Ship
 
     private void Update()
     {
-        //if (GetComponent<PhotonView>().IsMine)
-        //{
-            if (!runData.raceFinished && RaceManager.raceStarted)
-                runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
-
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //{
-            //    Ammo--;
-
-            //    OnAmmoChanged(Ammo);
-            //}
-
-            //if (Input.GetButtonDown("Fire1"))
-            //{
-            //    Debug.Log("Button");
-            //}
-        //}
+        if (!runData.raceFinished && RaceManager.raceStarted)
+            runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
 
         runData.positionsX.Add(transform.position.x);
         runData.positionsY.Add(transform.position.y);
         runData.positionsZ.Add(transform.position.z);
         runData.replayRotations.Add(transform.rotation);
-}
+    }
 
     private void InitRaceData()
     {
@@ -175,11 +157,13 @@ public class PlayerShip : Ship
             // If finished
             if (runData.currentLap == runData.maxLaps && runData.isOverHalfway) // 3/3 laps + finish
             {
-                Debug.Log("playerShip Finished");
-                levelSoundManager.PlaySound(SoundType.VICTORY);
+                                       levelSoundManager.PlaySound(SoundType.VICTORY);
 
                 foreach (TimeSpan time in runData.raceTimes)
+                {
                     runData.totalTime += time;
+                }
+                    
 
                 // Leaderboard
                 HighscoreManager highscoreManager = new HighscoreManager();
@@ -199,6 +183,15 @@ public class PlayerShip : Ship
                 SaveReplay();
 
                 runData.raceFinished = true;
+
+                // Analytics
+                double averageLapTime = runData.totalTime.TotalSeconds / runData.maxLaps;
+                string playerName = "Anon";
+
+                if (PhotonNetwork.IsConnected)
+                    playerName = PhotonNetwork.LocalPlayer.NickName;
+
+                OnPlayerFinishedRaceDelegate(runData.maxLaps, runData.totalTime, averageLapTime, playerName);
             }
             else // If not finished
             {
@@ -233,12 +226,12 @@ public class PlayerShip : Ship
             // If passed previous waypoint
             if (other.GetComponent<Waypoint>().number < runData.currentWaypoint)
             {
-               // Debug.Log("Wrong Way!");
+                // Debug.Log("Wrong Way!");
                 runData.isWrongWay = true;
             }
             else // update with new waypoint
             {
-               // Debug.Log($"Waypoint updated! ({other.GetComponent<Waypoint>().number})");
+                // Debug.Log($"Waypoint updated! ({other.GetComponent<Waypoint>().number})");
                 runData.currentWaypoint = other.GetComponent<Waypoint>().number;
                 runData.isWrongWay = false;
                 if (other.GetComponent<Waypoint>().isHalfwayPoint)

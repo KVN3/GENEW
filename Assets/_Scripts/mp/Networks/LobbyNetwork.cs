@@ -9,6 +9,9 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        if (PhotonNetwork.IsConnected)
+            return;
+
         print("Connecting to server...");
 
         PhotonNetwork.GameVersion = "0.0.0";
@@ -37,7 +40,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
             //MainCanvasManager.instance.LobbyCanvas.gameObject.SetActive(true);
             //MainCanvasManager.instance.CurrentRoomCanvas.gameObject.SetActive(false);
         }
-            
+
     }
 
 

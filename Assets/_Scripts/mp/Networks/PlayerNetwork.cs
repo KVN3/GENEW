@@ -3,6 +3,7 @@ using Photon.Pun;
 using UnityEngine.SceneManagement;
 using System.IO;
 using Photon.Realtime;
+using System.Collections;
 
 public class PlayerNetwork : MonoBehaviourPunCallbacks
 {
@@ -10,13 +11,12 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
     public string PlayerName { get; private set; }
 
+    public ExitGames.Client.Photon.Hashtable playerCustomProperties = new ExitGames.Client.Photon.Hashtable();
     private PhotonView photonView;
 
     // How many players fully loaded the game scene
     private int playersInGame = 0;
-
     private PlayerShip playerShip;
-
     private string activeScene;
 
     private void Awake()
@@ -133,4 +133,31 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     {
         playerShip = PlayerManager.Instance.CreatePlayer(PhotonNetwork.LocalPlayer, activeScene);
     }
+
+    public void ResetNetwork()
+    {
+        playersInGame = 0;
+        playerShip = null;
+        activeScene = string.Empty;
+    }
+
+    #region ping
+    private IEnumerator C_SetPing()
+    {
+        while (PhotonNetwork.IsConnected)
+        {
+            playerCustomProperties["ping"] = PhotonNetwork.GetPing();
+            PhotonNetwork.LocalPlayer.SetCustomProperties(playerCustomProperties);
+
+            yield return new WaitForSeconds(2f);
+        }
+
+        yield break;
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        StartCoroutine(C_SetPing());
+    }
+    #endregion
 }

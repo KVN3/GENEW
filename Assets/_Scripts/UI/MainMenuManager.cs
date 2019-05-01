@@ -26,7 +26,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     // Start is called before the first frame update
     void Update()
     {
-        TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
+        //TitleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
         SingleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
         EditShipText.text = LocalizationManager.GetTextByKey("EDIT_SHIP");
         VersionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 1";

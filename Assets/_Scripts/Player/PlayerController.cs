@@ -30,14 +30,14 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-       // if (photonView.IsMine)
-      //  {
-            // Rotate
-            float x = 0;
-            float y = 90f;
-            float z = 0;
-            transform.localEulerAngles = new Vector3(x, y, z);
-       // }
+        // if (photonView.IsMine)
+        //  {
+        // Rotate
+        float x = 0;
+        float y = 90f;
+        float z = 0;
+        transform.localEulerAngles = new Vector3(x, y, z);
+        // }
     }
 
     private void Update()
@@ -75,20 +75,26 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePlayerActionControls()
     {
+        // Leaving match
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.UnloadSceneAsync("Wasteland");
-            SceneManager.LoadScene("Main Menu");
+            if (PhotonNetwork.InRoom)
+                PhotonNetwork.LeaveRoom();
+
+            PlayerNetwork.Instance.ResetNetwork();
+            SceneManager.UnloadSceneAsync(ScenesInformation.sceneNames[SceneTitle.Wasteland]);
+            PhotonNetwork.LoadLevel(ScenesInformation.sceneNames[SceneTitle.Main]);
         }
 
         // Breaking
         if (Input.GetKey(KeyCode.Space))
             playerShip.components.movement.Break();
 
-        // Shooting
+        // UseItem
         if (Input.GetKeyDown(KeyCode.E))
             playerShip.UseItem();
 
+        // Debug, get stunned
         if (Input.GetKeyDown(KeyCode.K))
             playerShip.GetHitByEmp(2, "Debug activated");
 
@@ -206,10 +212,10 @@ public class PlayerController : MonoBehaviour
         Vector3 forward = -1 * verticalInput * transform.forward * Time.deltaTime * playerShip.components.movement.config.movementSpeedFactor * forwardFactor;
         playerShip.components.movement.Move(forward, verticalInput, horizontalInput);
     }
-    
+
     private void ManageCamera(float verticalInput)
     {
-        if(GivingGas(verticalInput))
+        if (GivingGas(verticalInput))
             playerCamera.IncreaseDistance(0.05f, 0.1f);
         else
             playerCamera.DecreaseDistance(0.05f, 0.1f);
