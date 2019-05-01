@@ -67,8 +67,6 @@ public class PlayerController : MonoBehaviour
         {
             playerShip.movement.SmoothMove();
         }
-            
-
     }
 
     #region Control Handlers
@@ -174,10 +172,10 @@ public class PlayerController : MonoBehaviour
     // Manage engines on/off and drag increase/decrease
     private void ManageEnginesAndDrag(float horizontalInput, float verticalInput)
     {
-        // Handle left & right engine
-        playerShip.components.engines.ManageEngines(horizontalInput);
+        // Handle engines
+        playerShip.components.engines.ManageEngines(horizontalInput, verticalInput);
 
-        // Handle drag & front engine
+        // Handle drag
         if (GivingGas(verticalInput) && !Input.GetKey(KeyCode.Space))
             playerShip.movement.GivingGas();
 

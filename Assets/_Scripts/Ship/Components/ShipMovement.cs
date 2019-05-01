@@ -180,8 +180,6 @@ public class ShipMovement : ShipComponent, IPunObservable
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
 
-        parentShip.components.engines.middleEngine.Activate();
-
         if (rb.drag > config.minDrag)
             rb.drag -= 0.3f;
 
@@ -195,8 +193,6 @@ public class ShipMovement : ShipComponent, IPunObservable
     public void NotGivingGas()
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
-
-        parentShip.components.engines.middleEngine.Deactivate();
 
         if (rb.drag < config.maxDrag)
         {

@@ -1253,7 +1253,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1025}
-  - component: {fileID: 2440}
   m_Layer: 0
   m_Name: Ship Engines
   m_TagString: Untagged
@@ -1278,21 +1277,6 @@ Transform:
   m_Father: {fileID: 1116}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac71648334fd4164ea7500302bb8cc0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  middleEngine: {fileID: 2450}
-  leftEngine: {fileID: 2441}
-  rightEngine: {fileID: 2449}
 --- !u!1 &392
 GameObject:
   m_ObjectHideFlags: 0
@@ -26052,6 +26036,7 @@ GameObject:
   - component: {fileID: 2311}
   - component: {fileID: 2528}
   - component: {fileID: 2537}
+  - component: {fileID: 6987268490720304500}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Ship
@@ -26108,7 +26093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   components:
-    engines: {fileID: 2440}
+    engines: {fileID: 6987268490720304500}
     gun: {fileID: 2444}
     system: {fileID: 2437}
     forcefield: {fileID: 2446}
@@ -26217,6 +26202,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2537}
   - {fileID: 2452}
+  - {fileID: 6987268490720304500}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -26246,6 +26232,21 @@ MonoBehaviour:
     trailActivationSpeed: 150
   windTrailsObject: {fileID: 508}
   groundSensor: {fileID: 544}
+--- !u!114 &6987268490720304500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac71648334fd4164ea7500302bb8cc0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  middleEngine: {fileID: 2450}
+  leftEngine: {fileID: 2441}
+  rightEngine: {fileID: 2449}
 --- !u!1 &537
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class ShipEngines : ShipComponent
+public class ShipEngines : ShipComponent, IPunObservable
 {
     public Engine middleEngine;
     public Engine leftEngine;
@@ -85,24 +86,85 @@ public class ShipEngines : ShipComponent
         rightEngine.Deactivate();
     }
 
-    public void ManageEngines(float horizontalInput)
+    // Turn engines on or off based on player input received from PC
+    public void ManageEngines(float horizontalInput, float verticalInput)
     {
+        // Side engines
         if (horizontalInput > 0)
         {
             leftEngine.Activate();
+            leftEngineOn = true;
+
             rightEngine.Deactivate();
+            rightEngineOn = false;
         }
         else if (horizontalInput < 0)
         {
             rightEngine.Activate();
+            rightEngineOn = true;
+
             leftEngine.Deactivate();
+            leftEngineOn = false;
         }
         else
         {
             leftEngine.Deactivate();
+            leftEngineOn = false;
+
             rightEngine.Deactivate();
+            rightEngineOn = false;
+        }
+
+        // Front engines
+        if (verticalInput > 0)
+        {
+            middleEngine.Activate();
+            middleEngineOn = true;
+        }
+        else
+        {
+            middleEngine.Deactivate();
+            middleEngineOn = false;
         }
     }
+
+    #region Photon
+    private bool middleEngineOn;
+    private bool leftEngineOn;
+    private bool rightEngineOn;
+
+    // If writing, send engine status. Else, read engine status and apply.
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(middleEngineOn);
+            stream.SendNext(leftEngineOn);
+            stream.SendNext(rightEngineOn);
+        }
+        else
+        {
+            middleEngineOn = (bool)stream.ReceiveNext();
+            leftEngineOn = (bool)stream.ReceiveNext();
+            rightEngineOn = (bool)stream.ReceiveNext();
+
+            if (middleEngineOn)
+                middleEngine.Activate();
+            else
+                middleEngine.Deactivate();
+
+            if (leftEngineOn)
+                leftEngine.Activate();
+            else
+                leftEngine.Deactivate();
+
+            if (rightEngineOn)
+                rightEngine.Activate();
+            else
+                rightEngine.Deactivate();
+        }
+    }
+    #endregion
 
     public void RestoreSystem()
     {
