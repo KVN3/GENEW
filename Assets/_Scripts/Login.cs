@@ -7,12 +7,20 @@ using System.Linq;
 
 public class Login : MonoBehaviour
 {
+    public TextMeshProUGUI titleText;
+
+    public TextMeshProUGUI helpText;
+
     public TextMeshProUGUI usernameText;
-    public TextMeshProUGUI passwordText;
     public TMP_InputField usernameInput;
+
+    public TextMeshProUGUI passwordText;
     public TMP_InputField passwordInput;
+
     public TextMeshProUGUI validationText;
 
+    public TextMeshProUGUI loginText;
+    public TextMeshProUGUI goToRegisterText;
 
     public GameObject mainMenu;
     public GameObject registration;
@@ -30,8 +38,16 @@ public class Login : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
             UserLogin();
 
+        titleText.text = LocalizationManager.GetTextByKey("LOGIN");
+        helpText.text = LocalizationManager.GetTextByKey("HELP_LOGIN");
+
         usernameText.text = LocalizationManager.GetTextByKey("USERNAME");
+        usernameInput.placeholder.GetComponent<TextMeshProUGUI>().text = LocalizationManager.GetTextByKey("USERNAME");
         passwordText.text = LocalizationManager.GetTextByKey("PASSWORD");
+        passwordInput.placeholder.GetComponent<TextMeshProUGUI>().text = LocalizationManager.GetTextByKey("PASSWORD");
+
+        loginText.text = LocalizationManager.GetTextByKey("LOGIN");
+        goToRegisterText.text = LocalizationManager.GetTextByKey("DONT_HAVE_ACCOUNT");
     }
 
     public void UserLogin()
@@ -50,13 +66,13 @@ public class Login : MonoBehaviour
                     gameObject.SetActive(false);
                 }
                 else
-                    validationText.text = "Wrong password!";
+                    validationText.text = LocalizationManager.GetTextByKey("WRONG_PASSWORD"); ;
             }
             else
-                validationText.text = "Account does not exist!";
+                validationText.text = LocalizationManager.GetTextByKey("ACCOUNT_NOT_EXIST"); ;
         }
         else
-            validationText.text = "Fields are empty!";
+            validationText.text = LocalizationManager.GetTextByKey("FIELDS_EMPTY");
     }
 
     public Account GetAccountByUsername()

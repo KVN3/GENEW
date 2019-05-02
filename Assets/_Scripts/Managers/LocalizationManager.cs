@@ -41,11 +41,31 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("QUIT_GAME", "Verlaat spel");
         NLDict.Add("VERSION", "Versie");
 
-
+        // Account
+        NLDict.Add("REGISTRATION", "Registratie");
+        NLDict.Add("REGISTER", "Registreren");
+        NLDict.Add("LOGIN", "Log in");
         NLDict.Add("LOGGED_IN_AS", "Ingelogd als");
         NLDict.Add("NOT_LOGGED_IN", "Niet ingelogd");
+        NLDict.Add("HAVE_ACCOUNT", "Al een account?");
+        NLDict.Add("DONT_HAVE_ACCOUNT", "Geen account?");
         NLDict.Add("USERNAME", "Gebruikersnaam");
         NLDict.Add("PASSWORD", "Wachtwoord");
+        NLDict.Add("CONFIRM_PASSWORD", "Bevestig wachtwoord");
+        NLDict.Add("FRIENDS", "Vrienden");
+
+        // Help text
+        NLDict.Add("HELP_REGISTRATION", "Vul deze velden hieronder in. \nDit account slaat je vrienden, voortgang en prestaties op.");
+        NLDict.Add("HELP_LOGIN", "Log in om te spelen");
+
+        // Validation messages
+        NLDict.Add("PASSWORDS_NOT_MATCH", "Ingelogd als");
+        NLDict.Add("PASSWORD_LONGER_1", "Wachtwoord moet langer zijn dan");
+        NLDict.Add("PASSWORD_LONGER_2", "karakters!");
+        NLDict.Add("FIELDS_EMPTY", "Er zijn lege velden!");
+        NLDict.Add("ACCOUNT_EXISTS", "Account bestaat al!");
+        NLDict.Add("ACCOUNT_NOT_EXIST", "Account bestaat niet!");
+        NLDict.Add("WRONG_PASSWORD", "Wachtwoord is fout!");
 
         // Ship customisation
         NLDict.Add("RED", "Rood");
@@ -111,11 +131,31 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("QUIT_GAME", "Quit game");
         ENDict.Add("VERSION", "Version");
 
-
+        // Account
+        ENDict.Add("REGISTRATION", "Registration");
+        ENDict.Add("LOGIN", "Login");
+        ENDict.Add("REGISTER", "Register");
         ENDict.Add("LOGGED_IN_AS", "Logged in as");
         ENDict.Add("NOT_LOGGED_IN", "Not logged in");
+        ENDict.Add("HAVE_ACCOUNT", "Have an account?");
+        ENDict.Add("DONT_HAVE_ACCOUNT", "Don't have an account?");
         ENDict.Add("USERNAME", "Username");
         ENDict.Add("PASSWORD", "Password");
+        ENDict.Add("CONFIRM_PASSWORD", "Confirm password");
+        ENDict.Add("FRIENDS", "Friends");
+
+        // Help text
+        ENDict.Add("HELP_REGISTRATION", "Please fill in these fields to create an account. \nThis account saves your friends, progress and achievements.");
+        ENDict.Add("HELP_LOGIN", "Please login to play");
+
+        // Validation messages
+        ENDict.Add("PASSWORDS_NOT_MATCH", "Passwords do no match!");
+        ENDict.Add("PASSWORD_LONGER_1", "Password has to be longer than");
+        ENDict.Add("PASSWORD_LONGER_2", "characters!");
+        ENDict.Add("FIELDS_EMPTY", "You have empty fields!");
+        ENDict.Add("ACCOUNT_EXISTS", "Account already exists!");
+        ENDict.Add("ACCOUNT_NOT_EXIST", "Account does not exist!");
+        ENDict.Add("WRONG_PASSWORD", "Wrong password!");
 
         // Ship customisation
         ENDict.Add("RED", "Red");

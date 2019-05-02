@@ -7,11 +7,24 @@ using System.Linq;
 
 public class Registration : MonoBehaviour
 {
+    public TextMeshProUGUI titleText;
+
+    public TextMeshProUGUI helpText;
+
     public TextMeshProUGUI usernameText;
-    public TextMeshProUGUI passwordText;
     public TMP_InputField usernameInput;
+
+    public TextMeshProUGUI passwordText;  
     public TMP_InputField passwordInput;
+
+    public TextMeshProUGUI confirmPasswordText;
+    public TMP_InputField confirmPasswordInput;
+
     public TextMeshProUGUI validationText;
+
+    public TextMeshProUGUI registerText;
+    public TextMeshProUGUI goToLoginText;
+
 
     public GameObject login;
 
@@ -40,8 +53,19 @@ public class Registration : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
             Register();
 
+        titleText.text = LocalizationManager.GetTextByKey("REGISTRATION");
+
+        helpText.text = LocalizationManager.GetTextByKey("HELP_REGISTRATION");
+
         usernameText.text = LocalizationManager.GetTextByKey("USERNAME");
+        usernameInput.placeholder.GetComponent<TextMeshProUGUI>().text = LocalizationManager.GetTextByKey("USERNAME");
         passwordText.text = LocalizationManager.GetTextByKey("PASSWORD");
+        passwordInput.placeholder.GetComponent<TextMeshProUGUI>().text = LocalizationManager.GetTextByKey("PASSWORD");
+        confirmPasswordText.text = LocalizationManager.GetTextByKey("CONFIRM_PASSWORD");
+        confirmPasswordInput.placeholder.GetComponent<TextMeshProUGUI>().text = LocalizationManager.GetTextByKey("CONFIRM_PASSWORD");
+
+        registerText.text = LocalizationManager.GetTextByKey("REGISTER");
+        goToLoginText.text = LocalizationManager.GetTextByKey("HAVE_ACCOUNT");
     }
 
     public void InitAccounts()
@@ -55,17 +79,20 @@ public class Registration : MonoBehaviour
 
     public void Register()
     {
-        if (usernameInput.text != "" && passwordInput.text != "")
+        if (usernameInput.text != "" && passwordInput.text != "" && confirmPasswordInput.text != "")
         {
             if (passwordInput.text.Length > passwordLength)
             {
-                CreateAccount();
+                if (passwordInput.text == confirmPasswordInput.text)
+                    CreateAccount();
+                else
+                    validationText.text = LocalizationManager.GetTextByKey("PASSWORDS_NOT_MATCH");
             }
             else
-                validationText.text = $"Password has to be longer than {passwordLength} characters!";
+                validationText.text = LocalizationManager.GetTextByKey("PASSWORD_LONGER_1") + $" {passwordLength} " + LocalizationManager.GetTextByKey("PASSWORD_LONGER_2") + "!";
         }
         else
-            validationText.text = "Fields are empty!";
+            validationText.text = LocalizationManager.GetTextByKey("FIELDS_EMPTY");
 
     }
 
@@ -98,7 +125,7 @@ public class Registration : MonoBehaviour
             gameObject.SetActive(false);
         }
         else
-            validationText.text = "Account already exists!";
+            validationText.text = LocalizationManager.GetTextByKey("ACCOUNT_EXISTS");
     }
 
     public void GoToLogin()
