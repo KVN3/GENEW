@@ -6333,7 +6333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.1
-    floatSpeed: 10000
+    floatSpeed: 100000
     baseHeightFromGround: 0
 --- !u!54 &257490348
 Rigidbody:
@@ -6343,7 +6343,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257490346}
   serializedVersion: 2
-  m_Mass: 10000
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -12987,7 +12987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.1
-    floatSpeed: 10000
+    floatSpeed: 100000
     baseHeightFromGround: 0
 --- !u!54 &512904208
 Rigidbody:
@@ -12997,7 +12997,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512904206}
   serializedVersion: 2
-  m_Mass: 10000
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -24815,7 +24815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.2
-    floatSpeed: 10000
+    floatSpeed: 100000
     baseHeightFromGround: 0
 --- !u!54 &1030289549
 Rigidbody:
@@ -24825,7 +24825,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030289547}
   serializedVersion: 2
-  m_Mass: 10000
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -32891,7 +32891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.1
-    floatSpeed: 10000
+    floatSpeed: 100000
     baseHeightFromGround: 0
 --- !u!54 &1401718372
 Rigidbody:
@@ -32901,7 +32901,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401718370}
   serializedVersion: 2
-  m_Mass: 10000
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -35208,7 +35208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.1
-    floatSpeed: 10000
+    floatSpeed: 100000
     baseHeightFromGround: 0
 --- !u!54 &1494214226
 Rigidbody:
@@ -35218,7 +35218,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494214224}
   serializedVersion: 2
-  m_Mass: 10000
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -35261,7 +35261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.2
-    floatSpeed: 10000
+    floatSpeed: 100000
     baseHeightFromGround: 0
 --- !u!54 &1494214232
 Rigidbody:
@@ -35271,7 +35271,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494214230}
   serializedVersion: 2
-  m_Mass: 10000
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -38388,7 +38388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.1
-    floatSpeed: 10000
+    floatSpeed: 100000
     baseHeightFromGround: 0
 --- !u!54 &1612117035
 Rigidbody:
@@ -38398,7 +38398,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612117033}
   serializedVersion: 2
-  m_Mass: 10000
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -38441,7 +38441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.2
-    floatSpeed: 10000
+    floatSpeed: 100000
     baseHeightFromGround: 0
 --- !u!54 &1612117041
 Rigidbody:
@@ -38451,7 +38451,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612117039}
   serializedVersion: 2
-  m_Mass: 10000
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -50507,7 +50507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.1
-    floatSpeed: 10000
+    floatSpeed: 100000
     baseHeightFromGround: 0
 --- !u!54 &2888173864233461028
 Rigidbody:
@@ -50517,7 +50517,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2888173864233461026}
   serializedVersion: 2
-  m_Mass: 10000
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -50587,7 +50587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.1
-    floatSpeed: 10000
+    floatSpeed: 100000
     baseHeightFromGround: 0
 --- !u!54 &3687896955102106165
 Rigidbody:
@@ -50597,7 +50597,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3687896955102106163}
   serializedVersion: 2
-  m_Mass: 10000
+  m_Mass: 100000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -51073,10 +51073,6 @@ MonoBehaviour:
       type: 3}
   cameraClass: {fileID: 1323, guid: 37ee11e1319f5a1458eb0f7d9f6ff452, type: 3}
   playerClass: {fileID: 1403, guid: fc8bf98e8a8f8b444a468a11e13518e2, type: 3}
-  playerStarts:
-  - {fileID: 9003994758565348090, guid: 04ba8145b38164d40adaf5d166e7f570, type: 3}
-  - {fileID: 5238381896985623582, guid: 993ecf66dc5c09a46ab73ec5cf9fee98, type: 3}
-  - {fileID: 5066669943746828320, guid: bfdeb86deb468104592c9a68be4e46d8, type: 3}
   ghosts: []
 --- !u!4 &7058210511400869060
 Transform:

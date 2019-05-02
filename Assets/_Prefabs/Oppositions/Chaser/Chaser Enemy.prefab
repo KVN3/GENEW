@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1712409882995991430}
   - component: {fileID: 2155015250968255851}
   - component: {fileID: 5229254442176908686}
+  - component: {fileID: 5895348231759706135}
   m_Layer: 13
   m_Name: Chaser Enemy
   m_TagString: EnergyBall
@@ -141,6 +142,7 @@ MonoBehaviour:
   shutDownDuration: 4
   enemySoundManagerClass: {fileID: 7791514189915519896, guid: febd8b341a0717a4286d9b9316fb430f,
     type: 3}
+  playSoundOnStart: 1
   maxForce: 40
   minDistance: 400000
   targets: []
@@ -170,6 +172,28 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5895348231759706135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205888850700376200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &283078886480252420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,6 +201,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2205888850700376201}
     m_Modifications:
+    - target: {fileID: 1209033374770636, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_Name
+      value: Chaser Trail
+      objectReference: {fileID: 0}
     - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -220,10 +248,6 @@ PrefabInstance:
     - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1209033374770636, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
-      propertyPath: m_Name
-      value: Chaser Trail
       objectReference: {fileID: 0}
     - target: {fileID: 198064713177833144, guid: bdbcbfebe9a05fe4699cbd65d09cb575,
         type: 3}

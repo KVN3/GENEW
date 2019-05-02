@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
-public class EnergyBall : MonoBehaviour
+public class EnergyBall : MonoBehaviour, IPunObservable
 {
     public int shutDownDuration = 4;
     public EnemySoundManager enemySoundManagerClass;
@@ -68,4 +69,29 @@ public class EnergyBall : MonoBehaviour
     {
         this.manager = manager;
     }
+
+    #region Photon
+    private Vector3 targetPos;
+    private Quaternion targetRot;
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+        }
+        else
+        {
+            targetPos = (Vector3)stream.ReceiveNext();
+            targetRot = (Quaternion)stream.ReceiveNext();
+        }
+    }
+
+    public void SmoothMove()
+    {
+        transform.position = Vector3.Lerp(transform.position, targetPos, 0.25f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, 500 * Time.deltaTime);
+    }
+    #endregion
 }

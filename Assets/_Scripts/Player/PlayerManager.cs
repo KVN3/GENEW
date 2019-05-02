@@ -12,6 +12,11 @@ public class PlayerManager : MonoBehaviour
 
     private List<PlayerStats> playerStatsList = new List<PlayerStats>();
 
+    public List<PlayerStats> GetPlayerStatsList()
+    {
+        return playerStatsList;
+    }
+
     private void Awake()
     {
         Instance = this;

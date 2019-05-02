@@ -45,9 +45,6 @@ public class GameState : LevelSingleton<GameState>
     // Spawnpoints
     public static LocalSpawnPoint[] playerStarts;
 
-    // Players
-    public Dictionary<Player, PlayerShip> players { get; set; } = new Dictionary<Player, PlayerShip>();
-
     // Ghosts (replay)
     public PlayerShipGhost[] ghosts;
 
@@ -57,11 +54,15 @@ public class GameState : LevelSingleton<GameState>
     // Listeners
     private GameObject[] listeners;
 
+    private PlayerShip[] playerShips;
+
     private bool logging = false;
 
     protected override void Awake()
     {
         base.Awake();
+
+        
 
         //Assert.IsNotNull(playerClass);
         //Assert.IsFalse(playerStarts.Length == 0);
@@ -105,6 +106,29 @@ public class GameState : LevelSingleton<GameState>
             Instantiate(ghost);
 
         BackgroundSoundManager backgroundSoundManager = Instantiate(gameManagers.backgroundSoundManagerClass);
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            List<PlayerStats> playerStatsList = PlayerManager.Instance.GetPlayerStatsList();
+            playerShips = new PlayerShip[playerStatsList.Count];
+
+            for (int i = 0; i < playerStatsList.Count; i++)
+            {
+                playerShips[i] = playerStatsList[i].playerShip;
+            }
+
+            // Spawn Point Manager
+            SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
+
+            // Enemy Managers
+            ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
+            chaserManager.SetPlayers(playerShips);
+            chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
+
+            MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
+            moverManager.SetPlayers(playerShips);
+            moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+        }
     }
 
     #region Photon
@@ -127,7 +151,7 @@ public class GameState : LevelSingleton<GameState>
         playerShip.SetPlayerCamera(camera);
 
         // Add to list
-        players.Add(PhotonNetwork.LocalPlayer, playerShip);
+        //players.Add(PhotonNetwork.LocalPlayer, playerShip);
 
         // Temp SP
         PlayerShip[] playersLocal = new PlayerShip[1];
@@ -137,42 +161,31 @@ public class GameState : LevelSingleton<GameState>
         AnalyticsManager analyticsManager = Instantiate(gameManagers.analyticsManagerClass);
         analyticsManager.playerShip = playerShip;
 
-        // Spawn Point Manager
-        //SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
-
-        // Enemy Managers
-        //ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
-        //chaserManager.SetPlayers(playersLocal);
-        //chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
-
-        //MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
-        //moverManager.SetPlayers(playersLocal);
-        //moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
 
         return playerShip;
     }
 
-    private IEnumerator UpdatePlayerList()
-    {
-        yield return new WaitForSeconds(5);
+    //private IEnumerator UpdatePlayerList()
+    //{
+    //    yield return new WaitForSeconds(5);
 
-        players = new Dictionary<Player, PlayerShip>();
+    //    players = new Dictionary<Player, PlayerShip>();
 
-        GameObject[] playerShipObjects = GameObject.FindGameObjectsWithTag("Ship");
+    //    GameObject[] playerShipObjects = GameObject.FindGameObjectsWithTag("Ship");
 
-        foreach (GameObject shipObject in playerShipObjects)
-        {
-            PlayerShip playerShip = shipObject.GetComponent<PlayerShip>();
+    //    foreach (GameObject shipObject in playerShipObjects)
+    //    {
+    //        PlayerShip playerShip = shipObject.GetComponent<PlayerShip>();
 
-            PhotonView photonView = playerShip.GetComponent<PhotonView>();
-            Player player = photonView.Owner;
+    //        PhotonView photonView = playerShip.GetComponent<PhotonView>();
+    //        Player player = photonView.Owner;
 
-            players.Add(player, playerShip);
-        }
+    //        players.Add(player, playerShip);
+    //    }
 
-        if (logging)
-            Debug.Log("PLAYER COUNT: " + players.Count);
-    }
+    //    if (logging)
+    //        Debug.Log("PLAYER COUNT: " + players.Count);
+    //}
 
     //protected PlayerShip SpawnRemotePlayer(Player remotePlayer, int index)
     //{
@@ -192,14 +205,14 @@ public class GameState : LevelSingleton<GameState>
     //    return Player;
     //}
 
-    protected void KillPlayer(Player remotePlayer)
-    {
-        PlayerShip player = players[remotePlayer];
+    //protected void KillPlayer(Player remotePlayer)
+    //{
+    //    PlayerShip player = players[remotePlayer];
 
-        Destroy(player);
+    //    Destroy(player);
 
-        players.Remove(remotePlayer);
-    }
+    //    players.Remove(remotePlayer);
+    //}
     #endregion
 
     private void Update()

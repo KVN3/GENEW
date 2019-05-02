@@ -18,6 +18,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     private int playersInGame = 0;
     private PlayerShip playerShip;
     private string activeScene;
+    private Coroutine pingCoroutine;
 
     private void Awake()
     {
@@ -124,7 +125,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
             // TO DO: Respawning
         }
-        
+
     }
 
     // Creates the player's ship
@@ -157,7 +158,8 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        StartCoroutine(C_SetPing());
+        if (pingCoroutine == null)
+            pingCoroutine = StartCoroutine(C_SetPing());
     }
     #endregion
 }
