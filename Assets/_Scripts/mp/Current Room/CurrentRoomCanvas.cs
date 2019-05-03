@@ -2,15 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.UI.Dropdown;
 
 public class CurrentRoomCanvas : MonoBehaviour
-{ 
-    public void OnClickStartSync()
-    {
-        if (!PhotonNetwork.IsMasterClient)
-            return;
+{
+    private SceneTitle _sceneTitle;
+    [SerializeField]
+    private MapSelection _mapSelection;
 
-        PhotonNetwork.LoadLevel("Large Wasteland");
+    private void Start()
+    {
+        _sceneTitle = SceneTitle.Test;
     }
 
     public void OnClickStartDelayed()
@@ -21,8 +24,15 @@ public class CurrentRoomCanvas : MonoBehaviour
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
-        string wasteland = ScenesInformation.sceneNames[SceneTitle.Wasteland];
+        string sceneName = ScenesInformation.sceneNames[_sceneTitle];
 
-        PhotonNetwork.LoadLevel(wasteland);
+        PlayerNetwork.Instance.activeScene = sceneName;
+
+        PhotonNetwork.LoadLevel(sceneName);
+    }
+
+    public void UpdateScene()
+    {
+        _sceneTitle = _mapSelection.GetScene();
     }
 }

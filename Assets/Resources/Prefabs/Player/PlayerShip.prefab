@@ -26047,8 +26047,8 @@ MonoBehaviour:
     positionsX: []
     positionsY: []
     positionsZ: []
-    replayQuaternions: []
-    replayPosition: []
+    replayRotations: []
+    replayPositions: []
     charges: 0
 --- !u!65 &2298
 BoxCollider:

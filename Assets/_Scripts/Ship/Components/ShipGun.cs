@@ -45,11 +45,11 @@ public class ShipGun : ShipComponent
         //shipSoundManager.PlaySound(SoundType.SHOOTING);
         //StartCoroutine(ShootingCooldown(.5f));
 
-        GetComponent<PhotonView>().RPC("Shoot", RpcTarget.AllViaServer);
+        GetComponent<PhotonView>().RPC("RPC_Shoot", RpcTarget.AllViaServer);
     }
 
     [PunRPC]
-    public void Shoot(PhotonMessageInfo info)
+    public void RPC_Shoot(PhotonMessageInfo info)
     {
         float lag = (float)(PhotonNetwork.Time - info.SentServerTime);
 

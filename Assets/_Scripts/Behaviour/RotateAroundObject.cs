@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +10,14 @@ public class RotateAroundObject : MonoBehaviour
     public float orbitDegreesPerSec = 180.0f;
     public float heightY = 5f;
 
+    private EnergyBall energyBall;
+
     // Use this for initialization
     void Start()
     {
         transform.position = new Vector3(transform.position.x, heightY, transform.position.z);
+
+        energyBall = GetComponent<EnergyBall>();
     }
 
     void Orbit()
@@ -31,6 +36,15 @@ public class RotateAroundObject : MonoBehaviour
     // target is done with it's move.
     void LateUpdate()
     {
-        Orbit();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Orbit();
+        }
+        else
+        {
+            //if (energyBall != null)
+            energyBall.SmoothMove();
+        }
+
     }
 }

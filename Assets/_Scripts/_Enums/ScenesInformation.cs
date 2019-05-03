@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum SceneTitle
 {
-    Main, Shipyard, Wasteland
+    Main, Shipyard, Wasteland, Test
 }
 
 public class ScenesInformation : MonoBehaviour
@@ -17,6 +17,7 @@ public class ScenesInformation : MonoBehaviour
         sceneNames.Add(SceneTitle.Main, "Main Menu");
         sceneNames.Add(SceneTitle.Shipyard, "Shipyard");
         sceneNames.Add(SceneTitle.Wasteland, "Eraarlonium Wasteland");
+        sceneNames.Add(SceneTitle.Test, "Test");
     }
 
     #region abstract

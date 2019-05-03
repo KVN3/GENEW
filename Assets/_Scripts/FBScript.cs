@@ -96,7 +96,8 @@ public class FBScript : MonoBehaviour
         else
         {
             dialogLoggedIn.SetActive(false);
-            dialogLoggedOut.SetActive(true);
+            // TO DO: Null error
+            //dialogLoggedOut.SetActive(true);
         }
     }
 

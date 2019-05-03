@@ -41,5 +41,10 @@ MonoBehaviour:
   - RPC_NewHealth
   - RPC_ApplySkin
   - PhotonDropSmokeScreen
+  - RPC_SpawnChaser
+  - RPC_SpawnMover
+  - RPC_Shoot
+  - RPC_ShootAtTarget
+  - RPC_SpawnCirclers
   DisableAutoOpenWizard: 1
   ShowSettings: 1

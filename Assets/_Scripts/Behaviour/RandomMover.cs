@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class RandomMover : EnergyBall
 
     private float x;
     private float z;
-    private float tiempo;
+    private float tmp;
     private float angulo;
     private Rigidbody rb;
 
@@ -37,35 +38,47 @@ public class RandomMover : EnergyBall
     // Update is called once per frame
     void Update()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Move();
+        }
+        else
+        {
+            SmoothMove();
+        }
+    }
+
+    private void Move()
+    {
         rb = GetComponent<Rigidbody>();
-        tiempo += Time.deltaTime;
+        tmp += Time.deltaTime;
 
         if (transform.localPosition.x > xMax)
         {
             x = Random.Range(-velocidadMax, 0.0f);
-            tiempo = 0.0f;
+            tmp = 0.0f;
         }
         if (transform.localPosition.x < xMin)
         {
             x = Random.Range(0.0f, velocidadMax);
-            tiempo = 0.0f;
+            tmp = 0.0f;
         }
         if (transform.localPosition.z > zMax)
         {
             z = Random.Range(-velocidadMax, 0.0f);
-            tiempo = 0.0f;
+            tmp = 0.0f;
         }
         if (transform.localPosition.z < zMin)
         {
             z = Random.Range(0.0f, velocidadMax);
-            tiempo = 0.0f;
+            tmp = 0.0f;
         }
-        
-        if (tiempo > 1.0f)
+
+        if (tmp > 1.0f)
         {
             x = Random.Range(-velocidadMax, velocidadMax);
             z = Random.Range(-velocidadMax, velocidadMax);
-            tiempo = 0.0f;
+            tmp = 0.0f;
         }
 
         if (rb.velocity.x > maxSpeed)
