@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 613480307917899300}
   - component: {fileID: 613480307917899301}
+  - component: {fileID: 6525084361270549231}
   m_Layer: 0
-  m_Name: Mover Manager
+  m_Name: MoverManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,3 +47,26 @@ MonoBehaviour:
   enemyClasses:
   - {fileID: 5501172819095724943, guid: 63c505a1dd8051f49984077d4f9f4f68, type: 3}
   desiredAliveEnemyCount: 2
+  viewId: 997
+--- !u!114 &6525084361270549231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613480307917899302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

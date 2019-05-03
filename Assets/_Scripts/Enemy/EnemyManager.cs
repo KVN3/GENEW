@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -15,6 +16,17 @@ public class EnemyManager : MonoBehaviour
 
     protected PlayerShip[] players;
     protected List<EnergyBall> enemies = new List<EnergyBall>();
+
+    protected PhotonView photonView;
+
+    [SerializeField]
+    protected int viewId;
+
+    private void Awake()
+    {
+        photonView = GetComponent<PhotonView>();
+        photonView.ViewID = viewId;
+    }
 
     private void Start()
     {

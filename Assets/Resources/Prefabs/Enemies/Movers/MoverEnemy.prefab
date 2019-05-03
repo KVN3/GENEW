@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 107121675254202521}
   - component: {fileID: 5501172819095724943}
   - component: {fileID: 4671037084046883730}
+  - component: {fileID: 1828276117271575478}
   m_Layer: 13
-  m_Name: Mover Enemy
+  m_Name: MoverEnemy
   m_TagString: EnergyBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,6 +142,7 @@ MonoBehaviour:
   shutDownDuration: 4
   enemySoundManagerClass: {fileID: 7791514189915519896, guid: febd8b341a0717a4286d9b9316fb430f,
     type: 3}
+  playSoundOnStart: 1
   velocidadMax: 10
   shooterModule: {fileID: 5501172819638903299}
   xMax: 1300
@@ -161,6 +163,28 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1828276117271575478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107121675254202523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 5501172819095724943}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &2453836875010744981
 MonoBehaviour:
   m_ObjectHideFlags: 0

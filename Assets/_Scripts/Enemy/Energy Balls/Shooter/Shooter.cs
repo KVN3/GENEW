@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Shooter : MonoBehaviour
 {
@@ -12,28 +13,50 @@ public class Shooter : MonoBehaviour
     private EnemySoundManager sm;
     private bool isCloseEnough = false;
 
+    private PhotonView photonView;
+    private Vector3 currentTarget;
+
+    void Awake()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
+
+    // Shoot a projectile at a Vector3 target
     public void Fire(Vector3 target)
     {
         DestroyIfNoParent();
 
         if (isCloseEnough)
         {
-            sm.PlaySound(SoundType.SHOOTING);
-            EnergyBallProjectile projectile = energyBallProjectileClasses[Random.Range(0, energyBallProjectileClasses.Length)];
-            projectile.target = target;
-
-            Instantiate(projectile, this.transform.position, this.transform.rotation);
+            currentTarget = target;
+            photonView.RPC("RPC_ShootAtTarget", RpcTarget.AllViaServer);
         }
     }
 
+    [PunRPC]
+    public void RPC_ShootAtTarget(PhotonMessageInfo info)
+    {
+        float lag = (float)(PhotonNetwork.Time - info.SentServerTime);
+
+        sm.PlaySound(SoundType.SHOOTING);
+
+        //EnergyBallProjectile projectile = energyBallProjectileClasses[Random.Range(0, energyBallProjectileClasses.Length)];
+        //Instantiate(projectile, this.transform.position, this.transform.rotation);
+
+        EnergyBallProjectile projectile = PhotonNetwork.Instantiate(SharedResources.GetPath("EnergyBallProjectile"), transform.position, transform.rotation).GetComponent<EnergyBallProjectile>();
+        projectile.target = currentTarget;
+    }
+
+    // Destroy this object if it has no parent object
     private void DestroyIfNoParent()
     {
         if (transform.parent == null)
         {
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 
+    // Locates the closest enemy ship to gun for
     public Vector3 GetClosestTarget()
     {
         bool withinRange = false;

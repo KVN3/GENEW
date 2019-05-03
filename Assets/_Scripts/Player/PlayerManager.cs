@@ -59,10 +59,10 @@ public class PlayerManager : MonoBehaviour
     public PlayerShip CreatePlayer(Player player, string activeScene)
     {
         string playerPath = Path.Combine("Prefabs", "Player", "PlayerShip");
-        PlayerCamera playerCameraClass = LoadPlayerCamera();
-        UIManager playerUIClass = LoadUI();
-        AnalyticsManager analyticsManagerClass = LoadAnalyticsManager();
-        LocalSpawnPoint[] spawnPoints = LoadSpawnPoints(activeScene);
+        PlayerCamera playerCameraClass = SharedResources.LoadPlayerCamera();
+        UIManager playerUIClass = SharedResources.LoadUI();
+        AnalyticsManager analyticsManagerClass = SharedResources.LoadAnalyticsManager();
+        LocalSpawnPoint[] spawnPoints = SharedResources.LoadSpawnPoints(activeScene);
 
         // This player's assigned spawnpoint
         int spawnIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
@@ -92,8 +92,6 @@ public class PlayerManager : MonoBehaviour
         PlayerController playerController = playerShip.gameObject.GetComponent<PlayerController>();
         playerController.SetPlayerCamera(playerCamera);
         playerShip.SetPlayerCamera(playerCamera);
-
-
 
         SetPlayerShip(player, playerShip);
         SetPlayerCamera(player, playerCamera);
@@ -155,69 +153,6 @@ public class PlayerManager : MonoBehaviour
 
         return skin;
     }
-
-    //public ShipSkin GetShipSkin(Player player)
-    //{
-    //    int index = playerStatsList.FindIndex(i => i.player == player);
-
-    //    if (Method.IndexFound(index))
-    //    {
-
-    //    }
-    //}
-
-    // These methods load files from the Resources folder
-    #region Resources
-    private AnalyticsManager LoadAnalyticsManager()
-    {
-        string analyticsManagerPath = Path.Combine("Prefabs", "Player", "AnalyticsManager");
-        GameObject analyticsManagerObj = Resources.Load(analyticsManagerPath) as GameObject;
-
-        return analyticsManagerObj.GetComponent<AnalyticsManager>();
-    }
-
-    private UIManager LoadUI()
-    {
-        string userInterfacePath = Path.Combine("Prefabs", "Player", "PlayerUI");
-        GameObject UIObj = Resources.Load(userInterfacePath) as GameObject;
-
-        return UIObj.GetComponent<UIManager>();
-    }
-
-    private PlayerShip LoadPlayerShip()
-    {
-        string playerPath = Path.Combine("Prefabs", "Player", "PlayerShip");
-        GameObject playerShipObj = Resources.Load(playerPath) as GameObject;
-
-        return playerShipObj.GetComponent<PlayerShip>();
-    }
-
-    private PlayerCamera LoadPlayerCamera()
-    {
-        string cameraPath = Path.Combine("Prefabs", "Player", "PlayerCamera");
-        GameObject playerCameraObj = Resources.Load(cameraPath) as GameObject;
-
-        return playerCameraObj.GetComponent<PlayerCamera>();
-    }
-
-    private LocalSpawnPoint[] LoadSpawnPoints(string activeScene)
-    {
-        string spawnpointsPath = Path.Combine("Prefabs", "Spawnpoints", activeScene);
-
-        Object[] objects = Resources.LoadAll(spawnpointsPath);
-        LocalSpawnPoint[] spawnPoints = new LocalSpawnPoint[objects.Length];
-
-        int i = 0;
-        foreach (Object obj in objects)
-        {
-            GameObject gameObject = obj as GameObject;
-            spawnPoints[i] = gameObject.GetComponent<LocalSpawnPoint>();
-            i++;
-        }
-
-        return spawnPoints;
-    }
-    #endregion
 }
 
 public class PlayerStats

@@ -62,7 +62,7 @@ public class GameState : LevelSingleton<GameState>
     {
         base.Awake();
 
-        
+
 
         //Assert.IsNotNull(playerClass);
         //Assert.IsFalse(playerStarts.Length == 0);
@@ -109,26 +109,39 @@ public class GameState : LevelSingleton<GameState>
 
         if (PhotonNetwork.IsMasterClient)
         {
-            List<PlayerStats> playerStatsList = PlayerManager.Instance.GetPlayerStatsList();
-            playerShips = new PlayerShip[playerStatsList.Count];
-
-            for (int i = 0; i < playerStatsList.Count; i++)
-            {
-                playerShips[i] = playerStatsList[i].playerShip;
-            }
-
-            // Spawn Point Manager
-            SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
-
-            // Enemy Managers
-            ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
-            chaserManager.SetPlayers(playerShips);
-            chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
-
-            MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
-            moverManager.SetPlayers(playerShips);
-            moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+            StartCoroutine(C_SpawnManagers());
         }
+    }
+
+    private IEnumerator C_SpawnManagers()
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Ship");
+
+        // Keep checking until ship objects found matches player count
+        while(gameObjects.Length != PhotonNetwork.PlayerList.Length)
+        {
+            gameObjects = GameObject.FindGameObjectsWithTag("Ship");
+            yield return new WaitForSeconds(1);
+        }
+
+        // Get the playership scripts from the objects
+        playerShips = new PlayerShip[gameObjects.Length];
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            playerShips[i] = gameObjects[i].GetComponent<PlayerShip>();
+        }
+
+        // Spawn Point Manager
+        SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
+
+        // Enemy Managers
+        ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
+        chaserManager.SetPlayers(playerShips);
+        chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
+
+        MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
+        moverManager.SetPlayers(playerShips);
+        moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
     }
 
     #region Photon

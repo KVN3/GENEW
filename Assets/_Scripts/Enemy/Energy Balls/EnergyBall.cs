@@ -62,7 +62,7 @@ public class EnergyBall : MonoBehaviour, IPunObservable
             manager.RemoveFromAliveEnemies(this);
         }
 
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 
     public void SetManager(EnemyManager manager)
