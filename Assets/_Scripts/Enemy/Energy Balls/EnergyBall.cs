@@ -22,7 +22,7 @@ public class EnergyBall : MonoBehaviour, IPunObservable
 
     public virtual void Start()
     {
-        if(playSoundOnStart)
+        if (playSoundOnStart)
             enemySoundManager.PlaySound(SoundType.RESTART);
     }
 
@@ -62,7 +62,8 @@ public class EnergyBall : MonoBehaviour, IPunObservable
             manager.RemoveFromAliveEnemies(this);
         }
 
-        PhotonNetwork.Destroy(gameObject);
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.Destroy(gameObject);
     }
 
     public void SetManager(EnemyManager manager)

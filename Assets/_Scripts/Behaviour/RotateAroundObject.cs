@@ -42,8 +42,8 @@ public class RotateAroundObject : MonoBehaviour
         }
         else
         {
-            if (energyBall != null)
-                energyBall.SmoothMove();
+            //if (energyBall != null)
+            energyBall.SmoothMove();
         }
 
     }

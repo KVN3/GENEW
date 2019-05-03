@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menus/Main Menu.unity
+    path: Assets/Scenes/_TBD/Main Menu.unity
     guid: 31eb398fd7fa2b7439932b2ea2cd199e
   - enabled: 0
     path: Assets/Scenes/Menus/Main Menu with FB.unity
     guid: 99d0a1d7364b39045ac62900e092d090
   - enabled: 0
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/Old/Level1.unity
     guid: 723a1fe32ac01b940bf813bb24f9ff1b
   - enabled: 0
-    path: Assets/Scenes/Gianni's level.unity
+    path: Assets/Scenes/Old/Gianni's level.unity
     guid: e124d73d7cdb3704eb965e62bb913ea8
   - enabled: 0
     path: Assets/Scenes/Game/Launcher.unity
@@ -27,15 +27,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Wasteland.unity
     guid: 3e447a9b13e278f44b7342990e7c7a57
   - enabled: 0
-    path: Assets/Scenes/Gianni LP.unity
+    path: Assets/Scenes/Old/Gianni LP.unity
     guid: a4436c79f791431499236d40b102df28
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menus/Shipyard.unity
     guid: b351fb2d776cda2419b5491c44a29760
   - enabled: 1
-    path: Assets/Scenes/Game/Eraarlonium Wasteland.unity
+    path: Assets/Scenes/_TBD/Eraarlonium Wasteland.unity
     guid: 3d6ec2ca9117f3f4eab15594eb942d51
   m_configObjects: {}

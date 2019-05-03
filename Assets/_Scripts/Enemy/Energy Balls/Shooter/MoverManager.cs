@@ -18,7 +18,7 @@ public class MoverManager : EnemyManager
         //moverClass.maxSpeed = sp.maxSpeed;
         //RandomMover mover = Instantiate(moverClass, sp.transform.position, Quaternion.identity);
 
-        
+
 
         //mover.shooterModule.SetTargets(players);
         //mover.SetManager(this);
@@ -30,15 +30,22 @@ public class MoverManager : EnemyManager
     [PunRPC]
     public void RPC_SpawnMover(PhotonMessageInfo info)
     {
-        string moverPath = Path.Combine("Prefabs", "Enemies", "Movers", "MoverEnemy");
+        string moverPath = SharedResources.GetPath("MoverEnemy");
 
         RandomMover mover = PhotonNetwork.Instantiate(moverPath, sp.transform.position, sp.transform.rotation).GetComponent<RandomMover>();
+
+        // Bounds
         mover.xMax = sp.xMax;
         mover.xMin = sp.xMin;
         mover.zMax = sp.zMax;
         mover.zMin = sp.zMin;
         mover.maxSpeed = sp.maxSpeed;
-        mover.shooterModule.SetTargets(players);
+
+        // Shooter module
+        Shooter shooterModule = mover.GetComponent<Shooter>();
+        shooterModule.SetTargets(players);
+        mover.shooterModule = shooterModule;
+
         mover.SetManager(this);
         enemies.Add(mover);
     }

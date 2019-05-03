@@ -6,7 +6,7 @@ using UnityEngine;
 public class CirclerManager : MonoBehaviour
 {
     [SerializeField]
-    private Transform orbitHallOfBall;
+    private Vector3 orbit;
     [SerializeField]
     private int amountOfBalls;
 
@@ -26,6 +26,10 @@ public class CirclerManager : MonoBehaviour
     [PunRPC]
     public void RPC_SpawnCirclers(PhotonMessageInfo info)
     {
+        string orbitPointPath = SharedResources.GetPath("OrbitPoint", SceneTitle.Wasteland);
+        Transform orbitPoint = PhotonNetwork.Instantiate(orbitPointPath, orbit, transform.rotation).transform;
+        Debug.Log("Instantiated orbit point at " + orbitPoint);
+
         string circlerPath = SharedResources.GetPath("CirclingEnergyBall");
 
         // Circling chain
@@ -35,7 +39,7 @@ public class CirclerManager : MonoBehaviour
 
             // Circling settings
             RotateAroundObject circlerSettings = circler.GetComponent<RotateAroundObject>();
-            circlerSettings.target = orbitHallOfBall;
+            circlerSettings.target = orbitPoint;
             circlerSettings.orbitDistance = i * 20;
             circlerSettings.orbitDegreesPerSec = -120;
             circlerSettings.heightY = 10;

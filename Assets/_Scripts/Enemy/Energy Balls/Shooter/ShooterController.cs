@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,8 @@ public class ShooterController : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(PerformFiring());
+        if (PhotonNetwork.IsMasterClient)
+            StartCoroutine(PerformFiring());
     }
 
     IEnumerator PerformFiring()

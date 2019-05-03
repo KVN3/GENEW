@@ -24,12 +24,13 @@ public class Shooter : MonoBehaviour
     // Shoot a projectile at a Vector3 target
     public void Fire(Vector3 target)
     {
-        DestroyIfNoParent();
-
-        if (isCloseEnough)
+        if (photonView.IsMine)
         {
-            currentTarget = target;
-            photonView.RPC("RPC_ShootAtTarget", RpcTarget.AllViaServer);
+            if (isCloseEnough)
+            {
+                currentTarget = target;
+                photonView.RPC("RPC_ShootAtTarget", RpcTarget.AllViaServer);
+            }
         }
     }
 
@@ -48,13 +49,13 @@ public class Shooter : MonoBehaviour
     }
 
     // Destroy this object if it has no parent object
-    private void DestroyIfNoParent()
-    {
-        if (transform.parent == null)
-        {
-            PhotonNetwork.Destroy(gameObject);
-        }
-    }
+    //private void DestroyIfNoParent()
+    //{
+    //    if (transform.parent == null)
+    //    {
+    //        PhotonNetwork.Destroy(gameObject);
+    //    }
+    //}
 
     // Locates the closest enemy ship to gun for
     public Vector3 GetClosestTarget()

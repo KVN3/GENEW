@@ -70,9 +70,9 @@ public static class SharedResources
     #endregion
 
     #region Spawnpoints
-    public static LocalSpawnPoint[] LoadSpawnPoints(string activeScene)
+    public static LocalSpawnPoint[] LoadSpawnPoints(string sceneName)
     {
-        string spawnpointsPath = Path.Combine("Prefabs", "Spawnpoints", activeScene);
+        string spawnpointsPath = GetPath("SpawnPoints", sceneName);
 
         Object[] objects = Resources.LoadAll(spawnpointsPath);
         LocalSpawnPoint[] spawnPoints = new LocalSpawnPoint[objects.Length];
@@ -93,6 +93,7 @@ public static class SharedResources
     public static string GetPath(string prefabName)
     {
         string path = string.Empty;
+        string currentScene = ScenesInformation.sceneNames[SceneTitle.Wasteland];
 
         switch (prefabName)
         {
@@ -104,6 +105,38 @@ public static class SharedResources
                 break;
             case "CirclingEnergyBall":
                 path = Path.Combine("Prefabs", "Enemies", "Circlers", "CirclingEnergyBall");
+                break;
+        }
+
+        return path;
+    }
+
+    public static string GetPath(string prefabName, SceneTitle sceneTitle)
+    {
+        string path = string.Empty;
+        string currentScene = ScenesInformation.sceneNames[sceneTitle];
+
+        switch (prefabName)
+        {
+            case "OrbitPoint":
+                path = Path.Combine("Prefabs", "SpawnPoints", currentScene, "Orbits", prefabName);
+                break;
+        }
+
+        return path;
+    }
+
+    public static string GetPath(string prefabName, string sceneName)
+    {
+        string path = string.Empty;
+
+        switch (prefabName)
+        {
+            case "OrbitPoint":
+                path = Path.Combine("Prefabs", "SpawnPoints", sceneName, "Orbits", prefabName);
+                break;
+            case "SpawnPoints":
+                path = Path.Combine("Prefabs", "SpawnPoints", sceneName, "PlayerSpawns");
                 break;
         }
 

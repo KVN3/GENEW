@@ -68,8 +68,6 @@ public class PlayerShip : Ship
         if (!photonView.IsMine)
         {
             Destroy(GetComponent<AudioListener>());
-            aiSoundManager.enabled = false;
-            levelSoundManager.enabled = false;
         }
 
     }
@@ -77,6 +75,12 @@ public class PlayerShip : Ship
     public void Start()
     {
         InitRaceData();
+
+        if (!photonView.IsMine)
+        {
+            aiSoundManager.enabled = false;
+            levelSoundManager.enabled = false;
+        }
     }
     #endregion
 

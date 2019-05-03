@@ -10,6 +10,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     public static PlayerNetwork Instance;
 
     public string PlayerName { get; private set; }
+    public string activeScene;
 
     public ExitGames.Client.Photon.Hashtable playerCustomProperties = new ExitGames.Client.Photon.Hashtable();
     private PhotonView photonView;
@@ -17,7 +18,6 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     // How many players fully loaded the game scene
     private int playersInGame = 0;
     private PlayerShip playerShip;
-    private string activeScene;
     private Coroutine pingCoroutine;
 
     private void Awake()
@@ -63,10 +63,8 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         // Bug fix on scene load
         photonView = GetComponent<PhotonView>();
 
-        activeScene = ScenesInformation.sceneNames[SceneTitle.Wasteland];
-
         photonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
-        photonView.RPC("RPC_LoadGameOthers", RpcTarget.Others, activeScene);
+        photonView.RPC("RPC_LoadGameOthers", RpcTarget.Others);
     }
 
     // Client loaded game
@@ -80,11 +78,8 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
     // Tell all clients to load the same game as the host
     [PunRPC]
-    private void RPC_LoadGameOthers(string scene)
+    private void RPC_LoadGameOthers()
     {
-        // Same scene as host
-        activeScene = scene;
-
         PhotonNetwork.LoadLevel(activeScene);
     }
 
