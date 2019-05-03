@@ -45,5 +45,6 @@ MonoBehaviour:
   - RPC_SpawnMover
   - RPC_Shoot
   - RPC_ShootAtTarget
+  - RPC_SpawnCirclers
   DisableAutoOpenWizard: 1
   ShowSettings: 1

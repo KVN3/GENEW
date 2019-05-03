@@ -23,9 +23,9 @@ public class Ship : MyMonoBehaviour
     [SerializeField]
     private ShipSoundManager shipSoundManagerClass;
     [SerializeField]
-    private LevelSoundManager levelSoundManagerClass;
+    protected LevelSoundManager levelSoundManagerClass;
     [SerializeField]
-    private AISoundManager aiSoundManagerClass;
+    protected AISoundManager aiSoundManagerClass;
     [SerializeField]
     private DamageSpark spark;
     #endregion

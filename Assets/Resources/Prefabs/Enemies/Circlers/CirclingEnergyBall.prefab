@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 7903553556143086114}
   - component: {fileID: 7903553556143086117}
   - component: {fileID: 7903553556143086127}
+  - component: {fileID: 1452731689115003131}
   m_Layer: 0
-  m_Name: Circling Energy Ball
+  m_Name: CirclingEnergyBall
   m_TagString: EnergyBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,6 +127,7 @@ MonoBehaviour:
   shutDownDuration: 4
   enemySoundManagerClass: {fileID: 7791514189915519896, guid: febd8b341a0717a4286d9b9316fb430f,
     type: 3}
+  playSoundOnStart: 1
 --- !u!114 &7903553556143086117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +143,7 @@ MonoBehaviour:
   target: {fileID: 0}
   orbitDistance: 30
   orbitDegreesPerSec: -120
+  heightY: 5
 --- !u!82 &7903553556143086127
 AudioSource:
   m_ObjectHideFlags: 0
@@ -237,3 +240,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1452731689115003131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7903553556143086119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

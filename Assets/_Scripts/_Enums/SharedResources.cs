@@ -102,6 +102,9 @@ public static class SharedResources
             case "EnergyBallProjectile":
                 path = Path.Combine("Prefabs", "Enemies", "Modules", "Shooter", "EnergyBallProjectile");
                 break;
+            case "CirclingEnergyBall":
+                path = Path.Combine("Prefabs", "Enemies", "Circlers", "CirclingEnergyBall");
+                break;
         }
 
         return path;

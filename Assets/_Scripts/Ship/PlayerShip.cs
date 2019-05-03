@@ -64,11 +64,14 @@ public class PlayerShip : Ship
 
         photonView = GetComponent<PhotonView>();
 
-        // Destroy stuff only needed for main player
+        // Destroy/disable stuff only needed for main player
         if (!photonView.IsMine)
         {
             Destroy(GetComponent<AudioListener>());
+            aiSoundManager.enabled = false;
+            levelSoundManager.enabled = false;
         }
+
     }
 
     public void Start()

@@ -17,6 +17,8 @@ public struct GameManagers
     public SpawnPointManager spawnPointManagerClass;
     public ChaserManager chaserManagerClass;
     public MoverManager moverManagerClass;
+    public CirclerManager circlerManagerClass;
+
     public AsteroidStormManager asteroidStormManagerClass;
 
     // Game
@@ -118,7 +120,7 @@ public class GameState : LevelSingleton<GameState>
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Ship");
 
         // Keep checking until ship objects found matches player count
-        while(gameObjects.Length != PhotonNetwork.PlayerList.Length)
+        while (gameObjects.Length != PhotonNetwork.PlayerList.Length)
         {
             gameObjects = GameObject.FindGameObjectsWithTag("Ship");
             yield return new WaitForSeconds(1);
@@ -142,6 +144,9 @@ public class GameState : LevelSingleton<GameState>
         MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
         moverManager.SetPlayers(playerShips);
         moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+
+        CirclerManager circlerManager = Instantiate(gameManagers.circlerManagerClass);
+        circlerManager.SpawnCirclers();
     }
 
     #region Photon

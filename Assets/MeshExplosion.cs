@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SplitMeshTriangles : MonoBehaviour
+public class MeshExplosion : MonoBehaviour
 {
     private Vector3 scale;
 
     void Start()
     {
         scale = transform.lossyScale;
-
-        //StartCoroutine(SplitMesh());
     }
 
-    IEnumerator SplitMesh()
+    IEnumerator C_ExplodeMesh()
     {
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
@@ -82,19 +80,8 @@ public class SplitMeshTriangles : MonoBehaviour
         Destroy(gameObject, Random.Range(1.0f, 3.0f));
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void ExplodeMesh()
     {
-        if (other.gameObject.CompareTag("Ship"))
-        {
-            // Less speed due to impact
-            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(rb.velocity.x / 1.5f, rb.velocity.y, rb.velocity.z / 1.5f);
-
-            StartCoroutine(SplitMesh());
-        }
-        else if (other.gameObject.CompareTag("Projectile"))
-        {
-            StartCoroutine(SplitMesh());
-        }
+        StartCoroutine(C_ExplodeMesh());
     }
 }

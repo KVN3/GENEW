@@ -166,101 +166,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 6ed715373f226d142b68a9bb0c1cf1d7, type: 3}
---- !u!1001 &3614617
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1948249661}
-    m_Modifications:
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Name
-      value: Circling Energy Ball (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 846889279}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: orbitDistance
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: heightY
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
 --- !u!1 &8587444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: a2df11608d6485e43968d916cd6d3019,
@@ -319,6 +224,8 @@ GameObject:
   - component: {fileID: 18773418}
   - component: {fileID: 18773417}
   - component: {fileID: 18773420}
+  - component: {fileID: 18773422}
+  - component: {fileID: 18773421}
   m_Layer: 0
   m_Name: Cave spike (12)
   m_TagString: Untagged
@@ -411,6 +318,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &18773421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18773415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 19
+  InstantiationId: 19
+  isRuntimeInstantiated: 0
+--- !u!114 &18773422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18773415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &24355022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -481,12 +421,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: 67f14f84357612149a00df1bab67d4e6,
     type: 3}
   m_PrefabInstance: {fileID: 24355022}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &24849342 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1331203123}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &31695110 stripped
 Transform:
@@ -692,6 +626,8 @@ GameObject:
   - component: {fileID: 49732664}
   - component: {fileID: 49732663}
   - component: {fileID: 49732666}
+  - component: {fileID: 49732668}
+  - component: {fileID: 49732667}
   m_Layer: 0
   m_Name: Cave spike (8)
   m_TagString: Untagged
@@ -782,6 +718,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &49732667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49732661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 41
+  InstantiationId: 41
+  isRuntimeInstantiated: 0
+--- !u!114 &49732668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49732661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &50398920
@@ -1100,6 +1069,8 @@ GameObject:
   - component: {fileID: 61261325}
   - component: {fileID: 61261324}
   - component: {fileID: 61261327}
+  - component: {fileID: 61261329}
+  - component: {fileID: 61261328}
   m_Layer: 0
   m_Name: Cave spike (20)
   m_TagString: Untagged
@@ -1190,6 +1161,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &61261328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61261322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 47
+  InstantiationId: 47
+  isRuntimeInstantiated: 0
+--- !u!114 &61261329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61261322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &62563420 stripped
@@ -1664,6 +1668,8 @@ GameObject:
   - component: {fileID: 86376629}
   - component: {fileID: 86376628}
   - component: {fileID: 86376631}
+  - component: {fileID: 86376633}
+  - component: {fileID: 86376632}
   m_Layer: 0
   m_Name: Cave spike (3)
   m_TagString: Untagged
@@ -1754,6 +1760,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &86376632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86376626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 22
+  InstantiationId: 22
+  isRuntimeInstantiated: 0
+--- !u!114 &86376633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86376626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &93882478 stripped
@@ -2276,6 +2316,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: playSoundOnStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: orbitDistance
@@ -2286,15 +2331,20 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1268786595}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: viewIdField
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -3595,6 +3645,8 @@ GameObject:
   - component: {fileID: 161768731}
   - component: {fileID: 161768730}
   - component: {fileID: 161768733}
+  - component: {fileID: 161768735}
+  - component: {fileID: 161768734}
   m_Layer: 0
   m_Name: Cave spike (10)
   m_TagString: Untagged
@@ -3685,6 +3737,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &161768734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161768728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 42
+  InstantiationId: 42
+  isRuntimeInstantiated: 0
+--- !u!114 &161768735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161768728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &163167537 stripped
@@ -3962,12 +4048,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1c86845c8c9462e4e9f98b60cb986092, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87aac1012805ee64c9b545bb60dd9c7d, type: 3}
---- !u!4 &172355173 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 3614617}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &173168433
 GameObject:
   m_ObjectHideFlags: 0
@@ -3981,6 +4061,8 @@ GameObject:
   - component: {fileID: 173168437}
   - component: {fileID: 173168436}
   - component: {fileID: 173168435}
+  - component: {fileID: 173168440}
+  - component: {fileID: 173168439}
   m_Layer: 0
   m_Name: Cave spike (38)
   m_TagString: Untagged
@@ -4073,6 +4155,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173168433}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &173168439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173168433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 44
+  InstantiationId: 44
+  isRuntimeInstantiated: 0
+--- !u!114 &173168440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173168433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &174272457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4381,6 +4496,8 @@ GameObject:
   - component: {fileID: 178819114}
   - component: {fileID: 178819113}
   - component: {fileID: 178819112}
+  - component: {fileID: 178819117}
+  - component: {fileID: 178819116}
   m_Layer: 0
   m_Name: Cave spike (29)
   m_TagString: Untagged
@@ -4473,6 +4590,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178819110}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &178819116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178819110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 43
+  InstantiationId: 43
+  isRuntimeInstantiated: 0
+--- !u!114 &178819117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178819110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &182734741
 GameObject:
   m_ObjectHideFlags: 0
@@ -4486,6 +4636,8 @@ GameObject:
   - component: {fileID: 182734744}
   - component: {fileID: 182734743}
   - component: {fileID: 182734746}
+  - component: {fileID: 182734748}
+  - component: {fileID: 182734747}
   m_Layer: 0
   m_Name: Cave spike (24)
   m_TagString: Untagged
@@ -4576,6 +4728,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &182734747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182734741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 39
+  InstantiationId: 39
+  isRuntimeInstantiated: 0
+--- !u!114 &182734748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182734741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &184891322
@@ -5550,6 +5736,8 @@ GameObject:
   - component: {fileID: 225372798}
   - component: {fileID: 225372797}
   - component: {fileID: 225372800}
+  - component: {fileID: 225372802}
+  - component: {fileID: 225372801}
   m_Layer: 0
   m_Name: Cave spike (14)
   m_TagString: Untagged
@@ -5640,6 +5828,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &225372801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225372795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 38
+  InstantiationId: 38
+  isRuntimeInstantiated: 0
+--- !u!114 &225372802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225372795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &226770619
@@ -6753,6 +6974,16 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: viewIdField
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
 --- !u!65 &266359363
@@ -6791,7 +7022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a124f50fe8f7ef45abc39c638c0e278, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -5.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a124f50fe8f7ef45abc39c638c0e278, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7263,6 +7494,8 @@ GameObject:
   - component: {fileID: 282420544}
   - component: {fileID: 282420543}
   - component: {fileID: 282420546}
+  - component: {fileID: 282420548}
+  - component: {fileID: 282420547}
   m_Layer: 0
   m_Name: Cave spike (2)
   m_TagString: Untagged
@@ -7353,6 +7586,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &282420547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282420541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 46
+  InstantiationId: 46
+  isRuntimeInstantiated: 0
+--- !u!114 &282420548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282420541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &290714177
@@ -8046,6 +8313,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: playSoundOnStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: orbitDistance
@@ -8056,15 +8328,20 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1230732790}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: viewIdField
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -8719,6 +8996,8 @@ GameObject:
   - component: {fileID: 340798356}
   - component: {fileID: 340798355}
   - component: {fileID: 340798358}
+  - component: {fileID: 340798360}
+  - component: {fileID: 340798359}
   m_Layer: 0
   m_Name: Cave spike (26)
   m_TagString: Untagged
@@ -8811,6 +9090,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &340798359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340798353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 21
+  InstantiationId: 21
+  isRuntimeInstantiated: 0
+--- !u!114 &340798360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340798353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &341950367 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 44c7fa680a0520540a8bc52364dae2e8,
@@ -8869,7 +9182,6 @@ Transform:
   - {fileID: 1784778}
   - {fileID: 622111237}
   - {fileID: 39285963}
-  - {fileID: 1948249661}
   - {fileID: 2018192660}
   - {fileID: 811044462}
   - {fileID: 674613083}
@@ -8947,6 +9259,8 @@ GameObject:
   - component: {fileID: 349944265}
   - component: {fileID: 349944264}
   - component: {fileID: 349944267}
+  - component: {fileID: 349944269}
+  - component: {fileID: 349944268}
   m_Layer: 0
   m_Name: Cave spike (17)
   m_TagString: Untagged
@@ -9037,6 +9351,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &349944268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349944262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 45
+  InstantiationId: 45
+  isRuntimeInstantiated: 0
+--- !u!114 &349944269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349944262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &350352948
@@ -10012,6 +10359,8 @@ GameObject:
   - component: {fileID: 403908670}
   - component: {fileID: 403908669}
   - component: {fileID: 403908672}
+  - component: {fileID: 403908674}
+  - component: {fileID: 403908673}
   m_Layer: 0
   m_Name: Cave spike (25)
   m_TagString: Untagged
@@ -10104,6 +10453,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &403908673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403908667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 20
+  InstantiationId: 20
+  isRuntimeInstantiated: 0
+--- !u!114 &403908674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403908667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &404549166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10173,101 +10556,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dabd9c1ccc63ee3428b32acb2c6df267, type: 3}
---- !u!1001 &404940642
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1948249661}
-    m_Modifications:
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Name
-      value: Circling Energy Ball (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 846889279}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: orbitDistance
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: heightY
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
 --- !u!1001 &413549313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10914,12 +11202,6 @@ Transform:
   m_Father: {fileID: 1038997565}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &428839795 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 404940642}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &432611991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11400,12 +11682,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: ed1f34e1527ec6742a0a6e4b0145252d,
     type: 3}
   m_PrefabInstance: {fileID: 451369329}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &456256274 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 929582649}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &456453078
 PrefabInstance:
@@ -12059,6 +12335,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086115, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: playSoundOnStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: orbitDistance
@@ -12069,20 +12355,20 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 601985195}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086115, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
-      propertyPath: m_Constraints
-      value: 4
+      propertyPath: viewIdField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -13701,6 +13987,8 @@ GameObject:
   - component: {fileID: 537912513}
   - component: {fileID: 537912512}
   - component: {fileID: 537912515}
+  - component: {fileID: 537912517}
+  - component: {fileID: 537912516}
   m_Layer: 0
   m_Name: Cave spike (13)
   m_TagString: Untagged
@@ -13791,6 +14079,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &537912516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537912510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 49
+  InstantiationId: 49
+  isRuntimeInstantiated: 0
+--- !u!114 &537912517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537912510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &538373455
@@ -14493,6 +14814,8 @@ GameObject:
   - component: {fileID: 572946679}
   - component: {fileID: 572946678}
   - component: {fileID: 572946677}
+  - component: {fileID: 572946682}
+  - component: {fileID: 572946681}
   m_Layer: 0
   m_Name: Cave spike (30)
   m_TagString: Untagged
@@ -14585,6 +14908,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572946675}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &572946681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572946675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 48
+  InstantiationId: 48
+  isRuntimeInstantiated: 0
+--- !u!114 &572946682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572946675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &575750397
 GameObject:
   m_ObjectHideFlags: 0
@@ -15037,6 +15394,8 @@ GameObject:
   - component: {fileID: 601985197}
   - component: {fileID: 601985196}
   - component: {fileID: 601985199}
+  - component: {fileID: 601985201}
+  - component: {fileID: 601985200}
   m_Layer: 0
   m_Name: Cave spike (19)
   m_TagString: Untagged
@@ -15127,6 +15486,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &601985200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601985194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 18
+  InstantiationId: 18
+  isRuntimeInstantiated: 0
+--- !u!114 &601985201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601985194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &604617932
@@ -16722,7 +17114,7 @@ Transform:
   - {fileID: 1604952177}
   - {fileID: 1504922878}
   m_Father: {fileID: 344541767}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &678867915
 GameObject:
@@ -16960,6 +17352,8 @@ GameObject:
   - component: {fileID: 685416174}
   - component: {fileID: 685416173}
   - component: {fileID: 685416176}
+  - component: {fileID: 685416178}
+  - component: {fileID: 685416177}
   m_Layer: 0
   m_Name: Cave spike (21)
   m_TagString: Untagged
@@ -17050,6 +17444,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &685416177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685416171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 40
+  InstantiationId: 40
+  isRuntimeInstantiated: 0
+--- !u!114 &685416178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685416171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &686148417
@@ -18683,6 +19110,8 @@ GameObject:
   - component: {fileID: 750002075}
   - component: {fileID: 750002074}
   - component: {fileID: 750002073}
+  - component: {fileID: 750002078}
+  - component: {fileID: 750002077}
   m_Layer: 0
   m_Name: Cave spike (27)
   m_TagString: Untagged
@@ -18775,6 +19204,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750002071}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &750002077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750002071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 23
+  InstantiationId: 23
+  isRuntimeInstantiated: 0
+--- !u!114 &750002078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750002071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &755295627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d,
@@ -19797,6 +20259,8 @@ GameObject:
   - component: {fileID: 806829967}
   - component: {fileID: 806829966}
   - component: {fileID: 806829965}
+  - component: {fileID: 806829970}
+  - component: {fileID: 806829969}
   m_Layer: 0
   m_Name: Cave spike (35)
   m_TagString: Untagged
@@ -19889,6 +20353,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806829963}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &806829969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806829963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 54
+  InstantiationId: 54
+  isRuntimeInstantiated: 0
+--- !u!114 &806829970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806829963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &808057135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20173,7 +20671,7 @@ Transform:
   - {fileID: 1054634993}
   - {fileID: 1933313915}
   m_Father: {fileID: 344541767}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &813207854 stripped
 GameObject:
@@ -20527,6 +21025,8 @@ GameObject:
   - component: {fileID: 825416556}
   - component: {fileID: 825416555}
   - component: {fileID: 825416554}
+  - component: {fileID: 825416559}
+  - component: {fileID: 825416558}
   m_Layer: 0
   m_Name: Cave spike (34)
   m_TagString: Untagged
@@ -20619,6 +21119,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825416552}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &825416558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825416552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 53
+  InstantiationId: 53
+  isRuntimeInstantiated: 0
+--- !u!114 &825416559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825416552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &829922699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21109,36 +21642,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 241c96eba1a228549b4695b707e38a5a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ed715373f226d142b68a9bb0c1cf1d7, type: 3}
---- !u!1 &846889278
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 846889279}
-  m_Layer: 0
-  m_Name: Orbit (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &846889279
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846889278}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 97, y: 10, z: 725}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1948249661}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &848092276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21504,6 +22007,8 @@ GameObject:
   - component: {fileID: 886075650}
   - component: {fileID: 886075649}
   - component: {fileID: 886075652}
+  - component: {fileID: 886075654}
+  - component: {fileID: 886075653}
   m_Layer: 0
   m_Name: Cave spike (22)
   m_TagString: Untagged
@@ -21594,6 +22099,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &886075653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886075647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 52
+  InstantiationId: 52
+  isRuntimeInstantiated: 0
+--- !u!114 &886075654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886075647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &886410149 stripped
@@ -22032,6 +22571,8 @@ GameObject:
   - component: {fileID: 905160581}
   - component: {fileID: 905160580}
   - component: {fileID: 905160579}
+  - component: {fileID: 905160584}
+  - component: {fileID: 905160583}
   m_Layer: 0
   m_Name: Cave spike (28)
   m_TagString: Untagged
@@ -22124,6 +22665,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905160577}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &905160583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905160577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 51
+  InstantiationId: 51
+  isRuntimeInstantiated: 0
+--- !u!114 &905160584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905160577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &907009215 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d,
@@ -22522,101 +23096,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b0758120d75d0e42a039a47c9948c73, type: 3}
---- !u!1001 &929582649
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1948249661}
-    m_Modifications:
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Name
-      value: Circling Energy Ball (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 846889279}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: orbitDistance
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: heightY
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
 --- !u!4 &931270651 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a2df11608d6485e43968d916cd6d3019,
@@ -24078,6 +24557,8 @@ GameObject:
   - component: {fileID: 997874420}
   - component: {fileID: 997874419}
   - component: {fileID: 997874422}
+  - component: {fileID: 997874424}
+  - component: {fileID: 997874423}
   m_Layer: 0
   m_Name: Cave spike (15)
   m_TagString: Untagged
@@ -24168,6 +24649,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &997874423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997874417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 50
+  InstantiationId: 50
+  isRuntimeInstantiated: 0
+--- !u!114 &997874424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997874417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1004194956
@@ -26372,7 +26886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a124f50fe8f7ef45abc39c638c0e278, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4.6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a124f50fe8f7ef45abc39c638c0e278, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26810,6 +27324,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: playSoundOnStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: orbitDistance
@@ -26820,15 +27339,20 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 18773416}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: viewIdField
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -29064,6 +29588,8 @@ GameObject:
   - component: {fileID: 1230732792}
   - component: {fileID: 1230732791}
   - component: {fileID: 1230732794}
+  - component: {fileID: 1230732796}
+  - component: {fileID: 1230732795}
   m_Layer: 0
   m_Name: Cave spike (16)
   m_TagString: Untagged
@@ -29154,6 +29680,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1230732795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230732789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 17
+  InstantiationId: 17
+  isRuntimeInstantiated: 0
+--- !u!114 &1230732796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230732789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1231109146
@@ -29335,6 +29894,8 @@ GameObject:
   - component: {fileID: 1235987882}
   - component: {fileID: 1235987881}
   - component: {fileID: 1235987880}
+  - component: {fileID: 1235987885}
+  - component: {fileID: 1235987884}
   m_Layer: 0
   m_Name: Cave spike (40)
   m_TagString: Untagged
@@ -29427,6 +29988,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235987878}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1235987884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235987878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 16
+  InstantiationId: 16
+  isRuntimeInstantiated: 0
+--- !u!114 &1235987885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235987878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1236456619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30136,6 +30730,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: playSoundOnStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: orbitDistance
@@ -30146,15 +30745,20 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 537912511}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: viewIdField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -30409,6 +31013,8 @@ GameObject:
   - component: {fileID: 1268786597}
   - component: {fileID: 1268786596}
   - component: {fileID: 1268786599}
+  - component: {fileID: 1268786601}
+  - component: {fileID: 1268786600}
   m_Layer: 0
   m_Name: Cave spike (11)
   m_TagString: Untagged
@@ -30499,6 +31105,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1268786600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268786594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 15
+  InstantiationId: 15
+  isRuntimeInstantiated: 0
+--- !u!114 &1268786601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268786594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1269328773
@@ -31053,6 +31693,8 @@ GameObject:
   - component: {fileID: 1289325053}
   - component: {fileID: 1289325052}
   - component: {fileID: 1289325055}
+  - component: {fileID: 1289325057}
+  - component: {fileID: 1289325056}
   m_Layer: 0
   m_Name: Cave spike (18)
   m_TagString: Untagged
@@ -31145,12 +31787,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1289595138 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 7903553557430973222}
+--- !u!114 &1289325056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289325050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 14
+  InstantiationId: 14
+  isRuntimeInstantiated: 0
+--- !u!114 &1289325057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289325050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1289844530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31684,101 +32353,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1963001780}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1331203123
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1948249661}
-    m_Modifications:
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Name
-      value: Circling Energy Ball (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 846889279}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: orbitDistance
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: heightY
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
 --- !u!1 &1332376830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4e995d7fc9d48634daa74f35a2902028,
@@ -32384,6 +32958,8 @@ GameObject:
   - component: {fileID: 1389469583}
   - component: {fileID: 1389469582}
   - component: {fileID: 1389469585}
+  - component: {fileID: 1389469587}
+  - component: {fileID: 1389469586}
   m_Layer: 0
   m_Name: Cave spike (23)
   m_TagString: Untagged
@@ -32474,6 +33050,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1389469586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389469580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 13
+  InstantiationId: 13
+  isRuntimeInstantiated: 0
+--- !u!114 &1389469587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389469580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1394152457 stripped
@@ -34398,12 +35008,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1172305714}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1467370868 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1490377019}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1467998554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 21d93310b976c5446ab5eac7b2065df0,
@@ -34889,101 +35493,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 983731733}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1490377019
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1948249661}
-    m_Modifications:
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Name
-      value: Circling Energy Ball (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 846889279}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: orbitDistance
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: heightY
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
 --- !u!4 &1491379680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 87aac1012805ee64c9b545bb60dd9c7d,
@@ -35531,6 +36040,8 @@ GameObject:
   - component: {fileID: 1508416842}
   - component: {fileID: 1508416841}
   - component: {fileID: 1508416844}
+  - component: {fileID: 1508416846}
+  - component: {fileID: 1508416845}
   m_Layer: 0
   m_Name: Cave spike (1)
   m_TagString: Untagged
@@ -35621,6 +36132,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1508416845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508416839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 11
+  InstantiationId: 11
+  isRuntimeInstantiated: 0
+--- !u!114 &1508416846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508416839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1508616327
@@ -35743,6 +36287,8 @@ GameObject:
   - component: {fileID: 1509519376}
   - component: {fileID: 1509519375}
   - component: {fileID: 1509519378}
+  - component: {fileID: 1509519380}
+  - component: {fileID: 1509519379}
   m_Layer: 0
   m_Name: Cave spike (5)
   m_TagString: Untagged
@@ -35833,6 +36379,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1509519379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509519373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 10
+  InstantiationId: 10
+  isRuntimeInstantiated: 0
+--- !u!114 &1509519380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509519373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1511120819 stripped
@@ -40888,6 +41468,8 @@ GameObject:
   - component: {fileID: 1724770653}
   - component: {fileID: 1724770652}
   - component: {fileID: 1724770651}
+  - component: {fileID: 1724770656}
+  - component: {fileID: 1724770655}
   m_Layer: 0
   m_Name: Cave spike (42)
   m_TagString: Untagged
@@ -40980,6 +41562,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724770649}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1724770655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724770649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 37
+  InstantiationId: 37
+  isRuntimeInstantiated: 0
+--- !u!114 &1724770656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724770649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1743451665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41460,6 +42076,8 @@ GameObject:
   - component: {fileID: 1760520084}
   - component: {fileID: 1760520083}
   - component: {fileID: 1760520082}
+  - component: {fileID: 1760520087}
+  - component: {fileID: 1760520086}
   m_Layer: 0
   m_Name: Cave spike (36)
   m_TagString: Untagged
@@ -41552,6 +42170,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760520080}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1760520086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760520080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 36
+  InstantiationId: 36
+  isRuntimeInstantiated: 0
+--- !u!114 &1760520087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760520080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1762169798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 87aac1012805ee64c9b545bb60dd9c7d,
@@ -43191,7 +43843,7 @@ Transform:
   - {fileID: 1269587533}
   - {fileID: 268097571}
   m_Father: {fileID: 344541767}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1804121499
 PrefabInstance:
@@ -43316,6 +43968,8 @@ GameObject:
   - component: {fileID: 1804597727}
   - component: {fileID: 1804597726}
   - component: {fileID: 1804597725}
+  - component: {fileID: 1804597730}
+  - component: {fileID: 1804597729}
   m_Layer: 0
   m_Name: Cave spike (32)
   m_TagString: Untagged
@@ -43408,6 +44062,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804597723}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1804597729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804597723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 35
+  InstantiationId: 35
+  isRuntimeInstantiated: 0
+--- !u!114 &1804597730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804597723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1807214693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 4e995d7fc9d48634daa74f35a2902028,
@@ -44107,6 +44795,8 @@ GameObject:
   - component: {fileID: 1847700550}
   - component: {fileID: 1847700549}
   - component: {fileID: 1847700548}
+  - component: {fileID: 1847700553}
+  - component: {fileID: 1847700552}
   m_Layer: 0
   m_Name: Cave spike (41)
   m_TagString: Untagged
@@ -44199,6 +44889,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847700546}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1847700552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847700546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 34
+  InstantiationId: 34
+  isRuntimeInstantiated: 0
+--- !u!114 &1847700553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847700546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1848684646
 GameObject:
   m_ObjectHideFlags: 0
@@ -44291,6 +45015,8 @@ GameObject:
   - component: {fileID: 1853649195}
   - component: {fileID: 1853649194}
   - component: {fileID: 1853649193}
+  - component: {fileID: 1853649198}
+  - component: {fileID: 1853649197}
   m_Layer: 0
   m_Name: Cave spike (37)
   m_TagString: Untagged
@@ -44383,6 +45109,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853649191}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1853649197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853649191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 33
+  InstantiationId: 33
+  isRuntimeInstantiated: 0
+--- !u!114 &1853649198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853649191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1855076744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44682,6 +45441,8 @@ GameObject:
   - component: {fileID: 1861167390}
   - component: {fileID: 1861167389}
   - component: {fileID: 1861167392}
+  - component: {fileID: 1861167394}
+  - component: {fileID: 1861167393}
   m_Layer: 0
   m_Name: Cave spike (6)
   m_TagString: Untagged
@@ -44772,6 +45533,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1861167393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861167387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 32
+  InstantiationId: 32
+  isRuntimeInstantiated: 0
+--- !u!114 &1861167394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861167387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1862564734
@@ -45360,6 +46154,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: playSoundOnStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: orbitDistance
@@ -45370,15 +46169,20 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 403908668}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: viewIdField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: InstantiationId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
@@ -46157,43 +46961,6 @@ Transform:
   m_Father: {fileID: 1784778}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1948249660
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1948249661}
-  m_Layer: 0
-  m_Name: Hall of Ball
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1948249661
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948249660}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1289595138}
-  - {fileID: 846889279}
-  - {fileID: 428839795}
-  - {fileID: 1467370868}
-  - {fileID: 172355173}
-  - {fileID: 456256274}
-  - {fileID: 24849342}
-  m_Father: {fileID: 344541767}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1948373621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: bc9b5c83fd7c43045afa55a64ab23854,
@@ -46539,6 +47306,8 @@ GameObject:
   - component: {fileID: 1966566362}
   - component: {fileID: 1966566361}
   - component: {fileID: 1966566364}
+  - component: {fileID: 1966566366}
+  - component: {fileID: 1966566365}
   m_Layer: 0
   m_Name: Cave spike (7)
   m_TagString: Untagged
@@ -46631,6 +47400,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1966566365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966566359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 31
+  InstantiationId: 31
+  isRuntimeInstantiated: 0
+--- !u!114 &1966566366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966566359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1969891596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46718,6 +47520,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: playSoundOnStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: orbitDistance
@@ -46728,14 +47535,19 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 225372796}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452731689115003131, guid: b427cb6ff51e34c4db10e4818b8db2cc,
+        type: 3}
+      propertyPath: InstantiationId
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -46955,6 +47767,8 @@ GameObject:
   - component: {fileID: 1985177885}
   - component: {fileID: 1985177884}
   - component: {fileID: 1985177883}
+  - component: {fileID: 1985177888}
+  - component: {fileID: 1985177887}
   m_Layer: 0
   m_Name: Cave spike (39)
   m_TagString: Untagged
@@ -47047,6 +47861,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985177881}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1985177887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985177881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 30
+  InstantiationId: 30
+  isRuntimeInstantiated: 0
+--- !u!114 &1985177888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985177881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1987533029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47153,6 +48000,8 @@ GameObject:
   - component: {fileID: 1991621669}
   - component: {fileID: 1991621668}
   - component: {fileID: 1991621671}
+  - component: {fileID: 1991621673}
+  - component: {fileID: 1991621672}
   m_Layer: 0
   m_Name: Cave spike (4)
   m_TagString: Untagged
@@ -47245,6 +48094,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1991621672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991621666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 29
+  InstantiationId: 29
+  isRuntimeInstantiated: 0
+--- !u!114 &1991621673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991621666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1994832349
 GameObject:
   m_ObjectHideFlags: 0
@@ -47289,6 +48172,8 @@ GameObject:
   - component: {fileID: 1994868285}
   - component: {fileID: 1994868284}
   - component: {fileID: 1994868283}
+  - component: {fileID: 1994868288}
+  - component: {fileID: 1994868287}
   m_Layer: 0
   m_Name: Cave spike (31)
   m_TagString: Untagged
@@ -47381,6 +48266,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994868281}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &1994868287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994868281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 28
+  InstantiationId: 28
+  isRuntimeInstantiated: 0
+--- !u!114 &1994868288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994868281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1996896536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459375924194097850, guid: 4b09ac535f0447a40aeeeac037a63a41,
@@ -47709,7 +48627,7 @@ Transform:
   - {fileID: 1371477426}
   - {fileID: 1409303436}
   m_Father: {fileID: 344541767}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2019459515 stripped
 GameObject:
@@ -47964,6 +48882,8 @@ GameObject:
   - component: {fileID: 2044516013}
   - component: {fileID: 2044516012}
   - component: {fileID: 2044516011}
+  - component: {fileID: 2044516016}
+  - component: {fileID: 2044516015}
   m_Layer: 0
   m_Name: Cave spike (33)
   m_TagString: Untagged
@@ -48056,6 +48976,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044516009}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &2044516015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044516009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 27
+  InstantiationId: 27
+  isRuntimeInstantiated: 0
+--- !u!114 &2044516016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044516009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2047679419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49445,6 +50398,8 @@ GameObject:
   - component: {fileID: 2122210970}
   - component: {fileID: 2122210969}
   - component: {fileID: 2122210968}
+  - component: {fileID: 2122210973}
+  - component: {fileID: 2122210972}
   m_Layer: 0
   m_Name: Cave spike (43)
   m_TagString: Untagged
@@ -49537,6 +50492,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122210966}
   m_Mesh: {fileID: 4300000, guid: 70a8404e29f9c0a4bab335c241a7ec51, type: 3}
+--- !u!114 &2122210972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122210966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 26
+  InstantiationId: 26
+  isRuntimeInstantiated: 0
+--- !u!114 &2122210973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122210966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2125754246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459375924194097850, guid: 4b09ac535f0447a40aeeeac037a63a41,
@@ -50216,6 +51205,8 @@ GameObject:
   - component: {fileID: 2143705731}
   - component: {fileID: 2143705730}
   - component: {fileID: 2143705733}
+  - component: {fileID: 2143705735}
+  - component: {fileID: 2143705734}
   m_Layer: 0
   m_Name: Cave spike (9)
   m_TagString: Untagged
@@ -50306,6 +51297,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2143705734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143705728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 25
+  InstantiationId: 25
+  isRuntimeInstantiated: 0
+--- !u!114 &2143705735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143705728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2144629939 stripped
@@ -50868,6 +51892,7 @@ GameObject:
   - component: {fileID: 6685257753174813588}
   - component: {fileID: 6685257753172882775}
   - component: {fileID: 6685257753172882776}
+  - component: {fileID: 6685257753172882778}
   - component: {fileID: 6685257753172882777}
   m_Layer: 0
   m_Name: Cave spike
@@ -50911,7 +51936,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 6685257753172882774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0474323e6445b8349b6f3866e25ec0c5, type: 3}
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 24
+  InstantiationId: 24
+  isRuntimeInstantiated: 0
+--- !u!114 &6685257753172882778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6685257753172882774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d882db1101c86348b8eb8059692c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &6685257753172912502
@@ -51063,6 +52110,8 @@ MonoBehaviour:
       type: 3}
     moverManagerClass: {fileID: 613480307917899301, guid: 4f1b72c72d3747141b5618481776c090,
       type: 3}
+    circlerManagerClass: {fileID: 8451753262998984109, guid: e47d4bc842278bd45bec02cdbcc97969,
+      type: 3}
     asteroidStormManagerClass: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
       type: 3}
     raceManagerClass: {fileID: 5850534155415031341, guid: 10c803b6aeb348642b0e5cd41d566b11,
@@ -51105,101 +52154,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1001 &7903553557430973222
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1948249661}
-    m_Modifications:
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Name
-      value: Circling Energy Ball (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086119, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086116, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 846889279}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: orbitDistance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086117, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: heightY
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903553556143086114, guid: b427cb6ff51e34c4db10e4818b8db2cc,
-        type: 3}
-      propertyPath: playSoundOnStart
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7903553556143086127, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: b427cb6ff51e34c4db10e4818b8db2cc, type: 3}
 --- !u!1 &8481692444844529700
 GameObject:
   m_ObjectHideFlags: 0
