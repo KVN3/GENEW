@@ -106,6 +106,9 @@ public static class SharedResources
             case "CirclingEnergyBall":
                 path = Path.Combine("Prefabs", "Enemies", "Circlers", "CirclingEnergyBall");
                 break;
+            case "MoverEnemy":
+                path = Path.Combine("Prefabs", "Enemies", "Movers", "MoverEnemy");
+                break;
         }
 
         return path;
