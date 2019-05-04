@@ -30,8 +30,6 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         // Higher bandwidth cost, smoother movement
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
-
-
     }
 
     private void Start()
@@ -45,15 +43,10 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     {
         if (!scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.Main]) && !scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.Shipyard]))
         {
-            string wasteland = ScenesInformation.sceneNames[SceneTitle.Wasteland];
-
-            if (scene.name.Equals(wasteland))
-            {
-                if (PhotonNetwork.IsMasterClient)
-                    MasterLoadedGame();
-                else
-                    NonMasterLoadedGame();
-            }
+            if (PhotonNetwork.IsMasterClient)
+                MasterLoadedGame();
+            else
+                NonMasterLoadedGame();
         }
     }
 

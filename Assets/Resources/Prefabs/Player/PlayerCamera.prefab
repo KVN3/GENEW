@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 867}
   - component: {fileID: 1323}
   m_Layer: 0
-  m_Name: Player Camera
+  m_Name: PlayerCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +87,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  damping: 100
+  damping: 400
   minOffsetX: 4
   maxOffsetX: 14

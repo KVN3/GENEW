@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7157018308636640739
+--- !u!1 &6096954949694528765
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4165208784612728151}
-  - component: {fileID: 3691676981607013694}
+  - component: {fileID: 1009828108367725641}
+  - component: {fileID: 357212249610716192}
   m_Layer: 0
-  m_Name: SP Manager
+  m_Name: SP Manager Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4165208784612728151
+--- !u!4 &1009828108367725641
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7157018308636640739}
+  m_GameObject: {fileID: 6096954949694528765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1183.71, y: 5, z: 1.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,25 +31,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3691676981607013694
+--- !u!114 &357212249610716192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7157018308636640739}
+  m_GameObject: {fileID: 6096954949694528765}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3824e134f566d36408a8b9b2180730a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   settings:
-    rowLengthX: 60
-    rowLengthZ: 40
+    rowLengthX: 65
+    rowLengthZ: 45
     spacing: 30
-  chaserSpawnPoints:
-  - {fileID: 2873669551035751320, guid: f2b45af41b08c254a82f161faf6e4e6c, type: 3}
-  - {fileID: 8980458990804996290, guid: 92b1057746e956948b9353d348772349, type: 3}
-  - {fileID: 5387912034754458580, guid: 9f00134ace7cff64e8c955ee1ec475db, type: 3}
+  chaserSpawnPoints: []
   movingSpawnPoints:
-  - {fileID: 5457014549359127232, guid: 25d0a6b5664595a4988f768a14999584, type: 3}
+  - {fileID: 7381285745445577442, guid: f95a0278cd2633948b83f99ca0667c02, type: 3}
