@@ -14,6 +14,8 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI singleplayerText;
     public TextMeshProUGUI editShipText;
+    public TextMeshProUGUI optionsText; // Options has sound/music/resetdata
+    public TextMeshProUGUI achievementsText;
     public TextMeshProUGUI versionText;
     public TextMeshProUGUI usernameText;
 
@@ -30,9 +32,16 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         //titleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
         singleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
         editShipText.text = LocalizationManager.GetTextByKey("EDIT_SHIP");
+        if (achievementsText != null)
+            achievementsText.text = LocalizationManager.GetTextByKey("ACHIEVEMENTS");
         versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 2";
         if (PlayerPrefs.HasKey("currentAccount"))
-            usernameText.text = LocalizationManager.GetTextByKey("LOGGED_IN_AS") + ": " + PlayerPrefs.GetString("currentAccount");
+        {
+            // Load current account
+            Account account = Registration.GetCurrentAccount();
+
+            usernameText.text = LocalizationManager.GetTextByKey("LOGGED_IN_AS") + ": " + account.username;
+        }
         else
             usernameText.text = LocalizationManager.GetTextByKey("NOT_LOGGED_IN");
     }

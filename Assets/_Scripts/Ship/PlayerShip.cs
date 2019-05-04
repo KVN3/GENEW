@@ -140,89 +140,111 @@ public class PlayerShip : Ship
             if (runData.raceTimes == null)
                 runData.raceTimes = new List<TimeSpan>();
 
-            // Save lap if race has started (lap > 0) and qualified (isOverHalfWay) lap 
-            if (runData.currentLap > 0 && runData.isOverHalfway)
+            // Check for valid lap
+            if (!runData.isWrongWay && runData.isOverHalfway)
             {
-                // Add laptime to racetimes if not finished
-                if (!runData.raceFinished)
-                    runData.raceTimes.Add(runData.raceTime);
-
-                // Update best time if not set (00:00:00)
-                if (runData.bestRaceTime == TimeSpan.Parse("00:00:00"))
+                // Save lap if race has started (lap > 0) // THIS ALWAYS HAPPENS REGARDLESS OF FINISHED OR NOT
+                if (runData.currentLap > 0)
                 {
-                    runData.bestRaceTime = runData.raceTime;
-                    runData.hasNewBestTime = true;
+                    // Add laptime to racetimes if not finished
+                    if (!runData.raceFinished)
+                        runData.raceTimes.Add(runData.raceTime);
+
+                    // Update best time if not set (00:00:00)
+                    if (runData.bestRaceTime == TimeSpan.Parse("00:00:00"))
+                    {
+                        runData.bestRaceTime = runData.raceTime;
+                        runData.hasNewBestTime = true;
+                    }
+
+                    // Else update best time if current time is faster
+                    else if (runData.raceTime < runData.bestRaceTime)
+                    {
+                        runData.bestRaceTime = runData.raceTime;
+                        runData.hasNewBestTime = true;
+                    }
+
+                    // Achievements
+                    if (SceneManager.GetActiveScene().name == "Large Wasteland")
+                    {
+                        if (runData.raceTime < TimeSpan.Parse("00:00:50.000"))
+                            AchievementManager.UpdateAchievement(0, 1f);
+                        if (runData.raceTime < TimeSpan.Parse("00:00:45.000"))
+                            AchievementManager.UpdateAchievement(1, 1f);
+                        if (runData.raceTime < TimeSpan.Parse("00:00:40.000"))
+                            AchievementManager.UpdateAchievement(2, 1f);
+                        if (runData.raceTime < TimeSpan.Parse("00:00:35.000"))
+                            AchievementManager.UpdateAchievement(3, 1f);
+                    }
                 }
 
-                // Else update best time if current time is faster
-                else if (runData.raceTime < runData.bestRaceTime)
+                // If finished
+                if (runData.currentLap == runData.maxLaps) // 3/3 laps + finish
                 {
-                    runData.bestRaceTime = runData.raceTime;
-                    runData.hasNewBestTime = true;
-                }
-            }
-            // If finished
-            if (runData.currentLap == runData.maxLaps && runData.isOverHalfway) // 3/3 laps + finish
-            {
-                                       levelSoundManager.PlaySound(SoundType.VICTORY);
+                    Debug.Log("playerShip Finished");
+                    levelSoundManager.PlaySound(SoundType.VICTORY);
 
-                foreach (TimeSpan time in runData.raceTimes)
-                {
-                    runData.totalTime += time;
-                }
-                    
+                    foreach (TimeSpan time in runData.raceTimes)
+                    {
+                        runData.totalTime += time;
+                    }
 
-                // Leaderboard
-                HighscoreManager highscoreManager = new HighscoreManager();
-                highscoreManager.AddHighscoreEntry(Environment.UserName, runData.bestRaceTime.ToString());
+                    foreach (TimeSpan time in runData.raceTimes)
+                        runData.totalTime += time;
 
+                    // Leaderboard
+                    HighscoreManager highscoreManager = new HighscoreManager();
+                    Account account = Registration.GetCurrentAccount();
+                    highscoreManager.AddHighscoreEntry(account.username, runData.bestRaceTime.ToString(), SceneManager.GetActiveScene().name);
 
-                // Update bestTime for UI
-                if (!PlayerPrefs.HasKey("Highscore"))
-                    PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
-                else
-                {
-                    if (TimeSpan.Parse(PlayerPrefs.GetString("Highscore")) > runData.bestRaceTime)
+                    // Update bestTime for UI
+                    if (!PlayerPrefs.HasKey("Highscore"))
                         PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
-                }
-
-                // Save replay
-                SaveReplay();
-
-                runData.raceFinished = true;
-
-                // Analytics
-                double averageLapTime = runData.totalTime.TotalSeconds / runData.maxLaps;
-                string playerName = "Anon";
-
-                if (PhotonNetwork.IsConnected)
-                    playerName = PhotonNetwork.LocalPlayer.NickName;
-
-                OnPlayerFinishedRaceDelegate(runData.maxLaps, runData.totalTime, averageLapTime, playerName);
-            }
-            else // If not finished
-            {
-                // Reset Time. Only reset when lap > 0 && over half way
-                if (runData.currentLap > 0 && runData.isOverHalfway)
-                {
-                    Debug.Log($"PlayerShip Crossed Finish Line");
-                    levelSoundManager.PlaySound(SoundType.LAPPASSED);
+                    else
+                    {
+                        if (TimeSpan.Parse(PlayerPrefs.GetString("Highscore")) > runData.bestRaceTime)
+                            PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
+                    }
 
                     // Save replay
                     SaveReplay();
 
-                    runData.raceTime = TimeSpan.Parse("00:00:00.000");
+                    runData.raceFinished = true;
 
-                    runData.currentLap++;
+                    // Analytics
+                    double averageLapTime = runData.totalTime.TotalSeconds / runData.maxLaps;
+                    string playerName = "Anon";
 
-                    // Reset halfwaypoint
-                    runData.isOverHalfway = false;
+                    if (PhotonNetwork.IsConnected)
+                        playerName = PhotonNetwork.LocalPlayer.NickName;
+
+                    OnPlayerFinishedRaceDelegate(runData.maxLaps, runData.totalTime, averageLapTime, playerName);
                 }
+                else // If not finished
+                {
+                    // Reset Time. Only reset when lap > 0 && over half way
+                    if (runData.currentLap > 0 && runData.isOverHalfway)
+                    {
+                        // Reset Time. Only reset when lap > 0
+                        if (runData.currentLap > 0)
+                        {
+                            Debug.Log($"PlayerShip Crossed Finish Line");
+                            levelSoundManager.PlaySound(SoundType.LAPPASSED);
 
-                // Add a lap at start
-                if (runData.currentLap == 0)
-                    runData.currentLap++;
+                            // Save replay
+                            SaveReplay();
+
+                            // Reset stuff
+                            runData.raceTime = TimeSpan.Parse("00:00:00.000");
+                            runData.isOverHalfway = false;
+
+                            runData.currentLap++;
+                        }
+                    }
+                }
             }
+            if (runData.currentLap == 0)
+                runData.currentLap++;
         }
         #endregion
 
