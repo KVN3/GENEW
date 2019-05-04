@@ -143,8 +143,8 @@ MonoBehaviour:
   enemySoundManagerClass: {fileID: 7791514189915519896, guid: febd8b341a0717a4286d9b9316fb430f,
     type: 3}
   playSoundOnStart: 1
-  maxForce: 40
-  minDistance: 400000
+  maxForce: 70
+  minDistance: 1000000
   targets: []
 --- !u!114 &2806
 MonoBehaviour:
