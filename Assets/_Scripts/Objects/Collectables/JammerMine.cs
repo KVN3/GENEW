@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ public class JammerMine : Collectable
 
     void OnTriggerEnter(Collider other)
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
         if (other.gameObject.CompareTag("Ship") || other.gameObject.CompareTag("EnergyBall"))
         {
             if (!other.gameObject.GetComponent<Ship>() == owner)

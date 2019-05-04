@@ -30,8 +30,6 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         // Higher bandwidth cost, smoother movement
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
-
-
     }
 
     private void Start()
@@ -45,15 +43,10 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     {
         if (!scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.Main]) && !scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.Shipyard]))
         {
-            string wasteland = ScenesInformation.sceneNames[SceneTitle.Wasteland];
-
-            if (scene.name.Equals(wasteland))
-            {
-                if (PhotonNetwork.IsMasterClient)
-                    MasterLoadedGame();
-                else
-                    NonMasterLoadedGame();
-            }
+            if (PhotonNetwork.IsMasterClient)
+                MasterLoadedGame();
+            else
+                NonMasterLoadedGame();
         }
     }
 
@@ -63,8 +56,13 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         // Bug fix on scene load
         photonView = GetComponent<PhotonView>();
 
+        Scene scene = SceneManager.GetActiveScene();
+
+        // Set that master has loaded the scene
         photonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
-        photonView.RPC("RPC_LoadGameOthers", RpcTarget.Others);
+
+        // Tell the clients (other players) load in the game rn
+        photonView.RPC("RPC_LoadGameOthers", RpcTarget.Others, scene.name);
     }
 
     // Client loaded game
@@ -78,9 +76,11 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
     // Tell all clients to load the same game as the host
     [PunRPC]
-    private void RPC_LoadGameOthers()
+    private void RPC_LoadGameOthers(string sceneName)
     {
-        PhotonNetwork.LoadLevel(activeScene);
+        activeScene = sceneName;
+
+        PhotonNetwork.LoadLevel(sceneName);
     }
 
     // Executed whenever a player loaded the scene

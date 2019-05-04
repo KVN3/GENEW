@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerCamera : MyMonoBehaviour
 {
     public PlayerShip target;
-    public float damping = 1;
+    public float damping;
 
     public float minOffsetX = 3f;
     public float maxOffsetX = 14f;
