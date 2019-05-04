@@ -2,9 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenuController : LevelSingleton<MainMenuController>
 {
+    public GameObject loadingScreen;
+
+    public Slider loadingBar;
+    public TextMeshProUGUI progressText;
+    public TextMeshProUGUI loadingText;
+
     [SerializeField]
     private MenuSoundManager menuSoundManagerClass;
 
@@ -23,13 +31,19 @@ public class MainMenuController : LevelSingleton<MainMenuController>
     public void LoadLevel()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Wasteland]);
+        if (loadingScreen != null)
+            StartCoroutine(LoadAsynchronously(ScenesInformation.sceneNames[SceneTitle.Wasteland]));
+        else
+            SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Shipyard]);
     }
 
     public void LoadShipyard()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Shipyard]);
+        if (loadingScreen != null)
+            StartCoroutine(LoadAsynchronously(ScenesInformation.sceneNames[SceneTitle.Shipyard]));
+        else
+            SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Shipyard]);
     }
 
     public void LoadMainMenu()
@@ -37,6 +51,27 @@ public class MainMenuController : LevelSingleton<MainMenuController>
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Main]);
     }
+
+    #region Coroutines
+
+    IEnumerator LoadAsynchronously(string sceneName)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+        loadingScreen.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f );
+
+            loadingBar.value = progress;
+            progressText.text = (progress * 100).ToString("F0") + "%";
+
+            yield return null;
+        }
+    }
+
+    #endregion
+
 
     public void SetColorBlue()
     {
