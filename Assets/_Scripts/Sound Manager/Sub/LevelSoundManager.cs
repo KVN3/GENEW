@@ -10,8 +10,14 @@ public class LevelSoundManager : SoundManager
     public AudioClip[] lapPassedClips;
     public AudioClip[] achievementClips;
 
+    public bool active = true;
     public override void PlaySound(SoundType soundType)
     {
+        // If not active, then don't continue
+        if (!active)
+            return;
+
+        // Get the sound type clip
         switch (soundType)
         {
             case SoundType.VICTORY:
@@ -28,6 +34,7 @@ public class LevelSoundManager : SoundManager
                 break;
         }
 
+        // Play the sound
         audioSource.Play();
     }
 }

@@ -76,11 +76,11 @@ public class PlayerShip : Ship
     {
         InitRaceData();
 
-        if (!photonView.IsMine)
-        {
-            aiSoundManager.enabled = false;
-            levelSoundManager.enabled = false;
-        }
+        //if (!photonView.IsMine)
+        //{
+        //    Destroy(transform.Find("AISoundManager").gameObject);
+        //    Destroy(transform.Find("LevelSoundManager").gameObject);
+        //}
     }
     #endregion
 

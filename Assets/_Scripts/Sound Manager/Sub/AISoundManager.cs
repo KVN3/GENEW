@@ -23,8 +23,15 @@ public class AISoundManager : SoundManager
     private bool recentlyReportedOnCharges;
     private bool hasAlertedDanger;
 
+    public bool active = true;
+
     public override void PlaySound(SoundType soundType)
     {
+        // If inactive, don't continue
+        if (!active)
+            return;
+
+        // Select the right clip
         switch (soundType)
         {
             // Item pickups
@@ -71,6 +78,7 @@ public class AISoundManager : SoundManager
                 break;
         }
 
+        // Play the sound, if not already playing one
         if (!audioSource.isPlaying)
             audioSource.Play();
     }

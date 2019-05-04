@@ -109,6 +109,10 @@ public static class SharedResources
             case "MoverEnemy":
                 path = Path.Combine("Prefabs", "Enemies", "Movers", "MoverEnemy");
                 break;
+
+            case "JammerMine":
+                path = Path.Combine("Prefabs", "Items", "JammerMine");
+                break;
         }
 
         return path;

@@ -60,6 +60,13 @@ public class Ship : MyMonoBehaviour
         // Get Components
         photonView = GetComponent<PhotonView>();
 
+        // Disable these sound managers if this isn't this client's ship
+        if (!photonView.IsMine)
+        {
+            aiSoundManager.active = false;
+            levelSoundManager.active = false;
+        }
+
         componentsList = new List<ShipComponent>();
         componentsList.Add(components.movement);
         componentsList.Add(components.engines);

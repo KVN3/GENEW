@@ -47,6 +47,12 @@ public class PlayerController : MonoBehaviour
             HandleCameraControls();
             HandlePreferedControls();
             HandlePlayerActionControls();
+
+            // Debug
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                GameState.spawnEnemies = !GameState.spawnEnemies;
+            }
         }
     }
 
@@ -76,7 +82,7 @@ public class PlayerController : MonoBehaviour
     private void HandlePlayerActionControls()
     {
         // Leaving match
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if (PhotonNetwork.InRoom)
                 PhotonNetwork.LeaveRoom();

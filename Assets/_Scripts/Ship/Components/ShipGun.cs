@@ -34,17 +34,6 @@ public class ShipGun : ShipComponent
     #region Projectile
     public void Shoot(JammerProjectile projectileClass)
     {
-        //This object's rotation + 180y
-        //Vector3 rot = transform.rotation.eulerAngles;
-        //rot = new Vector3(rot.x, rot.y + 180, rot.z);
-        //Quaternion rotation = Quaternion.Euler(rot);
-
-        //JammerProjectile projectile = Instantiate(projectileClass, projectileSpawnPoint.transform.position, rotation);
-        //projectile.owner = parentShip;
-
-        //shipSoundManager.PlaySound(SoundType.SHOOTING);
-        //StartCoroutine(ShootingCooldown(.5f));
-
         GetComponent<PhotonView>().RPC("RPC_Shoot", RpcTarget.AllViaServer);
     }
 
@@ -68,21 +57,16 @@ public class ShipGun : ShipComponent
     #region Mine
     public void DropMine(JammerMine mineClass)
     {
-        //JammerMine mine = Instantiate(mineClass, mineSP.transform.position, Quaternion.identity);
-        //mine.owner = parentShip;
-
-        //shipSoundManager.PlaySound(SoundType.DROPMINE);
-        //StartCoroutine(ShootingCooldown(.5f));
-
-        photonView.RPC("PhotonDropMine", RpcTarget.AllViaServer);
+        if (PhotonNetwork.IsMasterClient)
+            photonView.RPC("RPC_DropMine", RpcTarget.AllViaServer);
     }
 
     [PunRPC]
-    public void PhotonDropMine(PhotonMessageInfo info)
+    public void RPC_DropMine(PhotonMessageInfo info)
     {
         float lag = (float)(PhotonNetwork.Time - info.SentServerTime);
 
-        JammerMine mine = Instantiate(jammerMineClass, projectileSpawnPoint.transform.position, Quaternion.identity);
+        JammerMine mine = PhotonNetwork.Instantiate(SharedResources.GetPath("JammerMine"), mineSP.transform.position, Quaternion.identity).GetComponent<JammerMine>();
         mine.owner = parentShip;
 
         shipSoundManager.PlaySound(SoundType.DROPMINE);

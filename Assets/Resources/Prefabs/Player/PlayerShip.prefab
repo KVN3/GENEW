@@ -26003,8 +26003,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 116
-  m_CollisionDetection: 1
+  m_Constraints: 112
+  m_CollisionDetection: 2
 --- !u!114 &2453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26030,8 +26030,7 @@ MonoBehaviour:
   aiSoundManagerClass: {fileID: 764324233374814798, guid: de1886c4edc50df408b54c9f429f34a5,
     type: 3}
   spark: {fileID: 2442}
-  collectableItemClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-    type: 3}
+  collectableItemClass: {fileID: 2909, guid: 82255b909af5f654fa3020825945976e, type: 3}
   itemAmount: 100
   runData:
     currentLap: 0

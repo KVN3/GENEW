@@ -56,8 +56,13 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         // Bug fix on scene load
         photonView = GetComponent<PhotonView>();
 
+        Scene scene = SceneManager.GetActiveScene();
+
+        // Set that master has loaded the scene
         photonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
-        photonView.RPC("RPC_LoadGameOthers", RpcTarget.Others);
+
+        // Tell the clients (other players) load in the game rn
+        photonView.RPC("RPC_LoadGameOthers", RpcTarget.Others, scene.name);
     }
 
     // Client loaded game
@@ -71,9 +76,11 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
     // Tell all clients to load the same game as the host
     [PunRPC]
-    private void RPC_LoadGameOthers()
+    private void RPC_LoadGameOthers(string sceneName)
     {
-        PhotonNetwork.LoadLevel(activeScene);
+        activeScene = sceneName;
+
+        PhotonNetwork.LoadLevel(sceneName);
     }
 
     // Executed whenever a player loaded the scene
