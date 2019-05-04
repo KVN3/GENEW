@@ -7,6 +7,7 @@ using System.Linq;
 
 public class Login : MonoBehaviour
 {
+    #region Fields
     public TextMeshProUGUI titleText;
 
     public TextMeshProUGUI helpText;
@@ -26,6 +27,7 @@ public class Login : MonoBehaviour
     public GameObject registration;
 
     private string key = "AccountData";
+    #endregion
 
     private void Update()
     {
@@ -50,18 +52,23 @@ public class Login : MonoBehaviour
         goToRegisterText.text = LocalizationManager.GetTextByKey("DONT_HAVE_ACCOUNT");
     }
 
+    
     public void UserLogin()
     {
         if (usernameInput.text != "" && passwordInput.text != "")
         {
-            // if account exists
             Account account = GetAccountByUsername();
+            // if account exists
             if (account != null)
             {
                 if (account.password == passwordInput.text)
                 {
-                    PlayerPrefs.SetString("currentAccount", account.username);
+                    // Save/set currentAccount
+                    string json = JsonUtility.ToJson(account);
+                    PlayerPrefs.SetString("currentAccount", json);
+                    PlayerPrefs.Save();
 
+                    // Go to main menu
                     mainMenu.SetActive(true);
                     gameObject.SetActive(false);
                 }

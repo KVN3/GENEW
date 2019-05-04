@@ -40,6 +40,9 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("LOADING", "Laden");
         NLDict.Add("QUIT_GAME", "Verlaat spel");
         NLDict.Add("VERSION", "Versie");
+        NLDict.Add("ACHIEVEMENTS", "Prestaties");
+        NLDict.Add("COMPLETED", "Compleet");
+        NLDict.Add("UNCOMPLETED", "Niet compleet");
 
         // Account
         NLDict.Add("REGISTRATION", "Registratie");
@@ -130,6 +133,9 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("LOADING", "Loading");
         ENDict.Add("QUIT_GAME", "Quit game");
         ENDict.Add("VERSION", "Version");
+        ENDict.Add("ACHIEVEMENTS", "ACHIEVEMENTS");
+        ENDict.Add("COMPLETED", "Completed");
+        ENDict.Add("UNCOMPLETED", "Uncompleted");
 
         // Account
         ENDict.Add("REGISTRATION", "Registration");
