@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
         // Debug, get stunned
         if (Input.GetKeyDown(KeyCode.K))
-            playerShip.GetHitByEmp(2, "Debug activated");
+            playerShip.GetStunned(2, "Debug activated");
 
         // Forcefield
         // If forcefield item not active, key down, enough charges and no cooldown then activate.

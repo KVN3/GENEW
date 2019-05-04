@@ -20,34 +20,11 @@ public class ShipEngines : ShipComponent, IPunObservable
 
     public void FixedUpdate()
     {
+        // Set boosted (green) color, if boosted. Else, restore.
         if (parentShip.components.movement.IsBoosted())
-        {
             middleEngine.SetBoostColor();
-        }
         else
-        {
             middleEngine.RestoreColor();
-        }
-    }
-
-    private IEnumerator FlickerEngines(int times)
-    {
-        SetEnginesRestartMode(true);
-
-        int counter = 0;
-
-        while (counter < times)
-        {
-            TurnOnAllEngines();
-            yield return new WaitForSeconds(Random.Range(0.3f, 0.6f));
-            TurnOffAllEngines();
-            yield return new WaitForSeconds(Random.Range(0.3f, 0.6f));
-
-            counter++;
-        }
-
-        SetEnginesRestartMode(false);
-        parentShip.components.system.StartUp();
     }
 
     public void SetEnginesRestartMode(bool isOn)
@@ -72,6 +49,7 @@ public class ShipEngines : ShipComponent, IPunObservable
         middleEngine.SetLifeTime(lifeTime);
     }
 
+    // Activate all engines owned by this ship
     public void TurnOnAllEngines()
     {
         middleEngine.Activate();
@@ -79,6 +57,7 @@ public class ShipEngines : ShipComponent, IPunObservable
         rightEngine.Activate();
     }
 
+    // Deactivate all engines owned by this ship
     public void TurnOffAllEngines()
     {
         middleEngine.Deactivate();
@@ -166,9 +145,10 @@ public class ShipEngines : ShipComponent, IPunObservable
     }
     #endregion
 
+    // Start coroutine to restore the system
     public void RestoreSystem()
     {
-        StartCoroutine(FlickerEngines(3));
+        StartCoroutine(C_FlickerEngines(3));
     }
 
     // Turns the boosted color on or off for all engines
@@ -188,6 +168,28 @@ public class ShipEngines : ShipComponent, IPunObservable
         }
     }
 
+    // Flicker the engines several times, defined by times, for a random amount of ms, then tell the ship system it's ready to reboot
+    private IEnumerator C_FlickerEngines(int times)
+    {
+        SetEnginesRestartMode(true);
+
+        // Flicker the engines
+        int counter = 0;
+        while (counter < times)
+        {
+            TurnOnAllEngines();
+            yield return new WaitForSeconds(Random.Range(0.3f, 0.6f));
+            TurnOffAllEngines();
+            yield return new WaitForSeconds(Random.Range(0.3f, 0.6f));
+
+            counter++;
+        }
+
+        SetEnginesRestartMode(false);
+
+        // Tell the ship's system it's ready to start up again
+        parentShip.components.system.StartUp();
+    }
 
     #region GetSet
     public void SetParentShip(Ship ship)

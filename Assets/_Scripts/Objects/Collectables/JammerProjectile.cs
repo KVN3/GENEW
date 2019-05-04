@@ -31,6 +31,7 @@ public class JammerProjectile : Collectable
 
     void OnCollisionEnter(Collision other)
     {
+        // Projectile does not explode when touching owner
         if (other.gameObject.GetComponent<Ship>() == owner)
         {
             Debug.Log("Bullet hit owner...");
@@ -42,6 +43,7 @@ public class JammerProjectile : Collectable
         }
     }
 
+    // Explode and destroy projectile
     IEnumerator Explode(Vector3 position)
     {
         explosion = Instantiate(explosionClass, position, Quaternion.identity);

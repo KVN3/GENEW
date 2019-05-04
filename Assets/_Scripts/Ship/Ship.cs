@@ -158,7 +158,7 @@ public class Ship : MyMonoBehaviour
     }
 
     // Ship got hit by a stun
-    public void GetHitByEmp(int duration, string cause)
+    public void GetStunned(int duration, string cause)
     {
         // System not down
         if (!components.system.IsSystemDown())
