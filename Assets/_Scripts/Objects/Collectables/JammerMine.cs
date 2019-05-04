@@ -16,7 +16,14 @@ public class JammerMine : Collectable
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Ship") || other.gameObject.CompareTag("EnergyBall"))
+        bool shouldExplode = false;
+
+        if (other.gameObject.CompareTag("EnergyBall"))
+        {
+            shouldExplode = true;
+        }
+        
+        if (other.gameObject.CompareTag("Ship"))
         {
             Ship ship = other.gameObject.GetComponent<Ship>();
 
@@ -27,9 +34,14 @@ public class JammerMine : Collectable
             else
             {
                 print("Mine triggered by opp ship");
-                Instantiate(explosionClass, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                shouldExplode = true;
             }
+        }
+
+        if (shouldExplode)
+        {
+            Instantiate(explosionClass, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 
