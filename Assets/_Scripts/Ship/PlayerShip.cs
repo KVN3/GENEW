@@ -141,7 +141,7 @@ public class PlayerShip : Ship
                 runData.raceTimes = new List<TimeSpan>();
 
             // Check for valid lap
-            if (!runData.isWrongWay && runData.isOverHalfway) 
+            if (!runData.isWrongWay && runData.isOverHalfway)
             {
                 // Save lap if race has started (lap > 0) // THIS ALWAYS HAPPENS REGARDLESS OF FINISHED OR NOT
                 if (runData.currentLap > 0)
@@ -184,11 +184,11 @@ public class PlayerShip : Ship
                     Debug.Log("playerShip Finished");
                     levelSoundManager.PlaySound(SoundType.VICTORY);
 
-                foreach (TimeSpan time in runData.raceTimes)
-                {
-                    runData.totalTime += time;
-                }
-                    
+                    foreach (TimeSpan time in runData.raceTimes)
+                    {
+                        runData.totalTime += time;
+                    }
+
                     foreach (TimeSpan time in runData.raceTimes)
                         runData.totalTime += time;
 
@@ -209,48 +209,48 @@ public class PlayerShip : Ship
                     // Save replay
                     SaveReplay();
 
-                runData.raceFinished = true;
+                    runData.raceFinished = true;
 
-                // Analytics
-                double averageLapTime = runData.totalTime.TotalSeconds / runData.maxLaps;
-                string playerName = "Anon";
+                    // Analytics
+                    double averageLapTime = runData.totalTime.TotalSeconds / runData.maxLaps;
+                    string playerName = "Anon";
 
-                if (PhotonNetwork.IsConnected)
-                    playerName = PhotonNetwork.LocalPlayer.NickName;
+                    if (PhotonNetwork.IsConnected)
+                        playerName = PhotonNetwork.LocalPlayer.NickName;
 
-                OnPlayerFinishedRaceDelegate(runData.maxLaps, runData.totalTime, averageLapTime, playerName);
-            }
-            else // If not finished
-            {
-                // Reset Time. Only reset when lap > 0 && over half way
-                if (runData.currentLap > 0 && runData.isOverHalfway)
+                    OnPlayerFinishedRaceDelegate(runData.maxLaps, runData.totalTime, averageLapTime, playerName);
+                }
+                else // If not finished
                 {
-                    // Reset Time. Only reset when lap > 0
-                    if (runData.currentLap > 0)
+                    // Reset Time. Only reset when lap > 0 && over half way
+                    if (runData.currentLap > 0 && runData.isOverHalfway)
                     {
-                        Debug.Log($"PlayerShip Crossed Finish Line");
-                        levelSoundManager.PlaySound(SoundType.LAPPASSED);
+                        // Reset Time. Only reset when lap > 0
+                        if (runData.currentLap > 0)
+                        {
+                            Debug.Log($"PlayerShip Crossed Finish Line");
+                            levelSoundManager.PlaySound(SoundType.LAPPASSED);
 
-                        // Save replay
-                        SaveReplay();
+                            // Save replay
+                            SaveReplay();
 
-                        // Reset stuff
-                        runData.raceTime = TimeSpan.Parse("00:00:00.000");
-                        runData.isOverHalfway = false;
+                            // Reset stuff
+                            runData.raceTime = TimeSpan.Parse("00:00:00.000");
+                            runData.isOverHalfway = false;
 
-                        runData.currentLap++;
+                            runData.currentLap++;
+                        }
                     }
                 }
             }
-
             if (runData.currentLap == 0)
                 runData.currentLap++;
         }
-            #endregion
+        #endregion
 
-            #region Waypoints
+        #region Waypoints
 
-            if (other.gameObject.CompareTag("Waypoint"))
+        if (other.gameObject.CompareTag("Waypoint"))
         {
             // If passed previous waypoint
             if (other.GetComponent<Waypoint>().number < runData.currentWaypoint)
