@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 using TMPro;
 using System.Linq;
 
+// Also accountManager
+
 public class Registration : MonoBehaviour
 {
+    #region Fields
     public TextMeshProUGUI titleText;
 
     public TextMeshProUGUI helpText;
@@ -30,11 +32,12 @@ public class Registration : MonoBehaviour
 
     private int passwordLength = 4;
 
-    private string key = "AccountData";
+    private readonly string key = "AccountData";
+    #endregion
 
     // Start is called before the first frame update
     void Awake()
-    {
+    {   
         // Load accounts
         if (!PlayerPrefs.HasKey(key))
         {
@@ -48,6 +51,8 @@ public class Registration : MonoBehaviour
         {
             if (usernameInput.isFocused)
                 passwordInput.Select();
+            if (passwordInput.isFocused)
+                confirmPasswordInput.Select();
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -68,6 +73,7 @@ public class Registration : MonoBehaviour
         goToLoginText.text = LocalizationManager.GetTextByKey("HAVE_ACCOUNT");
     }
 
+    [ContextMenu("Delete Accounts")]
     public void InitAccounts()
     {
         // Create
@@ -110,7 +116,9 @@ public class Registration : MonoBehaviour
         if (!accountData.accounts.Any(a => a.username == usernameInput.text))
         {
             // Create
-            Account account = new Account(usernameInput.text, passwordInput.text);
+            Account account = new Account(accountData.accounts.Count, usernameInput.text, passwordInput.text);
+            AchievementManager achievementManager = new AchievementManager();
+            account.achievements = achievementManager.CreateAchievementListForPlayer(account);
 
             // Add
             accountData.accounts.Add(account);
@@ -128,6 +136,34 @@ public class Registration : MonoBehaviour
             validationText.text = LocalizationManager.GetTextByKey("ACCOUNT_EXISTS");
     }
 
+    public static Account GetCurrentAccount()
+    {
+        // Load current account
+        string jsonString = PlayerPrefs.GetString("currentAccount");
+        return JsonUtility.FromJson<Account>(jsonString);
+    }
+
+    public static void SaveCurrentAccount(Account account)
+    {
+        string json = JsonUtility.ToJson(account);
+        PlayerPrefs.SetString("currentAccount", json);
+        PlayerPrefs.Save();
+    }
+
+    public static void SaveAccountToAccountData(Account account)
+    {
+        // Load accountData
+        string jsonString = PlayerPrefs.GetString("AccountData");
+        AccountData accountData = JsonUtility.FromJson<AccountData>(jsonString);
+        
+        accountData.accounts[account.id] = account;
+
+        // Save account to accountData
+        string json = JsonUtility.ToJson(accountData);
+        PlayerPrefs.SetString("AccountData", json);
+        PlayerPrefs.Save();
+    }
+
     public void GoToLogin()
     {
         login.SetActive(true);
@@ -143,11 +179,15 @@ public class AccountData
 [System.Serializable]
 public class Account
 {
+    public int id;
     public string username;
     public string password;
 
-    public Account(string username, string password)
+    public List<Achievement> achievements;
+
+    public Account(int id, string username, string password)
     {
+        this.id = id;
         this.username = username;
         this.password = password;
     }

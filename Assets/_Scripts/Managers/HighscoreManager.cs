@@ -29,10 +29,10 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
         // Create
         highscoreEntryList = new List<HighscoreEntry>()
         {
-            new HighscoreEntry { name = "Bronze", lapTime = "00:00:50.000"},
-            new HighscoreEntry { name = "Silver", lapTime = "00:00:45.000"},
-            new HighscoreEntry { name = "Gold", lapTime = "00:00:35.000"},
-            new HighscoreEntry { name = "Platinum", lapTime = "00:00:30.000"}
+            new HighscoreEntry { name = "Bronze", lapTime = "00:00:50.000", stage = "Large Wasteland"},
+            new HighscoreEntry { name = "Silver", lapTime = "00:00:45.000", stage = "Large Wasteland"},
+            new HighscoreEntry { name = "Gold", lapTime = "00:00:40.000", stage = "Large Wasteland"},
+            new HighscoreEntry { name = "Platinum", lapTime = "00:00:35.000", stage = "Large Wasteland"}
         };
 
         // Sort
@@ -45,10 +45,10 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
         PlayerPrefs.Save();
     }
 
-    public void AddHighscoreEntry(string name, string time)
+    public void AddHighscoreEntry(string name, string time, string stage)
     {
         // Create
-        HighscoreEntry highscoreEntry = new HighscoreEntry { name = name, lapTime = time };
+        HighscoreEntry highscoreEntry = new HighscoreEntry { name = name, lapTime = time, stage = stage };
 
         // Load
         string jsonString = PlayerPrefs.GetString(key);
@@ -108,4 +108,5 @@ public class HighscoreEntry
 {
     public string name;
     public string lapTime;
+    public string stage;
 }
