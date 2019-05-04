@@ -17,6 +17,8 @@ public struct GameManagers
     public SpawnPointManager spawnPointManagerClass;
     public ChaserManager chaserManagerClass;
     public MoverManager moverManagerClass;
+    public CirclerManager circlerManagerClass;
+
     public AsteroidStormManager asteroidStormManagerClass;
 
     // Game
@@ -45,9 +47,6 @@ public class GameState : LevelSingleton<GameState>
     // Spawnpoints
     public static LocalSpawnPoint[] playerStarts;
 
-    // Players
-    public Dictionary<Player, PlayerShip> players { get; set; } = new Dictionary<Player, PlayerShip>();
-
     // Ghosts (replay)
     public PlayerShipGhost[] ghosts;
 
@@ -57,11 +56,15 @@ public class GameState : LevelSingleton<GameState>
     // Listeners
     private GameObject[] listeners;
 
+    private PlayerShip[] playerShips;
+
     private bool logging = false;
 
     protected override void Awake()
     {
         base.Awake();
+
+
 
         //Assert.IsNotNull(playerClass);
         //Assert.IsFalse(playerStarts.Length == 0);
@@ -105,6 +108,45 @@ public class GameState : LevelSingleton<GameState>
             Instantiate(ghost);
 
         BackgroundSoundManager backgroundSoundManager = Instantiate(gameManagers.backgroundSoundManagerClass);
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            StartCoroutine(C_SpawnManagers());
+        }
+    }
+
+    private IEnumerator C_SpawnManagers()
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Ship");
+
+        // Keep checking until ship objects found matches player count
+        while (gameObjects.Length != PhotonNetwork.PlayerList.Length)
+        {
+            gameObjects = GameObject.FindGameObjectsWithTag("Ship");
+            yield return new WaitForSeconds(1);
+        }
+
+        // Get the playership scripts from the objects
+        playerShips = new PlayerShip[gameObjects.Length];
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            playerShips[i] = gameObjects[i].GetComponent<PlayerShip>();
+        }
+
+        // Spawn Point Manager
+        SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
+
+        // Enemy Managers
+        ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
+        chaserManager.SetPlayers(playerShips);
+        chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
+
+        MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
+        moverManager.SetPlayers(playerShips);
+        moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+
+        //CirclerManager circlerManager = Instantiate(gameManagers.circlerManagerClass);
+        //circlerManager.SpawnCirclers();
     }
 
     #region Photon
@@ -127,7 +169,7 @@ public class GameState : LevelSingleton<GameState>
         playerShip.SetPlayerCamera(camera);
 
         // Add to list
-        players.Add(PhotonNetwork.LocalPlayer, playerShip);
+        //players.Add(PhotonNetwork.LocalPlayer, playerShip);
 
         // Temp SP
         PlayerShip[] playersLocal = new PlayerShip[1];
@@ -137,69 +179,58 @@ public class GameState : LevelSingleton<GameState>
         AnalyticsManager analyticsManager = Instantiate(gameManagers.analyticsManagerClass);
         analyticsManager.playerShip = playerShip;
 
-        // Spawn Point Manager
-        //SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
-
-        // Enemy Managers
-        //ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
-        //chaserManager.SetPlayers(playersLocal);
-        //chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
-
-        //MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
-        //moverManager.SetPlayers(playersLocal);
-        //moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
 
         return playerShip;
     }
 
-    private IEnumerator UpdatePlayerList()
-    {
-        yield return new WaitForSeconds(5);
+    //private IEnumerator UpdatePlayerList()
+    //{
+    //    yield return new WaitForSeconds(5);
 
-        players = new Dictionary<Player, PlayerShip>();
+    //    players = new Dictionary<Player, PlayerShip>();
 
-        GameObject[] playerShipObjects = GameObject.FindGameObjectsWithTag("Ship");
+    //    GameObject[] playerShipObjects = GameObject.FindGameObjectsWithTag("Ship");
 
-        foreach (GameObject shipObject in playerShipObjects)
-        {
-            PlayerShip playerShip = shipObject.GetComponent<PlayerShip>();
+    //    foreach (GameObject shipObject in playerShipObjects)
+    //    {
+    //        PlayerShip playerShip = shipObject.GetComponent<PlayerShip>();
 
-            PhotonView photonView = playerShip.GetComponent<PhotonView>();
-            Player player = photonView.Owner;
+    //        PhotonView photonView = playerShip.GetComponent<PhotonView>();
+    //        Player player = photonView.Owner;
 
-            players.Add(player, playerShip);
-        }
+    //        players.Add(player, playerShip);
+    //    }
 
-        if (logging)
-            Debug.Log("PLAYER COUNT: " + players.Count);
-    }
+    //    if (logging)
+    //        Debug.Log("PLAYER COUNT: " + players.Count);
+    //}
 
-    protected PlayerShip SpawnRemotePlayer(Player remotePlayer, int index)
-    {
-        Debug.Log("Spawning remote player...");
-        LocalSpawnPoint playerStart = playerStarts[index];
+    //protected PlayerShip SpawnRemotePlayer(Player remotePlayer, int index)
+    //{
+    //    Debug.Log("Spawning remote player...");
+    //    LocalSpawnPoint playerStart = playerStarts[index];
 
-        PlayerShip Player = Spawn(playerClass, (PlayerShip newPlayer) =>
-        {
-            newPlayer.transform.position = playerStart.transform.position;
-            newPlayer.transform.rotation = playerStart.transform.rotation;
+    //    PlayerShip Player = Spawn(playerClass, (PlayerShip newPlayer) =>
+    //    {
+    //        newPlayer.transform.position = playerStart.transform.position;
+    //        newPlayer.transform.rotation = playerStart.transform.rotation;
 
-            newPlayer.remoteData = remotePlayer;
-        });
+    //        newPlayer.remoteData = remotePlayer;
+    //    });
 
-        players.Add(remotePlayer, Player);
+    //    players.Add(remotePlayer, Player);
 
-        return Player;
-    }
+    //    return Player;
+    //}
 
-    protected void KillPlayer(Player remotePlayer)
-    {
-        PlayerShip player = players[remotePlayer];
+    //protected void KillPlayer(Player remotePlayer)
+    //{
+    //    PlayerShip player = players[remotePlayer];
 
-        Destroy(player);
+    //    Destroy(player);
 
-        players.Remove(remotePlayer);
-    }
+    //    players.Remove(remotePlayer);
+    //}
     #endregion
 
     private void Update()

@@ -23,9 +23,9 @@ public class Ship : MyMonoBehaviour
     [SerializeField]
     private ShipSoundManager shipSoundManagerClass;
     [SerializeField]
-    private LevelSoundManager levelSoundManagerClass;
+    protected LevelSoundManager levelSoundManagerClass;
     [SerializeField]
-    private AISoundManager aiSoundManagerClass;
+    protected AISoundManager aiSoundManagerClass;
     [SerializeField]
     private DamageSpark spark;
     #endregion
@@ -36,7 +36,7 @@ public class Ship : MyMonoBehaviour
     protected ShipSoundManager shipSoundManager;
     protected LevelSoundManager levelSoundManager;
     protected AISoundManager aiSoundManager;
-    
+
 
     // Collectables
     public Collectable collectableItemClass;
@@ -179,7 +179,8 @@ public class Ship : MyMonoBehaviour
             }
 
             // Delegate event
-            OnPlayerStunnedDelegate(duration, cause, playerWasProtected);
+            if (photonView.IsMine)
+                OnPlayerStunnedDelegate(duration, cause, playerWasProtected);
         }
     }
 

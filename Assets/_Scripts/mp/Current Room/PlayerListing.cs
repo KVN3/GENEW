@@ -11,14 +11,30 @@ public class PlayerListing : MonoBehaviour
 
     [SerializeField]
     private Text _playerName;
-    private Text PlayerName
-    {
-        get { return _playerName; }
-    }
+    [SerializeField]
+    private Text _playerPing;
+
 
     public void ApplyPhotonPlayer(Player photonPlayer)
     {
         PhotonPlayer = photonPlayer;
-        PlayerName.text = photonPlayer.NickName;
+        _playerName.text = photonPlayer.NickName;
+
+        StartCoroutine(C_ShowPing());
     }
+
+    #region ping
+    private IEnumerator C_ShowPing()
+    {
+        while (PhotonNetwork.IsConnected)
+        {
+            int ping = (int)PhotonNetwork.LocalPlayer.CustomProperties["ping"];
+            _playerPing.text = ping + "ms";
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        yield break;
+    }
+    #endregion
 }

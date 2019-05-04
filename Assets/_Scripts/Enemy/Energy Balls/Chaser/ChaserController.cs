@@ -1,10 +1,19 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ChaserController : MonoBehaviour
 {
     public Chaser chaser;
+
+    private PhotonView photonView;
+
+
+    void Awake()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
 
     void Start()
     {
@@ -14,12 +23,22 @@ public class ChaserController : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovement();
+
+        
     }
 
     private void HandleMovement()
     {
-        float moveForce = Random.Range(chaser.maxForce - 20, chaser.maxForce);
-        chaser.Move(moveForce);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            float moveForce = Random.Range(chaser.maxForce - 20, chaser.maxForce);
+            chaser.Move(moveForce);
+        }
+        else
+        {
+            chaser.SmoothMove();
+        }
+        
     }
 
     //--MOVEMENT--
