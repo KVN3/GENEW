@@ -145,7 +145,7 @@ MonoBehaviour:
   enemySoundManagerClass: {fileID: 7791514189915519896, guid: febd8b341a0717a4286d9b9316fb430f,
     type: 3}
   playSoundOnStart: 1
-  velocidadMax: 10
+  maxVelocity: 0
   shooterModule: {fileID: 5501172819638903299}
   xMax: 1300
   zMax: 50

@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
                 PhotonNetwork.LeaveRoom();
 
             PlayerNetwork.Instance.ResetNetwork();
-            SceneManager.UnloadSceneAsync(ScenesInformation.sceneNames[SceneTitle.Wasteland]);
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             PhotonNetwork.LoadLevel(ScenesInformation.sceneNames[SceneTitle.Main]);
         }
 

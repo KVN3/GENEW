@@ -26149,7 +26149,7 @@ MonoBehaviour:
     baseHeightFromGround: 5
   config:
     movementSpeedFactor: 2700000
-    rotationSpeedFactor: 2
+    rotationSpeedFactor: 1.5
     baseMaxSpeed: 250
     minDrag: 0.3
     maxDrag: 1.5

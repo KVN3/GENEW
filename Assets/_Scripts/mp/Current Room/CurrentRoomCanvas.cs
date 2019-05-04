@@ -13,7 +13,7 @@ public class CurrentRoomCanvas : MonoBehaviour
 
     private void Start()
     {
-        _sceneTitle = SceneTitle.Test;
+        _sceneTitle = _mapSelection.GetScene();
     }
 
     public void OnClickStartDelayed()

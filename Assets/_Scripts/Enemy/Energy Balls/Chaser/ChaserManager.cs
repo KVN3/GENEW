@@ -18,7 +18,9 @@ public class ChaserManager : EnemyManager
     {
         string chaserPath = Path.Combine("Prefabs", "Enemies", "Chasers", "ChaserEnemy");
 
-        Chaser chaser = PhotonNetwork.Instantiate(chaserPath, sp.transform.position, sp.transform.rotation).GetComponent<Chaser>();
+        Vector3 lsp = new Vector3(sp.transform.position.x + Random.Range(-20f, 20f), sp.transform.position.y, sp.transform.position.z + Random.Range(-20f, 20f));
+
+        Chaser chaser = PhotonNetwork.Instantiate(chaserPath, lsp, sp.transform.rotation).GetComponent<Chaser>();
         chaser.SetTargets(players);
         chaser.SetManager(this);
         enemies.Add(chaser);
