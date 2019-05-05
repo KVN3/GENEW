@@ -79,17 +79,16 @@ public class AsteroidStormManager : MonoBehaviour
 
     private void SpawnAsteroid(SpawnPoint spawnPoint)
     {
-       // print($"spawn: {spawnPoint.position.x}, {spawnPoint.position.y}, {spawnPoint.position.z}");
         Vector3 sp = spawnPoint.position;
-        //print($" after : {sp.x}, {sp.y}, {sp.z}");
         photonView.RPC("RPC_SpawnAsteroid", RpcTarget.AllViaServer, sp.x, sp.y, sp.z);
     }
 
     [PunRPC]
     public void RPC_SpawnAsteroid(float x, float y, float z)
     {
-        LavaAsteroid asteroidClass = redLavaAsteroidClasses[Random.Range(0, redLavaAsteroidClasses.Length)];
-        LavaAsteroid asteroid = Instantiate(asteroidClass, new Vector3(x, y, z), Quaternion.identity);
+        //LavaAsteroid asteroidClass = redLavaAsteroidClasses[Random.Range(0, redLavaAsteroidClasses.Length)];
+        string asteroidPath = SharedResources.GetPath("astre", Random.Range(0, 21));
+        Asteroid asteroid = PhotonNetwork.Instantiate(asteroidPath, new Vector3(x, y, z), Quaternion.identity).GetComponent<Asteroid>();
         asteroid.transform.localScale = asteroid.transform.localScale * Random.Range(minAsteroidSize, maxAsteroidSize);
         asteroid.manager = this;
         asteroid.lifeTimeInSeconds = asteroidLifeTimeInSeconds;

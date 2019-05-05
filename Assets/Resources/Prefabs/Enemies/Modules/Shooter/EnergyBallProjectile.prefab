@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f75cc6040b6a794393240a66b8ff863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projSpeed: 200
+  projSpeed: 100
   inaccuracyX: 10
   inaccuracyZ: 10
-  target: {x: 1266.6234, y: 4.877062, z: -27.871414}
+  target: {x: 0, y: 0, z: 0}
 --- !u!114 &2931
 MonoBehaviour:
   m_ObjectHideFlags: 0

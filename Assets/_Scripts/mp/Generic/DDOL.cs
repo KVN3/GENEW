@@ -25,6 +25,7 @@ public class DDOL : MonoBehaviour
                 playerNetwork.AddComponent<PlayerNetwork>();
                 PhotonView pv = playerNetwork.AddComponent<PhotonView>();
                 pv.ViewID = 999;
+                //pv.
 
                 // Player Manager
                 GameObject playerManager = new GameObject("PlayerManager");

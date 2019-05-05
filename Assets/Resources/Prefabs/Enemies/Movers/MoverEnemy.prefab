@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyBallProjectileClasses:
-  - {fileID: 8859294675506901504, guid: a5897aa0a8797064fb2e26b05b205a3a, type: 3}
+  - {fileID: 2983, guid: a5897aa0a8797064fb2e26b05b205a3a, type: 3}
   minDistance: 1000000
   targets: []
 --- !u!114 &2980
@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shooter: {fileID: 2938}
-  minCooldown: 0.3
-  maxCooldown: 0.8
+  minCooldown: 0.4
+  maxCooldown: 1
 --- !u!114 &2848
 MonoBehaviour:
   m_ObjectHideFlags: 0

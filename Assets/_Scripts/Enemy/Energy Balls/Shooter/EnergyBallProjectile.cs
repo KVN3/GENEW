@@ -12,15 +12,19 @@ public class EnergyBallProjectile : MonoBehaviour
     public Vector3 target;
     private Vector3 moveDirection;
 
+    private EnergyBall energyBall;
+
     // Start is called before the first frame update
     void Start()
     {
+        energyBall = GetComponent<EnergyBall>();
+
         if (PhotonNetwork.IsMasterClient)
             StartCoroutine(WaitAndDestroy(10));
 
         Vector3 targ = new Vector3(target.x + +Random.Range(-inaccuracyX, inaccuracyX), target.y, target.z + Random.Range(-inaccuracyZ, inaccuracyZ));
 
-        Vector3 diff = targ - this.transform.position ;
+        Vector3 diff = targ - this.transform.position;
         moveDirection = diff.normalized;
     }
 
@@ -36,15 +40,21 @@ public class EnergyBallProjectile : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        //if (PhotonNetwork.IsMasterClient)
-        //    Destroy(gameObject);
+        if (other.gameObject.CompareTag("Ship"))
+        {
+            // Tell the ship it got hit and stunned
+            PlayerShip collidingShip = other.gameObject.GetComponent<PlayerShip>();
+            collidingShip.GetStunned(energyBall.shutDownDuration, "Energy projectile");
+        }
+
+
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.Destroy(gameObject);
     }
 
     IEnumerator WaitAndDestroy(int seconds)
     {
         yield return new WaitForSeconds(seconds);
-
-       
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
