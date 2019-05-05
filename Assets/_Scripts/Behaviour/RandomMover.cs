@@ -29,6 +29,8 @@ public class RandomMover : EnergyBall
     private float angulo;
     private Rigidbody rb;
 
+
+    // Awake
     public override void Awake()
     {
         base.Awake();  
