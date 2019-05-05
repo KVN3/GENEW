@@ -23,6 +23,7 @@ public class MapSelection : MonoBehaviour
         _dropdownList.AddOptions(options);
     }
 
+    // Get the selected scene from the dropdownlist
     public SceneTitle GetScene()
     {
         SceneTitle scene = scenes[_dropdownList.value];

@@ -28,8 +28,8 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         PlayerName = "Kevin#" + Random.Range(1000, 9999);
 
         // Higher bandwidth cost, smoother movement
-        PhotonNetwork.SendRate = 60;
-        PhotonNetwork.SerializationRate = 30;
+        PhotonNetwork.SendRate = 120;
+        PhotonNetwork.SerializationRate = 60;
     }
 
     private void Start()

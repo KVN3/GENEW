@@ -26030,7 +26030,7 @@ MonoBehaviour:
   aiSoundManagerClass: {fileID: 764324233374814798, guid: de1886c4edc50df408b54c9f429f34a5,
     type: 3}
   spark: {fileID: 2442}
-  collectableItemClass: {fileID: 2909, guid: 82255b909af5f654fa3020825945976e, type: 3}
+  collectableItemClass: {fileID: 2821, guid: 82255b909af5f654fa3020825945976e, type: 3}
   itemAmount: 100
   runData:
     currentLap: 0
@@ -26145,11 +26145,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.2
-    floatSpeed: 300
+    floatSpeed: 450
     baseHeightFromGround: 5
   config:
     movementSpeedFactor: 2700000
-    rotationSpeedFactor: 2
+    rotationSpeedFactor: 1.5
     baseMaxSpeed: 250
     minDrag: 0.3
     maxDrag: 1.5
@@ -26207,8 +26207,7 @@ MonoBehaviour:
   smokeSP: {fileID: 2438}
   jammerProjectileClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
     type: 3}
-  jammerMineClass: {fileID: 3327580341691270771, guid: 82255b909af5f654fa3020825945976e,
-    type: 3}
+  jammerMineClass: {fileID: 2821, guid: 82255b909af5f654fa3020825945976e, type: 3}
   smokeScreenClass: {fileID: 4297213205010208726, guid: cb568ea53dd219e4bbcb19d6867d5809,
     type: 3}
 --- !u!1 &537

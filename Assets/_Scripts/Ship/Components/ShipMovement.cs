@@ -41,9 +41,9 @@ public class ShipMovement : ShipComponent, IPunObservable
     // Run data
     private float currentSpeed;
     private float currentMaxSpeed;
+
     private float floatTopBound, floatBottomBound;
     private bool upperBoundReached;
-
     private float currentBaseHeight;
 
     public void Awake()
@@ -66,31 +66,6 @@ public class ShipMovement : ShipComponent, IPunObservable
 
     public void Update()
     {
-        //RaycastHit hit = new RaycastHit();
-        //if (Physics.Raycast(transform.position, -Vector3.up, out hit))
-        //{
-        //    var distanceToGround = hit.distance;
-
-        //    if (hit.transform.tag.Equals("Floor"))
-        //    {
-        //        if (hit.distance < (floatBottomBound - 1.5f))
-        //        {
-        //            float diff = currentBaseHeight - hit.distance;
-
-        //            currentBaseHeight += .1f;
-        //            floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
-        //            floatTopBound = currentBaseHeight + floatConfig.floatDiff;
-        //            Debug.Log("New base height = " + currentBaseHeight);
-        //        }
-        //        //if (hit.distance < (floatBottomBound - 1.5f) || hit.distance > (floatTopBound + 1.5f))
-        //        //{
-
-        //        //}
-        //    }
-
-        //    //Debug.Log(hit.distance);
-        //}
-
         if (GetComponent<PhotonView>().IsMine)
         {
             if (currentSpeed > config.trailActivationSpeed)

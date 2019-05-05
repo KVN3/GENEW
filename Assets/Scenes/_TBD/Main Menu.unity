@@ -1429,12 +1429,12 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 856791687}
+        m_MethodName: UpdateScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2800,7 +2800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 24.7, y: 0.000004450423}
+  m_AnchoredPosition: {x: 24.7, y: 0.0000030180252}
   m_SizeDelta: {x: -49.4, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1198321659
@@ -2932,7 +2932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dropdownList: {fileID: 1238497574}
-  scenes: 0300000002000000
+  scenes: 0200000003000000
 --- !u!114 &1238497574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4825,7 +4825,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 24.7, y: -0.0000049439}
+  m_AnchoredPosition: {x: 24.7, y: 0.000020926205}
   m_SizeDelta: {x: -49.4, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1964038774
@@ -5326,10 +5326,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ed82d6ae4251648af06d7ffb2cd81a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TitleText: {fileID: 0}
-  SingleplayerText: {fileID: 3580565088966556824}
-  EditShipText: {fileID: 70023624}
-  VersionText: {fileID: 4012942069786850813}
+  titleText: {fileID: 0}
+  singleplayerText: {fileID: 0}
+  editShipText: {fileID: 0}
+  optionsText: {fileID: 0}
+  achievementsText: {fileID: 0}
+  versionText: {fileID: 0}
+  usernameText: {fileID: 0}
 --- !u!114 &874264669347109769
 MonoBehaviour:
   m_ObjectHideFlags: 0

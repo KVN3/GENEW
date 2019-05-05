@@ -8,13 +8,14 @@ public class RotateAroundObject : MonoBehaviour
     public Transform target;
     public float orbitDistance = 10.0f;
     public float orbitDegreesPerSec = 180.0f;
-    public float heightY = 5f;
+    public float heightY;
 
     private EnergyBall energyBall;
 
     // Use this for initialization
     void Start()
     {
+        heightY = transform.position.y;
         transform.position = new Vector3(transform.position.x, heightY, transform.position.z);
 
         energyBall = GetComponent<EnergyBall>();

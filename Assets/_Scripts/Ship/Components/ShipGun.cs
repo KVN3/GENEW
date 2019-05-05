@@ -57,8 +57,8 @@ public class ShipGun : ShipComponent
     #region Mine
     public void DropMine(JammerMine mineClass)
     {
-        if (PhotonNetwork.IsMasterClient)
-            photonView.RPC("RPC_DropMine", RpcTarget.AllViaServer);
+        //if (PhotonNetwork.IsMasterClient)
+        photonView.RPC("RPC_DropMine", RpcTarget.AllViaServer);
     }
 
     [PunRPC]
@@ -66,7 +66,9 @@ public class ShipGun : ShipComponent
     {
         float lag = (float)(PhotonNetwork.Time - info.SentServerTime);
 
-        JammerMine mine = PhotonNetwork.Instantiate(SharedResources.GetPath("JammerMine"), mineSP.transform.position, Quaternion.identity).GetComponent<JammerMine>();
+        //JammerMine mine = PhotonNetwork.Instantiate(SharedResources.GetPath("JammerMine"), mineSP.transform.position, Quaternion.identity).GetComponent<JammerMine>();
+
+        JammerMine mine = Instantiate(jammerMineClass, mineSP.transform.position, Quaternion.identity);
         mine.owner = parentShip;
 
         shipSoundManager.PlaySound(SoundType.DROPMINE);

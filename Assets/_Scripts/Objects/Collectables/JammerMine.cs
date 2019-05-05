@@ -16,16 +16,32 @@ public class JammerMine : Collectable
 
     void OnTriggerEnter(Collider other)
     {
-        if (!PhotonNetwork.IsMasterClient)
-            return;
+        bool shouldExplode = false;
 
-        if (other.gameObject.CompareTag("Ship") || other.gameObject.CompareTag("EnergyBall"))
+        if (other.gameObject.CompareTag("EnergyBall"))
         {
-            if (!other.gameObject.GetComponent<Ship>() == owner)
+            shouldExplode = true;
+        }
+        
+        if (other.gameObject.CompareTag("Ship"))
+        {
+            Ship ship = other.gameObject.GetComponent<Ship>();
+
+            if (ship.Equals(owner))
             {
-                Instantiate(explosionClass, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                print("Mine triggered by owner");
             }
+            else
+            {
+                print("Mine triggered by opp ship");
+                shouldExplode = true;
+            }
+        }
+
+        if (shouldExplode)
+        {
+            Instantiate(explosionClass, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 

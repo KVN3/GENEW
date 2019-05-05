@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7157018308636640739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4165208784612728151}
+  - component: {fileID: 3691676981607013694}
+  m_Layer: 0
+  m_Name: SP Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4165208784612728151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157018308636640739}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1183.71, y: 5, z: 1.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3691676981607013694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157018308636640739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3824e134f566d36408a8b9b2180730a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings:
+    rowLengthX: 60
+    rowLengthZ: 40
+    spacing: 30
+  chaserSpawnPoints:
+  - {fileID: 2873669551035751320, guid: f2b45af41b08c254a82f161faf6e4e6c, type: 3}
+  - {fileID: 3701492745084484139, guid: 92b1057746e956948b9353d348772349, type: 3}
+  - {fileID: 7617648523699282982, guid: 9f00134ace7cff64e8c955ee1ec475db, type: 3}
+  - {fileID: 768990769561241224, guid: b249e01f10041c944ad7a7416be2f5ef, type: 3}
+  - {fileID: 6875475394244267229, guid: 737e36c6233f53c4692172a9f5d2cbaa, type: 3}
+  - {fileID: 8719825638998938610, guid: 7869b759c14ccc844aea23ded07d02fb, type: 3}
+  - {fileID: 2644609279845422110, guid: 658ee99a33788b24bba06e212fcd2667, type: 3}
+  - {fileID: 218564213132821530, guid: 9c146682239ba5f4688d56bacdde4b92, type: 3}
+  movingSpawnPoints:
+  - {fileID: 5457014549359127232, guid: 25d0a6b5664595a4988f768a14999584, type: 3}
+  - {fileID: 5139374761676181355, guid: 9e5af4a2fff87dc4b9226969abd3b000, type: 3}
+  - {fileID: 1696277828296897858, guid: 3841f64cd917ae0438823617dd741913, type: 3}
+  - {fileID: 7027989862390339586, guid: 4a634f7004a92014097cf06579799b43, type: 3}

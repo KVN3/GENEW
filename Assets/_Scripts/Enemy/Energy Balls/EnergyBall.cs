@@ -39,29 +39,31 @@ public class EnergyBall : MonoBehaviour, IPunObservable
     {
         if (other.gameObject.CompareTag("Ship"))
         {
-            PlayerShip playerShip = other.GetComponent<PlayerShip>();
-            Rigidbody rb = other.GetComponent<Rigidbody>();
+            // Tell the ship it got hit and stunned
+            PlayerShip collidingShip = other.GetComponent<PlayerShip>();
+            collidingShip.GetStunned(shutDownDuration, "Energy ball");
 
-            playerShip.GetHitByEmp(shutDownDuration, "Energy ball");
+            // Perish
             Die();
         }
 
+        // If the floating stones float into the energy spheres, make them perish.
         if (other.gameObject.CompareTag("SteppingStone"))
-        {
             Die();
-        }
     }
 
+    // Make this energy sphere perish
     public virtual void Die()
     {
+        // Detaching children (sound managers), so that they can still play the dead sound when the object is destroyed
         enemySoundManager.PlaySound(SoundType.SHUTDOWN);
         transform.DetachChildren();
 
+        // If this object was spawned by a manager, remove this from the list of alive oppositions
         if (manager != null)
-        {
             manager.RemoveFromAliveEnemies(this);
-        }
 
+        // Destroy the object if master, for all to witness...
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.Destroy(gameObject);
     }
@@ -75,6 +77,7 @@ public class EnergyBall : MonoBehaviour, IPunObservable
     private Vector3 targetPos;
     private Quaternion targetRot;
 
+    // Write data if master, else read data
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -89,6 +92,7 @@ public class EnergyBall : MonoBehaviour, IPunObservable
         }
     }
 
+    // Read data and lerp to it, smoothly (CLIENTS)
     public void SmoothMove()
     {
         transform.position = Vector3.Lerp(transform.position, targetPos, 0.25f);

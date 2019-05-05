@@ -59,7 +59,7 @@ public class GameState : LevelSingleton<GameState>
     private PlayerShip[] playerShips;
 
     private bool logging = false;
-    public static bool spawnEnemies;
+    public static bool spawnEnemies = true;
 
     protected override void Awake()
     {

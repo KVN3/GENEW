@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: cc0a9db490b04dd4eb9ad08298ffaaa6, type: 3}
-  boostFactor: 3
-  maxSpeedIncrease: 20
-  boostDuration: 3
+  boostFactor: 4
+  maxSpeedIncrease: 100
+  boostDuration: 5
