@@ -34,7 +34,7 @@ public class MainMenuController : LevelSingleton<MainMenuController>
         if (loadingScreen != null)
             StartCoroutine(LoadAsynchronously(ScenesInformation.sceneNames[SceneTitle.Wasteland]));
         else
-            SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Shipyard]);
+            SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Wasteland]);
     }
 
     public void LoadShipyard()

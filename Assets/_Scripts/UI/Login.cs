@@ -82,6 +82,12 @@ public class Login : MonoBehaviour
             validationText.text = LocalizationManager.GetTextByKey("FIELDS_EMPTY");
     }
 
+    [ContextMenu("Logout")]
+    public void Logout()
+    {
+        PlayerPrefs.DeleteKey("currentAccount");
+    }
+
     public Account GetAccountByUsername()
     {
         // Load
