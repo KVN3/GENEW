@@ -31,7 +31,7 @@ public class ChaserController : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            float moveForce = Random.Range(chaser.maxForce - 20, chaser.maxForce);
+            float moveForce = Random.Range(chaser.maxForce / 2, chaser.maxForce);
             chaser.Move(moveForce);
         }
         else

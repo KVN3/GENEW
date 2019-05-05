@@ -26145,7 +26145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.2
-    floatSpeed: 300
+    floatSpeed: 450
     baseHeightFromGround: 5
   config:
     movementSpeedFactor: 2700000

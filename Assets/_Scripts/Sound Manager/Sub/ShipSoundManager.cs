@@ -47,6 +47,7 @@ public class ShipSoundManager : SoundManager
                 break;
         }
 
-        audioSource.Play();
+        if (!audioSource.isPlaying)
+            audioSource.Play();
     }
 }

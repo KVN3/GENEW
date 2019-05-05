@@ -36,8 +36,8 @@ public class EnergyBallProjectile : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (PhotonNetwork.IsMasterClient)
-            Destroy(gameObject);
+        //if (PhotonNetwork.IsMasterClient)
+        //    Destroy(gameObject);
     }
 
     IEnumerator WaitAndDestroy(int seconds)

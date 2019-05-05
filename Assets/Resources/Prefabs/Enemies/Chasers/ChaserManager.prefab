@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyClasses:
-  - {fileID: 1712409882995991430, guid: 5b8d72fdb77cf1b418a73103680439cf, type: 3}
-  - {fileID: 2474137639209008464, guid: abedaabeb0f9861488e316a06b42bb9c, type: 3}
-  desiredAliveEnemyCount: 4
+  - {fileID: 2805, guid: 5b8d72fdb77cf1b418a73103680439cf, type: 3}
+  - {fileID: 3861366795069936675, guid: abedaabeb0f9861488e316a06b42bb9c, type: 3}
+  desiredAliveEnemyCount: 14
   viewId: 998
 --- !u!114 &4975024989647457155
 MonoBehaviour:

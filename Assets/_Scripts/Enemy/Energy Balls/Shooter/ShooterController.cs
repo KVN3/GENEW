@@ -6,6 +6,7 @@ using UnityEngine;
 public class ShooterController : MonoBehaviour
 {
     public Shooter shooter;
+    public float minCooldown, maxCooldown;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class ShooterController : MonoBehaviour
         {
             Vector3 target = shooter.GetClosestTarget();
             shooter.Fire(target);
-            yield return new WaitForSeconds(Random.Range(1f, 3f));
+            yield return new WaitForSeconds(Random.Range(minCooldown, maxCooldown));
         }
     }
 }
