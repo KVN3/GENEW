@@ -36,7 +36,6 @@ public class Chaser : EnergyBall
     {
         if(closestDistanceSqr < 40000)
         {
-            print("Chaser nearby, it's slowing down");
             force = force / 2;
         }
 

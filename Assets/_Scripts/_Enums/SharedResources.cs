@@ -50,23 +50,6 @@ public static class SharedResources
     #endregion
 
     #region Enemies
-    //public static Chaser[] LoadChasers(string activeScene)
-    //{
-    //    string spawnpointsPath = Path.Combine("Prefabs", "Spawnpoints", activeScene);
-
-    //    Object[] objects = Resources.LoadAll(spawnpointsPath);
-    //    LocalSpawnPoint[] spawnPoints = new LocalSpawnPoint[objects.Length];
-
-    //    int i = 0;
-    //    foreach (Object obj in objects)
-    //    {
-    //        GameObject gameObject = obj as GameObject;
-    //        spawnPoints[i] = gameObject.GetComponent<LocalSpawnPoint>();
-    //        i++;
-    //    }
-
-    //    return spawnPoints;
-    //}
     #endregion
 
     #region Spawnpoints
@@ -144,6 +127,22 @@ public static class SharedResources
                 break;
             case "SpawnPoints":
                 path = Path.Combine("Prefabs", "SpawnPoints", sceneName, "PlayerSpawns");
+                break;
+        }
+
+        return path;
+    }
+
+    // For indexed prefabs
+    public static string GetPath(string prefabName, int index)
+    {
+        string path = string.Empty;
+        string actualPrefabName = $"{prefabName}_{index}";
+
+        switch (prefabName)
+        {
+            case "astre":
+                path = Path.Combine("Prefabs", "Asteroids", actualPrefabName);
                 break;
         }
 

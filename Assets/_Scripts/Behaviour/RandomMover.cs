@@ -31,8 +31,7 @@ public class RandomMover : EnergyBall
 
     public override void Awake()
     {
-        base.Awake();
-
+        base.Awake();  
         currentBaseHeight = floatConfig.baseHeightFromGround;
     }
 
@@ -40,6 +39,8 @@ public class RandomMover : EnergyBall
     public override void Start()
     {
         base.Start();
+
+        shooterModule.SetSoundManager(enemySoundManager);
 
         InitFloatSettings();
 
@@ -253,9 +254,6 @@ public class RandomMover : EnergyBall
         floatBottomBound = transform.position.y - floatConfig.floatDiff;
     }
     #endregion
-
-
-
 
     public override void OnTriggerEnter(Collider other)
     {

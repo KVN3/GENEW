@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -18,6 +19,13 @@ public class AsteroidStormManager : MonoBehaviour
     private List<Asteroid> asteroids;
     private SpawnPoint[,] spawnPoints;
 
+    private PhotonView photonView;
+    [SerializeField]
+    private int viewId;
+
+    [SerializeField]
+    private int asteroidLifeTimeInSeconds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +36,9 @@ public class AsteroidStormManager : MonoBehaviour
         spawnPointManager.settings = SpawnPointManagerSettings;
         spawnPoints = spawnPointManager.GenerateSpawnPoints(transform.position);
         asteroids = new List<Asteroid>();
+
+        photonView = GetComponent<PhotonView>();
+        photonView.ViewID = viewId;
 
         // Coroutines
         StartCoroutine(SpawnLoop());
@@ -56,7 +67,7 @@ public class AsteroidStormManager : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -68,10 +79,20 @@ public class AsteroidStormManager : MonoBehaviour
 
     private void SpawnAsteroid(SpawnPoint spawnPoint)
     {
+       // print($"spawn: {spawnPoint.position.x}, {spawnPoint.position.y}, {spawnPoint.position.z}");
+        Vector3 sp = spawnPoint.position;
+        //print($" after : {sp.x}, {sp.y}, {sp.z}");
+        photonView.RPC("RPC_SpawnAsteroid", RpcTarget.AllViaServer, sp.x, sp.y, sp.z);
+    }
+
+    [PunRPC]
+    public void RPC_SpawnAsteroid(float x, float y, float z)
+    {
         LavaAsteroid asteroidClass = redLavaAsteroidClasses[Random.Range(0, redLavaAsteroidClasses.Length)];
-        LavaAsteroid asteroid = Instantiate(asteroidClass, spawnPoint.position, Quaternion.identity);
+        LavaAsteroid asteroid = Instantiate(asteroidClass, new Vector3(x, y, z), Quaternion.identity);
         asteroid.transform.localScale = asteroid.transform.localScale * Random.Range(minAsteroidSize, maxAsteroidSize);
         asteroid.manager = this;
+        asteroid.lifeTimeInSeconds = asteroidLifeTimeInSeconds;
 
         Floater floater = asteroid.gameObject.AddComponent<Floater>();
         floater.SetDirection(direction);

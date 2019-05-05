@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,21 +11,23 @@ public class Floater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rigidbody rb = this.GetComponent<Rigidbody>();
-
-        switch (direction)
+        if (GetComponent<PhotonView>().IsMine)
         {
-            case Direction.X:
-                rb.AddForce(new Vector3(floatSpeed, 0f, 0f));
-                break;
-            case Direction.Y:
-                rb.AddForce(new Vector3(0f, floatSpeed, -(floatSpeed / 2)));
-                break;
-            case Direction.Z:
-                rb.AddForce(new Vector3(0f, 0f, floatSpeed));
-                break;
-        }
+            Rigidbody rb = this.GetComponent<Rigidbody>();
 
+            switch (direction)
+            {
+                case Direction.X:
+                    rb.AddForce(new Vector3(floatSpeed, 0f, 0f));
+                    break;
+                case Direction.Y:
+                    rb.AddForce(new Vector3(0f, floatSpeed, -(floatSpeed / 2)));
+                    break;
+                case Direction.Z:
+                    rb.AddForce(new Vector3(0f, 0f, floatSpeed));
+                    break;
+            }
+        }
     }
 
     public void SetDirection(Direction direction)

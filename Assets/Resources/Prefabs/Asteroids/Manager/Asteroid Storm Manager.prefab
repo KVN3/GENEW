@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &528343327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 528343329}
+  - component: {fileID: 528343328}
+  - component: {fileID: 719640132675413323}
+  m_Layer: 0
+  m_Name: Asteroid Storm Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &528343329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528343327}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -484, y: 500, z: -574}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &528343328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528343327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f011a9a0697084a9889b40d581b278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredAsteroidCount: 50
+  direction: 1
+  minAsteroidSize: 2
+  maxAsteroidSize: 7
+  spawnPointManager: {fileID: 3691676981607013694, guid: b5a13139d8308f7448625f09ca7be3d2,
+    type: 3}
+  SpawnPointManagerSettings:
+    rowLengthX: 65
+    rowLengthZ: 70
+    spacing: 30
+  redLavaAsteroidClasses:
+  - {fileID: 6886724347770900914, guid: 927fda0309a7c98439206f44fe276310, type: 3}
+  - {fileID: 809903063894841358, guid: fca2b059e01a9894d83828ee1e50e41b, type: 3}
+  - {fileID: 109956226302798893, guid: 58148b9b491889c47b92898c87f5ce7c, type: 3}
+  - {fileID: 974813458832678327, guid: 979237e2b0fa10943b938474ebf9ea07, type: 3}
+  - {fileID: 1089230700068131433, guid: 36fd9539a19e2f243a7fb5977c10ff90, type: 3}
+  - {fileID: 3670406445792527590, guid: 5ec0c594381498b449954f4f93f7870f, type: 3}
+  - {fileID: 992302862363043804, guid: ec67d30b22a1afa4a87730e7ce7c44f3, type: 3}
+  - {fileID: 8576369676815126197, guid: 128d6a324ca09b948abaa6490e2d4ce8, type: 3}
+  - {fileID: 4558563047950382653, guid: dbb8c20589c0a214085316f44d5f0611, type: 3}
+  - {fileID: 6690338729826212749, guid: e7d970c6d0a70d44082046dcab3a9cec, type: 3}
+  - {fileID: 1941454804917651119, guid: 016476196e4abbe4d894e90b350f1ced, type: 3}
+  - {fileID: 1780566295816976532, guid: bf11415c524ef6346a63cbd101dfff63, type: 3}
+  - {fileID: 3747169820545813102, guid: 363bc3ae906773c4d86b1d61419bdafa, type: 3}
+  - {fileID: 3410603373779587636, guid: 3a9d0ca99c1790c498296fbc0bc8c570, type: 3}
+  - {fileID: 5056916849653588840, guid: 78e2d99368c908d45acae2771d1542e8, type: 3}
+  - {fileID: 2031766216280287893, guid: 77eb0bd95d5a4d545a272d29f2fb9ef6, type: 3}
+  - {fileID: 978612998232236164, guid: 03167d1defb3af544bf0976d5b8ef476, type: 3}
+  - {fileID: 252136308684124896, guid: 139a7a08b799c6f4a84de00cb53226b6, type: 3}
+  - {fileID: 7193114030881363506, guid: b86ebbb49c1e64640aa86b24b0885ceb, type: 3}
+  - {fileID: 3665405834241219174, guid: e501d80b6cacf544e9c0befa2f337146, type: 3}
+  viewId: 990
+  asteroidLifeTimeInSeconds: 20
+--- !u!114 &719640132675413323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528343327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

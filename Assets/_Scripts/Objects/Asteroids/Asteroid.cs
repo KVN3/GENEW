@@ -18,13 +18,6 @@ public class Asteroid : MonoBehaviour
             StartCoroutine(WaitAndDestroy());
     }
 
-    //IEnumerator Explode(Vector3 position)
-    //{
-    //    smokeScreen = Instantiate(smokeScreenClass, position, Quaternion.identity);
-    //    yield return new WaitForSeconds(1);
-    //    DestroyThisAsteroid();
-    //}
-
     IEnumerator WaitAndDestroy()
     {
         yield return new WaitForSeconds(8);
@@ -37,10 +30,10 @@ public class Asteroid : MonoBehaviour
         Instantiate(smokeScreenClass, this.transform.position, Quaternion.identity);
         DestroyThisAsteroid();
 
-        if (other.gameObject.CompareTag("Ship"))
-        {
-            Ship ship = other.gameObject.GetComponent<Ship>();
-        }
+        //if (other.gameObject.CompareTag("Ship"))
+        //{
+        //    Ship ship = other.gameObject.GetComponent<Ship>();
+        //}
     }
 
     public IEnumerator SpawnBackShip(Collision other)

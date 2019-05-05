@@ -19,7 +19,6 @@ public class Shooter : MonoBehaviour
     void Awake()
     {
         photonView = GetComponent<PhotonView>();
-        sm = GetComponent<EnemySoundManager>();
     }
 
     // Shoot a projectile at a Vector3 target

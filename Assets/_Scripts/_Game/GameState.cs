@@ -121,8 +121,9 @@ public class GameState : LevelSingleton<GameState>
         moverManager.SetPlayers(playerShips);
         moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
 
-        //CirclerManager circlerManager = Instantiate(gameManagers.circlerManagerClass);
-        //circlerManager.SpawnCirclers();
+        // Asteroid Manager
+        AsteroidStormManager asteroidStormManager = Instantiate(gameManagers.asteroidStormManagerClass);
+        asteroidStormManager.spawnPointManager = spawnPointManager;
     }
 
     #region Photon

@@ -47,5 +47,6 @@ MonoBehaviour:
   - RPC_ShootAtTarget
   - RPC_SpawnCirclers
   - RPC_DropMine
+  - RPC_SpawnAsteroid
   DisableAutoOpenWizard: 1
   ShowSettings: 1
