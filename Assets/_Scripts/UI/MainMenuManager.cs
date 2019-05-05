@@ -14,7 +14,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI singleplayerText;
     public TextMeshProUGUI editShipText;
-    public TextMeshProUGUI optionsText; // Options has sound/music/resetdata
+    public TextMeshProUGUI optionsText; // Options has sound/music/resetdata/changeAccount
     public TextMeshProUGUI achievementsText;
     public TextMeshProUGUI versionText;
     public TextMeshProUGUI usernameText;
