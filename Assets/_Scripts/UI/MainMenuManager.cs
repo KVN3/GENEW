@@ -35,14 +35,14 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         if (achievementsText != null)
             achievementsText.text = LocalizationManager.GetTextByKey("ACHIEVEMENTS");
         versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 2";
-        if (PlayerPrefs.HasKey("currentAccount"))
-        {
-            // Load current account
-            Account account = Registration.GetCurrentAccount();
+        //if (PlayerPrefs.HasKey("currentAccount"))
+        //{
+        //    // Load current account
+        //    Account account = Registration.GetCurrentAccount();
 
-            usernameText.text = LocalizationManager.GetTextByKey("LOGGED_IN_AS") + ": " + account.username;
-        }
-        else
-            usernameText.text = LocalizationManager.GetTextByKey("NOT_LOGGED_IN");
+        //    usernameText.text = LocalizationManager.GetTextByKey("LOGGED_IN_AS") + ": " + account.username;
+        //}
+        //else
+        //    usernameText.text = LocalizationManager.GetTextByKey("NOT_LOGGED_IN");
     }
 }
