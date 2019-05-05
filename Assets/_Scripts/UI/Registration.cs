@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 // Also accountManager
 
@@ -29,6 +30,7 @@ public class Registration : MonoBehaviour
 
 
     public GameObject login;
+    public GameObject mainMenu;
 
     private int passwordLength = 4;
 
@@ -43,6 +45,23 @@ public class Registration : MonoBehaviour
         {
             InitAccounts();
         }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // If logged in redirect to main
+        if (GetCurrentAccount() != null)
+            GoToMainMenu();
     }
 
     private void Update()
@@ -167,6 +186,12 @@ public class Registration : MonoBehaviour
     public void GoToLogin()
     {
         login.SetActive(true);
+        gameObject.SetActive(false);
+    }
+
+    public void GoToMainMenu()
+    {
+        mainMenu.SetActive(true);
         gameObject.SetActive(false);
     }
 }
