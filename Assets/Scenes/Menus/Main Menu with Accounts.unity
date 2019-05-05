@@ -8429,6 +8429,7 @@ MonoBehaviour:
   registerText: {fileID: 1518938004}
   goToLoginText: {fileID: 1005396380}
   login: {fileID: 252317399}
+  mainMenu: {fileID: 706186048492913598}
 --- !u!1 &1244180137
 GameObject:
   m_ObjectHideFlags: 0
@@ -14841,7 +14842,7 @@ MonoBehaviour:
   singleplayerText: {fileID: 3580565088966556824}
   editShipText: {fileID: 70023624}
   optionsText: {fileID: 0}
-  achievementsText: {fileID: 0}
+  achievementsText: {fileID: 1244180139}
   versionText: {fileID: 4012942069786850813}
   usernameText: {fileID: 2030721943}
 --- !u!114 &874264669347109769
