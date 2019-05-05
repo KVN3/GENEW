@@ -27,16 +27,6 @@ public class ColorPicker : MonoBehaviour
     public ColorChangedEvent onValueChanged = new ColorChangedEvent();
     public HSVChangedEvent onHSVChanged = new HSVChangedEvent();
 
-    public void Awake()
-    {
-        Debug.Log("ON AWAKE::" + PlayerPrefsX.GetColor("LIGHT_COLOR"));
-    }
-
-    public void Update()
-    {
-        Debug.Log(PlayerPrefsX.GetColor("LIGHT_COLOR"));
-    }
-
     public Color CurrentColor
     {
         get
