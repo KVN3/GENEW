@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyClasses:
   - {fileID: 2911, guid: 63c505a1dd8051f49984077d4f9f4f68, type: 3}
-  desiredAliveEnemyCount: 5
+  desiredAliveEnemyCount: 1
   viewId: 997
 --- !u!114 &6525084361270549231
 MonoBehaviour:

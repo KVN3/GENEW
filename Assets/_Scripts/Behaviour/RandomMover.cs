@@ -26,14 +26,14 @@ public class RandomMover : EnergyBall
     private float y;
 
     private float tmp;
-    private float angulo;
+    private float angle;
     private Rigidbody rb;
 
 
     // Awake
     public override void Awake()
     {
-        base.Awake();  
+        base.Awake();
         currentBaseHeight = floatConfig.baseHeightFromGround;
     }
 
@@ -42,16 +42,16 @@ public class RandomMover : EnergyBall
     {
         base.Start();
 
-        shooterModule.SetSoundManager(enemySoundManager);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            InitFloatSettings();
 
-        InitFloatSettings();
-
-        shooterModule.SetSoundManager(enemySoundManager);
-
-        x = Random.Range(-maxVelocity, maxVelocity);
-        z = Random.Range(-maxVelocity, maxVelocity);
-        angulo = Mathf.Atan2(x, z) * (180 / 3.141592f) + 90;
-        transform.localRotation = Quaternion.Euler(0, angulo, 0);
+            x = Random.Range(-maxVelocity, maxVelocity);
+            z = Random.Range(-maxVelocity, maxVelocity);
+            angle = Mathf.Atan2(x, z) * (180 / 3.141592f) + 90;
+            transform.localRotation = Quaternion.Euler(0, angle, 0);
+        }
+            
     }
     void Update()
     {

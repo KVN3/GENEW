@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class MainMenuController : LevelSingleton<MainMenuController>
 {
@@ -27,6 +29,43 @@ public class MainMenuController : LevelSingleton<MainMenuController>
     {
         menuSoundManager.PlaySound(SoundType.CLICKBUTTON);
     }
+
+
+
+
+
+
+    public void UpdateRoomList()
+    {
+        if (PhotonNetwork.IsConnectedAndReady)
+        {
+            bool success = PhotonNetwork.GetCustomRoomList(TypedLobby.Default, "C0 = 0");
+
+            if (!success)
+            {
+                print("Refreshing rooms through UpdateRoomlist failed. Ignore this for now.");
+            }
+        }
+
+    }
+
+    public void Disconnect()
+    {
+        if (PhotonNetwork.IsConnectedAndReady)
+        {
+            PhotonNetwork.Disconnect();
+        }
+    }
+
+    public void Connect()
+    {
+        LobbyNetwork.Connect();
+    }
+
+
+
+
+
 
     public void LoadLevel()
     {
@@ -61,7 +100,7 @@ public class MainMenuController : LevelSingleton<MainMenuController>
 
         while (!operation.isDone)
         {
-            float progress = Mathf.Clamp01(operation.progress / .9f );
+            float progress = Mathf.Clamp01(operation.progress / .9f);
 
             loadingBar.value = progress;
             progressText.text = (progress * 100).ToString("F0") + "%";

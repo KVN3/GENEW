@@ -3,58 +3,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyBallProjectile : MonoBehaviour
+public class EnergyBallProjectile : EnergyBall
 {
+    // Config
     public float projSpeed;
     public float inaccuracyX;
     public float inaccuracyZ;
 
+    // Instances
     public Vector3 target;
     private Vector3 moveDirection;
 
-    private EnergyBall energyBall;
-
     // Start is called before the first frame update
-    void Start()
+    public override void Awake()
     {
-        energyBall = GetComponent<EnergyBall>();
+        base.Awake();
+
+        // Destroy after 10 seconds
+        Destroy(gameObject, 10);
 
         if (PhotonNetwork.IsMasterClient)
-            StartCoroutine(WaitAndDestroy(10));
-
-        Vector3 targ = new Vector3(target.x + +Random.Range(-inaccuracyX, inaccuracyX), target.y, target.z + Random.Range(-inaccuracyZ, inaccuracyZ));
-
-        Vector3 diff = targ - this.transform.position;
-        moveDirection = diff.normalized;
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        transform.LookAt(target, Vector3.down);
-        transform.Rotate(90, 0, 0);
-
-        Rigidbody rigidbody = this.GetComponent<Rigidbody>();
-        rigidbody.AddForce(moveDirection * projSpeed);
-    }
-
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Ship"))
         {
-            // Tell the ship it got hit and stunned
-            PlayerShip collidingShip = other.gameObject.GetComponent<PlayerShip>();
-            collidingShip.GetStunned(energyBall.shutDownDuration, "Energy projectile");
+            // Set the target, including inaccuracy
+            Vector3 targ = new Vector3(target.x + +Random.Range(-inaccuracyX, inaccuracyX), target.y, target.z + Random.Range(-inaccuracyZ, inaccuracyZ));
+
+            // Difference between target and the spawn location of this energy sphere
+            Vector3 diff = targ - this.transform.position;
+
+            // The move direction
+            moveDirection = diff.normalized;
         }
-
-
-        if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.Destroy(gameObject);
     }
 
-    IEnumerator WaitAndDestroy(int seconds)
+    private void Update()
     {
-        yield return new WaitForSeconds(seconds);
-        Destroy(gameObject);
+        // If master, handle movement. Else, smoothmove with received data from master object.
+        if (PhotonNetwork.IsMasterClient)
+        {
+            // Look at, and rotate to point at the target
+            transform.LookAt(target, Vector3.down);
+            transform.Rotate(90, 0, 0);
+
+            // Apply the force
+            GetComponent<Rigidbody>().AddForce(moveDirection * projSpeed);
+        }
+        else
+        {
+            SmoothMove();
+        }
     }
+
+
 }
