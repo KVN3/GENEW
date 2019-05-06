@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3086}
   - component: {fileID: 2636}
   - component: {fileID: 3140}
-  - component: {fileID: 3130}
+  - component: {fileID: 2645612080678793210}
   m_Layer: 10
   m_Name: astre_18
   m_TagString: Untagged
@@ -148,11 +148,11 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 3130}
+  - {fileID: 2645612080678793210}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3130
+--- !u!114 &2645612080678793210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,9 +161,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ed141d05b9f4f54da1c03722de7195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  floatSpeed: -13
+  direction: 1

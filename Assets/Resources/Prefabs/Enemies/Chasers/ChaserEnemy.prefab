@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0accb2727258f73439d8cd72123174af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shutDownDuration: 4
   enemySoundManagerClass: {fileID: 7791514189915519896, guid: febd8b341a0717a4286d9b9316fb430f,
     type: 3}
+  shutDownDuration: 4
   playSoundOnStart: 1
   floatConfig:
     floatDiff: 0.2
