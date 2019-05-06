@@ -14,7 +14,6 @@ public class Shooter : MonoBehaviour
     private bool isCloseEnough = false;
 
     private PhotonView photonView;
-    private Vector3 currentTarget;
 
     void Awake()
     {
@@ -37,21 +36,31 @@ public class Shooter : MonoBehaviour
     {
         if (isCloseEnough)
         {
-            currentTarget = target;
+            //string projectilePath = SharedResources.GetPath("EnergyBallProjectile");
+            //EnergyBallProjectile projectile = PhotonNetwork.Instantiate(projectilePath, this.transform.position, this.transform.rotation).GetComponent<EnergyBallProjectile>();
 
-            photonView.RPC("RPC_ShootAtTarget", RpcTarget.AllViaServer);
+            //projectile.target = target;
+
+            //if (sm == null)
+            //    print("Sound Manager null");
+            //else
+            //    sm.PlaySound(SoundType.SHOOTING);
+
+            photonView.RPC("RPC_ShootAtTarget", RpcTarget.AllViaServer, target);
         }
     }
 
     [PunRPC]
-    public void RPC_ShootAtTarget(PhotonMessageInfo info)
+    public void RPC_ShootAtTarget(Vector3 target, PhotonMessageInfo info)
     {
         float lag = (float)(PhotonNetwork.Time - info.SentServerTime);
 
         EnergyBallProjectile projectileClass = energyBallProjectileClasses[Random.Range(0, energyBallProjectileClasses.Length)];
         EnergyBallProjectile projectile = Instantiate(projectileClass, this.transform.position, this.transform.rotation);
 
-        projectile.target = currentTarget;
+        //EnergyBallProjectile projectile = PhotonNetwork.Instantiate(SharedResources.GetPath("EnergyBallProjectile"), this.transform.position, this.transform.rotation).GetComponent<EnergyBallProjectile>();
+
+        projectile.target = target;
 
         if (sm == null)
             print("Sound Manager null");

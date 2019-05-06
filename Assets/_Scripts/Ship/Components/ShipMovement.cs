@@ -275,7 +275,7 @@ public class ShipMovement : ShipComponent, IPunObservable
             if (hit.transform.tag.Equals("Floor"))
             {
 
-                if (distanceToGround < 4f)
+                if (distanceToGround < 9f)
                 {
                     // Some smoothing
                     float floatFactor = 50 / distanceToGround;
@@ -293,7 +293,7 @@ public class ShipMovement : ShipComponent, IPunObservable
                     floatTopBound = currentBaseHeight + floatConfig.floatDiff;
                 }
 
-                else if (hit.distance > 6f)
+                else if (hit.distance > 11f)
                 {
                     float diff = currentBaseHeight - distanceToGround;
 
@@ -309,13 +309,11 @@ public class ShipMovement : ShipComponent, IPunObservable
 
                     //parentShip.transform.position = new Vector3(parentShip.transform.position.x, parentShip.transform.position.y - .8f, parentShip.transform.position.z);
 
-                    if (hit.distance > 5.3f)
-                    {
-                        currentBaseHeight = hit.point.y + 5f;
-                        floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
-                        floatTopBound = currentBaseHeight + floatConfig.floatDiff;
-                    }
-                    //Debug.Log("New base height = " + currentBaseHeight);
+
+                    currentBaseHeight = hit.point.y + 5f;
+                    floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
+                    floatTopBound = currentBaseHeight + floatConfig.floatDiff;
+
                 }
 
                 else
