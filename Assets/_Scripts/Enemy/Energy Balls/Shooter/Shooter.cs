@@ -38,6 +38,7 @@ public class Shooter : MonoBehaviour
         if (isCloseEnough)
         {
             currentTarget = target;
+
             photonView.RPC("RPC_ShootAtTarget", RpcTarget.AllViaServer);
         }
     }
@@ -50,13 +51,12 @@ public class Shooter : MonoBehaviour
         EnergyBallProjectile projectileClass = energyBallProjectileClasses[Random.Range(0, energyBallProjectileClasses.Length)];
         EnergyBallProjectile projectile = Instantiate(projectileClass, this.transform.position, this.transform.rotation);
 
-        // EnergyBallProjectile projectile = PhotonNetwork.Instantiate(SharedResources.GetPath("EnergyBallProjectile"), transform.position, transform.rotation).GetComponent<EnergyBallProjectile>();
-
-        //   print(currentTarget.x + " " +  currentTarget.z);
-
         projectile.target = currentTarget;
 
-        sm.PlaySound(SoundType.SHOOTING);
+        if (sm == null)
+            print("Sound Manager null");
+        else
+            sm.PlaySound(SoundType.SHOOTING);
     }
 
     // Locates the closest enemy ship to gun for
