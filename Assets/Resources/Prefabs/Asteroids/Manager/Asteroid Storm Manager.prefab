@@ -54,27 +54,10 @@ MonoBehaviour:
     rowLengthX: 65
     rowLengthZ: 70
     spacing: 30
-  redLavaAsteroidClasses:
-  - {fileID: 6886724347770900914, guid: 927fda0309a7c98439206f44fe276310, type: 3}
-  - {fileID: 809903063894841358, guid: fca2b059e01a9894d83828ee1e50e41b, type: 3}
-  - {fileID: 109956226302798893, guid: 58148b9b491889c47b92898c87f5ce7c, type: 3}
-  - {fileID: 974813458832678327, guid: 979237e2b0fa10943b938474ebf9ea07, type: 3}
-  - {fileID: 1089230700068131433, guid: 36fd9539a19e2f243a7fb5977c10ff90, type: 3}
-  - {fileID: 3670406445792527590, guid: 5ec0c594381498b449954f4f93f7870f, type: 3}
-  - {fileID: 992302862363043804, guid: ec67d30b22a1afa4a87730e7ce7c44f3, type: 3}
-  - {fileID: 8576369676815126197, guid: 128d6a324ca09b948abaa6490e2d4ce8, type: 3}
-  - {fileID: 4558563047950382653, guid: dbb8c20589c0a214085316f44d5f0611, type: 3}
-  - {fileID: 6690338729826212749, guid: e7d970c6d0a70d44082046dcab3a9cec, type: 3}
-  - {fileID: 1941454804917651119, guid: 016476196e4abbe4d894e90b350f1ced, type: 3}
-  - {fileID: 1780566295816976532, guid: bf11415c524ef6346a63cbd101dfff63, type: 3}
-  - {fileID: 3747169820545813102, guid: 363bc3ae906773c4d86b1d61419bdafa, type: 3}
-  - {fileID: 3410603373779587636, guid: 3a9d0ca99c1790c498296fbc0bc8c570, type: 3}
-  - {fileID: 5056916849653588840, guid: 78e2d99368c908d45acae2771d1542e8, type: 3}
-  - {fileID: 2031766216280287893, guid: 77eb0bd95d5a4d545a272d29f2fb9ef6, type: 3}
-  - {fileID: 978612998232236164, guid: 03167d1defb3af544bf0976d5b8ef476, type: 3}
-  - {fileID: 252136308684124896, guid: 139a7a08b799c6f4a84de00cb53226b6, type: 3}
-  - {fileID: 7193114030881363506, guid: b86ebbb49c1e64640aa86b24b0885ceb, type: 3}
-  - {fileID: 3665405834241219174, guid: e501d80b6cacf544e9c0befa2f337146, type: 3}
+  asteroidClasses:
+  - {fileID: 3189, guid: 927fda0309a7c98439206f44fe276310, type: 3}
+  - {fileID: 3093, guid: fca2b059e01a9894d83828ee1e50e41b, type: 3}
+  - {fileID: 3049, guid: 58148b9b491889c47b92898c87f5ce7c, type: 3}
   viewId: 990
   asteroidLifeTimeInSeconds: 20
 --- !u!114 &719640132675413323

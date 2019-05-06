@@ -160,7 +160,7 @@ MonoBehaviour:
   floatConfig:
     floatDiff: 0.2
     floatSpeed: 0.1
-    baseHeightFromGround: 5
+    baseHeightFromGround: 8
   maxVelocity: 10
   shooterModule: {fileID: 2955}
   xMax: 1300

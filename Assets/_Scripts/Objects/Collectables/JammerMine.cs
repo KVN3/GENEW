@@ -38,6 +38,7 @@ public class JammerMine : Collectable
             }
         }
 
+        // If the mine should trigger, instantiate the explosion and destroy the mine object
         if (shouldExplode)
         {
             Instantiate(explosionClass, transform.position, Quaternion.identity);

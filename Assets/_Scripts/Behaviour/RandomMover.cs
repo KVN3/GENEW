@@ -51,7 +51,7 @@ public class RandomMover : EnergyBall
             angle = Mathf.Atan2(x, z) * (180 / 3.141592f) + 90;
             transform.localRotation = Quaternion.Euler(0, angle, 0);
         }
-            
+
     }
     void Update()
     {
@@ -127,7 +127,7 @@ public class RandomMover : EnergyBall
             if (hit.transform.tag.Equals("Floor"))
             {
 
-                if (distanceToGround < 4f)
+                if (distanceToGround < (floatConfig.baseHeightFromGround - 1))
                 {
                     // Some smoothing
                     float floatFactor = 50 / distanceToGround;
@@ -145,7 +145,7 @@ public class RandomMover : EnergyBall
                     floatTopBound = currentBaseHeight + floatConfig.floatDiff;
                 }
 
-                else if (hit.distance > 6f)
+                else if (hit.distance > (floatConfig.baseHeightFromGround + 1))
                 {
                     float diff = currentBaseHeight - distanceToGround;
 
@@ -161,13 +161,10 @@ public class RandomMover : EnergyBall
 
                     //parentShip.transform.position = new Vector3(parentShip.transform.position.x, parentShip.transform.position.y - .8f, parentShip.transform.position.z);
 
-                    if (hit.distance > 5.3f)
-                    {
-                        currentBaseHeight = hit.point.y + 5f;
-                        floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
-                        floatTopBound = currentBaseHeight + floatConfig.floatDiff;
-                    }
-                    //Debug.Log("New base height = " + currentBaseHeight);
+                    currentBaseHeight = hit.point.y + 5f;
+                    floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
+                    floatTopBound = currentBaseHeight + floatConfig.floatDiff;
+
                 }
 
                 else

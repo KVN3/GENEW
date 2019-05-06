@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Floater : MonoBehaviour, IPunObservable
+public class Floater : MonoBehaviour
 {
     [SerializeField]
     private float floatSpeed = 10f;
@@ -22,14 +22,7 @@ public class Floater : MonoBehaviour, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Float();
-        }
-        else
-        {
-            SmoothMove();
-        }
+        Float();
     }
 
     private void Float()
@@ -50,32 +43,32 @@ public class Floater : MonoBehaviour, IPunObservable
         }
     }
 
-    #region Photon
-    private Vector3 targetPos;
-    private Quaternion targetRot;
+    //#region Photon
+    //private Vector3 targetPos;
+    //private Quaternion targetRot;
 
-    // Send data if this is our ship, receive data if it is not
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(transform.position);
-            stream.SendNext(transform.rotation);
-        }
-        else
-        {
-            targetPos = (Vector3)stream.ReceiveNext();
-            targetRot = (Quaternion)stream.ReceiveNext();
-        }
-    }
+    //// Send data if this is our ship, receive data if it is not
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    if (stream.IsWriting)
+    //    {
+    //        stream.SendNext(transform.position);
+    //        stream.SendNext(transform.rotation);
+    //    }
+    //    else
+    //    {
+    //        targetPos = (Vector3)stream.ReceiveNext();
+    //        targetRot = (Quaternion)stream.ReceiveNext();
+    //    }
+    //}
 
-    // Smooth moves other player ships to their correct position and rotation
-    public void SmoothMove()
-    {
-        transform.position = Vector3.Lerp(transform.position, targetPos, 0.25f);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, 500 * Time.deltaTime);
-    }
-    #endregion
+    //// Smooth moves other player ships to their correct position and rotation
+    //public void SmoothMove()
+    //{
+    //    transform.position = Vector3.Lerp(transform.position, targetPos, 0.25f);
+    //    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, 500 * Time.deltaTime);
+    //}
+    //#endregion
 
-    
+
 }
