@@ -113,13 +113,13 @@ public class GameState : LevelSingleton<GameState>
         SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
 
         // Enemy Managers
-        //ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
-        //chaserManager.SetPlayers(playerShips);
-        //chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
+        ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
+        chaserManager.SetPlayers(playerShips);
+        chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
 
-        //MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
-        //moverManager.SetPlayers(playerShips);
-        //moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+        MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
+        moverManager.SetPlayers(playerShips);
+        moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
 
         // Asteroid Manager
         AsteroidStormManager asteroidStormManager = Instantiate(gameManagers.asteroidStormManagerClass);

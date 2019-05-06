@@ -81,7 +81,7 @@ public class AsteroidStormManager : MonoBehaviour
     {
         // Has to be same for all clients
         Vector3 sp = spawnPoint.position;
-        string asteroidPath = SharedResources.GetPath("astre", Random.Range(0, 1));
+        string asteroidPath = SharedResources.GetPath("astre", Random.Range(0, 21));
 
         // On all clients
         photonView.RPC("RPC_SpawnAsteroid", RpcTarget.AllViaServer, sp.x, sp.y, sp.z, asteroidPath);
@@ -91,7 +91,7 @@ public class AsteroidStormManager : MonoBehaviour
     public void RPC_SpawnAsteroid(float x, float y, float z, string asteroidPath)
     {
         Asteroid asteroid = PhotonNetwork.Instantiate(asteroidPath, new Vector3(x, y, z), Quaternion.identity).GetComponent<Asteroid>();
-        //asteroid.transform.localScale = asteroid.transform.localScale * Random.Range(minAsteroidSize, maxAsteroidSize);
+        asteroid.transform.localScale = asteroid.transform.localScale * Random.Range(minAsteroidSize, maxAsteroidSize);
         asteroid.manager = this;
         asteroid.lifeTimeInSeconds = asteroidLifeTimeInSeconds;
 
