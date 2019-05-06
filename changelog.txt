@@ -1,0 +1,58 @@
+CHANGELOG
+
+GENERIC
++ Multiplayer implementation!
++ Lobby & Create Room system added
++ Highscores/leaderboards added
++ Achievements added
++ Shipyard custom colors implemented and boxes made smaller in preperation of future unlockables update
+
++ Ship height floating up and down hill added
++ Ship ramps system added
+
++ Analytics custom events added
+
++ SFX changes
++ Sound ranges fixed
+
++ Wind trail effect added
++ Camera push back effect after boost 
+
++ Cave spikes break apart on impact, slowing ship down
++ Singleplayer ghosts system added
+
+ENEMIES
++ All enemies float now, instead of having a static position
+	+ Enemies float up and down hills / ramps
++ Increased detection range for all enemies
+
++ Shooters have a randomized accurracy now
++ Shooters rate of fire increased
+
++ Chasers can fly now
++ Chasers much more aggressive, they will actively hunt player ships down
+
+ITEMS
++ Speed boost item made much more powerful
++ Jammer projectile speed increased
++ Jammer mine detection range increased
+
+MAPS
++ Wasteland layout adjusted for higher speed gameplay
++ Wasteland mountain road area with ramps added
+
++ More pointers, signs and curbs to give direction
++ Decorations added and adjusted
++ Stepping stones floating tweaked to be less of a burden late game
+
++ Purple fog added
++ Scene lighting much brighter
+
+- Several shortcuts removed, as they weren't being used enough
+
+OLD BUGS
++ Camera twitching fixed
++ Wall glitching on stun fixed
+
+
+

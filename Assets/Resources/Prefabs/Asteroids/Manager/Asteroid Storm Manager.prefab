@@ -59,7 +59,7 @@ MonoBehaviour:
   - {fileID: 3093, guid: fca2b059e01a9894d83828ee1e50e41b, type: 3}
   - {fileID: 3049, guid: 58148b9b491889c47b92898c87f5ce7c, type: 3}
   viewId: 990
-  asteroidLifeTimeInSeconds: 20
+  asteroidLifeTimeInSeconds: 30
 --- !u!114 &719640132675413323
 MonoBehaviour:
   m_ObjectHideFlags: 0
