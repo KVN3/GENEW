@@ -158,4 +158,19 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
             pingCoroutine = StartCoroutine(C_SetPing());
     }
     #endregion
+
+    public static void ReturnToMain()
+    {
+        if (PhotonNetwork.InRoom)
+            PhotonNetwork.LeaveRoom();
+
+        Instance.ResetNetwork();
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        PhotonNetwork.LoadLevel(ScenesInformation.sceneNames[SceneTitle.Main]);
+
+        if (PhotonNetwork.IsConnectedAndReady)
+        {
+            PhotonNetwork.Disconnect();
+        }
+    }
 }

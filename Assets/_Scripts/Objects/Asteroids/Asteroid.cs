@@ -26,7 +26,7 @@ public class Asteroid : MonoBehaviour
 
     IEnumerator WaitAndDestroy()
     {
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(lifeTimeInSeconds);
         DestroyThisAsteroid();
     }
 

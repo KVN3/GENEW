@@ -115,7 +115,7 @@ MonoBehaviour:
   explosionClass: {fileID: 7903595072604452153, guid: f7efb0d9df2264096af57128df85dddb,
     type: 3}
   manager: {fileID: 0}
-  lifeTimeInSeconds: 10
+  lifeTimeInSeconds: 30
   floatSpeed: 10
 --- !u!65 &2637
 BoxCollider:
@@ -161,7 +161,8 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 0
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
