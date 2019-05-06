@@ -21,36 +21,43 @@ public class EnergyBallProjectile : EnergyBall
 
         // Destroy after 10 seconds
         Destroy(gameObject, 10);
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            // Set the target, including inaccuracy
-            Vector3 targ = new Vector3(target.x + +Random.Range(-inaccuracyX, inaccuracyX), target.y, target.z + Random.Range(-inaccuracyZ, inaccuracyZ));
-
-            // Difference between target and the spawn location of this energy sphere
-            Vector3 diff = targ - this.transform.position;
-
-            // The move direction
-            moveDirection = diff.normalized;
-        }
     }
 
-    private void Update()
+    private void Start()
+    {
+        //if (PhotonNetwork.IsMasterClient)
+        //{
+        // Set the target, including inaccuracy
+        Vector3 targ = new Vector3(target.x + Random.Range(-inaccuracyX, inaccuracyX), target.y, target.z + Random.Range(-inaccuracyZ, inaccuracyZ));
+
+        // Difference between target and the spawn location of this energy sphere
+        Vector3 diff = targ - this.transform.position;
+
+        // The move direction
+        moveDirection = diff.normalized;
+        //}
+    }
+
+    private void FixedUpdate()
     {
         // If master, handle movement. Else, smoothmove with received data from master object.
-        if (PhotonNetwork.IsMasterClient)
-        {
-            // Look at, and rotate to point at the target
-            transform.LookAt(target, Vector3.down);
-            transform.Rotate(90, 0, 0);
+        //if (PhotonNetwork.IsMasterClient)
+        //{
+        //    Debug.Log("Master handling EnergyBall");
 
-            // Apply the force
-            GetComponent<Rigidbody>().AddForce(moveDirection * projSpeed);
-        }
-        else
-        {
-            SmoothMove();
-        }
+        // Look at, and rotate to point at the target
+        transform.LookAt(target, Vector3.down);
+        transform.Rotate(90, 0, 0);
+
+        // Apply the force
+        GetComponent<Rigidbody>().AddForce(moveDirection * projSpeed);
+        //}
+        //else
+        //{
+        //    print("Client reading Energyball Movement");
+
+        //    //SmoothMove();
+        //}
     }
 
 

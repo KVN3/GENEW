@@ -10,8 +10,8 @@ public class ShooterController : MonoBehaviour
 
     void Start()
     {
-        if (PhotonNetwork.IsMasterClient)
-            StartCoroutine(PerformFiring());
+        //if (PhotonNetwork.IsMasterClient)
+        StartCoroutine(PerformFiring());
     }
 
     IEnumerator PerformFiring()

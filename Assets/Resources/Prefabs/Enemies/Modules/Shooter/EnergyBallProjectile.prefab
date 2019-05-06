@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2552}
   - component: {fileID: 2484}
   - component: {fileID: 2983}
-  - component: {fileID: 2931}
   m_Layer: 13
   m_Name: EnergyBallProjectile
   m_TagString: EnergyBall
@@ -126,29 +125,7 @@ MonoBehaviour:
     type: 3}
   shutDownDuration: 4
   playSoundOnStart: 0
-  projSpeed: 5
-  inaccuracyX: 0
-  inaccuracyZ: 0
+  projSpeed: 200
+  inaccuracyX: 10
+  inaccuracyZ: 10
   target: {x: 0, y: 0, z: 0}
---- !u!114 &2931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 2983}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
