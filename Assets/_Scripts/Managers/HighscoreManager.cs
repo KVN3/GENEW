@@ -8,6 +8,7 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
     private List<HighscoreEntry> highscoreEntryList;
 
     private readonly string key = "HighscoreTable";
+    private readonly string personalKey = "Highscore";
 
     protected override void Awake()
     {
@@ -93,7 +94,7 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
     public void ResetHighscores()
     {
         PlayerPrefs.DeleteKey(key);
-        PlayerPrefs.DeleteKey("Highscore");
+        PlayerPrefs.DeleteKey(personalKey);
         InitHighscores();
     }
 }

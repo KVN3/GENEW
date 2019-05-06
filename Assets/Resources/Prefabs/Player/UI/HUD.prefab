@@ -6553,7 +6553,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 3
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba0cf5d82adc78448a16bdeea1927a23, type: 2}
   m_sharedMaterial: {fileID: 21833543037167664, guid: ba0cf5d82adc78448a16bdeea1927a23,
@@ -6623,13 +6623,13 @@ MonoBehaviour:
   m_margin: {x: -89.949196, y: 0, z: -97.80213, w: -71.162094}
   m_textInfo:
     textComponent: {fileID: 241209226968038736}
-    characterCount: 1
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0

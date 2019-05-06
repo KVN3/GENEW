@@ -185,11 +185,6 @@ public class PlayerShip : Ship
                     levelSoundManager.PlaySound(SoundType.VICTORY);
 
                     foreach (TimeSpan time in runData.raceTimes)
-                    {
-                        runData.totalTime += time;
-                    }
-
-                    foreach (TimeSpan time in runData.raceTimes)
                         runData.totalTime += time;
 
                     // Leaderboard
