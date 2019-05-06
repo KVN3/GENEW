@@ -120,10 +120,6 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
         if (health < 1)
         {
-            //PhotonNetwork.Destroy(playerShip.gameObject);
-            //Destroy(playerCamera.gameObject);
-
-            // TO DO: Respawning
         }
 
     }

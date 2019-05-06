@@ -79,23 +79,25 @@ public class AsteroidStormManager : MonoBehaviour
 
     private void SpawnAsteroid(SpawnPoint spawnPoint)
     {
+        // Has to be same for all clients
         Vector3 sp = spawnPoint.position;
-        photonView.RPC("RPC_SpawnAsteroid", RpcTarget.AllViaServer, sp.x, sp.y, sp.z);
+        string asteroidPath = SharedResources.GetPath("astre", Random.Range(0, 1));
+
+        // On all clients
+        photonView.RPC("RPC_SpawnAsteroid", RpcTarget.AllViaServer, sp.x, sp.y, sp.z, asteroidPath);
     }
 
     [PunRPC]
-    public void RPC_SpawnAsteroid(float x, float y, float z)
+    public void RPC_SpawnAsteroid(float x, float y, float z, string asteroidPath)
     {
-        //LavaAsteroid asteroidClass = redLavaAsteroidClasses[Random.Range(0, redLavaAsteroidClasses.Length)];
-        string asteroidPath = SharedResources.GetPath("astre", Random.Range(0, 21));
         Asteroid asteroid = PhotonNetwork.Instantiate(asteroidPath, new Vector3(x, y, z), Quaternion.identity).GetComponent<Asteroid>();
-        asteroid.transform.localScale = asteroid.transform.localScale * Random.Range(minAsteroidSize, maxAsteroidSize);
+        //asteroid.transform.localScale = asteroid.transform.localScale * Random.Range(minAsteroidSize, maxAsteroidSize);
         asteroid.manager = this;
         asteroid.lifeTimeInSeconds = asteroidLifeTimeInSeconds;
 
-        Floater floater = asteroid.gameObject.AddComponent<Floater>();
-        floater.SetDirection(direction);
-        floater.SetFloatSpeed(-16f);
+        //Floater floater = asteroid.gameObject.AddComponent<Floater>();
+        //floater.SetDirection(direction);
+        //floater.SetFloatSpeed(-16f);
 
         asteroids.Add(asteroid);
     }

@@ -2636,7 +2636,7 @@ MonoBehaviour:
       type: 3}
     circlerManagerClass: {fileID: 8451753262998984109, guid: e47d4bc842278bd45bec02cdbcc97969,
       type: 3}
-    asteroidStormManagerClass: {fileID: 2057598995073942973, guid: 413e5dc371a4925408826a8aabf3c924,
+    asteroidStormManagerClass: {fileID: 528343328, guid: dd6f0b3646b8a2042b5b1cc738cf2658,
       type: 3}
     raceManagerClass: {fileID: 5850534155415031341, guid: 10c803b6aeb348642b0e5cd41d566b11,
       type: 3}

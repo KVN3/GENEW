@@ -117,13 +117,13 @@ public class GameState : LevelSingleton<GameState>
         //chaserManager.SetPlayers(playerShips);
         //chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
 
-        MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
-        moverManager.SetPlayers(playerShips);
-        moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+        //MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
+        //moverManager.SetPlayers(playerShips);
+        //moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
 
         // Asteroid Manager
-        //AsteroidStormManager asteroidStormManager = Instantiate(gameManagers.asteroidStormManagerClass);
-        //asteroidStormManager.spawnPointManager = spawnPointManager;
+        AsteroidStormManager asteroidStormManager = Instantiate(gameManagers.asteroidStormManagerClass);
+        asteroidStormManager.spawnPointManager = spawnPointManager;
     }
 
     #region Photon
