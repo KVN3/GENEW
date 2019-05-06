@@ -25,7 +25,12 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         Instance = this;
         photonView = GetComponent<PhotonView>();
 
-        PlayerName = "Kevin#" + Random.Range(1000, 9999);
+
+        Account account = Registration.GetCurrentAccount();
+        PhotonNetwork.LocalPlayer.NickName = account.username + "#" + Random.Range(1000, 9999);
+        PlayerName = PhotonNetwork.LocalPlayer.NickName;
+
+        //PlayerName = "Kevin#" + Random.Range(1000, 9999);
 
         // Higher bandwidth cost, smoother movement
         PhotonNetwork.SendRate = 120;

@@ -90,6 +90,11 @@ public class PlayerController : MonoBehaviour
             PlayerNetwork.Instance.ResetNetwork();
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             PhotonNetwork.LoadLevel(ScenesInformation.sceneNames[SceneTitle.Main]);
+
+            if (PhotonNetwork.IsConnectedAndReady)
+            {
+                PhotonNetwork.Disconnect();
+            }
         }
 
         // Breaking

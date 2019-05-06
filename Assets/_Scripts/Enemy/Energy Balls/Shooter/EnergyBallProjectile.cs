@@ -3,48 +3,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyBallProjectile : MonoBehaviour
+public class EnergyBallProjectile : EnergyBall
 {
+    // Config
     public float projSpeed;
     public float inaccuracyX;
     public float inaccuracyZ;
 
+    // Instances
     public Vector3 target;
     private Vector3 moveDirection;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Awake()
     {
+        base.Awake();
+
+        // Destroy after 10 seconds
+        Destroy(gameObject, 10);
+
         if (PhotonNetwork.IsMasterClient)
-            StartCoroutine(WaitAndDestroy(10));
+        {
+            // Set the target, including inaccuracy
+            Vector3 targ = new Vector3(target.x + +Random.Range(-inaccuracyX, inaccuracyX), target.y, target.z + Random.Range(-inaccuracyZ, inaccuracyZ));
 
-        Vector3 targ = new Vector3(target.x + +Random.Range(-inaccuracyX, inaccuracyX), target.y, target.z + Random.Range(-inaccuracyZ, inaccuracyZ));
+            // Difference between target and the spawn location of this energy sphere
+            Vector3 diff = targ - this.transform.position;
 
-        Vector3 diff = targ - this.transform.position ;
-        moveDirection = diff.normalized;
+            // The move direction
+            moveDirection = diff.normalized;
+        }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        transform.LookAt(target, Vector3.down);
-        transform.Rotate(90, 0, 0);
+        // If master, handle movement. Else, smoothmove with received data from master object.
+        if (PhotonNetwork.IsMasterClient)
+        {
+            // Look at, and rotate to point at the target
+            transform.LookAt(target, Vector3.down);
+            transform.Rotate(90, 0, 0);
 
-        Rigidbody rigidbody = this.GetComponent<Rigidbody>();
-        rigidbody.AddForce(moveDirection * projSpeed);
+            // Apply the force
+            GetComponent<Rigidbody>().AddForce(moveDirection * projSpeed);
+        }
+        else
+        {
+            SmoothMove();
+        }
     }
 
-    void OnCollisionEnter(Collision other)
-    {
-        //if (PhotonNetwork.IsMasterClient)
-        //    Destroy(gameObject);
-    }
 
-    IEnumerator WaitAndDestroy(int seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-
-       
-            Destroy(gameObject);
-    }
 }

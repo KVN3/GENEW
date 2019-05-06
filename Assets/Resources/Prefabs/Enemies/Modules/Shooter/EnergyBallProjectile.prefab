@@ -13,11 +13,8 @@ GameObject:
   - component: {fileID: 2100}
   - component: {fileID: 2552}
   - component: {fileID: 2484}
-  - component: {fileID: 2913}
-  - component: {fileID: 2550}
   - component: {fileID: 2983}
   - component: {fileID: 2931}
-  - component: {fileID: 2974}
   m_Layer: 13
   m_Name: EnergyBallProjectile
   m_TagString: EnergyBall
@@ -113,35 +110,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 1
---- !u!114 &2913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e6ed94d7b1ce6341b8bfc64c4664818, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shutDownDuration: 4
-  enemySoundManagerClass: {fileID: 7791514189915519896, guid: febd8b341a0717a4286d9b9316fb430f,
-    type: 3}
-  playSoundOnStart: 1
---- !u!135 &2550
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,10 +122,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f75cc6040b6a794393240a66b8ff863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projSpeed: 200
-  inaccuracyX: 10
-  inaccuracyZ: 10
-  target: {x: 1266.6234, y: 4.877062, z: -27.871414}
+  enemySoundManagerClass: {fileID: 7791514189915519896, guid: febd8b341a0717a4286d9b9316fb430f,
+    type: 3}
+  shutDownDuration: 4
+  playSoundOnStart: 0
+  projSpeed: 5
+  inaccuracyX: 0
+  inaccuracyZ: 0
+  target: {x: 0, y: 0, z: 0}
 --- !u!114 &2931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,22 +148,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 2974}
+  - {fileID: 2983}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0

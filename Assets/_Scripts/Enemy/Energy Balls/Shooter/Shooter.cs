@@ -19,18 +19,26 @@ public class Shooter : MonoBehaviour
     void Awake()
     {
         photonView = GetComponent<PhotonView>();
+
+
+    }
+
+    void Start()
+    {
+        // Find the sound manager
+        sm = transform.Find("EnemySoundManager(Clone)").gameObject.GetComponent<EnemySoundManager>();
+        if (sm == null)
+            sm = transform.Find("Enemy Sound Manager(Clone)").gameObject.GetComponent<EnemySoundManager>();
+
     }
 
     // Shoot a projectile at a Vector3 target
     public void Fire(Vector3 target)
     {
-        if (photonView.IsMine)
+        if (isCloseEnough)
         {
-            if (isCloseEnough)
-            {
-                currentTarget = target;
-                photonView.RPC("RPC_ShootAtTarget", RpcTarget.AllViaServer);
-            }
+            currentTarget = target;
+            photonView.RPC("RPC_ShootAtTarget", RpcTarget.AllViaServer);
         }
     }
 
@@ -39,23 +47,17 @@ public class Shooter : MonoBehaviour
     {
         float lag = (float)(PhotonNetwork.Time - info.SentServerTime);
 
-        sm.PlaySound(SoundType.SHOOTING);
+        EnergyBallProjectile projectileClass = energyBallProjectileClasses[Random.Range(0, energyBallProjectileClasses.Length)];
+        EnergyBallProjectile projectile = Instantiate(projectileClass, this.transform.position, this.transform.rotation);
 
-        //EnergyBallProjectile projectile = energyBallProjectileClasses[Random.Range(0, energyBallProjectileClasses.Length)];
-        //Instantiate(projectile, this.transform.position, this.transform.rotation);
+        // EnergyBallProjectile projectile = PhotonNetwork.Instantiate(SharedResources.GetPath("EnergyBallProjectile"), transform.position, transform.rotation).GetComponent<EnergyBallProjectile>();
 
-        EnergyBallProjectile projectile = PhotonNetwork.Instantiate(SharedResources.GetPath("EnergyBallProjectile"), transform.position, transform.rotation).GetComponent<EnergyBallProjectile>();
+        //   print(currentTarget.x + " " +  currentTarget.z);
+
         projectile.target = currentTarget;
-    }
 
-    // Destroy this object if it has no parent object
-    //private void DestroyIfNoParent()
-    //{
-    //    if (transform.parent == null)
-    //    {
-    //        PhotonNetwork.Destroy(gameObject);
-    //    }
-    //}
+        sm.PlaySound(SoundType.SHOOTING);
+    }
 
     // Locates the closest enemy ship to gun for
     public Vector3 GetClosestTarget()
@@ -68,18 +70,23 @@ public class Shooter : MonoBehaviour
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
+        // Go through each ship in the list of targets
         foreach (PlayerShip target in targets)
         {
             Vector3 potentialTargetPosition = target.transform.position;
 
             Vector3 directionToTarget = potentialTargetPosition - currentPosition;
 
+            // distance to target
             float dSqrToTarget = directionToTarget.sqrMagnitude;
 
+            // If closer than last found ship
             if (dSqrToTarget < closestDistanceSqr)
             {
+                // This is now the closest ship
                 closestDistanceSqr = dSqrToTarget;
 
+                // If within detection range
                 if (closestDistanceSqr < minDistance)
                 {
                     withinRange = true;

@@ -8,16 +8,25 @@ using Photon.Pun;
 
 public class EnergyBall : MonoBehaviour, IPunObservable
 {
-    public int shutDownDuration = 4;
+    #region variables
     public EnemySoundManager enemySoundManagerClass;
+
+    // Config settings
+    public int shutDownDuration = 4;
     public bool playSoundOnStart = true;
 
+    // Instances
     protected EnemySoundManager enemySoundManager;
     protected EnemyManager manager;
+    public void SetManager(EnemyManager manager)
+    {
+        this.manager = manager;
+    }
+    #endregion
 
     public virtual void Awake()
     {
-        enemySoundManager = Instantiate(enemySoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
+        enemySoundManager = Instantiate(enemySoundManagerClass, transform.position, transform.rotation, this.transform);
     }
 
     public virtual void Start()
@@ -26,15 +35,7 @@ public class EnergyBall : MonoBehaviour, IPunObservable
             enemySoundManager.PlaySound(SoundType.RESTART);
     }
 
-    public void Update()
-    {
-        // TO DO REMOVE DEBUGGING SOUND RANGE
-        if (Input.GetKey(KeyCode.Z))
-        {
-            enemySoundManager.PlaySound(SoundType.RESTART);
-        }
-    }
-
+    #region collision
     public virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Ship"))
@@ -67,11 +68,7 @@ public class EnergyBall : MonoBehaviour, IPunObservable
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.Destroy(gameObject);
     }
-
-    public void SetManager(EnemyManager manager)
-    {
-        this.manager = manager;
-    }
+    #endregion
 
     #region Photon
     private Vector3 targetPos;

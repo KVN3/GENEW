@@ -143,6 +143,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spherer Spike (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4263053198740042483, guid: 5825837e215f1f24996907f24e5acb0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4263053198740042482, guid: 5825837e215f1f24996907f24e5acb0e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -699,6 +704,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spherer Spike (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263053198740042483, guid: 5825837e215f1f24996907f24e5acb0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4263053198740042482, guid: 5825837e215f1f24996907f24e5acb0e,
         type: 3}
@@ -1310,6 +1320,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spherer Spike (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4263053198740042483, guid: 5825837e215f1f24996907f24e5acb0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4263053198740042482, guid: 5825837e215f1f24996907f24e5acb0e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1472,6 +1487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spherer Spike (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263053198740042483, guid: 5825837e215f1f24996907f24e5acb0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4263053198740042482, guid: 5825837e215f1f24996907f24e5acb0e,
         type: 3}
@@ -1891,6 +1911,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spherer Spike (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4263053198740042483, guid: 5825837e215f1f24996907f24e5acb0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4263053198740042482, guid: 5825837e215f1f24996907f24e5acb0e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2164,6 +2189,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spherer Spike (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4263053198740042483, guid: 5825837e215f1f24996907f24e5acb0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4263053198740042482, guid: 5825837e215f1f24996907f24e5acb0e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2338,6 +2368,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spherer Spike (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4263053198740042483, guid: 5825837e215f1f24996907f24e5acb0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4263053198740042482, guid: 5825837e215f1f24996907f24e5acb0e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2495,6 +2530,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spherer Spike
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263053198740042483, guid: 5825837e215f1f24996907f24e5acb0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4263053198740042482, guid: 5825837e215f1f24996907f24e5acb0e,
         type: 3}

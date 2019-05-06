@@ -9,6 +9,13 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+
+        Connect();
+        
+    }
+
+    public static void Connect()
+    {
         if (PhotonNetwork.IsConnected)
             return;
 
@@ -37,8 +44,6 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
         {
             MainCanvasManager.instance.LobbyCanvas.transform.SetAsLastSibling();
             MainCanvasManager.instance.CurrentRoomCanvas.transform.SetAsFirstSibling();
-            //MainCanvasManager.instance.LobbyCanvas.gameObject.SetActive(true);
-            //MainCanvasManager.instance.CurrentRoomCanvas.gameObject.SetActive(false);
         }
 
     }

@@ -142,7 +142,7 @@ public static class SharedResources
         switch (prefabName)
         {
             case "astre":
-                path = Path.Combine("Prefabs", "Asteroids", actualPrefabName);
+                path = Path.Combine("Prefabs", "Asteroids", "Objects", actualPrefabName);
                 break;
         }
 
