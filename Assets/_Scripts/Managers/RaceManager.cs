@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RaceManager : MonoBehaviour
 {
+    public PlayerShip[] allShips { get; set; }
+    public PlayerShip[] shipOrder { get; set; }
+
     // Global variable
     public static bool raceStarted = false;
 
@@ -16,5 +19,19 @@ public class RaceManager : MonoBehaviour
         Instantiate(countDownController, transform);
 
         //raceStarted = true;
+    }
+
+    private void Update()
+    {
+        foreach (PlayerShip ship in allShips)
+        {
+            shipOrder[ship.GetShipPos(allShips) - 1] = ship;
+        }
+    }
+
+    public void SetPlayers(PlayerShip[] players)
+    {
+        allShips = players;
+        shipOrder = new PlayerShip[allShips.Length];
     }
 }

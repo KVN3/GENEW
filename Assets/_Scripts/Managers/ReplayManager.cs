@@ -13,7 +13,6 @@ public class ReplayManager : LevelSingleton<ReplayManager>
 
     private readonly string key = "ReplayData";
 
-    // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
@@ -24,7 +23,7 @@ public class ReplayManager : LevelSingleton<ReplayManager>
             string jsonString = PlayerPrefs.GetString(key);
             ReplayData replayData = JsonUtility.FromJson<ReplayData>(jsonString);
         }
-        else // Create and save new highscores
+        else // Create and save new replays
         {
             InitReplay();
         }
@@ -49,8 +48,11 @@ public class ReplayManager : LevelSingleton<ReplayManager>
         ReplayData replayData = JsonUtility.FromJson<ReplayData>(jsonString);
 
         // Create new replayData if null
-        if (replayData.replays == null)
-            replayData = new ReplayData { replays = new List<Replay>() };
+        if (replayData == null)
+        {
+            replayList = new List<Replay>();
+            replayData = new ReplayData { replays = replayList };
+        }
 
         // Create
         Replay replay = new Replay { id = replayData.replays.Count, playerName = playerName, stage = stage, posx = posx, posy = posy, posz = posz, rotations = rotations, lapTime = lapTime };
@@ -88,6 +90,11 @@ public class ReplayManager : LevelSingleton<ReplayManager>
         return replayData.replays.FirstOrDefault(x => x.id == id);
     }
 
+    [ContextMenu("Delete Replay Data")]
+    public void DeleteReplayData()
+    {
+        PlayerPrefs.DeleteKey(key);
+    }
 }
 
 public class ReplayData

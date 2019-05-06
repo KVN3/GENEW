@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HighscoreManager : LevelSingleton<HighscoreManager>
@@ -66,11 +67,19 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
         PlayerPrefs.Save();
     }
 
-    public List<HighscoreEntry> GetHighscores()
+    //public List<HighscoreEntry> GetHighscores()
+    //{
+    //    string jsonString = PlayerPrefs.GetString(key);
+    //    Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+    //    return highscores.highscoreEntryList;
+    //}
+
+    public List<HighscoreEntry> GetHighscoresByStage(string stage)
     {
         string jsonString = PlayerPrefs.GetString(key);
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
-        return highscores.highscoreEntryList;
+        List<HighscoreEntry> list = highscores.highscoreEntryList.Where(h => h.stage == stage).ToList();
+        return list;
     }
 
     public void SortHighscores(List<HighscoreEntry> highscoreEntryList)
