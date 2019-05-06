@@ -11,12 +11,15 @@ public class CountDownController : MonoBehaviour
     void Start()
     {
         CountDown = 3;
-        CountDownText = CountDown.ToString();
+        CountDownText = LocalizationManager.GetTextByKey("GET_A_FAST_TIME");
         StartCoroutine(StartCountDown());
     }
 
     IEnumerator StartCountDown()
     {
+        CountDownText = LocalizationManager.GetTextByKey("GET_A_FAST_TIME");
+        yield return new WaitForSeconds(2f);
+        CountDownText = CountDown.ToString();
         for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(1f);

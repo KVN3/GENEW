@@ -93,6 +93,7 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
     public void ResetHighscores()
     {
         PlayerPrefs.DeleteKey(key);
+        PlayerPrefs.DeleteKey("Highscore");
         InitHighscores();
     }
 }

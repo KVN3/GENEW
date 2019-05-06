@@ -22,10 +22,10 @@ public class AchievementManager : LevelSingleton<AchievementManager>
         // Create achivements
         List<Achievement> achievements = new List<Achievement>
         {
-            new Achievement(0, "Fast lap 1", "Beat bronze lap time on Large Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(1, "Fast lap 2", "Beat silver lap time on Large Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(2, "Fast lap 3", "Beat gold lap time on Large Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(3, "Fast lap 4", "Beat platinum lap time on Large Wasteland", AchievementType.LAPTIME, 1f)
+            new Achievement(0, "Fast lap 1", "Beat bronze lap time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
+            new Achievement(1, "Fast lap 2", "Beat silver lap time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
+            new Achievement(2, "Fast lap 3", "Beat gold lap time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
+            new Achievement(3, "Fast lap 4", "Beat platinum lap time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f)
         };
 
         // Save

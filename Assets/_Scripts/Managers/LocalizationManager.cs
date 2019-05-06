@@ -89,9 +89,12 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("BEST", "BEST");
 
         // Popups
+        NLDict.Add("GET_A_FAST_TIME", "Haal de snelste rondetijd!");
         NLDict.Add("GO", "START");
         NLDict.Add("WRONG_WAY", "VERKEERDE RICHTING");
         NLDict.Add("FINAL_LAP", "LAATSTE RONDE");
+
+        // Items
         NLDict.Add("E_TO_USE_ITEM", "Druk 'E' om voorwerp te gebruiken");
         NLDict.Add("USE_ITEM_MINE", "Druk 'E' om een verlammende mine te plaatsen");
         NLDict.Add("USE_ITEM_MISSILE", "Druk 'E' om een verlammend projectiel te schieten");
@@ -182,6 +185,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("BEST", "BEST");
 
         // Popups
+        ENDict.Add("GET_A_FAST_TIME", "Get the fastest laptime!");
         ENDict.Add("GO", "GO!");
         ENDict.Add("WRONG_WAY", "WRONG WAY");
         ENDict.Add("FINAL_LAP", "FINAL LAP");

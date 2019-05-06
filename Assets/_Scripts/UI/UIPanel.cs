@@ -66,6 +66,7 @@ public class UIPanel : UIBehaviour
 
     [Header("RaceStartScreen")]
     public TextMeshProUGUI countDownText;
+    public TextMeshProUGUI countDownShadow;
 
     [Header("CountDown")]
     public CountDownController countDownController;
@@ -248,7 +249,16 @@ public class UIPanel : UIBehaviour
 
         #region Race Start Screen
 
-        //countDownText.text = countDownController.CountDownText;
+        if (countDownController != null)
+        {
+            countDownText.text = countDownController.CountDownText;
+            countDownShadow.text = countDownController.CountDownText;
+        }
+        else
+        {
+            countDownText.text = "";
+            countDownShadow.text = "";
+        }
 
         #endregion
 
