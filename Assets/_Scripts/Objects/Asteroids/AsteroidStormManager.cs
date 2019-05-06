@@ -13,7 +13,7 @@ public class AsteroidStormManager : MonoBehaviour
 
     public SpawnPointManager spawnPointManager;
     public SpawnPointManagerSettings SpawnPointManagerSettings;
-    public LavaAsteroid[] redLavaAsteroidClasses;
+    public Asteroid[] asteroidClasses;
 
     // Currently spawned items
     private List<Asteroid> asteroids;
@@ -30,7 +30,7 @@ public class AsteroidStormManager : MonoBehaviour
     void Start()
     {
         // Assertions
-        Assert.IsNotNull(redLavaAsteroidClasses);
+        Assert.IsNotNull(asteroidClasses);
 
         // Initializations
         spawnPointManager.settings = SpawnPointManagerSettings;
@@ -79,18 +79,29 @@ public class AsteroidStormManager : MonoBehaviour
 
     private void SpawnAsteroid(SpawnPoint spawnPoint)
     {
+        string asteroidPath = SharedResources.GetPath("astre", Random.Range(0, 4));
+        Asteroid asteroid = PhotonNetwork.Instantiate(asteroidPath, spawnPoint.position, Quaternion.identity).GetComponent<Asteroid>();
+        asteroid.transform.localScale = asteroid.transform.localScale * Random.Range(minAsteroidSize, maxAsteroidSize);
+        asteroid.manager = this;
+        asteroid.lifeTimeInSeconds = asteroidLifeTimeInSeconds;
+        asteroids.Add(asteroid);
+
+
         // Has to be same for all clients
-        Vector3 sp = spawnPoint.position;
-        string asteroidPath = SharedResources.GetPath("astre", Random.Range(0, 21));
+        //Vector3 sp = spawnPoint.position;
+        //string asteroidPath = SharedResources.GetPath("astre", Random.Range(0, 21));
 
         // On all clients
-        photonView.RPC("RPC_SpawnAsteroid", RpcTarget.AllViaServer, sp.x, sp.y, sp.z, asteroidPath);
+        //photonView.RPC("RPC_SpawnAsteroid", RpcTarget.AllViaServer, sp, asteroidPath);
     }
 
     [PunRPC]
-    public void RPC_SpawnAsteroid(float x, float y, float z, string asteroidPath)
+    public void RPC_SpawnAsteroid(Vector3 sp, string asteroidPath)
     {
-        Asteroid asteroid = PhotonNetwork.Instantiate(asteroidPath, new Vector3(x, y, z), Quaternion.identity).GetComponent<Asteroid>();
+        Asteroid asteroidClass = asteroidClasses[Random.Range(0, asteroidClasses.Length)];
+        Asteroid asteroid = Instantiate(asteroidClass, sp, Quaternion.identity);
+
+        //Asteroid asteroid = PhotonNetwork.Instantiate(asteroidPath, sp, Quaternion.identity).GetComponent<Asteroid>();
         asteroid.transform.localScale = asteroid.transform.localScale * Random.Range(minAsteroidSize, maxAsteroidSize);
         asteroid.manager = this;
         asteroid.lifeTimeInSeconds = asteroidLifeTimeInSeconds;

@@ -39,8 +39,12 @@ public class Asteroid : MonoBehaviour
 
     private void Explode()
     {
-        PhotonView photonView = GetComponent<PhotonView>();
-        photonView.RPC("RPC_ExplodeAsteroid", RpcTarget.AllViaServer);
+        Instantiate(explosionClass, this.transform.position, Quaternion.identity);
+        Instantiate(smokeScreenClass, this.transform.position, Quaternion.identity);
+        DestroyThisAsteroid();
+
+        // PhotonView photonView = GetComponent<PhotonView>();
+        //photonView.RPC("RPC_ExplodeAsteroid", RpcTarget.AllViaServer);
     }
 
     [PunRPC]
@@ -55,7 +59,6 @@ public class Asteroid : MonoBehaviour
 
     private void DestroyThisAsteroid()
     {
-
         Destroy(gameObject);
 
         if (PhotonNetwork.IsMasterClient)
