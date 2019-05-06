@@ -18,6 +18,8 @@ public class EnergyBall : MonoBehaviour, IPunObservable
     // Instances
     protected EnemySoundManager enemySoundManager;
     protected EnemyManager manager;
+    protected PhotonView photonView;
+
     public void SetManager(EnemyManager manager)
     {
         this.manager = manager;
@@ -27,6 +29,7 @@ public class EnergyBall : MonoBehaviour, IPunObservable
     public virtual void Awake()
     {
         enemySoundManager = Instantiate(enemySoundManagerClass, transform.position, transform.rotation, this.transform);
+        photonView = GetComponent<PhotonView>();
     }
 
     public virtual void Start()
@@ -36,8 +39,20 @@ public class EnergyBall : MonoBehaviour, IPunObservable
     }
 
     #region collision
+    public virtual void OnCollisionEnter(Collision other)
+    {
+        print("Energyball collided");
+
+        if (other.gameObject.CompareTag("Ship"))
+        {
+            OnTriggerEnter(other.collider);
+        }
+    }
+
     public virtual void OnTriggerEnter(Collider other)
     {
+        print("Energyball triggered");
+
         if (other.gameObject.CompareTag("Ship"))
         {
             // Tell the ship it got hit and stunned
@@ -65,7 +80,9 @@ public class EnergyBall : MonoBehaviour, IPunObservable
             manager.RemoveFromAliveEnemies(this);
 
         // Destroy the object if master, for all to witness...
-        if (PhotonNetwork.IsMasterClient)
+        if (photonView.ViewID == 0)
+            Destroy(gameObject);
+        else if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.Destroy(gameObject);
     }
     #endregion

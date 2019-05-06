@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 987}
   - component: {fileID: 2437}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ship System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 989}
   - component: {fileID: 1984}
   - component: {fileID: 1621}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 991}
   - component: {fileID: 2438}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Smoke Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 993}
   - component: {fileID: 1986}
   - component: {fileID: 1623}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 995}
   - component: {fileID: 1988}
   - component: {fileID: 1625}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 997}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 999}
   - component: {fileID: 1990}
   - component: {fileID: 1627}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1001}
   - component: {fileID: 2439}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AccelerometerInterface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 1003}
   - component: {fileID: 1992}
   - component: {fileID: 1629}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 1005}
   - component: {fileID: 1994}
   - component: {fileID: 1631}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 1007}
   - component: {fileID: 1996}
   - component: {fileID: 1633}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -716,7 +716,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1009}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Weapon_Flush_Mount_Torpedo_Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 1011}
   - component: {fileID: 1998}
   - component: {fileID: 1635}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 1013}
   - component: {fileID: 2000}
   - component: {fileID: 1637}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -910,7 +910,7 @@ GameObject:
   - component: {fileID: 1015}
   - component: {fileID: 2002}
   - component: {fileID: 1639}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,7 +987,7 @@ GameObject:
   - component: {fileID: 1017}
   - component: {fileID: 2004}
   - component: {fileID: 1641}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1064,7 +1064,7 @@ GameObject:
   - component: {fileID: 1019}
   - component: {fileID: 2006}
   - component: {fileID: 1643}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1141,7 +1141,7 @@ GameObject:
   - component: {fileID: 1021}
   - component: {fileID: 2008}
   - component: {fileID: 1645}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1216,7 +1216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1023}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Propulsion_Hyperdrive_Rearmount_Medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1253,7 +1253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1025}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ship Engines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 1027}
   - component: {fileID: 2010}
   - component: {fileID: 1647}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,7 +1365,7 @@ GameObject:
   - component: {fileID: 1029}
   - component: {fileID: 2011}
   - component: {fileID: 1648}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 1031}
   - component: {fileID: 2012}
   - component: {fileID: 1649}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1519,7 +1519,7 @@ GameObject:
   - component: {fileID: 1033}
   - component: {fileID: 2013}
   - component: {fileID: 1650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1596,7 +1596,7 @@ GameObject:
   - component: {fileID: 1035}
   - component: {fileID: 2014}
   - component: {fileID: 1651}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 2353}
   - component: {fileID: 2441}
   - component: {fileID: 2322}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Left Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6482,7 +6482,7 @@ GameObject:
   - component: {fileID: 1039}
   - component: {fileID: 2015}
   - component: {fileID: 1652}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6557,7 +6557,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1041}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Wing_Double
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6591,7 +6591,7 @@ GameObject:
   - component: {fileID: 1043}
   - component: {fileID: 2016}
   - component: {fileID: 1653}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6668,7 +6668,7 @@ GameObject:
   - component: {fileID: 1045}
   - component: {fileID: 2017}
   - component: {fileID: 1654}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6743,7 +6743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1046}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Cockpit_Model_B_End_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6781,7 +6781,7 @@ GameObject:
   - component: {fileID: 1048}
   - component: {fileID: 2018}
   - component: {fileID: 1655}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6858,7 +6858,7 @@ GameObject:
   - component: {fileID: 1050}
   - component: {fileID: 2019}
   - component: {fileID: 1656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6933,7 +6933,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1052}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6967,7 +6967,7 @@ GameObject:
   - component: {fileID: 1056}
   - component: {fileID: 2020}
   - component: {fileID: 1657}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7045,7 +7045,7 @@ GameObject:
   - component: {fileID: 2354}
   - component: {fileID: 2376}
   - component: {fileID: 2442}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11723,7 +11723,7 @@ GameObject:
   - component: {fileID: 1060}
   - component: {fileID: 2021}
   - component: {fileID: 1658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11800,7 +11800,7 @@ GameObject:
   - component: {fileID: 1062}
   - component: {fileID: 2022}
   - component: {fileID: 1659}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11877,7 +11877,7 @@ GameObject:
   - component: {fileID: 1064}
   - component: {fileID: 2023}
   - component: {fileID: 1660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11953,7 +11953,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1066}
   - component: {fileID: 2443}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ship Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12005,7 +12005,7 @@ GameObject:
   - component: {fileID: 1068}
   - component: {fileID: 2024}
   - component: {fileID: 1661}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12080,7 +12080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1070}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Flap_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12115,7 +12115,7 @@ GameObject:
   - component: {fileID: 1072}
   - component: {fileID: 2025}
   - component: {fileID: 1662}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12192,7 +12192,7 @@ GameObject:
   - component: {fileID: 1074}
   - component: {fileID: 2026}
   - component: {fileID: 1663}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12267,7 +12267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1076}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Propulsion_Hyperdrive_Sidemount_Medium (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12306,7 +12306,7 @@ GameObject:
   - component: {fileID: 1078}
   - component: {fileID: 2027}
   - component: {fileID: 1664}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12383,7 +12383,7 @@ GameObject:
   - component: {fileID: 1080}
   - component: {fileID: 2028}
   - component: {fileID: 1665}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12460,7 +12460,7 @@ GameObject:
   - component: {fileID: 1082}
   - component: {fileID: 2029}
   - component: {fileID: 1666}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12535,7 +12535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1084}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: hull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12580,7 +12580,7 @@ GameObject:
   - component: {fileID: 1086}
   - component: {fileID: 2030}
   - component: {fileID: 1667}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12657,7 +12657,7 @@ GameObject:
   - component: {fileID: 1088}
   - component: {fileID: 2031}
   - component: {fileID: 1668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12734,7 +12734,7 @@ GameObject:
   - component: {fileID: 1091}
   - component: {fileID: 2032}
   - component: {fileID: 1669}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12811,7 +12811,7 @@ GameObject:
   - component: {fileID: 1093}
   - component: {fileID: 2033}
   - component: {fileID: 1670}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12888,7 +12888,7 @@ GameObject:
   - component: {fileID: 1095}
   - component: {fileID: 2034}
   - component: {fileID: 1671}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12965,7 +12965,7 @@ GameObject:
   - component: {fileID: 1097}
   - component: {fileID: 2035}
   - component: {fileID: 1672}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13040,7 +13040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1099}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Fuselage_Angled_Vertical_Band (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13071,7 +13071,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1101}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Flap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13110,7 +13110,7 @@ GameObject:
   - component: {fileID: 1103}
   - component: {fileID: 2036}
   - component: {fileID: 1673}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13185,7 +13185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1105}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Fuselage_Angled_Vertical_Band
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13218,7 +13218,7 @@ GameObject:
   - component: {fileID: 1107}
   - component: {fileID: 2037}
   - component: {fileID: 1674}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13295,7 +13295,7 @@ GameObject:
   - component: {fileID: 1108}
   - component: {fileID: 2038}
   - component: {fileID: 1675}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13372,7 +13372,7 @@ GameObject:
   - component: {fileID: 1109}
   - component: {fileID: 2039}
   - component: {fileID: 1676}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13449,7 +13449,7 @@ GameObject:
   - component: {fileID: 1110}
   - component: {fileID: 2040}
   - component: {fileID: 1677}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13526,7 +13526,7 @@ GameObject:
   - component: {fileID: 1111}
   - component: {fileID: 2041}
   - component: {fileID: 1678}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13603,7 +13603,7 @@ GameObject:
   - component: {fileID: 1112}
   - component: {fileID: 2042}
   - component: {fileID: 1679}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13680,7 +13680,7 @@ GameObject:
   - component: {fileID: 1113}
   - component: {fileID: 1550}
   - component: {fileID: 2309}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 1st Person Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -13762,7 +13762,7 @@ GameObject:
   - component: {fileID: 1114}
   - component: {fileID: 2043}
   - component: {fileID: 1680}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13839,7 +13839,7 @@ GameObject:
   - component: {fileID: 1115}
   - component: {fileID: 2044}
   - component: {fileID: 1681}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13915,7 +13915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116}
   - component: {fileID: 2445}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Components
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13964,7 +13964,7 @@ GameObject:
   - component: {fileID: 1117}
   - component: {fileID: 2045}
   - component: {fileID: 1682}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14039,7 +14039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1118}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14078,7 +14078,7 @@ GameObject:
   - component: {fileID: 1119}
   - component: {fileID: 2046}
   - component: {fileID: 1683}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14157,7 +14157,7 @@ GameObject:
   - component: {fileID: 1684}
   - component: {fileID: 2323}
   - component: {fileID: 2447}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forcefield
   m_TagString: ShipComponent
   m_Icon: {fileID: 0}
@@ -14342,7 +14342,7 @@ GameObject:
   - component: {fileID: 1121}
   - component: {fileID: 2048}
   - component: {fileID: 1685}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14419,7 +14419,7 @@ GameObject:
   - component: {fileID: 1122}
   - component: {fileID: 2049}
   - component: {fileID: 1686}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14496,7 +14496,7 @@ GameObject:
   - component: {fileID: 1123}
   - component: {fileID: 2050}
   - component: {fileID: 1687}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14573,7 +14573,7 @@ GameObject:
   - component: {fileID: 1124}
   - component: {fileID: 2051}
   - component: {fileID: 1688}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14650,7 +14650,7 @@ GameObject:
   - component: {fileID: 1125}
   - component: {fileID: 2052}
   - component: {fileID: 1689}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14727,7 +14727,7 @@ GameObject:
   - component: {fileID: 1126}
   - component: {fileID: 2053}
   - component: {fileID: 1690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14802,7 +14802,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1127}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wind Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14834,7 +14834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1128}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Ribbed_Straight_Vertical (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14867,7 +14867,7 @@ GameObject:
   - component: {fileID: 1129}
   - component: {fileID: 2054}
   - component: {fileID: 1691}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14942,7 +14942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1130}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Cockpit_Model_B_End_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14982,7 +14982,7 @@ GameObject:
   - component: {fileID: 1131}
   - component: {fileID: 2055}
   - component: {fileID: 1692}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15059,7 +15059,7 @@ GameObject:
   - component: {fileID: 1132}
   - component: {fileID: 2056}
   - component: {fileID: 1693}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15134,7 +15134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1133}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Weapon_Modular_Gun_Barrel_Angled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15167,7 +15167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1134}
   - component: {fileID: 2448}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mine Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15217,7 +15217,7 @@ GameObject:
   - component: {fileID: 1135}
   - component: {fileID: 2057}
   - component: {fileID: 1694}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15294,7 +15294,7 @@ GameObject:
   - component: {fileID: 1136}
   - component: {fileID: 2058}
   - component: {fileID: 1695}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15371,7 +15371,7 @@ GameObject:
   - component: {fileID: 1137}
   - component: {fileID: 2059}
   - component: {fileID: 1696}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15450,7 +15450,7 @@ GameObject:
   - component: {fileID: 2355}
   - component: {fileID: 2449}
   - component: {fileID: 2324}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Right Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20257,7 +20257,7 @@ GameObject:
   - component: {fileID: 1139}
   - component: {fileID: 2060}
   - component: {fileID: 1697}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20332,7 +20332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1140}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Ribbed_Straight_Vertical (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20365,7 +20365,7 @@ GameObject:
   - component: {fileID: 1141}
   - component: {fileID: 2061}
   - component: {fileID: 1698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20444,7 +20444,7 @@ GameObject:
   - component: {fileID: 2356}
   - component: {fileID: 2450}
   - component: {fileID: 2325}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Middle Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25251,7 +25251,7 @@ GameObject:
   - component: {fileID: 1143}
   - component: {fileID: 2062}
   - component: {fileID: 1699}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25328,7 +25328,7 @@ GameObject:
   - component: {fileID: 1144}
   - component: {fileID: 2063}
   - component: {fileID: 1700}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25403,7 +25403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1145}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Fuselage_Cube_Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25436,7 +25436,7 @@ GameObject:
   - component: {fileID: 1146}
   - component: {fileID: 2064}
   - component: {fileID: 1701}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25513,7 +25513,7 @@ GameObject:
   - component: {fileID: 1147}
   - component: {fileID: 2065}
   - component: {fileID: 1702}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25590,7 +25590,7 @@ GameObject:
   - component: {fileID: 1148}
   - component: {fileID: 2066}
   - component: {fileID: 1703}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25665,7 +25665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Ribbed_Straight_Vertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25698,7 +25698,7 @@ GameObject:
   - component: {fileID: 1150}
   - component: {fileID: 2067}
   - component: {fileID: 1704}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25773,7 +25773,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Wing_Double (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25805,7 +25805,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1152}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Fuselage_Straight_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25837,7 +25837,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Propulsion_Hyperdrive_Sidemount_Medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25876,7 +25876,7 @@ GameObject:
   - component: {fileID: 1154}
   - component: {fileID: 2068}
   - component: {fileID: 1705}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25952,17 +25952,17 @@ GameObject:
   m_Component:
   - component: {fileID: 1155}
   - component: {fileID: 2285}
-  - component: {fileID: 2453}
   - component: {fileID: 2298}
+  - component: {fileID: 2311}
+  - component: {fileID: 2453}
   - component: {fileID: 2452}
   - component: {fileID: 2451}
-  - component: {fileID: 2311}
   - component: {fileID: 2528}
   - component: {fileID: 2537}
   - component: {fileID: 6987268490720304500}
   - component: {fileID: 4473378837321126152}
   - component: {fileID: 8869554232137204516}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerShip
   m_TagString: Ship
   m_Icon: {fileID: 0}
@@ -26005,6 +26005,27 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
+--- !u!65 &2298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.5, y: 1.6, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!81 &2311
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536}
+  m_Enabled: 1
 --- !u!114 &2453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26049,19 +26070,6 @@ MonoBehaviour:
     replayRotations: []
     replayPositions: []
     charges: 0
---- !u!65 &2298
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.5, y: 1.6, z: 4}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26098,14 +26106,6 @@ MonoBehaviour:
     firstPersonCamera: {fileID: 0}
     thirdPersonCamera: {fileID: 0}
   useAccelerometerControls: 0
---- !u!81 &2311
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536}
-  m_Enabled: 1
 --- !u!114 &2528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26145,8 +26145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatConfig:
     floatDiff: 0.2
-    floatSpeed: 450
-    baseHeightFromGround: 5
+    floatSpeed: 650
+    baseHeightFromGround: 10
   config:
     movementSpeedFactor: 2700000
     rotationSpeedFactor: 1.5
@@ -26219,7 +26219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1156}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Cockpit_Model_B_Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26258,7 +26258,7 @@ GameObject:
   - component: {fileID: 1157}
   - component: {fileID: 2069}
   - component: {fileID: 1706}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26335,7 +26335,7 @@ GameObject:
   - component: {fileID: 1158}
   - component: {fileID: 2070}
   - component: {fileID: 1707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26412,7 +26412,7 @@ GameObject:
   - component: {fileID: 1159}
   - component: {fileID: 2071}
   - component: {fileID: 1708}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26491,7 +26491,7 @@ GameObject:
   - component: {fileID: 2310}
   - component: {fileID: 2286}
   - component: {fileID: 2454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 3rd Person Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -26603,7 +26603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1161}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spacestation_Structure_Ribbed_Straight_Vertical (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26636,7 +26636,7 @@ GameObject:
   - component: {fileID: 1162}
   - component: {fileID: 2072}
   - component: {fileID: 1709}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: object4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26712,7 +26712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1163}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26744,6 +26744,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wind Trail (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475222544449308573, guid: 235a05c138d8f8e489c94fbd17546e48,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6475222544449308572, guid: 235a05c138d8f8e489c94fbd17546e48,
         type: 3}
@@ -26834,6 +26839,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wind Trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475222544449308573, guid: 235a05c138d8f8e489c94fbd17546e48,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6475222544449308572, guid: 235a05c138d8f8e489c94fbd17546e48,
         type: 3}

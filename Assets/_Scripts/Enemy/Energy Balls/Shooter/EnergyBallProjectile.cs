@@ -25,25 +25,21 @@ public class EnergyBallProjectile : EnergyBall
 
     private void Start()
     {
-        //if (PhotonNetwork.IsMasterClient)
-        //{
+
         // Set the target, including inaccuracy
         Vector3 targ = new Vector3(target.x + Random.Range(-inaccuracyX, inaccuracyX), target.y, target.z + Random.Range(-inaccuracyZ, inaccuracyZ));
 
         // Difference between target and the spawn location of this energy sphere
         Vector3 diff = targ - this.transform.position;
 
-        // The move direction
+        // The move direction to be translated across the fixedupdates
         moveDirection = diff.normalized;
-        //}
+
     }
 
     private void FixedUpdate()
     {
         // If master, handle movement. Else, smoothmove with received data from master object.
-        //if (PhotonNetwork.IsMasterClient)
-        //{
-        //    Debug.Log("Master handling EnergyBall");
 
         // Look at, and rotate to point at the target
         transform.LookAt(target, Vector3.down);
@@ -51,13 +47,7 @@ public class EnergyBallProjectile : EnergyBall
 
         // Apply the force
         GetComponent<Rigidbody>().AddForce(moveDirection * projSpeed);
-        //}
-        //else
-        //{
-        //    print("Client reading Energyball Movement");
 
-        //    //SmoothMove();
-        //}
     }
 
 
