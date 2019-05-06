@@ -68,7 +68,6 @@ public class GameState : LevelSingleton<GameState>
 
     void Start()
     {
-
         Assert.IsNotNull(gameManagers.backgroundSoundManagerClass);
         Assert.IsNotNull(gameManagers.chaserManagerClass);
         Assert.IsNotNull(gameManagers.UIManagerClass);
@@ -77,8 +76,7 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(gameManagers.raceManagerClass);
         Assert.IsNotNull(gameManagers.analyticsManagerClass);
 
-
-        RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
+        
         foreach (PlayerShipGhost ghost in ghosts)
             Instantiate(ghost);
 
@@ -108,6 +106,10 @@ public class GameState : LevelSingleton<GameState>
         {
             playerShips[i] = gameObjects[i].GetComponent<PlayerShip>();
         }
+
+        // Race Manager 
+        RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
+        raceManager.SetPlayers(playerShips);
 
         // Spawn Point Manager
         SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);

@@ -22,6 +22,7 @@ public struct PlayerRunData
 
     public List<TimeSpan> raceTimes;
     public int currentWaypoint;
+    public Transform lastWaypoint;
     public bool isOverHalfway;
     public bool isWrongWay;
     public bool raceStarted;
@@ -89,17 +90,20 @@ public class PlayerShip : Ship
         if (!runData.raceFinished && RaceManager.raceStarted)
             runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
 
-        runData.positionsX.Add(transform.position.x);
-        runData.positionsY.Add(transform.position.y);
-        runData.positionsZ.Add(transform.position.z);
-        runData.replayRotations.Add(transform.rotation);
+        if (Time.frameCount % 3 == 0)
+        {
+            runData.positionsX.Add(transform.position.x);
+            runData.positionsY.Add(transform.position.y);
+            runData.positionsZ.Add(transform.position.z);
+            runData.replayRotations.Add(transform.rotation);
+        }
     }
 
     private void InitRaceData()
     {
         // Set currentlap, maxlaps, timer, pos
         runData.currentLap = 0;
-        runData.maxLaps = 1; // Should be configurable by variable
+        runData.maxLaps = 2; // Should be configurable by variable
         runData.raceTime = TimeSpan.Parse("00:00:00.000");
         //runData.bestRaceTime = TimeSpan.Parse("00:01:47.222");
         runData.raceTimes = new List<TimeSpan>();
@@ -120,6 +124,31 @@ public class PlayerShip : Ship
         runData.positionsZ = new List<float>();
         runData.replayRotations = new List<Quaternion>();
     }
+
+    #region Calculate race position (rank)
+    private int WAYPOINT_VALUE = 100;
+    private int LAP_VALUE = 10000;
+
+    public float GetDistance()
+    {
+        if (runData.lastWaypoint != null)
+            return (transform.position - runData.lastWaypoint.position).magnitude + runData.currentWaypoint * WAYPOINT_VALUE + runData.currentLap * LAP_VALUE;
+        else return 1000000f;
+    }
+
+    public int GetShipPos(PlayerShip[] ships)
+    {
+        float distance = GetDistance();
+        //Debug.Log(distance);
+
+        runData.currentPos = 1;
+        foreach (PlayerShip ship in ships)
+            if (ship.GetDistance() > distance)
+                runData.currentPos++;
+        return runData.currentPos;
+    }
+
+    #endregion
 
     #region Collisions and Triggers
 
@@ -250,7 +279,6 @@ public class PlayerShip : Ship
             // If passed previous waypoint
             if (other.GetComponent<Waypoint>().number < runData.currentWaypoint)
             {
-                // Debug.Log("Wrong Way!");
                 runData.isWrongWay = true;
             }
             else // update with new waypoint
@@ -261,7 +289,7 @@ public class PlayerShip : Ship
                 if (other.GetComponent<Waypoint>().isHalfwayPoint)
                     runData.isOverHalfway = true;
             }
-
+            runData.lastWaypoint = other.transform;
         }
         #endregion
     }
@@ -281,19 +309,10 @@ public class PlayerShip : Ship
 
     public void SaveReplay()
     {
-        float[] arrayX = runData.positionsX.ToArray();
-        float[] arrayY = runData.positionsY.ToArray();
-        float[] arrayZ = runData.positionsZ.ToArray();
-        Quaternion[] arrayQ = runData.replayRotations.ToArray();
-
         ReplayManager replayManager = new ReplayManager();
         replayManager.SaveReplay(Environment.UserName, SceneManager.GetActiveScene().name, runData.positionsX, runData.positionsY, runData.positionsZ, runData.replayRotations, runData.raceTime.ToString());
 
         //Destroy(replayManager);
-        //PlayerPrefsX.SetFloatArray("ReplayX", arrayX);
-        //PlayerPrefsX.SetFloatArray("ReplayY", arrayY);
-        //PlayerPrefsX.SetFloatArray("ReplayZ", arrayZ);
-        //PlayerPrefsX.SetQuaternionArray("ReplayQ", arrayQ);
     }
 }
 

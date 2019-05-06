@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIPanel : UIBehaviour
@@ -66,7 +67,6 @@ public class UIPanel : UIBehaviour
 
     [Header("RaceStartScreen")]
     public TextMeshProUGUI countDownText;
-    public TextMeshProUGUI countDownShadow;
 
     [Header("CountDown")]
     public CountDownController countDownController;
@@ -229,7 +229,7 @@ public class UIPanel : UIBehaviour
             leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
 
             // Get highscores (and sorts them beforehand)
-            List<HighscoreEntry> highscoreEntries = highscoreManager.GetHighscores();
+            List<HighscoreEntry> highscoreEntries = highscoreManager.GetHighscoresByStage(SceneManager.GetActiveScene().name);
 
             // Only show max of 10 or below
             int entries;
@@ -250,15 +250,9 @@ public class UIPanel : UIBehaviour
         #region Race Start Screen
 
         if (countDownController != null)
-        {
             countDownText.text = countDownController.CountDownText;
-            countDownShadow.text = countDownController.CountDownText;
-        }
         else
-        {
             countDownText.text = "";
-            countDownShadow.text = "";
-        }
 
         #endregion
 

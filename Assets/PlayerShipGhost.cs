@@ -24,7 +24,6 @@ public class PlayerShipGhost : MonoBehaviour
         {
             int i = Random.Range(0, replays.Count);
             Replay replay = replays[i];
-
             posx = replay.posx;
             posy = replay.posy; 
             posz = replay.posz; 
@@ -35,13 +34,17 @@ public class PlayerShipGhost : MonoBehaviour
 
     IEnumerator startReplay()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.1f);
         while(i < posx.Count)
         {
-            transform.rotation = rotations[i];
-            transform.position = new Vector3(posx[i], posy[i], posz[i]);
-            i++; 
-            yield return null; 
+            if (Time.frameCount % 3 == 0) 
+            {
+                transform.rotation = rotations[i];
+                //transform.position = Vector3.Lerp(transform.position, new Vector3(posx[i], posy[i], posz[i]), Time.deltaTime*3); // Time.deltaTime * frames measured
+                transform.position = new Vector3(posx[i], posy[i], posz[i]);
+                i++;
+            }
+            yield return null;
             //yield return new WaitForEndOfFrame(); // makes replay slightly faster
         }
     }
