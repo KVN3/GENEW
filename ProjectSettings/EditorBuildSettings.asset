@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/_TBD/Main Menu.unity
     guid: 31eb398fd7fa2b7439932b2ea2cd199e
   - enabled: 0
-    path: Assets/Scenes/Menus/Main Menu with Accounts.unity
+    path: Assets/Scenes/Old/Main Menu with Accounts.unity
     guid: 629b8b1d63cb76449af2e3da9c0b8fad
   - enabled: 0
     path: Assets/Scenes/Game/Launcher.unity
@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Game/WaitingRoom.unity
     guid: 6a9d6344e3fa49b4d9691aebcdaebb9c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game/Wasteland.unity
     guid: 3e447a9b13e278f44b7342990e7c7a57
   - enabled: 0
