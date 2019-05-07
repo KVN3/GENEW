@@ -20,6 +20,10 @@ public class CurrentRoomCanvas : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI leaderboardText;
     public TextMeshProUGUI leaderboardTimesText;
+    public TextMeshProUGUI lapsText;
+    public TMP_InputField lapInput;
+    public TextMeshProUGUI ghostsText;
+    public TMP_InputField ghostInput;
 
     private void Start()
     {
@@ -66,6 +70,16 @@ public class CurrentRoomCanvas : MonoBehaviour
         PlayerNetwork.Instance.activeScene = sceneName;
 
         PhotonNetwork.LoadLevel(sceneName);
+
+        // Save laps
+        if (int.TryParse(lapInput.text, out int result))
+            PlayerPrefs.SetInt("Laps", int.Parse(lapInput.text));
+        else PlayerPrefs.SetInt("Laps", 1);
+
+        if (int.TryParse(ghostInput.text, out int result2))
+            PlayerPrefs.SetInt("Ghosts", int.Parse(ghostInput.text));
+        else PlayerPrefs.SetInt("Ghosts", 1);
+
     }
 
     public void UpdateScene()

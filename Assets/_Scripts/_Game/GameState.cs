@@ -76,6 +76,8 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(gameManagers.raceManagerClass);
         Assert.IsNotNull(gameManagers.analyticsManagerClass);
 
+        if (PlayerPrefs.HasKey("Ghosts"))
+            ghosts = new PlayerShipGhost[PlayerPrefs.GetInt("Ghosts")];
         
         foreach (PlayerShipGhost ghost in ghosts)
             Instantiate(ghost);
