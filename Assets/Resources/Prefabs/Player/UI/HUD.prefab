@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 2801}
   - component: {fileID: 2992}
   m_Layer: 5
-  m_Name: ResetLeaderboardText
+  m_Name: MainMenuText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -418,7 +418,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Reset leaderboard
+  m_text: Main menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14.8
+  m_fontSize: 20.65
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_margin: {x: 118.51528, y: 27.885933, z: 119.67713, w: 29.047848}
   m_textInfo:
     textComponent: {fileID: 2992}
-    characterCount: 17
+    characterCount: 9
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 2988}
   - component: {fileID: 2976}
   m_Layer: 5
-  m_Name: ResetLeaderboardButton
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.06140983, g: 1, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1391,9 +1391,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1742061468813992408, guid: 537a94581b606a5498f5447fc1f22e0a,
+      - m_Target: {fileID: 8631873225630643792, guid: 581fd72e368ea8d4d990f78f059fd7cd,
           type: 3}
-        m_MethodName: ResetHighscores
+        m_MethodName: LoadMainMenuFromLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

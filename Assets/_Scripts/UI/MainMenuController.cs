@@ -91,6 +91,13 @@ public class MainMenuController : LevelSingleton<MainMenuController>
         SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Main]);
     }
 
+    public void LoadMainMenuFromLevel()
+    {
+        PlayerNetwork.ReturnToMain();
+        //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        //SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Main]);
+    }
+
     #region Coroutines
 
     IEnumerator LoadAsynchronously(string sceneName)

@@ -103,7 +103,10 @@ public class PlayerShip : Ship
     {
         // Set currentlap, maxlaps, timer, pos
         runData.currentLap = 0;
-        runData.maxLaps = 2; // Should be configurable by variable
+        if (PlayerPrefs.HasKey("Laps"))
+            runData.maxLaps = PlayerPrefs.GetInt("Laps"); // Should be configurable by variable
+        else
+            runData.maxLaps = 1;
         runData.raceTime = TimeSpan.Parse("00:00:00.000");
         //runData.bestRaceTime = TimeSpan.Parse("00:01:47.222");
         runData.raceTimes = new List<TimeSpan>();
