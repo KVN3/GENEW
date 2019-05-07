@@ -8,6 +8,8 @@ public class AchievementManager : LevelSingleton<AchievementManager>
 {
     private readonly string key = "AchievementData";
 
+    public AchievementCanvas achievementCanvas;
+
     protected override void Awake()
     {
         base.Awake();
@@ -66,6 +68,7 @@ public class AchievementManager : LevelSingleton<AchievementManager>
             achievement.progress = achievement.progressGoal;
             achievement.isDone = true;
             achievement.dateCompleted = DateTime.Now;
+            Instance.achievementCanvas.InstantiateNotif(achievement);
         }
 
         // Update in currentAccount && accountDatabase

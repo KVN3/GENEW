@@ -43,3 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67748f35e968f14c91ca6940617082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  achievementCanvas: {fileID: 0}
