@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BackgroundPlayer : MonoBehaviour
+public class MusicPlayer : MonoBehaviour
 {
     private AudioClip[] wasteLandClips;
     private AudioClip[] menuClips;
@@ -27,8 +27,7 @@ public class BackgroundPlayer : MonoBehaviour
         DontDestroyOnLoad(this);
 
         audioSource.Stop();
-        // TO DO UNCOMMENT
-        //StartCoroutine(PlayBackgroundTrack());
+        StartCoroutine(PlayBackgroundTrack());
     }
 
     private void ReadyClipsForUse()
@@ -56,25 +55,24 @@ public class BackgroundPlayer : MonoBehaviour
 
     private IEnumerator PlayBackgroundTrack()
     {
+        string wastelandSceneName = ScenesInformation.sceneNames[SceneTitle.Wasteland];
+        string mainSceneName = ScenesInformation.sceneNames[SceneTitle.Main];
+        string shipyardSceneName = ScenesInformation.sceneNames[SceneTitle.Shipyard];
+
         while (true)
         {
             Scene currentScene = SceneManager.GetActiveScene();
 
             string sectionName = currentScene.name;
-            if (currentScene.name.Equals("Ship Customization"))
-                sectionName = "Main Menu";
+            if (currentScene.name.Equals(shipyardSceneName))
+                sectionName = mainSceneName;
 
             if (!audioSource.isPlaying || !sectionName.Equals(lastSceneName))
             {
-                switch (sectionName)
-                {
-                    case "Wasteland":
-                        audioSource.clip = wasteLandClips[Random.Range(0, wasteLandClips.Length)];
-                        break;
-                    case "Main Menu":
-                        audioSource.clip = menuClips[Random.Range(0, menuClips.Length)];
-                        break;
-                }
+                if (sectionName == wastelandSceneName)
+                    audioSource.clip = wasteLandClips[Random.Range(0, wasteLandClips.Length)];
+                else if (sectionName == mainSceneName)
+                    audioSource.clip = menuClips[Random.Range(0, menuClips.Length)];
 
                 audioSource.Play();
             }
@@ -87,19 +85,19 @@ public class BackgroundPlayer : MonoBehaviour
 
     // Abstract
 
-    protected static BackgroundPlayer _Instance;
+    protected static MusicPlayer _Instance;
 
     public static bool Initialized => _Instance != null;
 
-    public static BackgroundPlayer Instance
+    public static MusicPlayer Instance
     {
         get
         {
             if (!Initialized)
             {
-                GameObject GameObject = new GameObject("Background Player");
+                GameObject GameObject = new GameObject("Music Player");
 
-                _Instance = GameObject.AddComponent<BackgroundPlayer>();
+                _Instance = GameObject.AddComponent<MusicPlayer>();
             }
 
             return _Instance;
@@ -109,7 +107,7 @@ public class BackgroundPlayer : MonoBehaviour
     [RuntimeInitializeOnLoadMethod]
     static void ForceInit()
     {
-        BackgroundPlayer GI = Instance;
+        MusicPlayer GI = Instance;
     }
 
 }

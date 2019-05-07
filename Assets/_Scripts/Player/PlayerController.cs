@@ -84,17 +84,7 @@ public class PlayerController : MonoBehaviour
         // Leaving match
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (PhotonNetwork.InRoom)
-                PhotonNetwork.LeaveRoom();
-
-            PlayerNetwork.Instance.ResetNetwork();
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-            PhotonNetwork.LoadLevel(ScenesInformation.sceneNames[SceneTitle.Main]);
-
-            if (PhotonNetwork.IsConnectedAndReady)
-            {
-                PhotonNetwork.Disconnect();
-            }
+            PlayerNetwork.ReturnToMain();
         }
 
         // Breaking

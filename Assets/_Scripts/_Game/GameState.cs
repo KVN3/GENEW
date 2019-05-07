@@ -91,9 +91,8 @@ public class GameState : LevelSingleton<GameState>
 
     private IEnumerator C_SpawnManagers()
     {
+        // Find all player ship game objects first
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Ship");
-
-        // Keep checking until ship objects found matches player count
         while (gameObjects.Length != PhotonNetwork.PlayerList.Length)
         {
             gameObjects = GameObject.FindGameObjectsWithTag("Ship");
@@ -110,6 +109,12 @@ public class GameState : LevelSingleton<GameState>
         // Race Manager 
         RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
         raceManager.SetPlayers(playerShips);
+
+        // Only start the spawnmanagers after race has started
+        while (!RaceManager.raceStarted)
+        {
+            yield return new WaitForSeconds(1);
+        }
 
         // Spawn Point Manager
         SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
