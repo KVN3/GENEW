@@ -127,7 +127,7 @@ public class UIPanel : UIBehaviour
         lastPosText.text = PlayerCount.ToString();
 
         // Race Time
-        currentText.text = LocalizationManager.GetTextByKey("CURRENT_TIME");
+        currentText.text = LocalizationManager.GetTextByKey("CURRENT_TIME") + ": ";
         raceTimeText.text = pd.raceTime.ToString(@"mm\:ss\.ff");
 
         // Best race time

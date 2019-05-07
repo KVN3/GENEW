@@ -12,8 +12,8 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
 
     [Header("Text")]
     public TextMeshProUGUI titleText;
-    public TextMeshProUGUI singleplayerText;
-    public TextMeshProUGUI editShipText;
+    public TextMeshProUGUI playText;
+    public TextMeshProUGUI shipyardText;
     public TextMeshProUGUI optionsText; // Options has sound/music/resetdata/changeAccount
     public TextMeshProUGUI achievementsText;
     public TextMeshProUGUI versionText;
@@ -30,8 +30,8 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     void Update()
     {
         titleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
-        singleplayerText.text = LocalizationManager.GetTextByKey("SINGLEPLAYER");
-        editShipText.text = LocalizationManager.GetTextByKey("EDIT_SHIP");
+        playText.text = LocalizationManager.GetTextByKey("PLAY");
+        shipyardText.text = LocalizationManager.GetTextByKey("SHIPYARD");
         if (achievementsText != null)
             achievementsText.text = LocalizationManager.GetTextByKey("ACHIEVEMENTS");
         versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 2";
