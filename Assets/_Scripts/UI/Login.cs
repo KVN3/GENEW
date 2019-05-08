@@ -66,7 +66,6 @@ public class Login : MonoBehaviour
                     // Save/set currentAccount
                     string json = JsonUtility.ToJson(account);
                     PlayerPrefs.SetString("currentAccount", json);
-                    PlayerPrefs.Save();
 
                     // Go to main menu
                     mainMenu.SetActive(true);
@@ -83,9 +82,16 @@ public class Login : MonoBehaviour
     }
 
     [ContextMenu("Logout")]
-    public void Logout()
+    public void UserLogoutDebug()
     {
         PlayerPrefs.DeleteKey("currentAccount");
+    }
+
+    public void UserLogout()
+    {
+        PlayerPrefs.DeleteKey("currentAccount");
+        gameObject.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
     public Account GetAccountByUsername()

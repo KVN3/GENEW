@@ -99,7 +99,6 @@ public class Registration : MonoBehaviour
         AccountData accountData = new AccountData { accounts = new List<Account>() };
         string json = JsonUtility.ToJson(accountData);
         PlayerPrefs.SetString(key, json);
-        PlayerPrefs.Save();
     }
 
     public void Register()
@@ -145,7 +144,6 @@ public class Registration : MonoBehaviour
             // Update
             string json = JsonUtility.ToJson(accountData);
             PlayerPrefs.SetString(key, json);
-            PlayerPrefs.Save();
 
             // Go to login
             login.SetActive(true);
@@ -166,7 +164,6 @@ public class Registration : MonoBehaviour
     {
         string json = JsonUtility.ToJson(account);
         PlayerPrefs.SetString("currentAccount", json);
-        PlayerPrefs.Save();
     }
 
     public static void SaveAccountToAccountData(Account account)
@@ -180,7 +177,6 @@ public class Registration : MonoBehaviour
         // Save account to accountData
         string json = JsonUtility.ToJson(accountData);
         PlayerPrefs.SetString("AccountData", json);
-        PlayerPrefs.Save();
     }
 
     public void GoToLogin()
