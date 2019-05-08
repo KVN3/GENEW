@@ -34,7 +34,6 @@ public class AchievementManager : LevelSingleton<AchievementManager>
         AchievementData achievementData = new AchievementData { achievements = achievements };
         string json = JsonUtility.ToJson(achievementData);
         PlayerPrefs.SetString(key, json);
-        PlayerPrefs.Save();
     }
     
     public List<Achievement> CreateAchievementListForPlayer(Account account)

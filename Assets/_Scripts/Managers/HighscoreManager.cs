@@ -44,7 +44,6 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
         Highscores highscores = new Highscores { highscoreEntryList = highscoreEntryList };
         string json = JsonUtility.ToJson(highscores);
         PlayerPrefs.SetString(key, json);
-        PlayerPrefs.Save();
     }
 
     public void AddHighscoreEntry(string name, string time, string stage)
@@ -64,7 +63,6 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
         // Update
         string json = JsonUtility.ToJson(highscores);
         PlayerPrefs.SetString(key, json);
-        PlayerPrefs.Save();
     }
 
     //public List<HighscoreEntry> GetHighscores()

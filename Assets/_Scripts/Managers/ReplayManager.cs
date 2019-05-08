@@ -38,7 +38,6 @@ public class ReplayManager : LevelSingleton<ReplayManager>
         ReplayData replayData = new ReplayData { replays = replayList };
         string json = JsonUtility.ToJson(replayData);
         PlayerPrefs.SetString(key, json);
-        PlayerPrefs.Save();
     }
 
     public void SaveReplay(string playerName, string stage, List<float> posx, List<float> posy, List<float> posz, List<Quaternion> rotations, string lapTime)
@@ -63,7 +62,6 @@ public class ReplayManager : LevelSingleton<ReplayManager>
         // Update
         string json = JsonUtility.ToJson(replayData);
         PlayerPrefs.SetString(key, json);
-        PlayerPrefs.Save();
     }
 
     public List<Replay> GetReplaysByStage(string stage)
