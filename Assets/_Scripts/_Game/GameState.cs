@@ -110,7 +110,7 @@ public class GameState : LevelSingleton<GameState>
 
         // Race Manager 
         RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
-        raceManager.SetPlayers(playerShips);
+        //raceManager.playe(playerShips);
 
         // Only start the spawnmanagers after race has started
         while (!RaceManager.raceStarted)
