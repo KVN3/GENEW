@@ -128,28 +128,28 @@ public class PlayerShip : Ship
         runData.replayRotations = new List<Quaternion>();
     }
 
-    #region Calculate race position (rank)
-    private int WAYPOINT_VALUE = 100;
-    private int LAP_VALUE = 10000;
+    #region Calculate race position (rank) OFF
+    //private int WAYPOINT_VALUE = 100;
+    //private int LAP_VALUE = 10000;
 
-    public float GetDistance()
-    {
-        if (runData.lastWaypoint != null)
-            return (transform.position - runData.lastWaypoint.position).magnitude + runData.currentWaypoint * WAYPOINT_VALUE + runData.currentLap * LAP_VALUE;
-        else return 1000000f;
-    }
+    //public float GetDistance()
+    //{
+    //    if (runData.lastWaypoint != null)
+    //        return (transform.position - runData.lastWaypoint.position).magnitude + runData.currentWaypoint * WAYPOINT_VALUE + runData.currentLap * LAP_VALUE;
+    //    else return 1000000f;
+    //}
 
-    public int GetShipPos(PlayerShip[] ships)
-    {
-        float distance = GetDistance();
-        //Debug.Log(distance);
+    //public int GetShipPos(PlayerShip[] ships)
+    //{
+    //    float distance = GetDistance();
+    //    //Debug.Log(distance);
 
-        runData.currentPos = 1;
-        foreach (PlayerShip ship in ships)
-            if (ship.GetDistance() > distance)
-                runData.currentPos++;
-        return runData.currentPos;
-    }
+    //    runData.currentPos = 1;
+    //    foreach (PlayerShip ship in ships)
+    //        if (ship.GetDistance() > distance)
+    //            runData.currentPos++;
+    //    return runData.currentPos;
+    //}
 
     #endregion
 

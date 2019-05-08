@@ -249,10 +249,10 @@ public class UIPanel : UIBehaviour
 
         #region Race Start Screen
 
-        if (countDownController != null)
-            countDownText.text = countDownController.CountDownText;
-        else
-            countDownText.text = "";
+        //if (countDownController != null)
+            //countDownText.text = countDownController.CountDownText;
+        //else
+        //    countDownText.text = "";
 
         #endregion
 

@@ -76,6 +76,10 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(gameManagers.raceManagerClass);
         Assert.IsNotNull(gameManagers.analyticsManagerClass);
 
+        // Race Manager 
+        RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
+        //raceManager.SetPlayers(playerShips);
+
         if (PlayerPrefs.HasKey("Ghosts"))
             ghosts = new PlayerShipGhost[PlayerPrefs.GetInt("Ghosts")];
         
@@ -107,10 +111,6 @@ public class GameState : LevelSingleton<GameState>
         {
             playerShips[i] = gameObjects[i].GetComponent<PlayerShip>();
         }
-
-        // Race Manager 
-        RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
-        //raceManager.playe(playerShips);
 
         // Only start the spawnmanagers after race has started
         while (!RaceManager.raceStarted)
