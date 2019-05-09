@@ -9060,10 +9060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.1
-    floatSpeed: 100000
-    baseHeightFromGround: 0
 --- !u!54 &257490348
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17129,10 +17125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.1
-    floatSpeed: 100000
-    baseHeightFromGround: 0
 --- !u!54 &512904208
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33093,10 +33085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.2
-    floatSpeed: 100000
-    baseHeightFromGround: 0
 --- !u!54 &1030289549
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42606,10 +42594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.1
-    floatSpeed: 100000
-    baseHeightFromGround: 0
 --- !u!54 &1401718372
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -43608,10 +43592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.2
-    floatSpeed: 10000
-    baseHeightFromGround: 0
 --- !u!54 &1420929158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -45733,10 +45713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.1
-    floatSpeed: 100000
-    baseHeightFromGround: 0
 --- !u!54 &1494214226
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -45786,10 +45762,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.2
-    floatSpeed: 100000
-    baseHeightFromGround: 0
 --- !u!54 &1494214232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -49656,10 +49628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.1
-    floatSpeed: 100000
-    baseHeightFromGround: 0
 --- !u!54 &1612117035
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -49709,10 +49677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.2
-    floatSpeed: 100000
-    baseHeightFromGround: 0
 --- !u!54 &1612117041
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -66274,10 +66238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.1
-    floatSpeed: 100000
-    baseHeightFromGround: 0
 --- !u!54 &2888173864233461028
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -66354,10 +66314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c7ca5e7d556064fb82574219238b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.1
-    floatSpeed: 100000
-    baseHeightFromGround: 0
 --- !u!54 &3687896955102106165
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -66846,6 +66802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf227bcaf8173884eb69d07f530afd05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConfig:
+    playingHeight: 8
   gameManagers:
     analyticsManagerClass: {fileID: 7070041025322730957, guid: c19ad36042a1486489c8896d4c89371b,
       type: 3}

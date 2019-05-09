@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 2591}
   - component: {fileID: 2950}
   - component: {fileID: 2953}
-  - component: {fileID: 2951}
   - component: {fileID: 2955}
   - component: {fileID: 2978}
+  - component: {fileID: 2951}
+  - component: {fileID: 6895188357583023576}
   m_Layer: 13
   m_Name: MoverEnemy
   m_TagString: EnergyBall
@@ -157,39 +158,14 @@ MonoBehaviour:
     type: 3}
   shutDownDuration: 4
   playSoundOnStart: 1
-  floatConfig:
-    floatDiff: 0.2
-    floatSpeed: 0.1
-    baseHeightFromGround: 8
   maxVelocity: 10
+  hoveringManager: {fileID: 6895188357583023576}
   shooterModule: {fileID: 2955}
   xMax: 1300
   zMax: 50
   xMin: 1100
   zMin: -50
   maxSpeed: 20
---- !u!114 &2951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 2953}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &2955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +197,46 @@ MonoBehaviour:
   shooter: {fileID: 2955}
   minCooldown: 0.4
   maxCooldown: 1
+--- !u!114 &2951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 2953}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &6895188357583023576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64bfdb3753887c740a7f3bf5a5896c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config:
+    hoveringDiff: 0.3
+    hoveringForce: 1000
+    uniqueBaseHeight: 0
+    useUniqueBaseHeight: 0
+    sensor: {fileID: 648}
 --- !u!114 &2952
 MonoBehaviour:
   m_ObjectHideFlags: 0

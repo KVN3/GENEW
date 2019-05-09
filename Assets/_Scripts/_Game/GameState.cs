@@ -39,7 +39,8 @@ public struct AttachableScripts
 
 public class GameState : LevelSingleton<GameState>
 {
-    public GameManagers gameManagers;
+    [SerializeField]
+    private GameManagers gameManagers;
 
     // Classes
     public PlayerCamera cameraClass;
@@ -136,8 +137,8 @@ public class GameState : LevelSingleton<GameState>
         moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
 
         // Asteroid Manager
-        //AsteroidStormManager asteroidStormManager = Instantiate(gameManagers.asteroidStormManagerClass);
-        //asteroidStormManager.spawnPointManager = spawnPointManager;
+        AsteroidStormManager asteroidStormManager = Instantiate(gameManagers.asteroidStormManagerClass);
+        asteroidStormManager.spawnPointManager = spawnPointManager;
     }
 
     #region Photon
