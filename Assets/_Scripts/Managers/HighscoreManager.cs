@@ -13,6 +13,7 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
 
     protected override void Awake()
     {
+        DontDestroyOnLoad(this);
         base.Awake();
         // Load highscores
         if (PlayerPrefs.HasKey(key))

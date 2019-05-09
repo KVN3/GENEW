@@ -828,8 +828,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 111, y: 60.9}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 128.29, y: 55.96}
+  m_SizeDelta: {x: 165.42, y: 33.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2785
 CanvasRenderer:
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 38.43449, y: 13.123991, z: 0, w: 0}
+  m_margin: {x: 1.0290564, y: -0.9912664, z: 0, w: -164.44272}
   m_textInfo:
     textComponent: {fileID: 3000}
     characterCount: 6
@@ -4947,14 +4947,14 @@ MonoBehaviour:
   chargeBar: {fileID: 3004}
   chargeBarFilling: {fileID: 3001}
   wrongWayPanel: {fileID: 646}
-  wrongWayText: {fileID: 0}
-  raceEndScreenText: {fileID: 0}
-  lapTimesTitle: {fileID: 2965}
-  raceTimesText: {fileID: 0}
-  endTimeText: {fileID: 0}
-  leaderboardText: {fileID: 0}
-  leaderboardTimeText: {fileID: 2997}
-  countDownText: {fileID: 0}
+  wrongWayText: {fileID: 3018}
+  raceEndScreenText: {fileID: 2972}
+  lapTimesTitle: {fileID: 2968}
+  raceTimesText: {fileID: 2990}
+  endTimeText: {fileID: 2982}
+  leaderboardText: {fileID: 2967}
+  leaderboardTimeText: {fileID: 3000}
+  countDownText: {fileID: 2989}
   countDownController: {fileID: 6332648951526286633, guid: af6067f58962eea498378e0c7065569f,
     type: 3}
   highscoreManager: {fileID: 1742061468813992408, guid: 537a94581b606a5498f5447fc1f22e0a,

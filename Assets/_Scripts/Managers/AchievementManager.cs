@@ -12,6 +12,7 @@ public class AchievementManager : LevelSingleton<AchievementManager>
 
     protected override void Awake()
     {
+        DontDestroyOnLoad(this);
         base.Awake();
 
         // Create and save achievements

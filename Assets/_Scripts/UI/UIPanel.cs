@@ -71,9 +71,6 @@ public class UIPanel : UIBehaviour
     [Header("CountDown")]
     public CountDownController countDownController;
 
-    [Header("HighscoreManager")]
-    public HighscoreManager highscoreManager;
-
     #endregion
 
     #region Properties
@@ -229,7 +226,7 @@ public class UIPanel : UIBehaviour
             leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
 
             // Get highscores (and sorts them beforehand)
-            List<HighscoreEntry> highscoreEntries = highscoreManager.GetHighscoresByStage(SceneManager.GetActiveScene().name);
+            List<HighscoreEntry> highscoreEntries = HighscoreManager.Instance.GetHighscoresByStage(SceneManager.GetActiveScene().name);
 
             // Only show max of 10 or below
             int entries;
