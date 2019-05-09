@@ -8,14 +8,14 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1373}
-  - component: {fileID: 2371}
-  - component: {fileID: 1981}
-  - component: {fileID: 2611}
-  - component: {fileID: 3036}
-  - component: {fileID: 2648}
-  - component: {fileID: 3190}
-  - component: {fileID: 3194}
+  - component: {fileID: 1770}
+  - component: {fileID: 2581}
+  - component: {fileID: 2191}
+  - component: {fileID: 2621}
+  - component: {fileID: 3189}
+  - component: {fileID: 2654}
+  - component: {fileID: 6930205515701456567}
+  - component: {fileID: 7184988813916641664}
   m_Layer: 10
   m_Name: astre_0
   m_TagString: Untagged
@@ -130,7 +130,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.2173505, y: 4.064, z: 4.064001}
   m_Center: {x: 0.047210217, y: -0.10740914, z: -0.10740938}
---- !u!114 &3190
+--- !u!114 &6930205515701456567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatSpeed: -13
   direction: 1
---- !u!114 &3194
+--- !u!114 &7184988813916641664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

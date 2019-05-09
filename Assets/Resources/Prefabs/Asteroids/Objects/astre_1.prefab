@@ -8,14 +8,14 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1358}
-  - component: {fileID: 2356}
-  - component: {fileID: 1965}
-  - component: {fileID: 2596}
-  - component: {fileID: 3021}
-  - component: {fileID: 2633}
-  - component: {fileID: 3136}
-  - component: {fileID: 3157}
+  - component: {fileID: 1596}
+  - component: {fileID: 2429}
+  - component: {fileID: 2039}
+  - component: {fileID: 2602}
+  - component: {fileID: 3093}
+  - component: {fileID: 2637}
+  - component: {fileID: 1862366103096192806}
+  - component: {fileID: 3665152896300830602}
   m_Layer: 10
   m_Name: astre_1
   m_TagString: Untagged
@@ -130,7 +130,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.7983558, y: 3.9524388, z: 4.0417995}
   m_Center: {x: -0.20849764, y: 0.26366448, z: 0.21898419}
---- !u!114 &3136
+--- !u!114 &1862366103096192806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatSpeed: -13
   direction: 1
---- !u!114 &3157
+--- !u!114 &3665152896300830602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,8 +161,7 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 0
   OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
+  ObservedComponents: []
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
