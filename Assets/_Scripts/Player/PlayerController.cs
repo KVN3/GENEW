@@ -192,13 +192,10 @@ public class PlayerController : MonoBehaviour
         // Apply rotation
         if (Movement.IsNotIdle(sideMovementState))
         {
-            // Set the rotation
-            float angleY = horizontalInput * playerShip.components.movement.config.rotationSpeedFactor * rotationalFactor;
-            float angleZ = horizontalInput * playerShip.components.movement.config.rotationSpeedFactor * rotationalFactor;
-            Vector3 rotation = new Vector3(0f, angleY, angleZ);
+
 
             // Rotate the ship along its two axis
-            playerShip.components.movement.Rotate(rotation, horizontalInput, sideMovementState);
+            playerShip.components.movement.Rotate(rotationalFactor, horizontalInput, sideMovementState);
         }
 
         // Restore rotation
@@ -210,8 +207,7 @@ public class PlayerController : MonoBehaviour
 
     private void ManageThrust(float horizontalInput, float verticalInput, float forwardFactor)
     {
-        Vector3 forward = -1 * verticalInput * transform.forward * Time.deltaTime * playerShip.components.movement.config.movementSpeedFactor * forwardFactor;
-        playerShip.components.movement.Move(forward, verticalInput, horizontalInput);
+        playerShip.components.movement.Move(forwardFactor, verticalInput, horizontalInput);
     }
 
     private void ManageCamera(float verticalInput)

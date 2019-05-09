@@ -2,14 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[System.Serializable]
-public struct ShipFloatConfig
-{
-    public float floatDiff;
-    public float floatSpeed;
-    public float baseHeightFromGround;
-}
+using UnityEngine.Assertions;
 
 [System.Serializable]
 public struct ShipMovementConfig
@@ -17,45 +10,64 @@ public struct ShipMovementConfig
     public float movementSpeedFactor;
     public float rotationSpeedFactor;
 
+    [Tooltip("Ship max speed without boosts.")]
     public float baseMaxSpeed;
+
     public float minDrag;
     public float maxDrag;
 
+    [Tooltip("Factor used in slowing down when not giving gas.")]
     public float initialSlowDownFactor;
-
-    public float trailActivationSpeed;
 }
 
+[System.Serializable]
+public struct WindTrailsConfig
+{
+    [Tooltip("Activation speed for trail PS.")]
+    public float trailActivationSpeed;
+
+    [Tooltip("PS Object.")]
+    public GameObject windTrailsObject;
+}
+
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(HoveringManager))]
+[RequireComponent(typeof(Ship))]
 public class ShipMovement : ShipComponent, IPunObservable
 {
-    public ShipFloatConfig floatConfig;
-    public ShipMovementConfig config;
-
     [SerializeField]
-    private GameObject windTrailsObject;
+    private ShipMovementConfig config;
     [SerializeField]
-    private GameObject groundSensor;
+    private WindTrailsConfig trailsConfig;
 
+    #region run data
     private PlayerCamera playerCamera;
+    private HoveringManager hoveringManager;
 
-    // Run data
-    private float currentSpeed;
+    private float currentSpeed = 0f;
     private float currentMaxSpeed;
-
-    private float floatTopBound, floatBottomBound;
-    private bool upperBoundReached;
-    private float currentBaseHeight;
+    #endregion
 
     public void Awake()
     {
-        currentSpeed = 0f;
-        currentBaseHeight = floatConfig.baseHeightFromGround;
+        // Movement config
+        Assert.AreNotEqual(config.baseMaxSpeed, 0, "baseMaxSpeed = 0");
+        Assert.AreNotEqual(config.movementSpeedFactor, 0, "movementSpeedFactor = 0");
+        Assert.AreNotEqual(config.rotationSpeedFactor, 0, "rotationSpeedFactor = 0");
+
+        // Trails config
+        Assert.AreNotEqual(trailsConfig.trailActivationSpeed, 0, "trailActivationSpeed = 0");
+        Assert.IsNotNull(trailsConfig.windTrailsObject, "Trail object not set.");
+
+        // Other
+        hoveringManager = GetComponent<HoveringManager>();
+        Assert.IsNotNull(hoveringManager, "Hovering manager not set.");
     }
 
     public void Start()
     {
         currentMaxSpeed = config.baseMaxSpeed;
-        InitFloatSettings();
+
 
         if (parentShip is PlayerShip)
         {
@@ -68,14 +80,14 @@ public class ShipMovement : ShipComponent, IPunObservable
     {
         if (GetComponent<PhotonView>().IsMine)
         {
-            if (currentSpeed > config.trailActivationSpeed)
+            if (currentSpeed > trailsConfig.trailActivationSpeed)
             {
-                windTrailsObject.SetActive(true);
+                trailsConfig.windTrailsObject.SetActive(true);
                 windTrailsActive = true;
             }
             else
             {
-                windTrailsObject.SetActive(false);
+                trailsConfig.windTrailsObject.SetActive(false);
                 windTrailsActive = false;
             }
         }
@@ -104,9 +116,9 @@ public class ShipMovement : ShipComponent, IPunObservable
             windTrailsActive = (bool)stream.ReceiveNext();
 
             if (windTrailsActive)
-                windTrailsObject.SetActive(true);
+                trailsConfig.windTrailsObject.SetActive(true);
             else
-                windTrailsObject.SetActive(false);
+                trailsConfig.windTrailsObject.SetActive(false);
         }
     }
 
@@ -120,9 +132,12 @@ public class ShipMovement : ShipComponent, IPunObservable
     #endregion
 
     #region Movement
-    public void Move(Vector3 force, float verticalInput, float horizontalInput)
+    public void Move(float movementTypeFactor, float verticalInput, float horizontalInput)
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
+
+        Vector3 force = -1 * verticalInput * transform.forward * Time.deltaTime * config.movementSpeedFactor * movementTypeFactor;
+
         Vector3 vel = rb.velocity;
         Vector3 localVel = parentShip.transform.InverseTransformVector(vel);
 
@@ -131,7 +146,7 @@ public class ShipMovement : ShipComponent, IPunObservable
 
         // Apply floating
         //if(rb.velocity.y >)
-        force.y = ApplyFloating();
+        force.y = hoveringManager.ApplyRaycastHovering();
 
         if (currentSpeed < currentMaxSpeed)
         {
@@ -206,9 +221,14 @@ public class ShipMovement : ShipComponent, IPunObservable
     #endregion
 
     #region Rotation
-    public void Rotate(Vector3 acceleration, float horizontalInput, MovementState sideMovementState)
+    public void Rotate(float movementTypeFactor, float horizontalInput, MovementState sideMovementState)
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
+
+        // Set the rotation
+        float angleY = horizontalInput * config.rotationSpeedFactor * movementTypeFactor;
+        float angleZ = horizontalInput * config.rotationSpeedFactor * movementTypeFactor;
+        Vector3 acceleration = new Vector3(0f, angleY, angleZ);
 
         // Worldspace Vel -> Local Vel
         Vector3 vel = rb.velocity;
@@ -259,142 +279,6 @@ public class ShipMovement : ShipComponent, IPunObservable
 
     #endregion
 
-    #region Floating
-    private float ApplyFloating()
-    {
-        float floatSpeed = 0;
-
-
-
-        // Possible cause of lag ...
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(groundSensor.transform.position, -Vector3.up, out hit))
-        {
-            float distanceToGround = hit.distance;
-
-            if (hit.transform.tag.Equals("Floor"))
-            {
-
-                if (distanceToGround < 9f)
-                {
-                    // Some smoothing
-                    float floatFactor = 50 / distanceToGround;
-
-                    // The speed to return to be used by .AddForce later on
-                    //floatSpeed = floatConfig.floatSpeed * floatFactor;
-
-                    Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
-                    shipRb.velocity = new Vector3(shipRb.velocity.x, floatFactor, shipRb.velocity.z);
-                    floatSpeed = 0;
-
-
-                    currentBaseHeight = hit.point.y + 5f;
-                    floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
-                    floatTopBound = currentBaseHeight + floatConfig.floatDiff;
-                }
-
-                else if (hit.distance > 11f)
-                {
-                    float diff = currentBaseHeight - distanceToGround;
-
-                    // Some smoothing
-                    float floatFactor = 7 * distanceToGround;
-
-                    // The speed to return to be used by .AddForce later on
-                    floatSpeed = -floatConfig.floatSpeed * floatFactor;
-
-                    Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
-                    shipRb.velocity = new Vector3(shipRb.velocity.x, -floatFactor, shipRb.velocity.z);
-                    floatSpeed = 0;
-
-                    //parentShip.transform.position = new Vector3(parentShip.transform.position.x, parentShip.transform.position.y - .8f, parentShip.transform.position.z);
-
-
-                    currentBaseHeight = hit.point.y + 5f;
-                    floatBottomBound = currentBaseHeight - floatConfig.floatDiff;
-                    floatTopBound = currentBaseHeight + floatConfig.floatDiff;
-
-                }
-
-                else
-                {
-                    if (ShouldFloatUp())
-                        floatSpeed = floatConfig.floatSpeed;
-                    else if (ShouldFloatDown())
-                        floatSpeed = -floatConfig.floatSpeed;
-                }
-            }
-        }
-
-        ApplyFloatBounds();
-
-        return floatSpeed;
-    }
-
-    // Set ShipY velocity to 0 if y-pos exceeds absolute bound, and is trying to move past it
-    private void ApplyFloatBounds()
-    {
-        // Difference between top and bottom bound; e.a. top (5.6) - bottom (4.4) = diff (1.2)
-        float diff = Mathf.Round((floatTopBound - floatBottomBound) * 10) / 10;
-
-        // Set the absolute bounds, where rigidbody force is halted if trying to move over
-        float absoluteBottomBound = floatBottomBound - diff;
-        float absoluteTopBound = floatTopBound + diff;
-
-        if (parentShip.transform.position.y < absoluteBottomBound)
-        {
-            Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
-
-            if (shipRb.velocity.y < 0)
-                shipRb.velocity = new Vector3(shipRb.velocity.x, 0f, shipRb.velocity.z);
-        }
-
-        else if (parentShip.transform.position.y > absoluteTopBound)
-        {
-            Rigidbody shipRb = parentShip.GetComponent<Rigidbody>();
-
-            if (shipRb.velocity.y > 0)
-                shipRb.velocity = new Vector3(shipRb.velocity.x, 0f, shipRb.velocity.z);
-        }
-
-    }
-
-    private float GetHeightMiddle()
-    {
-        float diff = floatTopBound - floatBottomBound;
-        float middleHeight = floatTopBound - (diff / 2);
-        return middleHeight;
-    }
-
-    private bool ShouldFloatUp()
-    {
-        if (parentShip.transform.position.y < floatTopBound)
-        {
-            if (!upperBoundReached)
-            {
-                return true;
-            }
-
-        }
-
-        upperBoundReached = true;
-        return false;
-    }
-    private bool ShouldFloatDown()
-    {
-        if (parentShip.transform.position.y > floatBottomBound)
-        {
-            if (upperBoundReached)
-            {
-                return true;
-            }
-        }
-
-        upperBoundReached = false;
-        return false;
-    }
-    #endregion
-
     #region GetSet
     public float GetCurrentSpeed()
     {
@@ -417,14 +301,6 @@ public class ShipMovement : ShipComponent, IPunObservable
             return true;
 
         return false;
-    }
-    #endregion
-
-    #region Initialisations
-    private void InitFloatSettings()
-    {
-        floatTopBound = parentShip.transform.position.y + floatConfig.floatDiff;
-        floatBottomBound = parentShip.transform.position.y - floatConfig.floatDiff;
     }
     #endregion
 

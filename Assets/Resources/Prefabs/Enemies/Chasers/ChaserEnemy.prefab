@@ -143,10 +143,6 @@ MonoBehaviour:
     type: 3}
   shutDownDuration: 4
   playSoundOnStart: 1
-  floatConfig:
-    floatDiff: 0.2
-    floatSpeed: 10
-    baseHeightFromGround: 5
   maxForce: 400
   minDistance: 4000000
   targets: []

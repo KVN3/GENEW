@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Forcefield : ShipComponent, IPunObservable
+public class ShipForcefield : ShipComponent, IPunObservable
 {
     public float maxCharges;
     public float drainRate;

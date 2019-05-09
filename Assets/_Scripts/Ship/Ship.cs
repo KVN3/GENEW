@@ -12,7 +12,7 @@ public struct ShipComponents
     public ShipEngines engines;
     public ShipGun gun;
     public ShipSystem system;
-    public Forcefield forcefield;
+    public ShipForcefield forcefield;
 }
 
 public class Ship : MyMonoBehaviour

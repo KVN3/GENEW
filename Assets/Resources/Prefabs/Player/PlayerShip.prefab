@@ -26065,11 +26065,12 @@ GameObject:
   - component: {fileID: 2453}
   - component: {fileID: 2452}
   - component: {fileID: 2451}
-  - component: {fileID: 2528}
-  - component: {fileID: 2537}
   - component: {fileID: 6987268490720304500}
   - component: {fileID: 4473378837321126152}
   - component: {fileID: 8869554232137204516}
+  - component: {fileID: 2537}
+  - component: {fileID: 8777508945966037226}
+  - component: {fileID: 2528}
   m_Layer: 9
   m_Name: PlayerShip
   m_TagString: Ship
@@ -26085,7 +26086,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 112.85, y: 5, z: -3.84}
+  m_LocalPosition: {x: 112.85, y: 10, z: -3.84}
   m_LocalScale: {x: 1.3, y: 1, z: 1.3}
   m_Children:
   - {fileID: 1116}
@@ -26215,6 +26216,99 @@ MonoBehaviour:
     firstPersonCamera: {fileID: 0}
     thirdPersonCamera: {fileID: 0}
   useAccelerometerControls: 0
+--- !u!114 &6987268490720304500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac71648334fd4164ea7500302bb8cc0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  middleEngine: {fileID: 2450}
+  leftEngine: {fileID: 2441}
+  rightEngine: {fileID: 2449}
+--- !u!114 &4473378837321126152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b321234cad751498170bd59c8f5583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCharges: 100
+  drainRate: 0.5
+  regainRate: 0.25
+  initialCharges: 100
+  owner: {fileID: 2453}
+  forcefieldObject: {fileID: 499}
+--- !u!114 &8869554232137204516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d4a62ec98e568649805b1b9964b2b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawnPoint: {fileID: 2443}
+  mineSP: {fileID: 2448}
+  smokeSP: {fileID: 2438}
+  jammerProjectileClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
+    type: 3}
+  jammerMineClass: {fileID: 2821, guid: 82255b909af5f654fa3020825945976e, type: 3}
+  smokeScreenClass: {fileID: 4297213205010208726, guid: cb568ea53dd219e4bbcb19d6867d5809,
+    type: 3}
+--- !u!114 &2537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b041027ef15824383bc78262b0aea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config:
+    movementSpeedFactor: 2700000
+    rotationSpeedFactor: 1.5
+    baseMaxSpeed: 250
+    minDrag: 0.3
+    maxDrag: 1.5
+    initialSlowDownFactor: 0.01
+  trailsConfig:
+    trailActivationSpeed: 150
+    windTrailsObject: {fileID: 508}
+--- !u!114 &8777508945966037226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64bfdb3753887c740a7f3bf5a5896c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config:
+    hoveringDiff: 0.2
+    hoveringForce: 2000
+    uniqueBaseHeight: 0
+    useUniqueBaseHeight: 0
+    sensor: {fileID: 544}
 --- !u!114 &2528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26240,85 +26334,6 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8b041027ef15824383bc78262b0aea7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatConfig:
-    floatDiff: 0.2
-    floatSpeed: 650
-    baseHeightFromGround: 10
-  config:
-    movementSpeedFactor: 2700000
-    rotationSpeedFactor: 1.5
-    baseMaxSpeed: 250
-    minDrag: 0.3
-    maxDrag: 1.5
-    initialSlowDownFactor: 0.01
-    trailActivationSpeed: 150
-  windTrailsObject: {fileID: 508}
-  groundSensor: {fileID: 544}
---- !u!114 &6987268490720304500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac71648334fd4164ea7500302bb8cc0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  middleEngine: {fileID: 2450}
-  leftEngine: {fileID: 2441}
-  rightEngine: {fileID: 2449}
---- !u!114 &4473378837321126152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68182a35b791d294599cab422d085b3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxCharges: 100
-  drainRate: 1
-  regainRate: 0.1
-  initialCharges: 100
-  owner: {fileID: 2453}
-  forcefieldObject: {fileID: 499}
---- !u!114 &8869554232137204516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d4a62ec98e568649805b1b9964b2b12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpawnPoint: {fileID: 2443}
-  mineSP: {fileID: 2448}
-  smokeSP: {fileID: 2438}
-  jammerProjectileClass: {fileID: 1494292494007426880, guid: 0f953cc82e6eeeb42af5dc9f97a38ccd,
-    type: 3}
-  jammerMineClass: {fileID: 2821, guid: 82255b909af5f654fa3020825945976e, type: 3}
-  smokeScreenClass: {fileID: 4297213205010208726, guid: cb568ea53dd219e4bbcb19d6867d5809,
-    type: 3}
 --- !u!1 &537
 GameObject:
   m_ObjectHideFlags: 0
