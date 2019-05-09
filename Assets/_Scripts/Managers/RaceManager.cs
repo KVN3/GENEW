@@ -16,9 +16,9 @@ public class RaceManager : MonoBehaviour
     void Start()
     {
         // TO DO: boolean use count down or not for testing
-        Instantiate(countDownController, transform);
+        //Instantiate(countDownController, transform);
 
-        //raceStarted = true;
+        raceStarted = true;
     }
 
     private void Update()

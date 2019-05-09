@@ -7,7 +7,7 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class MainMenuController : LevelSingleton<MainMenuController>
+public class MainMenuController : MonoBehaviour
 {
     public GameObject loadingScreen;
 
@@ -15,14 +15,21 @@ public class MainMenuController : LevelSingleton<MainMenuController>
     public TextMeshProUGUI progressText;
     public TextMeshProUGUI loadingText;
 
+    public AchievementCanvas achievementCanvas;
+
     [SerializeField]
     private MenuSoundManager menuSoundManagerClass;
+    
 
     private MenuSoundManager menuSoundManager;
 
-    new void Awake()
+    void Awake()
     {
+        // Only create one instance
+        if (GameObject.Find(achievementCanvas.name+"(Clone)") == null)
+            achievementCanvas = Instantiate(achievementCanvas);
         menuSoundManager = Instantiate(menuSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
+        
     }
 
     public void PlayButtonSound()
@@ -94,11 +101,9 @@ public class MainMenuController : LevelSingleton<MainMenuController>
     public void LoadMainMenuFromLevel()
     {
         PlayerNetwork.ReturnToMain();
-        //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        //SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Main]);
     }
 
-    #region Coroutines
+    #region Coroutines LoadAsync
 
     IEnumerator LoadAsynchronously(string sceneName)
     {

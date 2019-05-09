@@ -4,15 +4,15 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public class AchievementManager : LevelSingleton<AchievementManager>
+public class AchievementManager : MonoBehaviour
 {
     private readonly string key = "AchievementData";
 
     public AchievementCanvas achievementCanvas;
 
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
+        DontDestroyOnLoad(this);
 
         // Create and save achievements
         if (!PlayerPrefs.HasKey(key))
@@ -125,6 +125,36 @@ public class AchievementManager : LevelSingleton<AchievementManager>
     {
         PlayerPrefs.DeleteKey(key);
     }
+
+    #region Singleton
+
+    // Abstract
+
+    protected static AchievementManager _Instance;
+
+    public static bool Initialized => _Instance != null;
+
+    public static AchievementManager Instance
+    {
+        get
+        {
+            if (!Initialized)
+            {
+                GameObject gameObject = new GameObject("Achievement Manager");
+
+                _Instance = gameObject.AddComponent<AchievementManager>();
+            }
+
+            return _Instance;
+        }
+    }
+
+    [RuntimeInitializeOnLoadMethod]
+    static void ForceInit()
+    {
+        AchievementManager GI = Instance;
+    }
+    #endregion
 }
 
 public class AchievementData

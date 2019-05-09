@@ -23,6 +23,7 @@ public struct GameManagers
 
     // Game
     public RaceManager raceManagerClass;
+    public ReplayManager replayManagerClass;
     public UIManager UIManagerClass;
 
     // Sounds
@@ -74,11 +75,15 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(gameManagers.spawnPointManagerClass);
         Assert.IsNotNull(gameManagers.asteroidStormManagerClass);
         Assert.IsNotNull(gameManagers.raceManagerClass);
+        Assert.IsNotNull(gameManagers.replayManagerClass);
         Assert.IsNotNull(gameManagers.analyticsManagerClass);
 
         // Race Manager 
         RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
         //raceManager.SetPlayers(playerShips);
+        // 
+        ReplayManager replayManager = Instantiate(gameManagers.replayManagerClass);
+
 
         if (PlayerPrefs.HasKey("Ghosts"))
             ghosts = new PlayerShipGhost[PlayerPrefs.GetInt("Ghosts")];

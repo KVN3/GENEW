@@ -47,5 +47,7 @@ MonoBehaviour:
   loadingBar: {fileID: 0}
   progressText: {fileID: 0}
   loadingText: {fileID: 0}
+  achievementCanvas: {fileID: 4131740705300397364, guid: e50edd59ef5b13042b0f647313929329,
+    type: 3}
   menuSoundManagerClass: {fileID: 6833971440869080983, guid: 2bb460f518f6b4a488e63ed2caa628f8,
     type: 3}

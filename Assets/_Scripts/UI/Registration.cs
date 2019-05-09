@@ -135,8 +135,8 @@ public class Registration : MonoBehaviour
         {
             // Create
             Account account = new Account(accountData.accounts.Count, usernameInput.text, passwordInput.text);
-            AchievementManager achievementManager = new AchievementManager();
-            account.achievements = achievementManager.CreateAchievementListForPlayer(account);
+            //AchievementManager achievementManager = new AchievementManager();
+            account.achievements = AchievementManager.Instance.CreateAchievementListForPlayer(account);
 
             // Add
             accountData.accounts.Add(account);

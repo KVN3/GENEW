@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class HighscoreManager : LevelSingleton<HighscoreManager>
+public class HighscoreManager : MonoBehaviour
 {
     private List<HighscoreEntry> highscoreEntryList;
 
     private readonly string key = "HighscoreTable";
     private readonly string personalKey = "Highscore";
 
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
+        DontDestroyOnLoad(this);
         // Load highscores
         if (PlayerPrefs.HasKey(key))
         {
@@ -65,13 +65,6 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
         PlayerPrefs.SetString(key, json);
     }
 
-    //public List<HighscoreEntry> GetHighscores()
-    //{
-    //    string jsonString = PlayerPrefs.GetString(key);
-    //    Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
-    //    return highscores.highscoreEntryList;
-    //}
-
     public List<HighscoreEntry> GetHighscoresByStage(string stage)
     {
         string jsonString = PlayerPrefs.GetString(key);
@@ -98,13 +91,45 @@ public class HighscoreManager : LevelSingleton<HighscoreManager>
         }
     }
 
+    [ContextMenu("Reset highscores")]
     public void ResetHighscores()
     {
         PlayerPrefs.DeleteKey(key);
         PlayerPrefs.DeleteKey(personalKey);
         InitHighscores();
     }
+
+    #region Singleton
+
+    // Abstract
+
+    protected static HighscoreManager _Instance;
+
+    public static bool Initialized => _Instance != null;
+
+    public static HighscoreManager Instance
+    {
+        get
+        {
+            if (!Initialized)
+            {
+                GameObject gameObject = new GameObject("Highscore Manager");
+
+                _Instance = gameObject.AddComponent<HighscoreManager>();
+            }
+
+            return _Instance;
+        }
+    }
+
+    [RuntimeInitializeOnLoadMethod]
+    static void ForceInit()
+    {
+        HighscoreManager GI = Instance;
+    }
+    #endregion
 }
+
 
 //  You can't save a list by itself, has to be in a class so you can convert to json
 public class Highscores

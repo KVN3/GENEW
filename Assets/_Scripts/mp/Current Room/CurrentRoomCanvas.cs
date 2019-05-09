@@ -39,8 +39,7 @@ public class CurrentRoomCanvas : MonoBehaviour
         leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
 
         // Get highscores (and sorts them beforehand)
-        HighscoreManager highscoreManager = new HighscoreManager();
-        List<HighscoreEntry> highscoreEntries = highscoreManager.GetHighscoresByStage(ScenesInformation.sceneNames[_sceneTitle]);
+        List<HighscoreEntry> highscoreEntries = HighscoreManager.Instance.GetHighscoresByStage(ScenesInformation.sceneNames[_sceneTitle]);
 
         // Only show max of 10 or below
         int entries;

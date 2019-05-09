@@ -66861,6 +66861,8 @@ MonoBehaviour:
       type: 3}
     raceManagerClass: {fileID: 5850534155415031341, guid: 10c803b6aeb348642b0e5cd41d566b11,
       type: 3}
+    replayManagerClass: {fileID: 803465848510607159, guid: 6035f025c48868345bfd33a3945f62c3,
+      type: 3}
     UIManagerClass: {fileID: 9128402878984158466, guid: 6846d0cf1696d144aaf4dd6e60976d31,
       type: 3}
     backgroundSoundManagerClass: {fileID: 4341203350372289051, guid: 0b342a3a3422cd34e9d93ba8e9a21825,

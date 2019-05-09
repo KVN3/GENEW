@@ -220,9 +220,8 @@ public class PlayerShip : Ship
                         runData.totalTime += time;
 
                     // Leaderboard
-                    HighscoreManager highscoreManager = new HighscoreManager();
                     Account account = Registration.GetCurrentAccount();
-                    highscoreManager.AddHighscoreEntry(account.username, runData.bestRaceTime.ToString(), SceneManager.GetActiveScene().name);
+                    HighscoreManager.Instance.AddHighscoreEntry(account.username, runData.bestRaceTime.ToString(), SceneManager.GetActiveScene().name);
 
                     // Update bestTime for UI
                     if (!PlayerPrefs.HasKey("Highscore"))
@@ -312,10 +311,8 @@ public class PlayerShip : Ship
 
     public void SaveReplay()
     {
-        ReplayManager replayManager = new ReplayManager();
-        replayManager.SaveReplay(Environment.UserName, SceneManager.GetActiveScene().name, runData.positionsX, runData.positionsY, runData.positionsZ, runData.replayRotations, runData.raceTime.ToString());
-
-        //Destroy(replayManager);
+        Account account = Registration.GetCurrentAccount();
+        ReplayManager.Instance.SaveReplay(account.username, SceneManager.GetActiveScene().name, runData.positionsX, runData.positionsY, runData.positionsZ, runData.replayRotations, runData.raceTime.ToString());
     }
 }
 
