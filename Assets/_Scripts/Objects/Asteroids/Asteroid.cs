@@ -55,8 +55,6 @@ public class Asteroid : MonoBehaviour
         DestroyThisAsteroid();
     }
 
-
-
     private void DestroyThisAsteroid()
     {
         Destroy(gameObject);

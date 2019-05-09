@@ -55,9 +55,9 @@ MonoBehaviour:
     rowLengthZ: 70
     spacing: 30
   asteroidClasses:
-  - {fileID: 3189, guid: 927fda0309a7c98439206f44fe276310, type: 3}
-  - {fileID: 3093, guid: fca2b059e01a9894d83828ee1e50e41b, type: 3}
-  - {fileID: 3049, guid: 58148b9b491889c47b92898c87f5ce7c, type: 3}
+  - {fileID: 3189, guid: 33fb5e45a87abe34bac8d235e2797ccd, type: 3}
+  - {fileID: 3093, guid: d60e94c95a112d0488d64848fdce9e49, type: 3}
+  - {fileID: 3049, guid: bbc5623c7b952264bb6f5d4d74a82e37, type: 3}
   viewId: 990
   asteroidLifeTimeInSeconds: 20
 --- !u!114 &719640132675413323

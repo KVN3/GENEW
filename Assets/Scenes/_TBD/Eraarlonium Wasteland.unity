@@ -66802,8 +66802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf227bcaf8173884eb69d07f530afd05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameConfig:
-    playingHeight: 8
   gameManagers:
     analyticsManagerClass: {fileID: 7070041025322730957, guid: c19ad36042a1486489c8896d4c89371b,
       type: 3}
@@ -66815,7 +66813,7 @@ MonoBehaviour:
       type: 3}
     circlerManagerClass: {fileID: 8451753262998984109, guid: e47d4bc842278bd45bec02cdbcc97969,
       type: 3}
-    asteroidStormManagerClass: {fileID: 528343328, guid: dd6f0b3646b8a2042b5b1cc738cf2658,
+    asteroidStormManagerClass: {fileID: 528343328, guid: b0c0a38fe7353de468554a43cd3a2035,
       type: 3}
     raceManagerClass: {fileID: 5850534155415031341, guid: 10c803b6aeb348642b0e5cd41d566b11,
       type: 3}

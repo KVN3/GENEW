@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config:
     hoveringDiff: 0.3
-    hoveringForce: 1000
+    hoveringForce: 200
     uniqueBaseHeight: 0
     useUniqueBaseHeight: 0
     sensor: {fileID: 648}
