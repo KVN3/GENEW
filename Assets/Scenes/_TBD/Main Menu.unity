@@ -18581,6 +18581,12 @@ PrefabInstance:
       propertyPath: loadingText
       value: 
       objectReference: {fileID: 1008228946}
+    - target: {fileID: 8631873225630643792, guid: 581fd72e368ea8d4d990f78f059fd7cd,
+        type: 3}
+      propertyPath: achievementCanvas
+      value: 
+      objectReference: {fileID: 4131740705300397364, guid: e50edd59ef5b13042b0f647313929329,
+        type: 3}
     - target: {fileID: 8631873225630643823, guid: 581fd72e368ea8d4d990f78f059fd7cd,
         type: 3}
       propertyPath: m_LocalPosition.x
