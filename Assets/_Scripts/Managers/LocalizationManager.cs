@@ -254,9 +254,9 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         {
             if (!Initialized)
             {
-                GameObject GameObject = new GameObject("Localization Manager");
+                GameObject gameObject = new GameObject("Localization Manager");
 
-                _Instance = GameObject.AddComponent<LocalizationManager>();
+                _Instance = gameObject.AddComponent<LocalizationManager>();
             }
 
             return _Instance;

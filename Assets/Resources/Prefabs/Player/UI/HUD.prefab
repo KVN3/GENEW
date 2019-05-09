@@ -4957,8 +4957,6 @@ MonoBehaviour:
   countDownText: {fileID: 2989}
   countDownController: {fileID: 6332648951526286633, guid: af6067f58962eea498378e0c7065569f,
     type: 3}
-  highscoreManager: {fileID: 1742061468813992408, guid: 537a94581b606a5498f5447fc1f22e0a,
-    type: 3}
 --- !u!225 &2892
 CanvasGroup:
   m_ObjectHideFlags: 0
