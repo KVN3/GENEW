@@ -17,8 +17,11 @@ public struct ShipSkin
 
 public class SkinManager : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public ShipSkin skin;
-    public bool applySkin;
+    [SerializeField]
+    private bool applySkin;
+
+    [SerializeField]
+    private ShipSkin skin;
 
     private PhotonView photonView;
 
@@ -27,6 +30,7 @@ public class SkinManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         photonView = GetComponent<PhotonView>();
 
+        // If my ship, use my playerprefs to set color
         if (photonView.IsMine)
         {
             skin.baseColor = PlayerPrefsX.GetColor("REGULAR_COLOR");
@@ -34,17 +38,97 @@ public class SkinManager : MonoBehaviourPunCallbacks, IPunObservable
             skin.darkColor = PlayerPrefsX.GetColor("DARK_COLOR");
         }
 
+        StartCoroutine(C_ApplySkins());
+    }
+
+    // Refresh skins
+    private IEnumerator C_ApplySkins()
+    {
+        while (true)
+        {
+            photonView.RPC("RPC_ApplySkins", RpcTarget.AllBuffered);
+
+            yield return new WaitForSeconds(60);
+        }
     }
 
     [PunRPC]
-    private void RPC_ApplySkin()
+    private void RPC_ApplySkins()
     {
-        ApplySkin();
+        ApplySkins();
     }
 
-    private void Update()
+    // Apply skin on ship
+    private void ApplySkins()
     {
-        photonView.RPC("RPC_ApplySkin", RpcTarget.AllBuffered);
+        if (applySkin)
+        {
+            // Go through all child transforms to this ship transform
+            foreach (Transform shipChildTransform in transform)
+            {
+                // Apply forcefield skin to the forcefield shipcomponent
+                if (shipChildTransform.name.Equals("Components"))
+                    ApplyForceFieldSkin(shipChildTransform);
+
+                // Apply skin to the mesh
+                else if (shipChildTransform.name.Equals("Mesh"))
+                    ApplyShipSkin(shipChildTransform);
+            }
+        }
+    }
+
+    // Apply skin to forcefield
+    private void ApplyForceFieldSkin(Transform componentsTransform)
+    {
+        // Go through each component, looking for the forcefield
+        foreach (Transform componentTransform in componentsTransform)
+        {
+            if (componentTransform.name.Equals("Forcefield"))
+            {
+                Renderer renderer = componentTransform.GetComponent<Renderer>();
+                Material[] mats = renderer.materials;
+
+                // Apply skin color
+                foreach (Material mat in mats)
+                    mat.SetColor("_TintColor", skin.forcefieldColor);
+            }
+        }
+    }
+
+    // Apply skin to base
+    private void ApplyShipSkin(Transform meshTransform)
+    {
+        // Go through each grouping
+        foreach (Transform meshGroupingTransform in meshTransform)
+        {
+            // Go through each part
+            foreach (Transform partTransform in meshGroupingTransform)
+            {
+                // Go through each single mesh object that comprises the part
+                foreach (Transform singleObject in partTransform)
+                {
+                    Renderer renderer = singleObject.GetComponent<Renderer>();
+                    Material[] mats = renderer.materials;
+
+                    // Apply the colors
+                    foreach (Material mat in mats)
+                    {
+                        switch (mat.name)
+                        {
+                            case "Metal_Blue (Instance)":
+                                mat.color = skin.baseColor;
+                                break;
+                            case "Metal_Blue_Light (Instance)":
+                                mat.color = skin.lightColor;
+                                break;
+                            case "Metal_Blue_Dark (Instance)":
+                                mat.color = skin.darkColor;
+                                break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // Send data if this is our ship, receive data if it is not
@@ -79,119 +163,10 @@ public class SkinManager : MonoBehaviourPunCallbacks, IPunObservable
             skin.baseColor = new Color(baseColorArray[0], baseColorArray[1], baseColorArray[2], baseColorArray[3]);
 
             float[] lightColorArray = (float[])stream.ReceiveNext();
-            skin.baseColor = new Color(lightColorArray[0], lightColorArray[1], lightColorArray[2], lightColorArray[3]);
+            skin.lightColor = new Color(lightColorArray[0], lightColorArray[1], lightColorArray[2], lightColorArray[3]);
 
             float[] darkColorArray = (float[])stream.ReceiveNext();
-            skin.baseColor = new Color(darkColorArray[0], darkColorArray[1], darkColorArray[2], darkColorArray[3]);
-        }
-    }
-
-    // Apply skin on ship
-    public void ApplySkin()
-    {
-        if (applySkin)
-        {
-            foreach (Transform shipKid in transform)
-            {
-                if (shipKid.name.Equals("Components"))
-                {
-                    ApplyForceFieldSkin(shipKid);
-                }
-                else if (shipKid.name.Equals("Mesh"))
-                {
-                    ApplyShipSkin(shipKid);
-                }
-            }
-        }
-    }
-
-    // Apply skin to forcefield
-    private void ApplyForceFieldSkin(Transform componentsTransform)
-    {
-        foreach (Transform componentTransform in componentsTransform)
-        {
-            if (componentTransform.name.Equals("Forcefield"))
-            {
-                Renderer renderer = componentTransform.GetComponent<Renderer>();
-
-                Material[] mats = renderer.materials;
-                foreach (Material mat in mats)
-                {
-                    mat.SetColor("_TintColor", skin.forcefieldColor);
-                }
-
-            }
-        }
-    }
-
-    // Apply skin to base
-    private void ApplyShipSkin(Transform meshTransform)
-    {
-        foreach (Transform childTransform in meshTransform)
-        {
-            foreach (Transform partTransform in childTransform)
-            {
-                foreach (Transform singleObject in partTransform)
-                {
-                    Renderer renderer = singleObject.GetComponent<Renderer>();
-
-                    Material[] mats = renderer.materials;
-
-                    foreach (Material mat in mats)
-                    {
-                        switch (mat.name)
-                        {
-                            case "Metal_Blue (Instance)":
-                                mat.color = skin.baseColor;
-                                break;
-                            case "Metal_Blue_Light (Instance)":
-                                mat.color = skin.lightColor;
-                                break;
-                            case "Metal_Blue_Dark (Instance)":
-                                mat.color = skin.darkColor;
-                                break;
-                        }
-                    }
-                }
-            }
+            skin.darkColor = new Color(darkColorArray[0], darkColorArray[1], darkColorArray[2], darkColorArray[3]);
         }
     }
 }
-
-
-//if (PlayerPrefs.HasKey("Ship Color"))
-//{
-//    string color = PlayerPrefs.GetString("Ship Color");
-//    switch (color)
-//    {
-//        case "Red":
-//            skin.baseColor = new Color32(255, 0, 0, 0);
-//            skin.darkColor = new Color32(0, 0, 0, 255);
-//            skin.lightColor = new Color32(30, 0, 0, 255);
-//            skin.forcefieldColor = new Color32(255, 0, 0, 255);
-//            break;
-//        case "Green":
-//            skin.baseColor = new Color32(0, 255, 0, 0);
-//            skin.darkColor = new Color32(0, 0, 0, 255);
-//            skin.lightColor = new Color32(0, 30, 0, 255);
-//            skin.forcefieldColor = new Color32(0, 255, 0, 255);
-//            break;
-//        case "Blue":
-//            skin.baseColor = new Color32(0, 0, 255, 0);
-//            skin.darkColor = new Color32(0, 0, 0, 255);
-//            skin.lightColor = new Color32(0, 0, 30, 255);
-//            skin.forcefieldColor = new Color32(0, 0, 255, 255);
-//            break;
-//    }
-//}
-
-
-//case "Metal_Blue (Instance)":
-//    mat.color = PlayerPrefsX.GetColor("REGULAR_COLOR");
-//    break;
-//case "Metal_Blue_Light (Instance)":
-//    mat.color = PlayerPrefsX.GetColor("LIGHT_COLOR");
-//    break;
-//case "Metal_Blue_Dark (Instance)":
-//    mat.color = PlayerPrefsX.GetColor("DARK_COLOR");
-//    break;
