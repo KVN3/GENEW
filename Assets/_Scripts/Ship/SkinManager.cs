@@ -79,10 +79,10 @@ public class SkinManager : MonoBehaviourPunCallbacks, IPunObservable
             skin.baseColor = new Color(baseColorArray[0], baseColorArray[1], baseColorArray[2], baseColorArray[3]);
 
             float[] lightColorArray = (float[])stream.ReceiveNext();
-            skin.baseColor = new Color(lightColorArray[0], lightColorArray[1], lightColorArray[2], lightColorArray[3]);
+            skin.lightColor = new Color(lightColorArray[0], lightColorArray[1], lightColorArray[2], lightColorArray[3]);
 
             float[] darkColorArray = (float[])stream.ReceiveNext();
-            skin.baseColor = new Color(darkColorArray[0], darkColorArray[1], darkColorArray[2], darkColorArray[3]);
+            skin.darkColor = new Color(darkColorArray[0], darkColorArray[1], darkColorArray[2], darkColorArray[3]);
         }
     }
 
