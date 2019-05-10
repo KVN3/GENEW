@@ -150,7 +150,4 @@ public static class SharedResources
     }
     #endregion
 
-
-
-
 }
