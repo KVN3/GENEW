@@ -4,15 +4,16 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using Photon.Realtime;
+using TMPro;
 
 public class PlayerListing : MonoBehaviour
 {
     public Player PhotonPlayer { get; private set; }
 
     [SerializeField]
-    private Text _playerName;
+    private TextMeshProUGUI _playerName;
     [SerializeField]
-    private Text _playerPing;
+    private TextMeshProUGUI _playerPing;
 
 
     public void ApplyPhotonPlayer(Player photonPlayer)

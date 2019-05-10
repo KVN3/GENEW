@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AppSettings:
     AppIdRealtime: ac6a7d08-49fc-4950-9664-552e10f6b39a
-    AppIdChat: 
+    AppIdChat: 829d0e0b-e9d6-4db1-be34-0ef3a1e9d04c
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
@@ -49,5 +49,6 @@ MonoBehaviour:
   - RPC_DropMine
   - RPC_SpawnAsteroid
   - RPC_ExplodeAsteroid
+  - RPC_ApplySkins
   DisableAutoOpenWizard: 1
   ShowSettings: 1
