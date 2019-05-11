@@ -66,11 +66,7 @@ public class Chat : MonoBehaviour, IChatClientListener
     private void Update()
     {
         if (chatClient != null)
-        {
             chatClient.Service();
-            //if (chatClient.State == ChatState.ConnectedToFrontEnd)
-            //    print("Connected!");
-        }
         // check if we are missing context, which means we got kicked out to get back to the Photon Demo hub.
         if (stateText == null)
         {
