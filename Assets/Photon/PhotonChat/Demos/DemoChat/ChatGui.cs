@@ -127,7 +127,7 @@ public class ChatGui : MonoBehaviour, IChatClientListener
 		if (string.IsNullOrEmpty(this.UserName))
 		{
 		    this.UserName = "user" + Environment.TickCount%99; //made-up username
-		}
+        }
 
         #if PHOTON_UNITY_NETWORKING
         this.chatAppSettings = PhotonNetwork.PhotonServerSettings.AppSettings;
@@ -336,7 +336,8 @@ public class ChatGui : MonoBehaviour, IChatClientListener
 			}
 			else
 			{
-				this.chatClient.PublishMessage(this.selectedChannelName, inputLine);
+                Debug.Log("inputLine");
+                this.chatClient.PublishMessage(this.selectedChannelName, inputLine);
 			}
 		}
 	}

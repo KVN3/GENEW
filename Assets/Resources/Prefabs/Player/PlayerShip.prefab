@@ -1699,7 +1699,7 @@ Transform:
 --- !u!199 &2375
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -11677,7 +11677,7 @@ ParticleSystem:
 --- !u!199 &2376
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -15510,7 +15510,7 @@ Transform:
 --- !u!199 &2377
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -20540,7 +20540,7 @@ Transform:
 --- !u!199 &2378
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -26192,12 +26192,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b008884a6e33ff4bb89f0335cdfb866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  applySkin: 1
   skin:
     baseColor: {r: 0, g: 0, b: 0, a: 0}
     darkColor: {r: 0, g: 0, b: 0, a: 0}
     lightColor: {r: 0, g: 0, b: 0, a: 0}
     forcefieldColor: {r: 1, g: 0, b: 0.08445263, a: 1}
-  applySkin: 1
 --- !u!114 &2451
 MonoBehaviour:
   m_ObjectHideFlags: 0
