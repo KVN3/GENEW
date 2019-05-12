@@ -25,16 +25,19 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         Instance = this;
         photonView = GetComponent<PhotonView>();
 
-
-        Account account = Registration.GetCurrentAccount();
-        PhotonNetwork.LocalPlayer.NickName = account.username + "#" + Random.Range(1000, 9999);
-        PlayerName = PhotonNetwork.LocalPlayer.NickName;
-
-        //PlayerName = "Kevin#" + Random.Range(1000, 9999);
+        SetAccount();
 
         // Higher bandwidth cost, smoother movement
         PhotonNetwork.SendRate = 120;
         PhotonNetwork.SerializationRate = 60;
+    }
+
+    public void SetAccount()
+    {
+        Account account = Registration.GetCurrentAccount();
+        PhotonNetwork.LocalPlayer.NickName = account.username + "#" + Random.Range(1000, 9999);
+        PlayerName = PhotonNetwork.LocalPlayer.NickName;
+        //PlayerName = "Kevin#" + Random.Range(1000, 9999);
     }
 
     private void Start()

@@ -11,6 +11,7 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
     public Text createRoomText;
     public Text roomNameText;
     public Text returnText;
+    public Chat chatController;
 
     [SerializeField]
     private RoomLayoutGroup _roomLayoutGroup;
@@ -31,7 +32,7 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
     {
        if(PhotonNetwork.JoinRoom(roomName))
         {
-
+            chatController.JoinChat(roomName);
         }
         else
         {

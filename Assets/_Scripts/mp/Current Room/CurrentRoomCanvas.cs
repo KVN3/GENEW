@@ -15,6 +15,7 @@ public class CurrentRoomCanvas : MonoBehaviour
     private MapSelection _mapSelection;
 
     public Text roomStateText;
+    public TextMeshProUGUI roomNameText;
     public Text startMatchText;
     public Text leaveRoomText;
     public TextMeshProUGUI levelText;
@@ -32,6 +33,8 @@ public class CurrentRoomCanvas : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerPrefs.HasKey("RoomName"))
+            roomNameText.text = PlayerPrefs.GetString("RoomName");
         leaveRoomText.text = LocalizationManager.GetTextByKey("LEAVE_ROOM");
         startMatchText.text = LocalizationManager.GetTextByKey("START_MATCH");
         levelText.text = LocalizationManager.GetTextByKey("LEVEL");

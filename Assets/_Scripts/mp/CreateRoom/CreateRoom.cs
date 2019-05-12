@@ -23,6 +23,8 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
         // Creates room
         if (PhotonNetwork.CreateRoom(RoomName.text, roomOptions, TypedLobby.Default))
         {
+            // Save room name for 
+            PlayerPrefs.SetString("RoomName", RoomName.text);
             print("Create room successfully sent.");
         }
         else

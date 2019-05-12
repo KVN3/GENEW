@@ -107,6 +107,19 @@ public class Chat : MonoBehaviour, IChatClientListener
 
     public void StartChat()
     {
+        // Add chat channel
+        channelsToJoinOnConnect = new string[1];
+        channelsToJoinOnConnect[0] = PlayerPrefs.GetString("RoomName");
+
+        Connect();
+    }
+
+    public void JoinChat(string roomName)
+    {
+        // Add chat channel
+        channelsToJoinOnConnect = new string[1];
+        channelsToJoinOnConnect[0] = roomName;
+
         Connect();
     }
 
@@ -138,8 +151,6 @@ public class Chat : MonoBehaviour, IChatClientListener
         connectingLabel.SetActive(false);
 
         userIdText.text = "Connected as " + userName;
-
-        chatPanel.gameObject.SetActive(true);
 
         if (friendsList != null && friendsList.Length > 0)
         {

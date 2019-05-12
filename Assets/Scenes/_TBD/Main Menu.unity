@@ -1545,6 +1545,7 @@ MonoBehaviour:
   createRoomText: {fileID: 614946154}
   roomNameText: {fileID: 380210405}
   returnText: {fileID: 556941437}
+  chatController: {fileID: 882679381}
   _roomLayoutGroup: {fileID: 1964038776}
 --- !u!1 &179990363
 GameObject:
@@ -5339,7 +5340,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 34.8
+  m_fontSize: 34.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9782,6 +9783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapSelection: {fileID: 1238497573}
   roomStateText: {fileID: 553829795}
+  roomNameText: {fileID: 1199723283}
   startMatchText: {fileID: 237092258}
   leaveRoomText: {fileID: 1568120244}
   levelText: {fileID: 336246640}
@@ -9820,8 +9822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d862afec6e8b2341900d2a90e5e7014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channelsToJoinOnConnect:
-  - Room
+  channelsToJoinOnConnect: []
   friendsList:
   - TestFriend
   historyLengthToFetch: 0
@@ -10593,8 +10594,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Status
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c60e12a6166334f408740a8eaf0da876, type: 2}
+  m_sharedMaterial: {fileID: 21814945997891094, guid: c60e12a6166334f408740a8eaf0da876,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10637,7 +10639,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -10729,7 +10731,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 461, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1005524818
@@ -10768,8 +10770,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'Gianni: Hi'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c60e12a6166334f408740a8eaf0da876, type: 2}
+  m_sharedMaterial: {fileID: 21814945997891094, guid: c60e12a6166334f408740a8eaf0da876,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10794,8 +10797,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11376,7 +11379,7 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
-  m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_GlobalFontAsset: {fileID: 11400000, guid: c60e12a6166334f408740a8eaf0da876, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
@@ -12139,8 +12142,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6, y: 362}
-  m_SizeDelta: {x: 517.42, y: 34.2}
+  m_AnchoredPosition: {x: -6, y: 355.52}
+  m_SizeDelta: {x: 517.4, y: 47.161}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1199723283
 MonoBehaviour:
@@ -17028,7 +17031,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 44.55
+  m_fontSize: 44.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -17292,8 +17295,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c60e12a6166334f408740a8eaf0da876, type: 2}
+  m_sharedMaterial: {fileID: 21814945997891094, guid: c60e12a6166334f408740a8eaf0da876,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19377,7 +19381,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.14514364, y: 0, z: -110.31419, w: 0}
+  m_margin: {x: -0.14514364, y: 0, z: 1.1259726, w: 0}
   m_textInfo:
     textComponent: {fileID: 1933361292}
     characterCount: 8
@@ -19430,8 +19434,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -245, y: -35}
-  m_SizeDelta: {x: 236, y: 50}
+  m_AnchoredPosition: {x: -190.90005, y: -35}
+  m_SizeDelta: {x: 344.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1943374550
 GameObject:
@@ -19867,7 +19871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -21357,8 +21361,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Enter chat message...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c60e12a6166334f408740a8eaf0da876, type: 2}
+  m_sharedMaterial: {fileID: 21814945997891094, guid: c60e12a6166334f408740a8eaf0da876,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -21401,7 +21406,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
