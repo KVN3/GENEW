@@ -36,6 +36,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("ON", "AAN");
         NLDict.Add("OFF", "UIT");
         NLDict.Add("LOBBY", "Lobby");
+        NLDict.Add("ROOM_NAME", "Kamernaam");
         NLDict.Add("CREATE_ROOM", "Creëer kamer");
         NLDict.Add("LEAVE_ROOM", "Verlaat kamer");
         NLDict.Add("START_MATCH", "Start potje");
@@ -136,6 +137,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("RETURN_TO_MAIN_MENU", "Return to main menu");
         ENDict.Add("LOBBY", "Lobby");
         ENDict.Add("CREATE_ROOM", "Create room");
+        ENDict.Add("ROOM_NAME", "Room name");
         ENDict.Add("LEAVE_ROOM", "Leave room");
         ENDict.Add("START_MATCH", "Start match");
         ENDict.Add("PUBLIC_ROOM", "Public room");

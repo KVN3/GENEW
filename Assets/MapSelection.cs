@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MapSelection : MonoBehaviour
 {
     [SerializeField]
-    private Dropdown _dropdownList;
+    private TMP_Dropdown _dropdownList;
     [SerializeField]
     private List<SceneTitle> scenes;
 
     private void Start()
     {
         // Populate dropdownlist
-        List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
+        List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
 
         foreach (SceneTitle scene in scenes)
         {
-            options.Add(new Dropdown.OptionData(ScenesInformation.sceneNames[scene]));
+            options.Add(new TMP_Dropdown.OptionData(ScenesInformation.sceneNames[scene]));
         }
         
         _dropdownList.AddOptions(options);

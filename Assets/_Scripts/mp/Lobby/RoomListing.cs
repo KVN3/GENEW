@@ -4,19 +4,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RoomListing : MonoBehaviour
 {
     [SerializeField]
-    private Text _roomNameText;
-    public Text RoomNameText
+    private TextMeshProUGUI _roomNameText;
+    public TextMeshProUGUI RoomNameText
     {
         get { return _roomNameText; }
     }
 
     [SerializeField]
-    private Text _playerCountText;
-    public Text PlayerCountText
+    private TextMeshProUGUI _playerCountText;
+    public TextMeshProUGUI PlayerCountText
     {
         get { return _playerCountText; }
     }

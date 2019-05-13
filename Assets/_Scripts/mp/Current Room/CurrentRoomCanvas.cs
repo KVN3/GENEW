@@ -18,10 +18,9 @@ public class CurrentRoomCanvas : MonoBehaviour
     
     public string RoomName { get; set; }
 
-    public Text roomStateText;
     public TextMeshProUGUI roomNameText;
-    public Text startMatchText;
-    public Text leaveRoomText;
+    public TextMeshProUGUI startMatchText;
+    public TextMeshProUGUI leaveRoomText;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI leaderboardText;
     public TextMeshProUGUI leaderboardTimesText;
@@ -46,7 +45,6 @@ public class CurrentRoomCanvas : MonoBehaviour
         leaveRoomText.text = LocalizationManager.GetTextByKey("LEAVE_ROOM");
         startMatchText.text = LocalizationManager.GetTextByKey("START_MATCH");
         levelText.text = LocalizationManager.GetTextByKey("LEVEL");
-        roomStateText.text = LocalizationManager.GetTextByKey("PUBLIC_ROOM");
         leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
 
         // Get highscores (and sorts them beforehand)

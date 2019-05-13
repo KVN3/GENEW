@@ -4,12 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
 {
     [SerializeField]
-    private Text _roomName;
-    private Text RoomName
+    private TextMeshProUGUI _roomName;
+    private TextMeshProUGUI RoomName
     {
         get { return _roomName; }
     }

@@ -8,9 +8,9 @@ using TMPro;
 public class LobbyCanvas : MonoBehaviourPunCallbacks
 {
     public TextMeshProUGUI lobbyText;
-    public Text createRoomText;
-    public Text roomNameText;
-    public Text returnText;
+    public TextMeshProUGUI createRoomText;
+    public TextMeshProUGUI roomNameText;
+    public TextMeshProUGUI returnText;
     public Chat chatController;
 
     [SerializeField]
@@ -20,11 +20,16 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
         get { return _roomLayoutGroup; }
     }
 
+    private void Start()
+    {
+        roomNameText.text = LocalizationManager.GetTextByKey("ROOM_NAME") + "...";
+    }
+
     public void Update()
     {
         lobbyText.text = LocalizationManager.GetTextByKey("LOBBY");
         createRoomText.text = LocalizationManager.GetTextByKey("CREATE_ROOM");
-        roomNameText.text = LocalizationManager.GetTextByKey("ROOM_NAME") + "...";
+        
         returnText.text = LocalizationManager.GetTextByKey("RETURN_TO_MAIN_MENU");
     }
 
