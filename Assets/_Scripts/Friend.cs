@@ -3,12 +3,14 @@ using System.Collections;
 
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 /// <summary>
 /// Friend UI item used to represent the friend status as well as message. 
 /// It aims at showing how to share health for a friend that plays on a different room than you for example.
 /// But of course the message can be anything and a lot more complex.
 /// </summary>
+/// 
 public class Friend : MonoBehaviour
 {
     [HideInInspector]
@@ -59,3 +61,4 @@ public class Friend : MonoBehaviour
         StatusLabel.text = _status;
     }
 }
+

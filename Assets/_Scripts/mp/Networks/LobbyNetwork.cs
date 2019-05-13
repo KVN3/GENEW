@@ -22,6 +22,10 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
         print("Connecting to server...");
 
         PhotonNetwork.GameVersion = "0.0.0";
+        Account account = Registration.GetCurrentAccount();
+        // Sets UserId to account username instead of a randomly generated unique cod
+        PhotonNetwork.AuthValues = new AuthenticationValues(account.username);
+
         PhotonNetwork.ConnectUsingSettings();
     }
 

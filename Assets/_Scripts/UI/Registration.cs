@@ -135,8 +135,8 @@ public class Registration : MonoBehaviour
         {
             // Create
             Account account = new Account(accountData.accounts.Count, usernameInput.text, passwordInput.text);
-            //AchievementManager achievementManager = new AchievementManager();
             account.achievements = AchievementManager.Instance.CreateAchievementListForPlayer(account);
+            account.friendList = new List<string>();
 
             // Add
             accountData.accounts.Add(account);
@@ -159,13 +159,15 @@ public class Registration : MonoBehaviour
         string jsonString = PlayerPrefs.GetString("currentAccount");
         return JsonUtility.FromJson<Account>(jsonString);
     }
-
+    
+    // Updates logged in account
     public static void SaveCurrentAccount(Account account)
     {
         string json = JsonUtility.ToJson(account);
         PlayerPrefs.SetString("currentAccount", json);
     }
 
+    // Saves to the local accountData
     public static void SaveAccountToAccountData(Account account)
     {
         // Load accountData
@@ -205,6 +207,7 @@ public class Account
     public string password;
 
     public List<Achievement> achievements;
+    public List<string> friendList;
 
     public Account(int id, string username, string password)
     {

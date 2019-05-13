@@ -77,6 +77,8 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         // Instantiate the button as a child of the Layout Group
         GameObject playerListingObj = Instantiate(PlayerListingPrefab);
         playerListingObj.transform.SetParent(transform, false);
+        // Adds onClick to add friend
+        playerListingObj.GetComponent<Button>().onClick.AddListener(delegate { Chat.instance.AddFriend(player.UserId); });
 
         // Add to listing
         PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
