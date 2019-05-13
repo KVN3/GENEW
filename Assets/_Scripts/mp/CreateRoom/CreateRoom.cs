@@ -18,13 +18,12 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
     public void OnClick_CreateRoom()
     {
         // Set the room options
-        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 3 };
+        RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 3, PublishUserId = true }; // PublisherId is for making friends
 
         // Creates room
         if (PhotonNetwork.CreateRoom(RoomName.text, roomOptions, TypedLobby.Default))
         {
-            // Save room name for 
-            PlayerPrefs.SetString("RoomName", RoomName.text);
+            Chat.instance.JoinChat(RoomName.text);
             print("Create room successfully sent.");
         }
         else

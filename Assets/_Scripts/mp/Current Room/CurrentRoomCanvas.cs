@@ -10,9 +10,13 @@ using static UnityEngine.UI.Dropdown;
 
 public class CurrentRoomCanvas : MonoBehaviour
 {
+    public static CurrentRoomCanvas instance;
+
     private SceneTitle _sceneTitle;
     [SerializeField]
     private MapSelection _mapSelection;
+    
+    public string RoomName { get; set; }
 
     public Text roomStateText;
     public TextMeshProUGUI roomNameText;
@@ -26,6 +30,11 @@ public class CurrentRoomCanvas : MonoBehaviour
     public TextMeshProUGUI ghostsText;
     public TMP_InputField ghostInput;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         _sceneTitle = _mapSelection.GetScene();
@@ -33,8 +42,7 @@ public class CurrentRoomCanvas : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerPrefs.HasKey("RoomName"))
-            roomNameText.text = PlayerPrefs.GetString("RoomName");
+        roomNameText.text = RoomName;
         leaveRoomText.text = LocalizationManager.GetTextByKey("LEAVE_ROOM");
         startMatchText.text = LocalizationManager.GetTextByKey("START_MATCH");
         levelText.text = LocalizationManager.GetTextByKey("LEVEL");

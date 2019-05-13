@@ -11,6 +11,8 @@ public class Chat : MonoBehaviour, IChatClientListener
 {
     #region Fields
 
+    public static Chat instance;
+
     public string[] channelsToJoinOnConnect; // set in inspector. Demo channels to join automatically.
 
     public string[] friendsList;
@@ -35,7 +37,7 @@ public class Chat : MonoBehaviour, IChatClientListener
 
     private readonly Dictionary<string, Toggle> channelToggles = new Dictionary<string, Toggle>();
 
-    private readonly Dictionary<string, FriendItem> friendListItemLUT = new Dictionary<string, FriendItem>();
+    private readonly Dictionary<string, Friend> friendListItemLUT = new Dictionary<string, Friend>();
 
     public bool showState = true;
     //public GameObject title;
@@ -44,6 +46,11 @@ public class Chat : MonoBehaviour, IChatClientListener
     #endregion
 
     #region Unity Methods
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void Start()
     {
         userIdText.text = "";
@@ -105,20 +112,12 @@ public class Chat : MonoBehaviour, IChatClientListener
         chatClient.PublishMessage(selectedChannelName, inputLine);
     }
 
-    public void StartChat()
-    {
-        // Add chat channel
-        channelsToJoinOnConnect = new string[1];
-        channelsToJoinOnConnect[0] = PlayerPrefs.GetString("RoomName");
-
-        Connect();
-    }
-
     public void JoinChat(string roomName)
     {
         // Add chat channel
         channelsToJoinOnConnect = new string[1];
         channelsToJoinOnConnect[0] = roomName;
+        CurrentRoomCanvas.instance.RoomName = roomName;
 
         Connect();
     }
@@ -151,6 +150,8 @@ public class Chat : MonoBehaviour, IChatClientListener
         connectingLabel.SetActive(false);
 
         userIdText.text = "Connected as " + userName;
+        //Debug.Log(userName + ": " + PhotonNetwork.LocalPlayer.UserId);
+        //Debug.Log(userName + ": " + chatClient.UserId); // Same as userName
 
         if (friendsList != null && friendsList.Length > 0)
         {
@@ -201,6 +202,52 @@ public class Chat : MonoBehaviour, IChatClientListener
         ShowChannel(channels[0]);
     }
 
+    public void ShowChannel(string channelName)
+    {
+        if (string.IsNullOrEmpty(channelName))
+        {
+            return;
+        }
+
+        ChatChannel channel = null;
+        bool found = chatClient.TryGetChannel(channelName, out channel);
+        if (!found)
+        {
+            Debug.Log("ShowChannel failed to find channel: " + channelName);
+            return;
+        }
+
+        selectedChannelName = channelName;
+        currentChannelText.text = channel.ToStringMessages();
+
+        Debug.Log("ShowChannel: " + selectedChannelName);
+
+        foreach (KeyValuePair<string, Toggle> pair in this.channelToggles)
+        {
+            pair.Value.isOn = pair.Key == channelName ? true : false;
+        }
+    }
+
+    /// <summary>
+	/// New status of another user (you get updates for users set in your friends list).
+	/// </summary>
+	/// <param name="user">Name of the user.</param>
+	/// <param name="status">New status of that user.</param>
+	/// <param name="gotMessage">True if the status contains a message you should cache locally. False: This status update does not include a
+	/// message (keep any you have).</param>
+	/// <param name="message">Message that user set.</param>
+	public void OnStatusUpdate(string user, int status, bool gotMessage, object message)
+    {
+
+        Debug.LogWarning("status: " + string.Format("{0} is {1}. Msg:{2}", user, status, message));
+
+        if (this.friendListItemLUT.ContainsKey(user))
+        {
+            Friend _friendItem = friendListItemLUT[user];
+            if (_friendItem != null) _friendItem.OnFriendStatusUpdate(status, gotMessage, message);
+        }
+    }
+
     private void InstantiateChannelButton(string channelName)
     {
         if (channelToggles.ContainsKey(channelName))
@@ -221,7 +268,7 @@ public class Chat : MonoBehaviour, IChatClientListener
     {
         GameObject fbtn = (GameObject)Instantiate(friendListUiItemtoInstantiate);
         fbtn.gameObject.SetActive(true);
-        FriendItem _friendItem = fbtn.GetComponent<FriendItem>();
+        Friend _friendItem = fbtn.GetComponent<Friend>();
 
         _friendItem.FriendId = friendId;
 
@@ -250,42 +297,6 @@ public class Chat : MonoBehaviour, IChatClientListener
             Debug.Log(message);
     }
 
-    public void ShowChannel(string channelName)
-    {
-        if (string.IsNullOrEmpty(channelName))
-        {
-            return;
-        }
-
-        ChatChannel channel = null;
-        bool found = chatClient.TryGetChannel(channelName, out channel);
-        if (!found)
-        {
-            Debug.Log("ShowChannel failed to find channel: " + channelName);
-            return;
-        }
-
-        selectedChannelName = channelName;
-        currentChannelText.text = channel.ToStringMessages();
-
-        Debug.Log("ShowChannel: " + selectedChannelName);
-
-        foreach (KeyValuePair<string, Toggle> pair in this.channelToggles)
-        {
-            pair.Value.isOn = pair.Key == channelName ? true : false;
-        }
-    }
-
-    public void OnStatusUpdate(string user, int status, bool gotMessage, object message)
-    {
-        Debug.LogWarning("status: " + string.Format("{0} is {1}. Msg:{2}", user, status, message));
-
-        if (friendListItemLUT.ContainsKey(user))
-        {
-            FriendItem _friendItem = friendListItemLUT[user];
-            if (_friendItem != null) _friendItem.OnFriendStatusUpdate(status, gotMessage, message);
-        }
-    }
 
     #region Dashboard
     [ContextMenu("OpenDashboard")]
