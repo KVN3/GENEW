@@ -270,6 +270,9 @@ public class Chat : MonoBehaviour, IChatClientListener
         GameObject fbtn = (GameObject)Instantiate(friendListUiItemtoInstantiate);
         friendObjects.Add(fbtn);
 
+        // Add onClick event for removeFriend
+        fbtn.GetComponent<Button>().onClick.AddListener(delegate { RemoveFriend(friendId); } );
+
         fbtn.gameObject.SetActive(true);
         Friend _friendItem = fbtn.GetComponent<Friend>();
 
