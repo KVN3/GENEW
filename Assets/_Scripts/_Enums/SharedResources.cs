@@ -47,6 +47,14 @@ public static class SharedResources
 
         return playerCameraObj.GetComponent<PlayerCamera>();
     }
+
+    public static RadarCamera LoadRadarCamera()
+    {
+        string cameraPath = Path.Combine("Prefabs", "Player", "RadarCamera");
+        GameObject radarCameraObj = Resources.Load(cameraPath) as GameObject;
+
+        return radarCameraObj.GetComponent<RadarCamera>();
+    }
     #endregion
 
     #region Enemies

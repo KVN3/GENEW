@@ -69,6 +69,7 @@ public class PlayerShip : Ship
         if (!photonView.IsMine)
         {
             Destroy(GetComponent<AudioListener>());
+            Destroy(transform.Find("Radar").gameObject);
         }
 
     }
@@ -77,9 +78,11 @@ public class PlayerShip : Ship
     {
         InitRaceData();
 
+
+
         //if (!photonView.IsMine)
         //{
-        //    Destroy(transform.Find("AISoundManager").gameObject);
+        //  Destroy(transform.Find("AISoundManager").gameObject);
         //    Destroy(transform.Find("LevelSoundManager").gameObject);
         //}
     }
