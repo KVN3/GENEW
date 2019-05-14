@@ -12,6 +12,7 @@ public struct ShipSkin
     public Color lightColor;
 
     public Color forcefieldColor;
+    public Color minimapBlipColor;
 }
 
 
@@ -36,6 +37,11 @@ public class SkinManager : MonoBehaviourPunCallbacks, IPunObservable
             skin.baseColor = PlayerPrefsX.GetColor("REGULAR_COLOR");
             skin.lightColor = PlayerPrefsX.GetColor("LIGHT_COLOR");
             skin.darkColor = PlayerPrefsX.GetColor("DARK_COLOR");
+            skin.minimapBlipColor = Color.gray;
+        }
+        else
+        {
+            skin.minimapBlipColor = Color.red;
         }
 
         StartCoroutine(C_ApplySkins());
@@ -73,8 +79,26 @@ public class SkinManager : MonoBehaviourPunCallbacks, IPunObservable
                 // Apply skin to the mesh
                 else if (shipChildTransform.name.Equals("Mesh"))
                     ApplyShipSkin(shipChildTransform);
+
+                else if (shipChildTransform.name.Equals("RadarBlip"))
+                    ApplyRadarColor(shipChildTransform);
             }
         }
+    }
+
+    private void ApplyRadarColor(Transform radarBlipTransform)
+    {
+        Renderer renderer = radarBlipTransform.GetComponent<Renderer>();
+        Material[] mats = renderer.materials;
+
+        foreach (Material mat in mats)
+        {
+            mat.color = skin.minimapBlipColor;
+
+            print("Set radar blip color");
+
+        }
+            
     }
 
     // Apply skin to forcefield
@@ -90,7 +114,7 @@ public class SkinManager : MonoBehaviourPunCallbacks, IPunObservable
 
                 // Apply skin color
                 foreach (Material mat in mats)
-                    mat.SetColor("_TintColor", skin.forcefieldColor);
+                    mat.color = skin.forcefieldColor;
             }
         }
     }

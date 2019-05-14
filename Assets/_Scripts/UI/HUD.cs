@@ -23,14 +23,20 @@ public class HUD : MyMonoBehaviour, IObserver
         Assert.IsNotNull(InGamePanel);
         Assert.IsNotNull(RaceEndPanel);
 
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
+
+        RaceEndPanel.SetActive(false);
     }
    
     // Update is called once per frame
     void Update()
     {
         if (PlayerShip.runData.raceFinished)
+        {
+            RaceEndPanel.SetActive(true);
             anim.SetTrigger("RaceFinished");
+        }
+            
     }
 
     public void OnNotify(float score, float charges)

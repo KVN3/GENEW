@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: TitilliumWeb-Regular
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -1487667306
   material: {fileID: 21814945997891094}
-  materialHashCode: 0
+  materialHashCode: -866791843
   fontAssetType: 2
   m_fontInfo:
     Name: Titillium Web
     PointSize: 174
-    Scale: 0
+    Scale: 1
     CharacterCount: 97
     LineHeight: 265
     Baseline: 0
     Ascender: 197
-    CapHeight: 0
+    CapHeight: 121
     Descender: -68
     CenterLine: 0
     SuperscriptOffset: 197
@@ -34,7 +34,7 @@ MonoBehaviour:
     UnderlineThickness: 5.2200003
     strikethrough: 46.909092
     strikethroughThickness: 5.2200003
-    TabWidth: 0
+    TabWidth: 380
     Padding: 5
     AtlasWidth: 1024
     AtlasHeight: 1024
@@ -43,10 +43,10 @@ MonoBehaviour:
   - id: 32
     x: 5
     y: 1019
-    width: 0
-    height: 0
+    width: 38
+    height: 265
     xOffset: 0
-    yOffset: 0
+    yOffset: 197
     xAdvance: 38
     scale: 1
   - id: 33

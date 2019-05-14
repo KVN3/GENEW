@@ -201,6 +201,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1298}
     m_Modifications:
+    - target: {fileID: 1209033374770636, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
+      propertyPath: m_Name
+      value: Chaser Trail
+      objectReference: {fileID: 0}
     - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -244,10 +248,6 @@ PrefabInstance:
     - target: {fileID: 4286283437009128, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1209033374770636, guid: bdbcbfebe9a05fe4699cbd65d09cb575, type: 3}
-      propertyPath: m_Name
-      value: Chaser Trail
       objectReference: {fileID: 0}
     - target: {fileID: 198064713177833144, guid: bdbcbfebe9a05fe4699cbd65d09cb575,
         type: 3}
