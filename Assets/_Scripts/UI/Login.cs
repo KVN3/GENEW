@@ -66,6 +66,7 @@ public class Login : MonoBehaviour
                     // Save/set currentAccount
                     string json = JsonUtility.ToJson(account);
                     PlayerPrefs.SetString("currentAccount", json);
+                    PlayerNetwork.Instance.SetAccount();
 
                     // Go to main menu
                     mainMenu.SetActive(true);

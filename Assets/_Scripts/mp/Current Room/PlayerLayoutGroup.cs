@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
 {
@@ -18,6 +19,10 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     {
         get { return _playerListings; }
     }
+
+    public Image roomState;
+    public Sprite unlockedSprite;
+    public Sprite lockedSprite;
 
 
     #region PhotonCallbacks
@@ -72,6 +77,8 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         // Instantiate the button as a child of the Layout Group
         GameObject playerListingObj = Instantiate(PlayerListingPrefab);
         playerListingObj.transform.SetParent(transform, false);
+        // Adds onClick to add friend
+        playerListingObj.GetComponent<Button>().onClick.AddListener(delegate { Chat.instance.AddFriend(player.UserId); });
 
         // Add to listing
         PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
@@ -96,6 +103,11 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         // Only room owner may change state
         if (!PhotonNetwork.IsMasterClient)
             return;
+
+        if (roomState.sprite == unlockedSprite)
+            roomState.sprite = lockedSprite;
+        else
+            roomState.sprite = unlockedSprite;
 
         PhotonNetwork.CurrentRoom.IsOpen = !PhotonNetwork.CurrentRoom.IsOpen;
         PhotonNetwork.CurrentRoom.IsVisible = PhotonNetwork.CurrentRoom.IsOpen;

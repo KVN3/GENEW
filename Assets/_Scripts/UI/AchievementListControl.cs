@@ -9,11 +9,6 @@ public class AchievementListControl : MonoBehaviour
     private List<GameObject> achievObjects;
     #endregion
 
-    private void Start()
-    {
-       
-    }
-
     #region Unity Methods
     void OnEnable()
     {
