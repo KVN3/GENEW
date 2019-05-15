@@ -17,6 +17,8 @@ public class AchievementManager : MonoBehaviour
         // Create and save achievements
         if (!PlayerPrefs.HasKey(key))
             InitAchievements();
+
+        achievementCanvas = GameObject.FindObjectOfType<AchievementCanvas>();
     }
 
     public void InitAchievements()

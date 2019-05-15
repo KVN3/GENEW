@@ -93,6 +93,7 @@ public class PlayerShip : Ship
         if (!runData.raceFinished && RaceManager.raceStarted)
             runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
 
+        // Save positions/rotations for replay, could also use coroutine
         if (Time.frameCount % 3 == 0)
         {
             runData.positionsX.Add(transform.position.x);
@@ -100,7 +101,21 @@ public class PlayerShip : Ship
             runData.positionsZ.Add(transform.position.z);
             runData.replayRotations.Add(transform.rotation);
         }
+
+        // Cheat finish
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.F) && Application.isEditor)
+        {
+            CheatFinish();
+        }
     }
+
+    [ContextMenu("Finish")]
+    public void CheatFinish()
+    {
+        runData.isOverHalfway = true;
+        runData.currentLap = runData.maxLaps;
+    }
+
 
     private void InitRaceData()
     {

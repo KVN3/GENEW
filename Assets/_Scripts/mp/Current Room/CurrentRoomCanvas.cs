@@ -29,6 +29,10 @@ public class CurrentRoomCanvas : MonoBehaviour
     public TextMeshProUGUI ghostsText;
     public TMP_InputField ghostInput;
 
+    public GameObject loadingScreen;
+    public Slider loadingBar;
+    public TextMeshProUGUI progressText;
+
     private void Awake()
     {
         instance = this;
@@ -78,6 +82,7 @@ public class CurrentRoomCanvas : MonoBehaviour
         PlayerNetwork.Instance.activeScene = sceneName;
 
         PhotonNetwork.LoadLevel(sceneName);
+        StartCoroutine(LoadAsynchronously());
 
         // Save laps
         if (int.TryParse(lapInput.text, out int result))
@@ -88,6 +93,24 @@ public class CurrentRoomCanvas : MonoBehaviour
             PlayerPrefs.SetInt("Ghosts", int.Parse(ghostInput.text));
         else PlayerPrefs.SetInt("Ghosts", 1);
 
+    }
+
+    IEnumerator LoadAsynchronously()
+    {
+        float progress = PhotonNetwork.LevelLoadingProgress;
+        
+        loadingScreen.SetActive(true);
+
+        while (progress < 1f)
+        {
+            //float progress = Mathf.Clamp01(progress / .9f);
+            Debug.Log(progress);
+            
+            loadingBar.value = progress;
+            progressText.text = (progress * 100).ToString("F0") + "%";
+
+            yield return null;
+        }
     }
 
     public void UpdateScene()
