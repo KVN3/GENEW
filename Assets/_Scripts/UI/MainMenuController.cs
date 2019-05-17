@@ -9,8 +9,10 @@ using Photon.Realtime;
 
 public class MainMenuController : MonoBehaviour
 {
+    #region Fields
     public GameObject loadingScreen;
     public GameObject leaderboardPanel;
+    public GameObject changelogPanel;
 
     public Slider loadingBar;
     public TextMeshProUGUI progressText;
@@ -23,6 +25,7 @@ public class MainMenuController : MonoBehaviour
     
 
     private MenuSoundManager menuSoundManager;
+    #endregion
 
     void Awake()
     {
@@ -33,15 +36,16 @@ public class MainMenuController : MonoBehaviour
         
     }
 
-    public void PlayButtonSound()
+    private void Start()
     {
-        menuSoundManager.PlaySound(SoundType.CLICKBUTTON);
+        if (!GameConfiguration.SawChangelog)
+            changelogPanel.SetActive(true);
+            
     }
 
 
 
-
-
+    #region Multiplayer
 
     public void UpdateRoomList()
     {
@@ -70,11 +74,11 @@ public class MainMenuController : MonoBehaviour
         LobbyNetwork.Connect();
     }
 
+    #endregion
 
 
 
-
-
+    #region Loading (singleplayer) scenes
     public void LoadLevel()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
@@ -103,6 +107,13 @@ public class MainMenuController : MonoBehaviour
     {
         PlayerNetwork.ReturnToMain();
     }
+    #endregion
+
+    #region Button functions
+    public void PlayButtonSound()
+    {
+        menuSoundManager.PlaySound(SoundType.CLICKBUTTON);
+    }
 
     public void OpenLeaderboard()
     {
@@ -115,6 +126,12 @@ public class MainMenuController : MonoBehaviour
     {
         panel.SetActive(false);
     }
+
+    public void SawChangelog()
+    {
+        GameConfiguration.SawChangelog = true;
+    }
+    #endregion
 
     #region Coroutines LoadAsync
 
