@@ -10,6 +10,7 @@ using Photon.Realtime;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject loadingScreen;
+    public GameObject leaderboardPanel;
 
     public Slider loadingBar;
     public TextMeshProUGUI progressText;
@@ -103,6 +104,18 @@ public class MainMenuController : MonoBehaviour
         PlayerNetwork.ReturnToMain();
     }
 
+    public void OpenLeaderboard()
+    {
+        // Set active and put in front
+        leaderboardPanel.SetActive(true);
+        leaderboardPanel.transform.SetAsLastSibling();
+    }
+
+    public void ClosePanel(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
+
     #region Coroutines LoadAsync
 
     IEnumerator LoadAsynchronously(string sceneName)
@@ -123,7 +136,7 @@ public class MainMenuController : MonoBehaviour
 
     #endregion
 
-
+    #region Unused
     public void SetColorBlue()
     {
         PlayerPrefs.SetString("Ship Color", "Blue");
@@ -136,4 +149,5 @@ public class MainMenuController : MonoBehaviour
     {
         PlayerPrefs.SetString("Ship Color", "Green");
     }
+    #endregion
 }

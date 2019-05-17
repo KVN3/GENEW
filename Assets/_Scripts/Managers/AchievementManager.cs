@@ -74,8 +74,7 @@ public class AchievementManager : MonoBehaviour
 
         // Update in currentAccount && accountDatabase
         account.achievements[index] = achievement;
-        Registration.SaveCurrentAccount(account);
-        Registration.SaveAccountToAccountData(account);
+        Registration.SaveAccount(account);
     }
 
     private void ResetAchievement(int index)
@@ -92,8 +91,7 @@ public class AchievementManager : MonoBehaviour
 
         // Update in currentAccount && accountDatabase
         account.achievements[index] = achievement;
-        Registration.SaveCurrentAccount(account);
-        Registration.SaveAccountToAccountData(account);
+        Registration.SaveAccount(account);
     }
 
     // Not used

@@ -17,14 +17,20 @@ public class BackgroundSoundManager : SoundManager
         {
             yield return new WaitForSeconds(Random.Range(10, 20));
 
-            if(!audioSource.isPlaying)
+            if (!IsSoundMuted())
             {
-                if (Random.Range(0, 3) == 0)
+                if (!audioSource.isPlaying)
                 {
-                    audioSource.clip = randomClips[Random.Range(0, randomClips.Length)];
-                    audioSource.Play();
+                    if (Random.Range(0, 3) == 0)
+                    {
+                        audioSource.clip = randomClips[Random.Range(0, randomClips.Length)];
+                        audioSource.mute = false;
+                        audioSource.Play();
+                    }
                 }
             }
+            else
+                audioSource.Stop();
         }
         
     }

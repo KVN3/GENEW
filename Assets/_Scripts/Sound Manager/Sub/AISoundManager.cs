@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Inherit this from a VoiceSoundManager and Sounds from a SFX manager which inherit the sound manager so you can disable Voice or sound
 public class AISoundManager : SoundManager
 {
     public AudioClip[] forcefieldAvailableClips;
@@ -29,6 +30,9 @@ public class AISoundManager : SoundManager
     {
         // If inactive, don't continue
         if (!active)
+            return;
+
+        if (IsSoundMuted())
             return;
 
         // Select the right clip
