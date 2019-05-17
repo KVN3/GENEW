@@ -98,12 +98,15 @@ public class CurrentRoomCanvas : MonoBehaviour
     IEnumerator LoadAsynchronously()
     {
         float progress = PhotonNetwork.LevelLoadingProgress;
-        
+
         loadingScreen.SetActive(true);
+        loadingScreen.transform.SetAsLastSibling();
 
         while (progress < 1f)
         {
-            //float progress = Mathf.Clamp01(progress / .9f);
+            progress = PhotonNetwork.LevelLoadingProgress;
+            progress = Mathf.Clamp01(progress / .9f);
+
             Debug.Log(progress);
             
             loadingBar.value = progress;
