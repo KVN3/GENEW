@@ -25557,6 +25557,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8631873225630643793, guid: 581fd72e368ea8d4d990f78f059fd7cd,
+        type: 3}
+      propertyPath: m_Name
+      value: MenuController
+      objectReference: {fileID: 0}
     - target: {fileID: 8631873225630643792, guid: 581fd72e368ea8d4d990f78f059fd7cd,
         type: 3}
       propertyPath: loadingScreen
@@ -25602,11 +25607,6 @@ PrefabInstance:
       propertyPath: leaderboardTimesText
       value: 
       objectReference: {fileID: 1598744114}
-    - target: {fileID: 8631873225630643793, guid: 581fd72e368ea8d4d990f78f059fd7cd,
-        type: 3}
-      propertyPath: m_Name
-      value: MenuController
-      objectReference: {fileID: 0}
     - target: {fileID: 8631873225630643823, guid: 581fd72e368ea8d4d990f78f059fd7cd,
         type: 3}
       propertyPath: m_LocalPosition.x
