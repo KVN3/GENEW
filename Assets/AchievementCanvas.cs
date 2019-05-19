@@ -2,15 +2,28 @@
 using TMPro;
 using UnityEngine;
 
-public class AchievementCanvas : LevelSingleton<AchievementCanvas>
+public class AchievementCanvas : MonoBehaviour
 {
     #region Fields
+    public static AchievementCanvas instance;
+
     public GameObject panel;
     public GameObject achievementNotifPrefab;
-	#endregion
-	
-	#region Unity Methods
-	void Start()
+    #endregion
+
+    #region Unity Methods
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+        { 
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    void Start()
     {
         DontDestroyOnLoad(this);
     }

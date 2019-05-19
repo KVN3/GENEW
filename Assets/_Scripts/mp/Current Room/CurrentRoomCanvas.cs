@@ -29,6 +29,10 @@ public class CurrentRoomCanvas : MonoBehaviour
     public TextMeshProUGUI ghostsText;
     public TMP_InputField ghostInput;
 
+    public GameObject loadingScreen;
+    public Slider loadingBar;
+    public TextMeshProUGUI progressText;
+
     private void Awake()
     {
         instance = this;
@@ -46,23 +50,6 @@ public class CurrentRoomCanvas : MonoBehaviour
         startMatchText.text = LocalizationManager.GetTextByKey("START_MATCH");
         levelText.text = LocalizationManager.GetTextByKey("LEVEL");
         leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
-
-        // Get highscores (and sorts them beforehand)
-        List<HighscoreEntry> highscoreEntries = HighscoreManager.Instance.GetHighscoresByStage(ScenesInformation.sceneNames[_sceneTitle]);
-
-        // Only show max of 10 or below
-        int entries;
-        if (highscoreEntries.Count > 10)
-            entries = 10;
-        else
-            entries = highscoreEntries.Count;
-
-        StringBuilder builder2 = new StringBuilder();
-        for (int i = 0; i < entries; i++)
-        {
-            builder2.Append($"{i + 1}. ").Append(highscoreEntries[i].name).Append(": ").Append(TimeSpan.Parse(highscoreEntries[i].lapTime).ToString(@"mm\:ss\.ff")).AppendLine();
-        }
-        leaderboardTimesText.text = builder2.ToString();
     }
 
     public void OnClickStartDelayed()
@@ -78,6 +65,7 @@ public class CurrentRoomCanvas : MonoBehaviour
         PlayerNetwork.Instance.activeScene = sceneName;
 
         PhotonNetwork.LoadLevel(sceneName);
+        StartCoroutine(LoadAsynchronously());
 
         // Save laps
         if (int.TryParse(lapInput.text, out int result))
@@ -88,6 +76,27 @@ public class CurrentRoomCanvas : MonoBehaviour
             PlayerPrefs.SetInt("Ghosts", int.Parse(ghostInput.text));
         else PlayerPrefs.SetInt("Ghosts", 1);
 
+    }
+
+    IEnumerator LoadAsynchronously()
+    {
+        float progress = PhotonNetwork.LevelLoadingProgress;
+
+        loadingScreen.SetActive(true);
+        loadingScreen.transform.SetAsLastSibling();
+
+        while (progress < 1f)
+        {
+            progress = PhotonNetwork.LevelLoadingProgress;
+            progress = Mathf.Clamp01(progress / .9f);
+
+            Debug.Log(progress);
+            
+            loadingBar.value = progress;
+            progressText.text = (progress * 100).ToString("F0") + "%";
+
+            yield return null;
+        }
     }
 
     public void UpdateScene()

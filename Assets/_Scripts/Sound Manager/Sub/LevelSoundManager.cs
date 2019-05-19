@@ -17,6 +17,9 @@ public class LevelSoundManager : SoundManager
         if (!active)
             return;
 
+        if (IsSoundMuted())
+            return;
+
         // Get the sound type clip
         switch (soundType)
         {

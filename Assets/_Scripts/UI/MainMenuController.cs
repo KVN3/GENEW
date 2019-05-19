@@ -9,7 +9,10 @@ using Photon.Realtime;
 
 public class MainMenuController : MonoBehaviour
 {
+    #region Fields
     public GameObject loadingScreen;
+    public GameObject leaderboardPanel;
+    public GameObject changelogPanel;
 
     public Slider loadingBar;
     public TextMeshProUGUI progressText;
@@ -17,11 +20,17 @@ public class MainMenuController : MonoBehaviour
 
     public AchievementCanvas achievementCanvas;
 
+    public Chat chatController;
+
+    public MapSelection _mapSelection;
+    public TextMeshProUGUI leaderboardTimesText;
+
     [SerializeField]
     private MenuSoundManager menuSoundManagerClass;
     
 
     private MenuSoundManager menuSoundManager;
+    #endregion
 
     void Awake()
     {
@@ -32,15 +41,19 @@ public class MainMenuController : MonoBehaviour
         
     }
 
-    public void PlayButtonSound()
+    private void Start()
     {
-        menuSoundManager.PlaySound(SoundType.CLICKBUTTON);
+        // Check seen changelog
+        if (!GameConfiguration.SawChangelog)
+            changelogPanel.SetActive(true);
+
+        chatController.JoinChat("Lobby");
+
     }
 
 
 
-
-
+    #region Multiplayer
 
     public void UpdateRoomList()
     {
@@ -69,11 +82,11 @@ public class MainMenuController : MonoBehaviour
         LobbyNetwork.Connect();
     }
 
+    #endregion
 
 
 
-
-
+    #region Loading (singleplayer) scenes
     public void LoadLevel()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
@@ -102,6 +115,43 @@ public class MainMenuController : MonoBehaviour
     {
         PlayerNetwork.ReturnToMain();
     }
+    #endregion
+
+    #region Menu functions
+    public void PlayButtonSound()
+    {
+        menuSoundManager.PlaySound(SoundType.CLICKBUTTON);
+    }
+
+    public void OpenFriendPanel(Animator anim)
+    {
+        bool open = anim.GetBool("open");
+        anim.SetBool("open", !open);
+    }
+
+    public void OpenPopup(GameObject panel)
+    {
+        // Set active and put in front
+        panel.SetActive(true);
+        panel.transform.SetAsLastSibling();
+    }
+
+    public void ClosePanel(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
+
+    public void SawChangelog()
+    {
+        GameConfiguration.SawChangelog = true;
+    }
+
+    public void UpdateLeaderboard()
+    {
+        SceneTitle _sceneTitle = _mapSelection.GetScene();
+        HighscoreManager.Instance.ShowHighscores(_sceneTitle, leaderboardTimesText);
+    }
+    #endregion
 
     #region Coroutines LoadAsync
 
@@ -123,7 +173,7 @@ public class MainMenuController : MonoBehaviour
 
     #endregion
 
-
+    #region Unused
     public void SetColorBlue()
     {
         PlayerPrefs.SetString("Ship Color", "Blue");
@@ -136,4 +186,5 @@ public class MainMenuController : MonoBehaviour
     {
         PlayerPrefs.SetString("Ship Color", "Green");
     }
+    #endregion
 }

@@ -21,8 +21,7 @@ public class FriendManager : MonoBehaviour
             account.friendList.Add(name);
 
         // Update
-        Registration.SaveCurrentAccount(account);
-        Registration.SaveAccountToAccountData(account);
+        Registration.SaveAccount(account);
     }
 
     public void RemoveFriend(string name)
@@ -35,8 +34,7 @@ public class FriendManager : MonoBehaviour
             account.friendList.Remove(name);
 
         // Update
-        Registration.SaveCurrentAccount(account);
-        Registration.SaveAccountToAccountData(account);
+        Registration.SaveAccount(account);
     }
 
     #region Singleton

@@ -159,16 +159,22 @@ public class Registration : MonoBehaviour
         string jsonString = PlayerPrefs.GetString("currentAccount");
         return JsonUtility.FromJson<Account>(jsonString);
     }
+
+    public static void SaveAccount(Account account)
+    {
+        SaveCurrentAccount(account);
+        SaveAccountToAccountData(account);
+    }
     
     // Updates logged in account
-    public static void SaveCurrentAccount(Account account)
+    private static void SaveCurrentAccount(Account account)
     {
         string json = JsonUtility.ToJson(account);
         PlayerPrefs.SetString("currentAccount", json);
     }
 
     // Saves to the local accountData
-    public static void SaveAccountToAccountData(Account account)
+    private static void SaveAccountToAccountData(Account account)
     {
         // Load accountData
         string jsonString = PlayerPrefs.GetString("AccountData");

@@ -17,6 +17,9 @@ public class ShipSoundManager : SoundManager
 
     public override void PlaySound(SoundType soundType)
     {
+        if (IsSoundMuted())
+            return;
+
         switch (soundType)
         {
             case SoundType.SHUTDOWN:

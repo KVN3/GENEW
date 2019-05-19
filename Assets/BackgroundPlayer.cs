@@ -67,19 +67,26 @@ public class MusicPlayer : MonoBehaviour
             if (currentScene.name.Equals(shipyardSceneName))
                 sectionName = mainSceneName;
 
-            if (!audioSource.isPlaying || !sectionName.Equals(lastSceneName))
+            if (GameConfiguration.MusicOn)
             {
-                if (sectionName == wastelandSceneName)
-                    audioSource.clip = wasteLandClips[Random.Range(0, wasteLandClips.Length)];
-                else if (sectionName == mainSceneName)
-                    audioSource.clip = menuClips[Random.Range(0, menuClips.Length)];
+                audioSource.mute = false;
+                if (!audioSource.isPlaying || !sectionName.Equals(lastSceneName))
+                {
+                
+                    if (sectionName == wastelandSceneName)
+                        audioSource.clip = wasteLandClips[Random.Range(0, wasteLandClips.Length)];
+                    else if (sectionName == mainSceneName)
+                        audioSource.clip = menuClips[Random.Range(0, menuClips.Length)];
 
-                audioSource.Play();
+                    audioSource.Play();
+                }
             }
+            else
+                audioSource.mute = true;
 
             lastSceneName = sectionName;
 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 

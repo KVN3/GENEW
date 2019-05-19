@@ -17,8 +17,16 @@ public class SoundManager : MonoBehaviour
         audioSource = this.GetComponent<AudioSource>();
     }
 
+    // Ideally IsSoundMuted would be here and can stop the overridden method
     public virtual void PlaySound(SoundType soundType)
     {
+       
+    }
 
+    public bool IsSoundMuted()
+    {
+        if (GameConfiguration.SoundOn)
+            return false;
+        else return true;
     }
 }

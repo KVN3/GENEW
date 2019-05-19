@@ -4,11 +4,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : LevelSingleton<MainMenuManager>
 {
     // [SerializeField]
     //private MenuSoundManager menuSoundManagerClass;
+
+    public GameObject friendPanel;
 
     [Header("Text")]
     public TextMeshProUGUI titleText;
@@ -19,11 +22,38 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     public TextMeshProUGUI versionText;
     public TextMeshProUGUI usernameText;
 
+    [Header("Music/Sounds")]
+    public Sprite soundIconOn;
+    public Sprite soundIconOff;
+    public Image soundIcon;
+
+    public Sprite musicIconOn;
+    public Sprite musicIconOff;
+    public Image musicIcon;
+
     //private MenuSoundManager menuSoundManager;
 
     protected override void Awake()
     {
         // menuSoundManager = Instantiate(menuSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
+    }
+
+    private void Start()
+    {
+        Account account = Registration.GetCurrentAccount();
+        if (account == null)
+            friendPanel.SetActive(false);
+        else
+            friendPanel.SetActive(true);
+
+    }
+
+    void OnEnable()
+    {
+        if (!GameConfiguration.MusicOn)
+            musicIcon.sprite = musicIconOff;
+        if (!GameConfiguration.SoundOn)
+            soundIcon.sprite = soundIconOff;
     }
 
     // Start is called before the first frame update
@@ -46,4 +76,35 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         else
             usernameText.text = LocalizationManager.GetTextByKey("NOT_LOGGED_IN");
     }
+
+    #region Toggles
+    public void ToggleSound()
+    {
+        if (soundIcon.sprite == soundIconOff)
+        {
+            soundIcon.sprite = soundIconOn;
+            GameConfiguration.SoundOn = true;
+        }
+        else
+        {
+            soundIcon.sprite = soundIconOff;
+            GameConfiguration.SoundOn = false;
+        }
+    }
+
+    public void ToggleMusic()
+    {
+        if (musicIcon.sprite == musicIconOff)
+        {
+            musicIcon.sprite = musicIconOn;
+            GameConfiguration.MusicOn = true;
+        }
+        else
+        {
+            musicIcon.sprite = musicIconOff;
+            GameConfiguration.MusicOn = false;
+        }
+
+    }
+    #endregion
 }

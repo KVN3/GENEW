@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class HighscoreManager : MonoBehaviour
@@ -89,6 +91,26 @@ public class HighscoreManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ShowHighscores(SceneTitle levelTitle, TextMeshProUGUI textObject)
+    {
+        // Get highscores (and sorts them beforehand)
+        List<HighscoreEntry> highscoreEntries = Instance.GetHighscoresByStage(ScenesInformation.sceneNames[levelTitle]);
+
+        // Only show max of 10 or below
+        int entries;
+        if (highscoreEntries.Count > 10)
+            entries = 10;
+        else
+            entries = highscoreEntries.Count;
+
+        StringBuilder builder2 = new StringBuilder();
+        for (int i = 0; i < entries; i++)
+        {
+            builder2.Append($"{i + 1}. ").Append(highscoreEntries[i].name).Append(": ").Append(TimeSpan.Parse(highscoreEntries[i].lapTime).ToString(@"mm\:ss\.ff")).AppendLine();
+        }
+        textObject.text = builder2.ToString();
     }
 
     [ContextMenu("Reset highscores")]

@@ -265,13 +265,23 @@ public class Chat : MonoBehaviour, IChatClientListener
             friendListUiItemtoInstantiate.SetActive(false);
     }
 
+    private void DeleteFriendItems()
+    {
+        foreach (GameObject obj in friendObjects)
+        {
+            Destroy(obj);
+        }
+        friendObjects.Clear();
+    }
+
+
     private void InstantiateFriendButton(string friendId)
     {
         GameObject fbtn = (GameObject)Instantiate(friendListUiItemtoInstantiate);
         friendObjects.Add(fbtn);
 
         // Add onClick event for removeFriend
-        fbtn.GetComponent<Button>().onClick.AddListener(delegate { RemoveFriend(friendId); } );
+        fbtn.GetComponent<Button>().onClick.AddListener(delegate { RemoveFriend(friendId); });
 
         fbtn.gameObject.SetActive(true);
         Friend _friendItem = fbtn.GetComponent<Friend>();
@@ -283,22 +293,13 @@ public class Chat : MonoBehaviour, IChatClientListener
         friendListItemLUT[friendId] = _friendItem;
     }
 
-    private void DeleteFriendItems()
-    {
-        foreach (GameObject obj in friendObjects)
-        {
-            Destroy(obj);
-        }
-        friendObjects.Clear();
-    }
-
     public void AddFriend(string friendId)
     {
         if (!friendsList.Contains(friendId))
         {
             friendsList.Add(friendId);
-            DeleteFriendItems();
-            CreateFriendItems();
+            Registration.SaveAccount(Registration.GetCurrentAccount());
+            RefreshFriendItems();
         }
     }
 
@@ -307,9 +308,15 @@ public class Chat : MonoBehaviour, IChatClientListener
         if (friendsList.Contains(friendId))
         {
             friendsList.Remove(friendId);
-            DeleteFriendItems();
-            CreateFriendItems();
+            Registration.SaveAccount(Registration.GetCurrentAccount());
+            RefreshFriendItems();
         }
+    }
+
+    private void RefreshFriendItems()
+    {
+        DeleteFriendItems();
+        CreateFriendItems();
     }
 
     #endregion
