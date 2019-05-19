@@ -50,23 +50,6 @@ public class CurrentRoomCanvas : MonoBehaviour
         startMatchText.text = LocalizationManager.GetTextByKey("START_MATCH");
         levelText.text = LocalizationManager.GetTextByKey("LEVEL");
         leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
-
-        // Get highscores (and sorts them beforehand)
-        List<HighscoreEntry> highscoreEntries = HighscoreManager.Instance.GetHighscoresByStage(ScenesInformation.sceneNames[_sceneTitle]);
-
-        // Only show max of 10 or below
-        int entries;
-        if (highscoreEntries.Count > 10)
-            entries = 10;
-        else
-            entries = highscoreEntries.Count;
-
-        StringBuilder builder2 = new StringBuilder();
-        for (int i = 0; i < entries; i++)
-        {
-            builder2.Append($"{i + 1}. ").Append(highscoreEntries[i].name).Append(": ").Append(TimeSpan.Parse(highscoreEntries[i].lapTime).ToString(@"mm\:ss\.ff")).AppendLine();
-        }
-        leaderboardTimesText.text = builder2.ToString();
     }
 
     public void OnClickStartDelayed()

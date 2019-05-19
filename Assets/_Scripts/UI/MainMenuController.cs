@@ -20,6 +20,11 @@ public class MainMenuController : MonoBehaviour
 
     public AchievementCanvas achievementCanvas;
 
+    public Chat chatController;
+
+    public MapSelection _mapSelection;
+    public TextMeshProUGUI leaderboardTimesText;
+
     [SerializeField]
     private MenuSoundManager menuSoundManagerClass;
     
@@ -38,9 +43,12 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        // Check seen changelog
         if (!GameConfiguration.SawChangelog)
             changelogPanel.SetActive(true);
-            
+
+        chatController.JoinChat("Lobby");
+
     }
 
 
@@ -109,17 +117,23 @@ public class MainMenuController : MonoBehaviour
     }
     #endregion
 
-    #region Button functions
+    #region Menu functions
     public void PlayButtonSound()
     {
         menuSoundManager.PlaySound(SoundType.CLICKBUTTON);
     }
 
-    public void OpenLeaderboard()
+    public void OpenFriendPanel(Animator anim)
+    {
+        bool open = anim.GetBool("open");
+        anim.SetBool("open", !open);
+    }
+
+    public void OpenPopup(GameObject panel)
     {
         // Set active and put in front
-        leaderboardPanel.SetActive(true);
-        leaderboardPanel.transform.SetAsLastSibling();
+        panel.SetActive(true);
+        panel.transform.SetAsLastSibling();
     }
 
     public void ClosePanel(GameObject panel)
@@ -130,6 +144,12 @@ public class MainMenuController : MonoBehaviour
     public void SawChangelog()
     {
         GameConfiguration.SawChangelog = true;
+    }
+
+    public void UpdateLeaderboard()
+    {
+        SceneTitle _sceneTitle = _mapSelection.GetScene();
+        HighscoreManager.Instance.ShowHighscores(_sceneTitle, leaderboardTimesText);
     }
     #endregion
 

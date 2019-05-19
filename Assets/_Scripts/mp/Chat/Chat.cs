@@ -299,8 +299,7 @@ public class Chat : MonoBehaviour, IChatClientListener
         {
             friendsList.Add(friendId);
             Registration.SaveAccount(Registration.GetCurrentAccount());
-            DeleteFriendItems();
-            CreateFriendItems();
+            RefreshFriendItems();
         }
     }
 

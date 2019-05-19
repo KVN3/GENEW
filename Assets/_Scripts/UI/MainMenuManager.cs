@@ -11,6 +11,8 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     // [SerializeField]
     //private MenuSoundManager menuSoundManagerClass;
 
+    public GameObject friendPanel;
+
     [Header("Text")]
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI playText;
@@ -34,6 +36,16 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     protected override void Awake()
     {
         // menuSoundManager = Instantiate(menuSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
+    }
+
+    private void Start()
+    {
+        Account account = Registration.GetCurrentAccount();
+        if (account == null)
+            friendPanel.SetActive(false);
+        else
+            friendPanel.SetActive(true);
+
     }
 
     void OnEnable()
