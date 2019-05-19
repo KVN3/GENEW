@@ -41,8 +41,6 @@ public class EnergyBall : MonoBehaviour, IPunObservable
     #region collision
     public virtual void OnCollisionEnter(Collision other)
     {
-        print("Energyball collided");
-
         if (other.gameObject.CompareTag("Ship"))
         {
             OnTriggerEnter(other.collider);
@@ -51,8 +49,6 @@ public class EnergyBall : MonoBehaviour, IPunObservable
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        print("Energyball triggered");
-
         if (other.gameObject.CompareTag("Ship"))
         {
             // Tell the ship it got hit and stunned

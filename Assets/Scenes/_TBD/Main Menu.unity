@@ -11605,7 +11605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 461, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1005524818
@@ -15511,7 +15511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030518, y: -0.0000014494817}
+  m_AnchoredPosition: {x: 0.000030518, y: -0.000022212425}
   m_SizeDelta: {x: 0, y: 40.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1332416664
@@ -25025,7 +25025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -31.499939}
+  m_AnchoredPosition: {x: 0, y: -31.499878}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4012942070530463689
@@ -25557,11 +25557,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8631873225630643793, guid: 581fd72e368ea8d4d990f78f059fd7cd,
-        type: 3}
-      propertyPath: m_Name
-      value: MenuController
-      objectReference: {fileID: 0}
     - target: {fileID: 8631873225630643792, guid: 581fd72e368ea8d4d990f78f059fd7cd,
         type: 3}
       propertyPath: loadingScreen
@@ -25607,6 +25602,11 @@ PrefabInstance:
       propertyPath: leaderboardTimesText
       value: 
       objectReference: {fileID: 1598744114}
+    - target: {fileID: 8631873225630643793, guid: 581fd72e368ea8d4d990f78f059fd7cd,
+        type: 3}
+      propertyPath: m_Name
+      value: MenuController
+      objectReference: {fileID: 0}
     - target: {fileID: 8631873225630643823, guid: 581fd72e368ea8d4d990f78f059fd7cd,
         type: 3}
       propertyPath: m_LocalPosition.x
