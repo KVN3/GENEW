@@ -71,6 +71,8 @@ public class UIPanel : UIBehaviour
     [Header("CountDown")]
     public CountDownController countDownController;
 
+    [Header("Map")]
+    private Map map;
     #endregion
 
     #region Properties
@@ -103,6 +105,9 @@ public class UIPanel : UIBehaviour
 
         boostMeter.value = 0;
         countDownController = FindObjectOfType<CountDownController>();
+
+        map = transform.Find("Map").GetComponent<Map>();
+        map.SetPlayerShip(playerShip);
     }
 
     void Update()
