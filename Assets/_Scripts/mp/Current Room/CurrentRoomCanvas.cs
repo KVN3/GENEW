@@ -67,10 +67,6 @@ public class CurrentRoomCanvas : MonoBehaviour
         PhotonNetwork.LoadLevel(sceneName);
         StartCoroutine(LoadAsynchronously());
 
-        // Save laps
-        if (int.TryParse(lapInput.text, out int result))
-            PlayerPrefs.SetInt("Laps", int.Parse(lapInput.text));
-        else PlayerPrefs.SetInt("Laps", 1);
 
         if (int.TryParse(ghostInput.text, out int result2))
             PlayerPrefs.SetInt("Ghosts", int.Parse(ghostInput.text));
