@@ -30,14 +30,11 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        // if (photonView.IsMine)
-        //  {
         // Rotate
         float x = 0;
         float y = 90f;
         float z = 0;
         transform.localEulerAngles = new Vector3(x, y, z);
-        // }
     }
 
     private void Update()
@@ -49,10 +46,10 @@ public class PlayerController : MonoBehaviour
             HandlePlayerActionControls();
 
             // Debug
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                GameState.spawnEnemies = !GameState.spawnEnemies;
-            }
+            //if (Input.GetKeyDown(KeyCode.H))
+            //{
+            //    GameState.spawnEnemies = !GameState.spawnEnemies;
+            //}
         }
     }
 
@@ -69,14 +66,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    #region Control Handlers
+    #region ACTIONS
     private void HandleCameraControls()
     {
+        // Camera type controls
         if (Input.GetKeyDown(KeyCode.V))
         {
             cameras.firstPersonCamera.SetActive(!cameras.firstPersonCamera.activeSelf);
             cameras.thirdPersonCamera.SetActive(!cameras.thirdPersonCamera.activeSelf);
         }
+
+        // Rear / front view controls
+        if (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+            playerCamera.ViewRear();
+        else
+            playerCamera.ViewFront();
     }
 
     private void HandlePlayerActionControls()
@@ -121,10 +125,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
             useAccelerometerControls = !useAccelerometerControls;
     }
-
     #endregion
 
-
+    #region MOVEMENT
     // Handles movement input
     private void HandleMovement()
     {
@@ -168,8 +171,9 @@ public class PlayerController : MonoBehaviour
             playerShip.components.movement.NotGivingGas();
         }
     }
+    #endregion
 
-    #region Managers
+    #region MANAGERS
     // Manage engines on/off and drag increase/decrease
     private void ManageEnginesAndDrag(float horizontalInput, float verticalInput)
     {
@@ -210,15 +214,6 @@ public class PlayerController : MonoBehaviour
         playerShip.components.movement.Move(forwardFactor, verticalInput, horizontalInput);
     }
 
-    private void ManageCamera(float verticalInput)
-    {
-        if (GivingGas(verticalInput))
-            playerCamera.IncreaseDistance(0.05f, 0.1f);
-        else
-            playerCamera.DecreaseDistance(0.05f, 0.1f);
-    }
-    #endregion
-
     private bool GivingGas(float verticalInput)
     {
         if (verticalInput > 0)
@@ -226,6 +221,7 @@ public class PlayerController : MonoBehaviour
 
         return false;
     }
+    #endregion
 
     public void SetPlayerCamera(PlayerCamera playerCamera)
     {
