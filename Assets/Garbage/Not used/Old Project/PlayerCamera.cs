@@ -14,9 +14,12 @@ public class PlayerCamera : MyMonoBehaviour
     private Vector3 offset;
     private float angleZ = 60f;
 
+    private float baseAngle;
+
     void Start()
     {
         offset = new Vector3(minOffsetX, -17f, 0f);
+        baseAngle = 90f;
     }
 
     void LateUpdate()
@@ -24,10 +27,10 @@ public class PlayerCamera : MyMonoBehaviour
         // Get the angle from current and desired
         float currentAngle = transform.eulerAngles.y;
         float desiredAngle = target.transform.eulerAngles.y;
-        float angle = Mathf.LerpAngle(currentAngle, desiredAngle, Time.deltaTime * damping);
+        float newAngle = Mathf.LerpAngle(currentAngle, desiredAngle, Time.deltaTime * damping);
 
         // Rotation difference
-        Quaternion rotation = Quaternion.Euler(0, angle + 90f, angleZ);
+        Quaternion rotation = Quaternion.Euler(0, newAngle + baseAngle, angleZ);
 
         // Sets the new position based on player movement and rotation
         transform.position = target.transform.position - (rotation * offset);
@@ -36,26 +39,18 @@ public class PlayerCamera : MyMonoBehaviour
         transform.LookAt(target.transform);
     }
 
-    // Moves the camera further away from the player
-    public void IncreaseDistance(float factorOffsetX, float factorAngleZ)
+    // Rotate the camera to look behind
+    public void ViewRear()
     {
-        if (offset.x < 14f)
-        {
-            offset.x += factorOffsetX;
-            angleZ -= factorAngleZ;
-        }
+        baseAngle = 270f;
     }
 
-    // Brings the camera closer to the player
-    public void DecreaseDistance(float factorOffsetX, float factorAngleZ)
+    public void ViewFront()
     {
-        if (offset.x > 8f)
-        {
-            offset.x -= factorOffsetX;
-            angleZ += factorAngleZ;
-        }
+        baseAngle = 90f;
     }
 
+    #region BOOSTED CAMERA
     // Starts the boost camera effect coroutine
     public void ActivateBoostedCamera()
     {
@@ -81,10 +76,25 @@ public class PlayerCamera : MyMonoBehaviour
             yield return new WaitForSeconds(1f / totalIterations);
         }
     }
-}
 
-//// if(target.components.movement.GetCurrentSpeed() > 150)
-//        {
-//            thisPos.z += 10;
-//        }
-// TO DO FINISH CAMERA
+    // Moves the camera further away from the player
+    private void IncreaseDistance(float factorOffsetX, float factorAngleZ)
+    {
+        if (offset.x < 14f)
+        {
+            offset.x += factorOffsetX;
+            angleZ -= factorAngleZ;
+        }
+    }
+
+    // Brings the camera closer to the player
+    private void DecreaseDistance(float factorOffsetX, float factorAngleZ)
+    {
+        if (offset.x > 8f)
+        {
+            offset.x -= factorOffsetX;
+            angleZ += factorAngleZ;
+        }
+    }
+    #endregion
+}
