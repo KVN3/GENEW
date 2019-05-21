@@ -13,6 +13,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject loadingScreen;
     public GameObject leaderboardPanel;
     public GameObject changelogPanel;
+    public GameObject friendPanel;
 
     public Slider loadingBar;
     public TextMeshProUGUI progressText;
