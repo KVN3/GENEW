@@ -105,9 +105,6 @@ public class UIPanel : UIBehaviour
 
         boostMeter.value = 0;
         countDownController = FindObjectOfType<CountDownController>();
-
-        map = transform.Find("Map").GetComponent<Map>();
-        map.SetPlayerShip(playerShip);
     }
 
     void Update()
