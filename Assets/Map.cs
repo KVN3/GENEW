@@ -34,6 +34,9 @@ public class Map : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (playerShip == null)
+            return;
+
         // Compensate for different level/map origins
         float shipX = playerShip.transform.position.x - mapOrigin.x;
         float shipZ = playerShip.transform.position.z - mapOrigin.z;

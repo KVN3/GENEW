@@ -60,7 +60,6 @@ public class PlayerManager : MonoBehaviour
     {
         string playerPath = Path.Combine("Prefabs", "Player", "PlayerShip");
         PlayerCamera playerCameraClass = SharedResources.LoadPlayerCamera();
-        RadarCamera radarCameraClass = SharedResources.LoadRadarCamera();
 
         UIManager playerUIClass = SharedResources.LoadUI();
         AnalyticsManager analyticsManagerClass = SharedResources.LoadAnalyticsManager();
@@ -89,10 +88,6 @@ public class PlayerManager : MonoBehaviour
         // Player Camera
         PlayerCamera playerCamera = Instantiate(playerCameraClass);
         playerCamera.target = playerShip;
-
-        //// Radar Camera
-        //RadarCamera radarCamera = Instantiate(radarCameraClass);
-        //radarCamera.target = playerShip;
 
         // Camera references
         PlayerController playerController = playerShip.gameObject.GetComponent<PlayerController>();

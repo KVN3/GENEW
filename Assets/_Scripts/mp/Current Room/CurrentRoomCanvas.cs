@@ -18,6 +18,7 @@ public class CurrentRoomCanvas : MonoBehaviour
     
     public string RoomName { get; set; }
 
+    // Text components
     public TextMeshProUGUI roomNameText;
     public TextMeshProUGUI startMatchText;
     public TextMeshProUGUI leaveRoomText;
@@ -25,13 +26,24 @@ public class CurrentRoomCanvas : MonoBehaviour
     public TextMeshProUGUI leaderboardText;
     public TextMeshProUGUI leaderboardTimesText;
     public TextMeshProUGUI lapsText;
-    public TMP_InputField lapInput;
     public TextMeshProUGUI ghostsText;
+    public TextMeshProUGUI progressText;
+
+    // Input fields
+    public TMP_InputField lapInput;
     public TMP_InputField ghostInput;
 
+    // Buttons
+    [SerializeField]
+    private Button playButton;
+
+    // Dropdowns
+    [SerializeField]
+    private TMP_Dropdown levelDropdown;
+
+    // Other
     public GameObject loadingScreen;
     public Slider loadingBar;
-    public TextMeshProUGUI progressText;
 
     private void Awake()
     {
@@ -52,6 +64,7 @@ public class CurrentRoomCanvas : MonoBehaviour
         leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
     }
 
+    #region SCENE LOADING
     public void OnClickStartDelayed()
     {
         if (!PhotonNetwork.IsMasterClient)
@@ -99,4 +112,27 @@ public class CurrentRoomCanvas : MonoBehaviour
     {
         _sceneTitle = _mapSelection.GetScene();
     }
+    #endregion
+
+    #region BUTTON ACCESS
+    // Manage masterclient/cient button access
+    public void ManageRoomButtonAccess()
+    {
+        // Skip if not in a room
+        if (!PhotonNetwork.InRoom)
+            return;
+
+        // Enable for master, disable for clients
+        if (PhotonNetwork.IsMasterClient)
+        {
+            playButton.interactable = true;
+            levelDropdown.interactable = true;
+        }
+        else
+        {
+            playButton.interactable = false;
+            levelDropdown.interactable = false;
+        }
+    }
+    #endregion
 }
