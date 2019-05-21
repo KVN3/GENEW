@@ -26180,6 +26180,7 @@ MonoBehaviour:
     replayRotations: []
     replayPositions: []
     charges: 0
+  isMine: 0
 --- !u!114 &2452
 MonoBehaviour:
   m_ObjectHideFlags: 0

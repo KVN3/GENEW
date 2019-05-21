@@ -54,6 +54,8 @@ public class PlayerShip : Ship
 
     Dictionary<string, Dictionary<string, TimeSpan>> playerTimes;
 
+    public bool isMine = false;
+
     public PhotonView GetPhotonView()
     {
         return photonView;
@@ -66,7 +68,11 @@ public class PlayerShip : Ship
         photonView = GetComponent<PhotonView>();
 
         // Destroy/disable stuff only needed for main player
-        if (!photonView.IsMine)
+        if (photonView.IsMine)
+        {
+            isMine = true;
+        }
+        else
         {
             Destroy(GetComponent<AudioListener>());
         }

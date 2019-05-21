@@ -23,6 +23,10 @@ public class SkinManager : MonoBehaviourPunCallbacks, IPunObservable
 
     [SerializeField]
     private ShipSkin skin;
+    public ShipSkin GetShipSkin()
+    {
+        return skin;
+    }
 
     private PhotonView photonView;
 

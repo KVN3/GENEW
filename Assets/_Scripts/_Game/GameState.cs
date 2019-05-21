@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 [System.Serializable]
 public struct GameManagers
@@ -39,12 +40,10 @@ public struct AttachableScripts
 
 public class GameState : LevelSingleton<GameState>
 {
+    public static GameState instance;
+
     [SerializeField]
     private GameManagers gameManagers;
-
-    // Classes
-    public PlayerCamera cameraClass;
-    public PlayerShip playerClass;
 
     // Spawnpoints
     public static LocalSpawnPoint[] playerStarts;
@@ -55,10 +54,11 @@ public class GameState : LevelSingleton<GameState>
     // Global variables
     public static bool gamePaused = false;
 
-    // Listeners
-    private GameObject[] listeners;
-
     private PlayerShip[] playerShips;
+    public PlayerShip[] GetPlayerShips()
+    {
+        return playerShips;
+    }
 
     private bool logging = false;
     public static bool spawnEnemies = true;
@@ -66,10 +66,14 @@ public class GameState : LevelSingleton<GameState>
     protected override void Awake()
     {
         base.Awake();
+
+        instance = this;
     }
 
     void Start()
     {
+        BackgroundSoundManager backgroundSoundManager = Instantiate(gameManagers.backgroundSoundManagerClass);
+
         Assert.IsNotNull(gameManagers.backgroundSoundManagerClass);
         Assert.IsNotNull(gameManagers.chaserManagerClass);
         Assert.IsNotNull(gameManagers.UIManagerClass);
@@ -78,29 +82,24 @@ public class GameState : LevelSingleton<GameState>
         Assert.IsNotNull(gameManagers.raceManagerClass);
         Assert.IsNotNull(gameManagers.replayManagerClass);
         Assert.IsNotNull(gameManagers.analyticsManagerClass);
+        Assert.IsNotNull(backgroundSoundManager);
 
         // Race Manager 
         RaceManager raceManager = Instantiate(gameManagers.raceManagerClass);
-        //raceManager.SetPlayers(playerShips);
-        // 
         ReplayManager replayManager = Instantiate(gameManagers.replayManagerClass);
-
 
         if (PlayerPrefs.HasKey("Ghosts"))
             ghosts = new PlayerShipGhost[PlayerPrefs.GetInt("Ghosts")];
-        
+
         foreach (PlayerShipGhost ghost in ghosts)
             Instantiate(ghost);
 
-        BackgroundSoundManager backgroundSoundManager = Instantiate(gameManagers.backgroundSoundManagerClass);
-
+        // Master Client related
         if (PhotonNetwork.IsMasterClient)
-        {
-            if(spawnEnemies)
-                StartCoroutine(C_SpawnManagers());
-        }
+            StartCoroutine(C_SpawnManagers());
     }
 
+    // Find all player objects and make a reference
     private IEnumerator C_SpawnManagers()
     {
         // Find all player ship game objects first
@@ -118,11 +117,19 @@ public class GameState : LevelSingleton<GameState>
             playerShips[i] = gameObjects[i].GetComponent<PlayerShip>();
         }
 
-        // Only start the spawnmanagers after race has started
         while (!RaceManager.raceStarted)
         {
             yield return new WaitForSeconds(1);
         }
+
+        SpawnManagers();
+    }
+
+    // Spawn game managers
+    private void SpawnManagers()
+    {
+        if (!spawnEnemies)
+            return;
 
         // Spawn Point Manager
         SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
@@ -141,130 +148,14 @@ public class GameState : LevelSingleton<GameState>
         asteroidStormManager.spawnPointManager = spawnPointManager;
     }
 
-    #region Photon
-    protected PlayerShip SpawnLocalPlayer(int index)
-    {
-        if (logging)
-            Debug.Log("Spawning local player...");
-
-        LocalSpawnPoint playerStart = playerStarts[index];
-
-        PlayerShip playerShip = PhotonNetwork.Instantiate(playerClass.name, playerStart.transform.position, playerStart.transform.rotation).GetComponent<PlayerShip>();
-
-        // Spawn camera
-        PlayerCamera camera = Spawn(cameraClass);
-        camera.target = playerShip;
-
-        // Camera reference for the PC
-        PlayerController playerController = playerShip.gameObject.GetComponent<PlayerController>();
-        playerController.SetPlayerCamera(camera);
-        playerShip.SetPlayerCamera(camera);
-
-        // Add to list
-        //players.Add(PhotonNetwork.LocalPlayer, playerShip);
-
-        // Temp SP
-        PlayerShip[] playersLocal = new PlayerShip[1];
-        playersLocal[0] = playerShip;
-
-        // Analytics
-        AnalyticsManager analyticsManager = Instantiate(gameManagers.analyticsManagerClass);
-        analyticsManager.playerShip = playerShip;
-
-
-        return playerShip;
-    }
-
-    //private IEnumerator UpdatePlayerList()
+    //public void RestartScene()
     //{
-    //    yield return new WaitForSeconds(5);
-
-    //    players = new Dictionary<Player, PlayerShip>();
-
-    //    GameObject[] playerShipObjects = GameObject.FindGameObjectsWithTag("Ship");
-
-    //    foreach (GameObject shipObject in playerShipObjects)
-    //    {
-    //        PlayerShip playerShip = shipObject.GetComponent<PlayerShip>();
-
-    //        PhotonView photonView = playerShip.GetComponent<PhotonView>();
-    //        Player player = photonView.Owner;
-
-    //        players.Add(player, playerShip);
-    //    }
-
-    //    if (logging)
-    //        Debug.Log("PLAYER COUNT: " + players.Count);
+    //    //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //    //SceneManager.LoadScene("Main Menu");
     //}
 
-    //protected PlayerShip SpawnRemotePlayer(Player remotePlayer, int index)
+    //public void ExitGame()
     //{
-    //    Debug.Log("Spawning remote player...");
-    //    LocalSpawnPoint playerStart = playerStarts[index];
-
-    //    PlayerShip Player = Spawn(playerClass, (PlayerShip newPlayer) =>
-    //    {
-    //        newPlayer.transform.position = playerStart.transform.position;
-    //        newPlayer.transform.rotation = playerStart.transform.rotation;
-
-    //        newPlayer.remoteData = remotePlayer;
-    //    });
-
-    //    players.Add(remotePlayer, Player);
-
-    //    return Player;
+    //    Application.Quit();
     //}
-
-    //protected void KillPlayer(Player remotePlayer)
-    //{
-    //    PlayerShip player = players[remotePlayer];
-
-    //    Destroy(player);
-
-    //    players.Remove(remotePlayer);
-    //}
-    #endregion
-
-    private void Update()
-    {
-        // Restart, gets particle error tho
-        if (Input.GetKeyDown(KeyCode.R))
-            RestartScene();
-
-        // Exit game
-        if (Input.GetKeyDown(KeyCode.Escape))
-            ExitGame();
-    }
-
-    public void RestartScene()
-    {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //SceneManager.LoadScene("Main Menu");
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
 }
-
-// dif 0 = 3 sec
-// dif 1 = 2.5 sec
-// dif 2 = 2 sec
-// dif 3 = 1.5 sec
-// etc... till 0.5 (vl 5)
-// splitted comet ride thru little piece of rock smash u ass 
-
-// Questions;;
-// SpawnManager -> AttachbleScripts attach scripts during runtime
-// Co-op yes 
-// Fb code
-// Parent / child inheritence (asteroid, lavaasteroid)
-// Endless Runner Sample Game
-
-// Asteroid Storm Manager
-//if (difficulty > 0)
-//{
-//    AsteroidStormManager asteroidStormManager = Instantiate(gameManagers.asteroidStormManagerClass);
-//    asteroidStormManager.spawnPointManager = spawnPointManager;
-//}
