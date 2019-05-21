@@ -59,12 +59,12 @@ public class MainMenuController : MonoBehaviour
     {
         if (PhotonNetwork.IsConnectedAndReady)
         {
-            bool success = PhotonNetwork.GetCustomRoomList(TypedLobby.Default, "C0 = 0");
+            //bool success = PhotonNetwork.GetCustomRoomList(TypedLobby.Default, "C0 = 0");
 
-            if (!success)
-            {
-                print("Refreshing rooms through UpdateRoomlist failed. Ignore this for now.");
-            }
+            //if (!success)
+            //{
+            //    print("Refreshing rooms through UpdateRoomlist failed. Ignore this for now.");
+            //}
         }
 
     }

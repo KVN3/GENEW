@@ -69,7 +69,6 @@ public class PlayerShip : Ship
         if (!photonView.IsMine)
         {
             Destroy(GetComponent<AudioListener>());
-            Destroy(transform.Find("Radar").gameObject);
         }
 
     }

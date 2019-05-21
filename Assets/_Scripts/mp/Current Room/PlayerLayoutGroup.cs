@@ -29,28 +29,33 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     // I joined room
     public override void OnJoinedRoom()
     {
-        // Destroy all in players in list from previous lobby's
+        // Clear player list
         foreach (Transform child in transform)
-        {
             Destroy(child.gameObject);
-        }
 
         // Toggles the current room window
-        MainCanvasManager.instance.CurrentRoomCanvas.transform.SetAsLastSibling();
-        MainCanvasManager.instance.LobbyCanvas.transform.SetAsFirstSibling();
+        MainCanvasManager.instance.ShowPanel(PanelType.ROOM);
+        MainCanvasManager.instance.HidePanel(PanelType.LOBBY);
 
+        // Update player list
         Player[] players = PhotonNetwork.PlayerList;
 
         for (int i = 0; i < players.Length; i++)
         {
             PlayerJoinedRoom(players[i]);
         }
+
+        // Disable/enable host specific buttons
+        CurrentRoomCanvas.instance.ManageRoomButtonAccess();
     }
 
     // When host leaves room
     public override void OnMasterClientSwitched(Player newMasterClient)
     {
         //PhotonNetwork.LeaveRoom();
+
+        // Disable/enable host specific buttons
+        CurrentRoomCanvas.instance.ManageRoomButtonAccess();
     }
 
     // Other joined room

@@ -29,13 +29,13 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
     {
         lobbyText.text = LocalizationManager.GetTextByKey("LOBBY");
         createRoomText.text = LocalizationManager.GetTextByKey("CREATE_ROOM");
-        
+
         returnText.text = LocalizationManager.GetTextByKey("RETURN_TO_MAIN_MENU");
     }
 
     public void OnClickJoinRoom(string roomName)
     {
-       if(PhotonNetwork.JoinRoom(roomName))
+        if (PhotonNetwork.JoinRoom(roomName))
         {
             chatController.JoinChat(roomName);
         }
@@ -44,5 +44,7 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
             print("Join room failed.");
         }
     }
+
+    
 
 }
