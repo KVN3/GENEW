@@ -1,54 +1,168 @@
-﻿using System;
+﻿using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCamera : MyMonoBehaviour
+[System.Serializable]
+public struct CameraConfiguration
 {
-    public PlayerShip target;
+    [Tooltip("Camera offset to target.")]
+    public Vector3 offset;
+
+    [Tooltip("Camera damping to diminish stuttering.")]
     public float damping;
 
-    public float minOffsetX = 3f;
-    public float maxOffsetX = 14f;
+    [Tooltip("Base angle at which the ship is viewed. Default 90.")]
+    public float baseAngle;
 
-    private Vector3 offset;
-    private float angleZ = 60f;
+    [Tooltip("Camera angle Z that will be repeated each iteration. Default 60.")]
+    public float angleZ;
+}
 
-    private float baseAngle;
+public class PlayerCamera : MyMonoBehaviour
+{
+    [SerializeField]
+    private CameraConfiguration config;
 
-    void Start()
+    [Tooltip("PlayerShip target this camera will track. Leave empty for assignment.")]
+    public PlayerShip target;
+
+    // All other ships that haven't finished are spectatable.
+    private List<PlayerShip> spectatableShips = new List<PlayerShip>();
+
+    private bool isSpectating = false;
+
+    public void Start()
     {
-        offset = new Vector3(minOffsetX, -17f, 0f);
-        baseAngle = 90f;
+
+    }
+
+    void Update()
+    {
+        if (isSpectating)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.E))
+            {
+                NextSpectatable();
+            }
+        }
+
     }
 
     void LateUpdate()
     {
+        if (isSpectating && spectatableShips.Count == 0)
+            return;
+
         // Get the angle from current and desired
         float currentAngle = transform.eulerAngles.y;
         float desiredAngle = target.transform.eulerAngles.y;
-        float newAngle = Mathf.LerpAngle(currentAngle, desiredAngle, Time.deltaTime * damping);
+        float newAngle = Mathf.LerpAngle(currentAngle, desiredAngle, Time.deltaTime * config.damping);
 
         // Rotation difference
-        Quaternion rotation = Quaternion.Euler(0, newAngle + baseAngle, angleZ);
+        Quaternion rotation = Quaternion.Euler(0, newAngle + config.baseAngle, config.angleZ);
 
         // Sets the new position based on player movement and rotation
-        transform.position = target.transform.position - (rotation * offset);
+        transform.position = target.transform.position - (rotation * config.offset);
 
         // Rotate the camera to keep looking at the player
         transform.LookAt(target.transform);
     }
 
+    #region SPECTATOR CAMERA
+    // Attempts to activate spectator mode, returns true if there's ships to spectate
+    public bool ActivateSpectatorMode()
+    {
+        isSpectating = true;
+        spectatableShips = GetSpectatables();
+
+        if (spectatableShips.Count > 0)
+        {
+            target = spectatableShips[Random.Range(0, spectatableShips.Count)];
+
+            // Camera settings
+            config.offset = new Vector3(4, -70, -40);
+            config.baseAngle = 60;
+            config.angleZ = 55;
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // Finds all alive ships and returns them
+    private List<PlayerShip> GetSpectatables()
+    {
+        List<PlayerShip> spectatables = new List<PlayerShip>();
+
+        // Find all alive ship gameObjects first
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Ship");
+
+        // Get the playership scripts from the objects and add them to the list
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            PlayerShip playerShip = gameObjects[i].GetComponent<PlayerShip>();
+
+            if (playerShip.isMine)
+                continue;
+
+            spectatables.Add(playerShip);
+        }
+
+        return spectatables;
+    }
+
+    // Remove a ship from the list of spectatable ships
+    public void RemoveSpectatable(PlayerShip ship)
+    {
+        if (isSpectating)
+        {
+            spectatableShips.Remove(ship);
+        }
+    }
+
+    public bool SpectatablesLeft()
+    {
+        if (spectatableShips.Count < 1)
+            return false;
+        else
+            return true;
+    }
+
+    // Spectate the next ship in the list
+    public void NextSpectatable()
+    {
+        if (spectatableShips.Count <= 1)
+            return;
+
+        print("Next spectatable...");
+
+        int currentTargetIndex = spectatableShips.IndexOf(target);
+        int nextIndex = currentTargetIndex + 1;
+
+        // Last reached, back to first
+        if (nextIndex == spectatableShips.Count)
+            nextIndex = 0;
+
+        target = spectatableShips[nextIndex];
+    }
+    #endregion
+
+    #region REAR/FRONT CAMERA
     // Rotate the camera to look behind
     public void ViewRear()
     {
-        baseAngle = 270f;
+        config.baseAngle = 270f;
     }
 
     public void ViewFront()
     {
-        baseAngle = 90f;
+        config.baseAngle = 90f;
     }
+    #endregion
 
     #region BOOSTED CAMERA
     // Starts the boost camera effect coroutine
@@ -80,20 +194,20 @@ public class PlayerCamera : MyMonoBehaviour
     // Moves the camera further away from the player
     private void IncreaseDistance(float factorOffsetX, float factorAngleZ)
     {
-        if (offset.x < 14f)
+        if (config.offset.x < 14f)
         {
-            offset.x += factorOffsetX;
-            angleZ -= factorAngleZ;
+            config.offset.x += factorOffsetX;
+            config.angleZ -= factorAngleZ;
         }
     }
 
     // Brings the camera closer to the player
     private void DecreaseDistance(float factorOffsetX, float factorAngleZ)
     {
-        if (offset.x > 8f)
+        if (config.offset.x > 8f)
         {
-            offset.x -= factorOffsetX;
-            angleZ += factorAngleZ;
+            config.offset.x -= factorOffsetX;
+            config.angleZ += factorAngleZ;
         }
     }
     #endregion

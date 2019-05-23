@@ -1,9 +1,9 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
@@ -13,14 +13,14 @@ public struct PlayerRunData
 {
     public int currentLap;
     public int maxLaps;
-    public TimeSpan raceTime;
-    public TimeSpan bestRaceTime;
-    public TimeSpan totalTime;
-    public List<TimeSpan> leaderboardTimes;
+    public System.TimeSpan raceTime;
+    public System.TimeSpan bestRaceTime;
+    public System.TimeSpan totalTime;
+    public List<System.TimeSpan> leaderboardTimes;
 
     public int currentPos;
 
-    public List<TimeSpan> raceTimes;
+    public List<System.TimeSpan> raceTimes;
     public int currentWaypoint;
     public Transform lastWaypoint;
     public bool isOverHalfway;
@@ -49,12 +49,16 @@ public class PlayerShip : Ship
     #region Initialize and Assign Variables
     public PlayerRunData runData;
 
-    protected PlayerCamera playerCamera;
-    public UnityAction<int, TimeSpan, double, string> OnPlayerFinishedRaceDelegate;
 
-    Dictionary<string, Dictionary<string, TimeSpan>> playerTimes;
+    protected PlayerCamera playerCamera;
+    public UnityAction<int, System.TimeSpan, double, string> OnPlayerFinishedRaceNotifyAnalyticsDelegate;
+    public UnityAction<string> OnPlayerFinishedRaceNotifyMapDelegate;
+    public UnityAction<bool> OnPlayerFinishedRaceNotifyUIDelegate;
+
+    Dictionary<string, Dictionary<string, System.TimeSpan>> playerTimes;
 
     public bool isMine = false;
+    public Player player;
 
     public PhotonView GetPhotonView()
     {
@@ -71,6 +75,7 @@ public class PlayerShip : Ship
         if (photonView.IsMine)
         {
             isMine = true;
+            player = PhotonNetwork.LocalPlayer;
         }
         else
         {
@@ -83,7 +88,10 @@ public class PlayerShip : Ship
     {
         InitRaceData();
 
-
+        //this.OnPlayerFinishedRaceDelegate = (int amountOfLaps, TimeSpan raceTime, double averageLapTime, string playerName) =>
+        //{
+        //    PlayerFinishedRaceEvent(amountOfLaps, raceTime, averageLapTime, playerName);
+        //};
 
         //if (!photonView.IsMine)
         //{
@@ -93,10 +101,49 @@ public class PlayerShip : Ship
     }
     #endregion
 
+    public void PlayerFinishedRaceEvent(int amountOfLaps, System.TimeSpan raceTime, double averageLapTime, string playerName)
+    {
+        //PlayerNetwork.Instance.playerCustomProperties["raceFinished"] = true;
+        //PhotonNetwork.LocalPlayer.SetCustomProperties(PlayerNetwork.Instance.playerCustomProperties);
+
+        if (photonView.IsMine)
+        {
+            // Camera
+            bool success = playerCamera.ActivateSpectatorMode();
+
+            // Analytics
+            OnPlayerFinishedRaceNotifyAnalyticsDelegate(runData.maxLaps, runData.totalTime, averageLapTime, playerName);
+
+            // UI
+            OnPlayerFinishedRaceNotifyUIDelegate(success);
+        }
+        else
+        {
+            // Other ships don't have references to other client's camera
+            GameObject myCameraObject = GameObject.FindGameObjectWithTag("MainCamera");
+            PlayerCamera myCamera = myCameraObject.GetComponent<PlayerCamera>();
+
+            myCamera.RemoveSpectatable(this);
+
+            if (myCamera.SpectatablesLeft())
+            {
+                myCamera.NextSpectatable();
+            }
+            else
+            {
+                OnPlayerFinishedRaceNotifyUIDelegate(false);
+            }
+        }
+
+        Destroy(GetComponent<PlayerController>());
+        Destroy(GetComponent<ShipMovement>());
+        transform.position = new Vector3(Random.Range(50000, 100000), Random.Range(50000, 100000), Random.Range(50000, 100000));
+    }
+
     private void Update()
     {
         if (!runData.raceFinished && RaceManager.raceStarted)
-            runData.raceTime = runData.raceTime.Add(TimeSpan.FromSeconds(1 * Time.deltaTime));
+            runData.raceTime = runData.raceTime.Add(System.TimeSpan.FromSeconds(1 * Time.deltaTime));
 
         // Save positions/rotations for replay, could also use coroutine
         if (Time.frameCount % 3 == 0)
@@ -108,7 +155,7 @@ public class PlayerShip : Ship
         }
 
         // Cheat finish
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.F) && Application.isEditor)
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.F))
         {
             CheatFinish();
         }
@@ -130,10 +177,10 @@ public class PlayerShip : Ship
             runData.maxLaps = PlayerPrefs.GetInt("Laps"); // Should be configurable by variable
         else
             runData.maxLaps = 1;
-        runData.raceTime = TimeSpan.Parse("00:00:00.000");
+        runData.raceTime = System.TimeSpan.Parse("00:00:00.000");
         //runData.bestRaceTime = TimeSpan.Parse("00:01:47.222");
-        runData.raceTimes = new List<TimeSpan>();
-        runData.leaderboardTimes = new List<TimeSpan>();
+        runData.raceTimes = new List<System.TimeSpan>();
+        runData.leaderboardTimes = new List<System.TimeSpan>();
         runData.currentPos = 1;
 
         // Prevents cheating times
@@ -188,12 +235,14 @@ public class PlayerShip : Ship
         #region FinishLine
         if (other.gameObject.CompareTag("FinishLine"))
         {
+            print("Finishline");
+
             // Reset waypoint count 
             runData.currentWaypoint = -1;
 
             // Fixes an error when racetimes = null after restarting on Gianni's level
             if (runData.raceTimes == null)
-                runData.raceTimes = new List<TimeSpan>();
+                runData.raceTimes = new List<System.TimeSpan>();
 
             // Check for valid lap
             if (!runData.isWrongWay && runData.isOverHalfway)
@@ -206,7 +255,7 @@ public class PlayerShip : Ship
                         runData.raceTimes.Add(runData.raceTime);
 
                     // Update best time if not set (00:00:00)
-                    if (runData.bestRaceTime == TimeSpan.Parse("00:00:00"))
+                    if (runData.bestRaceTime == System.TimeSpan.Parse("00:00:00"))
                     {
                         runData.bestRaceTime = runData.raceTime;
                         runData.hasNewBestTime = true;
@@ -222,13 +271,13 @@ public class PlayerShip : Ship
                     // Achievements
                     if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.Wasteland])
                     {
-                        if (runData.raceTime < TimeSpan.Parse("00:00:50.000"))
+                        if (runData.raceTime < System.TimeSpan.Parse("00:00:50.000"))
                             AchievementManager.UpdateAchievement(0, 1f);
-                        if (runData.raceTime < TimeSpan.Parse("00:00:45.000"))
+                        if (runData.raceTime < System.TimeSpan.Parse("00:00:45.000"))
                             AchievementManager.UpdateAchievement(1, 1f);
-                        if (runData.raceTime < TimeSpan.Parse("00:00:40.000"))
+                        if (runData.raceTime < System.TimeSpan.Parse("00:00:40.000"))
                             AchievementManager.UpdateAchievement(2, 1f);
-                        if (runData.raceTime < TimeSpan.Parse("00:00:35.000"))
+                        if (runData.raceTime < System.TimeSpan.Parse("00:00:35.000"))
                             AchievementManager.UpdateAchievement(3, 1f);
                     }
                 }
@@ -239,7 +288,7 @@ public class PlayerShip : Ship
                     Debug.Log("playerShip Finished");
                     levelSoundManager.PlaySound(SoundType.VICTORY);
 
-                    foreach (TimeSpan time in runData.raceTimes)
+                    foreach (System.TimeSpan time in runData.raceTimes)
                         runData.totalTime += time;
 
                     // Leaderboard
@@ -251,12 +300,13 @@ public class PlayerShip : Ship
                         PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
                     else
                     {
-                        if (TimeSpan.Parse(PlayerPrefs.GetString("Highscore")) > runData.bestRaceTime)
+                        if (System.TimeSpan.Parse(PlayerPrefs.GetString("Highscore")) > runData.bestRaceTime)
                             PlayerPrefs.SetString("Highscore", runData.bestRaceTime.ToString());
                     }
 
                     // Save replay
-                    SaveReplay();
+                    // Crashes / freezes game ... meddles with mp
+                    //SaveReplay();
 
                     runData.raceFinished = true;
 
@@ -267,7 +317,9 @@ public class PlayerShip : Ship
                     if (PhotonNetwork.IsConnected)
                         playerName = PhotonNetwork.LocalPlayer.NickName;
 
-                    OnPlayerFinishedRaceDelegate(runData.maxLaps, runData.totalTime, averageLapTime, playerName);
+
+
+                    PlayerFinishedRaceEvent(runData.maxLaps, runData.totalTime, averageLapTime, playerName);
                 }
                 else // If not finished
                 {
@@ -284,7 +336,7 @@ public class PlayerShip : Ship
                             SaveReplay();
 
                             // Reset stuff
-                            runData.raceTime = TimeSpan.Parse("00:00:00.000");
+                            runData.raceTime = System.TimeSpan.Parse("00:00:00.000");
                             runData.isOverHalfway = false;
 
                             runData.currentLap++;

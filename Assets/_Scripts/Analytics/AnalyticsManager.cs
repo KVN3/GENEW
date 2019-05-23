@@ -31,7 +31,7 @@ public class AnalyticsManager : MyMonoBehaviour
                 PlayerStunnedEvent(duration, cause, playerWasProtected);
             };
 
-            playerShip.OnPlayerFinishedRaceDelegate = (int amountOfLaps, TimeSpan raceTime, double averageLapTime, string playerName) =>
+            playerShip.OnPlayerFinishedRaceNotifyAnalyticsDelegate = (int amountOfLaps, TimeSpan raceTime, double averageLapTime, string playerName) =>
             {
                 PlayerFinishedRaceEvent(amountOfLaps, raceTime, averageLapTime, playerName);
             };

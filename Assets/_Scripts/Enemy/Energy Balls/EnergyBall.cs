@@ -60,7 +60,7 @@ public class EnergyBall : MonoBehaviour, IPunObservable
         }
 
         // If the floating stones float into the energy spheres, make them perish.
-        if (other.gameObject.CompareTag("SteppingStone"))
+        else if (other.gameObject.CompareTag("SteppingStone"))
             Die();
     }
 
@@ -68,18 +68,36 @@ public class EnergyBall : MonoBehaviour, IPunObservable
     public virtual void Die()
     {
         // Detaching children (sound managers), so that they can still play the dead sound when the object is destroyed
-        enemySoundManager.PlaySound(SoundType.SHUTDOWN);
-        transform.DetachChildren();
+        try
+        {
+            enemySoundManager.PlaySound(SoundType.SHUTDOWN);
+            transform.DetachChildren();
+        }
+        catch (System.Exception ex)
+        {
+            print("detaching error in energyball + " + ex);
+        }
+
 
         // If this object was spawned by a manager, remove this from the list of alive oppositions
         if (manager != null)
             manager.RemoveFromAliveEnemies(this);
 
         // Destroy the object if master, for all to witness...
-        if (photonView.ViewID == 0)
-            Destroy(gameObject);
-        else if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.Destroy(gameObject);
+        try
+        {
+            if (photonView.ViewID == 0)
+            {
+                Destroy(gameObject);
+            }
+            else if (PhotonNetwork.IsMasterClient)
+                PhotonNetwork.Destroy(gameObject);
+        }
+        catch
+        {
+
+        }
+
     }
     #endregion
 

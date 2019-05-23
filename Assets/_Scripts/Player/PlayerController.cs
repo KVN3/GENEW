@@ -85,11 +85,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePlayerActionControls()
     {
-        // Leaving match
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            PlayerNetwork.ReturnToMain();
-        }
+
 
         // Breaking
         if (Input.GetKey(KeyCode.Space))
