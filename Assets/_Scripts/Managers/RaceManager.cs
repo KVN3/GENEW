@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class RaceManager : MonoBehaviour
 
     // Global variable
     public static bool raceStarted = false;
+    public static bool raceFinished = false;
 
     public CountDownController countDownController;
 
@@ -19,6 +21,8 @@ public class RaceManager : MonoBehaviour
         //Instantiate(countDownController, transform);
 
         raceStarted = true;
+
+        
     }
 
     private void Update()

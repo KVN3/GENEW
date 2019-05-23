@@ -43,8 +43,14 @@ public class Engine : MonoBehaviour
             particleSystem.Play();
             engineOn = true;
 
+
             if (audioSource != null)
-                audioSource.enabled = true;
+            {
+                if (GameConfiguration.SoundOn)
+                    audioSource.enabled = true;
+                else
+                    audioSource.enabled = false;
+            }
         }
 
     }

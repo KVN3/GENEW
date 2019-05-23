@@ -14,6 +14,8 @@ public class ShipForcefield : ShipComponent, IPunObservable
     private bool hasRegenerationCooldown;
     private bool itemActive;
 
+    private AudioSource audioSource;
+
     public PlayerShip owner;
 
     [SerializeField]
@@ -27,6 +29,7 @@ public class ShipForcefield : ShipComponent, IPunObservable
         forcefieldObject.SetActive(false);
 
         photonView = GetComponent<PhotonView>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     #region Photon
@@ -61,6 +64,11 @@ public class ShipForcefield : ShipComponent, IPunObservable
         if (!photonView.IsMine)
             return;
 
+        if (GameConfiguration.SoundOn)
+            audioSource.enabled = true;
+        else
+            audioSource.enabled = false;
+
         forcefieldObject.SetActive(true);
         forcefieldActive = true;
 
@@ -74,6 +82,11 @@ public class ShipForcefield : ShipComponent, IPunObservable
     {
         if (!photonView.IsMine)
             return;
+
+        if (GameConfiguration.SoundOn)
+            audioSource.enabled = true;
+        else
+            audioSource.enabled = false;
 
         forcefieldObject.SetActive(false);
         forcefieldActive = false;

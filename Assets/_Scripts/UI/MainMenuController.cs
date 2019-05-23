@@ -112,9 +112,10 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Main]);
     }
 
-    public void LoadMainMenuFromLevel()
+    public void LoadLobbyFromOtherScene()
     {
         PlayerNetwork.ReturnToMain();
+        MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
     }
     #endregion
 

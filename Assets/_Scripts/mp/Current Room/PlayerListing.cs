@@ -24,7 +24,7 @@ public class PlayerListing : MonoBehaviour
         StartCoroutine(C_ShowPing());
     }
 
-    #region ping
+    #region PING
     private IEnumerator C_ShowPing()
     {
         while (PhotonNetwork.IsConnected)

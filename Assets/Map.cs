@@ -46,7 +46,7 @@ public class Map : MonoBehaviour
             return;
 
         // Update icon position
-        for(int i = 0; i < playerShips.Length; i++)
+        for (int i = 0; i < playerShips.Length; i++)
         {
             PlayerShip playerShip = playerShips[i];
 
@@ -63,19 +63,25 @@ public class Map : MonoBehaviour
                 Image playerIcon = iconDict[playerShip];
                 playerIcon.transform.localPosition = new Vector2(currentMapX, currentMapZ);
             }
-            catch(NullReferenceException ex)
+            catch (Exception ex)
             {
-                // Remove null ship
-                if (playerShip == null)
-                {
-                    int shipIndex = Array.IndexOf(playerShips, playerShip);
-                    playerShips = playerShips.Where((val, idx) => idx != shipIndex).ToArray();
-                }
-                else
-                {
-                    print("Catching wrong error in Map !!!");
-                }
+                if (ex is NullReferenceException || ex is MissingReferenceException)
+                    UpdateList(playerShip);
             }
+
+        }
+    }
+
+    private void UpdateList(PlayerShip playerShip)
+    {
+        if (playerShip == null)
+        {
+            int shipIndex = Array.IndexOf(playerShips, playerShip);
+            playerShips = playerShips.Where((val, idx) => idx != shipIndex).ToArray();
+        }
+        else
+        {
+            print("Catching wrong error in Map !!!");
         }
     }
 
@@ -140,7 +146,7 @@ public class Map : MonoBehaviour
             playerIcon.transform.Find("Glow").gameObject.SetActive(false);
         }
 
-        
+
     }
 
 

@@ -122,7 +122,7 @@ public class GameState : LevelSingleton<GameState>
             yield return new WaitForSeconds(1);
         }
 
-        SpawnManagers();
+       // SpawnManagers();
     }
 
     // Spawn game managers

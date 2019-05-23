@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1323}
   m_Layer: 0
   m_Name: PlayerCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21ec5f59006d074e9ca77051a28318e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config:
+    offset: {x: 7, y: -20, z: 0}
+    damping: 400
+    baseAngle: 90
+    angleZ: 60
   target: {fileID: 0}
-  damping: 400
-  minOffsetX: 4
-  maxOffsetX: 14

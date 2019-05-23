@@ -13,13 +13,17 @@ public class HUD : MyMonoBehaviour, IObserver
     public GameObject RaceStartPanel;
     public GameObject RaceEndPanel;
 
+    [SerializeField]
+    private GameObject blackBackground;
+
     Animator anim;
     CanvasGroup canvasGroup;
 
 
     // Start is called before the first frame update
-    void Awake() {
-		Assert.IsNotNull(PlayerShip);
+    void Awake()
+    {
+        Assert.IsNotNull(PlayerShip);
         Assert.IsNotNull(InGamePanel);
         Assert.IsNotNull(RaceEndPanel);
 
@@ -27,21 +31,44 @@ public class HUD : MyMonoBehaviour, IObserver
 
         RaceEndPanel.SetActive(false);
     }
-   
-    // Update is called once per frame
-    void Update()
+
+    void Start()
     {
-        if (PlayerShip.runData.raceFinished)
+        PlayerShip.OnPlayerFinishedRaceNotifyUIDelegate = (bool spectating) =>
         {
-            RaceEndPanel.SetActive(true);
-            anim.SetTrigger("RaceFinished");
+            PlayerFinishedRaceEvent(spectating);
+        };
+    }
+
+    private void Update()
+    {
+        // Leaving match
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerNetwork.ReturnToMain();
+            MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
         }
-            
+    }
+
+    private void PlayerFinishedRaceEvent(bool spectating)
+    {
+        if (spectating)
+        {
+
+        }
+        else
+        {
+            blackBackground.SetActive(true);
+        }
+
+        InGamePanel.SetActive(false);
+        RaceEndPanel.SetActive(true);
+        anim.SetTrigger("RaceFinished");
     }
 
     public void OnNotify(float score, float charges)
     {
         // Do Something
-        
+
     }
 }
