@@ -46,6 +46,9 @@ public class ReplayManager : LevelSingleton<ReplayManager>
         string jsonString = PlayerPrefs.GetString(key);
         ReplayData replayData = JsonUtility.FromJson<ReplayData>(jsonString);
 
+        if (replayData.replays.Count > 1)
+            replayData.replays.Clear();
+
         // Create new replayData if null
         if (replayData == null)
         {
@@ -64,6 +67,7 @@ public class ReplayManager : LevelSingleton<ReplayManager>
         PlayerPrefs.SetString(key, json);
     }
 
+    #region Get replays
     public List<Replay> GetReplaysByStage(string stage)
     {
         string jsonString = PlayerPrefs.GetString(key);
@@ -87,6 +91,7 @@ public class ReplayManager : LevelSingleton<ReplayManager>
         
         return replayData.replays.FirstOrDefault(x => x.id == id);
     }
+    #endregion
 
     [ContextMenu("Delete Replay Data")]
     public void DeleteReplayData()
