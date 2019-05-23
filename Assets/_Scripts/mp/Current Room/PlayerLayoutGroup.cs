@@ -120,6 +120,7 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
 
     public void OnClickLeaveRoom()
     {
+        Chat.instance.LeaveChat(Chat.instance.channelsToJoinOnConnect[2]);
         PhotonNetwork.LeaveRoom();
     }
 

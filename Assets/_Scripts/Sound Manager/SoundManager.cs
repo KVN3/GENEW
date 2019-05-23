@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
 
     public bool IsSoundMuted()
     {
-        if (GameConfiguration.SoundOn)
+        if (ClientConfigurationManager.Instance.clientConfiguration.SoundOn)
             return false;
         else return true;
     }

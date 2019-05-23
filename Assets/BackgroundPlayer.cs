@@ -67,7 +67,7 @@ public class MusicPlayer : MonoBehaviour
             if (currentScene.name.Equals(shipyardSceneName))
                 sectionName = mainSceneName;
 
-            if (GameConfiguration.MusicOn)
+            if (ClientConfigurationManager.Instance.clientConfiguration.MusicOn)
             {
                 audioSource.mute = false;
                 if (!audioSource.isPlaying || !sectionName.Equals(lastSceneName))
