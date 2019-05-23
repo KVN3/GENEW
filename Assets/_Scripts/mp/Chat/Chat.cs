@@ -10,14 +10,15 @@ using System.Collections.Generic;
 public class Chat : MonoBehaviour, IChatClientListener
 {
     #region Fields
-
     public static Chat instance;
 
     public ChatClient chatClient;
 
-    public string[] channelsToJoinOnConnect; 
+    public string[] channelsToJoinOnConnect;
 
     // Friend stuff
+    public TMP_InputField addFriendInput;
+    public TextMeshProUGUI emptyFriendListText;
     private List<string> friendsList; // Friend list from account.friendList
     private List<GameObject> friendObjects; // List of prefabs instantiated so you can delete them
     public GameObject friendListUiItemtoInstantiate; // Prefab
@@ -298,8 +299,18 @@ public class Chat : MonoBehaviour, IChatClientListener
         if (!friendsList.Contains(friendId))
         {
             friendsList.Add(friendId);
-            Registration.SaveAccount(Registration.GetCurrentAccount());
-            RefreshFriendItems();
+            UpdateFriends();
+        }
+    }
+
+    public void AddFriendByInput()
+    {
+        string friendToAdd = addFriendInput.text;
+        if (!friendsList.Contains(friendToAdd))
+        {
+            friendsList.Add(friendToAdd);
+            UpdateFriends();
+            addFriendInput.text = "";
         }
     }
 
@@ -308,13 +319,19 @@ public class Chat : MonoBehaviour, IChatClientListener
         if (friendsList.Contains(friendId))
         {
             friendsList.Remove(friendId);
-            Registration.SaveAccount(Registration.GetCurrentAccount());
-            RefreshFriendItems();
+            UpdateFriends();
         }
     }
 
-    private void RefreshFriendItems()
+    private void UpdateFriends()
     {
+        if (friendsList.Count > 0)
+            emptyFriendListText.gameObject.SetActive(false);
+        else
+            emptyFriendListText.gameObject.SetActive(true);
+
+        // Save to account, refresh by deleting and creating friend items
+        Registration.SaveAccount(Registration.GetCurrentAccount());
         DeleteFriendItems();
         CreateFriendItems();
     }
