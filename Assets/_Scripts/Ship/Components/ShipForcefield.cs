@@ -64,7 +64,7 @@ public class ShipForcefield : ShipComponent, IPunObservable
         if (!photonView.IsMine)
             return;
 
-        if (GameConfiguration.SoundOn)
+        if (ClientConfigurationManager.Instance.clientConfiguration.SoundOn)
             audioSource.enabled = true;
         else
             audioSource.enabled = false;
@@ -83,7 +83,7 @@ public class ShipForcefield : ShipComponent, IPunObservable
         if (!photonView.IsMine)
             return;
 
-        if (GameConfiguration.SoundOn)
+        if (ClientConfigurationManager.Instance.clientConfiguration.SoundOn)
             audioSource.enabled = true;
         else
             audioSource.enabled = false;
