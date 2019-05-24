@@ -46,8 +46,12 @@ public class ReplayManager : LevelSingleton<ReplayManager>
         string jsonString = PlayerPrefs.GetString(key);
         ReplayData replayData = JsonUtility.FromJson<ReplayData>(jsonString);
 
+        // Clear if there are too many replays
         if (replayData.replays.Count > 1)
             replayData.replays.Clear();
+
+        if (posx.Count > 10000)
+            return;
 
         // Create new replayData if null
         if (replayData == null)

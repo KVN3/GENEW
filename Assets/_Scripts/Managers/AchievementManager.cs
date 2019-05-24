@@ -58,23 +58,25 @@ public class AchievementManager : MonoBehaviour
 
         // Get achievement
         Achievement achievement = account.achievements[index];
-
-        // Add progress
-        if (achievement.progress < achievement.progressGoal)
-            achievement.progress += addedProgress;
-        
-        // Check progress
-        if (achievement.progress >= achievement.progressGoal)
+        if (!achievement.isDone)
         {
-            achievement.progress = achievement.progressGoal;
-            achievement.isDone = true;
-            achievement.dateCompleted = DateTime.Now;
-            Instance.achievementCanvas.InstantiateNotif(achievement);
-        }
+            // Add progress
+            if (achievement.progress < achievement.progressGoal)
+                achievement.progress += addedProgress;
 
-        // Update in currentAccount && accountDatabase
-        account.achievements[index] = achievement;
-        Registration.SaveAccount(account);
+            // Check progress
+            if (achievement.progress >= achievement.progressGoal)
+            {
+                achievement.progress = achievement.progressGoal;
+                achievement.isDone = true;
+                achievement.dateCompleted = DateTime.Now;
+                Instance.achievementCanvas.InstantiateNotif(achievement);
+            }
+
+            // Update in currentAccount && accountDatabase
+            account.achievements[index] = achievement;
+            Registration.SaveAccount(account);
+        }
     }
 
     private void ResetAchievement(int index)
@@ -169,10 +171,11 @@ public class Achievement
     public string description;
     public AchievementType type;
     public DateTime dateCompleted;
-    public string user;
     public float progress;
     public float progressGoal;
     public bool isDone;
+
+    public string user;
 
     public Achievement(int id, string title, string description, AchievementType type, float progressGoal)
     {
