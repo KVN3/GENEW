@@ -44,13 +44,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     {
         print("Joined lobby.");
 
-
-        //if (!PhotonNetwork.InRoom)
-        //{
-        //    MainCanvasManager.instance.LobbyCanvas.transform.SetAsLastSibling();
-        //    MainCanvasManager.instance.CurrentRoomCanvas.transform.SetAsFirstSibling();
-        //}
-
+        MainCanvasManager.instance.LobbyCanvas.CreateRoomButton.interactable = true;
     }
 
 

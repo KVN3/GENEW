@@ -62,7 +62,6 @@ public class MainCanvasManager : MonoBehaviour
         transform.localPosition = new Vector2(0, 0);
     }
 
-
     public void HidePanel(PanelType panelType)
     {
         RectTransform transform = SelectCorrectTransform(panelType);
