@@ -14,18 +14,18 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
     public Chat chatController;
 
     [SerializeField]
-    private RoomLayoutGroup _roomLayoutGroup;
-    private RoomLayoutGroup RoomLayoutGroup
+    private RoomLayoutGroup roomLayoutGroup;
+    public RoomLayoutGroup RoomLayoutGroup
     {
-        get { return _roomLayoutGroup; }
+        get { return roomLayoutGroup; }
     }
 
-    //[SerializeField]
-    //private RoomLayoutGroup _roomLayoutGroup;
-    //private RoomLayoutGroup RoomLayoutGroup
-    //{
-    //    get { return _roomLayoutGroup; }
-    //}
+    [SerializeField]
+    private Button createRoomButton;
+    public Button CreateRoomButton
+    {
+        get { return createRoomButton; }
+    }
 
     private void Start()
     {

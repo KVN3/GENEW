@@ -20,6 +20,8 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     private PlayerShip playerShip;
     private Coroutine pingCoroutine;
 
+    public static bool LoadingFromGame = false;
+
     private void Awake()
     {
         Instance = this;
@@ -32,6 +34,12 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         PhotonNetwork.SerializationRate = 60;
     }
 
+    private void Start()
+    {
+        // Delegate, when scene loaded method called
+        SceneManager.sceneLoaded += OnSceneFinishedLoading;
+    }
+
     public void SetAccount()
     {
         Account account = Registration.GetCurrentAccount();
@@ -40,17 +48,10 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
 
         PhotonNetwork.LocalPlayer.NickName = PlayerName;
-        
+
         PhotonNetwork.AuthValues = new AuthenticationValues(PlayerName);
         //PlayerName = "Kevin#" + Random.Range(1000, 9999);
     }
-
-    private void Start()
-    {
-        // Delegate, when scene loaded method called
-        SceneManager.sceneLoaded += OnSceneFinishedLoading;
-    }
-
 
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
@@ -185,6 +186,8 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     public static void ReturnToLobby()
     {
         ReturnToMain();
+
+        LoadingFromGame = true;
 
         SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
         {
