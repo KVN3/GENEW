@@ -21,6 +21,9 @@ public class Ship : MyMonoBehaviour
     public ShipComponents components;
 
     [SerializeField]
+    private float flashDuration = 0.025f;
+
+    [SerializeField]
     private ShipSoundManager shipSoundManagerClass;
     [SerializeField]
     protected LevelSoundManager levelSoundManagerClass;
@@ -32,23 +35,26 @@ public class Ship : MyMonoBehaviour
 
     private List<ShipComponent> componentsList;
 
-    // Instantiated
+    #region SOUND MANAGERS
     protected ShipSoundManager shipSoundManager;
     protected LevelSoundManager levelSoundManager;
     protected AISoundManager aiSoundManager;
+    #endregion
 
-
-    // Collectables
+    #region ITEMS
     public Collectable collectableItemClass;
     public int itemAmount;
+    #endregion
 
     // Run time
     private bool recentlyHit;
     protected PhotonView photonView;
 
-    // Delegates
+    #region DELEGATES
     public UnityAction<Collectable, int> OnItemUsedDelegate;
     public UnityAction<int, string, bool> OnPlayerStunnedDelegate;
+    public UnityAction<float, FlashColor> OnPlayerShipHitDelegate;
+    #endregion
 
     public virtual void Awake()
     {
@@ -129,10 +135,14 @@ public class Ship : MyMonoBehaviour
         }
     }
 
-
     new void OnCollisionEnter(Collision other)
     {
-        if (!components.forcefield.IsActive())
+        if (components.forcefield.IsActive())
+        {
+            // Flash screen
+            OnPlayerShipHitDelegate(flashDuration, FlashColor.BLUE);
+        }
+        else
         {
             if (other.gameObject.CompareTag("Projectile"))
             {
@@ -145,9 +155,12 @@ public class Ship : MyMonoBehaviour
         }
     }
 
+    #region GETTING HIT
     // Ship got hit by regular, e.a. a wall
     public void GetHitByRegular(Collision other)
     {
+        OnPlayerShipHitDelegate(flashDuration, FlashColor.RED);
+
         shipSoundManager.PlaySound(SoundType.ALARM);
         spark.Activate();
 
@@ -168,17 +181,21 @@ public class Ship : MyMonoBehaviour
             // Forcefield not active, shutdown
             if (!components.forcefield.IsActive())
             {
+                OnPlayerShipHitDelegate(flashDuration, FlashColor.RED);
+
                 aiSoundManager.ReportSystemError(SoundType.AISYSTEMERROR);
 
                 components.system.ShutDown();
                 components.engines.RestoreSystem();
 
-                StartCoroutine(GotHit());
+                StartCoroutine(C_GotHit());
             }
 
             // Forcefield active, take damage
             else
             {
+                OnPlayerShipHitDelegate(flashDuration, FlashColor.BLUE);
+
                 components.forcefield.GetHit(30);
                 shipSoundManager.PlaySound(SoundType.PROTECTED);
 
@@ -191,7 +208,7 @@ public class Ship : MyMonoBehaviour
         }
     }
 
-    private IEnumerator GotHit()
+    private IEnumerator C_GotHit()
     {
         recentlyHit = true;
         yield return new WaitForSeconds(1);
@@ -202,7 +219,15 @@ public class Ship : MyMonoBehaviour
         recentlyHit = false;
     }
 
+    protected void FlashScreen(FlashColor color)
+    {
+        if (!photonView.IsMine)
+            return;
 
+        // Flash screen
+        OnPlayerShipHitDelegate(flashDuration, color);
+    }
+    #endregion
 
     public void Alert()
     {

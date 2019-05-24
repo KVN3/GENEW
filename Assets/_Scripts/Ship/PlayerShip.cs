@@ -84,25 +84,11 @@ public class PlayerShip : Ship
     public void Start()
     {
         InitRaceData();
-
-        //this.OnPlayerFinishedRaceDelegate = (int amountOfLaps, TimeSpan raceTime, double averageLapTime, string playerName) =>
-        //{
-        //    PlayerFinishedRaceEvent(amountOfLaps, raceTime, averageLapTime, playerName);
-        //};
-
-        //if (!photonView.IsMine)
-        //{
-        //  Destroy(transform.Find("AISoundManager").gameObject);
-        //    Destroy(transform.Find("LevelSoundManager").gameObject);
-        //}
     }
     #endregion
 
     public void PlayerFinishedRaceEvent(int amountOfLaps, System.TimeSpan raceTime, double averageLapTime, string playerName)
     {
-        //PlayerNetwork.Instance.playerCustomProperties["raceFinished"] = true;
-        //PhotonNetwork.LocalPlayer.SetCustomProperties(PlayerNetwork.Instance.playerCustomProperties);
-
         if (photonView.IsMine)
         {
             // Camera
