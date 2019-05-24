@@ -61,7 +61,16 @@ public class Registration : MonoBehaviour
     {
         // If logged in redirect to main
         if (GetCurrentAccount() != null)
-            GoToMainMenu();
+        {
+            if (PlayerNetwork.LoadingFromGame)
+            {
+                gameObject.SetActive(false);
+                PlayerNetwork.LoadingFromGame = false;
+            }
+            else
+                GoToMainMenu();
+        }
+            
     }
 
     private void Update()

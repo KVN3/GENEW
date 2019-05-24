@@ -181,4 +181,15 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
             PhotonNetwork.Disconnect();
         }
     }
+
+    public static void ReturnToLobby()
+    {
+        ReturnToMain();
+
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
+        {
+            MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
+            MainCanvasManager.instance.MainMenu.gameObject.SetActive(false);
+        };
+    }
 }
