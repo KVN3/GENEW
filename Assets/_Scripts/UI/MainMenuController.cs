@@ -142,6 +142,7 @@ public class MainMenuController : MonoBehaviour
     public void SawChangelog()
     {
         ClientConfigurationManager.Instance.clientConfiguration.SawChangelog = true;
+        ClientConfigurationManager.Instance.SavePlayerSettings();
     }
 
     public void UpdateLeaderboard()
