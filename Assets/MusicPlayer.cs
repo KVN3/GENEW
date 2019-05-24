@@ -55,9 +55,9 @@ public class MusicPlayer : MonoBehaviour
 
     private IEnumerator PlayBackgroundTrack()
     {
-        string wastelandSceneName = ScenesInformation.sceneNames[SceneTitle.Wasteland];
-        string mainSceneName = ScenesInformation.sceneNames[SceneTitle.Main];
-        string shipyardSceneName = ScenesInformation.sceneNames[SceneTitle.Shipyard];
+        string wastelandSceneName = ScenesInformation.sceneNames[SceneTitle.WASTELAND];
+        string mainSceneName = ScenesInformation.sceneNames[SceneTitle.MAIN];
+        string shipyardSceneName = ScenesInformation.sceneNames[SceneTitle.SHIPYARD];
 
         while (true)
         {

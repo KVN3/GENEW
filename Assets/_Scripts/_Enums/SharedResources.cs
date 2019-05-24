@@ -76,7 +76,7 @@ public static class SharedResources
     public static string GetPath(string prefabName)
     {
         string path = string.Empty;
-        string currentScene = ScenesInformation.sceneNames[SceneTitle.Wasteland];
+        string currentScene = ScenesInformation.sceneNames[SceneTitle.WASTELAND];
 
         switch (prefabName)
         {

@@ -62,7 +62,6 @@ public class HUD : MyMonoBehaviour, IObserver
         if (Input.GetKeyDown(KeyCode.P))
         {
             PlayerNetwork.ReturnToLobby();
-
         }
     }
 

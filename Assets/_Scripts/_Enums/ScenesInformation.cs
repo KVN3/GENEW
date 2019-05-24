@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum SceneTitle
 {
-    Main, Shipyard, Wasteland, Test
+    MAIN, SHIPYARD, WASTELAND, HIGHWAY, TEST
 }
 
 public class ScenesInformation : MonoBehaviour
@@ -14,10 +14,11 @@ public class ScenesInformation : MonoBehaviour
     public void Awake()
     {
         sceneNames = new Dictionary<SceneTitle, string>();
-        sceneNames.Add(SceneTitle.Main, "Main Menu");
-        sceneNames.Add(SceneTitle.Shipyard, "Shipyard");
-        sceneNames.Add(SceneTitle.Wasteland, "Eraarlonium Wasteland");
-        sceneNames.Add(SceneTitle.Test, "Test");
+        sceneNames.Add(SceneTitle.MAIN, "Main Menu");
+        sceneNames.Add(SceneTitle.SHIPYARD, "Shipyard");
+        sceneNames.Add(SceneTitle.WASTELAND, "Eraarlonium Wasteland");
+        sceneNames.Add(SceneTitle.TEST, "Test");
+        sceneNames.Add(SceneTitle.HIGHWAY, "Elto Highway");
     }
 
     #region abstract
