@@ -20,6 +20,13 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
         get { return _roomLayoutGroup; }
     }
 
+    //[SerializeField]
+    //private RoomLayoutGroup _roomLayoutGroup;
+    //private RoomLayoutGroup RoomLayoutGroup
+    //{
+    //    get { return _roomLayoutGroup; }
+    //}
+
     private void Start()
     {
         roomNameText.text = LocalizationManager.GetTextByKey("ROOM_NAME") + "...";

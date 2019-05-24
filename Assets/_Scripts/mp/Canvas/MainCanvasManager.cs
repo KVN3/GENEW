@@ -6,12 +6,20 @@ using UnityEngine;
 
 public enum PanelType
 {
-    LOBBY, ROOM
+    LOBBY, ROOM, MAIN
 }
 
 public class MainCanvasManager : MonoBehaviour
 {
     public static MainCanvasManager instance;
+
+    [SerializeField]
+    private MainMenuManager mainMenu;
+    public MainMenuManager MainMenu
+    {
+        get { return mainMenu; }
+    }
+
 
     [SerializeField]
     private LobbyCanvas _lobbyCanvas;

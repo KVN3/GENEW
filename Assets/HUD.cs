@@ -45,8 +45,8 @@ public class HUD : MyMonoBehaviour, IObserver
         // Leaving match
         if (Input.GetKeyDown(KeyCode.P))
         {
-            PlayerNetwork.ReturnToMain();
-            MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
+            PlayerNetwork.ReturnToLobby();
+            
         }
     }
 

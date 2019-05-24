@@ -29,7 +29,7 @@ public class ShipForcefield : ShipComponent, IPunObservable
         forcefieldObject.SetActive(false);
 
         photonView = GetComponent<PhotonView>();
-        audioSource = GetComponent<AudioSource>();
+        audioSource = forcefieldObject.GetComponent<AudioSource>();
     }
 
     #region Photon
