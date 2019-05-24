@@ -1,6 +1,5 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,12 +14,10 @@ public struct PlayerRunData
     public int maxLaps;
     public System.TimeSpan raceTime;
     public System.TimeSpan bestRaceTime;
-    public System.TimeSpan totalTime;
     public List<System.TimeSpan> leaderboardTimes;
 
     public int currentPos;
 
-    public List<System.TimeSpan> raceTimes;
     public int currentWaypoint;
     public Transform lastWaypoint;
     public bool isOverHalfway;
@@ -112,7 +109,7 @@ public class PlayerShip : Ship
             bool success = playerCamera.ActivateSpectatorMode();
 
             // Analytics
-            OnPlayerFinishedRaceNotifyAnalyticsDelegate(runData.maxLaps, runData.totalTime, averageLapTime, playerName);
+            OnPlayerFinishedRaceNotifyAnalyticsDelegate(runData.maxLaps, runData.raceTime, averageLapTime, playerName);
 
             // UI
             OnPlayerFinishedRaceNotifyUIDelegate(success);
@@ -173,13 +170,8 @@ public class PlayerShip : Ship
     {
         // Set currentlap, maxlaps, timer, pos
         runData.currentLap = 0;
-        if (PlayerPrefs.HasKey("Laps"))
-            runData.maxLaps = PlayerPrefs.GetInt("Laps"); // Should be configurable by variable
-        else
-            runData.maxLaps = 1;
+            runData.maxLaps = 2;
         runData.raceTime = System.TimeSpan.Parse("00:00:00.000");
-        //runData.bestRaceTime = TimeSpan.Parse("00:01:47.222");
-        runData.raceTimes = new List<System.TimeSpan>();
         runData.leaderboardTimes = new List<System.TimeSpan>();
         runData.currentPos = 1;
 
@@ -240,21 +232,14 @@ public class PlayerShip : Ship
             // Reset waypoint count 
             runData.currentWaypoint = -1;
 
-            // Fixes an error when racetimes = null after restarting on Gianni's level
-            if (runData.raceTimes == null)
-                runData.raceTimes = new List<System.TimeSpan>();
-
             // Check for valid lap
             if (!runData.isWrongWay && runData.isOverHalfway)
             {
                 // Save lap if race has started (lap > 0) // THIS ALWAYS HAPPENS REGARDLESS OF FINISHED OR NOT
                 if (runData.currentLap > 0)
                 {
-                    // Add laptime to racetimes if not finished
-                    if (!runData.raceFinished)
-                        runData.raceTimes.Add(runData.raceTime);
-
                     // Update best time if not set (00:00:00)
+                    // CheckBestTime()
                     if (runData.bestRaceTime == System.TimeSpan.Parse("00:00:00"))
                     {
                         runData.bestRaceTime = runData.raceTime;
@@ -288,9 +273,6 @@ public class PlayerShip : Ship
                     Debug.Log("playerShip Finished");
                     levelSoundManager.PlaySound(SoundType.VICTORY);
 
-                    foreach (System.TimeSpan time in runData.raceTimes)
-                        runData.totalTime += time;
-
                     // Leaderboard
                     Account account = Registration.GetCurrentAccount();
                     HighscoreManager.Instance.AddHighscoreEntry(account.username, runData.bestRaceTime.ToString(), SceneManager.GetActiveScene().name);
@@ -305,13 +287,12 @@ public class PlayerShip : Ship
                     }
 
                     // Save replay
-                    // Crashes / freezes game ... meddles with mp
-                    //SaveReplay();
+                    SaveReplay();
 
                     runData.raceFinished = true;
 
                     // Analytics
-                    double averageLapTime = runData.totalTime.TotalSeconds / runData.maxLaps;
+                    double averageLapTime = runData.raceTime.TotalSeconds / runData.maxLaps;
                     string playerName = "Anon";
 
                     if (PhotonNetwork.IsConnected)
@@ -319,7 +300,7 @@ public class PlayerShip : Ship
 
 
 
-                    PlayerFinishedRaceEvent(runData.maxLaps, runData.totalTime, averageLapTime, playerName);
+                    PlayerFinishedRaceEvent(runData.maxLaps, runData.raceTime, averageLapTime, playerName);
                 }
                 else // If not finished
                 {
@@ -332,11 +313,6 @@ public class PlayerShip : Ship
                             Debug.Log($"PlayerShip Crossed Finish Line");
                             levelSoundManager.PlaySound(SoundType.LAPPASSED);
 
-                            // Save replay
-                            SaveReplay();
-
-                            // Reset stuff
-                            runData.raceTime = System.TimeSpan.Parse("00:00:00.000");
                             runData.isOverHalfway = false;
 
                             runData.currentLap++;

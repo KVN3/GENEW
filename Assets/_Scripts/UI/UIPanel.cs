@@ -210,19 +210,19 @@ public class UIPanel : UIBehaviour
             raceEndScreenText.text = LocalizationManager.GetTextByKey("RACE_RESULTS");
 
             // Race times
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < pd.raceTimes.Count; i++)
-            {
-                string lapTime = pd.raceTimes[i].ToString(@"mm\:ss\.ff");
-                string lapCount = (i + 1).ToString(); // Arrays start at 0 but laps start at 1
+            //StringBuilder builder = new StringBuilder();
+            //for (int i = 0; i < pd.raceTimes.Count; i++)
+            //{
+            //    string lapTime = pd.raceTimes[i].ToString(@"mm\:ss\.ff");
+            //    string lapCount = (i + 1).ToString(); // Arrays start at 0 but laps start at 1
 
-                builder.Append(LocalizationManager.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
-            }
-            builder.AppendLine().Append(LocalizationManager.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
-            raceTimesText.text = builder.ToString();
+            //    builder.Append(LocalizationManager.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
+            //}
+            //builder.AppendLine().Append(LocalizationManager.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
+            //raceTimesText.text = builder.ToString();
 
             lapTimesTitle.text = LocalizationManager.GetTextByKey("LAP_TIMES");
-            endTimeText.text = LocalizationManager.GetTextByKey("TOTAL_TIME") + ": " + pd.totalTime.ToString(@"mm\:ss\.ff");
+            endTimeText.text = LocalizationManager.GetTextByKey("TOTAL_TIME") + ": " + pd.raceTime.ToString(@"mm\:ss\.ff");
 
             // Leaderboard
             leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
