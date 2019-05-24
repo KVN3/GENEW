@@ -20,7 +20,7 @@ public class MusicPlayer : MonoBehaviour
         audioSource.loop = false;
         audioSource.playOnAwake = false;
         audioSource.priority = 32;
-        audioSource.volume = 0.1f;
+        audioSource.volume = 0.02f;
 
         ReadyClipsForUse();
 
