@@ -51,7 +51,7 @@ public class FriendManager : MonoBehaviour
         {
             if (!Initialized)
             {
-                GameObject gameObject = new GameObject("Highscore Manager");
+                GameObject gameObject = new GameObject("Friend Manager");
 
                 _Instance = gameObject.AddComponent<FriendManager>();
             }

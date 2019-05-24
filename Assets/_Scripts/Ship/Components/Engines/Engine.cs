@@ -46,7 +46,7 @@ public class Engine : MonoBehaviour
 
             if (audioSource != null)
             {
-                if (GameConfiguration.SoundOn)
+                if (ClientConfigurationManager.Instance.clientConfiguration.SoundOn)
                     audioSource.enabled = true;
                 else
                     audioSource.enabled = false;

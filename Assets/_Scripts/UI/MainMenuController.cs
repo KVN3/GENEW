@@ -13,7 +13,6 @@ public class MainMenuController : MonoBehaviour
     public GameObject loadingScreen;
     public GameObject leaderboardPanel;
     public GameObject changelogPanel;
-    public GameObject friendPanel;
 
     public Slider loadingBar;
     public TextMeshProUGUI progressText;
@@ -45,11 +44,8 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         // Check seen changelog
-        if (!GameConfiguration.SawChangelog)
+        if (!ClientConfigurationManager.Instance.clientConfiguration.SawChangelog)
             changelogPanel.SetActive(true);
-
-        chatController.JoinChat("Lobby");
-
     }
 
 
@@ -145,7 +141,7 @@ public class MainMenuController : MonoBehaviour
 
     public void SawChangelog()
     {
-        GameConfiguration.SawChangelog = true;
+        ClientConfigurationManager.Instance.clientConfiguration.SawChangelog = true;
     }
 
     public void UpdateLeaderboard()

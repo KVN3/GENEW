@@ -50,9 +50,9 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
 
     void OnEnable()
     {
-        if (!GameConfiguration.MusicOn)
+        if (!ClientConfigurationManager.Instance.clientConfiguration.MusicOn)
             musicIcon.sprite = musicIconOff;
-        if (!GameConfiguration.SoundOn)
+        if (!ClientConfigurationManager.Instance.clientConfiguration.SoundOn)
             soundIcon.sprite = soundIconOff;
     }
 
@@ -83,12 +83,14 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         if (soundIcon.sprite == soundIconOff)
         {
             soundIcon.sprite = soundIconOn;
-            GameConfiguration.SoundOn = true;
+            ClientConfigurationManager.Instance.clientConfiguration.SoundOn = true;
+            ClientConfigurationManager.Instance.SavePlayerSettings();
         }
         else
         {
             soundIcon.sprite = soundIconOff;
-            GameConfiguration.SoundOn = false;
+            ClientConfigurationManager.Instance.clientConfiguration.SoundOn = false;
+            ClientConfigurationManager.Instance.SavePlayerSettings();
         }
     }
 
@@ -97,12 +99,14 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         if (musicIcon.sprite == musicIconOff)
         {
             musicIcon.sprite = musicIconOn;
-            GameConfiguration.MusicOn = true;
+            ClientConfigurationManager.Instance.clientConfiguration.MusicOn = true;
+            ClientConfigurationManager.Instance.SavePlayerSettings();
         }
         else
         {
             musicIcon.sprite = musicIconOff;
-            GameConfiguration.MusicOn = false;
+            ClientConfigurationManager.Instance.clientConfiguration.MusicOn = false;
+            ClientConfigurationManager.Instance.SavePlayerSettings();
         }
 
     }

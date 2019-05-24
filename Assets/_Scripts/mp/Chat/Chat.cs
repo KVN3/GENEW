@@ -14,7 +14,7 @@ public class Chat : MonoBehaviour, IChatClientListener
 
     public ChatClient chatClient;
 
-    public string[] channelsToJoinOnConnect;
+    public List<string> channelsToJoinOnConnect { get; private set; }
 
     // Friend stuff
     public TMP_InputField addFriendInput;
@@ -61,10 +61,16 @@ public class Chat : MonoBehaviour, IChatClientListener
 
         friendObjects = new List<GameObject>();
 
+        // Sets username, loads and sets friend data
         LoadAccountData();
 
         if (string.IsNullOrEmpty(userName))
             userName = "[guest]" + Environment.UserName;
+
+
+        channelsToJoinOnConnect = new List<string> { "Global", "Lobby" };
+
+        Connect();
 
         //#if PHOTON_UNITY_NETWORKING
         //chatAppSettings = PhotonNetwork.PhotonServerSettings.AppSettings;
@@ -88,11 +94,30 @@ public class Chat : MonoBehaviour, IChatClientListener
     public void JoinChat(string roomName)
     {
         // Add chat channel
-        channelsToJoinOnConnect = new string[1];
-        channelsToJoinOnConnect[0] = roomName;
+        //if (!chatChannels.Contains(roomName))
+        //    chatChannels.Add(roomName);
+
+        // Add to list, subscribe to it and set roomName
+        channelsToJoinOnConnect.Add(roomName);
+        chatClient.Subscribe(roomName, historyLengthToFetch);
         CurrentRoomCanvas.instance.RoomName = roomName;
 
-        Connect();
+        foreach (string s in chatClient.PublicChannels.Keys)
+            Debug.Log(s);
+
+        //chatClient.PublicChannels[roomName].ClearMessages(); // Does not work
+
+        //Connect();
+    }
+
+    public void LeaveChat(string roomName)
+    {
+        if (channelsToJoinOnConnect.Contains(roomName))
+        {
+            string[] channels = { roomName };
+            chatClient.Unsubscribe(channels);
+            channelsToJoinOnConnect.Remove(roomName);
+        }
     }
 
     public void Connect()
@@ -127,8 +152,8 @@ public class Chat : MonoBehaviour, IChatClientListener
         print("Connected to PhotonChat");
 
         // Subscribe
-        if (channelsToJoinOnConnect != null && channelsToJoinOnConnect.Length > 0)
-            chatClient.Subscribe(channelsToJoinOnConnect, historyLengthToFetch);
+        if (channelsToJoinOnConnect != null && channelsToJoinOnConnect.Count > 0)
+            chatClient.Subscribe(channelsToJoinOnConnect.ToArray(), historyLengthToFetch);
 
         connectingLabel.SetActive(false);
 
@@ -173,7 +198,7 @@ public class Chat : MonoBehaviour, IChatClientListener
         // in this demo, we simply send a message into each channel. This is NOT a must have!
         foreach (string channel in channels)
         {
-            chatClient.PublishMessage(channel, $"{userName} has joined"); // you don't HAVE to send a msg on join but you could.
+            chatClient.PublishMessage(channel, $" has joined"); // you don't HAVE to send a msg on join but you could.
 
             if (ChannelToggleToInstantiate != null)
                 InstantiateChannelButton(channel);

@@ -111,7 +111,7 @@ public class AchievementManager : MonoBehaviour
         UpdateAchievement(3, 1f);
     }
 
-    [ContextMenu("Reset Achievements")]
+    [ContextMenu("Reset Personal Achievements")]
     public void ResetAchievements()
     {
         ResetAchievement(0);
