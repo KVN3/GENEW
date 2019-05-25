@@ -71,22 +71,22 @@ public class MainCanvasManager : MonoBehaviour
     // Get the correct panel's transform component by panel type.
     private RectTransform SelectCorrectTransform(PanelType panelType)
     {
-        RectTransform transform = null;
+        RectTransform rectTransform = null;
 
         switch (panelType)
         {
             case PanelType.LOBBY:
-                transform = LobbyCanvas.GetComponent<RectTransform>();
+                rectTransform = LobbyCanvas.GetComponent<RectTransform>();
                 break;
             case PanelType.ROOM:
-                transform = CurrentRoomCanvas.GetComponent<RectTransform>();
+                rectTransform = CurrentRoomCanvas.GetComponent<RectTransform>();
                 break;
             default:
                 print("No panel type specified in MainCanvasManager.");
                 break;
         }
 
-        return transform;
+        return rectTransform;
     }
     #endregion
 }

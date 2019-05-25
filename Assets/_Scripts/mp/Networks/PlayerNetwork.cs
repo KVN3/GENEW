@@ -191,8 +191,11 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
         SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
         {
-            MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
-            MainCanvasManager.instance.MainMenu.gameObject.SetActive(false);
+            if (scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.MAIN]))
+            {
+                MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
+                MainCanvasManager.instance.MainMenu.gameObject.SetActive(false);
+            }
         };
     }
 }
