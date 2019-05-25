@@ -8,6 +8,8 @@ using TMPro;
 
 public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
 {
+    public GameObject currentRoomHeader;
+
     [SerializeField]
     private TextMeshProUGUI _roomName;
     private TextMeshProUGUI RoomName
@@ -25,6 +27,7 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
         if (PhotonNetwork.CreateRoom(RoomName.text, roomOptions, TypedLobby.Default))
         {
             Chat.instance.JoinChat(RoomName.text);
+
             print("Create room successfully sent.");
         }
         else
