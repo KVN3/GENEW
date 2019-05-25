@@ -116,7 +116,6 @@ MonoBehaviour:
     type: 3}
   manager: {fileID: 0}
   lifeTimeInSeconds: 10
-  floatSpeed: 10
 --- !u!65 &2665
 BoxCollider:
   m_ObjectHideFlags: 0

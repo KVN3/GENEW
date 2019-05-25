@@ -21,6 +21,43 @@ public class ScenesInformation : MonoBehaviour
         sceneNames.Add(SceneTitle.HIGHWAY, "Elto Highway");
     }
 
+    #region SCENE SPECIFIC GAME SETTINGS
+    public static int GetDesiredChaserAliveCount(string sceneName)
+    {
+        int desiredAliveCount = 0;
+
+        switch (sceneName)
+        {
+            case "Eraarlonium Wasteland":
+                desiredAliveCount = 14;
+                break;
+            case "Elto Highway":
+                desiredAliveCount = 15;
+                break;
+        }
+
+        return desiredAliveCount;
+    }
+
+    public static int GetDesiredShooterAliveCount(string sceneName)
+    {
+        int desiredAliveCount = 0;
+
+        switch (sceneName)
+        {
+            case "Eraarlonium Wasteland":
+                desiredAliveCount = 4;
+                break;
+            case "Elto Highway":
+                desiredAliveCount = 1;
+                break;
+        }
+
+        return desiredAliveCount;
+    }
+    #endregion
+
+
     #region abstract
     protected static ScenesInformation _Instance;
 
@@ -48,5 +85,7 @@ public class ScenesInformation : MonoBehaviour
     {
         ScenesInformation SI = Instance;
     }
+
+
     #endregion
 }

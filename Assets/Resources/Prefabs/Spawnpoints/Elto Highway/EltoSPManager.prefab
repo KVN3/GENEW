@@ -43,9 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3824e134f566d36408a8b9b2180730a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings:
-    rowLengthX: 60
-    rowLengthZ: 40
-    spacing: 30
-  chaserSpawnPoints: []
-  movingSpawnPoints: []
+  chaserSpawnPoints:
+  - {fileID: 1786598453225824538, guid: 9abbb90c5fb688b4faa84a332eaca28c, type: 3}
+  - {fileID: 2005894360001054184, guid: 6df7145c15b820d47b974b6401fde565, type: 3}
+  - {fileID: 6293230332094278195, guid: 0bafea5698a54cb449206159369a7109, type: 3}
+  - {fileID: 8418046510466177233, guid: 1f7114e36a45d364c800f2c941c9d99d, type: 3}
+  - {fileID: 1719803705216310007, guid: aab7e7da286ee7545aac00e6519054e2, type: 3}
+  - {fileID: 3018621477142570033, guid: a8863f0eb0df0084ca99b901672c107b, type: 3}
+  movingSpawnPoints:
+  - {fileID: 6764951365943599489, guid: b0818c59c1e99db4ba7be8b5b179bb67, type: 3}
