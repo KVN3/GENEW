@@ -324,7 +324,10 @@ public class Chat : MonoBehaviour, IChatClientListener
         if (!friendsList.Contains(friendId))
         {
             friendsList.Add(friendId);
-            UpdateFriends();
+            Account account = Registration.GetCurrentAccount();
+            account.friendList.Add(friendId);
+
+            UpdateFriends(account);
         }
     }
 
@@ -334,7 +337,10 @@ public class Chat : MonoBehaviour, IChatClientListener
         if (!friendsList.Contains(friendToAdd))
         {
             friendsList.Add(friendToAdd);
-            UpdateFriends();
+            Account account = Registration.GetCurrentAccount();
+            account.friendList.Add(friendToAdd);
+
+            UpdateFriends(account);
             addFriendInput.text = "";
         }
     }
@@ -343,12 +349,15 @@ public class Chat : MonoBehaviour, IChatClientListener
     {
         if (friendsList.Contains(friendId))
         {
+            // Chat friendsList
             friendsList.Remove(friendId);
-            UpdateFriends();
+            Account account = Registration.GetCurrentAccount();
+            account.friendList.Remove(friendId);
+            UpdateFriends(account);
         }
     }
 
-    private void UpdateFriends()
+    private void UpdateFriends(Account account)
     {
         if (friendsList.Count > 0)
             emptyFriendListText.gameObject.SetActive(false);
@@ -356,7 +365,7 @@ public class Chat : MonoBehaviour, IChatClientListener
             emptyFriendListText.gameObject.SetActive(true);
 
         // Save to account, refresh by deleting and creating friend items
-        Registration.SaveAccount(Registration.GetCurrentAccount());
+        Registration.SaveAccount(account);
         DeleteFriendItems();
         CreateFriendItems();
     }
