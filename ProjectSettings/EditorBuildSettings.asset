@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/_TBD/Test.unity
     guid: bbccfd6ffb486f14d8fd963ab8bec81a
+  - enabled: 1
+    path: Assets/Scenes/_TBD/Elto Highway.unity
+    guid: 21a0766b173280d42bf0466ccce75eda
   m_configObjects: {}

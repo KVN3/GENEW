@@ -240,7 +240,7 @@ public class PlayerShip : Ship
                     }
 
                     // Achievements
-                    if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.Wasteland])
+                    if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.WASTELAND])
                     {
                         if (runData.raceTime < System.TimeSpan.Parse("00:00:50.000"))
                             AchievementManager.UpdateAchievement(0, 1f);

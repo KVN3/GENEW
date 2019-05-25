@@ -75,10 +75,10 @@ public class GameState : LevelSingleton<GameState>
         BackgroundSoundManager backgroundSoundManager = Instantiate(gameManagers.backgroundSoundManagerClass);
 
         Assert.IsNotNull(gameManagers.backgroundSoundManagerClass);
-        Assert.IsNotNull(gameManagers.chaserManagerClass);
+        //Assert.IsNotNull(gameManagers.chaserManagerClass);
         Assert.IsNotNull(gameManagers.UIManagerClass);
         Assert.IsNotNull(gameManagers.spawnPointManagerClass);
-        Assert.IsNotNull(gameManagers.asteroidStormManagerClass);
+        //Assert.IsNotNull(gameManagers.asteroidStormManagerClass);
         Assert.IsNotNull(gameManagers.raceManagerClass);
         Assert.IsNotNull(gameManagers.replayManagerClass);
         Assert.IsNotNull(gameManagers.analyticsManagerClass);
@@ -122,7 +122,7 @@ public class GameState : LevelSingleton<GameState>
             yield return new WaitForSeconds(1);
         }
 
-       SpawnManagers();
+        SpawnManagers();
     }
 
     // Spawn game managers
@@ -135,17 +135,28 @@ public class GameState : LevelSingleton<GameState>
         SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
 
         // Enemy Managers
-        ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
-        chaserManager.SetPlayers(playerShips);
-        chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
+        if (gameManagers.chaserManagerClass != null)
+        {
+            ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
+            chaserManager.SetPlayers(playerShips);
+            chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
+        }
 
-        MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
-        moverManager.SetPlayers(playerShips);
-        moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+        if (gameManagers.moverManagerClass != null)
+        {
+            MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
+            moverManager.SetPlayers(playerShips);
+            moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
+        }
 
         // Asteroid Manager
-        AsteroidStormManager asteroidStormManager = Instantiate(gameManagers.asteroidStormManagerClass);
-        asteroidStormManager.spawnPointManager = spawnPointManager;
+        if (gameManagers.asteroidStormManagerClass != null)
+        {
+            AsteroidStormManager asteroidStormManager = Instantiate(gameManagers.asteroidStormManagerClass);
+            asteroidStormManager.spawnPointManager = spawnPointManager;
+        }
+
+
     }
 
     //public void RestartScene()

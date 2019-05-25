@@ -134,7 +134,7 @@ public class HoveringManager : MonoBehaviour
         }
         else
         {
-            floatFactor = 7 * hit.distance;
+            floatFactor = 2 * hit.distance;
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, -floatFactor, rigidBody.velocity.z);
         }
 

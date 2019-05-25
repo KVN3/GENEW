@@ -88,24 +88,24 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         if (loadingScreen != null)
-            StartCoroutine(LoadAsynchronously(ScenesInformation.sceneNames[SceneTitle.Wasteland]));
+            StartCoroutine(LoadAsynchronously(ScenesInformation.sceneNames[SceneTitle.WASTELAND]));
         else
-            SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Wasteland]);
+            SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.WASTELAND]);
     }
 
     public void LoadShipyard()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         if (loadingScreen != null)
-            StartCoroutine(LoadAsynchronously(ScenesInformation.sceneNames[SceneTitle.Shipyard]));
+            StartCoroutine(LoadAsynchronously(ScenesInformation.sceneNames[SceneTitle.SHIPYARD]));
         else
-            SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Shipyard]);
+            SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.SHIPYARD]);
     }
 
     public void LoadMainMenu()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.Main]);
+        SceneManager.LoadScene(ScenesInformation.sceneNames[SceneTitle.MAIN]);
     }
 
     public void LoadLobbyFromOtherScene()

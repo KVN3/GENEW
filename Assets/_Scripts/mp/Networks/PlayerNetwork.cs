@@ -55,7 +55,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if (!scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.Main]) && !scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.Shipyard]))
+        if (!scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.MAIN]) && !scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.SHIPYARD]))
         {
             if (PhotonNetwork.IsMasterClient)
                 MasterLoadedGame();
@@ -175,7 +175,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
         Instance.ResetNetwork();
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        PhotonNetwork.LoadLevel(ScenesInformation.sceneNames[SceneTitle.Main]);
+        PhotonNetwork.LoadLevel(ScenesInformation.sceneNames[SceneTitle.MAIN]);
 
         if (PhotonNetwork.IsConnectedAndReady)
         {

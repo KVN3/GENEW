@@ -26,7 +26,7 @@ public class CirclerManager : MonoBehaviour
     [PunRPC]
     public void RPC_SpawnCirclers(PhotonMessageInfo info)
     {
-        string orbitPointPath = SharedResources.GetPath("OrbitPoint", SceneTitle.Wasteland);
+        string orbitPointPath = SharedResources.GetPath("OrbitPoint", SceneTitle.WASTELAND);
         Transform orbitPoint = PhotonNetwork.Instantiate(orbitPointPath, orbit, transform.rotation).transform;
         Debug.Log("Instantiated orbit point at " + orbitPoint);
 
