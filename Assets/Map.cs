@@ -6,15 +6,15 @@ using UnityEngine.Assertions;
 using Photon.Pun;
 using System.Linq;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Map : MonoBehaviour
 {
-    // Unity 3D worldspace units
-    private readonly float mapX = 4096, mapZ = 4096;
+    // 3D worldspace to 2D factor
     private float factorX, factorZ;
 
     // 3D world space origin of the 2D map
-    private Vector3 mapOrigin = new Vector3(-280, 0, 950);
+    private Vector3 mapOrigin;
 
     private PlayerShip[] playerShips;
     private Image[] playerShipIcons;
@@ -29,10 +29,7 @@ public class Map : MonoBehaviour
 
     private void Awake()
     {
-        // Set the 3D worldspace to 2D image conversion factor
-        Rect rect = GetComponent<RectTransform>().rect;
-        factorX = mapX / rect.width;
-        factorZ = mapZ / rect.height;
+
     }
 
     private void Start()
@@ -85,9 +82,12 @@ public class Map : MonoBehaviour
         }
     }
 
+    #region INIT
     // Init references needed
     private IEnumerator C_Initialize()
     {
+        SetLevelDependentSettings();
+
         // Find all player ship game objects first
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Ship");
         while (gameObjects.Length != PhotonNetwork.PlayerList.Length)
@@ -105,7 +105,48 @@ public class Map : MonoBehaviour
 
         SpawnIcons();
     }
+    #endregion
 
+    #region LEVELS
+    private void SetLevelDependentSettings()
+    {
+        float mapX = 0f, mapZ = 0f;
+
+        // Get the scenename
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        // Turn the correct background on
+        transform.Find(sceneName).gameObject.SetActive(true);
+
+        // Set scene specific settings
+        if (sceneName.Equals(ScenesInformation.sceneNames[SceneTitle.WASTELAND]))
+        {
+            transform.Rotate(new Vector3(0, 0, -90f));
+
+            // Conversion settings
+            mapOrigin = new Vector3(-280, 0, 950);
+            mapX = 4096;
+            mapZ = 4096;
+        }
+        else if (sceneName.Equals(ScenesInformation.sceneNames[SceneTitle.HIGHWAY]))
+        {
+
+
+            // Conversion settings
+            mapOrigin = new Vector3(200, 0, -680);
+            mapX = 6144;
+            mapZ = 6144;
+        }
+
+        // Set the 3D worldspace to 2D image conversion factor
+        Rect rect = GetComponent<RectTransform>().rect;
+        factorX = mapX / rect.width;
+        factorZ = mapZ / rect.height;
+    }
+    #endregion
+
+
+    #region ICONS
     // Spawn player ship icons
     private void SpawnIcons()
     {
@@ -145,9 +186,6 @@ public class Map : MonoBehaviour
             // Disable glow for other players
             playerIcon.transform.Find("Glow").gameObject.SetActive(false);
         }
-
-
     }
-
-
+    #endregion
 }
