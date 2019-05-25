@@ -12,18 +12,17 @@ public struct SpawnPointManagerSettings
 
 public class SpawnPointManager : MonoBehaviour
 {
-    public SpawnPointManagerSettings settings;
     public List<LocalSpawnPoint> chaserSpawnPoints;
     public List<LocalSpawnPoint> movingSpawnPoints;
 
     void Start()
     {
-        Assert.IsTrue(settings.rowLengthX > 0, "rowLengthX = 0");
-        Assert.IsTrue(settings.rowLengthZ > 0, "rowLengthZ = 0");
-        Assert.IsTrue(settings.spacing > 0, "spacing = 0");
+        //Assert.IsTrue(settings.rowLengthX > 0, "rowLengthX = 0");
+        //Assert.IsTrue(settings.rowLengthZ > 0, "rowLengthZ = 0");
+        //Assert.IsTrue(settings.spacing > 0, "spacing = 0");
     }
 
-    public SpawnPoint[,] GenerateSpawnPoints(Vector3 startPos)
+    public SpawnPoint[,] GenerateSpawnPoints(Vector3 startPos, SpawnPointManagerSettings settings)
     {
         SpawnPoint[,] tempSpawnPoints = new SpawnPoint[settings.rowLengthX, settings.rowLengthZ];
 

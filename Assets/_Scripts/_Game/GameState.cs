@@ -7,6 +7,7 @@ using System.Runtime.ExceptionServices;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct GameManagers
@@ -131,6 +132,9 @@ public class GameState : LevelSingleton<GameState>
         if (!spawnEnemies)
             return;
 
+        // Current scene
+        string sceneName = SceneManager.GetActiveScene().name;
+
         // Spawn Point Manager
         SpawnPointManager spawnPointManager = Instantiate(gameManagers.spawnPointManagerClass);
 
@@ -138,6 +142,10 @@ public class GameState : LevelSingleton<GameState>
         if (gameManagers.chaserManagerClass != null)
         {
             ChaserManager chaserManager = Instantiate(gameManagers.chaserManagerClass);
+
+            // Desired alive enemies at a given moment
+            chaserManager.desiredAliveEnemyCount = ScenesInformation.GetDesiredChaserAliveCount(sceneName);
+
             chaserManager.SetPlayers(playerShips);
             chaserManager.SetSpawnPoints(spawnPointManager.chaserSpawnPoints);
         }
@@ -145,6 +153,10 @@ public class GameState : LevelSingleton<GameState>
         if (gameManagers.moverManagerClass != null)
         {
             MoverManager moverManager = Instantiate(gameManagers.moverManagerClass);
+
+            // Desired alive enemies at a given moment
+            moverManager.desiredAliveEnemyCount = ScenesInformation.GetDesiredShooterAliveCount(sceneName);
+
             moverManager.SetPlayers(playerShips);
             moverManager.SetSpawnPoints(spawnPointManager.movingSpawnPoints);
         }

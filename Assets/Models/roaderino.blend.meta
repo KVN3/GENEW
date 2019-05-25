@@ -15,6 +15,8 @@ ModelImporter:
     100018: Cube_004
     100020: Invisible_Walls
     100022: Road
+    100024: Invisible_Walls_001
+    100026: Invisible_Walls_002
     400000: Cube
     400002: Cube_001
     400004: //RootNode
@@ -27,6 +29,8 @@ ModelImporter:
     400018: Cube_004
     400020: Invisible_Walls
     400022: Road
+    400024: Invisible_Walls_001
+    400026: Invisible_Walls_002
     2100000: Material
     2100002: unnamed
     2100004: Material_001
@@ -41,6 +45,8 @@ ModelImporter:
     2300016: Cube_004
     2300018: Invisible_Walls
     2300020: Road
+    2300022: Invisible_Walls_001
+    2300024: Invisible_Walls_002
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_003
@@ -52,6 +58,8 @@ ModelImporter:
     3300016: Cube_004
     3300018: Invisible_Walls
     3300020: Road
+    3300022: Invisible_Walls_001
+    3300024: Invisible_Walls_002
     4300000: Cube_001
     4300002: Cube
     4300004: Cube_003
@@ -63,6 +71,8 @@ ModelImporter:
     4300016: Cube_004
     4300018: Road
     4300020: Invisible_Walls
+    4300022: Invisible_Walls_001
+    4300024: Invisible_Walls_002
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

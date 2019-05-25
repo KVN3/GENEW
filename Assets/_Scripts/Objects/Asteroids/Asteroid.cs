@@ -11,7 +11,6 @@ public class Asteroid : MonoBehaviour
     public AsteroidStormManager manager;
 
     public int lifeTimeInSeconds;
-    public float floatSpeed = 10f;
 
     public virtual void Start()
     {
@@ -34,6 +33,9 @@ public class Asteroid : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        if (other.collider.CompareTag("InvisibleWall"))
+            return;
+
         Explode();
     }
 
