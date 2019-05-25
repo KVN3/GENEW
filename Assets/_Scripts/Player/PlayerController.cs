@@ -85,10 +85,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandlePlayerActionControls()
     {
-
-
         // Breaking
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.C))
             playerShip.components.movement.Break();
 
         // UseItem
@@ -96,14 +94,14 @@ public class PlayerController : MonoBehaviour
             playerShip.UseItem();
 
         // Debug, get stunned
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.K))
             playerShip.GetStunned(2, "Debug activated");
 
         // Forcefield
         // If forcefield item not active, key down, enough charges and no cooldown then activate.
         if (!playerShip.components.forcefield.IsItemActive())
         {
-            if (Input.GetKey(KeyCode.C) && playerShip.components.forcefield.HasEnoughCharges())
+            if (Input.GetKey(KeyCode.Space) && playerShip.components.forcefield.HasEnoughCharges())
             {
                 playerShip.components.forcefield.Activated(true);
             }

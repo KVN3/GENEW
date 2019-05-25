@@ -12,7 +12,7 @@ public class AsteroidStormManager : MonoBehaviour
     public float maxAsteroidSize;
 
     public SpawnPointManager spawnPointManager;
-    public SpawnPointManagerSettings SpawnPointManagerSettings;
+    public SpawnPointManagerSettings spawnpointSettings;
     public Asteroid[] asteroidClasses;
 
     // Currently spawned items
@@ -33,8 +33,8 @@ public class AsteroidStormManager : MonoBehaviour
         Assert.IsNotNull(asteroidClasses);
 
         // Initializations
-        spawnPointManager.settings = SpawnPointManagerSettings;
-        spawnPoints = spawnPointManager.GenerateSpawnPoints(transform.position);
+        //spawnPointManager.settings = SpawnPointManagerSettings;
+        spawnPoints = spawnPointManager.GenerateSpawnPoints(transform.position, spawnpointSettings);
         asteroids = new List<Asteroid>();
 
         photonView = GetComponent<PhotonView>();
@@ -54,8 +54,8 @@ public class AsteroidStormManager : MonoBehaviour
         {
             if (asteroids.Count < desiredAsteroidCount)
             {
-                int i = Random.Range(0, spawnPointManager.settings.rowLengthX);
-                int j = Random.Range(0, spawnPointManager.settings.rowLengthZ);
+                int i = Random.Range(0, spawnpointSettings.rowLengthX);
+                int j = Random.Range(0, spawnpointSettings.rowLengthZ);
 
                 SpawnPoint sp = spawnPoints[i, j];
 
@@ -63,7 +63,7 @@ public class AsteroidStormManager : MonoBehaviour
                 {
                     SpawnAsteroid(sp);
                     sp.SetUnavailable();
-                    StartCoroutine(UnlockSpawnPoint(sp, i, j));
+                    StartCoroutine(C_UnlockSP(sp, i, j));
                 }
             }
 
@@ -71,7 +71,7 @@ public class AsteroidStormManager : MonoBehaviour
         }
     }
 
-    private IEnumerator UnlockSpawnPoint(SpawnPoint sp, int i, int j)
+    private IEnumerator C_UnlockSP(SpawnPoint sp, int i, int j)
     {
         yield return new WaitForSeconds(3);
         sp.SetAvailable();
@@ -79,7 +79,7 @@ public class AsteroidStormManager : MonoBehaviour
 
     private void SpawnAsteroid(SpawnPoint spawnPoint)
     {
-        string asteroidPath = SharedResources.GetPath("astre", Random.Range(0, 4));
+        string asteroidPath = SharedResources.GetPath("astre", Random.Range(0, 3));
         Asteroid asteroid = PhotonNetwork.Instantiate(asteroidPath, spawnPoint.position, Quaternion.identity).GetComponent<Asteroid>();
         asteroid.transform.localScale = asteroid.transform.localScale * Random.Range(minAsteroidSize, maxAsteroidSize);
         asteroid.manager = this;
