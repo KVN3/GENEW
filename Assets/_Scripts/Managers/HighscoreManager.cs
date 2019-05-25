@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +7,30 @@ using UnityEngine;
 
 public class HighscoreManager : MonoBehaviour
 {
+    public static HighscoreManager Instance { get; set; }
+
     private List<HighscoreEntry> highscoreEntryList;
 
     private readonly string key = "HighscoreTable";
     private readonly string personalKey = "Highscore";
 
+    private List<GameObject> leaderboardEntries = new List<GameObject>();
+
+    public Sprite rankOne;
+    public Sprite rankTwo;
+    public Sprite rankThree;
+    public Sprite rankOther;
+
     void Awake()
     {
         DontDestroyOnLoad(this);
+
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+
+
         // Load highscores
         if (PlayerPrefs.HasKey(key))
         {
@@ -93,7 +108,7 @@ public class HighscoreManager : MonoBehaviour
         }
     }
 
-    public void ShowHighscores(SceneTitle levelTitle, TextMeshProUGUI textObject)
+    public void ShowHighscores(SceneTitle levelTitle, GameObject entryTemplate, GameObject parent)
     {
         // Get highscores (and sorts them beforehand)
         List<HighscoreEntry> highscoreEntries = Instance.GetHighscoresByStage(ScenesInformation.sceneNames[levelTitle]);
@@ -105,12 +120,39 @@ public class HighscoreManager : MonoBehaviour
         else
             entries = highscoreEntries.Count;
 
-        StringBuilder builder2 = new StringBuilder();
+        foreach (GameObject obj in leaderboardEntries)
+            Destroy(obj);
+        leaderboardEntries.Clear();
+
         for (int i = 0; i < entries; i++)
         {
-            builder2.Append($"{i + 1}. ").Append(highscoreEntries[i].name).Append(": ").Append(TimeSpan.Parse(highscoreEntries[i].lapTime).ToString(@"mm\:ss\.ff")).AppendLine();
+            GameObject entry = Instantiate(entryTemplate) as GameObject;
+            leaderboardEntries.Add(entry);
+            entry.SetActive(true);
+
+            string rankText;
+            // Image
+            Sprite sprite;
+            switch (i+1)
+            {
+                case 1: sprite = rankOne;
+                    rankText = "";
+                    break;
+                case 2: sprite = rankTwo;
+                    rankText = "";
+                    break;
+                case 3: sprite = rankThree;
+                    rankText = "";
+                    break;
+                default: sprite = rankOther;
+                    rankText = (i + 1).ToString();
+                    break;
+            }
+
+            entry.GetComponent<LeaderboardEntry>().SetUIValues(sprite, rankText, highscoreEntries[i]);
+
+            entry.transform.SetParent(parent.transform, false);
         }
-        textObject.text = builder2.ToString();
     }
 
     [ContextMenu("Reset highscores")]
@@ -123,32 +165,32 @@ public class HighscoreManager : MonoBehaviour
 
     #region Singleton
 
-    // Abstract
+    //// Abstract
 
-    protected static HighscoreManager _Instance;
+    //protected static HighscoreManager _Instance;
 
-    public static bool Initialized => _Instance != null;
+    //public static bool Initialized => _Instance != null;
 
-    public static HighscoreManager Instance
-    {
-        get
-        {
-            if (!Initialized)
-            {
-                GameObject gameObject = new GameObject("Highscore Manager");
+    //public static HighscoreManager Instance
+    //{
+    //    get
+    //    {
+    //        if (!Initialized)
+    //        {
+    //            GameObject gameObject = new GameObject("Highscore Manager");
 
-                _Instance = gameObject.AddComponent<HighscoreManager>();
-            }
+    //            _Instance = gameObject.AddComponent<HighscoreManager>();
+    //        }
 
-            return _Instance;
-        }
-    }
+    //        return _Instance;
+    //    }
+    //}
 
-    [RuntimeInitializeOnLoadMethod]
-    static void ForceInit()
-    {
-        HighscoreManager GI = Instance;
-    }
+    //[RuntimeInitializeOnLoadMethod]
+    //static void ForceInit()
+    //{
+    //    HighscoreManager GI = Instance;
+    //}
     #endregion
 }
 

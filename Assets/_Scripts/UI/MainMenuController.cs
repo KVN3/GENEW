@@ -10,6 +10,9 @@ using Photon.Realtime;
 public class MainMenuController : MonoBehaviour
 {
     #region Fields
+    public AchievementCanvas achievementCanvas;
+
+    // Panel references
     public GameObject loadingScreen;
     public GameObject leaderboardPanel;
     public GameObject changelogPanel;
@@ -18,12 +21,7 @@ public class MainMenuController : MonoBehaviour
     public TextMeshProUGUI progressText;
     public TextMeshProUGUI loadingText;
 
-    public AchievementCanvas achievementCanvas;
-
     public Chat chatController;
-
-    public MapSelection _mapSelection;
-    public TextMeshProUGUI leaderboardTimesText;
 
     [SerializeField]
     private MenuSoundManager menuSoundManagerClass;
@@ -145,10 +143,9 @@ public class MainMenuController : MonoBehaviour
         ClientConfigurationManager.Instance.SavePlayerSettings();
     }
 
-    public void UpdateLeaderboard()
+    public void ExitGame()
     {
-        SceneTitle _sceneTitle = _mapSelection.GetScene();
-        HighscoreManager.Instance.ShowHighscores(_sceneTitle, leaderboardTimesText);
+        Application.Quit();
     }
     #endregion
 
