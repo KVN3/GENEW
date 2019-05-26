@@ -20,6 +20,11 @@ public class Booster : MonoBehaviour
         {
             PlayerShip playerShip = other.GetComponent<PlayerShip>();
             playerShip.components.movement.ActivateSpeedBoost(maxSpeedIncrease, boostFactor, boostDuration);
+
+            if (ScenesInformation.IsTutorialScene())
+            {
+                TutorialManager.Instance.BoostActivated = true;
+            }
         }
     }
 }

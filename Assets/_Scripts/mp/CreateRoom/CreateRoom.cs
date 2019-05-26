@@ -33,6 +33,7 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
             }
             else
             {
+                GameConfiguration.tutorial = false;
                 Chat.instance.JoinChat(RoomName.text);
                 print("Create room successfully sent.");
             }
@@ -57,7 +58,7 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
 
         if (GameConfiguration.tutorial)
         {
-
+            CurrentRoomCanvas.instance.OnClickStartDelayed(true);
         }
 
     }

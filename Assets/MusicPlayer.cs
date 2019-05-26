@@ -20,7 +20,7 @@ public class MusicPlayer : MonoBehaviour
         audioSource.loop = false;
         audioSource.playOnAwake = false;
         audioSource.priority = 32;
-        audioSource.volume = 1f;
+        audioSource.volume = .2f;
 
         ReadyClipsForUse();
 
@@ -58,6 +58,8 @@ public class MusicPlayer : MonoBehaviour
         string wastelandSceneName = ScenesInformation.sceneNames[SceneTitle.WASTELAND];
         string mainSceneName = ScenesInformation.sceneNames[SceneTitle.MAIN];
         string shipyardSceneName = ScenesInformation.sceneNames[SceneTitle.SHIPYARD];
+        string tutorialSceneName = ScenesInformation.sceneNames[SceneTitle.TUTORIAL];
+        string highwaySceneName = ScenesInformation.sceneNames[SceneTitle.HIGHWAY];
 
         while (true)
         {
@@ -72,13 +74,23 @@ public class MusicPlayer : MonoBehaviour
                 audioSource.mute = false;
                 if (!audioSource.isPlaying || !sectionName.Equals(lastSceneName))
                 {
-                
+
                     if (sectionName == wastelandSceneName)
                         audioSource.clip = wasteLandClips[Random.Range(0, wasteLandClips.Length)];
                     else if (sectionName == mainSceneName)
                         audioSource.clip = menuClips[Random.Range(0, menuClips.Length)];
+                    if (sectionName == highwaySceneName)
+                        audioSource.clip = wasteLandClips[Random.Range(0, wasteLandClips.Length)];
 
-                    audioSource.Play();
+
+                    if (sectionName == tutorialSceneName)
+                    {
+                        audioSource.Stop();
+                    }
+                    else
+                    {
+                        audioSource.Play();
+                    }
                 }
             }
             else

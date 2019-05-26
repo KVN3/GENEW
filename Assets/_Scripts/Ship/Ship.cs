@@ -140,7 +140,16 @@ public class Ship : MyMonoBehaviour
         if (components.forcefield.IsActive())
         {
             // Flash screen
-            OnPlayerShipHitDelegate(flashDuration, FlashColor.BLUE);
+            try
+            {
+                OnPlayerShipHitDelegate(flashDuration, FlashColor.BLUE);
+
+            }
+            catch
+            {
+
+            }
+
         }
         else
         {
@@ -159,7 +168,14 @@ public class Ship : MyMonoBehaviour
     // Ship got hit by regular, e.a. a wall
     public void GetHitByRegular(Collision other)
     {
-        OnPlayerShipHitDelegate(flashDuration, FlashColor.RED);
+        try
+        {
+            OnPlayerShipHitDelegate(flashDuration, FlashColor.RED);
+        }
+        catch
+        {
+
+        }
 
         shipSoundManager.PlaySound(SoundType.ALARM);
         spark.Activate();
@@ -181,7 +197,15 @@ public class Ship : MyMonoBehaviour
             // Forcefield not active, shutdown
             if (!components.forcefield.IsActive())
             {
-                OnPlayerShipHitDelegate(flashDuration, FlashColor.RED);
+                try
+                {
+                    OnPlayerShipHitDelegate(flashDuration, FlashColor.RED);
+                }
+                catch
+                {
+
+                }
+
 
                 aiSoundManager.ReportSystemError(SoundType.AISYSTEMERROR);
 
@@ -194,7 +218,14 @@ public class Ship : MyMonoBehaviour
             // Forcefield active, take damage
             else
             {
-                OnPlayerShipHitDelegate(flashDuration, FlashColor.BLUE);
+                try
+                {
+                    OnPlayerShipHitDelegate(flashDuration, FlashColor.BLUE);
+                }
+                catch
+                {
+
+                }
 
                 components.forcefield.GetHit(30);
                 shipSoundManager.PlaySound(SoundType.PROTECTED);
@@ -204,7 +235,17 @@ public class Ship : MyMonoBehaviour
 
             // Delegate event
             if (photonView.IsMine)
-                OnPlayerStunnedDelegate(duration, cause, playerWasProtected);
+            {
+                try
+                {
+                    OnPlayerStunnedDelegate(duration, cause, playerWasProtected);
+                }
+                catch
+                {
+
+                }
+            }
+
         }
     }
 

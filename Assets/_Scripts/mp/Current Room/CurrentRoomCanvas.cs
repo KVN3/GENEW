@@ -73,18 +73,18 @@ public class CurrentRoomCanvas : MonoBehaviour
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
+        if (GameConfiguration.tutorial)
+        {
+            _sceneTitle = SceneTitle.TUTORIAL;
+        }
+
         string sceneName = ScenesInformation.sceneNames[_sceneTitle];
 
         PlayerNetwork.Instance.activeScene = sceneName;
 
-        if (tutorial)
-        {
-            PhotonNetwork.LoadLevel("Tutorial");
-        }
-        else
-        {
-            PhotonNetwork.LoadLevel(sceneName);
-        }
+
+        PhotonNetwork.LoadLevel(sceneName);
+
         StartCoroutine(LoadAsynchronously());
 
 

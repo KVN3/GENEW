@@ -14,8 +14,6 @@ public class HUD : MyMonoBehaviour, IObserver
 {
     public PlayerShip PlayerShip { get; set; }
 
-    public PlayerShip pShip;
-
     public GameObject InGamePanel;
     public GameObject RaceStartPanel;
     public GameObject RaceEndPanel;
@@ -36,7 +34,6 @@ public class HUD : MyMonoBehaviour, IObserver
     // Start is called before the first frame update
     void Awake()
     {
-        PlayerShip = pShip;
         Assert.IsNotNull(InGamePanel);
         Assert.IsNotNull(RaceEndPanel);
 
@@ -47,6 +44,9 @@ public class HUD : MyMonoBehaviour, IObserver
 
     void Start()
     {
+
+
+
         PlayerShip.OnPlayerFinishedRaceNotifyUIDelegate = (bool spectating) =>
         {
             PlayerFinishedRaceEvent(spectating);

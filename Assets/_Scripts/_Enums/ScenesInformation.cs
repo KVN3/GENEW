@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum SceneTitle
 {
-    MAIN, SHIPYARD, WASTELAND, HIGHWAY, TEST
+    MAIN, SHIPYARD, WASTELAND, HIGHWAY, TEST, TUTORIAL
 }
 
 public class ScenesInformation : MonoBehaviour
@@ -18,6 +19,7 @@ public class ScenesInformation : MonoBehaviour
         sceneNames.Add(SceneTitle.SHIPYARD, "Shipyard");
         sceneNames.Add(SceneTitle.WASTELAND, "Eraarlonium Wasteland");
         sceneNames.Add(SceneTitle.TEST, "Test");
+        sceneNames.Add(SceneTitle.TUTORIAL, "Tutorial");
         sceneNames.Add(SceneTitle.HIGHWAY, "Elto Highway");
     }
 
@@ -55,6 +57,17 @@ public class ScenesInformation : MonoBehaviour
 
         return desiredAliveCount;
     }
+
+    public static bool IsTutorialScene()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName.Equals("Tutorial"))
+            return true;
+        else
+            return false;
+    }
+
     #endregion
 
 
