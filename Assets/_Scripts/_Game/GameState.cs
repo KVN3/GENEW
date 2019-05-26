@@ -103,9 +103,15 @@ public class GameState : LevelSingleton<GameState>
     // Find all player objects and make a reference
     private IEnumerator C_SpawnManagers()
     {
+        int shipsInRoom = PhotonNetwork.PlayerList.Length;
+
+        if (ScenesInformation.IsTutorialScene())
+            shipsInRoom += 1;
+            
+
         // Find all player ship game objects first
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Ship");
-        while (gameObjects.Length != PhotonNetwork.PlayerList.Length)
+        while (gameObjects.Length != shipsInRoom)
         {
             gameObjects = GameObject.FindGameObjectsWithTag("Ship");
             yield return new WaitForSeconds(1);

@@ -67,6 +67,12 @@ public class EnergyBall : MonoBehaviour, IPunObservable
     // Make this energy sphere perish
     public virtual void Die()
     {
+        if (ScenesInformation.IsTutorialScene())
+        {
+            if (this is RandomMover)
+                TutorialManager.Instance.EnemyKilled = true;
+        }
+
         // Detaching children (sound managers), so that they can still play the dead sound when the object is destroyed
         try
         {

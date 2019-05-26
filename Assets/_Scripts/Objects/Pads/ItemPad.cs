@@ -10,6 +10,11 @@ public class ItemPad : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ship"))
         {
+            if (ScenesInformation.IsTutorialScene())
+            {
+                TutorialManager.Instance.RocketPickedUp = true;
+            }
+
             Ship ship = other.GetComponent<PlayerShip>();
 
             Collectable item = itemClasses[Random.Range(0, itemClasses.Length)];

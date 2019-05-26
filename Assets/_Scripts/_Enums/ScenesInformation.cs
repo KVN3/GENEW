@@ -36,6 +36,9 @@ public class ScenesInformation : MonoBehaviour
             case "Elto Highway":
                 desiredAliveCount = 15;
                 break;
+            case "Tutorial":
+                desiredAliveCount = 3;
+                break;
         }
 
         return desiredAliveCount;
@@ -52,6 +55,9 @@ public class ScenesInformation : MonoBehaviour
                 break;
             case "Elto Highway":
                 desiredAliveCount = 1;
+                break;
+            case "Tutorial":
+                desiredAliveCount = 3;
                 break;
         }
 

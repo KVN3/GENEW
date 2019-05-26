@@ -50,9 +50,9 @@ MonoBehaviour:
   maxAsteroidSize: 7
   spawnPointManager: {fileID: 3691676981607013694, guid: b5a13139d8308f7448625f09ca7be3d2,
     type: 3}
-  SpawnPointManagerSettings:
-    rowLengthX: 65
-    rowLengthZ: 70
+  spawnpointSettings:
+    rowLengthX: 80
+    rowLengthZ: 80
     spacing: 30
   asteroidClasses:
   - {fileID: 3189, guid: 33fb5e45a87abe34bac8d235e2797ccd, type: 3}

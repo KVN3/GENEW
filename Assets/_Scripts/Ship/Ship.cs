@@ -193,10 +193,15 @@ public class Ship : MyMonoBehaviour
         if (!components.system.IsSystemDown())
         {
             bool playerWasProtected = false;
-
+                                 
             // Forcefield not active, shutdown
             if (!components.forcefield.IsActive())
             {
+                if (ScenesInformation.IsTutorialScene())
+                {
+                    TutorialManager.Instance.ShipStunned = true;
+                }
+
                 try
                 {
                     OnPlayerShipHitDelegate(flashDuration, FlashColor.RED);
@@ -205,7 +210,6 @@ public class Ship : MyMonoBehaviour
                 {
 
                 }
-
 
                 aiSoundManager.ReportSystemError(SoundType.AISYSTEMERROR);
 

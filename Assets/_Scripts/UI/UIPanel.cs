@@ -109,14 +109,17 @@ public class UIPanel : UIBehaviour
         boostMeter.value = 0;
         countDownController = FindObjectOfType<CountDownController>();
 
-
+        RectTransform transform = nonTutorialPanels.GetComponent<RectTransform>();
+        RectTransform tutorialPanelsTransform = tutorialPanels.GetComponent<RectTransform>();
         if (SceneManager.GetActiveScene().name.Equals("Tutorial"))
-        {
-            RectTransform transform = nonTutorialPanels.GetComponent<RectTransform>();
+        {       
             transform.localPosition = new Vector2(9999f, 0);
-
-            RectTransform tutorialPanelsTransform = tutorialPanels.GetComponent<RectTransform>();
             tutorialPanelsTransform.localPosition = new Vector2(0f, 0);
+        }
+        else
+        {
+            transform.localPosition = new Vector2(0f, 0);
+            tutorialPanelsTransform.localPosition = new Vector2(9999f, 0);
         }
     }
 
