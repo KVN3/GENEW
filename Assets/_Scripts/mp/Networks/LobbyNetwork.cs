@@ -45,6 +45,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
         print("Joined lobby.");
 
         MainCanvasManager.instance.LobbyCanvas.CreateRoomButton.interactable = true;
+        MainCanvasManager.instance.MainMenu.tutorialButton.interactable = true;
     }
 
 

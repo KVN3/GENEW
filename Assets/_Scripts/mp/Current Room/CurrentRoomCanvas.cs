@@ -15,7 +15,7 @@ public class CurrentRoomCanvas : MonoBehaviour
     private SceneTitle _sceneTitle;
     [SerializeField]
     private MapSelection _mapSelection;
-    
+
     public string RoomName { get; set; }
 
     // Text components
@@ -65,7 +65,7 @@ public class CurrentRoomCanvas : MonoBehaviour
     }
 
     #region SCENE LOADING
-    public void OnClickStartDelayed()
+    public void OnClickStartDelayed(bool tutorial)
     {
         if (!PhotonNetwork.IsMasterClient)
             return;
@@ -77,7 +77,14 @@ public class CurrentRoomCanvas : MonoBehaviour
 
         PlayerNetwork.Instance.activeScene = sceneName;
 
-        PhotonNetwork.LoadLevel(sceneName);
+        if (tutorial)
+        {
+            PhotonNetwork.LoadLevel("Tutorial");
+        }
+        else
+        {
+            PhotonNetwork.LoadLevel(sceneName);
+        }
         StartCoroutine(LoadAsynchronously());
 
 
@@ -100,7 +107,7 @@ public class CurrentRoomCanvas : MonoBehaviour
             progress = Mathf.Clamp01(progress / .9f);
 
             Debug.Log(progress);
-            
+
             loadingBar.value = progress;
             progressText.text = (progress * 100).ToString("F0") + "%";
 

@@ -31,6 +31,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     public Sprite musicIconOff;
     public Image musicIcon;
 
+    public Button tutorialButton;
     //private MenuSoundManager menuSoundManager;
 
     protected override void Awake()

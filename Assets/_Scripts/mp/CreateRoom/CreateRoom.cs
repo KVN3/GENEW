@@ -18,7 +18,7 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
     }
 
     // Create Room
-    public void OnClick_CreateRoom()
+    public void OnClick_CreateRoom(bool tutorial)
     {
         // Set the room options
         RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 3, PublishUserId = true }; // PublisherId is for making friends
@@ -26,15 +26,25 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
         // Creates room
         if (PhotonNetwork.CreateRoom(RoomName.text, roomOptions, TypedLobby.Default))
         {
-            Chat.instance.JoinChat(RoomName.text);
+            if (tutorial)
+            {
+                GameConfiguration.tutorial = true;
+                print("Create tutorial room successfully sent.");
+            }
+            else
+            {
+                Chat.instance.JoinChat(RoomName.text);
+                print("Create room successfully sent.");
+            }
 
-            print("Create room successfully sent.");
+            
         }
         else
         {
             print("Create room failed to send.");
         }
     }
+
 
     public void OnPhotonCreateRoomFailed(object[] codeAndMessage)
     {
@@ -44,5 +54,11 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
     public override void OnCreatedRoom()
     {
         print("Room created successfully");
+
+        if (GameConfiguration.tutorial)
+        {
+
+        }
+
     }
 }

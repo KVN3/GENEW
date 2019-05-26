@@ -46,7 +46,6 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
 
         PlayerName = account.username + "#" + Random.Range(1000, 9999);
 
-
         PhotonNetwork.LocalPlayer.NickName = PlayerName;
 
         PhotonNetwork.AuthValues = new AuthenticationValues(PlayerName);

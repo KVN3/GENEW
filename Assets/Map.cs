@@ -34,6 +34,11 @@ public class Map : MonoBehaviour
 
     private void Start()
     {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName.Equals("Tutorial"))
+            return;
+
         StartCoroutine(C_Initialize());
     }
 

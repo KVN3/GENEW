@@ -29,6 +29,9 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     // I joined room
     public override void OnJoinedRoom()
     {
+        if (GameConfiguration.tutorial)
+            return;
+
         // Clear player list
         foreach (Transform child in transform)
             Destroy(child.gameObject);
@@ -36,6 +39,7 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         // Toggles the current room window
         MainCanvasManager.instance.ShowPanel(PanelType.ROOM);
         MainCanvasManager.instance.HidePanel(PanelType.LOBBY);
+
 
         // Update player list
         Player[] players = PhotonNetwork.PlayerList;
