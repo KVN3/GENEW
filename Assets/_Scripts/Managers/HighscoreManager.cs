@@ -48,10 +48,12 @@ public class HighscoreManager : MonoBehaviour
         // Create
         highscoreEntryList = new List<HighscoreEntry>()
         {
-            new HighscoreEntry { name = "Bronze", lapTime = "00:00:50.000", stage = ScenesInformation.sceneNames[SceneTitle.WASTELAND]},
-            new HighscoreEntry { name = "Silver", lapTime = "00:00:45.000", stage = ScenesInformation.sceneNames[SceneTitle.WASTELAND]},
-            new HighscoreEntry { name = "Gold", lapTime = "00:00:40.000", stage = ScenesInformation.sceneNames[SceneTitle.WASTELAND]},
-            new HighscoreEntry { name = "Platinum", lapTime = "00:00:35.000", stage = ScenesInformation.sceneNames[SceneTitle.WASTELAND]}
+            new HighscoreEntry { name = "Bronze", lapTime = "00:02:15.000", stage = ScenesInformation.sceneNames[SceneTitle.WASTELAND]},
+            new HighscoreEntry { name = "Silver", lapTime = "00:02:05.000", stage = ScenesInformation.sceneNames[SceneTitle.WASTELAND]},
+            new HighscoreEntry { name = "Gold", lapTime = "00:02:00.000", stage = ScenesInformation.sceneNames[SceneTitle.WASTELAND]},
+            new HighscoreEntry { name = "Bronze", lapTime = "00:02:00.000", stage = ScenesInformation.sceneNames[SceneTitle.HIGHWAY]},
+            new HighscoreEntry { name = "Silver", lapTime = "00:01:50.000", stage = ScenesInformation.sceneNames[SceneTitle.HIGHWAY]},
+            new HighscoreEntry { name = "Gold", lapTime = "00:01:45.000", stage = ScenesInformation.sceneNames[SceneTitle.HIGHWAY]}
         };
 
         // Sort

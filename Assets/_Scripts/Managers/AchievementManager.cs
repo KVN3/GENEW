@@ -26,10 +26,12 @@ public class AchievementManager : MonoBehaviour
         // Create achivements
         List<Achievement> achievements = new List<Achievement>
         {
-            new Achievement(0, "Fast lap 1", "Beat bronze lap time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(1, "Fast lap 2", "Beat silver lap time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(2, "Fast lap 3", "Beat gold lap time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(3, "Fast lap 4", "Beat platinum lap time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f)
+            new Achievement(0, "Bronze wasteland", "Beat bronze time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
+            new Achievement(1, "Silver wasteland", "Beat silver time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
+            new Achievement(2, "Gold wasteland", "Beat gold time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
+            new Achievement(3, "Bronze highway", "Beat bronze time on Elto Highway", AchievementType.LAPTIME, 1f),
+            new Achievement(4, "Silver highway", "Beat silver time on Elto Highway", AchievementType.LAPTIME, 1f),
+            new Achievement(5, "Gold highway", "Beat gold time on Elto Highway", AchievementType.LAPTIME, 1f),
         };
 
         // Save
@@ -40,14 +42,13 @@ public class AchievementManager : MonoBehaviour
     
     public List<Achievement> CreateAchievementListForPlayer(Account account)
     {
-        string jsonString = PlayerPrefs.GetString(key);
-        AchievementData achievementData = JsonUtility.FromJson<AchievementData>(jsonString);
+        List<Achievement> achievements = LoadAchievements();
 
-        // Add name to achievements
-        foreach (Achievement achiev in achievementData.achievements)
+        // Add user to achievements
+        foreach (Achievement achiev in achievements)
             achiev.user = account.username;
 
-        return achievementData.achievements;
+        return achievements;
     }
 
     // Needs index of which achievement to update
@@ -77,6 +78,13 @@ public class AchievementManager : MonoBehaviour
             account.achievements[index] = achievement;
             Registration.SaveAccount(account);
         }
+    }
+
+    private List<Achievement> LoadAchievements()
+    {
+        string jsonString = PlayerPrefs.GetString(key);
+        AchievementData achievementData = JsonUtility.FromJson<AchievementData>(jsonString);
+        return achievementData.achievements;
     }
 
     private void ResetAchievement(int index)
@@ -111,21 +119,28 @@ public class AchievementManager : MonoBehaviour
         UpdateAchievement(1, 1f);
         UpdateAchievement(2, 1f);
         UpdateAchievement(3, 1f);
+        UpdateAchievement(4, 1f);
+        UpdateAchievement(5, 1f);
     }
 
     [ContextMenu("Reset Personal Achievements")]
     public void ResetAchievements()
     {
-        ResetAchievement(0);
-        ResetAchievement(1);
-        ResetAchievement(2);
-        ResetAchievement(3);
+        for (int i = 0; i < LoadAchievements().Count; i++)
+        {
+            ResetAchievement(i);
+        }
+
     }
 
     [ContextMenu("Delete AchievementData")]
     public void DeleteAchievementData()
     {
         PlayerPrefs.DeleteKey(key);
+        InitAchievements();
+        Account account = Registration.GetCurrentAccount();
+        account.achievements = CreateAchievementListForPlayer(account);
+        Registration.SaveAccount(account);
     }
 
     #region Singleton

@@ -242,14 +242,21 @@ public class PlayerShip : Ship
                     // Achievements
                     if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.WASTELAND])
                     {
-                        if (runData.raceTime < System.TimeSpan.Parse("00:00:50.000"))
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:15.000"))
                             AchievementManager.UpdateAchievement(0, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:00:45.000"))
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:05.000"))
                             AchievementManager.UpdateAchievement(1, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:00:40.000"))
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
                             AchievementManager.UpdateAchievement(2, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:00:35.000"))
+                    }
+                    else if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.HIGHWAY])
+                    {
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
                             AchievementManager.UpdateAchievement(3, 1f);
+                        if (runData.raceTime < System.TimeSpan.Parse("00:01:50.000"))
+                            AchievementManager.UpdateAchievement(4, 1f);
+                        if (runData.raceTime < System.TimeSpan.Parse("00:01:45.000"))
+                            AchievementManager.UpdateAchievement(5, 1f);
                     }
                 }
 

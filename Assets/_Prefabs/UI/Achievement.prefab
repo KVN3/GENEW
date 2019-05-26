@@ -659,7 +659,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -34.399403, y: 0, z: -36.549404, w: 23.08972}
+  m_margin: {x: -86.17287, y: 0, z: -100.786865, w: 23.08972}
   m_textInfo:
     textComponent: {fileID: 6950786258032480924}
     characterCount: 5
