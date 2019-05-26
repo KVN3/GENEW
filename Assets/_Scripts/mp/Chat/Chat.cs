@@ -127,6 +127,7 @@ public class Chat : MonoBehaviour, IChatClientListener
 
         // Refresh accountdata
         LoadAccountData();
+        CheckFriendAmount();
 
         ChannelToggleToInstantiate.gameObject.SetActive(false);
         Debug.Log("Connecting as: " + userName);
@@ -359,15 +360,20 @@ public class Chat : MonoBehaviour, IChatClientListener
 
     private void UpdateFriends(Account account)
     {
-        if (friendsList.Count > 0)
-            emptyFriendListText.gameObject.SetActive(false);
-        else
-            emptyFriendListText.gameObject.SetActive(true);
+        CheckFriendAmount();
 
         // Save to account, refresh by deleting and creating friend items
         Registration.SaveAccount(account);
         DeleteFriendItems();
         CreateFriendItems();
+    }
+    
+    private void CheckFriendAmount()
+    {
+        if (friendsList.Count > 0)
+            emptyFriendListText.gameObject.SetActive(false);
+        else
+            emptyFriendListText.gameObject.SetActive(true);
     }
 
     #endregion
