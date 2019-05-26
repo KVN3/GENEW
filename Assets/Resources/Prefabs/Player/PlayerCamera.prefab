@@ -88,7 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config:
     offset: {x: 7, y: -20, z: 0}
-    damping: 400
+    damping: 800
     baseAngle: 90
     angleZ: 60
   target: {fileID: 0}

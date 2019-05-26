@@ -90,21 +90,25 @@ public class EnergyBall : MonoBehaviour, IPunObservable
             manager.RemoveFromAliveEnemies(this);
 
         // Destroy the object if master, for all to witness...
-        try
+        if (photonView.ViewID == 0)
         {
-            if (photonView.ViewID == 0)
-            {
-                Destroy(gameObject);
-            }
-            else if (PhotonNetwork.IsMasterClient)
-                PhotonNetwork.Destroy(gameObject);
+            Destroy(gameObject);
         }
-        catch
+        else if (PhotonNetwork.IsMasterClient)
         {
+            PhotonNetwork.Destroy(this.gameObject);
+        }
+        //Destroy(gameObject);
 
-        }
+        //photonView.RPC("RPC_Die", RpcTarget.AllBufferedViaServer, this);
 
     }
+
+    //[PunRPC]
+    //private void RPC_Die(Gect)
+    //{
+    //    PhotonNetwork.Destroy(this);
+    //}
     #endregion
 
     #region Photon
