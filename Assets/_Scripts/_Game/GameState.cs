@@ -173,18 +173,13 @@ public class GameState : LevelSingleton<GameState>
             AsteroidStormManager asteroidStormManager = Instantiate(gameManagers.asteroidStormManagerClass);
             asteroidStormManager.spawnPointManager = spawnPointManager;
         }
-
-
     }
 
-    //public void RestartScene()
-    //{
-    //    //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    //    //SceneManager.LoadScene("Main Menu");
-    //}
-
-    //public void ExitGame()
-    //{
-    //    Application.Quit();
-    //}
+    public void RestartLevel()
+    {
+        // In case game is paused
+        Time.timeScale = 1f;
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

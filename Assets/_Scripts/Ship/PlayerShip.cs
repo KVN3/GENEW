@@ -213,8 +213,6 @@ public class PlayerShip : Ship
         #region FinishLine
         if (other.gameObject.CompareTag("FinishLine"))
         {
-            print("Finishline");
-
             // Reset waypoint count 
             runData.currentWaypoint = -1;
 
@@ -300,7 +298,7 @@ public class PlayerShip : Ship
                     // Reset Time. Only reset when lap > 0 && over half way
                     if (runData.currentLap > 0 && runData.isOverHalfway)
                     {
-                        // Reset Time. Only reset when lap > 0
+                        // Lap passed
                         if (runData.currentLap > 0)
                         {
                             Debug.Log($"PlayerShip Crossed Finish Line");
