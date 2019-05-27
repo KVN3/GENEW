@@ -10,7 +10,7 @@ public class RaceManager : MonoBehaviour
 
     // Global variable
     public static bool raceStarted = false;
-    public static bool raceFinished = false;
+   // public static bool raceFinished = false;
 
     public CountDownController countDownController;
 
@@ -18,9 +18,9 @@ public class RaceManager : MonoBehaviour
     void Start()
     {
         // TO DO: boolean use count down or not for testing
-        //Instantiate(countDownController, transform);
+        Instantiate(countDownController, transform);
 
-        raceStarted = true;
+        //raceStarted = true;
 
         
     }

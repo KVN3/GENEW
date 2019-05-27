@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -58,11 +59,11 @@ public class UIPanel : UIBehaviour
 
     [Header("RaceEndScreen")]
     public TextMeshProUGUI raceEndScreenText;
-    public TextMeshProUGUI lapTimesTitle;
-    public TextMeshProUGUI raceTimesText;
     public TextMeshProUGUI endTimeText;
     public TextMeshProUGUI leaderboardText;
-    public TextMeshProUGUI leaderboardTimeText;
+    public GameObject entryTemplate;
+    public GameObject leaderboardContent;
+    private bool initialisedScoreBoard;
 
 
     [Header("RaceStartScreen")]
@@ -105,6 +106,7 @@ public class UIPanel : UIBehaviour
 
         boostMeter.value = 0;
         countDownController = FindObjectOfType<CountDownController>();
+        initialisedScoreBoard = false;
     }
 
     void Update()
@@ -203,55 +205,48 @@ public class UIPanel : UIBehaviour
         #endregion
 
         #region Race End Screen
-        // Only show racetimes when finished and display them using a stringbuilder (for lines)
+        // Only show racetimes when finished
         if (pd.raceFinished)
         {
             // Title
             raceEndScreenText.text = LocalizationManager.GetTextByKey("RACE_RESULTS");
 
-            // Race times
-            //StringBuilder builder = new StringBuilder();
-            //for (int i = 0; i < pd.raceTimes.Count; i++)
-            //{
-            //    string lapTime = pd.raceTimes[i].ToString(@"mm\:ss\.ff");
-            //    string lapCount = (i + 1).ToString(); // Arrays start at 0 but laps start at 1
-
-            //    builder.Append(LocalizationManager.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
-            //}
-            //builder.AppendLine().Append(LocalizationManager.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
-            //raceTimesText.text = builder.ToString();
-
-            lapTimesTitle.text = LocalizationManager.GetTextByKey("LAP_TIMES");
             endTimeText.text = LocalizationManager.GetTextByKey("TOTAL_TIME") + ": " + pd.raceTime.ToString(@"mm\:ss\.ff");
 
             // Leaderboard
             leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
 
             // Get highscores (and sorts them beforehand)
-            List<HighscoreEntry> highscoreEntries = HighscoreManager.Instance.GetHighscoresByStage(SceneManager.GetActiveScene().name);
+            if (!initialisedScoreBoard)
+            {
+                HighscoreManager.Instance.ShowHighscores(SceneManager.GetActiveScene().name, entryTemplate, leaderboardContent);
+                initialisedScoreBoard = true;
+            }
+            //List<HighscoreEntry> highscoreEntries = HighscoreManager.Instance.GetHighscoresByStage(SceneManager.GetActiveScene().name);
 
             // Only show max of 10 or below
-            int entries;
-            if (highscoreEntries.Count > 10)
-                entries = 10;
-            else
-                entries = highscoreEntries.Count;
+            //int entries;
+            //if (highscoreEntries.Count > 10)
+            //    entries = 10;
+            //else
+            //    entries = highscoreEntries.Count;
 
-            StringBuilder builder2 = new StringBuilder();
-            for (int i = 0; i < entries; i++)
-            {
-                builder2.Append($"{i+1}. ").Append(highscoreEntries[i].name).Append(": ").Append(TimeSpan.Parse(highscoreEntries[i].lapTime).ToString(@"mm\:ss\.ff")).AppendLine();
-            }
-            leaderboardTimeText.text = builder2.ToString();
+            //StringBuilder builder2 = new StringBuilder();
+            //for (int i = 0; i < entries; i++)
+            //{
+            //    builder2.Append($"{i+1}. ").Append(highscoreEntries[i].name).Append(": ").Append(TimeSpan.Parse(highscoreEntries[i].lapTime).ToString(@"mm\:ss\.ff")).AppendLine();
+            //}
+            //leaderboardTimeText.text = builder2.ToString();
         }
         #endregion
 
         #region Race Start Screen
 
-        //if (countDownController != null)
-            //countDownText.text = countDownController.CountDownText;
-        //else
-        //    countDownText.text = "";
+
+        if (countDownController != null) // or if tutorial level
+            countDownText.text = countDownController.CountDownText;
+        else
+            countDownText.text = "";
 
         #endregion
 
