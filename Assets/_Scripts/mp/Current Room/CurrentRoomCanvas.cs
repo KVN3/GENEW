@@ -85,13 +85,17 @@ public class CurrentRoomCanvas : MonoBehaviour
 
         PhotonNetwork.LoadLevel(sceneName);
 
-        StartCoroutine(LoadAsynchronously());
-
+        StartLoadingScreen();
 
         if (int.TryParse(ghostInput.text, out int result2))
             PlayerPrefs.SetInt("Ghosts", int.Parse(ghostInput.text));
         else PlayerPrefs.SetInt("Ghosts", 1);
 
+    }
+
+    public void StartLoadingScreen()
+    {
+        StartCoroutine(LoadAsynchronously());
     }
 
     IEnumerator LoadAsynchronously()
@@ -136,7 +140,7 @@ public class CurrentRoomCanvas : MonoBehaviour
             string sceneName = ScenesInformation.sceneNames[_sceneTitle];
             if (sceneName == "Tutorial")
             {
-                if(PhotonNetwork.PlayerList.Length == 1)
+                if (PhotonNetwork.PlayerList.Length == 1)
                 {
                     playButton.interactable = true;
                 }
@@ -149,7 +153,7 @@ public class CurrentRoomCanvas : MonoBehaviour
             {
                 playButton.interactable = true;
             }
-            
+
             levelDropdown.interactable = true;
             levelDropdown.gameObject.SetActive(true);
         }
