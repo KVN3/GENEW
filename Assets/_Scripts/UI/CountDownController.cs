@@ -14,6 +14,7 @@ public class CountDownController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != ScenesInformation.sceneNames[SceneTitle.TUTORIAL])
         {
+            RaceManager.raceStarted = false;
             CountDown = 3;
             CountDownText = LocalizationManager.GetTextByKey("GET_A_FAST_TIME");
 
