@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,8 @@ public class CountDownController : MonoBehaviour
         {
             CountDown = 3;
             CountDownText = LocalizationManager.GetTextByKey("GET_A_FAST_TIME");
+
+
             StartCoroutine(StartCountDown());
         }
         else
@@ -26,6 +29,14 @@ public class CountDownController : MonoBehaviour
 
     IEnumerator StartCountDown()
     {
+        // Find all player ship game objects first
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Ship");
+        while (gameObjects.Length != PhotonNetwork.PlayerList.Length)
+        {
+            gameObjects = GameObject.FindGameObjectsWithTag("Ship");
+            yield return new WaitForSeconds(1);
+        }
+
         CountDownText = LocalizationManager.GetTextByKey("GET_A_FAST_TIME");
         yield return new WaitForSeconds(2f);
         CountDownText = CountDown.ToString();
