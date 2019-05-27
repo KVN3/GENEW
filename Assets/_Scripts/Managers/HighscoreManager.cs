@@ -110,10 +110,10 @@ public class HighscoreManager : MonoBehaviour
         }
     }
 
-    public void ShowHighscores(SceneTitle levelTitle, GameObject entryTemplate, GameObject parent)
+    public void ShowHighscores(string levelTitle, GameObject entryTemplate, GameObject parent)
     {
         // Get highscores (and sorts them beforehand)
-        List<HighscoreEntry> highscoreEntries = Instance.GetHighscoresByStage(ScenesInformation.sceneNames[levelTitle]);
+        List<HighscoreEntry> highscoreEntries = Instance.GetHighscoresByStage(levelTitle);
 
         // Only show max of 10 or below
         int entries;

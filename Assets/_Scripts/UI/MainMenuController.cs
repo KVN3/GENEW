@@ -108,6 +108,8 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadLobbyFromOtherScene()
     {
+        // In case the game was paused
+        Time.timeScale = 1f;
         PlayerNetwork.ReturnToMain();
         MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
     }

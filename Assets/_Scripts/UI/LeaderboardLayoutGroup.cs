@@ -13,7 +13,7 @@ public class LeaderboardLayoutGroup : MonoBehaviour
     public void UpdateLeaderboard()
     {
         SceneTitle _sceneTitle = _mapSelection.GetScene();
-        HighscoreManager.Instance.ShowHighscores(_sceneTitle, entryTemplate, this.gameObject);
+        HighscoreManager.Instance.ShowHighscores(ScenesInformation.sceneNames[_sceneTitle], entryTemplate, this.gameObject);
     }
     #endregion
 }

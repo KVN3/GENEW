@@ -177,14 +177,9 @@ public class GameState : LevelSingleton<GameState>
 
     }
 
-    //public void RestartScene()
-    //{
-    //    //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    //    //SceneManager.LoadScene("Main Menu");
-    //}
-
-    //public void ExitGame()
-    //{
-    //    Application.Quit();
-    //}
+    public void RestartLevel()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

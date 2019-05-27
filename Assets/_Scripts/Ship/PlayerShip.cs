@@ -138,7 +138,7 @@ public class PlayerShip : Ship
         }
 
         // Cheat finish
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.N))
         {
             CheatFinish();
         }
@@ -156,7 +156,7 @@ public class PlayerShip : Ship
     {
         // Set currentlap, maxlaps, timer, pos
         runData.currentLap = 0;
-            runData.maxLaps = 2;
+            runData.maxLaps = 3;
         runData.raceTime = System.TimeSpan.Parse("00:00:00.000");
         runData.leaderboardTimes = new List<System.TimeSpan>();
         runData.currentPos = 1;
@@ -213,8 +213,6 @@ public class PlayerShip : Ship
         #region FinishLine
         if (other.gameObject.CompareTag("FinishLine"))
         {
-            print("Finishline");
-
             // Reset waypoint count 
             runData.currentWaypoint = -1;
 
@@ -297,7 +295,7 @@ public class PlayerShip : Ship
                 }
                 else // If not finished
                 {
-                    // Reset Time. Only reset when lap > 0 && over half way
+                    // Lap passed
                     if (runData.currentLap > 0 && runData.isOverHalfway)
                     {
                         // Reset Time. Only reset when lap > 0

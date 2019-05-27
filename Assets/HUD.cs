@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -17,6 +18,7 @@ public class HUD : MyMonoBehaviour, IObserver
     public GameObject InGamePanel;
     public GameObject RaceStartPanel;
     public GameObject RaceEndPanel;
+    public GameObject PauseScreen;
 
     [SerializeField]
     private GameObject blackBackground;
@@ -60,6 +62,24 @@ public class HUD : MyMonoBehaviour, IObserver
 
     private void Update()
     {
+        // Pause
+        if (Input.GetKeyDown(KeyCode.Escape))
+            TogglePause();
+
+        // Pause screen (should be a unityEvent/delegate)
+        if (GameConfiguration.isPaused && !PauseScreen.activeSelf)
+        {
+            if (PhotonNetwork.PlayerList.Length == 1)
+                Time.timeScale = 0f;
+            PauseScreen.SetActive(true);
+        }
+        if (!GameConfiguration.isPaused)
+        {
+            if (PhotonNetwork.PlayerList.Length == 1)
+                Time.timeScale = 1f;
+            PauseScreen.SetActive(false);
+        }
+
         // Leaving match
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -80,7 +100,9 @@ public class HUD : MyMonoBehaviour, IObserver
             spectatingText.SetActive(false);
         }
 
-        InGamePanel.SetActive(false);
+
+        //InGamePanel.SetActive(false); // interferes with leaderboard
+        InGamePanel.GetComponent<CanvasGroup>().alpha = 0f;
         RaceEndPanel.SetActive(true);
         anim.SetTrigger("RaceFinished");
     }
@@ -115,7 +137,10 @@ public class HUD : MyMonoBehaviour, IObserver
     }
     #endregion
 
-
+    public void TogglePause()
+    {
+        GameConfiguration.isPaused = !GameConfiguration.isPaused;
+    }
 
 
     public void OnNotify(float score, float charges)

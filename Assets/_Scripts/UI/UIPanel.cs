@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ using UnityEngine.UI;
 public class UIPanel : UIBehaviour
 {
     #region Fields
+    public RectTransform canvasRect;
+
     public GameObject nonTutorialPanels;
     public GameObject tutorialPanels;
 
@@ -61,11 +64,11 @@ public class UIPanel : UIBehaviour
 
     [Header("RaceEndScreen")]
     public TextMeshProUGUI raceEndScreenText;
-    public TextMeshProUGUI lapTimesTitle;
-    public TextMeshProUGUI raceTimesText;
     public TextMeshProUGUI endTimeText;
     public TextMeshProUGUI leaderboardText;
-    public TextMeshProUGUI leaderboardTimeText;
+    public GameObject entryTemplate;
+    public GameObject leaderboardContent;
+    private bool initialisedScoreBoard;
 
 
     [Header("RaceStartScreen")]
@@ -101,25 +104,29 @@ public class UIPanel : UIBehaviour
         base.Start();
 
         // Turn on/off position UI
-        if (PlayerCount > 1)
+        if (PhotonNetwork.PlayerList.Length > 1)
             posBg.SetActive(true); 
         else
             posBg.SetActive(false);
 
+        initialisedScoreBoard = false;
         boostMeter.value = 0;
         countDownController = FindObjectOfType<CountDownController>();
 
         RectTransform transform = nonTutorialPanels.GetComponent<RectTransform>();
         RectTransform tutorialPanelsTransform = tutorialPanels.GetComponent<RectTransform>();
         if (SceneManager.GetActiveScene().name.Equals("Tutorial"))
-        {       
-            transform.localPosition = new Vector2(9999f, 0);
-            tutorialPanelsTransform.localPosition = new Vector2(0f, 0);
+        {
+            
+            //transform.localPosition = new Vector2(9999f, 0); // werkt niet
+            // tutorialPanelsTransform.localPosition = new Vector2(0,0); 
+            nonTutorialPanels.SetActive(false);
         }
         else
         {
-            transform.localPosition = new Vector2(0f, 0);
-            tutorialPanelsTransform.localPosition = new Vector2(9999f, 0);
+            //transform.localPosition = new Vector2(0,0); 
+            //tutorialPanelsTransform.localPosition = new Vector2(9999f, 0);
+            tutorialPanels.SetActive(false);
         }
     }
 
@@ -219,52 +226,27 @@ public class UIPanel : UIBehaviour
         #endregion
 
         #region Race End Screen
-        // Only show racetimes when finished and display them using a stringbuilder (for lines)
+        // Only show racetimes when finished
         if (pd.raceFinished)
         {
             // Title
             raceEndScreenText.text = LocalizationManager.GetTextByKey("RACE_RESULTS");
 
-            // Race times
-            //StringBuilder builder = new StringBuilder();
-            //for (int i = 0; i < pd.raceTimes.Count; i++)
-            //{
-            //    string lapTime = pd.raceTimes[i].ToString(@"mm\:ss\.ff");
-            //    string lapCount = (i + 1).ToString(); // Arrays start at 0 but laps start at 1
-
-            //    builder.Append(LocalizationManager.GetTextByKey("LAP")).Append(" ").Append(lapCount).Append(": ").Append(lapTime).AppendLine();
-            //}
-            //builder.AppendLine().Append(LocalizationManager.GetTextByKey("BEST_LAPTIME")).Append(": ").Append(pd.bestRaceTime.ToString(@"mm\:ss\.ff"));
-            //raceTimesText.text = builder.ToString();
-
-            lapTimesTitle.text = LocalizationManager.GetTextByKey("LAP_TIMES");
             endTimeText.text = LocalizationManager.GetTextByKey("TOTAL_TIME") + ": " + pd.raceTime.ToString(@"mm\:ss\.ff");
 
             // Leaderboard
             leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
 
-            // Get highscores (and sorts them beforehand)
-            List<HighscoreEntry> highscoreEntries = HighscoreManager.Instance.GetHighscoresByStage(SceneManager.GetActiveScene().name);
-
-            // Only show max of 10 or below
-            int entries;
-            if (highscoreEntries.Count > 10)
-                entries = 10;
-            else
-                entries = highscoreEntries.Count;
-
-            StringBuilder builder2 = new StringBuilder();
-            for (int i = 0; i < entries; i++)
+            if (!initialisedScoreBoard)
             {
-                builder2.Append($"{i+1}. ").Append(highscoreEntries[i].name).Append(": ").Append(TimeSpan.Parse(highscoreEntries[i].lapTime).ToString(@"mm\:ss\.ff")).AppendLine();
+                HighscoreManager.Instance.ShowHighscores(SceneManager.GetActiveScene().name, entryTemplate, leaderboardContent);
+                initialisedScoreBoard = true;
             }
-            leaderboardTimeText.text = builder2.ToString();
         }
         #endregion
 
         #region Race Start Screen
 
-        
         if (countDownController != null && SceneManager.GetActiveScene().name != ScenesInformation.sceneNames[SceneTitle.TUTORIAL]) // and if !tutorial level
             countDownText.text = countDownController.CountDownText;
         else

@@ -9,5 +9,5 @@ public static class GameConfiguration
     public static float PlayingHeight = 7;
 
     public static bool tutorial;
-
+    public static bool isPaused = false;
 }
