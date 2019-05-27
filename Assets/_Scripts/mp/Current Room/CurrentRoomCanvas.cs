@@ -132,7 +132,24 @@ public class CurrentRoomCanvas : MonoBehaviour
         // Enable for master, disable for clients
         if (PhotonNetwork.IsMasterClient)
         {
-            playButton.interactable = true;
+            // Tutorial max 1 player
+            string sceneName = ScenesInformation.sceneNames[_sceneTitle];
+            if (sceneName == "Tutorial")
+            {
+                if(PhotonNetwork.PlayerList.Length == 1)
+                {
+                    playButton.interactable = true;
+                }
+                else
+                {
+                    playButton.interactable = false;
+                }
+            }
+            else
+            {
+                playButton.interactable = true;
+            }
+            
             levelDropdown.interactable = true;
             levelDropdown.gameObject.SetActive(true);
         }

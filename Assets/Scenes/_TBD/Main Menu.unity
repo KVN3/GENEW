@@ -6192,6 +6192,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 856791687}
+        m_MethodName: ManageRoomButtonAccess
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: TMPro.TMP_Dropdown+DropdownEvent, Unity.TextMeshPro, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &488214865
@@ -16128,6 +16139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerListingPrefab: {fileID: 5596983416171421111, guid: 001217822e5b57b488e1d480454b51ab,
     type: 3}
+  levelPreview: {fileID: 0}
   roomState: {fileID: 1893227443}
   unlockedSprite: {fileID: 21300000, guid: 4766450c55674e24bbb028b544fe1468, type: 3}
   lockedSprite: {fileID: 21300000, guid: c7afb8c935f7b4a44b5a6f87adab0129, type: 3}
@@ -17253,6 +17265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerListingPrefab: {fileID: 5596983416171421111, guid: 001217822e5b57b488e1d480454b51ab,
     type: 3}
+  levelPreview: {fileID: 1650817145}
   roomState: {fileID: 1893227443}
   unlockedSprite: {fileID: 21300000, guid: 4766450c55674e24bbb028b544fe1468, type: 3}
   lockedSprite: {fileID: 21300000, guid: c7afb8c935f7b4a44b5a6f87adab0129, type: 3}
@@ -30805,7 +30818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.07543945, y: 31.199997}
+  m_AnchoredPosition: {x: 0.07543945, y: 31.199951}
   m_SizeDelta: {x: -0.15027, y: -429.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2010141834
