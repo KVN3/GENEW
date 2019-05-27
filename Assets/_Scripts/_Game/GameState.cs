@@ -107,7 +107,7 @@ public class GameState : LevelSingleton<GameState>
 
         if (ScenesInformation.IsTutorialScene())
             shipsInRoom += 1;
-            
+
 
         // Find all player ship game objects first
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Ship");
@@ -129,7 +129,8 @@ public class GameState : LevelSingleton<GameState>
             yield return new WaitForSeconds(1);
         }
 
-        SpawnManagers();
+        if (RaceManager.raceStarted)
+            SpawnManagers();
     }
 
     // Spawn game managers
