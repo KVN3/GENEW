@@ -14,6 +14,9 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         get { return _playerListingPrefab; }
     }
 
+    [SerializeField]
+    private LevelPreview levelPreview;
+
     private List<PlayerListing> _playerListings = new List<PlayerListing>();
     private List<PlayerListing> PlayerListings
     {
@@ -66,12 +69,20 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player otherPlayer)
     {
         PlayerJoinedRoom(otherPlayer);
+
+        // New player joined, send update
+        if (PhotonNetwork.IsMasterClient)
+            levelPreview.UpdateLevelPreview();
     }
 
     // Other left room
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         PlayerLeftRoom(otherPlayer);
+
+        // New player joined, send update
+        if (PhotonNetwork.IsMasterClient)
+            levelPreview.UpdateLevelPreview();
     }
     #endregion
 
