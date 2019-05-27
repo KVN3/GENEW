@@ -134,11 +134,13 @@ public class CurrentRoomCanvas : MonoBehaviour
         {
             playButton.interactable = true;
             levelDropdown.interactable = true;
+            levelDropdown.gameObject.SetActive(true);
         }
         else
         {
             playButton.interactable = false;
             levelDropdown.interactable = false;
+            levelDropdown.gameObject.SetActive(false);
         }
     }
     #endregion

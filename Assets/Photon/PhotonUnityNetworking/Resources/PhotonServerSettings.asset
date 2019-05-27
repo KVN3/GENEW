@@ -52,5 +52,6 @@ MonoBehaviour:
   - RPC_ApplySkins
   - RPC_Die
   - RPC_UpdateSelectedMap
+  - RPC_NotifyOthers
   DisableAutoOpenWizard: 1
   ShowSettings: 1

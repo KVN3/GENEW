@@ -1,18 +1,34 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelPreview : MonoBehaviour
+public class LevelPreview : MonoBehaviourPunCallbacks
 {
     public MapSelection mapSelection;
     public GameObject[] levelPreviewImages;
 
     public void UpdateLevelPreview()
     {
-        SceneTitle sceneTitle = mapSelection.GetScene();
-        string sceneName = ScenesInformation.sceneNames[sceneTitle];
+        
 
+        if (PhotonNetwork.IsMasterClient)
+        {
+            string sceneName = string.Empty;
+
+            SceneTitle sceneTitle = mapSelection.GetScene();
+            sceneName = ScenesInformation.sceneNames[sceneTitle];
+            photonView.RPC("RPC_NotifyOthers", RpcTarget.All, sceneName);
+
+            SetLevelActive(sceneName);
+        }
+
+        
+    }
+
+    public void SetLevelActive(string sceneName)
+    {
         foreach (GameObject gameObject in levelPreviewImages)
         {
             if (gameObject.name.Equals(sceneName))
@@ -25,4 +41,12 @@ public class LevelPreview : MonoBehaviour
             }
         }
     }
+
+    [PunRPC]
+    private void RPC_NotifyOthers(string sceneName)
+    {
+        SetLevelActive(sceneName);
+    }
+
+
 }

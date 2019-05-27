@@ -14,6 +14,8 @@ public class MapSelection : MonoBehaviourPunCallbacks
 
     PhotonView photonView;
 
+    public string activeSceneName;
+
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
@@ -39,31 +41,34 @@ public class MapSelection : MonoBehaviourPunCallbacks
         return scene;
     }
 
-    public void UpdateMapDropDown()
-    {
-        int index = 0;
-        SceneTitle scene = scenes[_dropdownList.value];
+    //public void UpdateMapDropDown()
+    //{
+    //    if (!PhotonNetwork.IsMasterClient)
+    //        return;
 
-        switch (scene)
-        {
-            case SceneTitle.HIGHWAY:
-                index = 0;
-                break;
-            case SceneTitle.WASTELAND:
-                index = 1;
-                break;
-            case SceneTitle.TUTORIAL:
-                index = 2;
-                break;
-        }
+    //    int index = 0;
+    //    SceneTitle scene = scenes[_dropdownList.value];
 
-        photonView.RPC("RPC_UpdateSelectedMap", RpcTarget.All, index);
+    //    switch (scene)
+    //    {
+    //        case SceneTitle.HIGHWAY:
+    //            index = 0;
+    //            break;
+    //        case SceneTitle.WASTELAND:
+    //            index = 1;
+    //            break;
+    //        case SceneTitle.TUTORIAL:
+    //            index = 2;
+    //            break;
+    //    }
 
-    }
+    //    photonView.RPC("RPC_UpdateSelectedMap", RpcTarget.All, index);
 
-    [PunRPC]
-    private void RPC_UpdateSelectedMap(int index)
-    {
-        _dropdownList.value = index;
-    }
+    //}
+
+    //[PunRPC]
+    //private void RPC_UpdateSelectedMap(int index)
+    //{
+    //    _dropdownList.value = index;
+    //}
 }
