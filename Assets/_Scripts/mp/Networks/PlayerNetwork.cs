@@ -94,6 +94,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         activeScene = sceneName;
 
         PhotonNetwork.LoadLevel(sceneName);
+        CurrentRoomCanvas.instance.StartLoadingScreen();
     }
 
     // Executed whenever a player loaded the scene
