@@ -93,7 +93,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("BEST", "BEST");
 
         // Popups
-        NLDict.Add("GET_A_FAST_TIME", "Haal de snelste rondetijd!");
+        NLDict.Add("GET_A_FAST_TIME", "Haal de snelste tijd!");
         NLDict.Add("GO", "START");
         NLDict.Add("WRONG_WAY", "VERKEERDE RICHTING");
         NLDict.Add("FINAL_LAP", "LAATSTE RONDE");
@@ -166,7 +166,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("HELP_LOGIN", "Please login to play");
 
         // Validation messages
-        ENDict.Add("PASSWORDS_NOT_MATCH", "Passwords do no match!");
+        ENDict.Add("PASSWORDS_NOT_MATCH", "Passwords do not match!");
         ENDict.Add("PASSWORD_LONGER_1", "Password has to be longer than");
         ENDict.Add("PASSWORD_LONGER_2", "characters!");
         ENDict.Add("FIELDS_EMPTY", "You have empty fields!");
@@ -193,7 +193,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("BEST", "BEST");
 
         // Popups
-        ENDict.Add("GET_A_FAST_TIME", "Get the fastest laptime!");
+        ENDict.Add("GET_A_FAST_TIME", "Get the fastest time!");
         ENDict.Add("GO", "GO!");
         ENDict.Add("WRONG_WAY", "WRONG WAY");
         ENDict.Add("FINAL_LAP", "FINAL LAP");

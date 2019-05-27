@@ -264,10 +264,11 @@ public class UIPanel : UIBehaviour
 
         #region Race Start Screen
 
-        //if (countDownController != null)
-            //countDownText.text = countDownController.CountDownText;
-        //else
-        //    countDownText.text = "";
+        
+        if (countDownController != null && SceneManager.GetActiveScene().name != ScenesInformation.sceneNames[SceneTitle.TUTORIAL]) // and if !tutorial level
+            countDownText.text = countDownController.CountDownText;
+        else
+            countDownText.text = "";
 
         #endregion
 

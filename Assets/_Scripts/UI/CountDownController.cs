@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CountDownController : MonoBehaviour
 {
@@ -10,9 +11,17 @@ public class CountDownController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CountDown = 3;
-        CountDownText = LocalizationManager.GetTextByKey("GET_A_FAST_TIME");
-        StartCoroutine(StartCountDown());
+        if (SceneManager.GetActiveScene().name != ScenesInformation.sceneNames[SceneTitle.TUTORIAL])
+        {
+            CountDown = 3;
+            CountDownText = LocalizationManager.GetTextByKey("GET_A_FAST_TIME");
+            StartCoroutine(StartCountDown());
+        }
+        else
+        {
+            RaceManager.raceStarted = true;
+            CountDownText = "";
+        }
     }
 
     IEnumerator StartCountDown()
