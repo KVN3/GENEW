@@ -64,7 +64,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         shipyardText.text = LocalizationManager.GetTextByKey("SHIPYARD");
         if (achievementsText != null)
             achievementsText.text = LocalizationManager.GetTextByKey("ACHIEVEMENTS");
-        versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 2";
+        versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + " Release Candidate";
 
         if (PlayerPrefs.HasKey("currentAccount"))
         {
