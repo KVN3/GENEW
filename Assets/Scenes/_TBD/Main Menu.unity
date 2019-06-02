@@ -10738,11 +10738,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -23534,7 +23534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1621706144
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32196,6 +32196,7 @@ MonoBehaviour:
   goToRegisterText: {fileID: 967423256}
   mainMenu: {fileID: 706186048492913598}
   registration: {fileID: 1817986916}
+  friendlistBtn: {fileID: 1621706143}
 --- !u!1 &2125866658
 GameObject:
   m_ObjectHideFlags: 0
@@ -32666,6 +32667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   friendPanel: {fileID: 946765871}
+  friendlistBtn: {fileID: 1621706143}
   titleText: {fileID: 1331617747}
   playText: {fileID: 1511720739}
   shipyardText: {fileID: 70023624}

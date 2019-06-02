@@ -11,6 +11,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     //private MenuSoundManager menuSoundManagerClass;
 
     public GameObject friendPanel;
+    public GameObject friendlistBtn;
 
     [Header("Text")]
     public TextMeshProUGUI titleText;
@@ -50,10 +51,13 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
 
     void OnEnable()
     {
+        // Set sprite states
         if (!ClientConfigurationManager.Instance.clientConfiguration.MusicOn)
             musicIcon.sprite = musicIconOff;
         if (!ClientConfigurationManager.Instance.clientConfiguration.SoundOn)
             soundIcon.sprite = soundIconOff;
+
+        friendlistBtn.SetActive(true);
     }
 
     // Start is called before the first frame update

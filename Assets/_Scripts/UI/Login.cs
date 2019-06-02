@@ -26,6 +26,8 @@ public class Login : MonoBehaviour
     public GameObject mainMenu;
     public GameObject registration;
 
+    public GameObject friendlistBtn;
+
     private string key = "AccountData";
     #endregion
 
@@ -108,6 +110,11 @@ public class Login : MonoBehaviour
     {
         registration.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        friendlistBtn.SetActive(false);
     }
 }
 
