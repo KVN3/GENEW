@@ -2165,7 +2165,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: LOBBY
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 4012942071404173525}
         m_MethodName: HidePanel
         m_Mode: 5
@@ -2176,7 +2176,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: ROOM
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &202603208

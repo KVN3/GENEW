@@ -8,6 +8,17 @@ public class ElectricExplosion : MonoBehaviour
     public int shutDownDuration = 4;
     public int lifeTimeDuration = 5;
 
+
+    void Awake()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+
+        if (ClientConfigurationManager.Instance.clientConfiguration.SoundOn)
+            audioSource.enabled = true;
+        else
+            audioSource.enabled = false;
+    }
+
     void Start()
     {
 
