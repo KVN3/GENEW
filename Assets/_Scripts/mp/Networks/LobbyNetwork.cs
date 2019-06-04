@@ -11,7 +11,8 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     {
 
         Connect();
-        
+
+        StartCoroutine(C_ManageButtonAccess());
     }
 
     public static void Connect()
@@ -43,9 +44,25 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         print("Joined lobby.");
+    }
 
-        MainCanvasManager.instance.LobbyCanvas.CreateRoomButton.interactable = true;
-        MainCanvasManager.instance.MainMenu.tutorialButton.interactable = true;
+    private IEnumerator C_ManageButtonAccess()
+    {
+        while (true)
+        {
+            if (PhotonNetwork.IsConnectedAndReady)
+            {
+                MainCanvasManager.instance.LobbyCanvas.CreateRoomButton.interactable = true;
+                MainCanvasManager.instance.MainMenu.tutorialButton.interactable = true;
+            }
+            else
+            {
+                MainCanvasManager.instance.LobbyCanvas.CreateRoomButton.interactable = false;
+                MainCanvasManager.instance.MainMenu.tutorialButton.interactable = false;
+            }
+
+            yield return new WaitForSeconds(1);
+        }
     }
 
 
