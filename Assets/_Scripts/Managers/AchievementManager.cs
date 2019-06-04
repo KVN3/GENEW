@@ -19,7 +19,7 @@ public class AchievementManager : MonoBehaviour
         achievementCanvas = GameObject.FindObjectOfType<AchievementCanvas>();
 
         CheckNewAchievements();
-        GetNewAchievements();
+        //GetNewAchievements();
     }
 
     public void InitAchievements()
