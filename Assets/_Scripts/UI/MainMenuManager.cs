@@ -11,6 +11,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     //private MenuSoundManager menuSoundManagerClass;
 
     public GameObject friendPanel;
+    public GameObject friendlistBtn;
 
     [Header("Text")]
     public TextMeshProUGUI titleText;
@@ -50,10 +51,13 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
 
     void OnEnable()
     {
+        // Set sprite states
         if (!ClientConfigurationManager.Instance.clientConfiguration.MusicOn)
             musicIcon.sprite = musicIconOff;
         if (!ClientConfigurationManager.Instance.clientConfiguration.SoundOn)
             soundIcon.sprite = soundIconOff;
+
+        friendlistBtn.SetActive(true);
     }
 
     // Start is called before the first frame update
@@ -64,7 +68,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         shipyardText.text = LocalizationManager.GetTextByKey("SHIPYARD");
         if (achievementsText != null)
             achievementsText.text = LocalizationManager.GetTextByKey("ACHIEVEMENTS");
-        versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + "Alpha 2";
+        versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + " Release Candidate";
 
         if (PlayerPrefs.HasKey("currentAccount"))
         {
