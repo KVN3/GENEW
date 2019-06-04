@@ -16,8 +16,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     [Header("Text")]
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI playText;
-    public TextMeshProUGUI shipyardText;
-    public TextMeshProUGUI optionsText; // Options has sound/music/resetdata/changeAccount
+    public TextMeshProUGUI shipyardText; 
     public TextMeshProUGUI achievementsText;
     public TextMeshProUGUI versionText;
     public TextMeshProUGUI usernameText;
@@ -60,7 +59,6 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         friendlistBtn.SetActive(true);
     }
 
-    // Start is called before the first frame update
     void Update()
     {
         titleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");

@@ -225,23 +225,38 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         switch (preferredLanguage)
         {
             case Language.Dutch:
-                if (NLDict.ContainsKey(key))
-                    return NLDict[key];
-                else
-                    return "ERROR";
-            default:
+                try
+                {
+                    if (NLDict.ContainsKey(key))
+                        return NLDict[key];
+                    else
+                        return key;
+                }
+                catch
+                {
+                    print("Key not found: " + key);
+                    return key;
+                }
+            default: 
             case Language.English:
-                if (ENDict.ContainsKey(key))
-                    return ENDict[key];
-                else
-                    return "ERROR";
+                try
+                {
+                    if (ENDict.ContainsKey(key))
+                        return ENDict[key];
+                    else
+                        return key;
+                }
+                catch
+                {
+                    print("Key not found: "+ key);
+                    return key;
+                }
         }
     }
 
     public void SetLanguage(int languageIndex)
     {
         preferredLanguage = (Language)languageIndex;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // Abstract

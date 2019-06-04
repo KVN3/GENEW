@@ -110,8 +110,6 @@ public class CurrentRoomCanvas : MonoBehaviour
             progress = PhotonNetwork.LevelLoadingProgress;
             progress = Mathf.Clamp01(progress / .9f);
 
-            Debug.Log(progress);
-
             loadingBar.value = progress;
             progressText.text = (progress * 100).ToString("F0") + "%";
 
