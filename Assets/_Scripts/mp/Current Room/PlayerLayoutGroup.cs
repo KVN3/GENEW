@@ -135,8 +135,20 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
 
     public void OnClickLeaveRoom()
     {
-        Chat.instance.LeaveChat(Chat.instance.channelsToJoinOnConnect[2]);
-        PhotonNetwork.LeaveRoom();
+        // If chat loaded, leave chat.
+        if (Chat.instance.chatClient.State.Equals(Photon.Chat.ChatState.ConnectedToNameServer))
+        {
+            Chat.instance.LeaveChat(Chat.instance.channelsToJoinOnConnect[2]);
+        }
+
+        // If room loaded, leave room and swap panels.
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+
+            MainCanvasManager.instance.HidePanel(PanelType.ROOM);
+            MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
+        }
     }
 
     // If index == -1, index hasn't been found

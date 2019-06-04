@@ -50,7 +50,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     {
         while (true)
         {
-            if (PhotonNetwork.IsConnectedAndReady)
+            if (PhotonNetwork.IsConnectedAndReady && PhotonNetwork.InLobby)
             {
                 MainCanvasManager.instance.LobbyCanvas.CreateRoomButton.interactable = true;
                 MainCanvasManager.instance.MainMenu.tutorialButton.interactable = true;
@@ -61,7 +61,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
                 MainCanvasManager.instance.MainMenu.tutorialButton.interactable = false;
             }
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(.3f);
         }
     }
 
