@@ -126,7 +126,7 @@ public class Map : MonoBehaviour
         // Set scene specific settings
         if (sceneName.Equals(ScenesInformation.sceneNames[SceneTitle.WASTELAND]))
         {
-            transform.Rotate(new Vector3(0, 0, -90f));
+            //transform.Rotate(new Vector3(0, 0, -90f));
 
             // Conversion settings
             mapOrigin = new Vector3(-280, 0, 950);
