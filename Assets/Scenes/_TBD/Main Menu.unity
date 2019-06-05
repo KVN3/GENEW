@@ -12671,7 +12671,7 @@ MonoBehaviour:
   _mapSelection: {fileID: 488214863}
   roomNameText: {fileID: 1199723283}
   levelText: {fileID: 336246640}
-  lapsText: {fileID: 1689265159}
+  lapsText: {fileID: 1139219347}
   leaderboardText: {fileID: 802317881}
   chatTitle: {fileID: 2075639964}
   connectingText: {fileID: 1265387624}
