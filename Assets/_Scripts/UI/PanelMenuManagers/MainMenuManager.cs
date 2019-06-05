@@ -18,6 +18,8 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     public TextMeshProUGUI playText;
     public TextMeshProUGUI shipyardText; 
     public TextMeshProUGUI achievementsText;
+    public TextMeshProUGUI logoutText;
+    public TextMeshProUGUI exitGameText;
     public TextMeshProUGUI versionText;
     public TextMeshProUGUI usernameText;
 
@@ -64,8 +66,9 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         titleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
         playText.text = LocalizationManager.GetTextByKey("PLAY");
         shipyardText.text = LocalizationManager.GetTextByKey("SHIPYARD");
-        if (achievementsText != null)
-            achievementsText.text = LocalizationManager.GetTextByKey("ACHIEVEMENTS");
+        achievementsText.text = LocalizationManager.GetTextByKey("ACHIEVEMENTS");
+        logoutText.text = LocalizationManager.GetTextByKey("LOGOUT");
+        exitGameText.text = LocalizationManager.GetTextByKey("EXIT_GAME");
         versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + " Release Candidate";
 
         if (PlayerPrefs.HasKey("currentAccount"))
@@ -86,14 +89,13 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         {
             soundIcon.sprite = soundIconOn;
             ClientConfigurationManager.Instance.clientConfiguration.SoundOn = true;
-            ClientConfigurationManager.Instance.SavePlayerSettings();
         }
         else
         {
             soundIcon.sprite = soundIconOff;
             ClientConfigurationManager.Instance.clientConfiguration.SoundOn = false;
-            ClientConfigurationManager.Instance.SavePlayerSettings();
         }
+        ClientConfigurationManager.Instance.SavePlayerSettings();
     }
 
     public void ToggleMusic()
@@ -102,15 +104,14 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         {
             musicIcon.sprite = musicIconOn;
             ClientConfigurationManager.Instance.clientConfiguration.MusicOn = true;
-            ClientConfigurationManager.Instance.SavePlayerSettings();
         }
         else
         {
             musicIcon.sprite = musicIconOff;
             ClientConfigurationManager.Instance.clientConfiguration.MusicOn = false;
-            ClientConfigurationManager.Instance.SavePlayerSettings();
+            
         }
-
+        ClientConfigurationManager.Instance.SavePlayerSettings();
     }
     #endregion
 }

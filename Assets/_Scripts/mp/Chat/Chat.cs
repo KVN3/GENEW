@@ -199,7 +199,7 @@ public class Chat : MonoBehaviour, IChatClientListener
         // in this demo, we simply send a message into each channel. This is NOT a must have!
         foreach (string channel in channels)
         {
-            chatClient.PublishMessage(channel, $" has joined"); // you don't HAVE to send a msg on join but you could.
+            chatClient.PublishMessage(channel, LocalizationManager.GetTextByKey("HAS_JOINED")); // you don't HAVE to send a msg on join but you could.
 
             if (ChannelToggleToInstantiate != null)
                 InstantiateChannelButton(channel);

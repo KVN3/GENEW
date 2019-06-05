@@ -28,6 +28,8 @@ public class ClientConfigurationManager : MonoBehaviour
         clientConfiguration.SawChangelog = false;
         clientConfiguration.SawNewAchievement = true;
 
+        clientConfiguration.preferredLanguage = Language.English;
+
         clientConfiguration.MusicOn = true;
         clientConfiguration.SoundOn = true;
 

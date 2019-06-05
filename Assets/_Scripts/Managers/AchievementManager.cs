@@ -26,7 +26,7 @@ public class AchievementManager : MonoBehaviour
     {
         List<Achievement> achievements = new List<Achievement>
         {
-            new Achievement(0, "Learn the basics", "Complete the tutorial level", AchievementType.EVENT, 1f), // DONE
+            new Achievement(0, "Learned the basics", "Complete the tutorial level", AchievementType.EVENT, 1f), // DONE
             new Achievement(1, "Bronze wasteland", "Beat bronze time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
             new Achievement(2, "Silver wasteland", "Beat silver time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
             new Achievement(3, "Gold wasteland", "Beat gold time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
@@ -38,7 +38,7 @@ public class AchievementManager : MonoBehaviour
             new Achievement(9, "Sharing is caring", "Hit a person with a jammer rocket or jammer mine", AchievementType.MISC, 1f),
             new Achievement(10, "Unstunnable", "Don't get stunned by anything", AchievementType.MISC, 1f), // DONE
             new Achievement(11, "Speed demon", "Achieve a speed of 600 km/h", AchievementType.STAT, 1f), // DONE
-            new Achievement(12, "Traveler", "Travel 50km (about 17 laps) TOTAL", AchievementType.STAT, 50f), // DONE
+            new Achievement(12, "Are we there yet?", "Travel 50km (about 17 laps) TOTAL", AchievementType.STAT, 50f), // DONE
             new Achievement(13, "Blockmaster", "Block 4 projectiles in a single race", AchievementType.MISC, 1f), // DONE
             new Achievement(14, "Guardian", "Block 20 projectiles TOTAL", AchievementType.STAT, 20f), // DONE
             new Achievement(15, "Champion", "Be number one on the leaderboard on any level", AchievementType.MISC, 1f),

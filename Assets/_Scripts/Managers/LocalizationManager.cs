@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LocalizationManager : LevelSingleton<LocalizationManager>
 {
-    public static Language preferredLanguage;
+    // PreferredLanguage is the language being used.
+    public static Language chosenLanguage;
     private static Dictionary<string, string> NLDict;
     private static Dictionary<string, string> ENDict;
 
@@ -14,7 +15,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
     {
         DontDestroyOnLoad(this); // Persistent
 
-        preferredLanguage = Language.English;
+        chosenLanguage = ClientConfigurationManager.Instance.clientConfiguration.preferredLanguage; // This is by default set in ClientConfigurationManager
         NLDict = new Dictionary<string, string>();
         ENDict = new Dictionary<string, string>();
 
@@ -37,12 +38,19 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("OFF", "UIT");
         NLDict.Add("LOBBY", "Lobby");
         NLDict.Add("ROOM_NAME", "Kamernaam");
-        NLDict.Add("CREATE_ROOM", "Creëer kamer");
+        NLDict.Add("CREATE_ROOM", "Maak kamer aan");
         NLDict.Add("LEAVE_ROOM", "Verlaat kamer");
         NLDict.Add("START_MATCH", "Start potje");
+        NLDict.Add("PLAYERS_IN_ROOM", "Spelers in kamer");
+        NLDict.Add("CHAT", "Chat");
+        NLDict.Add("CONNECTING", "Verbinding maken");
+        NLDict.Add("ENTER_CHAT_MESSAGE", "Vul chatbericht in...");
+        NLDict.Add("HAS_JOINED", " is toegetreden");
         NLDict.Add("PUBLIC_ROOM", "Openbare kamer");
-        NLDict.Add("LOADING", "Laden");
+        NLDict.Add("LOADING", "Laden...");
+        NLDict.Add("LOGOUT", "Log uit");
         NLDict.Add("QUIT_GAME", "Verlaat spel");
+        NLDict.Add("EXIT_GAME", "Verlaat spel");
         NLDict.Add("VERSION", "Versie");
         NLDict.Add("ACHIEVEMENTS", "Prestaties");
         NLDict.Add("COMPLETED", "Compleet");
@@ -59,7 +67,18 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("USERNAME", "Gebruikersnaam");
         NLDict.Add("PASSWORD", "Wachtwoord");
         NLDict.Add("CONFIRM_PASSWORD", "Bevestig wachtwoord");
+
+        // Friends
         NLDict.Add("FRIENDS", "Vrienden");
+        NLDict.Add("OPEN_FRIENDS", "Open vrienden");
+        NLDict.Add("ADD_FRIEND", "Vriend toevoegen");
+        NLDict.Add("FRIEND_TO_ADD", "Vriend om toe te voegen...");
+
+        // Leaderboard
+        NLDict.Add("LEADERBOARD", "Leaderboard");
+        NLDict.Add("RANK", "Rank");
+        NLDict.Add("NAME", "Naam");
+        NLDict.Add("TIME", "Tijd");
 
         // Help text
         NLDict.Add("HELP_REGISTRATION", "Vul deze velden hieronder in. \nDit account slaat je vrienden, voortgang en prestaties op.");
@@ -78,8 +97,6 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("RED", "Rood");
         NLDict.Add("BLUE", "Blauw");
         NLDict.Add("GREEN", "Groen");
-
-        NLDict.Add("NAME", "Naam");
 
         // Explanation
         NLDict.Add("ESC_TO_QUIT", "Druk esc om het spel te verlaten");
@@ -112,9 +129,10 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("BEST_LAPTIME", "Beste rondetijd");
         NLDict.Add("BEST_TIME", "Beste tijd");
         NLDict.Add("TOTAL_TIME", "Totale tijd");
-        NLDict.Add("LEADERBOARD", "Leaderboard");
-        NLDict.Add("TIME", "Tijd");
         NLDict.Add("USER", "Gebruiker");
+
+        // Achievements
+        
         #endregion
 
         #region English
@@ -140,9 +158,16 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("ROOM_NAME", "Room name");
         ENDict.Add("LEAVE_ROOM", "Leave room");
         ENDict.Add("START_MATCH", "Start match");
+        ENDict.Add("CHAT", "Chat");
+        ENDict.Add("CONNECTING", "Connecting");
+        ENDict.Add("ENTER_CHAT_MESSAGE", "Enter chat message...");
+        ENDict.Add("HAS_JOINED", " has joined");
+        ENDict.Add("PLAYERS_IN_ROOM", "Players in room");
         ENDict.Add("PUBLIC_ROOM", "Public room");
-        ENDict.Add("LOADING", "Loading");
+        ENDict.Add("LOADING", "Loading...");
+        ENDict.Add("LOGOUT", "Logout");
         ENDict.Add("QUIT_GAME", "Quit game");
+        ENDict.Add("EXIT_GAME", "Exit game");
         ENDict.Add("VERSION", "Version");
         ENDict.Add("ACHIEVEMENTS", "ACHIEVEMENTS");
         ENDict.Add("COMPLETED", "Completed");
@@ -159,7 +184,18 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("USERNAME", "Username");
         ENDict.Add("PASSWORD", "Password");
         ENDict.Add("CONFIRM_PASSWORD", "Confirm password");
+        
+        // Friends
         ENDict.Add("FRIENDS", "Friends");
+        ENDict.Add("OPEN_FRIENDS", "Open friends");
+        ENDict.Add("ADD_FRIEND", "Add Friend");
+        ENDict.Add("FRIEND_TO_ADD", "Friend to add...");
+
+        // Leaderboard
+        ENDict.Add("LEADERBOARD", "Leaderboard");
+        ENDict.Add("RANK", "Rank");
+        ENDict.Add("NAME", "Name");
+        ENDict.Add("TIME", "Time");
 
         // Help text
         ENDict.Add("HELP_REGISTRATION", "Please fill in these fields to create an account. \nThis account saves your friends, progress and achievements.");
@@ -178,8 +214,6 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("RED", "Red");
         ENDict.Add("BLUE", "Blue");
         ENDict.Add("GREEN", "Green");
-
-        ENDict.Add("NAME", "Name");
 
         // Explanations
         ENDict.Add("ESC_TO_QUIT", "Press esc to quit");
@@ -213,8 +247,6 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("BEST_LAPTIME", "Best laptime");
         ENDict.Add("BEST_TIME", "Best time");
         ENDict.Add("TOTAL_TIME", "Total time");
-        ENDict.Add("LEADERBOARD", "Leaderboard");
-        ENDict.Add("TIME", "Time");
         ENDict.Add("USER", "User");
 
         #endregion
@@ -222,41 +254,28 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
 
     public static string GetTextByKey(string key)
     {
-        switch (preferredLanguage)
+        switch (chosenLanguage)
         {
             case Language.Dutch:
-                try
-                {
                     if (NLDict.ContainsKey(key))
                         return NLDict[key];
                     else
                         return key;
-                }
-                catch
-                {
-                    print("Key not found: " + key);
-                    return key;
-                }
             default: 
             case Language.English:
-                try
-                {
                     if (ENDict.ContainsKey(key))
                         return ENDict[key];
                     else
                         return key;
-                }
-                catch
-                {
-                    print("Key not found: "+ key);
-                    return key;
-                }
         }
     }
 
     public void SetLanguage(int languageIndex)
     {
-        preferredLanguage = (Language)languageIndex;
+        chosenLanguage = (Language)languageIndex;
+        // Change preference
+        ClientConfigurationManager.Instance.clientConfiguration.preferredLanguage = (Language)languageIndex;
+        ClientConfigurationManager.Instance.SavePlayerSettings();
     }
 
     // Abstract
