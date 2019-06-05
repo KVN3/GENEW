@@ -98,7 +98,7 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         GameObject playerListingObj = Instantiate(PlayerListingPrefab);
         playerListingObj.transform.SetParent(transform, false);
         // Adds onClick to add friend
-        playerListingObj.GetComponent<Button>().onClick.AddListener(delegate { Chat.instance.AddFriend(player.UserId); });
+        //playerListingObj.GetComponent<Button>().onClick.AddListener(delegate { Chat.instance.AddFriend(player.UserId); });
 
         // Add to listing
         PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
@@ -136,7 +136,7 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     public void OnClickLeaveRoom()
     {
         // If chat loaded, leave chat.
-        if (Chat.instance.chatClient.State.Equals(Photon.Chat.ChatState.ConnectedToNameServer))
+        if (Chat.instance.chatClient.State.Equals(Photon.Chat.ChatState.ConnectedToFrontEnd))
         {
             Chat.instance.LeaveChat(Chat.instance.channelsToJoinOnConnect[2]);
         }

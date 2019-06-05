@@ -34,7 +34,9 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
             else
             {
                 GameConfiguration.tutorial = false;
+                // Join chat channel of the room
                 Chat.instance.JoinChat(RoomName.text);
+                Chat.instance.roomName = RoomName.text;
                 print("Create room successfully sent.");
             }
 

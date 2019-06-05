@@ -7,6 +7,8 @@ using Photon.Pun;
 using System;
 using System.Collections.Generic;
 
+// ShowChannel to switch and show chat
+
 public class Chat : MonoBehaviour, IChatClientListener
 {
     #region Fields
@@ -27,6 +29,9 @@ public class Chat : MonoBehaviour, IChatClientListener
     public int historyLengthToFetch; // set in inspector. Up to a certain degree, previously sent messages can be fetched for context
 
     public string userName { get; set; }
+    public string roomName = "";
+    // To hide messages on join
+    public bool justJoined;
 
     private string selectedChannelName; // mainly used for GUI/input
 
@@ -71,10 +76,6 @@ public class Chat : MonoBehaviour, IChatClientListener
         channelsToJoinOnConnect = new List<string> { "Global", "Lobby" };
 
         Connect();
-
-        //#if PHOTON_UNITY_NETWORKING
-        //chatAppSettings = PhotonNetwork.PhotonServerSettings.AppSettings;
-        //#endif
     }
 
     private void Update()
@@ -88,26 +89,18 @@ public class Chat : MonoBehaviour, IChatClientListener
             return;
         }
 
-        stateText.gameObject.SetActive(showState); // this could be handled more elegantly, but for the demo it's ok.
+        stateText.gameObject.SetActive(showState); // this could be handled more elegantly
     }
 
     public void JoinChat(string roomName)
     {
-        // Add chat channel
-        //if (!chatChannels.Contains(roomName))
-        //    chatChannels.Add(roomName);
-
         // Add to list, subscribe to it and set roomName
         channelsToJoinOnConnect.Add(roomName);
         chatClient.Subscribe(roomName, historyLengthToFetch);
         CurrentRoomCanvas.instance.RoomName = roomName;
 
-        foreach (string s in chatClient.PublicChannels.Keys)
-            Debug.Log(s);
-
-        //chatClient.PublicChannels[roomName].ClearMessages(); // Does not work
-
-        //Connect();
+        // To let chat show up empty at first frame
+        justJoined = true;
     }
 
     public void LeaveChat(string roomName)
@@ -115,6 +108,7 @@ public class Chat : MonoBehaviour, IChatClientListener
         if (channelsToJoinOnConnect.Contains(roomName))
         {
             string[] channels = { roomName };
+            ClearChat();
             chatClient.Unsubscribe(channels);
             channelsToJoinOnConnect.Remove(roomName);
         }
@@ -182,12 +176,14 @@ public class Chat : MonoBehaviour, IChatClientListener
         if (string.IsNullOrEmpty(inputLine))
             return;
 
+        justJoined = false;
+
         chatClient.PublishMessage(selectedChannelName, inputLine);
     }
 
     public virtual void OnGetMessages(string channelName, string[] senders, object[] messages)
     {
-        if (channelName.Equals(selectedChannelName))
+        if (channelName.Equals(selectedChannelName) && !justJoined)
         {
             // update text
             ShowChannel(selectedChannelName);
@@ -196,17 +192,20 @@ public class Chat : MonoBehaviour, IChatClientListener
 
     public void OnSubscribed(string[] channels, bool[] results)
     {
-        // in this demo, we simply send a message into each channel. This is NOT a must have!
         foreach (string channel in channels)
         {
             chatClient.PublishMessage(channel, LocalizationManager.GetTextByKey("HAS_JOINED")); // you don't HAVE to send a msg on join but you could.
-
-            if (ChannelToggleToInstantiate != null)
-                InstantiateChannelButton(channel);
         }
 
         // Switch to the first newly created channel
         ShowChannel(channels[0]);
+
+        // To clear chat
+        if (selectedChannelName == roomName)
+        {
+            StartCoroutine(C_ClearChat());
+            StartCoroutine(C_JustJoined());
+        }
     }
 
     public void ShowChannel(string channelName)
@@ -235,21 +234,26 @@ public class Chat : MonoBehaviour, IChatClientListener
         }
     }
 
-    private void InstantiateChannelButton(string channelName)
+    public void ClearChat()
     {
-        if (channelToggles.ContainsKey(channelName))
-        {
-            Debug.Log("Skipping creation for an existing channel toggle.");
-            return;
-        }
-
-        Toggle cbtn = (Toggle)Instantiate(ChannelToggleToInstantiate);
-        cbtn.gameObject.SetActive(true);
-        cbtn.GetComponentInChildren<ChannelSelector>().SetChannel(channelName);
-        cbtn.transform.SetParent(this.ChannelToggleToInstantiate.transform.parent, false);
-
-        channelToggles.Add(channelName, cbtn);
+        chatClient.PublicChannels[roomName].ClearMessages();
+        ShowChannel(roomName);
+        print("Cleared chat!");
     }
+
+    IEnumerator C_JustJoined()
+    {
+        yield return null;
+        justJoined = false;
+    }
+
+    IEnumerator C_ClearChat()
+    {
+        //yield return new WaitForSeconds(0.05f);
+        yield return null;
+        ClearChat();
+    }
+
     #endregion
 
     /// <summary>
@@ -308,7 +312,7 @@ public class Chat : MonoBehaviour, IChatClientListener
         friendObjects.Add(fbtn);
 
         // Add onClick event for removeFriend
-        fbtn.GetComponent<Button>().onClick.AddListener(delegate { RemoveFriend(friendId); });
+        //fbtn.GetComponent<Button>().onClick.AddListener(delegate { RemoveFriend(friendId); });
 
         fbtn.gameObject.SetActive(true);
         Friend _friendItem = fbtn.GetComponent<Friend>();

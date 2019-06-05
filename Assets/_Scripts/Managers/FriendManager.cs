@@ -17,7 +17,7 @@ public class FriendManager : MonoBehaviour
         Account account = Registration.GetCurrentAccount();
         
         // Add if doesnt contain friend
-        if (!account.friendList.Contains(name))
+        if (!account.friendList.Contains(name) && name != account.username)
             account.friendList.Add(name);
 
         // Update
