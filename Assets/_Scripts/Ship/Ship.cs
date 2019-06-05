@@ -105,7 +105,7 @@ public class Ship : MyMonoBehaviour
             usedItem = true;
             itemUses++;
             totalItemUses++;
-            AchievementManager.UpdateAchievement(16, 1f);
+            AchievementManager.UpdateAchievement(18, 1f);
 
             if (collectableItemClass is JammerProjectile)
             {
