@@ -142,13 +142,13 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         }
 
         // If room loaded, leave room and swap panels.
-        if (PhotonNetwork.InRoom)
-        {
+        //if (PhotonNetwork.InRoom)
+        //{
             PhotonNetwork.LeaveRoom();
 
             MainCanvasManager.instance.HidePanel(PanelType.ROOM);
             MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
-        }
+      //  }
     }
 
     // If index == -1, index hasn't been found
