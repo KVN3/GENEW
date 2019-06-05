@@ -6966,7 +6966,7 @@ GameObject:
   - component: {fileID: 536385989}
   - component: {fileID: 536385988}
   m_Layer: 5
-  m_Name: Customize Text
+  m_Name: ReturnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7617,7 +7617,7 @@ GameObject:
   - component: {fileID: 556656034}
   - component: {fileID: 556656033}
   m_Layer: 5
-  m_Name: PlayersText
+  m_Name: PlayersInRoomText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9726,6 +9726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 813300873}
+  returnText: {fileID: 536385988}
 --- !u!114 &710847072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10615,7 +10616,7 @@ GameObject:
   - component: {fileID: 754982626}
   - component: {fileID: 754982625}
   m_Layer: 5
-  m_Name: FriendListText
+  m_Name: OpenFriendText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12669,15 +12670,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapSelection: {fileID: 488214863}
   roomNameText: {fileID: 1199723283}
+  levelText: {fileID: 336246640}
+  lapsText: {fileID: 1689265159}
+  leaderboardText: {fileID: 802317881}
+  chatTitle: {fileID: 2075639964}
+  connectingText: {fileID: 1265387624}
+  enterChatMessageText: {fileID: 2115954435}
+  playersInRoomText: {fileID: 556656033}
+  ghostsText: {fileID: 586513633}
   startMatchText: {fileID: 608183776}
   leaveRoomText: {fileID: 1158555805}
-  levelText: {fileID: 336246640}
-  leaderboardText: {fileID: 802317881}
-  leaderboardTimesText: {fileID: 0}
-  lapsText: {fileID: 0}
-  ghostsText: {fileID: 586513633}
   progressText: {fileID: 539304515}
-  lapInput: {fileID: 0}
   ghostInput: {fileID: 422830425}
   playButton: {fileID: 1119144053}
   levelDropdown: {fileID: 488214864}
@@ -13417,6 +13420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946765872}
   - component: {fileID: 946765873}
+  - component: {fileID: 946765874}
   m_Layer: 5
   m_Name: FriendPanelParent
   m_TagString: Untagged
@@ -13464,6 +13468,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &946765874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946765871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755c571902bb85e4196df032d9c577db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openFriendsText: {fileID: 754982625}
+  friendsText: {fileID: 1017646399}
+  addFriendText: {fileID: 2125866660}
+  friendToAddText: {fileID: 333689702}
 --- !u!1001 &956050667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22508,6 +22528,7 @@ GameObject:
   - component: {fileID: 1557379586}
   - component: {fileID: 1557379585}
   - component: {fileID: 1557379584}
+  - component: {fileID: 1557379587}
   m_Layer: 5
   m_Name: LeaderboardPanel
   m_TagString: Untagged
@@ -22576,6 +22597,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 645.8, y: 660}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1557379587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557379583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184dabb7197e6ad45b681323ec00471e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaderboardTitle: {fileID: 802317881}
+  rankText: {fileID: 1288024793}
+  nameText: {fileID: 1527945710}
+  timeText: {fileID: 1303718780}
 --- !u!1 &1576558475
 GameObject:
   m_ObjectHideFlags: 0
@@ -27833,7 +27870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -27905,7 +27942,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 177424455}
+        m_MethodName: SetRoomNameChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: TMPro.TMP_InputField+OnChangeEvent, Unity.TextMeshPro, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
@@ -32209,7 +32257,7 @@ GameObject:
   - component: {fileID: 2125866661}
   - component: {fileID: 2125866660}
   m_Layer: 5
-  m_Name: FriendListText
+  m_Name: AddFriendText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32371,6 +32419,7 @@ GameObject:
   - component: {fileID: 2137092948}
   - component: {fileID: 2137092950}
   - component: {fileID: 2137092949}
+  - component: {fileID: 2137092951}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -32439,6 +32488,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137092947}
   m_CullTransparentMesh: 0
+--- !u!114 &2137092951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137092947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d0d18d08f2ee9448fbda63b1c1ec39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingText: {fileID: 1008228946}
 --- !u!1 &2139656718
 GameObject:
   m_ObjectHideFlags: 0
@@ -32671,8 +32733,9 @@ MonoBehaviour:
   titleText: {fileID: 1331617747}
   playText: {fileID: 1511720739}
   shipyardText: {fileID: 70023624}
-  optionsText: {fileID: 0}
   achievementsText: {fileID: 117035862}
+  logoutText: {fileID: 1950811868}
+  exitGameText: {fileID: 1627664931}
   versionText: {fileID: 4012942069786850813}
   usernameText: {fileID: 1657627502}
   soundIconOn: {fileID: 21300000, guid: 853627caa8a8b3548895347f2ec34c0a, type: 3}

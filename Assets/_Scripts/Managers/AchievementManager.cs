@@ -14,24 +14,38 @@ public class AchievementManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
 
-        // Create and save achievements
-        if (!PlayerPrefs.HasKey(key))
-            InitAchievements();
+        InitAchievements();
 
         achievementCanvas = GameObject.FindObjectOfType<AchievementCanvas>();
+
+        CheckNewAchievements();
+        //GetNewAchievements();
     }
 
     public void InitAchievements()
     {
-        // Create achivements
         List<Achievement> achievements = new List<Achievement>
         {
-            new Achievement(0, "Bronze wasteland", "Beat bronze time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(1, "Silver wasteland", "Beat silver time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(2, "Gold wasteland", "Beat gold time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(3, "Bronze highway", "Beat bronze time on Elto Highway", AchievementType.LAPTIME, 1f),
-            new Achievement(4, "Silver highway", "Beat silver time on Elto Highway", AchievementType.LAPTIME, 1f),
-            new Achievement(5, "Gold highway", "Beat gold time on Elto Highway", AchievementType.LAPTIME, 1f),
+            new Achievement(0, "Learned the basics", "Complete the tutorial level", AchievementType.EVENT, 1f), // DONE
+            new Achievement(1, "Bronze wasteland", "Beat bronze time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
+            new Achievement(2, "Silver wasteland", "Beat silver time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
+            new Achievement(3, "Gold wasteland", "Beat gold time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
+            new Achievement(4, "Bronze highway", "Beat bronze time on Elto Highway", AchievementType.LAPTIME, 1f),
+            new Achievement(5, "Silver highway", "Beat silver time on Elto Highway", AchievementType.LAPTIME, 1f),
+            new Achievement(6, "Gold highway", "Beat gold time on Elto Highway", AchievementType.LAPTIME, 1f),
+            new Achievement(7, "Boosters for losers", "Complete a race without any kind of boost", AchievementType.MISC, 1f), // DONE
+            new Achievement(8, "Look mom no items", "Complete a race without using any items", AchievementType.MISC, 1f), // DONE
+            new Achievement(9, "Sharing is caring", "Hit a person with a jammer rocket or jammer mine", AchievementType.MISC, 1f),
+            new Achievement(10, "Unstunnable", "Don't get stunned by anything", AchievementType.MISC, 1f), // DONE
+            new Achievement(11, "Speed demon", "Achieve a speed of 600 km/h", AchievementType.STAT, 1f), // DONE
+            new Achievement(12, "Are we there yet?", "Travel 50km (about 17 laps) TOTAL", AchievementType.STAT, 50f), // DONE
+            new Achievement(13, "Blockmaster", "Block 4 projectiles in a single race", AchievementType.MISC, 1f), // DONE
+            new Achievement(14, "Guardian", "Block 20 projectiles TOTAL", AchievementType.STAT, 20f), // DONE
+            new Achievement(15, "Champion", "Be number one on the leaderboard on any level", AchievementType.MISC, 1f),
+            new Achievement(16, "Items 4 days", "Use 4 items in a single race", AchievementType.STAT, 1f), // DONE
+            new Achievement(17, "Boosted to infinity", "Use 10 boostpads in a single race", AchievementType.STAT, 1f), // DONE
+            new Achievement(18, "Item sickness", "Use 20 items TOTAL", AchievementType.STAT, 20f), // DONE 
+            new Achievement(19, "Totally boosted", "Use 50 boostpads TOTAL", AchievementType.STAT, 50f) // DONE
         };
 
         // Save
@@ -39,7 +53,7 @@ public class AchievementManager : MonoBehaviour
         string json = JsonUtility.ToJson(achievementData);
         PlayerPrefs.SetString(key, json);
     }
-    
+
     public List<Achievement> CreateAchievementListForPlayer(Account account)
     {
         List<Achievement> achievements = LoadAchievements();
@@ -80,6 +94,39 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
+    public static void UpdateAchievementByName(string name, float addedProgress)
+    {
+        // Load
+        Account account = Registration.GetCurrentAccount();
+
+        // Get index
+        Achievement achievement = account.achievements.FirstOrDefault(a => a.title == name);
+        if (achievement != null)
+        { 
+            if (!achievement.isDone)
+            {
+                // Add progress
+                if (achievement.progress < achievement.progressGoal)
+                    achievement.progress += addedProgress;
+
+                // Check progress
+                if (achievement.progress >= achievement.progressGoal)
+                {
+                    achievement.progress = achievement.progressGoal;
+                    achievement.isDone = true;
+                    achievement.dateCompleted = DateTime.Now;
+                    Instance.achievementCanvas.InstantiateNotif(achievement);
+                }
+
+                // Update in currentAccount && accountDatabase
+                account.achievements[achievement.id] = achievement;
+                Registration.SaveAccount(account);
+            }
+        }
+        else
+            print("Achievement has invalid name");
+    }
+
     private List<Achievement> LoadAchievements()
     {
         string jsonString = PlayerPrefs.GetString(key);
@@ -104,6 +151,33 @@ public class AchievementManager : MonoBehaviour
         Registration.SaveAccount(account);
     }
 
+    private void CheckNewAchievements()
+    {
+        Account account = Registration.GetCurrentAccount();
+        if (account != null)
+        {
+            if (account.achievements.Count < LoadAchievements().Count)
+            {
+                DeleteAchievementData();
+                InitAchievements();
+                CreateAchievementListForPlayer(account);
+                print("Achievements updated!");
+            }
+        }
+    }
+
+    private void GetNewAchievements()
+    {
+        Account account = Registration.GetCurrentAccount();
+        if (account != null)
+        {
+            DeleteAchievementData();
+            InitAchievements();
+            CreateAchievementListForPlayer(account);
+        }
+    }
+
+    #region Not used
     // Not used
     public List<Achievement> GetAchievementsByName(string name)
     {
@@ -111,26 +185,20 @@ public class AchievementManager : MonoBehaviour
         AchievementData achievementData = JsonUtility.FromJson<AchievementData>(jsonString);
         return achievementData.achievements.Where(a => a.user == name).ToList();
     }
+    #endregion
 
     [ContextMenu("Complete all achievements")]
     public void CompleteAllAchievements()
     {
-        UpdateAchievement(0, 1f);
-        UpdateAchievement(1, 1f);
-        UpdateAchievement(2, 1f);
-        UpdateAchievement(3, 1f);
-        UpdateAchievement(4, 1f);
-        UpdateAchievement(5, 1f);
+        for (int i = 0; i < LoadAchievements().Count; i++)
+            UpdateAchievement(i, 500f);
     }
 
     [ContextMenu("Reset Personal Achievements")]
     public void ResetAchievements()
     {
         for (int i = 0; i < LoadAchievements().Count; i++)
-        {
             ResetAchievement(i);
-        }
-
     }
 
     [ContextMenu("Delete AchievementData")]
@@ -206,5 +274,5 @@ public class Achievement
 
 public enum AchievementType
 {
-    LAPTIME
+    LAPTIME, EVENT, MISC, STAT
 }

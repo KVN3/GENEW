@@ -159,12 +159,6 @@ public class UIPanel : UIBehaviour
         else
             bestRaceTimeText.text = "--.---";
 
-        //if (pd.hasNewBestTime)
-        //{
-        //    StartCoroutine(ChangeColorAndBlink(bestRaceTimeText));
-        //    pd.hasNewBestTime = false;
-        //}
-
         // Speed
         if (playerShip.components.movement.GetCurrentSpeed() > 1f)
             speedBg.sprite = speedBgSpriteActivated;
@@ -188,6 +182,10 @@ public class UIPanel : UIBehaviour
                 boostMeter.value -= Time.deltaTime;
             speedBg.color = speedMeterColor;
         }
+
+        // Achievement
+        if (currSpeed > 600f)
+            AchievementManager.UpdateAchievementByName("Speed demon", 1f);
 
         // Charges
         chargeBar.value = (playerShip.components.forcefield.GetCharges() / playerShip.components.forcefield.maxCharges) * 1;
@@ -254,15 +252,6 @@ public class UIPanel : UIBehaviour
 
         #endregion
 
-        //IEnumerator ChangeColorAndBlink(TextMeshProUGUI Text)
-        //{
-        //    Color originalColor = Text.color;
-
-        //        Text.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
-        //        yield return new WaitForSeconds(0.8f);
-        //        Text.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1);
-        //        yield return new WaitForSeconds(0.8f);
-        //}
     }
 }
 

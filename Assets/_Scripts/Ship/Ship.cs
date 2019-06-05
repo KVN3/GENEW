@@ -50,6 +50,17 @@ public class Ship : MyMonoBehaviour
     private bool recentlyHit;
     protected PhotonView photonView;
 
+    // Achievement stats
+    public bool gotHit = false;
+    public bool usedBoost;
+    protected bool usedItem;
+    public int boostUses = 0;
+    public int itemUses = 0;
+    public int totalBoostUses;
+    public int totalItemUses;
+    public int blockedProjectiles = 0;
+    public int totalBlockedProjectiles;
+
     #region DELEGATES
     public UnityAction<Collectable, int> OnItemUsedDelegate;
     public UnityAction<int, string, bool> OnPlayerStunnedDelegate;
@@ -91,6 +102,11 @@ public class Ship : MyMonoBehaviour
     {
         if (itemAmount > 0)
         {
+            usedItem = true;
+            itemUses++;
+            totalItemUses++;
+            AchievementManager.UpdateAchievement(18, 1f);
+
             if (collectableItemClass is JammerProjectile)
             {
                 if (!components.gun.OnCooldown())
@@ -231,6 +247,10 @@ public class Ship : MyMonoBehaviour
 
                 }
 
+                blockedProjectiles++;
+                // Update total blocked projectiles
+                AchievementManager.UpdateAchievement(12, 1f);
+
                 components.forcefield.GetHit(30);
                 shipSoundManager.PlaySound(SoundType.PROTECTED);
 
@@ -256,6 +276,7 @@ public class Ship : MyMonoBehaviour
     private IEnumerator C_GotHit()
     {
         recentlyHit = true;
+        gotHit = true;
         yield return new WaitForSeconds(1);
 
         // Temp free forcefield

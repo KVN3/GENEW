@@ -37,6 +37,12 @@ public struct PlayerRunData
 
     // Extra
     public float charges;
+
+    // Achievement stats
+    public float totalTravelDistance;
+    public int projectilesBlocked;
+    public int totalProjectilesBlocked;
+
 }
 #endregion
 
@@ -169,8 +175,16 @@ public class PlayerShip : Ship
         runData.isLastLap = false;
         runData.hasNewBestTime = false;
 
-        // Replay data
-        runData.positionsX = new List<float>();
+        // Achievement stats
+
+        Account account = Registration.GetCurrentAccount();
+
+        runData.totalTravelDistance = account.achievements[12].progress;
+        runData.projectilesBlocked = 0;
+        runData.totalProjectilesBlocked = (int)account.achievements[14].progress;
+
+    // Replay data
+    runData.positionsX = new List<float>();
         runData.positionsY = new List<float>();
         runData.positionsZ = new List<float>();
         runData.replayRotations = new List<Quaternion>();
@@ -219,11 +233,13 @@ public class PlayerShip : Ship
             // Check for valid lap
             if (!runData.isWrongWay && runData.isOverHalfway)
             {
-                // Save lap if race has started (lap > 0) // THIS ALWAYS HAPPENS REGARDLESS OF FINISHED OR NOT
-                if (runData.currentLap > 0)
+                // If finished
+                if (runData.currentLap == runData.maxLaps) // 3/3 laps + finish
                 {
-                    // Update best time if not set (00:00:00)
-                    // CheckBestTime()
+                    Debug.Log("playerShip Finished");
+                    levelSoundManager.PlaySound(SoundType.VICTORY);
+
+                    // Check best time
                     if (runData.bestRaceTime == System.TimeSpan.Parse("00:00:00"))
                     {
                         runData.bestRaceTime = runData.raceTime;
@@ -236,33 +252,6 @@ public class PlayerShip : Ship
                         runData.bestRaceTime = runData.raceTime;
                         runData.hasNewBestTime = true;
                     }
-
-                    // Achievements
-                    if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.WASTELAND])
-                    {
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:15.000"))
-                            AchievementManager.UpdateAchievement(0, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:05.000"))
-                            AchievementManager.UpdateAchievement(1, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
-                            AchievementManager.UpdateAchievement(2, 1f);
-                    }
-                    else if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.HIGHWAY])
-                    {
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
-                            AchievementManager.UpdateAchievement(3, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:01:50.000"))
-                            AchievementManager.UpdateAchievement(4, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:01:45.000"))
-                            AchievementManager.UpdateAchievement(5, 1f);
-                    }
-                }
-
-                // If finished
-                if (runData.currentLap == runData.maxLaps) // 3/3 laps + finish
-                {
-                    Debug.Log("playerShip Finished");
-                    levelSoundManager.PlaySound(SoundType.VICTORY);
 
                     // Leaderboard
                     Account account = Registration.GetCurrentAccount();
@@ -281,6 +270,68 @@ public class PlayerShip : Ship
                     SaveReplay();
 
                     runData.raceFinished = true;
+
+                    #region Achievements
+                    // Achievements
+                    if (!usedItem)
+                        AchievementManager.UpdateAchievementByName("Look mom no items", 1f);
+
+                    if (!usedBoost)
+                        AchievementManager.UpdateAchievementByName("Boosters for losers", 1f);
+
+                    if (itemUses >= 4)
+                        AchievementManager.UpdateAchievementByName("Items 4 days", 1f);
+
+                    if (boostUses >= 10)
+                        AchievementManager.UpdateAchievementByName("Boosted to infinity", 1f);
+
+                    if (blockedProjectiles >= 4)
+                        AchievementManager.UpdateAchievementByName("Blockmaster", 1f);
+
+                    if (!gotHit)
+                        AchievementManager.UpdateAchievementByName("Unstunnable", 1f);
+
+                    List<HighscoreEntry> highscores = HighscoreManager.Instance.GetHighscoresByStage(SceneManager.GetActiveScene().name);
+                    if (highscores[0].name == account.username)
+                        AchievementManager.UpdateAchievementByName("Champion", 1f);
+
+                    if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.WASTELAND])
+                    {
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:15.000"))
+                        {
+                            AchievementManager.UpdateAchievement(1, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:05.000"))
+                        {
+                            AchievementManager.UpdateAchievement(2, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
+                        {
+                            AchievementManager.UpdateAchievement(3, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                    }
+                    else if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.HIGHWAY])
+                    {
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
+                        {
+                            AchievementManager.UpdateAchievement(4, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                        if (runData.raceTime < System.TimeSpan.Parse("00:01:50.000"))
+                        {
+                            AchievementManager.UpdateAchievement(5, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                        if (runData.raceTime < System.TimeSpan.Parse("00:01:45.000"))
+                        {
+                            AchievementManager.UpdateAchievement(6, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                    }
+                    #endregion
 
                     // Analytics
                     double averageLapTime = runData.raceTime.TotalSeconds / runData.maxLaps;
@@ -303,6 +354,8 @@ public class PlayerShip : Ship
                         {
                             Debug.Log($"PlayerShip Crossed Finish Line");
                             levelSoundManager.PlaySound(SoundType.LAPPASSED);
+
+                            AchievementManager.UpdateAchievement(12, 3f);
 
                             runData.isOverHalfway = false;
 

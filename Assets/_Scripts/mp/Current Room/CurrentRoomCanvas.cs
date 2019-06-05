@@ -20,17 +20,23 @@ public class CurrentRoomCanvas : MonoBehaviour
 
     // Text components
     public TextMeshProUGUI roomNameText;
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI lapsText;
+    public TextMeshProUGUI leaderboardText;
+    public TextMeshProUGUI chatTitle;
+    public TextMeshProUGUI connectingText;
+    public TextMeshProUGUI enterChatMessageText;
+    public TextMeshProUGUI playersInRoomText;
+    
+    public TextMeshProUGUI ghostsText;
+    
     public TextMeshProUGUI startMatchText;
     public TextMeshProUGUI leaveRoomText;
-    public TextMeshProUGUI levelText;
-    public TextMeshProUGUI leaderboardText;
-    public TextMeshProUGUI leaderboardTimesText;
-    public TextMeshProUGUI lapsText;
-    public TextMeshProUGUI ghostsText;
+
+    // Loading screen
     public TextMeshProUGUI progressText;
 
     // Input fields
-    public TMP_InputField lapInput;
     public TMP_InputField ghostInput;
 
     // Buttons
@@ -58,10 +64,15 @@ public class CurrentRoomCanvas : MonoBehaviour
     private void Update()
     {
         roomNameText.text = RoomName;
+        levelText.text = LocalizationManager.GetTextByKey("LEVEL");
+        lapsText.text = LocalizationManager.GetTextByKey("LAPS");
+        leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
+        chatTitle.text = LocalizationManager.GetTextByKey("CHAT");
+        connectingText.text = LocalizationManager.GetTextByKey("CONNECTING");
+        enterChatMessageText.text = LocalizationManager.GetTextByKey("ENTER_CHAT_MESSAGE");
+        playersInRoomText.text = LocalizationManager.GetTextByKey("PLAYERS_IN_ROOM");
         leaveRoomText.text = LocalizationManager.GetTextByKey("LEAVE_ROOM");
         startMatchText.text = LocalizationManager.GetTextByKey("START_MATCH");
-        levelText.text = LocalizationManager.GetTextByKey("LEVEL");
-        leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
     }
 
     #region SCENE LOADING
@@ -109,8 +120,6 @@ public class CurrentRoomCanvas : MonoBehaviour
         {
             progress = PhotonNetwork.LevelLoadingProgress;
             progress = Mathf.Clamp01(progress / .9f);
-
-            Debug.Log(progress);
 
             loadingBar.value = progress;
             progressText.text = (progress * 100).ToString("F0") + "%";

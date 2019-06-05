@@ -77,6 +77,7 @@ public class HighscoreManager : MonoBehaviour
         // Add
         highscores.highscoreEntryList.Add(highscoreEntry);
 
+        // Sort
         SortHighscores(highscores.highscoreEntryList);
 
         // Update

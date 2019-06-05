@@ -158,6 +158,10 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
+        // Complete tutorial achievement
+        if (index == 10)
+            AchievementManager.UpdateAchievement(0, 1f);
+
         return true;
     }
 }
