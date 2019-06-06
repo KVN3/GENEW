@@ -26,7 +26,7 @@ public class Chaser : EnergyBall
 
     public void Move(float force)
     {
-        if(closestDistanceSqr < 40000)
+        if (closestDistanceSqr < 40000)
         {
             force = force / 2;
         }
@@ -45,6 +45,9 @@ public class Chaser : EnergyBall
 
     public Transform GetClosestTarget()
     {
+        //List<int> removedShipIndexes = new List<int>();
+        //int i = 0;
+
         bool isCloseEnough = false;
 
         Transform closestTarget = this.transform;
@@ -53,22 +56,31 @@ public class Chaser : EnergyBall
 
         foreach (PlayerShip target in targets)
         {
-            Transform potentialTarget = target.transform;
-
-            Vector3 directionToTarget = potentialTarget.position - currentPosition;
-
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-
-            if (dSqrToTarget < closestDistanceSqr)
+            if (target == null)
             {
-                closestDistanceSqr = dSqrToTarget;
+                //removedShipIndexes.Add(i);
+            }
+            else
+            {
+                Transform potentialTarget = target.transform;
 
-                if (closestDistanceSqr < minDistance)
+                Vector3 directionToTarget = potentialTarget.position - currentPosition;
+
+                float dSqrToTarget = directionToTarget.sqrMagnitude;
+
+                if (dSqrToTarget < closestDistanceSqr)
                 {
-                    isCloseEnough = true;
-                    closestTarget = potentialTarget;
+                    closestDistanceSqr = dSqrToTarget;
+
+                    if (closestDistanceSqr < minDistance)
+                    {
+                        isCloseEnough = true;
+                        closestTarget = potentialTarget;
+                    }
                 }
             }
+
+            //i++;
         }
 
         if (isCloseEnough)
@@ -76,8 +88,24 @@ public class Chaser : EnergyBall
         else
             this.isCloseEnough = false;
 
+        // Refresh local and spawn manager ship targets if one is found to have left the game or somehow became null
+        //if (removedShipIndexes.Count > 0)
+        //{
+        //    RefreshTargets(removedShipIndexes);
+        //    manager.RefreshTargets(removedShipIndexes);
+        //}
+            
+
         return closestTarget;
     }
+
+    //private void RefreshTargets(List<int> removedShipIndexes)
+    //{
+    //    foreach (int index in removedShipIndexes)
+    //    {
+    //        targets.RemoveAt(index);
+    //    }
+    //}
 
     public void SetMoveDirection(Vector3 moveDirection)
     {

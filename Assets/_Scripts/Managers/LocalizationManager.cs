@@ -281,6 +281,8 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         catch (Exception ex)
         {
             print("KEY NOT FOUND IN A DICT: " + key);
+            NLDict = new Dictionary<string, string>();
+            ENDict = new Dictionary<string, string>();
             UpdateDutchDictionaryStatic();
             UpdateEnglishDictionaryStatic();
         }

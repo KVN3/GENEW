@@ -95,8 +95,17 @@ public class PlayerShip : Ship
 
     public void PlayerFinishedRaceEvent(int amountOfLaps, System.TimeSpan raceTime, double averageLapTime, string playerName)
     {
+        // Foreign clients gotta know
+        runData.raceFinished = true;
+
+        
+
+        
+
         if (photonView.IsMine)
         {
+            print("EVENT: I finished race.");
+
             // Camera
             bool success = playerCamera.ActivateSpectatorMode();
 
@@ -104,7 +113,18 @@ public class PlayerShip : Ship
             OnPlayerFinishedRaceNotifyAnalyticsDelegate(runData.maxLaps, runData.raceTime, averageLapTime, playerName);
 
             // UI
-            OnPlayerFinishedRaceNotifyUIDelegate(success);
+            HUD.Instance.PlayerFinishedRaceEvent(success);
+
+            // Move this ship somewhere far off the map, out of sight.
+            transform.position = new Vector3(Random.Range(50000, 100000), Random.Range(50000, 100000), Random.Range(50000, 100000));
+
+            // Turn off ship elements
+            this.components.engines.TurnOffAllEngines();
+            this.components.forcefield.Deactivated();
+
+            // Destroy movement and player controller
+            Destroy(GetComponent<PlayerController>());
+            Destroy(GetComponent<ShipMovement>());
         }
         else
         {
@@ -112,21 +132,33 @@ public class PlayerShip : Ship
             GameObject myCameraObject = GameObject.FindGameObjectWithTag("MainCamera");
             PlayerCamera myCamera = myCameraObject.GetComponent<PlayerCamera>();
 
+            if (!myCamera.isSpectating)
+            {
+                return;
+            }
+
+            print("EVENT: Another player finished race.");
+
             myCamera.RemoveSpectatable(this);
 
             if (myCamera.SpectatablesLeft())
             {
-                myCamera.NextSpectatable();
+                print("EVENT: Spectatables left to go through...");
+
+                if (myCamera.target == this)
+                {
+                    print("Spectator I'm watching finished, moving to next.");
+                    myCamera.NextSpectatable();
+                }
             }
             else
             {
-                OnPlayerFinishedRaceNotifyUIDelegate(false);
+                print("No spectatables left in list!");
+                HUD.Instance.PlayerFinishedRaceEvent(false);
             }
         }
 
-        Destroy(GetComponent<PlayerController>());
-        Destroy(GetComponent<ShipMovement>());
-        transform.position = new Vector3(Random.Range(50000, 100000), Random.Range(50000, 100000), Random.Range(50000, 100000));
+       
     }
 
     private void Update()
@@ -335,16 +367,9 @@ public class PlayerShip : Ship
                     }
                     #endregion
 
-                    // Analytics
-                    double averageLapTime = runData.raceTime.TotalSeconds / runData.maxLaps;
-                    string playerName = "Anon";
+                    // Event
 
-                    if (PhotonNetwork.IsConnected)
-                        playerName = PhotonNetwork.LocalPlayer.NickName;
-
-
-
-                    PlayerFinishedRaceEvent(runData.maxLaps, runData.raceTime, averageLapTime, playerName);
+                    photonView.RPC("RPC_PlayerFinished", RpcTarget.AllViaServer);
                 }
                 else // If not finished
                 {
@@ -391,6 +416,19 @@ public class PlayerShip : Ship
             runData.lastWaypoint = other.transform;
         }
         #endregion
+    }
+    #endregion
+
+    #region RPC
+    [PunRPC]
+    public void RPC_PlayerFinished(PhotonMessageInfo info)
+    {
+        double averageLapTime = runData.raceTime.TotalSeconds / runData.maxLaps;
+        string playerName = "Anon";
+        if (PhotonNetwork.IsConnected)
+            playerName = PhotonNetwork.LocalPlayer.NickName;
+
+        PlayerFinishedRaceEvent(runData.maxLaps, runData.raceTime, averageLapTime, playerName);
     }
     #endregion
 

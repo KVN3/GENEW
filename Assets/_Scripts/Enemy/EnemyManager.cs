@@ -77,4 +77,12 @@ public class EnemyManager : MonoBehaviour
     {
         enemies.Remove(enemy);
     }
+
+    //public void RefreshTargets(List<int> removedShipIndexes)
+    //{
+    //    foreach (int index in removedShipIndexes)
+    //    {
+    //        players.RemoveAt(index);
+    //    }
+    //}
 }

@@ -24,6 +24,10 @@ public class EnergyBall : MonoBehaviour, IPunObservable
     {
         this.manager = manager;
     }
+    public EnemyManager GetManager()
+    {
+        return manager;
+    }
     #endregion
 
     public virtual void Awake()
@@ -90,13 +94,20 @@ public class EnergyBall : MonoBehaviour, IPunObservable
             manager.RemoveFromAliveEnemies(this);
 
         // Destroy the object if master, for all to witness...
-        if (photonView.ViewID == 0)
+        try
         {
-            Destroy(gameObject);
+            if (photonView.ViewID == 0)
+            {
+                Destroy(gameObject);
+            }
+            else if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
         }
-        else if (PhotonNetwork.IsMasterClient)
+        catch
         {
-            PhotonNetwork.Destroy(this.gameObject);
+
         }
         //Destroy(gameObject);
 

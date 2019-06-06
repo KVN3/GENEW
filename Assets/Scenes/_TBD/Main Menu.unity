@@ -28031,7 +28031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1884697608
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32646,6 +32646,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1188122442}
     m_Modifications:
+    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 746031926365510827, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
         type: 3}
       propertyPath: m_Name
@@ -32780,26 +32800,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2598659876902034758, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
         type: 3}

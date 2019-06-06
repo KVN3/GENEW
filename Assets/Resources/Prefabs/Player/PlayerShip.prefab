@@ -26734,6 +26734,7 @@ MonoBehaviour:
     baseAngle: 0
     angleZ: 0
   target: {fileID: 2453}
+  isSpectating: 0
 --- !u!1 &542
 GameObject:
   m_ObjectHideFlags: 0
