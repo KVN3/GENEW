@@ -16843,6 +16843,12 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!224 &1155039535 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+    type: 3}
+  m_PrefabInstance: {fileID: 3833292367758388810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1158555803
 GameObject:
   m_ObjectHideFlags: 0
@@ -17109,7 +17115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cef29d745fed854c8326be8e6dbb5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerListingPrefab: {fileID: 746031926365510827, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+  _playerListingPrefab: {fileID: 5185343938772042120, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
     type: 3}
   levelPreview: {fileID: 1650817145}
   roomState: {fileID: 1893227443}
@@ -17149,7 +17155,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1358088561}
+  - {fileID: 1155039535}
   m_Father: {fileID: 484370704}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20389,12 +20395,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!224 &1358088561 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 746031926365510800, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
-    type: 3}
-  m_PrefabInstance: {fileID: 3833292367758388810}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1381790739
 GameObject:
   m_ObjectHideFlags: 0
@@ -29766,7 +29766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59680f07e1e8b4e46bd5fae63d8eb460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomListingPrefab: {fileID: 5372695300785393250, guid: 1466b2ddc08dc054a88a6c6708d97b84,
+  _roomListingPrefab: {fileID: 5372695301941310851, guid: 1466b2ddc08dc054a88a6c6708d97b84,
     type: 3}
   _roomListingButtons: []
 --- !u!1 &1970348024

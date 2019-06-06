@@ -55,10 +55,11 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
         bool validName = false;
         string roomName = RoomName.text;
 
-        if (RoomName.text.Equals("Room name..."))
+        if (RoomName.text.Equals("Room name...") || RoomName.text.Equals("Kamernaam..."))
         {
             roomName = "ROOM";
         }
+        
 
         
         // While name is not valid
