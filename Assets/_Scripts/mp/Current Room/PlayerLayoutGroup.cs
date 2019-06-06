@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
 {
+    public static PlayerLayoutGroup Instance;
+
     [SerializeField]
     private GameObject _playerListingPrefab;
     private GameObject PlayerListingPrefab
@@ -18,7 +20,7 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     private LevelPreview levelPreview;
 
     private List<PlayerListing> _playerListings = new List<PlayerListing>();
-    private List<PlayerListing> PlayerListings
+    public List<PlayerListing> PlayerListings
     {
         get { return _playerListings; }
     }
@@ -27,6 +29,25 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     public Sprite unlockedSprite;
     public Sprite lockedSprite;
 
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    public int GetListingIndex()
+    {
+        int index = PlayerListings.FindIndex(i => i.PhotonPlayer == PhotonNetwork.LocalPlayer);
+
+        if (Method.IndexFound(index))
+        {
+            return index;
+        }
+        else
+        {
+            print("Couldn't find listing index in PlayerLayoutGroup.");
+            return 0;
+        }
+    }
 
     #region PhotonCallbacks
     // I joined room

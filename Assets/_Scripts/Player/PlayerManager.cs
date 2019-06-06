@@ -56,7 +56,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Instantiates the player's ship
-    public PlayerShip CreatePlayer(Player player, string activeScene)
+    public PlayerShip CreatePlayer(Player player, string activeScene, int spawnIndex)
     {
         string playerPath = Path.Combine("Prefabs", "Player", "PlayerShip");
         PlayerCamera playerCameraClass = SharedResources.LoadPlayerCamera();
@@ -66,7 +66,8 @@ public class PlayerManager : MonoBehaviour
         LocalSpawnPoint[] spawnPoints = SharedResources.LoadSpawnPoints(activeScene);
 
         // This player's assigned spawnpoint
-        int spawnIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        //int spawnIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        print($"{spawnIndex} INDEX < and ACTORNO > {PhotonNetwork.LocalPlayer.ActorNumber}");
 
         if (spawnIndex == -1)
             print("Index is -1 | Actornumber not found.");

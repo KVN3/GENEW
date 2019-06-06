@@ -71,6 +71,9 @@ public class Shooter : MonoBehaviour
     // Locates the closest enemy ship to gun for
     public Vector3 GetClosestTarget()
     {
+        //  List<int> removedShipIndexes = new List<int>();
+        // int i = 0;
+
         bool withinRange = false;
 
         Vector3 closestTarget = Vector3.zero;
@@ -82,27 +85,36 @@ public class Shooter : MonoBehaviour
         // Go through each ship in the list of targets
         foreach (PlayerShip target in targets)
         {
-            Vector3 potentialTargetPosition = target.transform.position;
-
-            Vector3 directionToTarget = potentialTargetPosition - currentPosition;
-
-            // distance to target
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-
-            // If closer than last found ship
-            if (dSqrToTarget < closestDistanceSqr)
+            if (target == null)
             {
-                // This is now the closest ship
-                closestDistanceSqr = dSqrToTarget;
+                // removedShipIndexes.Add(i);
+            }
+            else
+            {
+                Vector3 potentialTargetPosition = target.transform.position;
 
-                // If within detection range
-                if (closestDistanceSqr < minDistance)
+                Vector3 directionToTarget = potentialTargetPosition - currentPosition;
+
+                // distance to target
+                float dSqrToTarget = directionToTarget.sqrMagnitude;
+
+                // If closer than last found ship
+                if (dSqrToTarget < closestDistanceSqr)
                 {
-                    withinRange = true;
-                    closestTarget = potentialTargetPosition;
-                    closestShip = target;
+                    // This is now the closest ship
+                    closestDistanceSqr = dSqrToTarget;
+
+                    // If within detection range
+                    if (closestDistanceSqr < minDistance)
+                    {
+                        withinRange = true;
+                        closestTarget = potentialTargetPosition;
+                        closestShip = target;
+                    }
                 }
             }
+
+            //i++;
         }
 
         if (withinRange)
@@ -113,9 +125,23 @@ public class Shooter : MonoBehaviour
         else
             this.isCloseEnough = false;
 
+        // Refresh local and spawn manager ship targets if one is found to have left the game or somehow became null
+        //if (removedShipIndexes.Count > 0)
+        //{
+        //    RefreshTargets(removedShipIndexes);
+        //    GetComponent<RandomMover>().GetManager().RefreshTargets(removedShipIndexes);
+        //}
 
         return closestTarget;
     }
+
+    //private void RefreshTargets(List<int> removedShipIndexes)
+    //{
+    //    foreach (int index in removedShipIndexes)
+    //    {
+    //        targets.RemoveAt(index);
+    //    }
+    //}
 
     public void SetTargets(PlayerShip[] targets)
     {
