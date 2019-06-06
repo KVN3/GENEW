@@ -49,6 +49,7 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.JoinRoom(roomName))
         {
+            CurrentRoomCanvas.instance.RoomName = roomName;
             chatController.JoinChat(roomName);
         }
         else

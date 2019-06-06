@@ -32,6 +32,8 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     // I joined room
     public override void OnJoinedRoom()
     {
+        RoomLayoutGroup.Instance.RemoveAllRooms();
+
         if (GameConfiguration.tutorial)
             return;
 
@@ -42,7 +44,6 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         // Toggles the current room window
         MainCanvasManager.instance.ShowPanel(PanelType.ROOM);
         MainCanvasManager.instance.HidePanel(PanelType.LOBBY);
-
 
         // Update player list
         Player[] players = PhotonNetwork.PlayerList;
@@ -135,20 +136,54 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
 
     public void OnClickLeaveRoom()
     {
-        // If chat loaded, leave chat.
-        if (Chat.instance.chatClient.State.Equals(Photon.Chat.ChatState.ConnectedToFrontEnd))
-        {
-            Chat.instance.LeaveChat(Chat.instance.channelsToJoinOnConnect[2]);
-        }
+
 
         // If room loaded, leave room and swap panels.
-        //if (PhotonNetwork.InRoom)
-        //{
+        if (PhotonNetwork.InRoom)
+        {
+            // If chat loaded, leave chat.
+            if (Chat.instance.chatClient.State.Equals(Photon.Chat.ChatState.ConnectedToFrontEnd))
+            {
+                try
+                {
+                    Chat.instance.LeaveChat(Chat.instance.channelsToJoinOnConnect[2]);
+                }
+                catch
+                {
+                    print("NOT IN CHAT ROOM, CANT LEAVE");
+                }
+            }
+            else
+            {
+                print("FAILED TO LEAVE CHAT ROOM IN ONCLICKLEAVEROOM()");
+            }
+
             PhotonNetwork.LeaveRoom();
 
             MainCanvasManager.instance.HidePanel(PanelType.ROOM);
             MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
-      //  }
+
+            EmptyPlayers();
+        }
+
+    }
+
+    private void EmptyPlayers()
+    {
+        List<PlayerListing> removePlayers = new List<PlayerListing>();
+
+        foreach (PlayerListing listing in PlayerListings)
+        {
+            removePlayers.Add(listing);
+        }
+
+        // Remove all player listings marked for removal from list
+        foreach (PlayerListing listing in removePlayers)
+        {
+            GameObject playerListingObj = listing.gameObject;
+            PlayerListings.Remove(listing);
+            Destroy(playerListingObj);
+        }
     }
 
     // If index == -1, index hasn't been found
