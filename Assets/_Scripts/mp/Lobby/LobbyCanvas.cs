@@ -37,7 +37,6 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
         if (!roomNameChanged)
         {
             roomNameText.text = LocalizationManager.GetTextByKey("ROOM_NAME") + "...";
-            //print(LocalizationManager.GetTextByKey("ROOM_NAME") + "...");
         }
 
         createRoomText.text = LocalizationManager.GetTextByKey("CREATE_ROOM");
@@ -63,4 +62,12 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
         roomNameChanged = true;
     }
 
+    public void SetInputText(bool dutch)
+    {
+        if (dutch)
+            roomNameText.text = "Room name...";
+        else
+            roomNameText.text = "Kamernaam...";
+
+    }
 }

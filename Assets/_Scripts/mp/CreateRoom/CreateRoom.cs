@@ -55,13 +55,19 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
         bool validName = false;
         string roomName = RoomName.text;
 
-        if (RoomName.text.Equals("Room name...") || RoomName.text.Equals("Kamernaam..."))
+        string givenRoomName = RoomName.text.ToLower();
+
+        if (givenRoomName == "room name..." || givenRoomName == "kamernaam...")
         {
             roomName = "ROOM";
         }
-        
+        else if (givenRoomName.Contains("room"))
+        {
+            roomName = "ROOM";
+        }
 
-        
+
+
         // While name is not valid
         while (!validName)
         {
@@ -70,13 +76,13 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
             // If room doesn't exist, validname
             if (RoomLayoutGroup.Instance.RoomExists(roomName))
             {
-                
+
             }
             else
             {
                 validName = true;
             }
-        }        
+        }
 
         return roomName;
     }

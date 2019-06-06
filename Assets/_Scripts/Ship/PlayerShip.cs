@@ -195,7 +195,7 @@ public class PlayerShip : Ship
         // Set currentlap, maxlaps, timer, pos
         runData.currentLap = 0;
 
-        runData.maxLaps = 0;
+        runData.maxLaps = 3;
 
         runData.raceTime = System.TimeSpan.Parse("00:00:00.000");
         runData.leaderboardTimes = new List<System.TimeSpan>();
@@ -203,7 +203,7 @@ public class PlayerShip : Ship
 
         // Prevents cheating times
         runData.raceFinished = false;
-        runData.isOverHalfway = true;
+        runData.isOverHalfway = false;
         // Guidance
         runData.isWrongWay = false;
         runData.isLastLap = true;

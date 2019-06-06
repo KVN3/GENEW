@@ -21,24 +21,22 @@ public class CountDownController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RaceManager.raceStarted = true;
+        if (SceneManager.GetActiveScene().name != ScenesInformation.sceneNames[SceneTitle.TUTORIAL])
+        {
+            RaceManager.raceStarted = false;
+            CountDown = 3;
+            CountDownText = LocalizationManager.GetTextByKey("GET_A_FAST_TIME");
 
-        //if (SceneManager.GetActiveScene().name != ScenesInformation.sceneNames[SceneTitle.TUTORIAL])
-        //{
-        //    RaceManager.raceStarted = false;
-        //    CountDown = 3;
-        //    CountDownText = LocalizationManager.GetTextByKey("GET_A_FAST_TIME");
-
-        //    if (PhotonNetwork.IsMasterClient)
-        //    {
-        //        StartCoroutine(C_StartCountdown());
-        //    }
-        //}
-        //else
-        //{
-        //    RaceManager.raceStarted = true;
-        //    CountDownText = "";
-        //}
+            if (PhotonNetwork.IsMasterClient)
+            {
+                StartCoroutine(C_StartCountdown());
+            }
+        }
+        else
+        {
+            RaceManager.raceStarted = true;
+            CountDownText = "";
+        }
     }
 
     IEnumerator C_StartCountdown()
