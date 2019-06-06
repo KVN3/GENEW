@@ -162,17 +162,19 @@ public class PlayerShip : Ship
     {
         // Set currentlap, maxlaps, timer, pos
         runData.currentLap = 0;
-            runData.maxLaps = 3;
+
+        runData.maxLaps = 0;
+
         runData.raceTime = System.TimeSpan.Parse("00:00:00.000");
         runData.leaderboardTimes = new List<System.TimeSpan>();
         runData.currentPos = 1;
 
         // Prevents cheating times
         runData.raceFinished = false;
-        runData.isOverHalfway = false;
+        runData.isOverHalfway = true;
         // Guidance
         runData.isWrongWay = false;
-        runData.isLastLap = false;
+        runData.isLastLap = true;
         runData.hasNewBestTime = false;
 
         // Achievement stats
@@ -183,8 +185,8 @@ public class PlayerShip : Ship
         runData.projectilesBlocked = 0;
         runData.totalProjectilesBlocked = (int)account.achievements[14].progress;
 
-    // Replay data
-    runData.positionsX = new List<float>();
+        // Replay data
+        runData.positionsX = new List<float>();
         runData.positionsY = new List<float>();
         runData.positionsZ = new List<float>();
         runData.replayRotations = new List<Quaternion>();
