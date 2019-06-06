@@ -1522,8 +1522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbc6ca0a337f6d42b6786e7cb01a4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  instructionAudioClips:
+  audioSource: {fileID: 1531509933}
+  instructionAudioClipsEnglish:
   - {fileID: 8300000, guid: 02c786e44f825514a859639b75311fab, type: 3}
   - {fileID: 8300000, guid: d902d76bfc5c64048a2d8045b7b32bb0, type: 3}
   - {fileID: 8300000, guid: af65c72ec3a36204baf48acdd3d7b396, type: 3}
@@ -1537,8 +1537,51 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fc8dfcef6b37756439a285b7a47422c2, type: 3}
   - {fileID: 8300000, guid: 2682cf9ee437cd441ab143ed73217817, type: 3}
   - {fileID: 8300000, guid: 971a9e70c517d774b89ae1599ce2bca7, type: 3}
-  instructionStrings:
+  instructionAudioClipsDutch:
+  - {fileID: 8300000, guid: fca07b19cd90c2846bb95384bafc39c1, type: 3}
+  - {fileID: 8300000, guid: d902d76bfc5c64048a2d8045b7b32bb0, type: 3}
+  - {fileID: 8300000, guid: af65c72ec3a36204baf48acdd3d7b396, type: 3}
+  - {fileID: 8300000, guid: d7dcada0227fb07479a8df42293dd645, type: 3}
+  - {fileID: 8300000, guid: 4017d56e26c97b64b969a62a80ecf552, type: 3}
+  - {fileID: 8300000, guid: b6092e835f532fb4998cee9ff03b07a6, type: 3}
+  - {fileID: 8300000, guid: 39786ee351e48ba418af7224845e8710, type: 3}
+  - {fileID: 8300000, guid: 38cef1b3acf38914d8a72883ba0ad562, type: 3}
+  - {fileID: 8300000, guid: 9f11b37b5b1aaf5479a435a061b253fe, type: 3}
+  - {fileID: 8300000, guid: 2d075c9dc1ec5984a93513cecd4949f7, type: 3}
+  - {fileID: 8300000, guid: fc8dfcef6b37756439a285b7a47422c2, type: 3}
+  - {fileID: 8300000, guid: 2682cf9ee437cd441ab143ed73217817, type: 3}
+  - {fileID: 8300000, guid: 971a9e70c517d774b89ae1599ce2bca7, type: 3}
+  instructionStringsEnglish:
   - Welcome, racer. I've been tasked to guide you through your beginning steps.
+  - Let us begin with controls. The 'WASD' and the arrow keys can be used to move
+    the ship. Try this now.
+  - For your utility, I've provided you with an overview of all available controls
+    in your dashboard.
+  - The green arrows on the ground indicate a boost pad. Move over them for an increase
+    in velocity.
+  - Good. Now move over the next pad to receive an item.
+  - You're equipped with a rocket now. Try shooting that ship ahead of you by pressing
+    "E" to see what happens.
+  - Your ship is equipped with a forcefield. To activate yours, hold down the "SPACE"
+    key. Keep an eye on the charge bar just below the speed meter, you wouldn't want
+    to run out of charges in the middle of a cloud of toxic gas.
+  - During your races you will encounter many different energy spheres. Most of them
+    hostile. Contact will likely bring your ship to a temporary shutdown.
+  - Try using the ship's forcefield (or another method) to destroy the energy sphere
+    ahead of you. Keep in mind though. Your forcefield is not infinite, it can overload.
+  - This was a most easy opponent. If you're ever being hunted by a pack of chasers,
+    remember you can look back by holding down the "F" key. This will allow you to
+    time the use of your forcefield, as well as deploy mines and dodge much more accurately.
+  - Mines carry a chip that detects friend from foe. Consider dropping them on valuable
+    pads, to reserve them for yourself. Deploy a smoke screen in an area with many
+    hostiles or activate your forcefield before shooting a wall nearby, to catch a
+    follow-up ship off guard.
+  - There's many more different strategies pilots can deploy to their advantage. You'd
+    do good by yourself to get acquainted with as many as possible.
+  - I'm afraid that concludes this tutorial.  Whenever you're ready, press "P" to
+    return to the lobby.
+  instructionStringsDutch:
+  - Welkom, racer. Ik zal je begeleiden tijdens je eerste stappen.
   - Let us begin with controls. The 'WASD' and the arrow keys can be used to move
     the ship. Try this now.
   - For your utility, I've provided you with an overview of all available controls
@@ -28195,6 +28238,14 @@ MonoBehaviour:
   spark: {fileID: 46115661984255742}
   collectableItemClass: {fileID: 0}
   itemAmount: 0
+  gotHit: 0
+  usedBoost: 0
+  boostUses: 0
+  itemUses: 0
+  totalBoostUses: 0
+  totalItemUses: 0
+  blockedProjectiles: 0
+  totalBlockedProjectiles: 0
   runData:
     currentLap: 0
     maxLaps: 3
@@ -28213,6 +28264,9 @@ MonoBehaviour:
     replayRotations: []
     replayPositions: []
     charges: 0
+    totalTravelDistance: 0
+    projectilesBlocked: 0
+    totalProjectilesBlocked: 0
   isMine: 0
 --- !u!114 &46115661984255714
 MonoBehaviour:
@@ -28232,6 +28286,7 @@ MonoBehaviour:
     baseAngle: 0
     angleZ: 0
   target: {fileID: 46115661984255713}
+  isSpectating: 0
 --- !u!114 &46115661984255716
 MonoBehaviour:
   m_ObjectHideFlags: 0
