@@ -21,7 +21,6 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
     public TextMeshProUGUI logoutText;
     public TextMeshProUGUI exitGameText;
     public TextMeshProUGUI versionText;
-    public TextMeshProUGUI usernameText;
 
     [Header("Music/Sounds")]
     public Sprite soundIconOn;
@@ -70,16 +69,6 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         logoutText.text = LocalizationManager.GetTextByKey("LOGOUT");
         exitGameText.text = LocalizationManager.GetTextByKey("EXIT_GAME");
         versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + " Release Candidate";
-
-        if (PlayerPrefs.HasKey("currentAccount"))
-        {
-            // Load current account
-            Account account = Registration.GetCurrentAccount();
-
-            usernameText.text = LocalizationManager.GetTextByKey("LOGGED_IN_AS") + ": " + account.username;
-        }
-        else
-            usernameText.text = LocalizationManager.GetTextByKey("NOT_LOGGED_IN");
     }
 
     #region Toggles

@@ -60,7 +60,6 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
 
     public void SetRoomNameChanged()
     {
-        print("CHANGED");
         roomNameChanged = true;
     }
 
