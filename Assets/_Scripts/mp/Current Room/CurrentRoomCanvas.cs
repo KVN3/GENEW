@@ -67,10 +67,10 @@ public class CurrentRoomCanvas : MonoBehaviour
         levelText.text = LocalizationManager.GetTextByKey("LEVEL");
         lapsText.text = LocalizationManager.GetTextByKey("LAPS");
         leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
-        //chatTitle.text = LocalizationManager.GetTextByKey("CHAT");
+        chatTitle.text = LocalizationManager.GetTextByKey("CHAT");
         connectingText.text = LocalizationManager.GetTextByKey("CONNECTING");
         enterChatMessageText.text = LocalizationManager.GetTextByKey("ENTER_CHAT_MESSAGE");
-       // playersInRoomText.text = LocalizationManager.GetTextByKey("PLAYERS_IN_ROOM");
+        playersInRoomText.text = LocalizationManager.GetTextByKey("IN_ROOM");
         leaveRoomText.text = LocalizationManager.GetTextByKey("LEAVE_ROOM");
         startMatchText.text = LocalizationManager.GetTextByKey("START_MATCH");
     }

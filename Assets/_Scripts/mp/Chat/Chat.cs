@@ -89,6 +89,9 @@ public class Chat : MonoBehaviour, IChatClientListener
             return;
         }
 
+        // Localization
+        userIdText.text = LocalizationManager.GetTextByKey("LOGGED_IN_AS") + " " + userName;
+
         stateText.gameObject.SetActive(showState); // this could be handled more elegantly
     }
 
@@ -152,7 +155,6 @@ public class Chat : MonoBehaviour, IChatClientListener
         connectingLabel.SetActive(false);
 
         // Username (debugging)
-        userIdText.text = "Connected as " + userName;
         //Debug.Log(userName + ": " + PhotonNetwork.LocalPlayer.UserId);
         //Debug.Log(userName + ": " + chatClient.UserId); 
 
@@ -202,6 +204,7 @@ public class Chat : MonoBehaviour, IChatClientListener
         // To clear chat
         if (selectedChannelName == roomName)
         {
+            //ClearChat();
             StartCoroutine(C_ClearChat());
             StartCoroutine(C_JustJoined());
         }
