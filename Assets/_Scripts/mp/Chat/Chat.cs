@@ -97,7 +97,6 @@ public class Chat : MonoBehaviour, IChatClientListener
         // Add to list, subscribe to it and set roomName
         channelsToJoinOnConnect.Add(roomName);
         chatClient.Subscribe(roomName, historyLengthToFetch);
-        CurrentRoomCanvas.instance.RoomName = roomName;
 
         // To let chat show up empty at first frame
         justJoined = true;
