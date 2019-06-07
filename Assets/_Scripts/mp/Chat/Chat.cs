@@ -22,8 +22,12 @@ public class Chat : MonoBehaviour, IChatClientListener
     public TMP_InputField addFriendInput;
     public TextMeshProUGUI emptyFriendListText;
     private List<string> friendsList; // Friend list from account.friendList
+
     private List<GameObject> friendObjects; // List of prefabs instantiated so you can delete them
     public GameObject friendListUiItemtoInstantiate; // Prefab
+
+    private List<GameObject> friendRemoveObjects; // List of prefabs instantiated so you can delete them
+    public GameObject removeFriendBtn;
     private readonly Dictionary<string, Friend> friendListItemLUT = new Dictionary<string, Friend>();
 
     public int historyLengthToFetch; // set in inspector. Up to a certain degree, previously sent messages can be fetched for context
@@ -47,7 +51,7 @@ public class Chat : MonoBehaviour, IChatClientListener
 
     public bool showState = true;
     public TextMeshProUGUI stateText; // set in inspector
-    public TextMeshProUGUI userIdText; // set in inspector
+    public TextMeshProUGUI userIdText;
     #endregion
 
     #region Unity Methods
@@ -65,6 +69,7 @@ public class Chat : MonoBehaviour, IChatClientListener
         connectingLabel.SetActive(false);
 
         friendObjects = new List<GameObject>();
+        friendRemoveObjects = new List<GameObject>();
 
         // Sets username, loads and sets friend data
         LoadAccountData();
@@ -304,17 +309,20 @@ public class Chat : MonoBehaviour, IChatClientListener
         {
             Destroy(obj);
         }
+        foreach (GameObject obj2 in friendRemoveObjects)
+        {
+            Destroy(obj2);
+        }
         friendObjects.Clear();
+        friendRemoveObjects.Clear();
     }
 
 
     private void InstantiateFriendButton(string friendId)
     {
-        GameObject fbtn = (GameObject)Instantiate(friendListUiItemtoInstantiate);
+        // Create friendBtn
+        GameObject fbtn = Instantiate(friendListUiItemtoInstantiate);
         friendObjects.Add(fbtn);
-
-        // Add onClick event for removeFriend
-        //fbtn.GetComponent<Button>().onClick.AddListener(delegate { RemoveFriend(friendId); });
 
         fbtn.gameObject.SetActive(true);
         Friend _friendItem = fbtn.GetComponent<Friend>();
@@ -322,7 +330,7 @@ public class Chat : MonoBehaviour, IChatClientListener
         _friendItem.FriendId = friendId;
 
         fbtn.transform.SetParent(friendListUiItemtoInstantiate.transform.parent, false);
-
+        
         friendListItemLUT[friendId] = _friendItem;
     }
 
