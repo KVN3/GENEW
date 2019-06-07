@@ -35,7 +35,7 @@ public class AchievementManager : MonoBehaviour
             new Achievement(6, "Gold highway", "Beat gold time on Elto Highway", AchievementType.LAPTIME, 1f),
             new Achievement(7, "Boosters for losers", "Complete a race without any kind of boost", AchievementType.MISC, 1f), // DONE
             new Achievement(8, "Look mom no items", "Complete a race without using any items", AchievementType.MISC, 1f), // DONE
-            new Achievement(9, "Sharing is caring", "Hit a person with a jammer rocket or jammer mine", AchievementType.MISC, 1f),
+            new Achievement(9, "Sharing is caring", "Hit a person with a jammer rocket or jammer mine", AchievementType.MISC, 1f), // DONE
             new Achievement(10, "Unstunnable", "Don't get stunned by anything", AchievementType.MISC, 1f), // DONE
             new Achievement(11, "Speed demon", "Achieve a speed of 600 km/h", AchievementType.STAT, 1f), // DONE
             new Achievement(12, "Are we there yet?", "Travel 50km (about 17 laps) TOTAL", AchievementType.STAT, 50f), // DONE
