@@ -13,6 +13,8 @@ public enum FlashColor
 
 public class HUD : MyMonoBehaviour, IObserver
 {
+    public static HUD Instance;
+
     public PlayerShip PlayerShip { get; set; }
 
     public GameObject InGamePanel;
@@ -22,8 +24,10 @@ public class HUD : MyMonoBehaviour, IObserver
 
     [SerializeField]
     private GameObject blackBackground;
+
     [SerializeField]
     private GameObject redBackground;
+
     [SerializeField]
     private GameObject blueBackground;
 
@@ -36,6 +40,7 @@ public class HUD : MyMonoBehaviour, IObserver
     // Start is called before the first frame update
     void Awake()
     {
+        Instance = this;
         Assert.IsNotNull(InGamePanel);
         Assert.IsNotNull(RaceEndPanel);
 
@@ -49,10 +54,10 @@ public class HUD : MyMonoBehaviour, IObserver
 
 
 
-        PlayerShip.OnPlayerFinishedRaceNotifyUIDelegate = (bool spectating) =>
-        {
-            PlayerFinishedRaceEvent(spectating);
-        };
+        //PlayerShip.OnPlayerFinishedRaceNotifyUIDelegate = (bool spectating) =>
+        //{
+        //    PlayerFinishedRaceEvent(spectating);
+        //};
 
         PlayerShip.OnPlayerShipHitDelegate = (float durationInSeconds, FlashColor flashColor) =>
         {
@@ -88,20 +93,19 @@ public class HUD : MyMonoBehaviour, IObserver
     }
 
     #region RACE FINISHED
-    private void PlayerFinishedRaceEvent(bool spectating)
+    public void PlayerFinishedRaceEvent(bool spectating)
     {
         if (spectating)
         {
-
+            print("UI PLAYER FINISHED EVENT: SPECTATING");
         }
         else
         {
+            print("UI PLAYER FINISHED EVENT: SETBG");
             blackBackground.SetActive(true);
             spectatingText.SetActive(false);
         }
 
-
-        //InGamePanel.SetActive(false); // interferes with leaderboard
         InGamePanel.GetComponent<CanvasGroup>().alpha = 0f;
         RaceEndPanel.SetActive(true);
         anim.SetTrigger("RaceFinished");

@@ -11,6 +11,9 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
     public TextMeshProUGUI createRoomText;
     public TextMeshProUGUI roomNameText;
     public TextMeshProUGUI returnText;
+
+    private bool roomNameChanged = false;
+
     public Chat chatController;
 
     [SerializeField]
@@ -27,14 +30,15 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
         get { return createRoomButton; }
     }
 
-    private void Start()
-    {
-        roomNameText.text = LocalizationManager.GetTextByKey("ROOM_NAME") + "...";
-    }
-
     public void Update()
     {
         lobbyText.text = LocalizationManager.GetTextByKey("LOBBY");
+
+        if (!roomNameChanged)
+        {
+            roomNameText.text = LocalizationManager.GetTextByKey("ROOM_NAME") + "...";
+        }
+
         createRoomText.text = LocalizationManager.GetTextByKey("CREATE_ROOM");
 
         returnText.text = LocalizationManager.GetTextByKey("RETURN_TO_MAIN_MENU");
@@ -44,6 +48,7 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.JoinRoom(roomName))
         {
+            CurrentRoomCanvas.instance.RoomName = roomName;
             chatController.JoinChat(roomName);
         }
         else
@@ -52,6 +57,17 @@ public class LobbyCanvas : MonoBehaviourPunCallbacks
         }
     }
 
-    
+    public void SetRoomNameChanged()
+    {
+        roomNameChanged = true;
+    }
 
+    public void SetInputText(bool dutch)
+    {
+        if (dutch)
+            roomNameText.text = "Room name...";
+        else
+            roomNameText.text = "Kamernaam...";
+
+    }
 }

@@ -30,7 +30,7 @@ public class PlayerCamera : MyMonoBehaviour
     // All other ships that haven't finished are spectatable.
     private List<PlayerShip> spectatableShips = new List<PlayerShip>();
 
-    private bool isSpectating = false;
+    public bool isSpectating = false;
 
     public void Start()
     {
@@ -52,6 +52,9 @@ public class PlayerCamera : MyMonoBehaviour
     void LateUpdate()
     {
         if (isSpectating && spectatableShips.Count == 0)
+            return;
+
+        if (target == null)
             return;
 
         // Get the angle from current and desired
@@ -109,6 +112,9 @@ public class PlayerCamera : MyMonoBehaviour
             if (playerShip.isMine)
                 continue;
 
+            if (playerShip.runData.raceFinished)
+                continue;
+
             spectatables.Add(playerShip);
         }
 
@@ -120,6 +126,7 @@ public class PlayerCamera : MyMonoBehaviour
     {
         if (isSpectating)
         {
+            print("RemoveSpectatable: Removing spectatable ship from list.");
             spectatableShips.Remove(ship);
         }
     }
@@ -135,7 +142,7 @@ public class PlayerCamera : MyMonoBehaviour
     // Spectate the next ship in the list
     public void NextSpectatable()
     {
-        if (spectatableShips.Count <= 1)
+        if (spectatableShips.Count < 1)
             return;
 
         print("Next spectatable...");

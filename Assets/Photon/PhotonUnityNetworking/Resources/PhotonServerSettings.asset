@@ -53,5 +53,9 @@ MonoBehaviour:
   - RPC_Die
   - RPC_UpdateSelectedMap
   - RPC_NotifyOthers
+  - RPC_StartCountdown
+  - RPC_Countdown
+  - RPC_ShowText
+  - RPC_PlayerFinished
   DisableAutoOpenWizard: 1
   ShowSettings: 1

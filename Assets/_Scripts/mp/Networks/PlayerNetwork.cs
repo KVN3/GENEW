@@ -19,6 +19,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     private int playersInGame = 0;
     private PlayerShip playerShip;
     private Coroutine pingCoroutine;
+    public int mySpawnIndex = 0;
 
     public static bool LoadingFromGame = false;
 
@@ -137,7 +138,8 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     [PunRPC]
     private void RPC_CreatePlayer()
     {
-        playerShip = PlayerManager.Instance.CreatePlayer(PhotonNetwork.LocalPlayer, activeScene);
+        mySpawnIndex = PlayerLayoutGroup.Instance.GetListingIndex();
+        playerShip = PlayerManager.Instance.CreatePlayer(PhotonNetwork.LocalPlayer, activeScene, mySpawnIndex);
     }
 
     public void ResetNetwork()

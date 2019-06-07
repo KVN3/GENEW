@@ -10,8 +10,14 @@ public class TutorialManager : MonoBehaviour
 
     public AudioSource audioSource;
 
-    public AudioClip[] instructionAudioClips;
-    public string[] instructionStrings;
+    public AudioClip[] instructionAudioClipsEnglish;
+    public AudioClip[] instructionAudioClipsDutch;
+
+    public string[] instructionStringsEnglish;
+    public string[] instructionStringsDutch;
+
+    private AudioClip[] instructionAudioClips;
+    private string[] instructionStrings;
 
     public GameObject[] invisibleWalls;
 
@@ -31,6 +37,17 @@ public class TutorialManager : MonoBehaviour
 
         // PhotonNetwork.OfflineMode = true;
         audioSource = GetComponent<AudioSource>();
+
+        if(LocalizationManager.chosenLanguage == Language.Dutch)
+        {
+            instructionAudioClips = instructionAudioClipsDutch;
+            instructionStrings = instructionStringsDutch;
+        }
+        else
+        {
+            instructionAudioClips = instructionAudioClipsEnglish;
+            instructionStrings = instructionStringsEnglish;
+        }
 
         // 0 "Welcome, racer. I've been tasked to guide you through your beginning steps."
         //  1 Let us begin with controls. The "W", "A", "S", "D", and the arrow keys, can be used to move the ship. Try this now.
@@ -73,8 +90,12 @@ public class TutorialManager : MonoBehaviour
 
         while (i != instructionAudioClips.Length)
         {
+            print("tut: entering instruction thing");
+
             if (ReadyToPlayNextInstruction(i))
             {
+                print("ready to play next instruction");
+
                 // Speed wall
                 if (i == 3)
                     TryRemovingWall(0);
@@ -157,6 +178,10 @@ public class TutorialManager : MonoBehaviour
                 return false;
             }
         }
+
+        // Complete tutorial achievement
+        if (index == 10)
+            AchievementManager.UpdateAchievement(0, 1f);
 
         return true;
     }

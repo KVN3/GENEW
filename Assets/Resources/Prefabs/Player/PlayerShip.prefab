@@ -14279,8 +14279,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 8
   DopplerLevel: 1
-  MinDistance: 4.36
-  MaxDistance: 200
+  MinDistance: 10
+  MaxDistance: 300
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -14315,7 +14315,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -26163,6 +26163,14 @@ MonoBehaviour:
   spark: {fileID: 2442}
   collectableItemClass: {fileID: 0}
   itemAmount: 0
+  gotHit: 0
+  usedBoost: 0
+  boostUses: 0
+  itemUses: 0
+  totalBoostUses: 0
+  totalItemUses: 0
+  blockedProjectiles: 0
+  totalBlockedProjectiles: 0
   runData:
     currentLap: 0
     maxLaps: 3
@@ -26181,6 +26189,9 @@ MonoBehaviour:
     replayRotations: []
     replayPositions: []
     charges: 0
+    totalTravelDistance: 0
+    projectilesBlocked: 0
+    totalProjectilesBlocked: 0
   isMine: 0
 --- !u!114 &2452
 MonoBehaviour:
@@ -26723,6 +26734,7 @@ MonoBehaviour:
     baseAngle: 0
     angleZ: 0
   target: {fileID: 2453}
+  isSpectating: 0
 --- !u!1 &542
 GameObject:
   m_ObjectHideFlags: 0

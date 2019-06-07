@@ -23,9 +23,13 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
         // Set the room options
         RoomOptions roomOptions = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 3, PublishUserId = true }; // PublisherId is for making friends
 
+        string roomName = GenerateRoomName();
+
         // Creates room
-        if (PhotonNetwork.CreateRoom(RoomName.text, roomOptions, TypedLobby.Default))
+        if (PhotonNetwork.CreateRoom(roomName, roomOptions, TypedLobby.Default))
         {
+            CurrentRoomCanvas.instance.RoomName = roomName;
+
             if (tutorial)
             {
                 GameConfiguration.tutorial = true;
@@ -34,16 +38,53 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
             else
             {
                 GameConfiguration.tutorial = false;
-                Chat.instance.JoinChat(RoomName.text);
+                // Join chat channel of the room
+                Chat.instance.JoinChat(roomName);
+                Chat.instance.roomName = roomName;
                 print("Create room successfully sent.");
             }
-
-            
         }
         else
         {
             print("Create room failed to send.");
         }
+    }
+
+    private string GenerateRoomName()
+    {
+        bool validName = false;
+        string roomName = RoomName.text;
+
+        string givenRoomName = RoomName.text.ToLower();
+
+        if (givenRoomName == "room name..." || givenRoomName == "kamernaam...")
+        {
+            roomName = "ROOM";
+        }
+        else if (givenRoomName.Contains("room"))
+        {
+            roomName = "ROOM";
+        }
+
+
+
+        // While name is not valid
+        while (!validName)
+        {
+            roomName = roomName + "#" + Random.Range(10000, 99999).ToString();
+
+            // If room doesn't exist, validname
+            if (RoomLayoutGroup.Instance.RoomExists(roomName))
+            {
+
+            }
+            else
+            {
+                validName = true;
+            }
+        }
+
+        return roomName;
     }
 
 

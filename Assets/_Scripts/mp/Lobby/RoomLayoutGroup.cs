@@ -6,6 +6,8 @@ using Photon.Realtime;
 
 public class RoomLayoutGroup : MonoBehaviourPunCallbacks
 {
+    public static RoomLayoutGroup Instance;
+
     [SerializeField]
     private GameObject _roomListingPrefab;
     private GameObject RoomListingPrefab
@@ -20,6 +22,11 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
         get { return _roomListingButtons; }
     }
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
@@ -28,23 +35,58 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
         }
     }
 
+    public bool RoomExists(string roomName)
+    {
+        bool exists = false;
+
+        foreach (RoomListing roomListing in RoomListingButtons)
+        {
+            if (roomListing.RoomName.Equals(roomName))
+            {
+                exists = true;
+                break;
+            }
+        }
+
+        return exists;
+    }
+
     // When room list gets updated, this is called
     public override void OnRoomListUpdate(List<RoomInfo> rooms)
     {
+        print($"Updating room list... received {rooms.Count} rooms from Phtoon");
+
+        List<RoomListing> removeRooms = new List<RoomListing>();
+
         foreach (RoomInfo room in rooms)
         {
-            RoomReceived(room);
+            // Delete
+            if (room.MaxPlayers == 0 && room.PlayerCount == 0)
+            {
+                int index = RoomListingButtons.FindIndex(i => i.RoomName == rooms[0].Name);
+
+                if (Method.IndexFound(index))
+                {
+                    removeRooms.Add(RoomListingButtons[index]);
+                }
+            }
+
+            // Add/Update
+            else
+            {
+                RoomReceived(room);
+            }
         }
 
-        RemoveOldRooms();
-
-        print("Updated room list");
+        PerformRemovingRoomListings(removeRooms);
     }
 
     // If found, updates name
     // If not found and room is set to visible and has free slots left, create room and add to list
     private void RoomReceived(RoomInfo room)
     {
+
+
         // Go through all rooms, return room index with same name
         int index = RoomListingButtons.FindIndex(i => i.RoomName == room.Name);
 
@@ -68,11 +110,19 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
         // If index found, set updated
         if (Method.IndexFound(index))
         {
-            // Update room name
-            RoomListing roomListing = RoomListingButtons[index];
-            roomListing.SetRoomNameText(room.Name);
-            roomListing.SetPlayerCountText(room.PlayerCount, room.MaxPlayers);
-            roomListing.Updated = true;
+
+            if (room.MaxPlayers == 0 && room.PlayerCount == 0)
+            {
+
+            }
+            else
+            {
+                // Update room name
+                RoomListing roomListing = RoomListingButtons[index];
+                roomListing.SetRoomNameText(room.Name);
+                roomListing.SetPlayerCountText(room.PlayerCount, room.MaxPlayers);
+                roomListing.Updated = true;
+            }
         }
     }
 
@@ -91,6 +141,24 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
         }
 
         // Remove all rooms marked for removal from list
+        PerformRemovingRoomListings(removeRooms);
+    }
+
+    public void RemoveAllRooms()
+    {
+        List<RoomListing> removeRooms = new List<RoomListing>();
+
+        foreach (RoomListing roomListing in RoomListingButtons)
+        {
+            removeRooms.Add(roomListing);
+        }
+
+        // Remove all rooms marked for removal from list
+        PerformRemovingRoomListings(removeRooms);
+    }
+
+    private void PerformRemovingRoomListings(List<RoomListing> removeRooms)
+    {
         foreach (RoomListing roomListing in removeRooms)
         {
             GameObject roomListingObj = roomListing.gameObject;
@@ -99,3 +167,47 @@ public class RoomLayoutGroup : MonoBehaviourPunCallbacks
         }
     }
 }
+
+
+
+//// Photon bug calling this twice
+//// If not my client
+
+//// Received 1 room
+//if (rooms.Count == 1)
+//{
+//    // This 1 room has the same name as this client's last room
+//    if (CurrentRoomCanvas.instance.RoomName == rooms[0].Name)
+//    {
+//        // Do nothing with this update
+//        return;
+//    }
+
+//    // This is a foreign update
+//    else
+//    {
+//        // If the maxplayers and players received in the update for this room are both 0, remove this room and return
+//        if (rooms[0].MaxPlayers == 0 && rooms[0].PlayerCount == 0)
+//        {
+//            List<RoomListing> removeRooms = new List<RoomListing>();
+
+//            int index = RoomListingButtons.FindIndex(i => i.RoomName == rooms[0].Name);
+//            removeRooms.Add(RoomListingButtons[index]);
+
+//            PerformRemovingRoomListings(removeRooms);
+
+//            return;
+//        }
+//    }
+//}
+
+
+//print($"Updating room list... received {rooms.Count} rooms from Phtoon");
+
+//foreach (RoomInfo room in rooms)
+//{
+
+//    RoomReceived(room);
+//}
+
+//RemoveOldRooms();

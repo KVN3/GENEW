@@ -309,6 +309,12 @@ public class ShipMovement : ShipComponent, IPunObservable
     // Activates speed boost based on passed along values
     public void ActivateSpeedBoost(float maxSpeedIncrease, float boostFactor, float boostDuration)
     {
+        // For achievement check
+        parentShip.usedBoost = true;
+        parentShip.boostUses++;
+        parentShip.totalBoostUses++;
+        AchievementManager.UpdateAchievement(19, 1f);
+
         if (playerCamera != null)
         {
             playerCamera.ActivateBoostedCamera();

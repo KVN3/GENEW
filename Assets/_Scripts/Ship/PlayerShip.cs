@@ -37,6 +37,12 @@ public struct PlayerRunData
 
     // Extra
     public float charges;
+
+    // Achievement stats
+    public float totalTravelDistance;
+    public int projectilesBlocked;
+    public int totalProjectilesBlocked;
+
 }
 #endregion
 
@@ -89,8 +95,17 @@ public class PlayerShip : Ship
 
     public void PlayerFinishedRaceEvent(int amountOfLaps, System.TimeSpan raceTime, double averageLapTime, string playerName)
     {
+        // Foreign clients gotta know
+        runData.raceFinished = true;
+
+        
+
+        
+
         if (photonView.IsMine)
         {
+            print("EVENT: I finished race.");
+
             // Camera
             bool success = playerCamera.ActivateSpectatorMode();
 
@@ -98,7 +113,18 @@ public class PlayerShip : Ship
             OnPlayerFinishedRaceNotifyAnalyticsDelegate(runData.maxLaps, runData.raceTime, averageLapTime, playerName);
 
             // UI
-            OnPlayerFinishedRaceNotifyUIDelegate(success);
+            HUD.Instance.PlayerFinishedRaceEvent(success);
+
+            // Move this ship somewhere far off the map, out of sight.
+            transform.position = new Vector3(Random.Range(50000, 100000), Random.Range(50000, 100000), Random.Range(50000, 100000));
+
+            // Turn off ship elements
+            this.components.engines.TurnOffAllEngines();
+            this.components.forcefield.Deactivated();
+
+            // Destroy movement and player controller
+            Destroy(GetComponent<PlayerController>());
+            Destroy(GetComponent<ShipMovement>());
         }
         else
         {
@@ -106,21 +132,33 @@ public class PlayerShip : Ship
             GameObject myCameraObject = GameObject.FindGameObjectWithTag("MainCamera");
             PlayerCamera myCamera = myCameraObject.GetComponent<PlayerCamera>();
 
+            if (!myCamera.isSpectating)
+            {
+                return;
+            }
+
+            print("EVENT: Another player finished race.");
+
             myCamera.RemoveSpectatable(this);
 
             if (myCamera.SpectatablesLeft())
             {
-                myCamera.NextSpectatable();
+                print("EVENT: Spectatables left to go through...");
+
+                if (myCamera.target == this)
+                {
+                    print("Spectator I'm watching finished, moving to next.");
+                    myCamera.NextSpectatable();
+                }
             }
             else
             {
-                OnPlayerFinishedRaceNotifyUIDelegate(false);
+                print("No spectatables left in list!");
+                HUD.Instance.PlayerFinishedRaceEvent(false);
             }
         }
 
-        Destroy(GetComponent<PlayerController>());
-        Destroy(GetComponent<ShipMovement>());
-        transform.position = new Vector3(Random.Range(50000, 100000), Random.Range(50000, 100000), Random.Range(50000, 100000));
+       
     }
 
     private void Update()
@@ -156,7 +194,9 @@ public class PlayerShip : Ship
     {
         // Set currentlap, maxlaps, timer, pos
         runData.currentLap = 0;
-            runData.maxLaps = 3;
+
+        runData.maxLaps = 3;
+
         runData.raceTime = System.TimeSpan.Parse("00:00:00.000");
         runData.leaderboardTimes = new List<System.TimeSpan>();
         runData.currentPos = 1;
@@ -166,8 +206,16 @@ public class PlayerShip : Ship
         runData.isOverHalfway = false;
         // Guidance
         runData.isWrongWay = false;
-        runData.isLastLap = false;
+        runData.isLastLap = true;
         runData.hasNewBestTime = false;
+
+        // Achievement stats
+
+        Account account = Registration.GetCurrentAccount();
+
+        runData.totalTravelDistance = account.achievements[12].progress;
+        runData.projectilesBlocked = 0;
+        runData.totalProjectilesBlocked = (int)account.achievements[14].progress;
 
         // Replay data
         runData.positionsX = new List<float>();
@@ -219,11 +267,13 @@ public class PlayerShip : Ship
             // Check for valid lap
             if (!runData.isWrongWay && runData.isOverHalfway)
             {
-                // Save lap if race has started (lap > 0) // THIS ALWAYS HAPPENS REGARDLESS OF FINISHED OR NOT
-                if (runData.currentLap > 0)
+                // If finished
+                if (runData.currentLap == runData.maxLaps) // 3/3 laps + finish
                 {
-                    // Update best time if not set (00:00:00)
-                    // CheckBestTime()
+                    Debug.Log("playerShip Finished");
+                    levelSoundManager.PlaySound(SoundType.VICTORY);
+
+                    // Check best time
                     if (runData.bestRaceTime == System.TimeSpan.Parse("00:00:00"))
                     {
                         runData.bestRaceTime = runData.raceTime;
@@ -236,33 +286,6 @@ public class PlayerShip : Ship
                         runData.bestRaceTime = runData.raceTime;
                         runData.hasNewBestTime = true;
                     }
-
-                    // Achievements
-                    if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.WASTELAND])
-                    {
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:15.000"))
-                            AchievementManager.UpdateAchievement(0, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:05.000"))
-                            AchievementManager.UpdateAchievement(1, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
-                            AchievementManager.UpdateAchievement(2, 1f);
-                    }
-                    else if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.HIGHWAY])
-                    {
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
-                            AchievementManager.UpdateAchievement(3, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:01:50.000"))
-                            AchievementManager.UpdateAchievement(4, 1f);
-                        if (runData.raceTime < System.TimeSpan.Parse("00:01:45.000"))
-                            AchievementManager.UpdateAchievement(5, 1f);
-                    }
-                }
-
-                // If finished
-                if (runData.currentLap == runData.maxLaps) // 3/3 laps + finish
-                {
-                    Debug.Log("playerShip Finished");
-                    levelSoundManager.PlaySound(SoundType.VICTORY);
 
                     // Leaderboard
                     Account account = Registration.GetCurrentAccount();
@@ -282,16 +305,71 @@ public class PlayerShip : Ship
 
                     runData.raceFinished = true;
 
-                    // Analytics
-                    double averageLapTime = runData.raceTime.TotalSeconds / runData.maxLaps;
-                    string playerName = "Anon";
+                    #region Achievements
+                    // Achievements
+                    if (!usedItem)
+                        AchievementManager.UpdateAchievementByName("Look mom no items", 1f);
 
-                    if (PhotonNetwork.IsConnected)
-                        playerName = PhotonNetwork.LocalPlayer.NickName;
+                    if (!usedBoost)
+                        AchievementManager.UpdateAchievementByName("Boosters for losers", 1f);
 
+                    if (itemUses >= 4)
+                        AchievementManager.UpdateAchievementByName("Items 4 days", 1f);
 
+                    if (boostUses >= 10)
+                        AchievementManager.UpdateAchievementByName("Boosted to infinity", 1f);
 
-                    PlayerFinishedRaceEvent(runData.maxLaps, runData.raceTime, averageLapTime, playerName);
+                    if (blockedProjectiles >= 4)
+                        AchievementManager.UpdateAchievementByName("Blockmaster", 1f);
+
+                    if (!gotHit)
+                        AchievementManager.UpdateAchievementByName("Unstunnable", 1f);
+
+                    List<HighscoreEntry> highscores = HighscoreManager.Instance.GetHighscoresByStage(SceneManager.GetActiveScene().name);
+                    if (highscores[0].name == account.username)
+                        AchievementManager.UpdateAchievementByName("Champion", 1f);
+
+                    if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.WASTELAND])
+                    {
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:15.000"))
+                        {
+                            AchievementManager.UpdateAchievement(1, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:05.000"))
+                        {
+                            AchievementManager.UpdateAchievement(2, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
+                        {
+                            AchievementManager.UpdateAchievement(3, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                    }
+                    else if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.HIGHWAY])
+                    {
+                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
+                        {
+                            AchievementManager.UpdateAchievement(4, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                        if (runData.raceTime < System.TimeSpan.Parse("00:01:50.000"))
+                        {
+                            AchievementManager.UpdateAchievement(5, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                        if (runData.raceTime < System.TimeSpan.Parse("00:01:45.000"))
+                        {
+                            AchievementManager.UpdateAchievement(6, 1f);
+                            levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+                    }
+                    #endregion
+
+                    // Event
+
+                    photonView.RPC("RPC_PlayerFinished", RpcTarget.AllViaServer);
                 }
                 else // If not finished
                 {
@@ -303,6 +381,8 @@ public class PlayerShip : Ship
                         {
                             Debug.Log($"PlayerShip Crossed Finish Line");
                             levelSoundManager.PlaySound(SoundType.LAPPASSED);
+
+                            AchievementManager.UpdateAchievement(12, 3f);
 
                             runData.isOverHalfway = false;
 
@@ -336,6 +416,19 @@ public class PlayerShip : Ship
             runData.lastWaypoint = other.transform;
         }
         #endregion
+    }
+    #endregion
+
+    #region RPC
+    [PunRPC]
+    public void RPC_PlayerFinished(PhotonMessageInfo info)
+    {
+        double averageLapTime = runData.raceTime.TotalSeconds / runData.maxLaps;
+        string playerName = "Anon";
+        if (PhotonNetwork.IsConnected)
+            playerName = PhotonNetwork.LocalPlayer.NickName;
+
+        PlayerFinishedRaceEvent(runData.maxLaps, runData.raceTime, averageLapTime, playerName);
     }
     #endregion
 

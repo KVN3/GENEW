@@ -7,6 +7,8 @@ public class ClientConfiguration
     public bool SawChangelog;
     public bool SawNewAchievement;
 
+    public Language preferredLanguage;
+
     public bool MusicOn;
     public bool SoundOn;
 

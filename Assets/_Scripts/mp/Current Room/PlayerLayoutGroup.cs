@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
 {
+    public static PlayerLayoutGroup Instance;
+
     [SerializeField]
     private GameObject _playerListingPrefab;
     private GameObject PlayerListingPrefab
@@ -18,7 +20,7 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     private LevelPreview levelPreview;
 
     private List<PlayerListing> _playerListings = new List<PlayerListing>();
-    private List<PlayerListing> PlayerListings
+    public List<PlayerListing> PlayerListings
     {
         get { return _playerListings; }
     }
@@ -27,11 +29,32 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
     public Sprite unlockedSprite;
     public Sprite lockedSprite;
 
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    public int GetListingIndex()
+    {
+        int index = PlayerListings.FindIndex(i => i.PhotonPlayer == PhotonNetwork.LocalPlayer);
+
+        if (Method.IndexFound(index))
+        {
+            return index;
+        }
+        else
+        {
+            print("Couldn't find listing index in PlayerLayoutGroup.");
+            return 0;
+        }
+    }
 
     #region PhotonCallbacks
     // I joined room
     public override void OnJoinedRoom()
     {
+        RoomLayoutGroup.Instance.RemoveAllRooms();
+
         if (GameConfiguration.tutorial)
             return;
 
@@ -42,7 +65,6 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         // Toggles the current room window
         MainCanvasManager.instance.ShowPanel(PanelType.ROOM);
         MainCanvasManager.instance.HidePanel(PanelType.LOBBY);
-
 
         // Update player list
         Player[] players = PhotonNetwork.PlayerList;
@@ -98,7 +120,7 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         GameObject playerListingObj = Instantiate(PlayerListingPrefab);
         playerListingObj.transform.SetParent(transform, false);
         // Adds onClick to add friend
-        playerListingObj.GetComponent<Button>().onClick.AddListener(delegate { Chat.instance.AddFriend(player.UserId); });
+        //playerListingObj.GetComponent<Button>().onClick.AddListener(delegate { Chat.instance.AddFriend(player.UserId); });
 
         // Add to listing
         PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
@@ -135,8 +157,54 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
 
     public void OnClickLeaveRoom()
     {
-        Chat.instance.LeaveChat(Chat.instance.channelsToJoinOnConnect[2]);
-        PhotonNetwork.LeaveRoom();
+
+
+        // If room loaded, leave room and swap panels.
+        if (PhotonNetwork.InRoom)
+        {
+            // If chat loaded, leave chat.
+            if (Chat.instance.chatClient.State.Equals(Photon.Chat.ChatState.ConnectedToFrontEnd))
+            {
+                try
+                {
+                    Chat.instance.LeaveChat(Chat.instance.channelsToJoinOnConnect[2]);
+                }
+                catch
+                {
+                    print("NOT IN CHAT ROOM, CANT LEAVE");
+                }
+            }
+            else
+            {
+                print("FAILED TO LEAVE CHAT ROOM IN ONCLICKLEAVEROOM()");
+            }
+
+            PhotonNetwork.LeaveRoom();
+
+            MainCanvasManager.instance.HidePanel(PanelType.ROOM);
+            MainCanvasManager.instance.ShowPanel(PanelType.LOBBY);
+
+            EmptyPlayers();
+        }
+
+    }
+
+    private void EmptyPlayers()
+    {
+        List<PlayerListing> removePlayers = new List<PlayerListing>();
+
+        foreach (PlayerListing listing in PlayerListings)
+        {
+            removePlayers.Add(listing);
+        }
+
+        // Remove all player listings marked for removal from list
+        foreach (PlayerListing listing in removePlayers)
+        {
+            GameObject playerListingObj = listing.gameObject;
+            PlayerListings.Remove(listing);
+            Destroy(playerListingObj);
+        }
     }
 
     // If index == -1, index hasn't been found
