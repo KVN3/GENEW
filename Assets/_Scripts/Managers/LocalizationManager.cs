@@ -76,6 +76,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("FRIENDS", "Vrienden");
         NLDict.Add("OPEN_FRIENDS", "Open vrienden");
         NLDict.Add("ADD_FRIEND", "Vriend toevoegen");
+        NLDict.Add("DELETE", "Verwijderen");
         NLDict.Add("FRIEND_TO_ADD", "Vriend om toe te voegen...");
 
         // Leaderboard
@@ -194,6 +195,7 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("FRIENDS", "Friends");
         ENDict.Add("OPEN_FRIENDS", "Open friends");
         ENDict.Add("ADD_FRIEND", "Add Friend");
+        ENDict.Add("DELETE", "Delete");
         ENDict.Add("FRIEND_TO_ADD", "Friend to add...");
 
         // Leaderboard
@@ -259,6 +261,8 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
 
     }
 
+    #region GetTextByKey
+
     public static string GetTextByKey(string key)
     {
         try
@@ -289,6 +293,8 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
 
         return key;
     }
+
+    #endregion
 
     public void SetLanguage(int languageIndex)
     {

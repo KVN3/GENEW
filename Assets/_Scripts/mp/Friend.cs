@@ -28,6 +28,23 @@ public class Friend : MonoBehaviour
 
     public TextMeshProUGUI NameLabel;
     public TextMeshProUGUI StatusLabel;
+    public TextMeshProUGUI DeleteText;
+    public GameObject RemoveBtn;
+
+    private void Update()
+    {
+        DeleteText.text = LocalizationManager.GetTextByKey("DELETE");
+    }
+
+    public void ToggleMiniMenu()
+    {
+        RemoveBtn.SetActive(!RemoveBtn.activeSelf);
+    }
+
+    public void RemoveFriend()
+    {
+        Chat.instance.RemoveFriend(FriendId);
+    }
 
     public void OnFriendStatusUpdate(int status, bool gotMessage, object message)
     {

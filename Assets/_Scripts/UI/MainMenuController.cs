@@ -170,19 +170,4 @@ public class MainMenuController : MonoBehaviour
     }
 
     #endregion
-
-    #region Unused
-    public void SetColorBlue()
-    {
-        PlayerPrefs.SetString("Ship Color", "Blue");
-    }
-    public void SetColorRed()
-    {
-        PlayerPrefs.SetString("Ship Color", "Red");
-    }
-    public void SetColorGreen()
-    {
-        PlayerPrefs.SetString("Ship Color", "Green");
-    }
-    #endregion
 }
