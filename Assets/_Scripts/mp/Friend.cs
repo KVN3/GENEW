@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Friend UI item used to represent the friend status as well as message. 
@@ -11,7 +12,7 @@ using System.Collections.Generic;
 /// But of course the message can be anything and a lot more complex.
 /// </summary>
 /// 
-public class Friend : MonoBehaviour
+public class Friend : MonoBehaviour, IPointerExitHandler
 {
     [HideInInspector]
     public string FriendId
@@ -28,12 +29,17 @@ public class Friend : MonoBehaviour
 
     public TextMeshProUGUI NameLabel;
     public TextMeshProUGUI StatusLabel;
-    public TextMeshProUGUI DeleteText;
     public GameObject RemoveBtn;
+    public TextMeshProUGUI DeleteText;
 
     private void Update()
     {
         DeleteText.text = LocalizationManager.GetTextByKey("DELETE");
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        RemoveBtn.SetActive(false);
     }
 
     public void ToggleMiniMenu()
