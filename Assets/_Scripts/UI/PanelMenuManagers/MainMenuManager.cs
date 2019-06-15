@@ -68,7 +68,7 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
         achievementsText.text = LocalizationManager.GetTextByKey("ACHIEVEMENTS");
         logoutText.text = LocalizationManager.GetTextByKey("LOGOUT");
         exitGameText.text = LocalizationManager.GetTextByKey("EXIT_GAME");
-        versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + " Release Candidate";
+        versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + " 1.0";
     }
 
     #region Toggles
