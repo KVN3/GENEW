@@ -3829,7 +3829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b96b4dbb17c42d499edf4389b29b021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasRect: {fileID: 0}
   nonTutorialPanels: {fileID: 676}
   tutorialPanels: {fileID: 675}
   lapText: {fileID: 3171}
@@ -3869,6 +3868,11 @@ MonoBehaviour:
   leaderboardText: {fileID: 3216}
   entryTemplate: {fileID: 683}
   leaderboardContent: {fileID: 689}
+  spectatingText: {fileID: 3239}
+  rankText: {fileID: 3224}
+  nameText: {fileID: 3221}
+  timeText: {fileID: 3241}
+  returnToLobbyText: {fileID: 3229}
   countDownText: {fileID: 3162}
   countDownController: {fileID: 6332648951526286633, guid: af6067f58962eea498378e0c7065569f,
     type: 3}
@@ -6368,8 +6372,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3200}
   m_HandleRect: {fileID: 3017}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6736,8 +6740,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000015258789}
-  m_SizeDelta: {x: -237.76, y: -168.76}
+  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2912
 CanvasRenderer:
@@ -8585,7 +8589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8609,7 +8613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -390, y: 0}
+  m_AnchoredPosition: {x: -350, y: 0}
   m_SizeDelta: {x: 500, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2915
@@ -8657,7 +8661,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -8855,7 +8859,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.9999999}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

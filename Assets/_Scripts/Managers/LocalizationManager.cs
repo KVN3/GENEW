@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LocalizationManager : LevelSingleton<LocalizationManager>
 {
     // PreferredLanguage is the language being used.
+    // KEYS are CASE-SENSITIVE
     public static Language chosenLanguage;
     private static Dictionary<string, string> NLDict;
     private static Dictionary<string, string> ENDict;
@@ -107,8 +108,8 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("BODY_COLOR", "Dekkleur");
 
         // Explanation
-        NLDict.Add("ESC_TO_QUIT", "Druk esc om het spel te verlaten");
-        NLDict.Add("R_TO_RESTART", "Druk R om te herstarten");
+        NLDict.Add("ESC_TO_QUIT", "Druk esc om het spel te verlaten"); // Not used
+        NLDict.Add("R_TO_RESTART", "Druk R om te herstarten"); // Not used
 
         // In-Game HUD
         NLDict.Add("SPEEDUNIT", "KM/U");
@@ -138,6 +139,8 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("BEST_TIME", "Beste tijd");
         NLDict.Add("TOTAL_TIME", "Totale tijd");
         NLDict.Add("USER", "Gebruiker");
+        NLDict.Add("SPECTATING_NEXT", "AAN HET TOESCHOUWEN\n Druk op 'E' om de volgende speler te toeschouwen");
+        NLDict.Add("RETURN_TO_LOBBY", "Naar lobby (P)");
     }
 
     private static void UpdateEnglishDictionaryStatic()
@@ -258,6 +261,8 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("BEST_TIME", "Best time");
         ENDict.Add("TOTAL_TIME", "Total time");
         ENDict.Add("USER", "User");
+        ENDict.Add("SPECTATING_NEXT", "SPECTATING\n Press 'E' to spectate next player");
+        ENDict.Add("RETURN_TO_LOBBY", "To lobby (P)");
 
     }
 

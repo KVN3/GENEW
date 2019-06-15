@@ -13,8 +13,6 @@ using UnityEngine.UI;
 public class UIPanel : UIBehaviour
 {
     #region Fields
-    public RectTransform canvasRect;
-
     public GameObject nonTutorialPanels;
     public GameObject tutorialPanels;
 
@@ -68,6 +66,11 @@ public class UIPanel : UIBehaviour
     public TextMeshProUGUI leaderboardText;
     public GameObject entryTemplate;
     public GameObject leaderboardContent;
+    public TextMeshProUGUI spectatingText;
+    public TextMeshProUGUI rankText;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI returnToLobbyText;
     private bool initialisedScoreBoard;
 
 
@@ -240,6 +243,12 @@ public class UIPanel : UIBehaviour
                 HighscoreManager.Instance.ShowHighscores(SceneManager.GetActiveScene().name, entryTemplate, leaderboardContent);
                 initialisedScoreBoard = true;
             }
+
+            spectatingText.text = LocalizationManager.GetTextByKey("SPECTATING_NEXT");
+            rankText.text = LocalizationManager.GetTextByKey("RANK");
+            nameText.text = LocalizationManager.GetTextByKey("NAME");
+            timeText.text = LocalizationManager.GetTextByKey("TIME");
+            returnToLobbyText.text = LocalizationManager.GetTextByKey("RETURN_TO_LOBBY");
         }
         #endregion
 
