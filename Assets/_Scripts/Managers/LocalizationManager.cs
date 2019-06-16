@@ -140,7 +140,8 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("TOTAL_TIME", "Totale tijd");
         NLDict.Add("USER", "Gebruiker");
         NLDict.Add("SPECTATING_NEXT", "AAN HET TOESCHOUWEN\n Druk op 'E' om de volgende speler te toeschouwen");
-        NLDict.Add("RETURN_TO_LOBBY", "Naar lobby (P)");
+        NLDict.Add("TO_LOBBY_HELP", "Druk op 'P' om naar lobby te gaan");
+        NLDict.Add("TO_LOBBY", "Naar lobby (P)");
     }
 
     private static void UpdateEnglishDictionaryStatic()
@@ -262,7 +263,8 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("TOTAL_TIME", "Total time");
         ENDict.Add("USER", "User");
         ENDict.Add("SPECTATING_NEXT", "SPECTATING\n Press 'E' to spectate next player");
-        ENDict.Add("RETURN_TO_LOBBY", "To lobby (P)");
+        ENDict.Add("TO_LOBBY_HELP", "Press 'P' to return to lobby");
+        ENDict.Add("TO_LOBBY", "To lobby (P)");
 
     }
 

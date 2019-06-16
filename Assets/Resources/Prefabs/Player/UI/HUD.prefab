@@ -271,7 +271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 107.6, y: -110}
+  m_AnchoredPosition: {x: 107.6001, y: -110}
   m_SizeDelta: {x: 120, y: 38.700012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2871
@@ -392,7 +392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 107.600006, y: -65}
+  m_AnchoredPosition: {x: 107.6001, y: -65}
   m_SizeDelta: {x: 120, y: 38.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2888
@@ -2749,7 +2749,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 107.600006, y: -155}
+  m_AnchoredPosition: {x: 107.6001, y: -155}
   m_SizeDelta: {x: 120, y: 38.700012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2864
@@ -6130,8 +6130,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75.89, y: -129.29}
-  m_SizeDelta: {x: 194.54001, y: 29.410004}
+  m_AnchoredPosition: {x: 83.94, y: -129.29}
+  m_SizeDelta: {x: 244.5, y: 29.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2910
 CanvasRenderer:
@@ -6190,11 +6190,11 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
+  m_fontSize: 13
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 14
+  m_fontSizeMin: 13
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_textAlignment: 514
@@ -6740,8 +6740,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -237.76, y: -168.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2912
 CanvasRenderer:
@@ -6974,7 +6974,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61.690002, y: 131.66}
+  m_AnchoredPosition: {x: 64, y: 131.66}
   m_SizeDelta: {x: 200, y: 29.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2937
@@ -7072,7 +7072,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 1.3025998, y: 1.3137655, z: 1.5705403, w: 1.203743}
+  m_margin: {x: 1.3025998, y: 1.3137655, z: -34.312046, w: 1.203743}
   m_textInfo:
     textComponent: {fileID: 3223}
     characterCount: 10
@@ -8583,13 +8583,14 @@ GameObject:
   - component: {fileID: 2915}
   - component: {fileID: 3213}
   - component: {fileID: 3057}
+  - component: {fileID: 2201779455756073930}
   m_Layer: 5
   m_Name: RaceEndScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8613,7 +8614,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: 0}
+  m_AnchoredPosition: {x: -345, y: 0}
   m_SizeDelta: {x: 500, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2915
@@ -8661,10 +8662,33 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2201779455756073930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 040746b1865f6074caed6192e935f39d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raceEndScreenText: {fileID: 3205}
+  endTimeText: {fileID: 3223}
+  leaderboardText: {fileID: 3216}
+  entryTemplate: {fileID: 683}
+  leaderboardContent: {fileID: 689}
+  spectatingText: {fileID: 3239}
+  rankText: {fileID: 3224}
+  nameText: {fileID: 3221}
+  timeText: {fileID: 3241}
+  toLobbyHelpText: {fileID: 3199}
+  returnToLobbyText: {fileID: 3229}
 --- !u!1 &705
 GameObject:
   m_ObjectHideFlags: 0
@@ -8858,8 +8882,8 @@ RectTransform:
   m_Father: {fileID: 3006}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.000000059604645}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
