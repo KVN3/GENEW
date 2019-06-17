@@ -98,9 +98,6 @@ public class PlayerShip : Ship
         // Foreign clients gotta know
         runData.raceFinished = true;
 
-        
-
-        
 
         if (photonView.IsMine)
         {
@@ -307,62 +304,84 @@ public class PlayerShip : Ship
 
                     #region Achievements
                     // Achievements
-                    if (!usedItem)
-                        AchievementManager.UpdateAchievementByName("Look mom no items", 1f);
-
-                    if (!usedBoost)
-                        AchievementManager.UpdateAchievementByName("Boosters for losers", 1f);
-
-                    if (itemUses >= 4)
-                        AchievementManager.UpdateAchievementByName("Items 4 days", 1f);
-
-                    if (boostUses >= 10)
-                        AchievementManager.UpdateAchievementByName("Boosted to infinity", 1f);
-
-                    if (blockedProjectiles >= 4)
-                        AchievementManager.UpdateAchievementByName("Blockmaster", 1f);
-
-                    if (!gotHit)
-                        AchievementManager.UpdateAchievementByName("Unstunnable", 1f);
-
-                    List<HighscoreEntry> highscores = HighscoreManager.Instance.GetHighscoresByStage(SceneManager.GetActiveScene().name);
-                    if (highscores[0].name == account.username)
-                        AchievementManager.UpdateAchievementByName("Champion", 1f);
-
-                    if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.WASTELAND])
+                    if (photonView.IsMine)
                     {
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:15.000"))
+                        if (!usedItem)
                         {
-                            AchievementManager.UpdateAchievement(1, 1f);
+                            AchievementManager.UpdateAchievementByName("Look mom no items", 1f);
                             levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
                         }
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:05.000"))
+
+                        if (!usedBoost)
                         {
-                            AchievementManager.UpdateAchievement(2, 1f);
+                            AchievementManager.UpdateAchievementByName("Boosters for losers", 1f);
                             levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
                         }
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
+
+
+                        if (itemUses >= 4)
                         {
-                            AchievementManager.UpdateAchievement(3, 1f);
+                            AchievementManager.UpdateAchievementByName("Items 4 days", 1f);
                             levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
                         }
-                    }
-                    else if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.HIGHWAY])
-                    {
-                        if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
+
+                        if (boostUses >= 10)
                         {
-                            AchievementManager.UpdateAchievement(4, 1f);
+                            AchievementManager.UpdateAchievementByName("Boosted to infinity", 1f);
                             levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
                         }
-                        if (runData.raceTime < System.TimeSpan.Parse("00:01:50.000"))
+
+                        if (blockedProjectiles >= 4)
                         {
-                            AchievementManager.UpdateAchievement(5, 1f);
+                            AchievementManager.UpdateAchievementByName("Blockmaster", 1f);
                             levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
                         }
-                        if (runData.raceTime < System.TimeSpan.Parse("00:01:45.000"))
+
+                        if (!gotHit)
                         {
-                            AchievementManager.UpdateAchievement(6, 1f);
+                            AchievementManager.UpdateAchievementByName("Unstunnable", 1f);
                             levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                        }
+
+                        List<HighscoreEntry> highscores = HighscoreManager.Instance.GetHighscoresByStage(SceneManager.GetActiveScene().name);
+                        if (highscores[0].name == account.username)
+                            AchievementManager.UpdateAchievementByName("Champion", 1f);
+
+                        if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.WASTELAND])
+                        {
+                            if (runData.raceTime < System.TimeSpan.Parse("00:02:15.000"))
+                            {
+                                AchievementManager.UpdateAchievement(1, 1f);
+                                levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                            }
+                            if (runData.raceTime < System.TimeSpan.Parse("00:02:05.000"))
+                            {
+                                AchievementManager.UpdateAchievement(2, 1f);
+                                levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                            }
+                            if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
+                            {
+                                AchievementManager.UpdateAchievement(3, 1f);
+                                levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                            }
+                        }
+                        else if (SceneManager.GetActiveScene().name == ScenesInformation.sceneNames[SceneTitle.HIGHWAY])
+                        {
+                            if (runData.raceTime < System.TimeSpan.Parse("00:02:00.000"))
+                            {
+                                AchievementManager.UpdateAchievement(4, 1f);
+                                levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                            }
+                            if (runData.raceTime < System.TimeSpan.Parse("00:01:50.000"))
+                            {
+                                AchievementManager.UpdateAchievement(5, 1f);
+                                levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                            }
+                            if (runData.raceTime < System.TimeSpan.Parse("00:01:45.000"))
+                            {
+                                AchievementManager.UpdateAchievement(6, 1f);
+                                levelSoundManager.PlaySound(SoundType.ACHIEVEMENT);
+                            }
                         }
                     }
                     #endregion

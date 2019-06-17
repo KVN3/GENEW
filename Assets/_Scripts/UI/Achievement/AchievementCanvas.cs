@@ -45,39 +45,4 @@ public class AchievementCanvas : MonoBehaviour
         Destroy(obj);
     }
     #endregion
-
-    //#region Singleton
-
-    //// Abstract
-
-    //protected static AchievementCanvas _Instance;
-
-    //public static bool Initialized => _Instance != null;
-
-    //public static AchievementCanvas Instance
-    //{
-    //    get
-    //    {
-    //        if (!Initialized)
-    //        {
-    //            GameObject gameObject = new GameObject("Achievement Canvas");
-
-    //            GameObject panel = new GameObject();
-
-    //            // Set parents
-    //            panel.transform.parent = gameObject.transform;
-
-    //            _Instance = gameObject.AddComponent<AchievementCanvas>();
-    //        }
-
-    //        return _Instance;
-    //    }
-    //}
-
-    //[RuntimeInitializeOnLoadMethod]
-    //static void ForceInit()
-    //{
-    //    AchievementCanvas GI = Instance;
-    //}
-    //#endregion
 }

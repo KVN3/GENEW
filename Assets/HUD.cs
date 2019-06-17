@@ -11,7 +11,7 @@ public enum FlashColor
     RED, BLUE
 }
 
-public class HUD : MyMonoBehaviour, IObserver
+public class HUD : MyMonoBehaviour
 {
     public static HUD Instance;
 
@@ -47,13 +47,11 @@ public class HUD : MyMonoBehaviour, IObserver
         anim = GetComponent<Animator>();
 
         RaceEndPanel.SetActive(false);
+        RaceEndPanel.GetComponent<RaceEndScreenManager>().PlayerShip = PlayerShip;
     }
 
     void Start()
     {
-
-
-
         //PlayerShip.OnPlayerFinishedRaceNotifyUIDelegate = (bool spectating) =>
         //{
         //    PlayerFinishedRaceEvent(spectating);
@@ -144,11 +142,5 @@ public class HUD : MyMonoBehaviour, IObserver
     public void TogglePause()
     {
         GameConfiguration.isPaused = !GameConfiguration.isPaused;
-    }
-
-
-    public void OnNotify(float score, float charges)
-    {
-        // Do Something
     }
 }
