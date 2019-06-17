@@ -42,7 +42,7 @@ public class ElectricExplosion : MonoBehaviour
             PlayerShip playerShip = other.GetComponent<PlayerShip>();
             Rigidbody rb = other.GetComponent<Rigidbody>();
 
-            playerShip.GetStunned(shutDownDuration, "Player weapon");
+            playerShip.components.system.TryToStun(shutDownDuration, "Player weapon");
         }
         else if (other.gameObject.CompareTag("EnergyBall"))
         {

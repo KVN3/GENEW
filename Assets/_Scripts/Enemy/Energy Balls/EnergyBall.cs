@@ -57,7 +57,7 @@ public class EnergyBall : MonoBehaviour, IPunObservable
         {
             // Tell the ship it got hit and stunned
             PlayerShip collidingShip = other.GetComponent<PlayerShip>();
-            collidingShip.GetStunned(shutDownDuration, "Energy ball");
+            collidingShip.components.system.TryToStun(shutDownDuration, "Energy ball");
 
             // Perish
             Die();

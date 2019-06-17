@@ -40,13 +40,12 @@ public class ShipMovement : ShipComponent, IPunObservable
     [SerializeField]
     private WindTrailsConfig trailsConfig;
 
-    #region run data
     private PlayerCamera playerCamera;
     private HoveringManager hoveringManager;
+    private PhotonView photonView;
 
     private float currentSpeed = 0f;
     private float currentMaxSpeed;
-    #endregion
 
     public void Awake()
     {
@@ -61,13 +60,13 @@ public class ShipMovement : ShipComponent, IPunObservable
 
         // Other
         hoveringManager = GetComponent<HoveringManager>();
+        photonView = GetComponent<PhotonView>();
         Assert.IsNotNull(hoveringManager, "Hovering manager not set.");
     }
 
     public void Start()
     {
         currentMaxSpeed = config.baseMaxSpeed;
-
 
         if (parentShip is PlayerShip)
         {
@@ -78,7 +77,8 @@ public class ShipMovement : ShipComponent, IPunObservable
 
     public void Update()
     {
-        if (GetComponent<PhotonView>().IsMine)
+        // Wind trails
+        if (photonView.IsMine)
         {
             if (currentSpeed > trailsConfig.trailActivationSpeed)
             {
@@ -132,22 +132,28 @@ public class ShipMovement : ShipComponent, IPunObservable
     #endregion
 
     #region Movement
+
+    /// <summary>
+    /// Handles ship movement.
+    /// </summary>
+    /// <param name="movementTypeFactor">Factor to multiply force with. Differs between control modes (keyboard / arduino).</param>
+    /// <param name="verticalInput">Vertical input value. Ranges from -1 to 1, 0 being none.</param>
+    /// <param name="horizontalInput">Horizontal input value. Ranges from -1 to 1, 0 being none.</param>
     public void Move(float movementTypeFactor, float verticalInput, float horizontalInput)
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
 
         Vector3 force = -1 * verticalInput * transform.forward * Time.deltaTime * config.movementSpeedFactor * movementTypeFactor;
-
         Vector3 vel = rb.velocity;
         Vector3 localVel = parentShip.transform.InverseTransformVector(vel);
 
         // Get current speed
         currentSpeed = GetCurrentSpeed(vel);
 
-        // Apply floating
-        //if(rb.velocity.y >)
+        // Apply floating via Raycasts
         force.y = hoveringManager.ApplyRaycastHovering();
 
+        // Add force if below current max speed, else only add force for floating.
         if (currentSpeed < currentMaxSpeed)
         {
             rb.AddForce(force);
@@ -165,21 +171,22 @@ public class ShipMovement : ShipComponent, IPunObservable
             // Keep floating, but don't increase speed...
             rb.AddForce(0, force.y, 0);
         }
-
-        //Debug.Log("Vehicle speed (" + localVel.z + ") = " + currentSpeed + " MAX = " + currentMaxSpeed);
     }
 
+    // Returns the current ship speed.
     public float GetCurrentSpeed(Vector3 vel)
     {
         Vector3 localVel = parentShip.transform.InverseTransformVector(vel);
         float currSpeed = localVel.z;
 
+        // Flip negative velocity when moving in reverse.
         if (localVel.z < 0)
             currSpeed *= -1;
 
         return currSpeed;
     }
 
+    // Called when giving gas, apply drag modifiers.
     public void GivingGas()
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
@@ -194,6 +201,7 @@ public class ShipMovement : ShipComponent, IPunObservable
             rb.drag = config.minDrag;
     }
 
+    // Called when not currently giving gas, applies drag modifiers.
     public void NotGivingGas()
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
@@ -208,6 +216,7 @@ public class ShipMovement : ShipComponent, IPunObservable
         }
     }
 
+    // Called when breaking, apply drag modifiers.
     public void Break()
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
@@ -221,6 +230,13 @@ public class ShipMovement : ShipComponent, IPunObservable
     #endregion
 
     #region Rotation
+
+    /// <summary>
+    /// Handles ship rotation.
+    /// </summary>
+    /// <param name="movementTypeFactor">Factor to multiply force with. Differs between control modes (keyboard / arduino).</param>
+    /// <param name="horizontalInput">Horizontal input value. Ranges from -1 to 1, 0 being none.</param>
+    /// <param name="sideMovementState">State of movement, in this case sideways movement being either: LEFT, RIGHT, IDLE.</param>
     public void Rotate(float movementTypeFactor, float horizontalInput, MovementState sideMovementState)
     {
         Rigidbody rb = parentShip.GetComponent<Rigidbody>();
@@ -230,7 +246,7 @@ public class ShipMovement : ShipComponent, IPunObservable
         float angleZ = horizontalInput * config.rotationSpeedFactor * movementTypeFactor;
         Vector3 acceleration = new Vector3(0f, angleY, angleZ);
 
-        // Worldspace Vel -> Local Vel
+        // Worldspace Vel to Local Vel
         Vector3 vel = rb.velocity;
         Vector3 localVel = parentShip.transform.InverseTransformVector(vel);
 
@@ -245,7 +261,8 @@ public class ShipMovement : ShipComponent, IPunObservable
         rb.velocity = vel;
     }
 
-    public void ResetAngleZ(float addValue)
+    // Called when side movement idle, rotates back to the center by addValue degrees.
+    public void RestoreAngleZ(float addValue)
     {
         float angleZ = parentShip.transform.localEulerAngles.z;
 
@@ -259,6 +276,12 @@ public class ShipMovement : ShipComponent, IPunObservable
         }
     }
 
+    /// <summary>
+    /// Get the current ship Z angle.
+    /// </summary>
+    /// <param name="sideMovementState">Movement state. Is the ship going LEFT, RIGHT or is the sideways movement IDLE</param>
+    /// <param name="addValue">How much rotation to add in degrees.</param>
+    /// <returns></returns>
     private float GetAngleZ(MovementState sideMovementState, float addValue)
     {
         float angleZ = parentShip.transform.localEulerAngles.z;

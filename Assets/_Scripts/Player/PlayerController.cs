@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
         // Debug, get stunned
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.K))
-            playerShip.GetStunned(2, "Debug activated");
+            playerShip.components.system.TryToStun(2, "Debug activated");
 
         // Forcefield
         // If forcefield item not active, key down, enough charges and no cooldown then activate.
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (!playerShip.WasRecentlyHit())
+                if (!playerShip.components.system.WasRecentlyHit())
                     playerShip.components.forcefield.Deactivated();
             }
         }
@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
         // Restore rotation
         else
         {
-            playerShip.components.movement.ResetAngleZ(1);
+            playerShip.components.movement.RestoreAngleZ(1);
         }
     }
 
