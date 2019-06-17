@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17124,7 +17124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cef29d745fed854c8326be8e6dbb5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerListingPrefab: {fileID: 746031926365510827, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+  _playerListingPrefab: {fileID: 5185343938772042120, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
     type: 3}
   levelPreview: {fileID: 1650817145}
   roomState: {fileID: 1893227443}
@@ -29108,7 +29108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -190.89893, y: -35}
+  m_AnchoredPosition: {x: -190.89941, y: -35}
   m_SizeDelta: {x: 344.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1933475334
@@ -29936,7 +29936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59680f07e1e8b4e46bd5fae63d8eb460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomListingPrefab: {fileID: 5372695300785393250, guid: 1466b2ddc08dc054a88a6c6708d97b84,
+  _roomListingPrefab: {fileID: 5372695301941310851, guid: 1466b2ddc08dc054a88a6c6708d97b84,
     type: 3}
   _roomListingButtons: []
 --- !u!1 &1970348024
@@ -33099,6 +33099,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185343938772042114, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2598659876902034758, guid: 56f8a8a8a9ee98b4ea09dcf3e4145c08,
         type: 3}

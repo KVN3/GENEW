@@ -123,9 +123,9 @@ public class Chaser : EnergyBall
 
         if (other.gameObject.CompareTag("Ship"))
         {
-            Die();
-            if (manager != null)
-                manager.RemoveFromAliveEnemies(this);
+            //Die();
+            //if (manager != null)
+            //    manager.RemoveFromAliveEnemies(this);
         }
     }
 }

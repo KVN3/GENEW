@@ -15,7 +15,7 @@ public struct ShipComponents
     public ShipForcefield forcefield;
 }
 
-public class Ship : MyMonoBehaviour
+public class Ship : MonoBehaviour
 {
     #region Assigned variables
     public ShipComponents components;
