@@ -271,6 +271,8 @@ namespace Photon.Pun
 
         protected internal void OnDestroy()
         {
+            Debug.Log("ABOVE !!! PUN-instantiated '" + this.gameObject.name + "' got destroyed by engine. This is OK when loading levels. Otherwise use: PhotonNetwork.Destroy().");
+
             if (!this.removedFromLocalViewList)
             {
                 bool wasInList = PhotonNetwork.LocalCleanPhotonView(this);

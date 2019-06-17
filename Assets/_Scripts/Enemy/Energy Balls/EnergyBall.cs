@@ -96,11 +96,11 @@ public class EnergyBall : MonoBehaviour, IPunObservable
         // Destroy the object if master, for all to witness...
         try
         {
-            if (photonView.ViewID == 0)
-            {
-                Destroy(gameObject);
-            }
-            else if (PhotonNetwork.IsMasterClient)
+            //if (photonView.ViewID == 0)
+            //{
+            //    Destroy(gameObject);
+            //}
+            if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Destroy(this.gameObject);
             }

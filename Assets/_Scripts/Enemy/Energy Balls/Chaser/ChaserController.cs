@@ -17,14 +17,15 @@ public class ChaserController : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(PerformMovement());
+        if (PhotonNetwork.IsMasterClient)
+            StartCoroutine(PerformMovement());
     }
 
     private void FixedUpdate()
     {
         HandleMovement();
 
-        
+
     }
 
     private void HandleMovement()
@@ -38,7 +39,7 @@ public class ChaserController : MonoBehaviour
         {
             chaser.SmoothMove();
         }
-        
+
     }
 
     //--MOVEMENT--
