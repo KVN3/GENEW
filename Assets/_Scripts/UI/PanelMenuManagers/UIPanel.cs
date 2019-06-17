@@ -13,8 +13,6 @@ using UnityEngine.UI;
 public class UIPanel : UIBehaviour
 {
     #region Fields
-    public RectTransform canvasRect;
-
     public GameObject nonTutorialPanels;
     public GameObject tutorialPanels;
 
@@ -62,15 +60,6 @@ public class UIPanel : UIBehaviour
     public GameObject wrongWayPanel;
     public TextMeshProUGUI wrongWayText;
 
-    [Header("RaceEndScreen")]
-    public TextMeshProUGUI raceEndScreenText;
-    public TextMeshProUGUI endTimeText;
-    public TextMeshProUGUI leaderboardText;
-    public GameObject entryTemplate;
-    public GameObject leaderboardContent;
-    private bool initialisedScoreBoard;
-
-
     [Header("RaceStartScreen")]
     public TextMeshProUGUI countDownText;
 
@@ -85,14 +74,14 @@ public class UIPanel : UIBehaviour
     // Properties
     public int PlayerCount { get; set; }
 
-    public PlayerShip playerShip
+    public PlayerShip PlayerShip
     {
         get
         {
             HUD Hud = GetComponentInParent<HUD>();
 
-            Assert.IsNotNull(Hud, "Bla bla je hebt het verkeerd ingesteld");
-            Assert.IsNotNull(Hud.PlayerShip, "Je hebt geen playerShip in je hud");
+            Assert.IsNotNull(Hud, "Did not assign HUD");
+            Assert.IsNotNull(Hud.PlayerShip, "You have no playership in your HUD");
 
             return Hud.PlayerShip;
         }
@@ -109,7 +98,6 @@ public class UIPanel : UIBehaviour
         else
             posBg.SetActive(false);
 
-        initialisedScoreBoard = false;
         boostMeter.value = 0;
         countDownController = FindObjectOfType<CountDownController>();
 
@@ -132,7 +120,7 @@ public class UIPanel : UIBehaviour
 
     void Update()
     {
-        PlayerRunData pd = playerShip.runData;
+        PlayerRunData pd = PlayerShip.runData;
 
         #region In-GameUI
 
@@ -160,17 +148,17 @@ public class UIPanel : UIBehaviour
             bestRaceTimeText.text = "--.---";
 
         // Speed
-        if (playerShip.components.movement.GetCurrentSpeed() > 1f)
+        if (PlayerShip.components.movement.GetCurrentSpeed() > 1f)
             speedBg.sprite = speedBgSpriteActivated;
         else
             speedBg.sprite = speedBgSprite;
 
-        float currSpeed = playerShip.components.movement.GetCurrentSpeed() * 2;
+        float currSpeed = PlayerShip.components.movement.GetCurrentSpeed() * 2;
         speedText.text = currSpeed.ToString("0");
-        speedMeter.value = (currSpeed / playerShip.components.movement.GetCurrentMaxSpeed()) * 0.6f; // Compensate with * 2 and make slightly higher so it sticks to 100% when a bit less than maxspeed is reached
+        speedMeter.value = (currSpeed / PlayerShip.components.movement.GetCurrentMaxSpeed()) * 0.6f; // Compensate with * 2 and make slightly higher so it sticks to 100% when a bit less than maxspeed is reached
         speedUnitText.text = LocalizationManager.GetTextByKey("SPEEDUNIT");
         // Boosted
-        if (playerShip.components.movement.IsBoosted())
+        if (PlayerShip.components.movement.IsBoosted())
         {
             if (boostMeter.value <= 1)
                 boostMeter.value += Time.deltaTime;
@@ -188,25 +176,25 @@ public class UIPanel : UIBehaviour
             AchievementManager.UpdateAchievementByName("Speed demon", 1f);
 
         // Charges
-        chargeBar.value = (playerShip.components.forcefield.GetCharges() / playerShip.components.forcefield.maxCharges) * 1;
+        chargeBar.value = (PlayerShip.components.forcefield.GetCharges() / PlayerShip.components.forcefield.maxCharges) * 1;
 
         // Item
-        if (playerShip.GetItemAmount() > 0)
+        if (PlayerShip.GetItemAmount() > 0)
         {
             itemBox.SetActive(true);
-            item.sprite = playerShip.GetItem().sprite;
-            itemAmount.text = playerShip.GetItemAmount().ToString();
+            item.sprite = PlayerShip.GetItem().sprite;
+            itemAmount.text = PlayerShip.GetItemAmount().ToString();
 
             // Determine item for explanation
-            if (playerShip.GetItem().GetType() == typeof(JammerMine))
+            if (PlayerShip.GetItem().GetType() == typeof(JammerMine))
                 itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_MINE");
-            else if (playerShip.GetItem().GetType() == typeof(JammerProjectile))
+            else if (PlayerShip.GetItem().GetType() == typeof(JammerProjectile))
                 itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_MISSILE");
-            else if (playerShip.GetItem().GetType() == typeof(SmokeScreenItem))
+            else if (PlayerShip.GetItem().GetType() == typeof(SmokeScreenItem))
                 itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_SMOKE");
-            else if (playerShip.GetItem().GetType() == typeof(ForcefieldItem))
+            else if (PlayerShip.GetItem().GetType() == typeof(ForcefieldItem))
                 itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_BARRIER");
-            else if (playerShip.GetItem().GetType() == typeof(SpeedBurst))
+            else if (PlayerShip.GetItem().GetType() == typeof(SpeedBurst))
                 itemText.text = LocalizationManager.GetTextByKey("USE_ITEM_BOOST");
         }
         else
@@ -221,26 +209,6 @@ public class UIPanel : UIBehaviour
         else
             wrongWayPanel.SetActive(false);
 
-        #endregion
-
-        #region Race End Screen
-        // Only show racetimes when finished
-        if (pd.raceFinished)
-        {
-            // Title
-            raceEndScreenText.text = LocalizationManager.GetTextByKey("RACE_RESULTS");
-
-            endTimeText.text = LocalizationManager.GetTextByKey("TOTAL_TIME") + ": " + pd.raceTime.ToString(@"mm\:ss\.ff");
-
-            // Leaderboard
-            leaderboardText.text = LocalizationManager.GetTextByKey("LEADERBOARD");
-
-            if (!initialisedScoreBoard)
-            {
-                HighscoreManager.Instance.ShowHighscores(SceneManager.GetActiveScene().name, entryTemplate, leaderboardContent);
-                initialisedScoreBoard = true;
-            }
-        }
         #endregion
 
         #region Race Start Screen

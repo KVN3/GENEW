@@ -46,7 +46,6 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
             friendPanel.SetActive(false);
         else
             friendPanel.SetActive(true);
-
     }
 
     void OnEnable()
@@ -62,13 +61,14 @@ public class MainMenuManager : LevelSingleton<MainMenuManager>
 
     void Update()
     {
+        // Localization
         titleText.text = LocalizationManager.GetTextByKey("MAIN_MENU");
         playText.text = LocalizationManager.GetTextByKey("PLAY");
         shipyardText.text = LocalizationManager.GetTextByKey("SHIPYARD");
         achievementsText.text = LocalizationManager.GetTextByKey("ACHIEVEMENTS");
         logoutText.text = LocalizationManager.GetTextByKey("LOGOUT");
         exitGameText.text = LocalizationManager.GetTextByKey("EXIT_GAME");
-        versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + " Release Candidate";
+        versionText.text = LocalizationManager.GetTextByKey("VERSION") + ": " + " 1.0";
     }
 
     #region Toggles
