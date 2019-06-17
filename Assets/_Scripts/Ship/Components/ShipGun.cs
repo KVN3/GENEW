@@ -34,14 +34,12 @@ public class ShipGun : ShipComponent
     #region Projectile
     public void Shoot(JammerProjectile projectileClass)
     {
-        GetComponent<PhotonView>().RPC("RPC_Shoot", RpcTarget.AllViaServer);
+        photonView.RPC("RPC_Shoot", RpcTarget.AllViaServer);
     }
 
     [PunRPC]
     public void RPC_Shoot(PhotonMessageInfo info)
     {
-        float lag = (float)(PhotonNetwork.Time - info.SentServerTime);
-
         Vector3 rot = transform.rotation.eulerAngles;
         rot = new Vector3(rot.x, rot.y + 180, rot.z);
         Quaternion rotation = Quaternion.Euler(rot);
@@ -50,29 +48,24 @@ public class ShipGun : ShipComponent
         projectile.owner = parentShip;
 
         shipSoundManager.PlaySound(SoundType.SHOOTING);
-        StartCoroutine(ShootingCooldown(.5f));
+        StartCoroutine(C_ApplyCooldown(.5f));
     }
     #endregion
 
     #region Mine
     public void DropMine(JammerMine mineClass)
     {
-        //if (PhotonNetwork.IsMasterClient)
         photonView.RPC("RPC_DropMine", RpcTarget.AllViaServer);
     }
 
     [PunRPC]
     public void RPC_DropMine(PhotonMessageInfo info)
     {
-        float lag = (float)(PhotonNetwork.Time - info.SentServerTime);
-
-        //JammerMine mine = PhotonNetwork.Instantiate(SharedResources.GetPath("JammerMine"), mineSP.transform.position, Quaternion.identity).GetComponent<JammerMine>();
-
         JammerMine mine = Instantiate(jammerMineClass, mineSP.transform.position, Quaternion.identity);
         mine.owner = parentShip;
 
         shipSoundManager.PlaySound(SoundType.DROPMINE);
-        StartCoroutine(ShootingCooldown(.5f));
+        StartCoroutine(C_ApplyCooldown(.5f));
     }
     #endregion
 
@@ -92,11 +85,12 @@ public class ShipGun : ShipComponent
 
         Instantiate(smokeScreenClass, smokeSP.transform.position, rotation);
 
-        StartCoroutine(ShootingCooldown(.5f));
+        StartCoroutine(C_ApplyCooldown(.5f));
     }
     #endregion
 
-    private IEnumerator ShootingCooldown(float seconds)
+    // Applies weapon usage cooldown. Duration in given seconds.
+    private IEnumerator C_ApplyCooldown(float seconds)
     {
         coolDown = true;
         yield return new WaitForSeconds(seconds);
