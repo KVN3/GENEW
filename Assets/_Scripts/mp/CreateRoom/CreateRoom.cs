@@ -66,8 +66,6 @@ public class CreateRoom : MonoBehaviourPunCallbacks, IMatchmakingCallbacks
             roomName = "ROOM";
         }
 
-
-
         // While name is not valid
         while (!validName)
         {
