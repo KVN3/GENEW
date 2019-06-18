@@ -95,9 +95,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: e1319eb01c31f814fb3989215ef08405, type: 3}
-  explosionClass: {fileID: 546322901, guid: b89c865d46c908d458045bc29573de8a, type: 3}
-  projectileSpeed: 500000
-  maxDrag: 7
+  config:
+    explosionClass: {fileID: 546322901, guid: b89c865d46c908d458045bc29573de8a, type: 3}
+    projectileSpeed: 500000
+    maxDrag: 7
+    lifetimeInSeconds: 10
   owner: {fileID: 0}
 --- !u!54 &3419864539903404619
 Rigidbody:

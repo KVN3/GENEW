@@ -65,10 +65,6 @@ public class PlayerManager : MonoBehaviour
         AnalyticsManager analyticsManagerClass = SharedResources.LoadAnalyticsManager();
         LocalSpawnPoint[] spawnPoints = SharedResources.LoadSpawnPoints(activeScene);
 
-        // This player's assigned spawnpoint
-        //int spawnIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
-        print($"{spawnIndex} INDEX < and ACTORNO > {PhotonNetwork.LocalPlayer.ActorNumber}");
-
         if (spawnIndex == -1)
             print("Index is -1 | Actornumber not found.");
 

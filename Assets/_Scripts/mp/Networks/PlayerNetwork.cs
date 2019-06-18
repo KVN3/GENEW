@@ -53,6 +53,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         //PlayerName = "Kevin#" + Random.Range(1000, 9999);
     }
 
+    // Called when scene finished loading
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         if (!scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.MAIN]) && !scene.name.Equals(ScenesInformation.sceneNames[SceneTitle.SHIPYARD]))
@@ -82,9 +83,8 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
     // Client loaded game
     private void NonMasterLoadedGame()
     {
-        // Bug fix on scene load
+        // Get photonview again - Bug fix on scene load
         photonView = GetComponent<PhotonView>();
-
         photonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
     }
 
@@ -115,6 +115,22 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         }
     }
 
+    // Creates the player's ship
+    [PunRPC]
+    private void RPC_CreatePlayer()
+    {
+        mySpawnIndex = PlayerLayoutGroup.Instance.GetListingIndex();
+        playerShip = PlayerManager.Instance.CreatePlayer(PhotonNetwork.LocalPlayer, activeScene, mySpawnIndex);
+    }
+
+    public void ResetNetwork()
+    {
+        playersInGame = 0;
+        playerShip = null;
+        activeScene = string.Empty;
+    }
+
+    #region health
     public void NewHealth(Player player, int health)
     {
         photonView.RPC("RPC_NewHealth", player, health);
@@ -133,21 +149,7 @@ public class PlayerNetwork : MonoBehaviourPunCallbacks
         }
 
     }
-
-    // Creates the player's ship
-    [PunRPC]
-    private void RPC_CreatePlayer()
-    {
-        mySpawnIndex = PlayerLayoutGroup.Instance.GetListingIndex();
-        playerShip = PlayerManager.Instance.CreatePlayer(PhotonNetwork.LocalPlayer, activeScene, mySpawnIndex);
-    }
-
-    public void ResetNetwork()
-    {
-        playersInGame = 0;
-        playerShip = null;
-        activeScene = string.Empty;
-    }
+    #endregion
 
     #region ping
     private IEnumerator C_SetPing()

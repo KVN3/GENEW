@@ -26,7 +26,7 @@ public class AnalyticsManager : MyMonoBehaviour
                 ItemUsedEvent(item, itemAmount);
             };
 
-            playerShip.OnPlayerStunnedDelegate = (int duration, string cause, bool playerWasProtected) =>
+            playerShip.components.system.OnPlayerStunnedDelegate = (int duration, string cause, bool playerWasProtected) =>
             {
                 PlayerStunnedEvent(duration, cause, playerWasProtected);
             };

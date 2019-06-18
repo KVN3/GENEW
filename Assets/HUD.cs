@@ -57,7 +57,7 @@ public class HUD : MyMonoBehaviour
         //    PlayerFinishedRaceEvent(spectating);
         //};
 
-        PlayerShip.OnPlayerShipHitDelegate = (float durationInSeconds, FlashColor flashColor) =>
+        PlayerShip.components.system.OnPlayerShipHitDelegate = (float durationInSeconds, FlashColor flashColor) =>
         {
             StartCoroutine(C_ScreenFlash(durationInSeconds, flashColor));
         };

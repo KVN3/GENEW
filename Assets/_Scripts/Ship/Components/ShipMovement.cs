@@ -59,9 +59,11 @@ public class ShipMovement : ShipComponent, IPunObservable
         Assert.IsNotNull(trailsConfig.windTrailsObject, "Trail object not set.");
 
         // Other
+        Assert.IsNotNull(hoveringManager, "Hovering manager not set.");
+
+
         hoveringManager = GetComponent<HoveringManager>();
         photonView = GetComponent<PhotonView>();
-        Assert.IsNotNull(hoveringManager, "Hovering manager not set.");
     }
 
     public void Start()
