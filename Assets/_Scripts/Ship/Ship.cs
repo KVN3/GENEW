@@ -73,8 +73,6 @@ public class Ship : MonoBehaviour
     // Delegates
     public UnityAction<Collectable, int> OnItemUsedDelegate;
 
-
-
     public virtual void Awake()
     {
         Assert.IsNotNull(shipSoundManagerClass);
