@@ -9,12 +9,11 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-
         Connect();
-
         StartCoroutine(C_ManageButtonAccess());
     }
 
+    // Connect to photon network
     public static void Connect()
     {
         if (PhotonNetwork.IsConnected)
@@ -23,10 +22,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
         print("Connecting to server...");
 
         PhotonNetwork.GameVersion = "0.0.0";
-        Account account = Registration.GetCurrentAccount();
-        // Sets UserId to account username instead of a randomly generated unique cod
         PhotonNetwork.AuthValues = new AuthenticationValues(PlayerNetwork.Instance.PlayerName);
-
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -34,7 +30,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     {
         print("Connected to master.");
 
-        // Automatically join host's scene
+        // Automatically join host's scene = false
         PhotonNetwork.AutomaticallySyncScene = false;
 
         PhotonNetwork.NickName = PlayerNetwork.Instance.PlayerName;

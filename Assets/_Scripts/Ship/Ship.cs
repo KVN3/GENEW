@@ -58,6 +58,7 @@ public class Ship : MonoBehaviour
     protected PhotonView photonView;
 
     // Achievement stats
+    #region achievements
     public bool gotHit = false;
     public bool usedBoost;
     protected bool usedItem;
@@ -67,6 +68,7 @@ public class Ship : MonoBehaviour
     public int totalItemUses;
     public int blockedProjectiles = 0;
     public int totalBlockedProjectiles;
+    #endregion
 
     // Delegates
     public UnityAction<Collectable, int> OnItemUsedDelegate;

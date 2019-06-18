@@ -76,10 +76,8 @@ public class GameState : LevelSingleton<GameState>
         BackgroundSoundManager backgroundSoundManager = Instantiate(gameManagers.backgroundSoundManagerClass);
 
         Assert.IsNotNull(gameManagers.backgroundSoundManagerClass);
-        //Assert.IsNotNull(gameManagers.chaserManagerClass);
         Assert.IsNotNull(gameManagers.UIManagerClass);
         Assert.IsNotNull(gameManagers.spawnPointManagerClass);
-        //Assert.IsNotNull(gameManagers.asteroidStormManagerClass);
         Assert.IsNotNull(gameManagers.raceManagerClass);
         Assert.IsNotNull(gameManagers.replayManagerClass);
         Assert.IsNotNull(gameManagers.analyticsManagerClass);
@@ -108,7 +106,6 @@ public class GameState : LevelSingleton<GameState>
         if (ScenesInformation.IsTutorialScene())
             shipsInRoom += 1;
 
-
         // Find all player ship game objects first
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Ship");
         while (gameObjects.Length != shipsInRoom)
@@ -124,6 +121,7 @@ public class GameState : LevelSingleton<GameState>
             playerShips[i] = gameObjects[i].GetComponent<PlayerShip>();
         }
 
+        // Wait until race started
         while (!RaceManager.raceStarted)
         {
             yield return new WaitForSeconds(1);
