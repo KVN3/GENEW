@@ -248,7 +248,7 @@ public class PlayerShip : Ship
 
     #region Collisions and Triggers
 
-    protected void OnTriggerEnter(Collider other)
+    new protected void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("DangerTrigger"))
         {

@@ -5,38 +5,29 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
-[System.Serializable]
-public struct Cameras
-{
-    public GameObject firstPersonCamera;
-    public GameObject thirdPersonCamera;
-}
 
+[RequireComponent(typeof(PlayerShip))]
+[RequireComponent(typeof(Accelerometer))]
 public class PlayerController : MonoBehaviour
 {
-    public PlayerShip playerShip;
-    public Accelerometer accelerometer;
-    public Cameras cameras;
-
-    public bool useAccelerometerControls = true;
-
+    private PlayerShip playerShip;
+    private Accelerometer accelerometer;
     private PhotonView photonView;
     private PlayerCamera playerCamera;
 
+    private bool useAccelerometerControls = true;
+
     private void Awake()
     {
-
-
+        playerShip = GetComponent<PlayerShip>();
+        accelerometer = GetComponent<Accelerometer>();
         photonView = GetComponent<PhotonView>();
     }
 
     private void Start()
     {
         // Rotate
-        float x = 0;
-        float y = 90f;
-        float z = 0;
-        transform.localEulerAngles = new Vector3(x, y, z);
+        transform.localEulerAngles = new Vector3(0, 90f, 0);
     }
 
     private void Update()
@@ -57,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Handle control based movement if my photonview, else just read movement data and apply
         if (photonView.IsMine)
         {
             if (RaceManager.raceStarted)
@@ -68,16 +60,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    #region ACTIONS
+    #region CONTROLS
     private void HandleCameraControls()
     {
-        // Camera type controls
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            cameras.firstPersonCamera.SetActive(!cameras.firstPersonCamera.activeSelf);
-            cameras.thirdPersonCamera.SetActive(!cameras.thirdPersonCamera.activeSelf);
-        }
-
         // Rear / front view controls
         if (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
             playerCamera.ViewRear();
@@ -85,6 +70,7 @@ public class PlayerController : MonoBehaviour
             playerCamera.ViewFront();
     }
 
+    // Player game actions, such as item usage, breaking and forcefield
     private void HandlePlayerActionControls()
     {
         // Breaking
@@ -96,28 +82,29 @@ public class PlayerController : MonoBehaviour
             playerShip.UseItem();
 
         // Debug, get stunned
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.K))
-            playerShip.GetStunned(2, "Debug activated");
+        //if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.K))
+        //    playerShip.components.system.TryToStun(2, "Debug activated");
 
         // Forcefield
-        // If forcefield item not active, key down, enough charges and no cooldown then activate.
+        // If forcefield item not active
         if (!playerShip.components.forcefield.IsItemActive())
         {
+            // If key down, enough charges and no cooldown then activate.
             if (Input.GetKey(KeyCode.Space) && playerShip.components.forcefield.HasEnoughCharges())
-            {
                 playerShip.components.forcefield.Activated(true);
-            }
             else
             {
-                if (!playerShip.WasRecentlyHit())
+                // If ship wasn't recently hit, then deactivate the forcefield
+                if (!playerShip.components.system.WasRecentlyHit())
                     playerShip.components.forcefield.Deactivated();
             }
         }
     }
 
+    // Player control preferences
     private void HandlePreferedControls()
     {
-        // Controls
+        // Toggle control mode
         if (Input.GetKeyDown(KeyCode.G))
             useAccelerometerControls = !useAccelerometerControls;
     }
@@ -135,9 +122,13 @@ public class PlayerController : MonoBehaviour
         // Accelerometer | Keyboard
         if (useAccelerometerControls)
         {
-            Vector3 acceleration = accelerometer.GetValue();
+            Vector3 acceleration = accelerometer.GetAcceleration();
+
+            // Parse acceleration to horizontal and vertical input used in the scripts
             horizontalInput = accelerometer.ParseAccelerationToInput(acceleration.x, Direction.X);
             verticalInput = -accelerometer.ParseAccelerationToInput(acceleration.y, Direction.Y);
+
+            // Compensation factor for heavier control. Likely to be tweaked in final implementation.
             forwardFactor = 2f;
             rotationalFactor = 2f;
         }
@@ -150,20 +141,18 @@ public class PlayerController : MonoBehaviour
         // If system is not down
         if (!playerShip.components.system.IsSystemDown())
         {
-            // Engines & Drag
+            // Engines & Drag (Which engines should be on/off and air resistance)
             ManageEnginesAndDrag(horizontalInput, verticalInput);
 
-            // Rotation
+            // Rotation (turning ship)
             ManageRotation(horizontalInput, rotationalFactor);
 
-            // Thrust
+            // Thrust (forward/backward movement)
             ManageThrust(horizontalInput, verticalInput, forwardFactor);
-
-            // Camera distance
-            //ManageCamera(verticalInput);
         }
         else
         {
+            // Tell the ship the player's not moving
             playerShip.components.movement.NotGivingGas();
         }
     }
@@ -189,20 +178,14 @@ public class PlayerController : MonoBehaviour
     {
         MovementState sideMovementState = Movement.GetMovementState(horizontalInput, MovementType.SIDE);
 
-        // Apply rotation
+        // Apply rotation along two axis (y for change in direction, z for turning the ship to the side)
         if (Movement.IsNotIdle(sideMovementState))
-        {
-
-
-            // Rotate the ship along its two axis
             playerShip.components.movement.Rotate(rotationalFactor, horizontalInput, sideMovementState);
-        }
 
-        // Restore rotation
+        // Restore rotation to base
         else
-        {
-            playerShip.components.movement.ResetAngleZ(1);
-        }
+            playerShip.components.movement.RestoreAngleZ(1);
+
     }
 
     private void ManageThrust(float horizontalInput, float verticalInput, float forwardFactor)
@@ -210,6 +193,7 @@ public class PlayerController : MonoBehaviour
         playerShip.components.movement.Move(forwardFactor, verticalInput, horizontalInput);
     }
 
+    // Is the player is ordering the ship to give gas / thrust or not
     private bool GivingGas(float verticalInput)
     {
         if (verticalInput > 0)

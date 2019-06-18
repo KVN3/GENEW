@@ -3,54 +3,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using UnityEngine.Assertions;
 using UnityEngine.Events;
 
 [System.Serializable]
 public struct ShipComponents
 {
+    [Tooltip("Ship movement component.")]
     public ShipMovement movement;
+
+    [Tooltip("Ship engines component.")]
     public ShipEngines engines;
+
+    [Tooltip("Ship gun/weapon component.")]
     public ShipGun gun;
+
+    [Tooltip("System ship component.")]
     public ShipSystem system;
+
+    [Tooltip("Forcefield ship component.")]
     public ShipForcefield forcefield;
 }
 
+[RequireComponent(typeof(Rigidbody))]
 public class Ship : MonoBehaviour
 {
     #region Assigned variables
+    // Ship component scripts that manage the various ship functions
     public ShipComponents components;
 
-    [SerializeField]
-    private float flashDuration = 0.025f;
-
+    // Sound manager classes
     [SerializeField]
     private ShipSoundManager shipSoundManagerClass;
     [SerializeField]
     protected LevelSoundManager levelSoundManagerClass;
     [SerializeField]
     protected AISoundManager aiSoundManagerClass;
+
+    // Spark particle system
     [SerializeField]
     private DamageSpark spark;
     #endregion
 
-    private List<ShipComponent> componentsList;
-
-    #region SOUND MANAGERS
+    // Sound manager instances
     protected ShipSoundManager shipSoundManager;
     protected LevelSoundManager levelSoundManager;
     protected AISoundManager aiSoundManager;
-    #endregion
 
-    #region ITEMS
+    // Item run data
     public Collectable collectableItemClass;
     public int itemAmount;
-    #endregion
 
     // Run time
-    private bool recentlyHit;
     protected PhotonView photonView;
 
     // Achievement stats
+    #region achievements
     public bool gotHit = false;
     public bool usedBoost;
     protected bool usedItem;
@@ -60,15 +68,25 @@ public class Ship : MonoBehaviour
     public int totalItemUses;
     public int blockedProjectiles = 0;
     public int totalBlockedProjectiles;
-
-    #region DELEGATES
-    public UnityAction<Collectable, int> OnItemUsedDelegate;
-    public UnityAction<int, string, bool> OnPlayerStunnedDelegate;
-    public UnityAction<float, FlashColor> OnPlayerShipHitDelegate;
     #endregion
+
+    // Delegates
+    public UnityAction<Collectable, int> OnItemUsedDelegate;
+
+
 
     public virtual void Awake()
     {
+        Assert.IsNotNull(shipSoundManagerClass);
+        Assert.IsNotNull(aiSoundManagerClass);
+        Assert.IsNotNull(levelSoundManagerClass);
+        Assert.IsNotNull(components.system);
+        Assert.IsNotNull(components.gun);
+        Assert.IsNotNull(components.movement);
+        Assert.IsNotNull(components.forcefield);
+        Assert.IsNotNull(components.engines);
+        Assert.IsNotNull(spark);
+
         // Instantiate Sound Managers
         shipSoundManager = Instantiate(shipSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
         aiSoundManager = Instantiate(aiSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
@@ -84,7 +102,8 @@ public class Ship : MonoBehaviour
             levelSoundManager.active = false;
         }
 
-        componentsList = new List<ShipComponent>();
+        // Assign data to these components
+        List<ShipComponent> componentsList = new List<ShipComponent>();
         componentsList.Add(components.movement);
         componentsList.Add(components.engines);
         componentsList.Add(components.gun);
@@ -97,11 +116,12 @@ public class Ship : MonoBehaviour
         }
     }
 
-    // Use a collectable item
+    // Use currently equipped item
     public void UseItem()
     {
         if (itemAmount > 0)
         {
+            // Achievment data
             usedItem = true;
             itemUses++;
             totalItemUses++;
@@ -112,7 +132,6 @@ public class Ship : MonoBehaviour
                 if (!components.gun.OnCooldown())
                 {
                     components.gun.Shoot((JammerProjectile)collectableItemClass);
-                    //photonView.RPC("Fire", RpcTarget.AllViaServer);
                     itemAmount--;
                 }
             }
@@ -126,11 +145,9 @@ public class Ship : MonoBehaviour
             }
             else if (collectableItemClass is SmokeScreenItem)
             {
-                SmokeScreenItem smokeScreenItem = (SmokeScreenItem)collectableItemClass;
-
                 aiSoundManager.PlaySound(SoundType.AISMOKEDEPLOYED);
-                components.gun.DropSmokeScreen((SmokeScreenItem)collectableItemClass);
 
+                components.gun.DropSmokeScreen((SmokeScreenItem)collectableItemClass);
                 itemAmount--;
             }
             else if (collectableItemClass is ForcefieldItem)
@@ -146,33 +163,25 @@ public class Ship : MonoBehaviour
                 itemAmount--;
             }
 
-            // Delegate event
+            // Send item used event
             OnItemUsedDelegate(collectableItemClass, itemAmount);
         }
     }
 
-    new void OnCollisionEnter(Collision other)
+    protected void OnCollisionEnter(Collision other)
     {
         if (components.forcefield.IsActive())
         {
-            // Flash screen
-            try
-            {
-                OnPlayerShipHitDelegate(flashDuration, FlashColor.BLUE);
-
-            }
-            catch
-            {
-
-            }
-
+            // Flash screen blue
+            components.system.FlashScreen(FlashColor.BLUE);
         }
         else
         {
+            // Register this ship getting hit by anything but a mine and energyball. Owned projectiles do not register hits.
             if (other.gameObject.CompareTag("Projectile"))
             {
                 Ship ownerShip = other.gameObject.GetComponent<JammerProjectile>().owner;
-                if (!ownerShip == this)
+                if (ownerShip != this)
                     GetHitByRegular(other);
             }
             else if (!other.gameObject.CompareTag("ShipComponent") && !other.gameObject.CompareTag("Mine") && !other.gameObject.CompareTag("EnergyBall"))
@@ -184,116 +193,20 @@ public class Ship : MonoBehaviour
     // Ship got hit by regular, e.a. a wall
     public void GetHitByRegular(Collision other)
     {
-        try
-        {
-            OnPlayerShipHitDelegate(flashDuration, FlashColor.RED);
-        }
-        catch
-        {
+        components.system.FlashScreen(FlashColor.RED);
 
-        }
-
+        // Sound & effect
         shipSoundManager.PlaySound(SoundType.ALARM);
         spark.Activate();
 
-        if (!PhotonNetwork.IsMasterClient)
-            return;
-
-        PlayerManager.Instance.ModifyHealth(photonView.Owner, -5);
-    }
-
-    // Ship got hit by a stun
-    public void GetStunned(int duration, string cause)
-    {
-        // System not down
-        if (!components.system.IsSystemDown())
-        {
-            bool playerWasProtected = false;
-                                 
-            // Forcefield not active, shutdown
-            if (!components.forcefield.IsActive())
-            {
-                if (ScenesInformation.IsTutorialScene())
-                {
-                    TutorialManager.Instance.ShipStunned = true;
-                }
-
-                try
-                {
-                    OnPlayerShipHitDelegate(flashDuration, FlashColor.RED);
-                }
-                catch
-                {
-
-                }
-
-                aiSoundManager.ReportSystemError(SoundType.AISYSTEMERROR);
-
-                components.system.ShutDown();
-                components.engines.RestoreSystem();
-
-                StartCoroutine(C_GotHit());
-            }
-
-            // Forcefield active, take damage
-            else
-            {
-                try
-                {
-                    OnPlayerShipHitDelegate(flashDuration, FlashColor.BLUE);
-                }
-                catch
-                {
-
-                }
-
-                blockedProjectiles++;
-                // Update total blocked projectiles
-                AchievementManager.UpdateAchievement(12, 1f);
-
-                components.forcefield.GetHit(30);
-                shipSoundManager.PlaySound(SoundType.PROTECTED);
-
-                playerWasProtected = true;
-            }
-
-            // Delegate event
-            if (photonView.IsMine)
-            {
-                try
-                {
-                    OnPlayerStunnedDelegate(duration, cause, playerWasProtected);
-                }
-                catch
-                {
-
-                }
-            }
-
-        }
-    }
-
-    private IEnumerator C_GotHit()
-    {
-        recentlyHit = true;
-        gotHit = true;
-        yield return new WaitForSeconds(1);
-
-        // Temp free forcefield
-        components.forcefield.Activated(false);
-        yield return new WaitForSeconds(4);
-        recentlyHit = false;
-    }
-
-    protected void FlashScreen(FlashColor color)
-    {
-        if (!photonView.IsMine)
-            return;
-
-        // Flash screen
-        OnPlayerShipHitDelegate(flashDuration, color);
+        // Lower ship health if master client
+        if (PhotonNetwork.IsMasterClient)
+            PlayerManager.Instance.ModifyHealth(photonView.Owner, -5);
     }
     #endregion
+
+    #region UNUSED
+    
 
     public void Alert()
     {
@@ -303,6 +216,7 @@ public class Ship : MonoBehaviour
             aiSoundManager.SetAlerted();
         }
     }
+    #endregion
 
     #region GetSet
     // Collectable Items
@@ -324,14 +238,6 @@ public class Ship : MonoBehaviour
         return itemAmount;
     }
 
-    // Hit
-    public bool WasRecentlyHit()
-    {
-        if (recentlyHit)
-            return true;
-        return false;
-    }
-
     // Sound managers
     public ShipSoundManager GetShipSoundManager()
     {
@@ -345,5 +251,3 @@ public class Ship : MonoBehaviour
     #endregion
 }
 
-// TO DO: camera straight while turning
-// TO DO: temporary increase of air drag while turning (big question mark)

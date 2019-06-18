@@ -6,8 +6,11 @@ using UnityEngine.Assertions;
 
 public class ShipEngines : ShipComponent, IPunObservable
 {
-    public Engine middleEngine;
+    [SerializeField]
+    private Engine middleEngine;
+    [SerializeField]
     public Engine leftEngine;
+    [SerializeField]
     public Engine rightEngine;
 
     public void Start()
@@ -27,6 +30,45 @@ public class ShipEngines : ShipComponent, IPunObservable
             middleEngine.RestoreColor();
     }
 
+    // Start coroutine to restore the system
+    public void RestoreSystem()
+    {
+        StartCoroutine(C_BootUpRoutine(3));
+    }
+
+    /// <summary>
+    /// Flicker the engines several times, defined by times, for a random amount of ms, then tell the ship system it's ready to reboot
+    /// </summary>
+    /// <param name="flickeringTimes">amount of times the engines flicker before restarted</param>
+    /// <returns></returns>
+    private IEnumerator C_BootUpRoutine(int flickeringTimes)
+    {
+        // Set restarting mode values
+        SetEnginesRestartMode(true);
+
+        // Flicker the engines
+        int counter = 0;
+        while (counter < flickeringTimes)
+        {
+            TurnOnAllEngines();
+            yield return new WaitForSeconds(Random.Range(0.3f, 0.6f));
+            TurnOffAllEngines();
+            yield return new WaitForSeconds(Random.Range(0.3f, 0.6f));
+
+            counter++;
+        }
+
+        // Restore base values
+        SetEnginesRestartMode(false);
+
+        // Tell the ship's system it's ready to start up again
+        parentShip.components.system.StartUp();
+    }
+
+    /// <summary>
+    /// Sets the engines' particle system variables to 'restart mode', by setting the values correct used in ShipSystem coroutine.
+    /// </summary>
+    /// <param name="isOn">On = TRUE, off = FALSE</param>
     public void SetEnginesRestartMode(bool isOn)
     {
         float startSpeed = .5f;
@@ -65,7 +107,7 @@ public class ShipEngines : ShipComponent, IPunObservable
         rightEngine.Deactivate();
     }
 
-    // Turn engines on or off based on player input received from PC
+    // Turn single engines on or off based on player input received from PC
     public void ManageEngines(float horizontalInput, float verticalInput)
     {
         // Side engines
@@ -145,12 +187,6 @@ public class ShipEngines : ShipComponent, IPunObservable
     }
     #endregion
 
-    // Start coroutine to restore the system
-    public void RestoreSystem()
-    {
-        StartCoroutine(C_FlickerEngines(3));
-    }
-
     // Turns the boosted color on or off for all engines
     public void SetBoosted(bool boosted)
     {
@@ -166,30 +202,7 @@ public class ShipEngines : ShipComponent, IPunObservable
             leftEngine.RestoreColor();
             rightEngine.RestoreColor();
         }
-    }
-
-    // Flicker the engines several times, defined by times, for a random amount of ms, then tell the ship system it's ready to reboot
-    private IEnumerator C_FlickerEngines(int times)
-    {
-        SetEnginesRestartMode(true);
-
-        // Flicker the engines
-        int counter = 0;
-        while (counter < times)
-        {
-            TurnOnAllEngines();
-            yield return new WaitForSeconds(Random.Range(0.3f, 0.6f));
-            TurnOffAllEngines();
-            yield return new WaitForSeconds(Random.Range(0.3f, 0.6f));
-
-            counter++;
-        }
-
-        SetEnginesRestartMode(false);
-
-        // Tell the ship's system it's ready to start up again
-        parentShip.components.system.StartUp();
-    }
+    } 
 
     #region GetSet
     public void SetParentShip(Ship ship)
