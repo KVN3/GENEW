@@ -37,7 +37,6 @@ public class Registration : MonoBehaviour
     private readonly string key = "AccountData";
     #endregion
 
-    // Start is called before the first frame update
     void Awake()
     {   
         // Load accounts
