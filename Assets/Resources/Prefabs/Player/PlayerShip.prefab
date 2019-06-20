@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665eaaae080e1a7468a48c17c73fbbc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashDuration: 0.025
 --- !u!1 &354
 GameObject:
   m_ObjectHideFlags: 0
@@ -26153,7 +26154,6 @@ MonoBehaviour:
     gun: {fileID: 8869554232137204516}
     system: {fileID: 2437}
     forcefield: {fileID: 4473378837321126152}
-  flashDuration: 0.04
   shipSoundManagerClass: {fileID: 833736413695209226, guid: 395deba2e831a444baffd18255cef95e,
     type: 3}
   levelSoundManagerClass: {fileID: 1435859808029204296, guid: 38fe5d326f37ab54ea88d4444f8f213f,
@@ -26163,6 +26163,7 @@ MonoBehaviour:
   spark: {fileID: 2442}
   collectableItemClass: {fileID: 0}
   itemAmount: 0
+  isMine: 0
   gotHit: 0
   usedBoost: 0
   boostUses: 0
@@ -26224,12 +26225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b017ec9890f604bbc012ee3b84c0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerShip: {fileID: 2453}
-  accelerometer: {fileID: 2439}
-  cameras:
-    firstPersonCamera: {fileID: 0}
-    thirdPersonCamera: {fileID: 0}
-  useAccelerometerControls: 0
 --- !u!114 &6987268490720304500
 MonoBehaviour:
   m_ObjectHideFlags: 0
