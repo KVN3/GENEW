@@ -56,6 +56,7 @@ public class Ship : MonoBehaviour
 
     // Run time
     protected PhotonView photonView;
+    public bool isMine;
 
     // Achievement stats
     #region achievements
@@ -72,8 +73,6 @@ public class Ship : MonoBehaviour
 
     // Delegates
     public UnityAction<Collectable, int> OnItemUsedDelegate;
-
-
 
     public virtual void Awake()
     {
@@ -92,8 +91,10 @@ public class Ship : MonoBehaviour
         aiSoundManager = Instantiate(aiSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
         levelSoundManager = Instantiate(levelSoundManagerClass, transform.localPosition, transform.localRotation, this.transform);
 
-        // Get Components
+        // Photonview. isMine for references in other scripts (photonview is only accessable locally)
         photonView = GetComponent<PhotonView>();
+        isMine = photonView.IsMine;
+
 
         // Disable these sound managers if this isn't this client's ship
         if (!photonView.IsMine)

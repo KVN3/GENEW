@@ -7,7 +7,10 @@ using UnityEngine.Assertions;
 [System.Serializable]
 public struct ShipMovementConfig
 {
+    [Tooltip("Factor by which movement force is multiplied.")]
     public float movementSpeedFactor;
+
+    [Tooltip("Factor by which rotation is multiplied.")]
     public float rotationSpeedFactor;
 
     [Tooltip("Ship max speed without boosts.")]
@@ -59,7 +62,7 @@ public class ShipMovement : ShipComponent, IPunObservable
         Assert.IsNotNull(trailsConfig.windTrailsObject, "Trail object not set.");
 
         // Other
-        Assert.IsNotNull(hoveringManager, "Hovering manager not set.");
+        //
 
 
         hoveringManager = GetComponent<HoveringManager>();
@@ -68,6 +71,8 @@ public class ShipMovement : ShipComponent, IPunObservable
 
     public void Start()
     {
+        Assert.IsNotNull(hoveringManager, "Hovering manager not set.");
+
         currentMaxSpeed = config.baseMaxSpeed;
 
         if (parentShip is PlayerShip)
