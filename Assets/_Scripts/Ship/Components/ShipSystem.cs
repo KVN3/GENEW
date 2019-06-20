@@ -81,7 +81,7 @@ public class ShipSystem : ShipComponent
             }
 
             // Delegate event
-            if (GetComponent<PhotonView>().IsMine)
+            if (parentShip.isMine)
             {
                 OnPlayerStunnedDelegate(duration, cause, playerWasProtected);
             }

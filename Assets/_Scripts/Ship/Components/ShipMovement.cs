@@ -59,7 +59,7 @@ public class ShipMovement : ShipComponent, IPunObservable
         Assert.IsNotNull(trailsConfig.windTrailsObject, "Trail object not set.");
 
         // Other
-        Assert.IsNotNull(hoveringManager, "Hovering manager not set.");
+        //
 
 
         hoveringManager = GetComponent<HoveringManager>();
@@ -68,6 +68,8 @@ public class ShipMovement : ShipComponent, IPunObservable
 
     public void Start()
     {
+        Assert.IsNotNull(hoveringManager, "Hovering manager not set.");
+
         currentMaxSpeed = config.baseMaxSpeed;
 
         if (parentShip is PlayerShip)
