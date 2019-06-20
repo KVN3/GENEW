@@ -3863,16 +3863,6 @@ MonoBehaviour:
   chargeBarFilling: {fileID: 3169}
   wrongWayPanel: {fileID: 651}
   wrongWayText: {fileID: 3186}
-  raceEndScreenText: {fileID: 3205}
-  endTimeText: {fileID: 3223}
-  leaderboardText: {fileID: 3216}
-  entryTemplate: {fileID: 683}
-  leaderboardContent: {fileID: 689}
-  spectatingText: {fileID: 3239}
-  rankText: {fileID: 3224}
-  nameText: {fileID: 3221}
-  timeText: {fileID: 3241}
-  returnToLobbyText: {fileID: 3229}
   countDownText: {fileID: 3162}
   countDownController: {fileID: 6332648951526286633, guid: af6067f58962eea498378e0c7065569f,
     type: 3}

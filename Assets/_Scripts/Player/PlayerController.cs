@@ -114,23 +114,31 @@ public class PlayerController : MonoBehaviour
     // Handles movement input
     private void HandleMovement()
     {
-        float horizontalInput;
-        float verticalInput;
+        float horizontalInput = 0f;
+        float verticalInput = 0f;
         float forwardFactor = 1f;
         float rotationalFactor = 1f;
 
         // Accelerometer | Keyboard
         if (useAccelerometerControls)
         {
-            Vector3 acceleration = accelerometer.GetAcceleration();
+            try
+            {
+                Vector3 acceleration = accelerometer.GetAcceleration();
 
-            // Parse acceleration to horizontal and vertical input used in the scripts
-            horizontalInput = accelerometer.ParseAccelerationToInput(acceleration.x, Direction.X);
-            verticalInput = -accelerometer.ParseAccelerationToInput(acceleration.y, Direction.Y);
+                // Parse acceleration to horizontal and vertical input used in the scripts
+                horizontalInput = accelerometer.ParseAccelerationToInput(acceleration.x, Direction.X);
+                verticalInput = -accelerometer.ParseAccelerationToInput(acceleration.y, Direction.Y);
 
-            // Compensation factor for heavier control. Likely to be tweaked in final implementation.
-            forwardFactor = 2f;
-            rotationalFactor = 2f;
+                // Compensation factor for heavier control. Likely to be tweaked in final implementation.
+                forwardFactor = 2f;
+                rotationalFactor = 2f;
+            }
+            catch
+            {
+                // Accelerometer not found, swap control system
+                useAccelerometerControls = false;
+            }
         }
         else
         {
