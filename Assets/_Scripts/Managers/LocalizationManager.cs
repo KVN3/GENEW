@@ -142,6 +142,49 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         NLDict.Add("SPECTATING_NEXT", "AAN HET TOESCHOUWEN\n Druk op 'E' om de volgende speler te toeschouwen");
         NLDict.Add("TO_LOBBY_HELP", "Druk op 'P' om naar lobby te gaan");
         NLDict.Add("TO_LOBBY", "Naar lobby (P)");
+
+        // Achievements
+        NLDict.Add("A1_NAME", "Basis geleerd");
+        NLDict.Add("A2_NAME", "Bronze wasteland");
+        NLDict.Add("A3_NAME", "Zilveren wasteland");
+        NLDict.Add("A4_NAME", "Gouden wasteland");
+        NLDict.Add("A5_NAME", "Bronze highway");
+        NLDict.Add("A6_NAME", "Zilveren highway");
+        NLDict.Add("A7_NAME", "Gouden highway");
+        NLDict.Add("A8_NAME", "Boosters voor losers");
+        NLDict.Add("A9_NAME", "Kijk mam geen items");
+        NLDict.Add("A10_NAME", "Sharing is caring");
+        NLDict.Add("A11_NAME", "Onstunbaar");
+        NLDict.Add("A12_NAME", "Snelheidsduivel");
+        NLDict.Add("A13_NAME", "Zijn we er al?");
+        NLDict.Add("A14_NAME", "Blokkeermeester");
+        NLDict.Add("A15_NAME", "Beschermer");
+        NLDict.Add("A16_NAME", "Kampieon");
+        NLDict.Add("A17_NAME", "Items voor dagen");
+        NLDict.Add("A18_NAME", "Boost naar oneindige");
+        NLDict.Add("A19_NAME", "Item misselijkheid");
+        NLDict.Add("A20_NAME", "Totaal geboost");
+
+        NLDict.Add("A1_DESC", "Complete the tutorial level");
+        NLDict.Add("A2_DESC", "Versla de bronze tijd opEraarlonium Wasteland");
+        NLDict.Add("A3_DESC", "Versla de zilveren tijd op Eraarlonium Wasteland");
+        NLDict.Add("A4_DESC", "Versla de gouden tijd op Eraarlonium Wasteland");
+        NLDict.Add("A5_DESC", "Versla de bronze tijd op Elto Highway");
+        NLDict.Add("A6_DESC", "Versla de zilveren tijd op Elto Highway");
+        NLDict.Add("A7_DESC", "Versla de gouden tijd op Elto Highway");
+        NLDict.Add("A8_DESC", "Haal een race zonder enige vorm van boost te gebruiken");
+        NLDict.Add("A9_DESC", "Haal een race zonder items te gebruiken");
+        NLDict.Add("A10_DESC", "Raak een persoon met een jammer raker of jammer mijn");
+        NLDict.Add("A11_DESC", "Don't get stunned by anything");
+        NLDict.Add("A12_DESC", "Behaal een snelheid van 600 km/h of hoger");
+        NLDict.Add("A13_DESC", "Reis 50km (Ongeveer 17 laps) TOTAAL");
+        NLDict.Add("A14_DESC", "Blokkeer 4 projectielen in één race");
+        NLDict.Add("A15_DESC", "Blokkeer 20 projectielen TOTAAL");
+        NLDict.Add("A16_DESC", "Wees nummer één op de leaderboard bij een level");
+        NLDict.Add("A17_DESC", "Gebruik 4 items in a één race");
+        NLDict.Add("A18_DESC", "Gebruik 10 boostpads in a één race");
+        NLDict.Add("A19_DESC", "Gebruik 20 items TOTAAL");
+        NLDict.Add("A20_DESC", "Gebruik 50 boostpads TOTAAL");
     }
 
     private static void UpdateEnglishDictionaryStatic()
@@ -266,6 +309,49 @@ public class LocalizationManager : LevelSingleton<LocalizationManager>
         ENDict.Add("TO_LOBBY_HELP", "Press 'P' to return to lobby");
         ENDict.Add("TO_LOBBY", "To lobby (P)");
 
+        // Achievements
+        ENDict.Add("A1_NAME", "Learned the basics");
+        ENDict.Add("A2_NAME", "Bronze wasteland");
+        ENDict.Add("A3_NAME", "Silver wasteland");
+        ENDict.Add("A4_NAME", "Gold wasteland");
+        ENDict.Add("A5_NAME", "Bronze highway");
+        ENDict.Add("A6_NAME", "Silver highway");
+        ENDict.Add("A7_NAME", "Gold highway");
+        ENDict.Add("A8_NAME", "Boosters for losers");
+        ENDict.Add("A9_NAME", "Look mom no items");
+        ENDict.Add("A10_NAME", "Sharing is caring");
+        ENDict.Add("A11_NAME", "Unstunnable");
+        ENDict.Add("A12_NAME", "Speed demon");
+        ENDict.Add("A13_NAME", "Are we there yet?");
+        ENDict.Add("A14_NAME", "Blockmaster");
+        ENDict.Add("A15_NAME", "Guardian");
+        ENDict.Add("A16_NAME", "Champion");
+        ENDict.Add("A17_NAME", "Items 4 days");
+        ENDict.Add("A18_NAME", "Boosted to infinity");
+        ENDict.Add("A19_NAME", "Item sickness");
+        ENDict.Add("A20_NAME", "Totally boosted");
+
+
+        ENDict.Add("A1_DESC", "Complete the tutorial level");
+        ENDict.Add("A2_DESC", "Beat bronze time on Eraarlonium Wasteland");
+        ENDict.Add("A3_DESC", "Beat silver time on Eraarlonium Wasteland");
+        ENDict.Add("A4_DESC", "Beat gold time on Eraarlonium Wasteland");
+        ENDict.Add("A5_DESC", "Beat bronze time on Elto Highway");
+        ENDict.Add("A6_DESC", "Beat silver time on Elto Highway");
+        ENDict.Add("A7_DESC", "Beat gold time on Elto Highway");
+        ENDict.Add("A8_DESC", "Complete a race without any kind of boost");
+        ENDict.Add("A9_DESC", "Complete a race without using any items");
+        ENDict.Add("A10_DESC", "Hit a person with a jammer rocket or jammer mine");
+        ENDict.Add("A11_DESC", "Don't get stunned by anything");
+        ENDict.Add("A12_DESC", "Achieve a speed of 600 km/h or higher");
+        ENDict.Add("A13_DESC", "Travel 50km (about 17 laps) TOTAL");
+        ENDict.Add("A14_DESC", "Block 4 projectiles in a single race");
+        ENDict.Add("A15_DESC", "Block 20 projectiles TOTAL");
+        ENDict.Add("A16_DESC", "Be number one on the leaderboard on any level");
+        ENDict.Add("A17_DESC", "Use 4 items in a single race");
+        ENDict.Add("A18_DESC", "Use 10 boostpads in a single race");
+        ENDict.Add("A19_DESC", "Use 20 items TOTAL");
+        ENDict.Add("A20_DESC", "Use 50 boostpads TOTAL");
     }
 
     #region GetTextByKey

@@ -26,26 +26,26 @@ public class AchievementManager : MonoBehaviour
     {
         List<Achievement> achievements = new List<Achievement>
         {
-            new Achievement(0, "Learned the basics", "Complete the tutorial level", AchievementType.EVENT, 1f), // DONE
-            new Achievement(1, "Bronze wasteland", "Beat bronze time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(2, "Silver wasteland", "Beat silver time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(3, "Gold wasteland", "Beat gold time on Eraarlonium Wasteland", AchievementType.LAPTIME, 1f),
-            new Achievement(4, "Bronze highway", "Beat bronze time on Elto Highway", AchievementType.LAPTIME, 1f),
-            new Achievement(5, "Silver highway", "Beat silver time on Elto Highway", AchievementType.LAPTIME, 1f),
-            new Achievement(6, "Gold highway", "Beat gold time on Elto Highway", AchievementType.LAPTIME, 1f),
-            new Achievement(7, "Boosters for losers", "Complete a race without any kind of boost", AchievementType.MISC, 1f), // DONE
-            new Achievement(8, "Look mom no items", "Complete a race without using any items", AchievementType.MISC, 1f), // DONE
-            new Achievement(9, "Sharing is caring", "Hit a person with a jammer rocket or jammer mine", AchievementType.MISC, 1f), // DONE
-            new Achievement(10, "Unstunnable", "Don't get stunned by anything", AchievementType.MISC, 1f), // DONE
-            new Achievement(11, "Speed demon", "Achieve a speed of 600 km/h", AchievementType.STAT, 1f), // DONE
-            new Achievement(12, "Are we there yet?", "Travel 50km (about 17 laps) TOTAL", AchievementType.STAT, 50f), // DONE
-            new Achievement(13, "Blockmaster", "Block 4 projectiles in a single race", AchievementType.MISC, 1f), // DONE
-            new Achievement(14, "Guardian", "Block 20 projectiles TOTAL", AchievementType.STAT, 20f), // DONE
-            new Achievement(15, "Champion", "Be number one on the leaderboard on any level", AchievementType.MISC, 1f),
-            new Achievement(16, "Items 4 days", "Use 4 items in a single race", AchievementType.STAT, 1f), // DONE
-            new Achievement(17, "Boosted to infinity", "Use 10 boostpads in a single race", AchievementType.STAT, 1f), // DONE
-            new Achievement(18, "Item sickness", "Use 20 items TOTAL", AchievementType.STAT, 20f), // DONE 
-            new Achievement(19, "Totally boosted", "Use 50 boostpads TOTAL", AchievementType.STAT, 50f) // DONE
+            new Achievement(0, LocalizationManager.GetTextByKey("A1_NAME"), LocalizationManager.GetTextByKey("A1_DESC"), AchievementType.EVENT, 1f), // DONE
+            new Achievement(1, LocalizationManager.GetTextByKey("A2_NAME"), LocalizationManager.GetTextByKey("A2_DESC"), AchievementType.LAPTIME, 1f),
+            new Achievement(2, LocalizationManager.GetTextByKey("A3_NAME"), LocalizationManager.GetTextByKey("A3_DESC"), AchievementType.LAPTIME, 1f),
+            new Achievement(3, LocalizationManager.GetTextByKey("A4_NAME"), LocalizationManager.GetTextByKey("A4_DESC"), AchievementType.LAPTIME, 1f),
+            new Achievement(4, LocalizationManager.GetTextByKey("A5_NAME"), LocalizationManager.GetTextByKey("A5_DESC"), AchievementType.LAPTIME, 1f),
+            new Achievement(5, LocalizationManager.GetTextByKey("A6_NAME"), LocalizationManager.GetTextByKey("A6_DESC"), AchievementType.LAPTIME, 1f),
+            new Achievement(6, LocalizationManager.GetTextByKey("A7_NAME"), LocalizationManager.GetTextByKey("A7_DESC"), AchievementType.LAPTIME, 1f),
+            new Achievement(7, LocalizationManager.GetTextByKey("A8_NAME"), LocalizationManager.GetTextByKey("A8_DESC"), AchievementType.MISC, 1f), // DONE
+            new Achievement(8, LocalizationManager.GetTextByKey("A9_NAME"), LocalizationManager.GetTextByKey("A9_DESC"), AchievementType.MISC, 1f), // DONE
+            new Achievement(9, LocalizationManager.GetTextByKey("A10_NAME"), LocalizationManager.GetTextByKey("A10_DESC"), AchievementType.MISC, 1f), // DONE
+            new Achievement(10, LocalizationManager.GetTextByKey("A11_NAME"), LocalizationManager.GetTextByKey("A11_DESC"), AchievementType.MISC, 1f), // DONE
+            new Achievement(11, LocalizationManager.GetTextByKey("A12_NAME"), LocalizationManager.GetTextByKey("A12_DESC"), AchievementType.STAT, 1f), // DONE
+            new Achievement(12, LocalizationManager.GetTextByKey("A13_NAME"), LocalizationManager.GetTextByKey("A13_DESC"), AchievementType.STAT, 50f), // DONE
+            new Achievement(13, LocalizationManager.GetTextByKey("A14_NAME"), LocalizationManager.GetTextByKey("A14_DESC"), AchievementType.MISC, 1f), // DONE
+            new Achievement(14, LocalizationManager.GetTextByKey("A15_NAME"), LocalizationManager.GetTextByKey("A15_DESC"), AchievementType.STAT, 20f), // DONE
+            new Achievement(15, LocalizationManager.GetTextByKey("A16_NAME"), LocalizationManager.GetTextByKey("A16_DESC"), AchievementType.MISC, 1f),
+            new Achievement(16, LocalizationManager.GetTextByKey("A17_NAME"), LocalizationManager.GetTextByKey("A17_DESC"), AchievementType.STAT, 1f), // DONE
+            new Achievement(17, LocalizationManager.GetTextByKey("A18_NAME"), LocalizationManager.GetTextByKey("A18_DESC"), AchievementType.STAT, 1f), // DONE
+            new Achievement(18, LocalizationManager.GetTextByKey("A19_NAME"), LocalizationManager.GetTextByKey("A19_DESC"), AchievementType.STAT, 20f), // DONE 
+            new Achievement(19, LocalizationManager.GetTextByKey("A20_NAME"), LocalizationManager.GetTextByKey("A20_DESC"), AchievementType.STAT, 50f) // DONE
         };
 
         // Save
